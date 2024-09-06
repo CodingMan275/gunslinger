@@ -7,9 +7,17 @@ position = Vector2(520, 468)
 texture = ExtResource("1_4we5w")
 
 [node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(-51, -270)
+position = Vector2(-95, -315)
 texture = ExtResource("1_4we5w")
 
 [node name="Icon2" type="Sprite2D" parent="."]
 position = Vector2(376, 211)
+texture = ExtResource("1_4we5w")
+
+[node name="Icon3" type="Sprite2D" parent="."]
+position = Vector2(-343, -198)
+texture = ExtResource("1_4we5w")
+
+[node name="Icon4" type="Sprite2D" parent="."]
+position = Vector2(401, -274)
 texture = ExtResource("1_4we5w")
