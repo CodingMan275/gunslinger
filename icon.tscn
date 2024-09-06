@@ -2,22 +2,30 @@
 
 [ext_resource type="Texture2D" uid="uid://wpqjamy8nklp" path="res://icon.svg" id="1_4we5w"]
 
-[node name="Icon" type="Sprite2D"]
-position = Vector2(520, 468)
+[node name="Michael" type="Sprite2D"]
+position = Vector2(222, 164)
+texture = ExtResource("1_4we5w")
+
+[node name="Joshua" type="Sprite2D" parent="."]
+position = Vector2(242, 8)
 texture = ExtResource("1_4we5w")
 
 [node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(-95, -315)
+position = Vector2(400, 4)
 texture = ExtResource("1_4we5w")
 
 [node name="Icon2" type="Sprite2D" parent="."]
-position = Vector2(376, 211)
+position = Vector2(691, 4)
 texture = ExtResource("1_4we5w")
 
 [node name="Icon3" type="Sprite2D" parent="."]
-position = Vector2(-343, -198)
+position = Vector2(95, 162)
 texture = ExtResource("1_4we5w")
 
 [node name="Icon4" type="Sprite2D" parent="."]
-position = Vector2(401, -274)
+position = Vector2(450, 162)
+texture = ExtResource("1_4we5w")
+
+[node name="Icon5" type="Sprite2D" parent="."]
+position = Vector2(314, 340)
 texture = ExtResource("1_4we5w")
