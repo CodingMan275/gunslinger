@@ -18,7 +18,7 @@ texture = ExtResource("1_4we5w")
 position = Vector2(691, 4)
 texture = ExtResource("1_4we5w")
 
-[node name="OakleyF" type="Sprite2D" parent="."]
+[node name="Icon3" type="Sprite2D" parent="."]
 position = Vector2(95, 162)
 texture = ExtResource("1_4we5w")
 
