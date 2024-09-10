@@ -1,0 +1,66 @@
+[gd_scene load_steps=4 format=3 uid="uid://bjlifhwwfo2ta"]
+
+[ext_resource type="PackedScene" uid="uid://x0tek8t1bewj" path="res://Player.tscn" id="1_u463c"]
+[ext_resource type="Script" path="res://world.gd" id="1_v3250"]
+[ext_resource type="Texture2D" uid="uid://wpqjamy8nklp" path="res://icon.svg" id="3_dqxuo"]
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_v3250")
+player_scene = ExtResource("1_u463c")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Host" type="Button" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.312
+anchor_top = 0.136
+anchor_right = 0.68
+anchor_bottom = 0.324
+offset_left = 0.575989
+offset_top = -5.12801
+offset_right = -0.359985
+offset_bottom = 0.0480042
+text = "Host"
+
+[node name="Join" type="Button" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.309
+anchor_top = 0.719
+anchor_right = 0.688
+anchor_bottom = 0.921
+offset_left = 0.0319824
+offset_top = 0.0879822
+offset_right = 0.42395
+offset_bottom = 0.191956
+text = "Join"
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://Player.tscn")
+spawn_path = NodePath("..")
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(75, 85)
+texture = ExtResource("3_dqxuo")
+
+[node name="Icon3" type="Sprite2D" parent="."]
+position = Vector2(71, 205)
+texture = ExtResource("3_dqxuo")
+
+[node name="Icon4" type="Sprite2D" parent="."]
+position = Vector2(75, 313)
+texture = ExtResource("3_dqxuo")
+
+[node name="Icon5" type="Sprite2D" parent="."]
+position = Vector2(73, 427)
+texture = ExtResource("3_dqxuo")
+
+[node name="Icon6" type="Sprite2D" parent="."]
+position = Vector2(75, 529)
+texture = ExtResource("3_dqxuo")
+
+[node name="Icon7" type="Sprite2D" parent="."]
+position = Vector2(73, 621)
+texture = ExtResource("3_dqxuo")
+
+[connection signal="pressed" from="CanvasLayer/Host" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="CanvasLayer/Join" to="." method="_on_join_pressed"]

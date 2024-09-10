@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://h12oe1sbbxye"]
+
+[node name="LAN" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Host" type="Button" parent="CanvasLayer"]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Host"
+
+[node name="Join" type="Button" parent="CanvasLayer"]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Join"
