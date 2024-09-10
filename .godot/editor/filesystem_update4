@@ -1,5 +1,4 @@
-res://icon.tscn
-res://node_2d.tscn
-res://lan.tscn
-res://world.tscn
 res://Player.tscn
+res://player.gd
+res://world.tscn
+res://world.gd
