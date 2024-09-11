@@ -2,6 +2,7 @@ extends Node2D
 
 #LAN Multiplayer tutorial https://www.youtube.com/watch?v=M0LJ9EsS_Ak
 
+
 #As of right now it is hard coded to only work When
 #Josh hosts the game because of the LAN IP address
 #Working on better solutions now
@@ -18,10 +19,12 @@ var peer = ENetMultiplayerPeer.new()
 
 #Creating a server on someones machine
 func _on_host_pressed() -> void:
+
 	#Will get a window user's LAN IP address, each device has its own unique
 	#LAN IP which needs to be shared somehow
 	#https://forum.godotengine.org/t/how-to-get-local-ip-address/10399/2
 	var LAN_IP = IP.resolve_hostname(str(OS.get_environment("COMPUTERNAME")),1)
+
 	#Arbitrary port, can be changed later or can be made inputable
 	peer.create_server(1027)
 	#creates the peer who is hosting
