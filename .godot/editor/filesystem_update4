@@ -1,4 +1,4 @@
-res://Player.tscn
-res://player.gd
 res://world.tscn
-res://world.gd
+res://icon.tscn
+res://node_2d.tscn
+res://Player.tscn
