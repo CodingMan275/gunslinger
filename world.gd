@@ -1,5 +1,4 @@
 extends Node2D
-
 #LAN Multiplayer tutorial https://www.youtube.com/watch?v=M0LJ9EsS_Ak
 
 
@@ -17,6 +16,11 @@ var peer = ENetMultiplayerPeer.new()
 #This is what the player will be, whatever the player controller is plug in here
 @export var player_scene : PackedScene
 
+@onready var line_edit = get_node("CanvasLayer/LineEdit")
+
+func _ready():
+	line_edit.grab_focus()
+
 #Creating a server on someones machine
 func _on_host_pressed() -> void:
 
@@ -24,6 +28,7 @@ func _on_host_pressed() -> void:
 	#LAN IP which needs to be shared somehow
 	#https://forum.godotengine.org/t/how-to-get-local-ip-address/10399/2
 	var LAN_IP = IP.resolve_hostname(str(OS.get_environment("COMPUTERNAME")),1)
+	print(LAN_IP)
 
 	#Arbitrary port, can be changed later or can be made inputable
 	peer.create_server(1027)
@@ -38,7 +43,7 @@ func _on_host_pressed() -> void:
 #Joining someone who is hosting the game
 func _on_join_pressed() -> void:
 	#IP of SUNY Poly, can be changed later
-	peer.create_client("192.168.192.103", 1027)
+	peer.create_client(line_edit.text, 1027)
 	#Create client peer
 	multiplayer.multiplayer_peer = peer
 	#Here would be code for assigning player ID's for turn order
