@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://jl7k3ltwbp41"]
+[gd_scene load_steps=8 format=3 uid="uid://jl7k3ltwbp41"]
 
 [ext_resource type="Texture2D" uid="uid://fcuqal2ynbts" path="res://spritesheet.png" id="1_82qw3"]
 [ext_resource type="Texture2D" uid="uid://mmea4eto2a6p" path="res://Rhombus.png" id="2_cvwes"]
 [ext_resource type="Script" path="res://tile_map.gd" id="3_m8k54"]
+[ext_resource type="PackedScene" uid="uid://c084g67tienhw" path="res://moveable_player.tscn" id="4_pa1d4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p1dyh"]
 texture = ExtResource("1_82qw3")
@@ -451,11 +452,15 @@ sources/1 = SubResource("TileSetAtlasSource_bqeqs")
 [node name="Node2D" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
+y_sort_enabled = true
 tile_set = SubResource("TileSet_1y6tq")
 rendering_quadrant_size = 32
 format = 2
 layer_1/name = "Layer1"
+layer_1/y_sort_enabled = true
 script = ExtResource("3_m8k54")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(16, 130)
+
+[node name="MoveablePlayer" parent="." instance=ExtResource("4_pa1d4")]

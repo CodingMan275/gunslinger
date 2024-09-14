@@ -2,4 +2,6 @@ res://icon.tscn
 res://node_2d.tscn
 res://world.tscn
 res://Player.tscn
-res://world.gd
+res://moveable_player.gd
+res://tile_map.gd
+res://moveable_player.tscn

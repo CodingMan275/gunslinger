@@ -3,6 +3,7 @@ extends TileMap
 
 var GridSize = 16
 var Dict = {}
+var selectedTile
 
 func _ready():
 	for x in GridSize:
@@ -16,6 +17,7 @@ func _ready():
 	
 func _process(delta):
 	var tile = local_to_map(get_global_mouse_position())
+	selectedTile = map_to_local(tile)
 	
 	for x in GridSize:
 		for y in GridSize:
