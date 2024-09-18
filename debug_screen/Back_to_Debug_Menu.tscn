@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://hj83ai4o2o5m"]
+
+[ext_resource type="Script" path="res://debug_screen/back_to_debug_menu.gd" id="1_v4cgn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hnkbt"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[node name="BackToDebugMenu" type="Button"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = 1.0
+offset_right = -393.0
+offset_bottom = -234.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = SubResource("StyleBoxFlat_hnkbt")
+text = "Back to 
+Debug Menu"
+script = ExtResource("1_v4cgn")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

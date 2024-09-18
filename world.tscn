@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bjlifhwwfo2ta"]
+[gd_scene load_steps=4 format=3 uid="uid://bjlifhwwfo2ta"]
 
 [ext_resource type="PackedScene" uid="uid://x0tek8t1bewj" path="res://Player.tscn" id="1_u463c"]
 [ext_resource type="Script" path="res://world.gd" id="1_v3250"]
+[ext_resource type="PackedScene" uid="uid://hj83ai4o2o5m" path="res://debug_screen/Back_to_Debug_Menu.tscn" id="3_258w7"]
 
 [node name="World" type="Node2D"]
 position = Vector2(238, 140)
@@ -45,6 +46,12 @@ clear_button_enabled = true
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("res://Player.tscn")
 spawn_path = NodePath("..")
+
+[node name="BackToDebugMenu" parent="." instance=ExtResource("3_258w7")]
+offset_left = 143.0
+offset_top = 87.0
+offset_right = 231.0
+offset_bottom = 122.0
 
 [connection signal="pressed" from="CanvasLayer/Host" to="." method="_on_host_pressed"]
 [connection signal="pressed" from="CanvasLayer/Join" to="." method="_on_join_pressed"]

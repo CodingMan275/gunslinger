@@ -1,5 +1,7 @@
+res://debug_screen/debug_menu.tscn
 res://icon.tscn
 res://node_2d.tscn
 res://world.tscn
 res://Player.tscn
-res://world.gd
+res://debug_screen/back_to_debug_menu.gd
+res://debug_screen/Back_to_Debug_Menu.tscn
