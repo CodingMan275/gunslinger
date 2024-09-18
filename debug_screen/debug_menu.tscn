@@ -21,7 +21,7 @@ offset_bottom = -5.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ofl7y")
-scenes = Array[String](["res://world.tscn"])
+scenes = Array[String](["res://world.tscn", "res://node_2d.tscn"])
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 unique_name_in_owner = true
