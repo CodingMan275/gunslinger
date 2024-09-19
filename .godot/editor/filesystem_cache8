@@ -1,5 +1,5 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1726760475
+::res://::1726768636
 icon.svg::CompressedTexture2D::1576107790049741733::1725916237::1726760476::1::::<><>::
 icon.tscn::PackedScene::5402456571018545550::1726345912::0::1::::<><>::uid://wpqjamy8nklp::::res://icon.svg
 lan.tscn::PackedScene::546660338068700008::1726344885::0::1::::<><>::
@@ -15,10 +15,10 @@ world.gd::GDScript::-1::1726344885::0::1::::<>Node2D<>::
 world.tscn::PackedScene::3041323499297697522::1726760407::0::1::::<><>::uid://x0tek8t1bewj::::res://Player.tscn<>res://world.gd<>uid://hj83ai4o2o5m::::res://debug_screen/Back_to_Debug_Menu.tscn
 ::res://Card Game/::1726760407
 card.tscn::PackedScene::5459105086288634894::1726760407::0::1::::<><>::
-::res://debug_screen/::1726760407
+::res://debug_screen/::1726760585
 back_to_debug_menu.gd::GDScript::-1::1726760407::0::1::::<>Button<>::
 Back_to_Debug_Menu.tscn::PackedScene::511954981939244824::1726760407::0::1::::<><>::res://debug_screen/back_to_debug_menu.gd
 debug_button.gd::GDScript::-1::1726760407::0::1::::<>Button<>::
 debug_button.tscn::PackedScene::8203076168435353091::1726760407::0::1::::<><>::res://debug_screen/debug_button.gd
 debug_menu.gd::GDScript::-1::1726760407::0::1::::<>Control<>::
-debug_menu.tscn::PackedScene::2017106292229758417::1726760407::0::1::::<><>::res://debug_screen/debug_menu.gd
+debug_menu.tscn::PackedScene::2017106292229758417::1726760585::0::1::::<><>::res://debug_screen/debug_menu.gd
