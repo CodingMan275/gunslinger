@@ -1,1 +1,4 @@
 res://debug_screen/debug_menu.tscn
+res://Card Game/card.gd
+res://card.gd
+res://Card Game/card.tscn

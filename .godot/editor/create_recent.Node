@@ -1,6 +1,7 @@
+Node2D
 Button
+CanvasLayer
 LineEdit
 MultiplayerSpawner
-CanvasLayer
 Camera2D
 TileMap
