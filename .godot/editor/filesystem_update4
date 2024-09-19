@@ -1,7 +1,1 @@
-res://icon.tscn
-res://node_2d.tscn
-res://world.tscn
-res://Player.tscn
-res://moveable_player.gd
-res://tile_map.gd
-res://moveable_player.tscn
+res://debug_screen/debug_menu.tscn

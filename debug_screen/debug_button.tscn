@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://do4vp3ybspefr"]
+
+[ext_resource type="Script" path="res://debug_screen/debug_button.gd" id="1_cxfen"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5kd4n"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[node name="Button" type="Button"]
+offset_right = 230.0
+offset_bottom = 52.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_5kd4n")
+text = "Default Text"
+script = ExtResource("1_cxfen")
+
+[connection signal="button_up" from="." to="." method="_on_button_up"]
