@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://jl7k3ltwbp41"]
+[gd_scene load_steps=9 format=3 uid="uid://jl7k3ltwbp41"]
 
 [ext_resource type="Texture2D" uid="uid://fcuqal2ynbts" path="res://spritesheet.png" id="1_82qw3"]
 [ext_resource type="Texture2D" uid="uid://mmea4eto2a6p" path="res://Rhombus.png" id="2_cvwes"]
 [ext_resource type="Script" path="res://tile_map.gd" id="3_m8k54"]
 [ext_resource type="PackedScene" uid="uid://c084g67tienhw" path="res://moveable_player.tscn" id="4_pa1d4"]
+[ext_resource type="PackedScene" uid="uid://x0tek8t1bewj" path="res://Player.tscn" id="5_lmdmc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p1dyh"]
 texture = ExtResource("1_82qw3")
@@ -464,3 +465,18 @@ script = ExtResource("3_m8k54")
 offset = Vector2(16, 130)
 
 [node name="MoveablePlayer" parent="." instance=ExtResource("4_pa1d4")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+offset_left = 393.0
+offset_top = 9.0
+offset_right = 471.0
+offset_bottom = 44.0
+action_mode = 0
+text = "End Turn"
+
+[node name="Player" parent="." instance=ExtResource("5_lmdmc")]
+
+[connection signal="Order" from="TileMap" to="Player" method="_on_tile_map_order"]
+[connection signal="pressed" from="CanvasLayer/Button" to="TileMap" method="_on_button_pressed"]

@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends CharacterBody2D 
 
 #Movement tutorial https://www.youtube.com/watch?v=uNReb-MHsbg
 #The player character does drift but this is just for something to show
@@ -8,6 +8,7 @@ extends CharacterBody2D
 const Friction = 500
 const MAX_SPEED = 300
 const ACCELERATIOB = 300
+
 
 #When the player is spawned into the 'tree' or scene it is giving
 #itself authority to itself multiplayer wise. Basically it gives you control
@@ -48,4 +49,10 @@ func apply_movement(Accel):
 	velocity += Accel
 	velocity = velocity.limit_length(MAX_SPEED)
 	
-	
+
+#When the signal from the world turn order is actvated this function
+#Receives this signal
+func _on_tile_map_order(x) -> void:
+	print("Player")
+	print(x)
+	pass # Replace with function body.

@@ -1,2 +1,6 @@
+res://node_2d.tscn
+res://player.gd
 res://debug_screen/debug_menu.tscn
 res://Player.tscn
+res://world.tscn
+res://tile_map.gd
