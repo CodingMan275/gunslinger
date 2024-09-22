@@ -10,3 +10,12 @@ export_presets.cfg
 .mono/
 data_*/
 *.cfg
+.godot/editor/debug_menu.tscn-editstate-5118cc30eda1e6ce120e5dac06d94bf4.cfg
+.godot/editor/editor_layout.cfg
+.godot/editor/filesystem_cache8
+.godot/editor/filesystem_update4
+.godot/editor/node_2d.tscn-editstate-362256a061aa8890e9a1e558b11e5ec3.cfg
+.godot/editor/Player.tscn-editstate-90e1ff3baa03524a506ff0f7a9d78dcf.cfg
+.godot/editor/project_metadata.cfg
+.godot/editor/script_editor_cache.cfg
+.godot/editor/world.tscn-editstate-76e0adcbc83681695885bae615f516ae.cfg
