@@ -1,17 +1,10 @@
 extends Node2D
 #LAN Multiplayer tutorial https://www.youtube.com/watch?v=M0LJ9EsS_Ak
 
-
-#As of right now it is hard coded to only work When
-#Josh hosts the game because of the LAN IP address
-#Working on better solutions now
-
-#Just something to prove LAN is possible with basic movements
-#I feel confident that if we get a world controller / automatic rules controller
-#it would be easy to properly sync and async what is needed per player
-
 #Peer can be both a client or host, its just who you are
 var peer = ENetMultiplayerPeer.new()
+
+signal Host_ID_Signal
 
 #This is what the player will be, whatever the player controller is plug in here
 @export var player_scene : PackedScene
@@ -59,6 +52,9 @@ func add_player(id = 1):
 	player.name = str(id)
 	#This should make the instance of the character a child of then scene
 	call_deferred("add_child", player)
+	
+	#Signal for host to get ID which is player 1, not ideal but no other solution found
+	Host_ID_Signal.emit(1)
 	
 	#Exiting the game
 	#This does not work as intended, client is not properly deleted

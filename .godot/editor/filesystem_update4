@@ -6,3 +6,4 @@ res://world.tscn
 res://world.gd
 res://debug_screen/debug_menu.gd
 res://tile_map.gd
+res://Card Game/card.gd

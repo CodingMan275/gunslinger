@@ -10,6 +10,9 @@ radius = 50.1597
 properties/0/path = NodePath(".:position")
 properties/0/spawn = true
 properties/0/replication_mode = 1
+properties/1/path = NodePath("CanvasLayer:visible")
+properties/1/spawn = true
+properties/1/replication_mode = 1
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
@@ -23,5 +26,14 @@ shape = SubResource("CircleShape2D_jco3y")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_42imv")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextEdit" type="TextEdit" parent="CanvasLayer"]
+offset_left = 14.0
+offset_top = 212.0
+offset_right = 158.0
+offset_bottom = 253.0
+text = "ITS YOUR TURN"
 
 [connection signal="ready" from="." to="." method="_on_ready"]
