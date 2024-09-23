@@ -23,3 +23,5 @@ shape = SubResource("CircleShape2D_jco3y")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_42imv")
+
+[connection signal="ready" from="." to="." method="_on_ready"]
