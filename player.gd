@@ -19,11 +19,11 @@ var Player_ID = 0
 #over your character
 func _enter_tree():
 	set_multiplayer_authority(name.to_int())
-	#Player_ID =
-	#var x = 0 
-	#x = get_tree().multiplayer.get_network_connected_peers()
-	#TEST
-	print(multiplayer.get_peers())
+	#Array is empty when host is present, plus 1 to give it plyaer ID 1
+	#everytime a player spawns in the scene this runs and it is given its ID
+	Player_ID = multiplayer.get_peers().size() + 1
+	print(Player_ID)
+	
 	
 #Every tic or game update 'delta' the move function is being called
 func _physics_process(delta):
@@ -57,6 +57,7 @@ func apply_movement(Accel):
 	#increase the players velocity to max speed
 	velocity += Accel
 	velocity = velocity.limit_length(MAX_SPEED)
+	print(Player_ID)
 	
 
 #When the signal from the world turn order is actvated this function
