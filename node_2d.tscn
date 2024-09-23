@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://jl7k3ltwbp41"]
+[gd_scene load_steps=10 format=3 uid="uid://jl7k3ltwbp41"]
 
 [ext_resource type="Texture2D" uid="uid://fcuqal2ynbts" path="res://spritesheet.png" id="1_82qw3"]
 [ext_resource type="Texture2D" uid="uid://mmea4eto2a6p" path="res://Rhombus.png" id="2_cvwes"]
@@ -450,6 +450,14 @@ tile_size = Vector2i(32, 16)
 sources/0 = SubResource("TileSetAtlasSource_p1dyh")
 sources/1 = SubResource("TileSetAtlasSource_bqeqs")
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_mfl53"]
+properties/0/path = NodePath("MoveablePlayer:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("CanvasLayer/Button:button_pressed")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+
 [node name="Node2D" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -460,6 +468,7 @@ format = 2
 layer_1/name = "Layer1"
 layer_1/y_sort_enabled = true
 script = ExtResource("3_m8k54")
+player_scene = ExtResource("5_lmdmc")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(16, 130)
@@ -476,7 +485,42 @@ offset_bottom = 44.0
 action_mode = 0
 text = "End Turn"
 
-[node name="Player" parent="." instance=ExtResource("5_lmdmc")]
+[node name="Host" type="Button" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.454
+anchor_top = 0.615
+anchor_right = 0.82
+anchor_bottom = 0.822
+offset_left = 0.0799866
+offset_top = -0.0500031
+offset_right = 0.103973
+offset_bottom = -0.00396729
+text = "Host"
 
-[connection signal="Order" from="TileMap" to="Player" method="_on_tile_map_order"]
+[node name="Join" type="Button" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.837
+anchor_top = 0.856
+anchor_right = 0.973
+anchor_bottom = 0.97
+offset_left = 0.23999
+offset_top = -0.12001
+offset_right = -0.0400391
+offset_bottom = 0.100006
+text = "Join"
+
+[node name="LineEdit" type="LineEdit" parent="CanvasLayer"]
+offset_left = 212.0
+offset_top = 233.0
+offset_right = 393.0
+offset_bottom = 264.0
+placeholder_text = "Enter Ip:"
+clear_button_enabled = true
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+spawn_path = NodePath("..")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_mfl53")
+
 [connection signal="pressed" from="CanvasLayer/Button" to="TileMap" method="_on_button_pressed"]

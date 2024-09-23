@@ -53,5 +53,6 @@ offset_top = 87.0
 offset_right = 231.0
 offset_bottom = 122.0
 
+[connection signal="Host_ID_Signal" from="." to="." method="_on_host_id_signal"]
 [connection signal="pressed" from="CanvasLayer/Host" to="." method="_on_host_pressed"]
 [connection signal="pressed" from="CanvasLayer/Join" to="." method="_on_join_pressed"]
