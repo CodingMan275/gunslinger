@@ -46,8 +46,7 @@ func _on_join_pressed() -> void:
 	peer.create_client(line_edit.text, 1027)
 	#Create client peer
 	multiplayer.multiplayer_peer = peer
-	#Here would be code for assigning player ID's for turn order
-	#Will be done later
+	
 	
 	#Canvas no longer needed
 	$CanvasLayer.hide()

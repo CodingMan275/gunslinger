@@ -9,12 +9,21 @@ const Friction = 500
 const MAX_SPEED = 300
 const ACCELERATIOB = 300
 
+#Player ID which will be determined on creation
+#Based on number of current connected peers
+var Player_ID = 0
+
 
 #When the player is spawned into the 'tree' or scene it is giving
 #itself authority to itself multiplayer wise. Basically it gives you control
 #over your character
 func _enter_tree():
 	set_multiplayer_authority(name.to_int())
+	#Player_ID =
+	#var x = 0 
+	#x = get_tree().multiplayer.get_network_connected_peers()
+	#TEST
+	print(multiplayer.get_peers())
 	
 #Every tic or game update 'delta' the move function is being called
 func _physics_process(delta):
