@@ -1,10 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://jl7k3ltwbp41"]
+[gd_scene load_steps=9 format=3 uid="uid://jl7k3ltwbp41"]
 
 [ext_resource type="Texture2D" uid="uid://fcuqal2ynbts" path="res://spritesheet.png" id="1_82qw3"]
 [ext_resource type="Texture2D" uid="uid://mmea4eto2a6p" path="res://Rhombus.png" id="2_cvwes"]
 [ext_resource type="Script" path="res://tile_map.gd" id="3_m8k54"]
 [ext_resource type="PackedScene" uid="uid://c084g67tienhw" path="res://moveable_player.tscn" id="4_pa1d4"]
-[ext_resource type="PackedScene" uid="uid://x0tek8t1bewj" path="res://Player.tscn" id="5_lmdmc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p1dyh"]
 texture = ExtResource("1_82qw3")
@@ -454,9 +453,15 @@ sources/1 = SubResource("TileSetAtlasSource_bqeqs")
 properties/0/path = NodePath("MoveablePlayer:position")
 properties/0/spawn = true
 properties/0/replication_mode = 1
-properties/1/path = NodePath("CanvasLayer/Button:button_pressed")
+properties/1/path = NodePath("TileMap/CanvasLayer/Button:button_pressed")
 properties/1/spawn = true
 properties/1/replication_mode = 1
+properties/2/path = NodePath("MultiplayerSpawner:scenes/0")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath("TileMap:Turn_Order")
+properties/3/spawn = true
+properties/3/replication_mode = 1
 
 [node name="Node2D" type="Node2D"]
 
@@ -468,20 +473,11 @@ format = 2
 layer_1/name = "Layer1"
 layer_1/y_sort_enabled = true
 script = ExtResource("3_m8k54")
-player_scene = ExtResource("5_lmdmc")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="TileMap"]
 
-[node name="Button" type="Button" parent="TileMap/CanvasLayer"]
-offset_left = 393.0
-offset_top = 9.0
-offset_right = 471.0
-offset_bottom = 44.0
-action_mode = 0
-text = "End Turn"
-metadata/_edit_use_anchors_ = true
-
 [node name="Host" type="Button" parent="TileMap/CanvasLayer"]
+visible = false
 anchors_preset = -1
 anchor_left = 0.454
 anchor_top = 0.615
@@ -495,6 +491,7 @@ text = "Host"
 metadata/_edit_use_anchors_ = true
 
 [node name="Join" type="Button" parent="TileMap/CanvasLayer"]
+visible = false
 anchors_preset = -1
 anchor_left = 0.837
 anchor_top = 0.856
@@ -508,6 +505,7 @@ text = "Join"
 metadata/_edit_use_anchors_ = true
 
 [node name="LineEdit" type="LineEdit" parent="TileMap/CanvasLayer"]
+visible = false
 offset_left = 212.0
 offset_top = 233.0
 offset_right = 393.0
@@ -516,17 +514,28 @@ placeholder_text = "Enter Ip:"
 clear_button_enabled = true
 metadata/_edit_use_anchors_ = true
 
+[node name="Button" type="Button" parent="TileMap/CanvasLayer"]
+offset_left = 393.0
+offset_top = 9.0
+offset_right = 471.0
+offset_bottom = 44.0
+action_mode = 0
+text = "End Turn"
+metadata/_edit_use_anchors_ = true
+
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(16, 130)
 
 [node name="MoveablePlayer" parent="." instance=ExtResource("4_pa1d4")]
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+process_mode = 4
+_spawnable_scenes = PackedStringArray("res://Player.tscn")
 spawn_path = NodePath("../TileMap")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_mfl53")
 
-[connection signal="pressed" from="TileMap/CanvasLayer/Button" to="TileMap" method="_on_button_pressed"]
 [connection signal="pressed" from="TileMap/CanvasLayer/Host" to="TileMap" method="_on_host_pressed"]
 [connection signal="pressed" from="TileMap/CanvasLayer/Join" to="TileMap" method="_on_join_pressed"]
+[connection signal="pressed" from="TileMap/CanvasLayer/Button" to="TileMap" method="_on_button_pressed"]

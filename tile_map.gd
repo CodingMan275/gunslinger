@@ -5,12 +5,6 @@ var GridSize = 16
 var Dict = {}
 var selectedTile
 
-#Variables for world turn order
-var Turn_Order = 1
-#Creating a custom signal which will emit when turn order changes
-#Can be emited on _ready to make sure all players are updated
-signal Order
-
 func _ready():
 	for x in GridSize:
 		for y in GridSize:
@@ -34,7 +28,23 @@ func _process(delta):
 		set_cell(1, tile, 1, Vector2i(0,0), 0)
 	#	print(Dict[str(tile)])
 
-#When the button in the canvas layer is pressed this function goes
+	
+#LAN JOSH STUFF
+#LAN Multiplayer tutorial https://www.youtube.com/watch?v=M0LJ9EsS_Ak
+"""
+
+All nonsense LAN ignore and focus on pass and play
+
+
+#Turn order
+@export var Turn_Order = 1
+signal Send_Turn
+
+#Player sends a signal asking for what turn order it is
+#And then the world controller sends back a signal with what turn it is
+
+#INcrement turn order
+@rpc("any_peer")
 func _on_button_pressed() -> void:
 	#Turn order updated
 	Turn_Order = Turn_Order + 1
@@ -42,18 +52,11 @@ func _on_button_pressed() -> void:
 	if Turn_Order == 3:
 		Turn_Order = 1
 	#Check
-	#print(Turn_Order)
-	#Signal is emitted with the information of turn order
-	Order.emit(Turn_Order)
-	pass # Replace with function body.
-	
-#LAN JOSH STUFF
-#LAN Multiplayer tutorial https://www.youtube.com/watch?v=M0LJ9EsS_Ak
+	print(Turn_Order)
+	Send_Turn.emit(Turn_Order)
 
 #Peer can be both a client or host, its just who you are
 var peer = ENetMultiplayerPeer.new()
-
-signal Host_ID_Signal
 
 #This is what the player will be, whatever the player controller is plug in here
 @export var player_scene : PackedScene
@@ -87,6 +90,7 @@ func _on_join_pressed() -> void:
 	#Create client peer
 	multiplayer.multiplayer_peer = peer
 	
+
 	
 	#Canvas no longer needed
 	$CanvasLayer/Join.hide()
@@ -102,8 +106,6 @@ func add_player(id = 1):
 	#This should make the instance of the character a child of then scene
 	call_deferred("add_child", player)
 	
-	#Signal for host to get ID which is player 1, not ideal but no other solution found
-	Host_ID_Signal.emit(1)
 	
 	#Exiting the game
 	#This does not work as intended, client is not properly deleted
@@ -131,4 +133,4 @@ func del_player(id):
 func _del_player(id):
 	#deletes node in the world scene
 	get_node(str(id)).queue_free()
-	
+"""

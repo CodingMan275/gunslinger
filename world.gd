@@ -4,7 +4,6 @@ extends Node2D
 #Peer can be both a client or host, its just who you are
 var peer = ENetMultiplayerPeer.new()
 
-signal Host_ID_Signal
 
 #This is what the player will be, whatever the player controller is plug in here
 @export var player_scene : PackedScene
@@ -52,9 +51,7 @@ func add_player(id = 1):
 	player.name = str(id)
 	#This should make the instance of the character a child of then scene
 	call_deferred("add_child", player)
-	
-	#Signal for host to get ID which is player 1, not ideal but no other solution found
-	Host_ID_Signal.emit(1)
+
 	
 	#Exiting the game
 	#This does not work as intended, client is not properly deleted
