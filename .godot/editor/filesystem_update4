@@ -12,3 +12,5 @@ res://Josh_Test_Scenes/world.tscn
 res://Main_Scene/node_2d.tscn
 res://Josh_Test_Scenes/Player.tscn
 res://Main_Scene_Board/node_2d.tscn
+res://Josh_Test_Scenes/player.gd
+res://Main_Scene_Board/rules_controller.gd

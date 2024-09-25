@@ -50,5 +50,6 @@ offset_right = 157.0
 offset_bottom = 263.0
 text = "ITS YOUR TURN"
 
+[connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]
 [connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="pressed" from="CanvasLayer/Button2" to="." method="_on_button_2_pressed"]

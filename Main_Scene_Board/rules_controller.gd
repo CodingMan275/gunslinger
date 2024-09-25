@@ -2,12 +2,31 @@ extends Node
 
 @export var Turn_Order = 1
 
+signal order
+
 #This could be used for signals and such for spawning players
 @export var player_scene : PackedScene
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Turn_Order = 1
+	
+	#Spawn player 1
+	var scene1 = preload("res://Josh_Test_Scenes/Player.tscn").instantiate()
+# Add the node as a child of the node the script is attached to.
+	add_child(scene1)
+	
+	#Spawn player 2
+	var scene2 = preload("res://Josh_Test_Scenes/Player.tscn").instantiate()
+# Add the node as a child of the node the script is attached to.
+	add_child(scene2)
+	
+	scene1.Player_ID = 1
+	scene2.Player_ID = 2
+	
+	
+	order.emit(Turn_Order)
+	
 	pass # Replace with function body.
 	
 func _on_button_pressed() -> void:
@@ -15,6 +34,7 @@ func _on_button_pressed() -> void:
 	Turn_Order = Turn_Order + 1
 	if Turn_Order == 3:
 		Turn_Order = 1
+	order.emit(Turn_Order)
 	pass # Replace with function bod
 	
 

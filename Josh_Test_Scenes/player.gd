@@ -1,11 +1,58 @@
 extends CharacterBody2D 
 
+#Player ID make exportable so it cna be changed
+@export var Player_ID = 1
+#Movement to prove spawning works
+const Friction = 500
+const MAX_SPEED = 300
+const ACCELERATIOB = 300
+#Player is spawned by rules controller as a child of it
+@onready var rule_scene = get_parent()
+#So the player knows what order it is
+var order = 0
 
-
-
-
-
-
+#Connect to Rules controller signal when spawned
+func _on_ready() -> void:
+	rule_scene.order.connect(_update_turn)
+	pass # Replace with function body.
+	
+	#Update the turn order
+func _update_turn(x):
+	order = x
+	#Movement
+func _physics_process(delta):
+	move(delta)
+	
+#Movement function
+func move(delta):
+	#Gets the current input from the custom input map which can be found in
+	#project settings
+	#If it is the players turn they can move
+	if(Player_ID == order):
+		var input_vector = Input.get_vector("Move_Left","Move_Right","Move_Up","Move_Down")
+	#If its not moving apply friction and slowdown
+		if input_vector == Vector2.ZERO:
+			apply_fric(Friction * delta)
+		else:
+		#Acctually move
+			apply_movement(input_vector * ACCELERATIOB * delta)
+		#this function lets the Character2dBody move
+		move_and_slide()
+	
+	#Function to slow down the player
+func apply_fric(amount):
+	#apply friction to reduce velocity
+	if velocity.length() > amount:
+		velocity -= velocity.normalized() * amount
+	else:
+		#if its not moving it can not be slowed down anymore
+		velocity = Vector2.ZERO
+	
+	#Accelerate and move
+func apply_movement(Accel):
+	#increase the players velocity to max speed
+	velocity += Accel
+	velocity = velocity.limit_length(MAX_SPEED)
 
 """
 All just nonsense, ignore and make proper player class here

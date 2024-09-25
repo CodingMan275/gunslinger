@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://jl7k3ltwbp41"]
+[gd_scene load_steps=13 format=3 uid="uid://jl7k3ltwbp41"]
 
 [ext_resource type="Texture2D" uid="uid://fcuqal2ynbts" path="res://Main_Scene_Board/spritesheet.png" id="1_o8ncf"]
 [ext_resource type="Texture2D" uid="uid://mmea4eto2a6p" path="res://Main_Scene_Board/Rhombus.png" id="2_rfajf"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c084g67tienhw" path="res://Main_Scene_Board/moveable_player.tscn" id="4_045km"]
 [ext_resource type="Script" path="res://Main_Scene_Board/Canvas_Layer/Turn_Label.gd" id="5_52d0j"]
 [ext_resource type="Script" path="res://Main_Scene_Board/rules_controller.gd" id="6_6e8od"]
+[ext_resource type="PackedScene" uid="uid://x0tek8t1bewj" path="res://Josh_Test_Scenes/Player.tscn" id="7_saeg4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p1dyh"]
 texture = ExtResource("1_o8ncf")
@@ -562,6 +563,7 @@ script = ExtResource("5_52d0j")
 
 [node name="Rules_Controller" type="Node" parent="."]
 script = ExtResource("6_6e8od")
+player_scene = ExtResource("7_saeg4")
 
 [connection signal="pressed" from="CanvasLayer/Host" to="TileMap" method="_on_host_pressed"]
 [connection signal="pressed" from="CanvasLayer/Join" to="TileMap" method="_on_join_pressed"]
