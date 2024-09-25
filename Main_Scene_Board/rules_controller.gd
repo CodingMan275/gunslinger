@@ -38,12 +38,13 @@ func _on_button_pressed() -> void:
 	pass # Replace with function bod
 	
 
-	
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 	
+	
+func _on_child_order_changed() -> void:
+	pass # Replace with function body
 
 	
 	
@@ -152,7 +153,3 @@ func _del_player(id):
 	#deletes node in the world scene
 	get_node(str(id)).queue_free()
 """
-
-
-func _on_child_order_changed() -> void:
-	pass # Replace with function body.

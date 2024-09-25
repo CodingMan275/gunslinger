@@ -565,6 +565,7 @@ script = ExtResource("5_52d0j")
 script = ExtResource("6_6e8od")
 player_scene = ExtResource("7_saeg4")
 
+[connection signal="child_order_changed" from="." to="Rules_Controller" method="_on_node_2d_child_order_changed"]
 [connection signal="pressed" from="CanvasLayer/Host" to="TileMap" method="_on_host_pressed"]
 [connection signal="pressed" from="CanvasLayer/Join" to="TileMap" method="_on_join_pressed"]
 [connection signal="pressed" from="CanvasLayer/Button" to="CanvasLayer/Label" method="_on_button_pressed"]
