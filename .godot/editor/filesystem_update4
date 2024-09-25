@@ -1,9 +1,6 @@
-res://debug_screen/debug_menu.tscn
-res://tile_map.gd
-res://world.gd
-res://Player.tscn
 res://node_2d.tscn
+res://debug_screen/debug_menu.tscn
+res://Player.tscn
 res://world.tscn
-res://player.gd
-res://player_node_spawner.gd
-res://player_node_spawner.tscn
+res://Canvas_Layer_World.gd
+res://Turn_Label.gd

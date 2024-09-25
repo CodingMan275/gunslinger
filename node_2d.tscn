@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://jl7k3ltwbp41"]
+[gd_scene load_steps=11 format=3 uid="uid://jl7k3ltwbp41"]
 
 [ext_resource type="Texture2D" uid="uid://fcuqal2ynbts" path="res://spritesheet.png" id="1_82qw3"]
 [ext_resource type="Texture2D" uid="uid://mmea4eto2a6p" path="res://Rhombus.png" id="2_cvwes"]
 [ext_resource type="Script" path="res://tile_map.gd" id="3_m8k54"]
 [ext_resource type="PackedScene" uid="uid://c084g67tienhw" path="res://moveable_player.tscn" id="4_pa1d4"]
+[ext_resource type="Script" path="res://Turn_Label.gd" id="5_omyrv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p1dyh"]
 texture = ExtResource("1_82qw3")
@@ -463,6 +464,24 @@ properties/3/path = NodePath("TileMap:Turn_Order")
 properties/3/spawn = true
 properties/3/replication_mode = 1
 
+[sub_resource type="GDScript" id="GDScript_7iaxx"]
+script/source = "extends CanvasLayer
+
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+
+
+"
+
 [node name="Node2D" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -473,55 +492,6 @@ format = 2
 layer_1/name = "Layer1"
 layer_1/y_sort_enabled = true
 script = ExtResource("3_m8k54")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="TileMap"]
-
-[node name="Host" type="Button" parent="TileMap/CanvasLayer"]
-visible = false
-anchors_preset = -1
-anchor_left = 0.454
-anchor_top = 0.615
-anchor_right = 0.82
-anchor_bottom = 0.822
-offset_left = 0.0799866
-offset_top = -0.0500031
-offset_right = 0.103973
-offset_bottom = -0.00396729
-text = "Host"
-metadata/_edit_use_anchors_ = true
-
-[node name="Join" type="Button" parent="TileMap/CanvasLayer"]
-visible = false
-anchors_preset = -1
-anchor_left = 0.837
-anchor_top = 0.856
-anchor_right = 0.973
-anchor_bottom = 0.97
-offset_left = 0.23999
-offset_top = -0.12001
-offset_right = -0.0400391
-offset_bottom = 0.100006
-text = "Join"
-metadata/_edit_use_anchors_ = true
-
-[node name="LineEdit" type="LineEdit" parent="TileMap/CanvasLayer"]
-visible = false
-offset_left = 212.0
-offset_top = 233.0
-offset_right = 393.0
-offset_bottom = 264.0
-placeholder_text = "Enter Ip:"
-clear_button_enabled = true
-metadata/_edit_use_anchors_ = true
-
-[node name="Button" type="Button" parent="TileMap/CanvasLayer"]
-offset_left = 393.0
-offset_top = 9.0
-offset_right = 471.0
-offset_bottom = 44.0
-action_mode = 0
-text = "End Turn"
-metadata/_edit_use_anchors_ = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(16, 130)
@@ -536,6 +506,71 @@ spawn_path = NodePath("../TileMap")
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_mfl53")
 
-[connection signal="pressed" from="TileMap/CanvasLayer/Host" to="TileMap" method="_on_host_pressed"]
-[connection signal="pressed" from="TileMap/CanvasLayer/Join" to="TileMap" method="_on_join_pressed"]
-[connection signal="pressed" from="TileMap/CanvasLayer/Button" to="TileMap" method="_on_button_pressed"]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = SubResource("GDScript_7iaxx")
+
+[node name="Host" type="Button" parent="CanvasLayer"]
+visible = false
+anchors_preset = -1
+anchor_left = 0.454
+anchor_top = 0.615
+anchor_right = 0.82
+anchor_bottom = 0.822
+offset_left = 0.0799866
+offset_top = -0.0500031
+offset_right = 0.103973
+offset_bottom = -0.00396729
+text = "Host"
+metadata/_edit_use_anchors_ = true
+
+[node name="Join" type="Button" parent="CanvasLayer"]
+visible = false
+anchors_preset = -1
+anchor_left = 0.837
+anchor_top = 0.856
+anchor_right = 0.973
+anchor_bottom = 0.97
+offset_left = 0.23999
+offset_top = -0.12001
+offset_right = -0.0400391
+offset_bottom = 0.100006
+text = "Join"
+metadata/_edit_use_anchors_ = true
+
+[node name="LineEdit" type="LineEdit" parent="CanvasLayer"]
+visible = false
+offset_left = 212.0
+offset_top = 233.0
+offset_right = 393.0
+offset_bottom = 264.0
+placeholder_text = "Enter Ip:"
+clear_button_enabled = true
+metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+offset_left = 393.0
+offset_top = 9.0
+offset_right = 471.0
+offset_bottom = 44.0
+action_mode = 0
+text = "End Turn"
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.019
+anchor_top = 0.015
+anchor_right = 0.362
+anchor_bottom = 0.178
+offset_left = -0.120001
+offset_top = -0.0500002
+offset_right = 0.23999
+offset_bottom = -0.0600014
+text = "Player X Turn"
+script = ExtResource("5_omyrv")
+
+[node name="Rules_Controller" type="Node" parent="."]
+
+[connection signal="pressed" from="CanvasLayer/Host" to="TileMap" method="_on_host_pressed"]
+[connection signal="pressed" from="CanvasLayer/Join" to="TileMap" method="_on_join_pressed"]
+[connection signal="pressed" from="CanvasLayer/Button" to="CanvasLayer/Label" method="_on_button_pressed"]
