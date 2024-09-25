@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7u7m7egwoa2q"]
+
+[ext_resource type="Script" path="res://Character_Sheet_Display/character_sheets_view_button.gd" id="1_04fri"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6cykq"]
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[node name="Character_Sheets_View_Button" type="Button"]
+offset_right = 171.0
+offset_bottom = 63.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/hover = SubResource("StyleBoxFlat_6cykq")
+theme_override_styles/normal = SubResource("StyleBoxFlat_6cykq")
+text = "View
+Character Sheets"
+script = ExtResource("1_04fri")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
