@@ -561,6 +561,29 @@ offset_bottom = -0.0600014
 text = "Player X Turn"
 script = ExtResource("5_52d0j")
 
+[node name="Button2" type="Button" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.025
+anchor_top = 0.833
+anchor_right = 0.212
+anchor_bottom = 0.952
+offset_top = 0.0899811
+offset_right = -28.76
+offset_bottom = -0.0400085
+text = "Draw Card"
+
+[node name="Button3" type="Button" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.019
+anchor_top = 0.619
+anchor_right = 0.227
+anchor_bottom = 0.737
+offset_left = -0.120001
+offset_top = -0.130005
+offset_right = -9.96001
+offset_bottom = 0.00999451
+text = "Claim Cards"
+
 [node name="Rules_Controller" type="Node" parent="."]
 script = ExtResource("6_6e8od")
 player_scene = ExtResource("7_saeg4")
@@ -570,3 +593,5 @@ player_scene = ExtResource("7_saeg4")
 [connection signal="pressed" from="CanvasLayer/Button" to="CanvasLayer/Label" method="_on_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Button" to="Rules_Controller" method="_on_button_pressed"]
 [connection signal="ready" from="CanvasLayer/Label" to="Rules_Controller" method="_on_label_ready"]
+[connection signal="pressed" from="CanvasLayer/Button2" to="Rules_Controller" method="_onCardDraw"]
+[connection signal="pressed" from="CanvasLayer/Button3" to="Rules_Controller" method="_ClaimCards"]

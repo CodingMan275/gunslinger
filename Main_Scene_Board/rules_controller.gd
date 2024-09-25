@@ -4,6 +4,16 @@ extends Node
 
 signal order
 
+
+var CardNum
+var Players : Array
+var Player = preload("res://CPU_and_Player/PlayerClass.gd").Player
+
+
+
+
+
+
 #This could be used for signals and such for spawning players
 @export var player_scene : PackedScene
 
@@ -15,14 +25,16 @@ func _ready() -> void:
 	var scene1 = preload("res://Josh_Test_Scenes/Player.tscn").instantiate()
 # Add the node as a child of the node the script is attached to.
 	add_child(scene1)
+	Players.append(Player.new(1))
 	
 	#Spawn player 2
 	var scene2 = preload("res://Josh_Test_Scenes/Player.tscn").instantiate()
 # Add the node as a child of the node the script is attached to.
 	add_child(scene2)
+	Players.append(Player.new(2))
 	
-	scene1.Player_ID = 1
-	scene2.Player_ID = 2
+	scene1.Player_ID = Players[0].ID
+	scene2.Player_ID = Players[1].ID
 	
 	
 	order.emit(Turn_Order)
@@ -46,6 +58,23 @@ func _process(delta: float) -> void:
 	
 
 	
+
+
+
+func _onCardDraw() -> void:
+	CardNum = randi()%52+1
+	print("Card ",CardNum," Was added")
+	Players[Turn_Order -1].add_card(CardNum)
+
+func _ClaimCards() -> void:
+	print("Player ",Turn_Order,"'s Cards")
+	for CardVal in Players[Turn_Order -1].Cards:
+		print(CardVal)
+
+
+
+
+
 	
 	#LAN JOSH STUFF
 #LAN Multiplayer tutorial https://www.youtube.com/watch?v=M0LJ9EsS_Ak
