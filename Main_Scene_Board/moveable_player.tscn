@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c084g67tienhw"]
 
-[ext_resource type="Script" path="res://moveable_player.gd" id="1_cqft7"]
+[ext_resource type="Script" path="res://Main_Scene_Board/moveable_player.gd" id="1_cqft7"]
 [ext_resource type="Texture2D" uid="uid://wpqjamy8nklp" path="res://icon.svg" id="2_q357y"]
 
 [node name="MoveablePlayer" type="CharacterBody2D"]

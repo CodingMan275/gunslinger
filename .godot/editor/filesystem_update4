@@ -4,3 +4,11 @@ res://Player.tscn
 res://world.tscn
 res://Canvas_Layer_World.gd
 res://Turn_Label.gd
+res://rules_controller.gd
+res://tile_map.gd
+res://moveable_player.gd
+res://player.gd
+res://Josh_Test_Scenes/world.tscn
+res://Main_Scene/node_2d.tscn
+res://Josh_Test_Scenes/Player.tscn
+res://Main_Scene_Board/node_2d.tscn

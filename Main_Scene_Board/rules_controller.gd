@@ -1,35 +1,31 @@
-extends TileMap
+extends Node
 
+@export var Turn_Order = 1
 
-var GridSize = 16
-var Dict = {}
-var selectedTile
+#This could be used for signals and such for spawning players
+@export var player_scene : PackedScene
 
-func _ready():
-	for x in GridSize:
-		for y in GridSize:
-			Dict[str(Vector2(x, y))] = {
-				"Type": "Grass",
-				"Position" : str(Vector2(x, y))
-			}
-			set_cell(0, Vector2(x, y), 0, Vector2i(0, 0), 0)
-	#print(Dict)
-	#line_edit.grab_focus()
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	Turn_Order = 1
+	pass # Replace with function body.
 	
-func _process(delta):
-	var tile = local_to_map(get_global_mouse_position())
-	selectedTile = map_to_local(tile)
+func _on_button_pressed() -> void:
+	#Incremements Turn Order
+	Turn_Order = Turn_Order + 1
+	if Turn_Order == 3:
+		Turn_Order = 1
+	pass # Replace with function bod
 	
-	for x in GridSize:
-		for y in GridSize:
-			erase_cell(1, Vector2(x, y))
-	
-	if Dict.has(str(tile)):
-		set_cell(1, tile, 1, Vector2i(0,0), 0)
-	#	print(Dict[str(tile)])
 
 	
-#LAN JOSH STUFF
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+	
+	
+	#LAN JOSH STUFF
 #LAN Multiplayer tutorial https://www.youtube.com/watch?v=M0LJ9EsS_Ak
 """
 

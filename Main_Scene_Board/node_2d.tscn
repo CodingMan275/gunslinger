@@ -1,13 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://jl7k3ltwbp41"]
+[gd_scene load_steps=12 format=3 uid="uid://jl7k3ltwbp41"]
 
-[ext_resource type="Texture2D" uid="uid://fcuqal2ynbts" path="res://spritesheet.png" id="1_82qw3"]
-[ext_resource type="Texture2D" uid="uid://mmea4eto2a6p" path="res://Rhombus.png" id="2_cvwes"]
-[ext_resource type="Script" path="res://tile_map.gd" id="3_m8k54"]
-[ext_resource type="PackedScene" uid="uid://c084g67tienhw" path="res://moveable_player.tscn" id="4_pa1d4"]
-[ext_resource type="Script" path="res://Turn_Label.gd" id="5_omyrv"]
+[ext_resource type="Texture2D" uid="uid://fcuqal2ynbts" path="res://Main_Scene_Board/spritesheet.png" id="1_o8ncf"]
+[ext_resource type="Texture2D" uid="uid://mmea4eto2a6p" path="res://Main_Scene_Board/Rhombus.png" id="2_rfajf"]
+[ext_resource type="Script" path="res://Main_Scene_Board/tile_map.gd" id="3_148k3"]
+[ext_resource type="PackedScene" uid="uid://c084g67tienhw" path="res://Main_Scene_Board/moveable_player.tscn" id="4_045km"]
+[ext_resource type="Script" path="res://Main_Scene_Board/Canvas_Layer/Turn_Label.gd" id="5_52d0j"]
+[ext_resource type="Script" path="res://Main_Scene_Board/rules_controller.gd" id="6_6e8od"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p1dyh"]
-texture = ExtResource("1_82qw3")
+texture = ExtResource("1_o8ncf")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0
@@ -436,7 +437,7 @@ texture_region_size = Vector2i(32, 32)
 21:21/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bqeqs"]
-texture = ExtResource("2_cvwes")
+texture = ExtResource("2_rfajf")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0
@@ -451,18 +452,9 @@ sources/0 = SubResource("TileSetAtlasSource_p1dyh")
 sources/1 = SubResource("TileSetAtlasSource_bqeqs")
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_mfl53"]
-properties/0/path = NodePath("MoveablePlayer:position")
+properties/0/path = NodePath("CanvasLayer/Label:text")
 properties/0/spawn = true
 properties/0/replication_mode = 1
-properties/1/path = NodePath("TileMap/CanvasLayer/Button:button_pressed")
-properties/1/spawn = true
-properties/1/replication_mode = 1
-properties/2/path = NodePath("MultiplayerSpawner:scenes/0")
-properties/2/spawn = true
-properties/2/replication_mode = 1
-properties/3/path = NodePath("TileMap:Turn_Order")
-properties/3/spawn = true
-properties/3/replication_mode = 1
 
 [sub_resource type="GDScript" id="GDScript_7iaxx"]
 script/source = "extends CanvasLayer
@@ -491,17 +483,16 @@ rendering_quadrant_size = 32
 format = 2
 layer_1/name = "Layer1"
 layer_1/y_sort_enabled = true
-script = ExtResource("3_m8k54")
+script = ExtResource("3_148k3")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(16, 130)
 
-[node name="MoveablePlayer" parent="." instance=ExtResource("4_pa1d4")]
+[node name="MoveablePlayer" parent="." instance=ExtResource("4_045km")]
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 process_mode = 4
-_spawnable_scenes = PackedStringArray("res://Player.tscn")
-spawn_path = NodePath("../TileMap")
+spawn_path = NodePath("..")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_mfl53")
@@ -567,10 +558,13 @@ offset_top = -0.0500002
 offset_right = 0.23999
 offset_bottom = -0.0600014
 text = "Player X Turn"
-script = ExtResource("5_omyrv")
+script = ExtResource("5_52d0j")
 
 [node name="Rules_Controller" type="Node" parent="."]
+script = ExtResource("6_6e8od")
 
 [connection signal="pressed" from="CanvasLayer/Host" to="TileMap" method="_on_host_pressed"]
 [connection signal="pressed" from="CanvasLayer/Join" to="TileMap" method="_on_join_pressed"]
 [connection signal="pressed" from="CanvasLayer/Button" to="CanvasLayer/Label" method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Button" to="Rules_Controller" method="_on_button_pressed"]
+[connection signal="ready" from="CanvasLayer/Label" to="Rules_Controller" method="_on_label_ready"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://x0tek8t1bewj"]
 
-[ext_resource type="Script" path="res://player.gd" id="1_1tt28"]
+[ext_resource type="Script" path="res://Josh_Test_Scenes/player.gd" id="1_1tt28"]
 [ext_resource type="Texture2D" uid="uid://wpqjamy8nklp" path="res://icon.svg" id="1_37ojv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jco3y"]

@@ -2,6 +2,11 @@ extends CharacterBody2D
 
 
 
+
+
+
+
+
 """
 All just nonsense, ignore and make proper player class here
 
