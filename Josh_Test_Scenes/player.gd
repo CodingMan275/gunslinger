@@ -21,38 +21,13 @@ func _update_turn(x):
 	order = x
 	#Movement
 func _physics_process(delta):
-	move(delta)
+	MoveMouse()
 	
-#Movement function
-func move(delta):
-	#Gets the current input from the custom input map which can be found in
-	#project settings
-	#If it is the players turn they can move
+func MoveMouse():
 	if(Player_ID == order):
-		var input_vector = Input.get_vector("Move_Left","Move_Right","Move_Up","Move_Down")
-	#If its not moving apply friction and slowdown
-		if input_vector == Vector2.ZERO:
-			apply_fric(Friction * delta)
-		else:
-		#Acctually move
-			apply_movement(input_vector * ACCELERATIOB * delta)
-		#this function lets the Character2dBody move
-		move_and_slide()
+		if Input.is_action_just_pressed("LeftClick"):
+			self.global_position = Vector2(get_global_mouse_position())
 	
-	#Function to slow down the player
-func apply_fric(amount):
-	#apply friction to reduce velocity
-	if velocity.length() > amount:
-		velocity -= velocity.normalized() * amount
-	else:
-		#if its not moving it can not be slowed down anymore
-		velocity = Vector2.ZERO
-	
-	#Accelerate and move
-func apply_movement(Accel):
-	#increase the players velocity to max speed
-	velocity += Accel
-	velocity = velocity.limit_length(MAX_SPEED)
 
 """
 All just nonsense, ignore and make proper player class here

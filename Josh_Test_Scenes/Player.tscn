@@ -1,11 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://x0tek8t1bewj"]
+[gd_scene load_steps=5 format=3 uid="uid://x0tek8t1bewj"]
 
 [ext_resource type="Script" path="res://Josh_Test_Scenes/player.gd" id="1_1tt28"]
 [ext_resource type="Texture2D" uid="uid://wpqjamy8nklp" path="res://icon.svg" id="1_37ojv"]
 [ext_resource type="Script" path="res://Josh_Test_Scenes/Player_Label.gd" id="3_hpxdt"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_jco3y"]
-radius = 50.1597
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_42imv"]
 properties/0/path = NodePath(".:position")
@@ -16,30 +13,29 @@ properties/1/spawn = true
 properties/1/replication_mode = 1
 
 [node name="Player" type="CharacterBody2D"]
+position = Vector2(-14, -15)
 collision_layer = 2
 script = ExtResource("1_1tt28")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(2, -1)
+position = Vector2(2, 0)
+scale = Vector2(0.335938, 0.328125)
 texture = ExtResource("1_37ojv")
 
 [node name="Label" type="Label" parent="Sprite2D"]
 visibility_layer = 1023
 anchors_preset = -1
-anchor_left = 0.453
-anchor_top = 0.758
-anchor_right = 0.945
-anchor_bottom = 0.937
-offset_left = -63.984
-offset_top = -64.024
-offset_right = -63.96
-offset_bottom = -63.936
+anchor_top = -0.571
+anchor_right = 1.279
+anchor_bottom = -0.032
+offset_left = -89.3023
+offset_top = -64.0548
+offset_right = -190.014
+offset_bottom = -110.047
+scale = Vector2(3, 3)
 text = "Player X"
 script = ExtResource("3_hpxdt")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-3, 1)
-shape = SubResource("CircleShape2D_jco3y")
+metadata/_edit_use_anchors_ = true
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_42imv")
