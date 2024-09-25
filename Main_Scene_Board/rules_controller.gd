@@ -44,6 +44,8 @@ func _on_button_pressed() -> void:
 func _process(delta: float) -> void:
 	pass
 	
+
+	
 	
 	#LAN JOSH STUFF
 #LAN Multiplayer tutorial https://www.youtube.com/watch?v=M0LJ9EsS_Ak
@@ -150,3 +152,7 @@ func _del_player(id):
 	#deletes node in the world scene
 	get_node(str(id)).queue_free()
 """
+
+
+func _on_child_order_changed() -> void:
+	pass # Replace with function body.
