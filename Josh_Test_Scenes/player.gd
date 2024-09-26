@@ -10,6 +10,7 @@ const ACCELERATIOB = 300
 @onready var rule_scene = get_parent()
 #So the player knows what order it is
 var order = 0
+var can_move = true
 
 #Connect to Rules controller signal when spawned
 func _on_ready() -> void:
@@ -19,14 +20,18 @@ func _on_ready() -> void:
 	#Update the turn order
 func _update_turn(x):
 	order = x
+	if (Player_ID != order):
+		can_move = false
 	#Movement
 func _physics_process(delta):
 	MoveMouse()
 	
 func MoveMouse():
 	if(Player_ID == order):
-		if Input.is_action_just_pressed("LeftClick"):
+		if Input.is_action_just_pressed("LeftClick") and can_move:
 			self.global_position = Vector2(get_global_mouse_position())
+		if (!can_move):
+			can_move = true
 	
 
 """
