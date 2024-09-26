@@ -1,7 +1,7 @@
 extends TileMap
 
 
-var GridSize = 16
+var GridSize = 8
 var Dict = {}
 var selectedTile
 

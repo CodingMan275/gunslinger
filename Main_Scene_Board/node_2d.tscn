@@ -484,7 +484,7 @@ layer_1/y_sort_enabled = true
 script = ExtResource("3_148k3")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-offset = Vector2(16, 130)
+offset = Vector2(16, 16)
 
 [node name="MoveablePlayer" parent="." instance=ExtResource("4_045km")]
 
