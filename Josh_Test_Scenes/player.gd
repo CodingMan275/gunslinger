@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 #Player ID make exportable so it cna be changed
 @export var Player_ID = 1
+#Maximum action points make exportable so it cna be changed
+@export var Max_Action_Points = 2
 #Movement to prove spawning works
 const Friction = 500
 const MAX_SPEED = 300
@@ -10,7 +12,10 @@ const ACCELERATIOB = 300
 @onready var rule_scene = get_parent()
 #So the player knows what order it is
 var order = 0
+#determines whether the player can currently move
 var can_move = true
+#determines the current number of Action Points
+var action_points
 
 #Connect to Rules controller signal when spawned
 func _on_ready() -> void:
@@ -22,14 +27,17 @@ func _update_turn(x):
 	order = x
 	if (Player_ID != order):
 		can_move = false
+	else:
+		action_points = Max_Action_Points
 	#Movement
 func _physics_process(delta):
 	MoveMouse()
 	
 func MoveMouse():
 	if(Player_ID == order):
-		if Input.is_action_just_pressed("LeftClick") and can_move:
+		if Input.is_action_just_pressed("LeftClick") and can_move and action_points > 0:
 			self.global_position = Vector2(get_global_mouse_position())
+			action_points -= 1
 		if (!can_move):
 			can_move = true
 	
