@@ -4,13 +4,9 @@ extends Node
 
 signal order
 
-
 var CardNum
 var Players : Array
 var Player = preload("res://CPU_and_Player/PlayerClass.gd").Player
-
-
-
 
 
 
