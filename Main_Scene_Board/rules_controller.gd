@@ -4,14 +4,11 @@ extends Node
 
 signal order
 
+@export var numPlayers = 2
 
-var CardNum
-var Players : Array
-var Player = preload("res://CPU_and_Player/PlayerClass.gd").Player
+var Scenes : Array
 
-
-
-
+var PlayerScene = preload("res://Josh_Test_Scenes/Player.tscn")
 
 
 #This could be used for signals and such for spawning players
@@ -21,21 +18,16 @@ var Player = preload("res://CPU_and_Player/PlayerClass.gd").Player
 func _ready() -> void:
 	Turn_Order = 1
 	
-	#Spawn player 1
-	var scene1 = preload("res://Josh_Test_Scenes/Player.tscn").instantiate()
+	for n in numPlayers:
+		#Spawn Player
+		var scene = PlayerScene.instantiate()
+		scene.tile_map_node = get_node("../TileMap")
+		Scenes.append(scene)
+		Scenes[n].Player.ID = n+1
 # Add the node as a child of the node the script is attached to.
-	add_child(scene1)
-	Players.append(Player.new(1))
-	
-	#Spawn player 2
-	var scene2 = preload("res://Josh_Test_Scenes/Player.tscn").instantiate()
-# Add the node as a child of the node the script is attached to.
-	add_child(scene2)
-	Players.append(Player.new(2))
-	
-	scene1.Player_ID = Players[0].ID
-	scene2.Player_ID = Players[1].ID
-	
+		add_child(Scenes[n])
+
+	Scenes[0].position = get_node("../TileMap").map_to_local(Vector2 (0,0))
 	
 	order.emit(Turn_Order)
 	
@@ -63,13 +55,13 @@ func _on_child_order_changed() -> void:
 
 
 func _onCardDraw() -> void:
-	CardNum = randi()%52+1
+	var CardNum = randi()%52+1
 	print("Card ",CardNum," Was added")
-	Players[Turn_Order -1].add_card(CardNum)
+	Scenes[Turn_Order -1].Player.add_card(CardNum)
 
 func _ClaimCards() -> void:
 	print("Player ",Turn_Order,"'s Cards")
-	for CardVal in Players[Turn_Order -1].Cards:
+	for CardVal in Scenes[Turn_Order -1].Player.Cards:
 		print(CardVal)
 
 

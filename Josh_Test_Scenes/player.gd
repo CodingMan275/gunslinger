@@ -1,7 +1,7 @@
 extends CharacterBody2D 
 
 #Player ID make exportable so it cna be changed
-@export var Player_ID = 1
+#@export var Player_ID = 1
 #Maximum action points make exportable so it cna be changed
 @export var Max_Action_Points = 2
 #Movement to prove spawning works
@@ -17,6 +17,13 @@ var can_move = true
 #determines the current number of Action Points
 var action_points
 
+#For node path to tile map
+var tile_map_node
+
+
+
+var Player = preload("res://CPU_and_Player/PlayerClass.gd").Player.new(0)
+
 #Connect to Rules controller signal when spawned
 func _on_ready() -> void:
 	rule_scene.order.connect(_update_turn)
@@ -25,7 +32,7 @@ func _on_ready() -> void:
 	#Update the turn order
 func _update_turn(x):
 	order = x
-	if (Player_ID != order):
+	if (Player.ID != order):
 		can_move = false
 	else:
 		action_points = Max_Action_Points
@@ -33,14 +40,16 @@ func _update_turn(x):
 func _physics_process(delta):
 	MoveMouse()
 	
+
 func MoveMouse():
-	if(Player_ID == order):
+	if(Player.ID == order):
 		if Input.is_action_just_pressed("LeftClick") and can_move and action_points > 0:
-			self.global_position = Vector2(get_global_mouse_position())
-			action_points -= 1
+			if  tile_map_node.local_to_map(Vector2(get_global_mouse_position())) in tile_map_node.get_surrounding_cells(tile_map_node.local_to_map(self.global_position)):
+				self.global_position = Vector2(get_global_mouse_position())
+				print(self.global_position)
+				action_points -= 1
 		if (!can_move):
 			can_move = true
-	
 
 """
 All just nonsense, ignore and make proper player class here
@@ -56,8 +65,8 @@ const ACCELERATIOB = 300
 
 #Player ID which will be determined on creation
 #Based on number of current connected peers
-#@onready var Player_ID = 1 + multiplayer.get_peers().size()
-@export var Player_ID = 1
+#@onready var Player.ID = 1 + multiplayer.get_peers().size()
+@export var Player.ID = 1
 
 signal Get_Order
 
@@ -73,7 +82,7 @@ signal Get_Order
 
 func _enter_tree():
 	set_multiplayer_authority(name.to_int())
-#	print(Player_ID)
+#	print(Player.ID)
 #	print(multiplayer.get_peers().size())
 
 
@@ -116,7 +125,7 @@ func apply_movement(Accel):
 #Signal from world controller on what turn it is
 #@rpc("call_local")
 func _on_tile_map_send_turn(Turn_Order) -> void:
-	if(Player_ID == Turn_Order):
+	if(Player.ID == Turn_Order):
 		$CanvasLayer/TextEdit.show()
 	else:
 		#$CanvasLayer/Button.hide()
@@ -124,8 +133,8 @@ func _on_tile_map_send_turn(Turn_Order) -> void:
 	pass # Replace with function body.
 @rpc("call_local")
 func _on_button_2_pressed() -> void:
-	Player_ID = multiplayer.get_unique_id()
-	print(Player_ID)
+	Player.ID = multiplayer.get_unique_id()
+	print(Player.ID)
 	pass # Replace with function body.
 	
 """

@@ -1,6 +1,7 @@
 class Player:
 	var ID: int
 	var Cards: Array
+	var health : int
 
 	func _init(id: int):
 		ID = id
