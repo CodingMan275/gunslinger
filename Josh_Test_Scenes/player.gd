@@ -4,12 +4,11 @@ extends CharacterBody2D
 #@export var Player_ID = 1
 #Maximum action points make exportable so it cna be changed
 @export var Max_Action_Points = 2
-#Movement to prove spawning works
-const Friction = 500
-const MAX_SPEED = 300
-const ACCELERATIOB = 300
+
 #Player is spawned by rules controller as a child of it
+#Getting the parent node which has the emitters we need
 @onready var rule_scene = get_parent()
+
 #So the player knows what order it is
 var order = 0
 #determines whether the player can currently move
@@ -26,6 +25,7 @@ var Player = preload("res://CPU_and_Player/PlayerClass.gd").Player.new(0)
 
 #Connect to Rules controller signal when spawned
 func _on_ready() -> void:
+	#Format Node_Emitter . Signal_From_Emmiter_Node . Connect( Function you want to run in this scene)
 	rule_scene.order.connect(_update_turn)
 	pass # Replace with function body.
 	
@@ -52,7 +52,7 @@ func MoveMouse():
 			can_move = true
 
 """
-All just nonsense, ignore and make proper player class here
+All just nonsense, ignore and make proper player class above
 
 #Movement tutorial https://www.youtube.com/watch?v=uNReb-MHsbg
 #The player character does drift but this is just for something to show
