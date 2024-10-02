@@ -1,0 +1,9 @@
+extends Control
+
+
+func _on_local_button_pressed():
+	get_tree().change_scene_to_file("res://Main_Scene_Board/node_2d.tscn")
+
+
+func _on_online_button_pressed():
+	get_tree().change_scene_to_file("res://Josh_Test_Scenes/world.tscn")
