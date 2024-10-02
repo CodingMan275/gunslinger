@@ -2,8 +2,6 @@ extends CharacterBody2D
 
 #Player ID make exportable so it cna be changed
 #@export var Player_ID = 1
-#Maximum action points make exportable so it cna be changed
-@export var Max_Action_Points = 2
 
 #Player is spawned by rules controller as a child of it
 #Getting the parent node which has the emitters we need
@@ -13,8 +11,6 @@ extends CharacterBody2D
 var order = 0
 #determines whether the player can currently move
 var can_move = true
-#determines the current number of Action Points
-var action_points
 
 #For node path to tile map
 var tile_map_node
@@ -35,7 +31,7 @@ func _update_turn(x):
 	if (Player.ID != order):
 		can_move = false
 	else:
-		action_points = Max_Action_Points
+		Player.ActionPoint = 2
 	#Movement
 func _physics_process(delta):
 	MoveMouse()
@@ -43,98 +39,13 @@ func _physics_process(delta):
 
 func MoveMouse():
 	if(Player.ID == order):
-		if Input.is_action_just_pressed("LeftClick") and can_move and action_points > 0:
+		if Input.is_action_just_pressed("LeftClick") and can_move and Player.ActionPoint > 0:
 			if  tile_map_node.local_to_map(Vector2(get_global_mouse_position())) in tile_map_node.get_surrounding_cells(tile_map_node.local_to_map(self.global_position)):
 				self.global_position = Vector2(get_global_mouse_position())
-				print(self.global_position)
-				action_points -= 1
+				Player.location = tile_map_node.local_to_map(self.global_position)
+				print(tile_map_node.local_to_map(self.global_position))
+				Player.ActionPoint -= 1
+		elif (Input.is_action_just_pressed("LeftClick") and tile_map_node.local_to_map(Vector2(get_global_mouse_position())) in tile_map_node.get_surrounding_cells(tile_map_node.local_to_map(self.global_position)) && Player.ActionPoint == 0):
+			GlobalScript.DebugScript.add("You have no more Action Points ")
 		if (!can_move):
 			can_move = true
-
-"""
-All just nonsense, ignore and make proper player class above
-
-#Movement tutorial https://www.youtube.com/watch?v=uNReb-MHsbg
-#The player character does drift but this is just for something to show
-#we have multiplayer
-
-#Constant variables for how fast and slow the player moves
-const Friction = 500
-const MAX_SPEED = 300
-const ACCELERATIOB = 300
-
-#Player ID which will be determined on creation
-#Based on number of current connected peers
-#@onready var Player.ID = 1 + multiplayer.get_peers().size()
-@export var Player.ID = 1
-
-signal Get_Order
-
-
-
-#When Host instantitates the play it is given special player 1 priviliges
-#Also giving it an ID based on number of peers messed it up
-
-	
-#When the player is spawned into the 'tree' or scene it is giving
-#itself authority to itself multiplayer wise. Basically it gives you control
-#over your character
-
-func _enter_tree():
-	set_multiplayer_authority(name.to_int())
-#	print(Player.ID)
-#	print(multiplayer.get_peers().size())
-
-
-#Every tic or game update 'delta' the move function is being called
-func _physics_process(delta):
-	move(delta)
-	
-#Movement function
-func move(delta):
-	#Gets the current input from the custom input map which can be found in
-	#project settings
-	var input_vector = Input.get_vector("Move_Left","Move_Right","Move_Up","Move_Down")
-	#If its not moving apply friction and slowdown
-	if input_vector == Vector2.ZERO:
-		apply_fric(Friction * delta)
-	else:
-		#Acctually move
-		apply_movement(input_vector * ACCELERATIOB * delta)
-		#this function lets the Character2dBody move
-	move_and_slide()
-	
-	#Function to slow down the player
-func apply_fric(amount):
-	#apply friction to reduce velocity
-	if velocity.length() > amount:
-		velocity -= velocity.normalized() * amount
-	else:
-		#if its not moving it can not be slowed down anymore
-		velocity = Vector2.ZERO
-	
-	#Accelerate and move
-func apply_movement(Accel):
-	#increase the players velocity to max speed
-	velocity += Accel
-	velocity = velocity.limit_length(MAX_SPEED)
-	
-#When the signal from the world turn order is actvated this function
-#Receives this signal#
-
-#Signal from world controller on what turn it is
-#@rpc("call_local")
-func _on_tile_map_send_turn(Turn_Order) -> void:
-	if(Player.ID == Turn_Order):
-		$CanvasLayer/TextEdit.show()
-	else:
-		#$CanvasLayer/Button.hide()
-		$CanvasLayer/TextEdit.hide()
-	pass # Replace with function body.
-@rpc("call_local")
-func _on_button_2_pressed() -> void:
-	Player.ID = multiplayer.get_unique_id()
-	print(Player.ID)
-	pass # Replace with function body.
-	
-"""

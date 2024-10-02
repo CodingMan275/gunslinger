@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://jl7k3ltwbp41"]
+[gd_scene load_steps=15 format=3 uid="uid://jl7k3ltwbp41"]
 
 [ext_resource type="Texture2D" uid="uid://fcuqal2ynbts" path="res://Main_Scene_Board/spritesheet.png" id="1_o8ncf"]
 [ext_resource type="Texture2D" uid="uid://mmea4eto2a6p" path="res://Main_Scene_Board/Rhombus.png" id="2_rfajf"]
 [ext_resource type="Script" path="res://Main_Scene_Board/tile_map.gd" id="3_148k3"]
-[ext_resource type="PackedScene" uid="uid://c084g67tienhw" path="res://Main_Scene_Board/moveable_player.tscn" id="4_045km"]
 [ext_resource type="Script" path="res://Main_Scene_Board/Canvas_Layer/Turn_Label.gd" id="5_52d0j"]
+[ext_resource type="Theme" uid="uid://0qo5my5cfjq1" path="res://Main_Scene_Board/Canvas_Layer/Themes/Debug.tres" id="5_jnad2"]
+[ext_resource type="Script" path="res://Main_Scene_Board/Canvas_Layer/debug.gd" id="6_5svso"]
 [ext_resource type="Script" path="res://Main_Scene_Board/rules_controller.gd" id="6_6e8od"]
 [ext_resource type="PackedScene" uid="uid://x0tek8t1bewj" path="res://Josh_Test_Scenes/Player.tscn" id="7_saeg4"]
 
@@ -472,6 +473,14 @@ func _process(delta: float) -> void:
 	pass
 "
 
+[sub_resource type="GDScript" id="GDScript_brdbx"]
+script/source = "extends ScrollContainer
+
+
+func _on_VBoxContainer_size_changed():
+	# Set the scroll position to the maximum value
+	scroll_vertical = get_v_scroll()"
+
 [node name="Node2D" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -485,8 +494,6 @@ script = ExtResource("3_148k3")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(16, 16)
-
-[node name="MoveablePlayer" parent="." instance=ExtResource("4_045km")]
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 process_mode = 4
@@ -558,7 +565,7 @@ offset_bottom = -0.0600014
 text = "Player X Turn"
 script = ExtResource("5_52d0j")
 
-[node name="Button2" type="Button" parent="CanvasLayer"]
+[node name="Draw Card" type="Button" parent="CanvasLayer"]
 anchors_preset = -1
 anchor_left = 0.025
 anchor_top = 0.833
@@ -569,17 +576,54 @@ offset_right = -28.76
 offset_bottom = -0.0400085
 text = "Draw Card"
 
-[node name="Button3" type="Button" parent="CanvasLayer"]
+[node name="Show Hand" type="Button" parent="CanvasLayer"]
 anchors_preset = -1
-anchor_left = 0.019
-anchor_top = 0.619
-anchor_right = 0.227
-anchor_bottom = 0.737
-offset_left = -0.120001
-offset_top = -0.130005
-offset_right = -9.96001
-offset_bottom = 0.00999451
-text = "Claim Cards"
+anchor_left = 0.025
+anchor_top = 0.696
+anchor_right = 0.225
+anchor_bottom = 0.815
+offset_top = 0.0799866
+offset_bottom = -0.0500336
+text = "Show Hand"
+
+[node name="Attack" type="Button" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.027
+anchor_top = 0.567
+anchor_right = 0.148
+anchor_bottom = 0.681
+offset_left = 0.04
+offset_top = -0.0900116
+offset_right = -0.0400009
+offset_bottom = 0.12999
+text = "Attack"
+
+[node name="DebugPanel" type="PanelContainer" parent="CanvasLayer"]
+custom_minimum_size = Vector2(200, 50)
+anchors_preset = -1
+anchor_left = 0.583
+anchor_top = 0.815
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.160004
+offset_top = -0.0500183
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("5_jnad2")
+script = ExtResource("6_5svso")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/DebugPanel"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/DebugPanel/MarginContainer"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+script = SubResource("GDScript_brdbx")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/DebugPanel/MarginContainer/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 6
 
 [node name="Rules_Controller" type="Node" parent="."]
 script = ExtResource("6_6e8od")
@@ -591,5 +635,6 @@ player_scene = ExtResource("7_saeg4")
 [connection signal="pressed" from="CanvasLayer/Button" to="CanvasLayer/Label" method="_on_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Button" to="Rules_Controller" method="_on_button_pressed"]
 [connection signal="ready" from="CanvasLayer/Label" to="Rules_Controller" method="_on_label_ready"]
-[connection signal="pressed" from="CanvasLayer/Button2" to="Rules_Controller" method="_onCardDraw"]
-[connection signal="pressed" from="CanvasLayer/Button3" to="Rules_Controller" method="_ClaimCards"]
+[connection signal="pressed" from="CanvasLayer/Draw Card" to="Rules_Controller" method="_onCardDraw"]
+[connection signal="pressed" from="CanvasLayer/Show Hand" to="Rules_Controller" method="_ClaimCards"]
+[connection signal="pressed" from="CanvasLayer/Attack" to="Rules_Controller" method="Attack"]

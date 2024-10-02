@@ -1,0 +1,11 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://0qo5my5cfjq1"]
+
+[ext_resource type="StyleBox" uid="uid://unpancs51v13" path="res://Main_Scene_Board/Canvas_Layer/Themes/Debug_Style.tres" id="1_u7h7v"]
+
+[resource]
+default_font_size = 10
+MarginContainer/constants/margin_bottom = 5
+MarginContainer/constants/margin_left = 5
+MarginContainer/constants/margin_right = 5
+MarginContainer/constants/margin_top = 5
+PanelContainer/styles/panel = ExtResource("1_u7h7v")
