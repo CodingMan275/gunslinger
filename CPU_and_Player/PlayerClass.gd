@@ -1,10 +1,16 @@
 class Player:
 	var ID: int
 	var Cards: Array
-	var ActionPoint: int = 2
-	var Health : int = 20
+	var Health : int = 7
+	
+	var SpawnLoc : Vector2
 	var location : Vector2
 
+	var ActionPoint: int = 2
+	var AttackRange: int = 2
+	
+	
+	
 	func _init(id: int):
 		ID = id
 		Cards = []
@@ -14,9 +20,6 @@ class Player:
 
 	func remove_card(card: Variant) -> void:
 		Cards.erase(card)
-
-	func get_card_count() -> int:
-		return Cards.size()
 
 	func GetLocation() -> Vector2:
 		return location

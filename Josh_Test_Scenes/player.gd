@@ -46,7 +46,7 @@ func MoveMouse():
 			if  move_possible():
 				self.global_position = Vector2(get_global_mouse_position())
 				Player.location = tile_map_node.local_to_map(self.global_position)
-				print(tile_map_node.local_to_map(self.global_position))
+			#	print(tile_map_node.local_to_map(self.global_position))
 				Player.ActionPoint -= 1
 		elif (Input.is_action_just_pressed("LeftClick") and move_possible() and Player.ActionPoint == 0):
 			GlobalScript.DebugScript.add("You have no more Action Points ")
