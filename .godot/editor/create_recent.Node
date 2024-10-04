@@ -1,9 +1,9 @@
+Label
 VBoxContainer
 ScrollContainer
 MarginContainer
 PanelContainer
 Button
-Label
 Node
 CanvasLayer
 Sprite2D
