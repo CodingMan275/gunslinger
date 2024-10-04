@@ -10,6 +10,8 @@ var Scenes : Array
 var drawcard : bool = false
 var PlayerScene = preload("res://Josh_Test_Scenes/Player.tscn")
 
+var HiredGunVar = 3
+var WeaponCardVar = 5
 
 
 #This could be used for signals and such for spawning players
@@ -19,12 +21,14 @@ var PlayerScene = preload("res://Josh_Test_Scenes/Player.tscn")
 func _ready() -> void:
 	Turn_Order = 1
 	
+	
 	for n in numPlayers:
 		#Spawn Player
 		var scene = PlayerScene.instantiate()
 		scene.tile_map_node = get_node("../Layer0")
 		Scenes.append(scene)
 		Scenes[n].Player.ID = n+1
+		_onStartDraw(n+1)
 # Add the node as a child of the node the script is attached to.
 		add_child(Scenes[n])
 
@@ -65,14 +69,21 @@ func _on_child_order_changed() -> void:
 
 	
 
-
+func _onStartDraw(n) -> void:
+	
+	for HiredGunVar in 3:
+		var CardNum = randi()%52+1
+		GlobalScript.DebugScript.add("Player "+str(n)+" drew card "+str(CardNum))
+		Scenes[n-1].Player.add_card(CardNum)
+		
 
 func _onCardDraw() -> void:
-	if(!drawcard):
-		var CardNum = randi()%52+1
-		GlobalScript.DebugScript.add("Player "+str(Turn_Order)+" drew card "+str(CardNum))
-		Scenes[Turn_Order -1].Player.add_card(CardNum)
-		drawcard = true
+	for HiredGunVar in 3:
+		if(!drawcard):
+			var CardNum = randi()%52+1
+			GlobalScript.DebugScript.add("Player "+str(Turn_Order)+" drew card "+str(CardNum))
+			Scenes[Turn_Order -1].Player.add_card(CardNum)
+			drawcard = true
 
 func _ClaimCards() -> void:
 	GlobalScript.DebugScript.add("Player "+str(Turn_Order)+" cards")
@@ -108,18 +119,18 @@ func DistCheck(player) -> bool:
 	
 	if(PlayerLoc == EnemyLoc):
 		return true
-	else:
-		return false
-	"""
+	
+	
 	elif (EnemyLoc.y == PlayerLoc.y && (EnemyLoc.x >= PlayerLoc.x - Dist && EnemyLoc.x <= PlayerLoc.x + Dist)):
 		return true
 	elif (EnemyLoc.x == PlayerLoc.x && (EnemyLoc.y >= PlayerLoc.y - Dist && EnemyLoc.y <= PlayerLoc.y + Dist)):
 		return true
-	"""
+	else:
+		return false
 
 func _input(event):
 	if(event.is_action_pressed("Dynamite")):
-		"""
+		
 		for n in numPlayers:
 			if(n+1 != Turn_Order):
 				if(Scenes[Turn_Order-1].Player.location == Scenes[n].Player.SpawnLoc && Scenes[Turn_Order-1].Player.ActionPoint !=0):
@@ -128,4 +139,4 @@ func _input(event):
 					GlobalScript.DebugScript.add("You have no more Action Points ")
 				elif(Scenes[Turn_Order-1].Player.location != Scenes[n].Player.SpawnLoc):
 					GlobalScript.DebugScript.add("You are not on a player stable")
-		"""
+		
