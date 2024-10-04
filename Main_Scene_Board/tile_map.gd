@@ -6,13 +6,14 @@ var Dict = {}
 var selectedTile
 
 func _ready():
-	for x in GridSize:
-		for y in GridSize:
-			Dict[str(Vector2(x, y))] = {
-				"Type": "Grass",
-				"Position" : str(Vector2(x, y))
-			}
-			set_cell(0, Vector2(x, y), 0, Vector2i(0, 0), 0)
+	pass
+##	for x in GridSize:
+##		for y in GridSize:
+##			Dict[str(Vector2(x, y))] = {
+##				"Type": "Grass",
+##				"Position" : str(Vector2(x, y))
+##			}
+##			set_cell(0, Vector2(x, y), 0, Vector2i(0, 0), 0)
 	#print(Dict)
 	#line_edit.grab_focus()
 	

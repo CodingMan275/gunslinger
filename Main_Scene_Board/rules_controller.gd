@@ -22,15 +22,15 @@ func _ready() -> void:
 	for n in numPlayers:
 		#Spawn Player
 		var scene = PlayerScene.instantiate()
-		scene.tile_map_node = get_node("../TileMap")
+		scene.tile_map_node = get_node("../Layer0")
 		Scenes.append(scene)
 		Scenes[n].Player.ID = n+1
 # Add the node as a child of the node the script is attached to.
 		add_child(Scenes[n])
 
-	Scenes[0].position = get_node("../TileMap").map_to_local(Vector2 (0,0))
+	Scenes[0].position = get_node("../Layer0").map_to_local(Vector2 (0,0))
 	Scenes[0].Player.location = Vector2(0,0)
-	Scenes[1].position = get_node("../TileMap").map_to_local(Vector2 (2,2))
+	Scenes[1].position = get_node("../Layer0").map_to_local(Vector2 (2,2))
 	Scenes[1].Player.location = Vector2(2,2)
 	
 	

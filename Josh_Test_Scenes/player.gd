@@ -36,16 +36,19 @@ func _update_turn(x):
 func _physics_process(delta):
 	MoveMouse()
 	
+func move_possible():
+	#print(tile_map_node.get_cell_source_id(Vector2(get_global_mouse_position())))
+	return tile_map_node.local_to_map(Vector2(get_global_mouse_position())) in tile_map_node.get_surrounding_cells(tile_map_node.local_to_map(self.global_position)) #and tile_map_node.get_cell_source_id(Vector2(get_global_mouse_position())) != -1
 
 func MoveMouse():
 	if(Player.ID == order):
 		if Input.is_action_just_pressed("LeftClick") and can_move and Player.ActionPoint > 0:
-			if  tile_map_node.local_to_map(Vector2(get_global_mouse_position())) in tile_map_node.get_surrounding_cells(tile_map_node.local_to_map(self.global_position)):
+			if  move_possible():
 				self.global_position = Vector2(get_global_mouse_position())
 				Player.location = tile_map_node.local_to_map(self.global_position)
 				print(tile_map_node.local_to_map(self.global_position))
 				Player.ActionPoint -= 1
-		elif (Input.is_action_just_pressed("LeftClick") and tile_map_node.local_to_map(Vector2(get_global_mouse_position())) in tile_map_node.get_surrounding_cells(tile_map_node.local_to_map(self.global_position)) && Player.ActionPoint == 0):
+		elif (Input.is_action_just_pressed("LeftClick") and move_possible() and Player.ActionPoint == 0):
 			GlobalScript.DebugScript.add("You have no more Action Points ")
 		if (!can_move):
 			can_move = true
