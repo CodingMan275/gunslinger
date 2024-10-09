@@ -8,7 +8,7 @@ func _ready() -> void:
 	await get_tree().create_timer(.2).timeout
 	#Gets the parent node of its parent node
 	var Order = get_parent().get_parent().Player_ID
-	OverAllHealth = get_parent().get_parent().Player.Health
+	OverAllHealth = GlobalScript.PlayerNode[Order -1].Health
 	
 	hasName = str(get_parent().get_parent().LabelName).length() > 0
 	
@@ -22,7 +22,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	var Order = get_parent().get_parent().Player_ID
-	var  health = get_parent().get_parent().Player.Health
+	var  health = GlobalScript.PlayerNode[Order -1].Health
 	
 	if(hasName):
 		text = str(get_parent().get_parent().LabelName, "  " , health,"/",OverAllHealth)
