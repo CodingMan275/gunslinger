@@ -99,6 +99,12 @@ func order_inc():
 		Turn_Order = 1
 	GlobalScript.DebugScript.add("-------  Player "+str(Turn_Order)+"'s Turn  -----------")
 	drawcard = false
+	
+	# gets postion of all player nodes
+	for i in GlobalScript.PlayerInfo:
+		print (get_node(str(GlobalScript.PlayerInfo[i].ID)).pos)
+	
+	
 	#Send out a signal so all players know what turn it is
 	order.emit(Turn_Order)
 

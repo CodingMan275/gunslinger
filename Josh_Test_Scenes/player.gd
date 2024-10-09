@@ -3,6 +3,7 @@ extends CharacterBody2D
 #Player ID make exportable so it cna be changed
 @export var Player_ID = 1
 @export var Max_Action_Points = 2
+@export var pos : Vector2
 #determines the current number of Action Points
 var action_points
 
@@ -85,8 +86,8 @@ func MoveMouse():
 			if Input.is_action_just_pressed("LeftClick") and can_move and action_points > 0:
 				if  move_possible():
 					self.global_position = Vector2(get_global_mouse_position())
-					#Player.location = tile_map_node.local_to_map(self.global_position)
-					print(tile_map_node.local_to_map(self.global_position))
+					pos = tile_map_node.local_to_map(self.position)
+					print(pos)
 					action_points -= 1
 			elif (Input.is_action_just_pressed("LeftClick") and move_possible() and action_points == 0):
 				GlobalScript.DebugScript.add("You have no more Action Points ")
