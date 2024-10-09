@@ -4,8 +4,9 @@ extends CharacterBody2D
 @export var Player_ID = 1
 @export var Max_Action_Points = 2
 @export var pos : Vector2
+@export var Health = 20
 #determines the current number of Action Points
-var action_points
+@export var action_points = 0
 
 #Player is spawned by rules controller as a child of it
 #Getting the parent node which has the emitters we need

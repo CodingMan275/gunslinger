@@ -75,6 +75,9 @@ func _ready() -> void:
 	#IT WORKS!!!!!
 	# I FEEL BOTH INCREDIBLY SMART AND SO SO SO DUMB
 	
+	for i in GlobalScript.PlayerInfo:
+		GlobalScript.PlayerNode.append(get_node(str(GlobalScript.PlayerInfo[i].ID)))
+	
 	
 	order.emit(Turn_Order)
 	GlobalScript.DebugScript.add("-------  Player 1's Turn  -----------")
@@ -101,9 +104,8 @@ func order_inc():
 	drawcard = false
 	
 	# gets postion of all player nodes
-	for i in GlobalScript.PlayerInfo:
-		print (get_node(str(GlobalScript.PlayerInfo[i].ID)).pos)
-	
+	#for i in GlobalScript.PlayerInfo.size():
+	#	print(str(GlobalScript.PlayerNode[i].pos))
 	
 	#Send out a signal so all players know what turn it is
 	order.emit(Turn_Order)
@@ -141,25 +143,25 @@ func Attack() -> void:
 	for n in numPlayers:
 		if(n+1 != Turn_Order && !Attacked):
 				# Current player position checking to match A players position
-			if(DistCheck(n) && Scenes[n].Player.Health != 0 && Scenes[Turn_Order-1].Player.ActionPoint !=0):
+			if(DistCheck(n) && GlobalScript.PlayerNode[n].Health != 0 && GlobalScript.PlayerNode[Turn_Order -1].action_points !=0):
 					# reduces A players health by [1...6]
 				var damage = (randi()%6 + 1)
-				Scenes[n].Player.Health -= damage
+				GlobalScript.PlayerNode[n].Health -= damage
 				Attacked = true
 				GlobalScript.DebugScript.add("Player "+str(n+1)+" lost "+str(damage)+" points of hp")
-				GlobalScript.DebugScript.add("Player "+str(n+1)+" now has "+str(Scenes[n].Player.Health)+" points of hp")
-				Scenes[Turn_Order-1].Player.ActionPoint -= 1
-				if(Scenes[n].Player.Health <= 0):
-					Scenes[n].Player.Health = 0
-			elif(Scenes[Turn_Order-1].Player.ActionPoint == 0):
+				GlobalScript.DebugScript.add("Player "+str(n+1)+" now has "+str(GlobalScript.PlayerNode[n].Health)+" points of hp")
+				GlobalScript.PlayerNode[Turn_Order -1].action_points -= 1
+				if(GlobalScript.PlayerNode[n].Health <= 0):
+					GlobalScript.PlayerNode[n].Health = 0
+			elif(GlobalScript.PlayerNode[Turn_Order -1].action_points == 0):
 				GlobalScript.DebugScript.add("You have no more Action Points ")
 			elif(!DistCheck(n)):
 				GlobalScript.DebugScript.add("Target Not in Range")
 
 func DistCheck(player) -> bool:
-	var PlayerLoc = Scenes[Turn_Order-1].Player.location
-	var EnemyLoc = Scenes[player].Player.location
-	var Dist = Scenes[Turn_Order-1].Player.AttackRange
+	var PlayerLoc = GlobalScript.PlayerNode[Turn_Order -1].pos
+	var EnemyLoc = GlobalScript.PlayerNode[player].pos
+	var Dist = 2
 	if(PlayerLoc == EnemyLoc):
 		return true
 	elif (EnemyLoc.y == PlayerLoc.y && (EnemyLoc.x >= PlayerLoc.x - Dist && EnemyLoc.x <= PlayerLoc.x + Dist)):
