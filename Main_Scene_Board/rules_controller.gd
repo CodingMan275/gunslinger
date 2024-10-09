@@ -13,7 +13,9 @@ var PlayerScene = preload("res://Josh_Test_Scenes/Player.tscn")
 var HiredGunVar = 3
 var WeaponCardVar = 5
 
-
+var GunslingerArray = ["Gun1", "Gun2", "Gun3", "Gun4", "Gun5", "Gun6"]
+var HiredGunArray = ["HGun1","HGun2","HGun3","HGun4","HGun5","HGun6","HGun7","HGun8","HGun9","HGun10","HGun11","HGun12"]
+var WeaponArray = ["Rifle1","Rifle2","Rifle3","Rifle4","Knife1","Knife2","Knife3","Knife4","Pistol1","Pistol2","Pistol3","Pistol4","Shotgun1","Shotgun2","Shotgun3","Shotgun4","TwinPistol1","TwinPistol2"]
 #This could be used for signals and such for spawning players
 @export var player_scene : PackedScene
 
@@ -70,12 +72,15 @@ func _on_child_order_changed() -> void:
 	
 
 func _onStartDraw(n) -> void:
-	
+	GlobalScript.DebugScript.add("Player "+str(n)+" drew card "+GunslingerArray[randi()%6])
 	for HiredGunVar in 3:
-		var CardNum = randi()%52+1
-		GlobalScript.DebugScript.add("Player "+str(n)+" drew card "+str(CardNum))
-		Scenes[n-1].Player.add_card(CardNum)
-		
+		var randNum = randi()%12
+		GlobalScript.DebugScript.add("Player "+str(n)+" drew card "+HiredGunArray[randNum])
+		Scenes[n-1].Player.add_card(HiredGunArray[randNum])
+	for WeaponCardVar in 5:
+		var randNum = randi()%18
+		GlobalScript.DebugScript.add("Player "+str(n)+" drew card "+WeaponArray[randNum])
+		Scenes[n-1].Player.add_card(WeaponArray[randNum])
 
 func _onCardDraw() -> void:
 	for HiredGunVar in 3:

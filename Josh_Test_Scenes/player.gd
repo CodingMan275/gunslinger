@@ -1,5 +1,6 @@
 extends CharacterBody2D 
 
+
 #Player ID make exportable so it cna be changed
 #@export var Player_ID = 1
 
@@ -15,7 +16,8 @@ var can_move = true
 #For node path to tile map
 var tile_map_node
 
-
+var DrawArray = ["Td1","Td2","Td3"]
+var DiscardArray = []
 
 var Player = preload("res://CPU_and_Player/PlayerClass.gd").Player.new(0)
 
@@ -26,6 +28,14 @@ func _on_ready() -> void:
 	pass # Replace with function body.
 	
 	#Update the turn order
+func _drawTownDeck():
+	if (DrawArray[0] != null):
+		var TDCard = DrawArray[0]
+		DrawArray.pop_front()
+		DiscardArray.push_front(TDCard)
+		
+	
+
 func _update_turn(x):
 	order = x
 	if (Player.ID != order):
