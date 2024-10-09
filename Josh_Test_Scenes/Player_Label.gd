@@ -1,30 +1,31 @@
 extends Label
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	#Waits a short time to make sure player when instanced has all the information it needs
-	#And reduce things all going at once
-	await get_tree().create_timer(.2).timeout
-	#Get name and set label
-	text = str(get_parent().get_parent().LabelName)
-	pass # Replace with function body.
-
-"""
 var OverAllHealth
+var hasName = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	await get_tree().create_timer(.2).timeout
 	#Gets the parent node of its parent node
-	var Order = get_parent().get_parent().Player.ID
+	var Order = get_parent().get_parent().Player_ID
 	OverAllHealth = get_parent().get_parent().Player.Health
-	text = str("Player ", Order , "  " , OverAllHealth,"/",OverAllHealth)
+	
+	hasName = str(get_parent().get_parent().LabelName).length() > 0
+	
+	if(hasName):
+		text = str(get_parent().get_parent().LabelName, "  " , OverAllHealth,"/",OverAllHealth)
+	else:
+		text = str("Player ", Order , "  " , OverAllHealth,"/",OverAllHealth)
 	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	var Order = get_parent().get_parent().Player.ID
+	var Order = get_parent().get_parent().Player_ID
 	var  health = get_parent().get_parent().Player.Health
-	text = str("Player ", Order , "  " , health,"/",OverAllHealth)
+	
+	if(hasName):
+		text = str(get_parent().get_parent().LabelName, "  " , health,"/",OverAllHealth)
+	else:
+		text = str("Player ", Order , "  " , health,"/",OverAllHealth)
 	pass
-"""

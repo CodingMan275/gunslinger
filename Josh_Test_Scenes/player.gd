@@ -29,7 +29,7 @@ var tile_map_node
 var LabelName = "TEMP"
 
 
-#var Player = preload("res://CPU_and_Player/PlayerClass.gd").Player.new(0)
+var Player = preload("res://CPU_and_Player/PlayerClass.gd").Player.new(0)
 
 #Connect to Rules controller signal when spawned
 func _on_ready() -> void:
