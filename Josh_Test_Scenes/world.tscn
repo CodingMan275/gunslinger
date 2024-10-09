@@ -13,44 +13,77 @@ player_scene = ExtResource("2_lorrs")
 
 [node name="Host" type="Button" parent="CanvasLayer"]
 anchors_preset = -1
-anchor_left = 0.312
-anchor_top = 0.117
-anchor_right = 0.679
-anchor_bottom = 0.324
-offset_left = 0.575989
-offset_top = 0.00198936
-offset_right = 0.119995
-offset_bottom = 0.0480042
+anchor_left = 0.362
+anchor_top = 0.448
+anchor_right = 0.729
+anchor_bottom = 0.667
+offset_left = 0.23999
+offset_top = 0.0399933
+offset_right = 0.0799866
+offset_bottom = -0.0900116
 text = "Host"
 
 [node name="Join" type="Button" parent="CanvasLayer"]
 anchors_preset = -1
-anchor_left = 0.729
-anchor_top = 0.641
-anchor_right = 0.865
-anchor_bottom = 0.756
-offset_left = 0.0799866
-offset_top = -0.0700073
-offset_right = -0.200043
-offset_bottom = -0.12001
+anchor_left = 0.773
+anchor_top = 0.822
+anchor_right = 0.908
+anchor_bottom = 0.937
+offset_left = -0.0400391
+offset_top = 0.0599976
+offset_right = 0.159973
+offset_bottom = 0.00999451
 text = "Join"
 
 [node name="LineEdit" type="LineEdit" parent="CanvasLayer"]
-offset_left = 125.0
-offset_top = 162.0
-offset_right = 306.0
-offset_bottom = 222.0
+anchors_preset = -1
+anchor_left = 0.358
+anchor_top = 0.733
+anchor_right = 0.735
+anchor_bottom = 0.956
+offset_left = 0.159988
+offset_top = 0.0899963
+offset_right = 0.199982
+offset_bottom = -0.119995
 placeholder_text = "Enter Ip:"
 clear_button_enabled = true
 
-[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
-spawn_path = NodePath("..")
+[node name="Start" type="Button" parent="CanvasLayer"]
+visible = false
+anchors_preset = -1
+anchor_left = 0.033
+anchor_top = 0.789
+anchor_right = 0.335
+anchor_bottom = 0.952
+offset_left = 0.16
+offset_top = -0.030014
+offset_right = 0.199997
+offset_bottom = -0.0400085
+text = "Start Game"
+
+[node name="LineEdit2" type="LineEdit" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.354
+anchor_top = 0.17
+anchor_right = 0.723
+anchor_bottom = 0.285
+offset_left = 0.0800018
+offset_top = 0.0999985
+offset_right = -0.0400391
+offset_bottom = 0.0499954
+placeholder_text = "Name"
 
 [node name="BackToDebugMenu" parent="." instance=ExtResource("3_a50rb")]
-offset_left = 143.0
-offset_top = 87.0
-offset_right = 231.0
-offset_bottom = 122.0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 149.0
+offset_top = -129.0
+offset_right = 237.0
+offset_bottom = -94.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [connection signal="pressed" from="CanvasLayer/Host" to="." method="_on_host_pressed"]
 [connection signal="pressed" from="CanvasLayer/Join" to="." method="_on_join_pressed"]
+[connection signal="pressed" from="CanvasLayer/Start" to="." method="_on_start_pressed"]

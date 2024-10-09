@@ -64,6 +64,7 @@ scale = Vector2(0.6, 0.6)
 theme_override_constants/separation = 30
 
 [node name="Local Button" type="Button" parent="VBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
@@ -78,7 +79,6 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_gp72c")
 text = "Local"
 
 [node name="Online Button" type="Button" parent="VBoxContainer"]
-visible = false
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)

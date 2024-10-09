@@ -1,14 +1,15 @@
 extends Node
-
 @export var Turn_Order = 1
-
 signal order
-
 @export var numPlayers = 2
-
 var Scenes : Array
 var drawcard : bool = false
+
 var PlayerScene = preload("res://Josh_Test_Scenes/Player.tscn")
+#Getting the tile map from the current scene when this node is ready
+@onready var TileMapScene =  get_node("../TileMap")
+#Getting the end turn button from the scene when this node is ready
+@onready var EndTurnButton = get_node("../CanvasLayer/Button")
 
 
 
@@ -17,6 +18,7 @@ var PlayerScene = preload("res://Josh_Test_Scenes/Player.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	"""
 	Turn_Order = 1
 	
 	for n in numPlayers:
@@ -34,7 +36,44 @@ func _ready() -> void:
 	Scenes[1].position = get_node("../Layer0").map_to_local(Vector2 (7,7))
 	Scenes[1].Player.location = Vector2(7,7)
 	Scenes[1].Player.SpawnLoc = Scenes[1].Player.location
+	"""
+		#Counter variable, index
+	var index = 0
+	#Goes through the preloaded script MultiplayerManager which has the player info for the
+	#peers that joined
+	for i in GlobalScript.PlayerInfo:
+		#Create a player instance
+		var currentPlayer = player_scene.instantiate()
+		currentPlayer.tile_map_node = get_node("../Layer0")
+		#Change the name of the instance to the ID of the player
+		currentPlayer.name = str(GlobalScript.PlayerInfo[i].ID)
+		#Make the instance a child to this node
+		add_child(currentPlayer)
+		#PArts of this could berun at different times for instance Host =/= player 1
+		#Mario party roll to see who starts system
+		if index == 0:
+			#Player 1 information
+			#Set player 1 at position 0,0 on the tile map
+			currentPlayer.position = get_node("../Layer0").map_to_local(Vector2 (0,0))
+			#Set player label to the name they put in (not needed but fun)
+			currentPlayer.LabelName = GlobalScript.PlayerInfo[i].name
+			#Set it to player 1
+			currentPlayer.Player_ID = 1
+		if index == 1:
+			#The next player in the PlayerInfo array, player 2
+			#Sets player 2 at a different position from player 1
+			currentPlayer.position = get_node("../Layer0").map_to_local(Vector2 (4,4))
+			#Sets the label to the name player 2 picked
+			currentPlayer.LabelName = GlobalScript.PlayerInfo[i].name
+			#Sets it as player 2
+			currentPlayer.Player_ID = 2
+		#After each player increase the index for the next player to get proper information
+		index += 1
+	#Setting the turn order 1 to start
+	Turn_Order = 1
 	
+	#IT WORKS!!!!!
+	# I FEEL BOTH INCREDIBLY SMART AND SO SO SO DUMB
 	
 	
 	order.emit(Turn_Order)
@@ -42,28 +81,39 @@ func _ready() -> void:
 	pass # Replace with function body.
 	
 func _on_button_pressed() -> void:
-	#Incremements Turn Order
-	Turn_Order = Turn_Order + 1
-	if Turn_Order == numPlayers+1:
-		Turn_Order = 1
-	GlobalScript.DebugScript.add("-------  Player "+str(Turn_Order)+"'s Turn  -----------")
-	drawcard = false
+	#Incremements Turn Order and sues RPC to make sure both the peeers and local machine are updated
+	order_inc.rpc()
 	order.emit(Turn_Order)
 	pass # Replace with function bod
 	
 
+
+	#Function for incrementing turns
+	#RPC that updates the peers and local machine
+@rpc("any_peer", "call_local")
+func order_inc():
+	#Increment turn order
+	Turn_Order = Turn_Order + 1
+	#BEcuase there are only 2 players at turn 2 go back to turn 1
+	if Turn_Order == numPlayers+1:
+		Turn_Order = 1
+	GlobalScript.DebugScript.add("-------  Player "+str(Turn_Order)+"'s Turn  -----------")
+	drawcard = false
+	#Send out a signal so all players know what turn it is
+	order.emit(Turn_Order)
+
+
+
+
+"""
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	for n in numPlayers:
 		if (Scenes[n].Player.Health <= 0):
 			get_tree().quit()
 	pass
-	
-	
-func _on_child_order_changed() -> void:
-	pass # Replace with function body
+"""
 
-	
 
 
 
@@ -104,21 +154,19 @@ func DistCheck(player) -> bool:
 	var PlayerLoc = Scenes[Turn_Order-1].Player.location
 	var EnemyLoc = Scenes[player].Player.location
 	var Dist = Scenes[Turn_Order-1].Player.AttackRange
-
-	
 	if(PlayerLoc == EnemyLoc):
 		return true
-	else:
-		return false
-	"""
 	elif (EnemyLoc.y == PlayerLoc.y && (EnemyLoc.x >= PlayerLoc.x - Dist && EnemyLoc.x <= PlayerLoc.x + Dist)):
 		return true
 	elif (EnemyLoc.x == PlayerLoc.x && (EnemyLoc.y >= PlayerLoc.y - Dist && EnemyLoc.y <= PlayerLoc.y + Dist)):
 		return true
-	"""
+	else:
+		return false
+
 
 func _input(event):
 	if(event.is_action_pressed("Dynamite")):
+		print("BOOM")
 		"""
 		for n in numPlayers:
 			if(n+1 != Turn_Order):

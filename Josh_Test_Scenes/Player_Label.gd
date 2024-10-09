@@ -1,5 +1,16 @@
 extends Label
 
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	#Waits a short time to make sure player when instanced has all the information it needs
+	#And reduce things all going at once
+	await get_tree().create_timer(.2).timeout
+	#Get name and set label
+	text = str(get_parent().get_parent().LabelName)
+	pass # Replace with function body.
+
+"""
 var OverAllHealth
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -16,3 +27,4 @@ func _process(delta: float) -> void:
 	var  health = get_parent().get_parent().Player.Health
 	text = str("Player ", Order , "  " , health,"/",OverAllHealth)
 	pass
+"""
