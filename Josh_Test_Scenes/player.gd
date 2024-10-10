@@ -31,13 +31,13 @@ func _on_ready() -> void:
 func _drawTownDeck(): # fucntion that simulates the cards being drawn
 	# 
 	var DrawSize = DrawArray.size() # Checks size of the array we're drawing from
-	if (DrawArray[0] != null): # first element exists -> array has some cards left
+	if (DrawSize != 0): # first element exists -> array has some cards left
 		var TDCard = DrawArray[0] # gets the first element value
 		GlobalScript.DebugScript.add("DrawArray drew  "+str(TDCard))
 		DrawArray.pop_front() #pop it out
 		DiscardArray.push_front(TDCard) #push on discard array
-		for n in DrawSize-1: # (in theory) should loop through the array and "push" everything up one spot in the array
-			DrawArray[n] = DrawArray[n+1]
+		#for n in DrawSize-1: # (in theory) should loop through the array and "push" everything up one spot in the array
+		#	DrawArray[n] = DrawArray[n+1]
 	else:
 		DrawArray = DiscardArray #(dont think this works like I think it does) copy contents from discard back to draw
 		DrawArray.shuffle() # shuffles the array contents
@@ -45,8 +45,10 @@ func _drawTownDeck(): # fucntion that simulates the cards being drawn
 		GlobalScript.DebugScript.add("DrawArray drew  "+str(TDCard))
 		DrawArray.pop_front()
 		DiscardArray.push_front(TDCard)
-		for n in DrawSize-1:
-			DrawArray[n] = DrawArray[n+1]
+		#for n in DrawSize-1:
+		#	DrawArray[n] = DrawArray[n+1]
+		
+	
 		
 	
 

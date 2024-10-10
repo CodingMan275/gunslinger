@@ -14,7 +14,7 @@ var HiredGunVar = 3
 var WeaponCardVar = 5
 
 
-var DrawArray = ["Td1","Td2","Td3"]
+var DrawArray = ["Td1","Td2","Td3", "Td4", "Td5", "Td6","Td7","Td8","Td9","Td10","Td11","Td12",]
 var DiscardArray = []
 
 var GunslingerArray = ["Gun1", "Gun2", "Gun3", "Gun4", "Gun5", "Gun6"]
@@ -35,6 +35,7 @@ func _ready() -> void:
 		Scenes.append(scene)
 		Scenes[n].Player.ID = n+1
 		_onStartDraw(n+1)
+		
 # Add the node as a child of the node the script is attached to.
 		add_child(Scenes[n])
 
@@ -57,6 +58,7 @@ func _on_button_pressed() -> void:
 	if Turn_Order == numPlayers+1:
 		Turn_Order = 1
 	GlobalScript.DebugScript.add("-------  Player "+str(Turn_Order)+"'s Turn  -----------")
+	DrawArray.shuffle()
 	_drawTownDeck()
 	drawcard = false
 	order.emit(Turn_Order)
@@ -64,22 +66,28 @@ func _on_button_pressed() -> void:
 	
 
 func _drawTownDeck(): # fucntion that simulates the cards being drawn
-	# 
+	
 	var DrawSize = DrawArray.size() # Checks size of the array we're drawing from
 	if (DrawSize != 0): # first element exists -> array has some cards left
 		var TDCard = DrawArray[0] # gets the first element value
 		GlobalScript.DebugScript.add("DrawArray drew  "+str(TDCard))
 		DrawArray.pop_front() #pop it out
 		DiscardArray.push_front(TDCard) #push on discard array
+		GlobalScript.DebugScript.add("DiscardArray has  "+str(DiscardArray))
+		GlobalScript.DebugScript.add("DrawArray has  "+str(DrawArray))
 		#for n in DrawSize-1: # (in theory) should loop through the array and "push" everything up one spot in the array
 		#	DrawArray[n] = DrawArray[n+1]
 	else:
-		DrawArray = DiscardArray #(dont think this works like I think it does) copy contents from discard back to draw
+		for n in 12:
+			DrawArray.push_front(DiscardArray[n]) #(dont think this works like I think it does) copy contents from discard back to draw
+		DiscardArray.clear()
 		DrawArray.shuffle() # shuffles the array contents
 		var TDCard = DrawArray[0] #since its and if/else, we need to run the code from the if, or else the player would simply not be able to have a card drawn
 		GlobalScript.DebugScript.add("DrawArray drew  "+str(TDCard))
 		DrawArray.pop_front()
 		DiscardArray.push_front(TDCard)
+		GlobalScript.DebugScript.add("DiscardArray has  "+str(DiscardArray))
+		GlobalScript.DebugScript.add("DrawArray has  "+str(DrawArray))
 		#for n in DrawSize-1:
 		#	DrawArray[n] = DrawArray[n+1]
 		
