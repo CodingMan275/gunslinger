@@ -1,56 +1,59 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1728573763
-card.gd::GDScript::-1::1727281326::0::1::::Card<>Node2D<>::
-global_script.gd::GDScript::-1::1727976853::0::1::::<>Node<>::
-icon.svg::CompressedTexture2D::1576107790049741733::1726003911::1728573763::1::::<><>::
-icon.tscn::PackedScene::5402456571018545550::1726681624::0::1::::<><>::uid://wpqjamy8nklp::::res://icon.svg
-lan.tscn::PackedScene::546660338068700008::1726003911::0::1::::<><>::
-::res://Card Game/::1728573704
-card.gd::GDScript::-1::1728573704::0::1::::<>RefCounted<>::
-card.tscn::PackedScene::5459105086288634894::1727281326::0::1::::<><>::res://Card Game/card.gd
-c_ard.tscn::PackedScene::5198372721989139912::1727281326::0::1::::<><>::res://card.gd
-::res://Character_Sheet_Display/::1727285951
-character_sheets.tscn::PackedScene::4147832549784555555::1727284114::0::1::::<><>::uid://cutf0gymupvwv::::res://Character_Sheet_Display/character_sheets_UI.tscn
-character_sheets_ui.gd::GDScript::-1::1727228964::0::1::::<>Control<>::
-character_sheets_UI.tscn::PackedScene::6216190000073413517::1727284114::0::1::::<><>::res://Character_Sheet_Display/character_sheets_ui.gd
-character_sheets_view_button.gd::GDScript::-1::1727281516::0::1::::<>Button<>::
-character_sheets_view_button.tscn::PackedScene::4675717295715703862::1727284114::0::1::::<><>::res://Character_Sheet_Display/character_sheets_view_button.gd
-::res://CPU_and_Player/::1728573704
-PlayerClass.gd::GDScript::-1::1728573704::0::1::::<>RefCounted<>::
-::res://debug_screen/::1728574030
-back_to_debug_menu.gd::GDScript::-1::1726679351::0::1::::<>Button<>::
-Back_to_Debug_Menu.tscn::PackedScene::511954981939244824::1726681624::0::1::::<><>::res://debug_screen/back_to_debug_menu.gd
-debug_button.gd::GDScript::-1::1726625354::0::1::::<>Button<>::
-debug_button.tscn::PackedScene::8203076168435353091::1726628017::0::1::::<><>::res://debug_screen/debug_button.gd
-debug_menu.gd::GDScript::-1::1726627328::0::1::::<>Control<>::
-debug_menu.tscn::PackedScene::2017106292229758417::1728574030::0::1::::<><>::res://debug_screen/debug_menu.gd
-::res://Josh_Test_Scenes/::1728574030
-player.gd::GDScript::-1::1728573704::0::1::::<>CharacterBody2D<>::
-Player.tscn::PackedScene::1667114190674531277::1728574030::0::1::::<><>::res://Josh_Test_Scenes/player.gd<>uid://wpqjamy8nklp::::res://icon.svg<>res://Josh_Test_Scenes/Player_Label.gd
-Player_Label.gd::GDScript::-1::1727976853::0::1::::<>Label<>::
-world.gd::GDScript::-1::1727281326::0::1::::<>Node2D<>::
-world.tscn::PackedScene::3041323499297697522::1728574030::0::1::::<><>::res://Josh_Test_Scenes/world.gd<>uid://x0tek8t1bewj::::res://Josh_Test_Scenes/Player.tscn<>uid://hj83ai4o2o5m::::res://debug_screen/Back_to_Debug_Menu.tscn
-::res://main_menu/::1728574031
-GunSlinger Menu.mp3::AudioStreamMP3::2304253421678560969::1728573962::1728574061::1::::<><>::
-main_menu.gd::GDScript::-1::1727729220::0::1::::<>Control<>::
-main_menu.tscn::PackedScene::1055608169025391970::1728574031::0::1::::<><>::res://main_menu/main_menu.gd<>uid://73gync2ngicf::::res://main_menu/GunSlinger Menu.mp3
-main_menu_back_button.gd::GDScript::-1::1727728255::0::1::::<>Button<>::
-main_menu_back_button.tscn::PackedScene::5055805923333536536::1727729541::0::1::::<><>::res://main_menu/main_menu_back_button.gd
-mode_selection_screen.gd::GDScript::-1::1727735569::0::1::::<>Control<>::
-mode_selection_screen.tscn::PackedScene::2527043604269230864::1728574031::0::1::::<><>::res://main_menu/mode_selection_screen.gd<>uid://cebcnc652bypc::::res://main_menu/main_menu_back_button.tscn
-options_menu.tscn::PackedScene::8940963856038343498::1728574031::0::1::::<><>::uid://cebcnc652bypc::::res://main_menu/main_menu_back_button.tscn<>uid://hj83ai4o2o5m::::res://debug_screen/Back_to_Debug_Menu.tscn
-::res://Main_Scene_Board/::1728574030
-layer_0.gd::GDScript::-1::1728573704::0::1::::<>TileMapLayer<>::
-moveable_player.gd::GDScript::-1::1727281326::0::1::::<>CharacterBody2D<>::
-moveable_player.tscn::PackedScene::6597460110306373176::1727281326::0::1::::<><>::res://Main_Scene_Board/moveable_player.gd<>uid://wpqjamy8nklp::::res://icon.svg
-node_2d.tscn::PackedScene::656370038283907512::1728574030::0::1::::<><>::uid://fcuqal2ynbts::::res://Main_Scene_Board/spritesheet.png<>uid://mmea4eto2a6p::::res://Main_Scene_Board/Rhombus.png<>res://Main_Scene_Board/layer_0.gd<>res://Main_Scene_Board/Canvas_Layer/Turn_Label.gd<>uid://0qo5my5cfjq1::::res://Main_Scene_Board/Canvas_Layer/Themes/Debug.tres<>res://Main_Scene_Board/Canvas_Layer/debug.gd<>res://Main_Scene_Board/rules_controller.gd<>uid://x0tek8t1bewj::::res://Josh_Test_Scenes/Player.tscn
-Rhombus.png::CompressedTexture2D::867283054915587653::1727281326::1728573763::1::::<><>::
-rules_controller.gd::GDScript::-1::1728573704::0::1::::<>Node<>::
-spritesheet.png::CompressedTexture2D::356315904508278948::1727281326::1728573763::1::::<><>::
-tile_map.gd::GDScript::-1::1728573704::0::1::::<>TileMap<>::
-::res://Main_Scene_Board/Canvas_Layer/::1727976853
-debug.gd::GDScript::-1::1727976853::0::1::::<>PanelContainer<>::
-Turn_Label.gd::GDScript::-1::1727281326::0::1::::<>Label<>::
-::res://Main_Scene_Board/Canvas_Layer/Themes/::1727976853
-Debug.tres::Theme::1788655415453093990::1727976853::0::1::::<><>::uid://unpancs51v13::::res://Main_Scene_Board/Canvas_Layer/Themes/Debug_Style.tres
-Debug_Style.tres::StyleBoxFlat::1431525225207057236::1727976853::0::1::::<><>::
+::res://::1728583661
+card.gd::GDScript::-1::1726768497::0::1::::Card<>Node2D<>::
+export_presets.cfg::TextFile::-1::1728010797::0::1::::<><>::
+global_script.gd::GDScript::-1::1728583452::0::1::::<>Node<>::
+icon.svg::CompressedTexture2D::1576107790049741733::1725637700::1728583663::1::::<><>::
+icon.tscn::PackedScene::5402456571018545550::1726972072::0::1::::<><>::uid://wpqjamy8nklp::::res://icon.svg
+lan.tscn::PackedScene::546660338068700008::1726592491::0::1::::<><>::
+::res://Card Game/::1728583451
+card.gd::GDScript::-1::1728583451::0::1::::<>RefCounted<>::
+card.tscn::PackedScene::5459105086288634894::1727227706::0::1::::<><>::res://Card Game/card.gd
+c_ard.tscn::PackedScene::5198372721989139912::1726768497::0::1::::<><>::res://card.gd
+::res://Character_Sheet_Display/::1727294064
+character_sheets.tscn::PackedScene::4147832549784555555::1727294064::0::1::::<><>::uid://cutf0gymupvwv::::res://Character_Sheet_Display/character_sheets_UI.tscn
+character_sheets_ui.gd::GDScript::-1::1727294064::0::1::::<>Control<>::
+character_sheets_UI.tscn::PackedScene::6216190000073413517::1727294064::0::1::::<><>::res://Character_Sheet_Display/character_sheets_ui.gd
+character_sheets_view_button.gd::GDScript::-1::1727294064::0::1::::<>Button<>::
+character_sheets_view_button.tscn::PackedScene::4675717295715703862::1727294064::0::1::::<><>::res://Character_Sheet_Display/character_sheets_view_button.gd
+::res://CPU_and_Player/::1728496633
+PlayerClass.gd::GDScript::-1::1728496633::0::1::::<>RefCounted<>::
+::res://debug_screen/::1728506645
+back_to_debug_menu.gd::GDScript::-1::1728410106::0::1::::<>Button<>::
+Back_to_Debug_Menu.tscn::PackedScene::511954981939244824::1726972074::0::1::::<><>::res://debug_screen/back_to_debug_menu.gd
+debug_button.gd::GDScript::-1::1728446233::0::1::::<>Button<>::
+debug_button.tscn::PackedScene::8203076168435353091::1726768497::0::1::::<><>::res://debug_screen/debug_button.gd
+debug_menu.gd::GDScript::-1::1728446233::0::1::::<>Control<>::
+debug_menu.tscn::PackedScene::2017106292229758417::1728506645::0::1::::<><>::res://debug_screen/debug_menu.gd
+::res://Josh_Test_Scenes/::1728583452
+player.gd::GDScript::-1::1728583452::0::1::::<>CharacterBody2D<>::
+Player.tscn::PackedScene::1667114190674531277::1728583452::0::1::::<><>::res://Josh_Test_Scenes/player.gd<>uid://wpqjamy8nklp::::res://icon.svg<>res://Josh_Test_Scenes/Player_Label.gd
+Player_Label.gd::GDScript::-1::1728583452::0::1::::<>Label<>::
+world.gd::GDScript::-1::1728583452::0::1::::<>Node2D<>::
+world.tscn::PackedScene::3041323499297697522::1728583452::0::1::::<><>::res://Josh_Test_Scenes/world.gd<>uid://x0tek8t1bewj::::res://Josh_Test_Scenes/Player.tscn<>uid://hj83ai4o2o5m::::res://debug_screen/Back_to_Debug_Menu.tscn
+::res://main_menu/::1728583591
+GunSlinger Menu.mp3::AudioStreamMP3::2304253421678560969::1728583488::1728583663::1::::<><>::
+main_menu.gd::GDScript::-1::1728410106::0::1::::<>Control<>::
+main_menu.tscn::PackedScene::1055608169025391970::1728583488::0::1::::<><>::res://main_menu/main_menu.gd<>uid://73gync2ngicf::::res://main_menu/GunSlinger Menu.mp3
+main_menu_back_button.gd::GDScript::-1::1728496774::0::1::::<>Button<>::
+main_menu_back_button.tscn::PackedScene::5055805923333536536::1728496774::0::1::::<><>::res://main_menu/main_menu_back_button.gd
+mode_selection_screen.gd::GDScript::-1::1728446233::0::1::::<>Control<>::
+mode_selection_screen.tscn::PackedScene::2527043604269230864::1728583591::0::1::::<><>::res://main_menu/mode_selection_screen.gd<>uid://cebcnc652bypc::::res://main_menu/main_menu_back_button.tscn<>uid://73gync2ngicf::::res://main_menu/GunSlinger Menu.mp3
+options_menu.tscn::PackedScene::8940963856038343498::1728583488::0::1::::<><>::uid://cebcnc652bypc::::res://main_menu/main_menu_back_button.tscn<>uid://dx8bf3sg52wqi::::res://main_menu/options_tab_container.tscn<>uid://hj83ai4o2o5m::::res://debug_screen/Back_to_Debug_Menu.tscn<>uid://73gync2ngicf::::res://main_menu/GunSlinger Menu.mp3
+options_tab_container.gd::GDScript::-1::1728583488::0::1::::<>Control<>::
+options_tab_container.tscn::PackedScene::8841801065374384888::1728583488::0::1::::<><>::res://main_menu/options_tab_container.gd
+::res://Main_Scene_Board/::1728583493
+layer_0.gd::GDScript::-1::1728446233::0::1::::<>TileMapLayer<>::
+moveable_player.gd::GDScript::-1::1728446233::0::1::::<>CharacterBody2D<>::
+moveable_player.tscn::PackedScene::6597460110306373176::1727227667::0::1::::<><>::res://Main_Scene_Board/moveable_player.gd<>uid://wpqjamy8nklp::::res://icon.svg
+node_2d.tscn::PackedScene::656370038283907512::1728583452::0::1::::<><>::uid://fcuqal2ynbts::::res://Main_Scene_Board/spritesheet.png<>uid://mmea4eto2a6p::::res://Main_Scene_Board/Rhombus.png<>res://Main_Scene_Board/layer_0.gd<>res://Main_Scene_Board/Canvas_Layer/Turn_Label.gd<>uid://0qo5my5cfjq1::::res://Main_Scene_Board/Canvas_Layer/Themes/Debug.tres<>res://Main_Scene_Board/Canvas_Layer/debug.gd<>res://Main_Scene_Board/rules_controller.gd<>uid://x0tek8t1bewj::::res://Josh_Test_Scenes/Player.tscn
+Rhombus.png::CompressedTexture2D::867283054915587653::1727227667::1728583663::1::::<><>::
+rules_controller.gd::GDScript::-1::1728583493::0::1::::<>Node<>::
+spritesheet.png::CompressedTexture2D::356315904508278948::1727227667::1728583663::1::::<><>::
+tile_map.gd::GDScript::-1::1728446234::0::1::::<>TileMap<>::
+::res://Main_Scene_Board/Canvas_Layer/::1728496774
+debug.gd::GDScript::-1::1728446233::0::1::::<>PanelContainer<>::
+Turn_Label.gd::GDScript::-1::1728496774::0::1::::<>Label<>::
+::res://Main_Scene_Board/Canvas_Layer/Themes/::1728506504
+Debug.tres::Theme::1788655415453093990::1728506504::0::1::::<><>::uid://unpancs51v13::::res://Main_Scene_Board/Canvas_Layer/Themes/Debug_Style.tres
+Debug_Style.tres::StyleBoxFlat::1431525225207057236::1728506504::0::1::::<><>::

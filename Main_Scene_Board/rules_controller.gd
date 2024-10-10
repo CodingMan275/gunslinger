@@ -13,6 +13,10 @@ var PlayerScene = preload("res://Josh_Test_Scenes/Player.tscn")
 var HiredGunVar = 3
 var WeaponCardVar = 5
 
+
+var DrawArray = ["Td1","Td2","Td3"]
+var DiscardArray = []
+
 var GunslingerArray = ["Gun1", "Gun2", "Gun3", "Gun4", "Gun5", "Gun6"]
 var HiredGunArray = ["HGun1","HGun2","HGun3","HGun4","HGun5","HGun6","HGun7","HGun8","HGun9","HGun10","HGun11","HGun12"]
 var WeaponArray = ["Rifle1","Rifle2","Rifle3","Rifle4","Knife1","Knife2","Knife3","Knife4","Pistol1","Pistol2","Pistol3","Pistol4","Shotgun1","Shotgun2","Shotgun3","Shotgun4","TwinPistol1","TwinPistol2"]
@@ -53,10 +57,34 @@ func _on_button_pressed() -> void:
 	if Turn_Order == numPlayers+1:
 		Turn_Order = 1
 	GlobalScript.DebugScript.add("-------  Player "+str(Turn_Order)+"'s Turn  -----------")
+	_drawTownDeck()
 	drawcard = false
 	order.emit(Turn_Order)
 	pass # Replace with function bod
 	
+
+func _drawTownDeck(): # fucntion that simulates the cards being drawn
+	# 
+	var DrawSize = DrawArray.size() # Checks size of the array we're drawing from
+	if (DrawSize != 0): # first element exists -> array has some cards left
+		var TDCard = DrawArray[0] # gets the first element value
+		GlobalScript.DebugScript.add("DrawArray drew  "+str(TDCard))
+		DrawArray.pop_front() #pop it out
+		DiscardArray.push_front(TDCard) #push on discard array
+		#for n in DrawSize-1: # (in theory) should loop through the array and "push" everything up one spot in the array
+		#	DrawArray[n] = DrawArray[n+1]
+	else:
+		DrawArray = DiscardArray #(dont think this works like I think it does) copy contents from discard back to draw
+		DrawArray.shuffle() # shuffles the array contents
+		var TDCard = DrawArray[0] #since its and if/else, we need to run the code from the if, or else the player would simply not be able to have a card drawn
+		GlobalScript.DebugScript.add("DrawArray drew  "+str(TDCard))
+		DrawArray.pop_front()
+		DiscardArray.push_front(TDCard)
+		#for n in DrawSize-1:
+		#	DrawArray[n] = DrawArray[n+1]
+		
+	
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
