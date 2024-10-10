@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://bcaeblbfexkia"]
 
 [ext_resource type="Script" path="res://main_menu/mode_selection_screen.gd" id="1_1je3l"]
-[ext_resource type="PackedScene" path="res://main_menu/main_menu_back_button.tscn" id="2_8og0i"]
+[ext_resource type="PackedScene" uid="uid://cebcnc652bypc" path="res://main_menu/main_menu_back_button.tscn" id="2_8og0i"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n660j"]
 bg_color = Color(0.841237, 0.6895, 0.46809, 1)

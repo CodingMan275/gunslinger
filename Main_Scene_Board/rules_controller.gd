@@ -136,9 +136,12 @@ func _ClaimCards() -> void:
 	GlobalScript.DebugScript.add("Player "+str(Turn_Order)+" cards")
 	for CardVal in Scenes[Turn_Order -1].Player.Cards:
 		GlobalScript.DebugScript.add(str(CardVal))
-
-
-func Attack() -> void:
+		
+		
+#The RPC updates the health of the local player and all the players it can see
+#It also updates for all the ppers so they see the proper health for all their player instances
+@rpc("any_peer","call_local")		
+func Attack_Calc():
 	var Attacked = false;
 	for n in numPlayers:
 		if(n+1 != Turn_Order && !Attacked):
@@ -157,6 +160,12 @@ func Attack() -> void:
 				GlobalScript.DebugScript.add("You have no more Action Points ")
 			elif(!DistCheck(n)):
 				GlobalScript.DebugScript.add("Target Not in Range")
+	pass
+
+
+func Attack() -> void:
+	#Calls the function and makes sure it takes the rpc calls
+	Attack_Calc.rpc()
 
 func DistCheck(player) -> bool:
 	var PlayerLoc = GlobalScript.PlayerNode[Turn_Order -1].pos
