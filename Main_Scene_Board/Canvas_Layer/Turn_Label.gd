@@ -4,7 +4,8 @@ var Order = 1
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#Sets the label as Player 1's Turn
-	text = str("Player ", Order, "'s Turn")
+	get_node("../../Rules_Controller").order.connect(update_label)
+	text = str("Player 1's Turn")
 	pass # Replace with function body.
 
 
@@ -12,13 +13,5 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-#When turn end button pressed
-func _on_button_pressed() -> void:
-	#Incremements Turn Order
-	Order = Order + 1
-	if Order == 3:
-		Order =1
-		#Player 2's Turn and it spaws between that and Player 1's
-	text = str("Player ", Order, "'s Turn")
-	
-	pass # Replace with function body.
+func update_label(x):
+	text = str("Player ", x, "'s Turn")
