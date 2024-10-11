@@ -1,7 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://pblyho6utls1"]
+[gd_scene load_steps=7 format=3 uid="uid://pblyho6utls1"]
 
 [ext_resource type="Script" path="res://main_menu/main_menu.gd" id="1_a30og"]
-[ext_resource type="AudioStream" uid="uid://73gync2ngicf" path="res://main_menu/GunSlinger Menu.mp3" id="2_ret15"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tfxyd"]
 bg_color = Color(0.841237, 0.6895, 0.46809, 1)
@@ -123,11 +122,6 @@ theme_override_font_sizes/font_size = 40
 text = "Gunslinger"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_ret15")
-volume_db = -20.0
-autoplay = true
 
 [connection signal="pressed" from="VBoxContainer/Start Button" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Options Button" to="." method="_on_options_button_pressed"]
