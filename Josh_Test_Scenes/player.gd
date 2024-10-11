@@ -7,6 +7,9 @@ extends CharacterBody2D
 @export var Health = 20
 #determines the current number of Action Points
 @export var action_points = 0
+@export var WeaponDmg = 4
+@export var WeaponStun = 1
+@export var StunTracker = 0
 
 #Player is spawned by rules controller as a child of it
 #Getting the parent node which has the emitters we need
@@ -19,6 +22,10 @@ extends CharacterBody2D
 @onready var EndTurnLabel = get_parent().EndTurnButton
 
 @onready var DrawButton = get_parent().DrawButton
+
+@onready var AttackButton = get_parent().AttackButton
+
+@onready var HandButton = get_parent().HandButton
 
 
 #So the player knows what order it is
@@ -64,6 +71,8 @@ func _update_turn(x):
 			#Hide the end turn button so it can not be used
 			EndTurnLabel.hide()
 			DrawButton.hide()
+			AttackButton.hide()
+			HandButton.hide()
 			#Removes the ability for the player to move
 			can_move = false
 		else:
@@ -72,6 +81,8 @@ func _update_turn(x):
 			#Allow user to end their turn
 			EndTurnLabel.show()
 			DrawButton.show()
+			AttackButton.show()
+			HandButton.show()
 
 
 
@@ -87,7 +98,7 @@ func MoveMouse():
 	#Another if statement that is probably not needed but ensures that only the peer
 	#who owns this player instance can move it
 	if $MultiplayerSynchronizer.get_multiplayer_authority() == multiplayer.get_unique_id():
-		if(Player_ID == order):
+		if(Player_ID == order && GlobalScript.PlayerNode[order-1].StunTracker == 0):
 			if Input.is_action_just_pressed("LeftClick") and can_move and action_points > 0:
 				if  move_possible():
 					self.global_position = Vector2(get_global_mouse_position())
@@ -98,3 +109,5 @@ func MoveMouse():
 				GlobalScript.DebugScript.add("You have no more Action Points ")
 			if (!can_move):
 				can_move = true
+		elif(Input.is_action_just_pressed("LeftClick") and GlobalScript.PlayerNode[order-1].StunTracker != 0):
+			GlobalScript.DebugScript.add("Player is stunned you cannot move")

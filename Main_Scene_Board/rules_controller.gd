@@ -12,6 +12,8 @@ var PlayerScene = preload("res://Josh_Test_Scenes/Player.tscn")
 @onready var EndTurnButton = get_node("../CanvasLayer/Button")
 
 @onready var DrawButton = get_node("../CanvasLayer/Draw Card")
+@onready var AttackButton = get_node("../CanvasLayer/Attack")
+@onready var HandButton = get_node("../CanvasLayer/Show Hand")
 
 
 
@@ -39,25 +41,6 @@ func _ready() -> void:
 	DrawArray.shuffle()
 	#_drawTownDeck.rpc()
 	
-	"""
-	Turn_Order = 1
-	
-	for n in numPlayers:
-		#Spawn Player
-		var scene = PlayerScene.instantiate()
-		scene.tile_map_node = get_node("../Layer0")
-		Scenes.append(scene)
-		Scenes[n].Player.ID = n+1
-# Add the node as a child of the node the script is attached to.
-		add_child(Scenes[n])
-
-	Scenes[0].position = get_node("../Layer0").map_to_local(Vector2 (0,0))
-	Scenes[0].Player.location = Vector2(0,0)
-	Scenes[0].Player.SpawnLoc = Scenes[0].Player.location
-	Scenes[1].position = get_node("../Layer0").map_to_local(Vector2 (7,7))
-	Scenes[1].Player.location = Vector2(7,7)
-	Scenes[1].Player.SpawnLoc = Scenes[1].Player.location
-	"""
 		#Counter variable, index
 	var index = 0
 	#Goes through the preloaded script MultiplayerManager which has the player info for the
@@ -70,12 +53,14 @@ func _ready() -> void:
 		currentPlayer.name = str(GlobalScript.PlayerInfo[i].ID)
 		#Make the instance a child to this node
 		add_child(currentPlayer)
+		GlobalScript.PlayerNode.append(get_node(str(GlobalScript.PlayerInfo[i].ID)))
 		#PArts of this could berun at different times for instance Host =/= player 1
 		#Mario party roll to see who starts system
 		if index == 0:
 			#Player 1 information
 			#Set player 1 at position 0,0 on the tile map
 			currentPlayer.position = get_node("../Layer0").map_to_local(Vector2 (0,0))
+			GlobalScript.PlayerNode[index].pos = Vector2 (0,0)
 			#Set player label to the name they put in (not needed but fun)
 			currentPlayer.LabelName = GlobalScript.PlayerInfo[i].name
 			#Set it to player 1
@@ -84,7 +69,8 @@ func _ready() -> void:
 		if index == 1:
 			#The next player in the PlayerInfo array, player 2
 			#Sets player 2 at a different position from player 1
-			currentPlayer.position = get_node("../Layer0").map_to_local(Vector2 (4,4))
+			currentPlayer.position = get_node("../Layer0").map_to_local(Vector2 (0,3))
+			GlobalScript.PlayerNode[index].pos = Vector2 (0,3)
 			#Sets the label to the name player 2 picked
 			currentPlayer.LabelName = GlobalScript.PlayerInfo[i].name
 			#Sets it as player 2
@@ -116,6 +102,8 @@ func _on_button_pressed() -> void:
 	#RPC that updates the peers and local machine
 @rpc("any_peer", "call_local")
 func order_inc():
+	if(GlobalScript.PlayerNode[Turn_Order -1].StunTracker != 0):
+		GlobalScript.PlayerNode[Turn_Order-1].StunTracker -= 1
 	#Increment turn order
 	Turn_Order = Turn_Order + 1
 	#BEcuase there are only 2 players at turn 2 go back to turn 1
@@ -134,14 +122,13 @@ func order_inc():
 
 
 
-"""
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	for n in numPlayers:
-		if (Scenes[n].Player.Health <= 0):
+		if (GlobalScript.PlayerNode[n].Health <= 0):
 			get_tree().quit()
 	pass
-"""
+
 
 
 
@@ -164,32 +151,49 @@ func _ClaimCards() -> void:
 		
 #The RPC updates the health of the local player and all the players it can see
 #It also updates for all the ppers so they see the proper health for all their player instances
-@rpc("any_peer","call_local")		
-func Attack_Calc():
-	var Attacked = false;
-	for n in numPlayers:
-		if(n+1 != Turn_Order && !Attacked):
-				# Current player position checking to match A players position
-			if(DistCheck(n) && GlobalScript.PlayerNode[n].Health != 0 && GlobalScript.PlayerNode[Turn_Order -1].action_points !=0):
-					# reduces A players health by [1...6]
-				var damage = (randi()%6 + 1)
-				GlobalScript.PlayerNode[n].Health -= damage
-				Attacked = true
-				GlobalScript.DebugScript.add("Player "+str(n+1)+" lost "+str(damage)+" points of hp")
-				GlobalScript.DebugScript.add("Player "+str(n+1)+" now has "+str(GlobalScript.PlayerNode[n].Health)+" points of hp")
-				GlobalScript.PlayerNode[Turn_Order -1].action_points -= 1
-				if(GlobalScript.PlayerNode[n].Health <= 0):
-					GlobalScript.PlayerNode[n].Health = 0
-			elif(GlobalScript.PlayerNode[Turn_Order -1].action_points == 0):
-				GlobalScript.DebugScript.add("You have no more Action Points ")
-			elif(!DistCheck(n)):
-				GlobalScript.DebugScript.add("Target Not in Range")
+@rpc("any_peer","call_local")
+func Attack_Calc(n):
+	var damage = GlobalScript.PlayerNode[n].WeaponDmg
+	GlobalScript.PlayerNode[n].Health -= damage
+	GlobalScript.DebugScript.add("Player "+str(n+1)+" lost "+str(damage)+" points of hp")
+	GlobalScript.DebugScript.add("Player "+str(n+1)+" now has "+str(GlobalScript.PlayerNode[n].Health)+" points of hp")
+	if(GlobalScript.PlayerNode[n].Health <= 0):
+		GlobalScript.PlayerNode[n].Health = 0
+	pass
+	
+
+@rpc("any_peer","call_local")
+func StunPlay(n):
+	GlobalScript.PlayerNode[n].StunTracker += GlobalScript.PlayerNode[Turn_Order -1].WeaponStun
 	pass
 
 
 func Attack() -> void:
+	var Attacked = false;
 	#Calls the function and makes sure it takes the rpc calls
-	Attack_Calc.rpc()
+	for n in numPlayers:
+		if(n+1 != Turn_Order && !Attacked && GlobalScript.PlayerNode[Turn_Order-1].StunTracker ==0):
+			# Current player position checking to match A players position
+			if(DistCheck(n) && GlobalScript.PlayerNode[n].Health != 0 && GlobalScript.PlayerNode[Turn_Order -1].action_points !=0 && GlobalScript.PlayerNode[n].StunTracker == 0):
+				Attacked = true;
+				GlobalScript.PlayerNode[Turn_Order -1].action_points -= 1
+				
+				var Attack = (randi()%6 + 1)
+				if(Attack < 3): # Miss
+					GlobalScript.DebugScript.add("Target was missed")
+				elif(Attack < 5): # Stun
+					GlobalScript.DebugScript.add("Target was stunned")
+					StunPlay.rpc(n)
+				else:
+					Attack_Calc.rpc(n)
+			elif(GlobalScript.PlayerNode[n].StunTracker != 0):
+				GlobalScript.DebugScript.add("Player is Stunned, you cannot attack ")
+		elif(GlobalScript.PlayerNode[Turn_Order -1].action_points == 0):
+			GlobalScript.DebugScript.add("You have no more Action Points ")
+		elif(!DistCheck(n)):
+			GlobalScript.DebugScript.add("Target Not in Range")
+		elif(GlobalScript.PlayerNode[n].StunTracker != 0):
+			GlobalScript.DebugScript.add("You are Stunned, you cannot attack ")
 
 func DistCheck(player) -> bool:
 	var PlayerLoc = GlobalScript.PlayerNode[Turn_Order -1].pos
@@ -218,6 +222,11 @@ func _input(event):
 				elif(Scenes[Turn_Order-1].Player.location != Scenes[n].Player.SpawnLoc):
 					GlobalScript.DebugScript.add("You are not on a player stable")
 		"""
+
+
+
+
+
 @rpc("any_peer","call_local")
 func _drawTownDeck(): # fucntion that simulates the cards being drawn
 
@@ -234,13 +243,13 @@ func _drawTownDeck(): # fucntion that simulates the cards being drawn
 	else:
 		for n in 12:
 			DrawArray.push_front(DiscardArray[n]) #(dont think this works like I think it does) copy contents from discard back to draw
-			DiscardArray.clear()
-			DrawArray.shuffle() # shuffles the array contents
-			var TDCard = DrawArray[0] #since its and if/else, we need to run the code from the if, or else the player would simply not be able to have a card drawn
-			DrawArray.pop_front()
-			DiscardArray.push_front(TDCard)
-			GlobalScript.DebugScript.add("DiscardArray has  "+str(DiscardArray))
-			GlobalScript.DebugScript.add("DrawArray has  "+str(DrawArray))
+		DiscardArray.clear()
+		DrawArray.shuffle() # shuffles the array contents
+		var TDCard = DrawArray[0] #since its and if/else, we need to run the code from the if, or else the player would simply not be able to have a card drawn
+		DrawArray.pop_front()
+		DiscardArray.push_front(TDCard)
+		GlobalScript.DebugScript.add("DiscardArray has  "+str(DiscardArray))
+		GlobalScript.DebugScript.add("DrawArray has  "+str(DrawArray))
 #for n in DrawSize-1:
 #DrawArray[n] = DrawArray[n+1]
 

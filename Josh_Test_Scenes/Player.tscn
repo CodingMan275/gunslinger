@@ -20,6 +20,15 @@ properties/3/replication_mode = 1
 properties/4/path = NodePath(".:action_points")
 properties/4/spawn = true
 properties/4/replication_mode = 1
+properties/5/path = NodePath(".:WeaponDmg")
+properties/5/spawn = true
+properties/5/replication_mode = 1
+properties/6/path = NodePath(".:WeaponStun")
+properties/6/spawn = true
+properties/6/replication_mode = 1
+properties/7/path = NodePath(".:StunTracker")
+properties/7/spawn = true
+properties/7/replication_mode = 1
 
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(-13, -11)
