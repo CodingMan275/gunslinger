@@ -123,35 +123,6 @@ func order_inc():
 
 
 
-func _drawTownDeck(): # fucntion that simulates the cards being drawn
-	
-	var DrawSize = DrawArray.size() # Checks size of the array we're drawing from
-	if (DrawSize != 0): # first element exists -> array has some cards left
-		var TDCard = DrawArray[0] # gets the first element value
-		GlobalScript.DebugScript.add("DrawArray drew  "+str(TDCard))
-		DrawArray.pop_front() #pop it out
-		DiscardArray.push_front(TDCard) #push on discard array
-		GlobalScript.DebugScript.add("DiscardArray has  "+str(DiscardArray))
-		GlobalScript.DebugScript.add("DrawArray has  "+str(DrawArray))
-		#for n in DrawSize-1: # (in theory) should loop through the array and "push" everything up one spot in the array
-		#	DrawArray[n] = DrawArray[n+1]
-	else:
-		for n in 12:
-			DrawArray.push_front(DiscardArray[n]) #(dont think this works like I think it does) copy contents from discard back to draw
-		DiscardArray.clear()
-		DrawArray.shuffle() # shuffles the array contents
-		var TDCard = DrawArray[0] #since its and if/else, we need to run the code from the if, or else the player would simply not be able to have a card drawn
-		GlobalScript.DebugScript.add("DrawArray drew  "+str(TDCard))
-		DrawArray.pop_front()
-		DiscardArray.push_front(TDCard)
-		GlobalScript.DebugScript.add("DiscardArray has  "+str(DiscardArray))
-		GlobalScript.DebugScript.add("DrawArray has  "+str(DrawArray))
-		#for n in DrawSize-1:
-		#	DrawArray[n] = DrawArray[n+1]
-		
-	
-
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	for n in numPlayers:
@@ -159,25 +130,6 @@ func _process(delta: float) -> void:
 			get_tree().quit()
 	pass
 
-
-
-func _onStartDraw(player_index: int) -> void:
-	var gunslinger_card = GunslingerArray[randi() % GunslingerArray.size()]
-	GlobalScript.DebugScript.add("Player " + str(player_index) + " drew card " + gunslinger_card)
-	GunslingerArray.erase(gunslinger_card)  # Remove the drawn card
-	for i in range(3):
-		var hired_gun_index = randi() % HiredGunArray.size()
-		var hired_gun_card = HiredGunArray[hired_gun_index]
-		GlobalScript.DebugScript.add("Player " + str(player_index) + " drew card " + hired_gun_card)
-		Scenes[player_index - 1].Player.add_card(hired_gun_card)
-		HiredGunArray.erase(hired_gun_card)  # Remove the drawn card
-		
-	for i in range(5):
-		var weapon_index = randi() % WeaponArray.size()
-		var weapon_card = WeaponArray[weapon_index]
-		GlobalScript.DebugScript.add("Player " + str(player_index) + " drew card " + weapon_card)
-		Scenes[player_index - 1].Player.add_card(weapon_card)
-		WeaponArray.erase(weapon_card)  # Remove the drawn card
 
 
 func _onCardDraw() -> void:
