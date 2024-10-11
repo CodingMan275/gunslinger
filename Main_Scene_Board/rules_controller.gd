@@ -11,13 +11,34 @@ var PlayerScene = preload("res://Josh_Test_Scenes/Player.tscn")
 #Getting the end turn button from the scene when this node is ready
 @onready var EndTurnButton = get_node("../CanvasLayer/Button")
 
+@onready var DrawButton = get_node("../CanvasLayer/Draw Card")
+
 
 
 #This could be used for signals and such for spawning players
 @export var player_scene : PackedScene
 
+
+#Card stuff
+@export var HiredGunVar = 3
+@export var WeaponCardVar = 5
+
+
+@export var DrawArray = ["Td1","Td2","Td3", "Td4", "Td5", "Td6","Td7","Td8","Td9","Td10","Td11","Td12",]
+@export var DiscardArray = []
+
+@export var GunslingerArray = ["Gun1", "Gun2", "Gun3", "Gun4", "Gun5", "Gun6"]
+@export var HiredGunArray = ["HGun1","HGun2","HGun3","HGun4","HGun5","HGun6","HGun7","HGun8","HGun9","HGun10","HGun11","HGun12"]
+@export var WeaponArray = ["Rifle1","Rifle2","Rifle3","Rifle4","Knife1","Knife2","Knife3","Knife4","Pistol1","Pistol2","Pistol3","Pistol4","Shotgun1","Shotgun2","Shotgun3","Shotgun4","TwinPistol1","TwinPistol2"]
+
+@export var Check = true
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	
+	DrawArray.shuffle()
+	#_drawTownDeck.rpc()
+	
 	"""
 	Turn_Order = 1
 	
@@ -59,6 +80,7 @@ func _ready() -> void:
 			currentPlayer.LabelName = GlobalScript.PlayerInfo[i].name
 			#Set it to player 1
 			currentPlayer.Player_ID = 1
+			
 		if index == 1:
 			#The next player in the PlayerInfo array, player 2
 			#Sets player 2 at a different position from player 1
@@ -77,7 +99,6 @@ func _ready() -> void:
 	
 	for i in GlobalScript.PlayerInfo:
 		GlobalScript.PlayerNode.append(get_node(str(GlobalScript.PlayerInfo[i].ID)))
-	
 	
 	order.emit(Turn_Order)
 	GlobalScript.DebugScript.add("-------  Player 1's Turn  -----------")
@@ -126,11 +147,14 @@ func _process(delta: float) -> void:
 
 
 func _onCardDraw() -> void:
+	_drawTownDeck.rpc()
+	'''
 	if(!drawcard):
 		var CardNum = randi()%52+1
 		GlobalScript.DebugScript.add("Player "+str(Turn_Order)+" drew card "+str(CardNum))
 		Scenes[Turn_Order -1].Player.add_card(CardNum)
 		drawcard = true
+		'''
 
 func _ClaimCards() -> void:
 	GlobalScript.DebugScript.add("Player "+str(Turn_Order)+" cards")
@@ -194,3 +218,46 @@ func _input(event):
 				elif(Scenes[Turn_Order-1].Player.location != Scenes[n].Player.SpawnLoc):
 					GlobalScript.DebugScript.add("You are not on a player stable")
 		"""
+@rpc("any_peer","call_local")
+func _drawTownDeck(): # fucntion that simulates the cards being drawn
+
+	var DrawSize = DrawArray.size() # Checks size of the array we're drawing from
+	if (DrawSize != 0): # first element exists -> array has some cards left
+		var TDCard = DrawArray[0] # gets the first element value
+		GlobalScript.DebugScript.add("DrawArray drew  "+str(TDCard))
+		DrawArray.pop_front() #pop it out
+		DiscardArray.push_front(TDCard) #push on discard array
+		GlobalScript.DebugScript.add("DiscardArray has  "+str(DiscardArray))
+		GlobalScript.DebugScript.add("DrawArray has  "+str(DrawArray))
+#for n in DrawSize-1: # (in theory) should loop through the array and "push" everything up one spot in the array
+#DrawArray[n] = DrawArray[n+1]
+	else:
+		for n in 12:
+			DrawArray.push_front(DiscardArray[n]) #(dont think this works like I think it does) copy contents from discard back to draw
+			DiscardArray.clear()
+			DrawArray.shuffle() # shuffles the array contents
+			var TDCard = DrawArray[0] #since its and if/else, we need to run the code from the if, or else the player would simply not be able to have a card drawn
+			DrawArray.pop_front()
+			DiscardArray.push_front(TDCard)
+			GlobalScript.DebugScript.add("DiscardArray has  "+str(DiscardArray))
+			GlobalScript.DebugScript.add("DrawArray has  "+str(DrawArray))
+#for n in DrawSize-1:
+#DrawArray[n] = DrawArray[n+1]
+
+func _onStartDraw(player_index: int) -> void:
+	var gunslinger_card = GunslingerArray[randi() % GunslingerArray.size()]
+	GlobalScript.DebugScript.add("Player " + str(player_index) + " drew card " + gunslinger_card)
+	GunslingerArray.erase(gunslinger_card)  # Remove the drawn card
+	for i in range(3):
+		var hired_gun_index = randi() % HiredGunArray.size()
+		var hired_gun_card = HiredGunArray[hired_gun_index]
+		GlobalScript.DebugScript.add("Player " + str(player_index) + " drew card " + hired_gun_card)
+		Scenes[player_index - 1].Player.add_card(hired_gun_card)
+		HiredGunArray.erase(hired_gun_card)  # Remove the drawn card
+		
+	for i in range(5):
+		var weapon_index = randi() % WeaponArray.size()
+		var weapon_card = WeaponArray[weapon_index]
+		GlobalScript.DebugScript.add("Player " + str(player_index) + " drew card " + weapon_card)
+		Scenes[player_index - 1].Player.add_card(weapon_card)
+		WeaponArray.erase(weapon_card)  # Remove the drawn card

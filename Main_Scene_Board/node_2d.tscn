@@ -146,6 +146,24 @@ sources/1 = SubResource("TileSetAtlasSource_bqeqs")
 properties/0/path = NodePath("CanvasLayer/Label:text")
 properties/0/spawn = true
 properties/0/replication_mode = 1
+properties/1/path = NodePath("Rules_Controller:DrawArray")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("Rules_Controller:DiscardArray")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath("Rules_Controller:GunslingerArray")
+properties/3/spawn = true
+properties/3/replication_mode = 1
+properties/4/path = NodePath("Rules_Controller:HiredGunArray")
+properties/4/spawn = true
+properties/4/replication_mode = 1
+properties/5/path = NodePath("Rules_Controller:WeaponArray")
+properties/5/spawn = true
+properties/5/replication_mode = 1
+properties/6/path = NodePath("Rules_Controller:Check")
+properties/6/spawn = true
+properties/6/replication_mode = 1
 
 [sub_resource type="GDScript" id="GDScript_7iaxx"]
 script/source = "extends CanvasLayer
@@ -187,10 +205,6 @@ tile_set = SubResource("TileSet_1y6tq")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(16, 16)
-
-[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
-process_mode = 4
-spawn_path = NodePath("..")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_mfl53")

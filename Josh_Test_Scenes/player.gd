@@ -18,6 +18,8 @@ extends CharacterBody2D
 #This allows for hiding and showing the button unique to each player
 @onready var EndTurnLabel = get_parent().EndTurnButton
 
+@onready var DrawButton = get_parent().DrawButton
+
 
 #So the player knows what order it is
 var order = 0
@@ -61,6 +63,7 @@ func _update_turn(x):
 		if (Player_ID != order):
 			#Hide the end turn button so it can not be used
 			EndTurnLabel.hide()
+			DrawButton.hide()
 			#Removes the ability for the player to move
 			can_move = false
 		else:
@@ -68,6 +71,7 @@ func _update_turn(x):
 			action_points = Max_Action_Points
 			#Allow user to end their turn
 			EndTurnLabel.show()
+			DrawButton.show()
 
 
 
