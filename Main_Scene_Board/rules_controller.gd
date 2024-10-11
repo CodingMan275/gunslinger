@@ -10,16 +10,16 @@ var Scenes : Array
 var drawcard : bool = false
 var PlayerScene = preload("res://Josh_Test_Scenes/Player.tscn")
 
-var HiredGunVar = 3
-var WeaponCardVar = 5
+@export var HiredGunVar = 3
+@export var WeaponCardVar = 5
 
 
-var DrawArray = ["Td1","Td2","Td3", "Td4", "Td5", "Td6","Td7","Td8","Td9","Td10","Td11","Td12",]
-var DiscardArray = []
+@export var DrawArray = ["Td1","Td2","Td3", "Td4", "Td5", "Td6","Td7","Td8","Td9","Td10","Td11","Td12",]
+@export var DiscardArray = []
 
-var GunslingerArray = ["Gun1", "Gun2", "Gun3", "Gun4", "Gun5", "Gun6"]
-var HiredGunArray = ["HGun1","HGun2","HGun3","HGun4","HGun5","HGun6","HGun7","HGun8","HGun9","HGun10","HGun11","HGun12"]
-var WeaponArray = ["Rifle1","Rifle2","Rifle3","Rifle4","Knife1","Knife2","Knife3","Knife4","Pistol1","Pistol2","Pistol3","Pistol4","Shotgun1","Shotgun2","Shotgun3","Shotgun4","TwinPistol1","TwinPistol2"]
+@export var GunslingerArray = ["Gun1", "Gun2", "Gun3", "Gun4", "Gun5", "Gun6"]
+@export var HiredGunArray = ["HGun1","HGun2","HGun3","HGun4","HGun5","HGun6","HGun7","HGun8","HGun9","HGun10","HGun11","HGun12"]
+@export var WeaponArray = ["Rifle1","Rifle2","Rifle3","Rifle4","Knife1","Knife2","Knife3","Knife4","Pistol1","Pistol2","Pistol3","Pistol4","Shotgun1","Shotgun2","Shotgun3","Shotgun4","TwinPistol1","TwinPistol2"]
 #This could be used for signals and such for spawning players
 @export var player_scene : PackedScene
 
@@ -36,6 +36,7 @@ func _ready() -> void:
 		Scenes[n].Player.ID = n+1
 		_onStartDraw(n+1)
 		
+		
 # Add the node as a child of the node the script is attached to.
 		add_child(Scenes[n])
 
@@ -45,6 +46,8 @@ func _ready() -> void:
 	Scenes[1].position = get_node("../Layer0").map_to_local(Vector2 (7,7))
 	Scenes[1].Player.location = Vector2(7,7)
 	Scenes[1].Player.SpawnLoc = Scenes[1].Player.location
+	DrawArray.shuffle()
+	_drawTownDeck()
 	
 	
 	

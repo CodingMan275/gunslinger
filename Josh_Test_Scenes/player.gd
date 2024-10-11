@@ -16,8 +16,7 @@ var can_move = true
 #For node path to tile map
 var tile_map_node
 
-var DrawArray = ["Td1","Td2","Td3"]
-var DiscardArray = []
+
 
 var Player = preload("res://CPU_and_Player/PlayerClass.gd").Player.new(0)
 
@@ -28,7 +27,7 @@ func _on_ready() -> void:
 	pass # Replace with function body.
 	
 	#Update the turn order
-func _drawTownDeck(): # fucntion that simulates the cards being drawn
+"""func _drawTownDeck(): # fucntion that simulates the cards being drawn
 	# 
 	var DrawSize = DrawArray.size() # Checks size of the array we're drawing from
 	if (DrawSize != 0): # first element exists -> array has some cards left
@@ -47,7 +46,7 @@ func _drawTownDeck(): # fucntion that simulates the cards being drawn
 		DiscardArray.push_front(TDCard)
 		#for n in DrawSize-1:
 		#	DrawArray[n] = DrawArray[n+1]
-		
+		"""
 	
 		
 	
