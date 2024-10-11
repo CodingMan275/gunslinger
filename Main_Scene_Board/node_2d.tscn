@@ -165,6 +165,7 @@ properties/6/path = NodePath("Rules_Controller:Check")
 properties/6/spawn = true
 properties/6/replication_mode = 1
 
+
 [sub_resource type="GDScript" id="GDScript_7iaxx"]
 script/source = "extends CanvasLayer
 

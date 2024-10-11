@@ -8,14 +8,12 @@ var drawcard : bool = false
 var PlayerScene = preload("res://Josh_Test_Scenes/Player.tscn")
 #Getting the tile map from the current scene when this node is ready
 @onready var TileMapScene =  get_node("../TileMap")
-#Getting the end turn button from the scene when this node is ready
-@onready var EndTurnButton = get_node("../CanvasLayer/Button")
 
+#Getting the turn buttons from the scene when this node is ready
+@onready var EndTurnButton = get_node("../CanvasLayer/Button")
 @onready var DrawButton = get_node("../CanvasLayer/Draw Card")
 @onready var AttackButton = get_node("../CanvasLayer/Attack")
 @onready var HandButton = get_node("../CanvasLayer/Show Hand")
-
-
 
 #This could be used for signals and such for spawning players
 @export var player_scene : PackedScene
@@ -79,6 +77,7 @@ func _ready() -> void:
 		index += 1
 	#Setting the turn order 1 to start
 	Turn_Order = 1
+
 	
 	#IT WORKS!!!!!
 	# I FEEL BOTH INCREDIBLY SMART AND SO SO SO DUMB
@@ -110,6 +109,8 @@ func order_inc():
 	if Turn_Order == numPlayers+1:
 		Turn_Order = 1
 	GlobalScript.DebugScript.add("-------  Player "+str(Turn_Order)+"'s Turn  -----------")
+	DrawArray.shuffle()
+	_drawTownDeck()
 	drawcard = false
 	
 	# gets postion of all player nodes
@@ -122,6 +123,35 @@ func order_inc():
 
 
 
+func _drawTownDeck(): # fucntion that simulates the cards being drawn
+	
+	var DrawSize = DrawArray.size() # Checks size of the array we're drawing from
+	if (DrawSize != 0): # first element exists -> array has some cards left
+		var TDCard = DrawArray[0] # gets the first element value
+		GlobalScript.DebugScript.add("DrawArray drew  "+str(TDCard))
+		DrawArray.pop_front() #pop it out
+		DiscardArray.push_front(TDCard) #push on discard array
+		GlobalScript.DebugScript.add("DiscardArray has  "+str(DiscardArray))
+		GlobalScript.DebugScript.add("DrawArray has  "+str(DrawArray))
+		#for n in DrawSize-1: # (in theory) should loop through the array and "push" everything up one spot in the array
+		#	DrawArray[n] = DrawArray[n+1]
+	else:
+		for n in 12:
+			DrawArray.push_front(DiscardArray[n]) #(dont think this works like I think it does) copy contents from discard back to draw
+		DiscardArray.clear()
+		DrawArray.shuffle() # shuffles the array contents
+		var TDCard = DrawArray[0] #since its and if/else, we need to run the code from the if, or else the player would simply not be able to have a card drawn
+		GlobalScript.DebugScript.add("DrawArray drew  "+str(TDCard))
+		DrawArray.pop_front()
+		DiscardArray.push_front(TDCard)
+		GlobalScript.DebugScript.add("DiscardArray has  "+str(DiscardArray))
+		GlobalScript.DebugScript.add("DrawArray has  "+str(DrawArray))
+		#for n in DrawSize-1:
+		#	DrawArray[n] = DrawArray[n+1]
+		
+	
+
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	for n in numPlayers:
@@ -131,6 +161,23 @@ func _process(delta: float) -> void:
 
 
 
+func _onStartDraw(player_index: int) -> void:
+	var gunslinger_card = GunslingerArray[randi() % GunslingerArray.size()]
+	GlobalScript.DebugScript.add("Player " + str(player_index) + " drew card " + gunslinger_card)
+	GunslingerArray.erase(gunslinger_card)  # Remove the drawn card
+	for i in range(3):
+		var hired_gun_index = randi() % HiredGunArray.size()
+		var hired_gun_card = HiredGunArray[hired_gun_index]
+		GlobalScript.DebugScript.add("Player " + str(player_index) + " drew card " + hired_gun_card)
+		Scenes[player_index - 1].Player.add_card(hired_gun_card)
+		HiredGunArray.erase(hired_gun_card)  # Remove the drawn card
+		
+	for i in range(5):
+		var weapon_index = randi() % WeaponArray.size()
+		var weapon_card = WeaponArray[weapon_index]
+		GlobalScript.DebugScript.add("Player " + str(player_index) + " drew card " + weapon_card)
+		Scenes[player_index - 1].Player.add_card(weapon_card)
+		WeaponArray.erase(weapon_card)  # Remove the drawn card
 
 
 func _onCardDraw() -> void:
@@ -142,6 +189,7 @@ func _onCardDraw() -> void:
 		Scenes[Turn_Order -1].Player.add_card(CardNum)
 		drawcard = true
 		'''
+
 
 func _ClaimCards() -> void:
 	GlobalScript.DebugScript.add("Player "+str(Turn_Order)+" cards")
@@ -222,7 +270,6 @@ func _input(event):
 				elif(Scenes[Turn_Order-1].Player.location != Scenes[n].Player.SpawnLoc):
 					GlobalScript.DebugScript.add("You are not on a player stable")
 		"""
-
 
 
 
