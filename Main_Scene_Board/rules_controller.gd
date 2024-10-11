@@ -107,16 +107,24 @@ func _on_child_order_changed() -> void:
 
 	
 
-func _onStartDraw(n) -> void:
-	GlobalScript.DebugScript.add("Player "+str(n)+" drew card "+GunslingerArray[randi()%6])
-	for HiredGunVar in 3:
-		var randNum = randi()%12
-		GlobalScript.DebugScript.add("Player "+str(n)+" drew card "+HiredGunArray[randNum])
-		Scenes[n-1].Player.add_card(HiredGunArray[randNum])
-	for WeaponCardVar in 5:
-		var randNum = randi()%18
-		GlobalScript.DebugScript.add("Player "+str(n)+" drew card "+WeaponArray[randNum])
-		Scenes[n-1].Player.add_card(WeaponArray[randNum])
+func _onStartDraw(player_index: int) -> void:
+	var gunslinger_card = GunslingerArray[randi() % GunslingerArray.size()]
+	GlobalScript.DebugScript.add("Player " + str(player_index) + " drew card " + gunslinger_card)
+	GunslingerArray.erase(gunslinger_card)  # Remove the drawn card
+	for i in range(3):
+		var hired_gun_index = randi() % HiredGunArray.size()
+		var hired_gun_card = HiredGunArray[hired_gun_index]
+		GlobalScript.DebugScript.add("Player " + str(player_index) + " drew card " + hired_gun_card)
+		Scenes[player_index - 1].Player.add_card(hired_gun_card)
+		HiredGunArray.erase(hired_gun_card)  # Remove the drawn card
+		
+	for i in range(5):
+		var weapon_index = randi() % WeaponArray.size()
+		var weapon_card = WeaponArray[weapon_index]
+		GlobalScript.DebugScript.add("Player " + str(player_index) + " drew card " + weapon_card)
+		Scenes[player_index - 1].Player.add_card(weapon_card)
+		WeaponArray.erase(weapon_card)  # Remove the drawn card
+
 
 func _onCardDraw() -> void:
 	for HiredGunVar in 3:
