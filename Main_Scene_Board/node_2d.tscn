@@ -161,6 +161,9 @@ properties/4/replication_mode = 1
 properties/5/path = NodePath("Rules_Controller:WeaponArray")
 properties/5/spawn = true
 properties/5/replication_mode = 1
+properties/6/path = NodePath("Rules_Controller:Check")
+properties/6/spawn = true
+properties/6/replication_mode = 1
 
 [sub_resource type="GDScript" id="GDScript_7iaxx"]
 script/source = "extends CanvasLayer
@@ -195,16 +198,13 @@ rendering_quadrant_size = 32
 script = ExtResource("3_8wl58")
 
 [node name="Layer1" type="TileMapLayer" parent="."]
+visible = false
 y_sort_enabled = true
 use_parent_material = true
 tile_set = SubResource("TileSet_1y6tq")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(16, 16)
-
-[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
-process_mode = 4
-spawn_path = NodePath("..")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_mfl53")
