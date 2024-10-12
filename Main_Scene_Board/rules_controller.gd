@@ -109,7 +109,6 @@ func order_inc():
 	if Turn_Order == numPlayers+1:
 		Turn_Order = 1
 	GlobalScript.DebugScript.add("-------  Player "+str(Turn_Order)+"'s Turn  -----------")
-	DrawArray.shuffle()
 	_drawTownDeck()
 	drawcard = false
 	
