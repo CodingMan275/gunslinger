@@ -1,0 +1,90 @@
+extends Node
+
+#Card stuff
+@export var HiredGunVar = 3
+@export var WeaponCardVar = 5
+
+#Draw and Discard piles that are connected to the multiplayer syncronizer
+#These are updated automatically between peers so every peer
+#Is looking at the card piles with the same order
+#Townie Pile
+@export var DrawArray = ["Td1","Td2","Td3", "Td4", "Td5", "Td6","Td7","Td8","Td9","Td10","Td11","Td12",]
+@export var DiscardArray = []
+#Gunsliger Pile
+@export var GunslingerArray = ["Gun1", "Gun2", "Gun3", "Gun4", "Gun5", "Gun6"]
+#Hired gun pile
+@export var HiredGunArray = ["HGun1","HGun2","HGun3","HGun4","HGun5","HGun6","HGun7","HGun8","HGun9","HGun10","HGun11","HGun12"]
+#Weapon pile
+@export var WeaponArray = ["Rifle1","Rifle2","Rifle3","Rifle4","Knife1","Knife2","Knife3","Knife4","Pistol1","Pistol2","Pistol3","Pistol4","Shotgun1","Shotgun2","Shotgun3","Shotgun4","TwinPistol1","TwinPistol2"]
+
+#Signal for when draw deck is empty and needs to be reshuffled
+signal DrawEmpty
+
+#Signal that sends what card was drawn so player can put it in their hadn
+signal DrawnCard
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	
+	#This is called to shuffle the the Townie pile
+	#Becuase there are multiple "Cards" scenes, as many as there are
+	#peers this will get called multiple times which means it will get shuffled
+	#for however many times there are peers.
+	#This is not a bad thing becuase the multiplayer syncronizer will still
+	#Keeps the piles synced in the end, every peer looks at identical piles
+	DrawArray.shuffle()
+	
+	pass # Replace with function body.
+	
+func _onCardDraw() -> void:
+	#Draws from the townie deck, rpc to do rpc functions
+	_drawTownDeck.rpc()
+	
+
+#Every peer and the local machine draws from their
+#Appropriate deck in their instances
+@rpc("any_peer","call_local")
+func _drawTownDeck(): # fucntion that simulates the cards being drawn
+	var DrawSize = DrawArray.size() # Checks size of the array we're drawing from
+	if (DrawSize != 0): # first element exists -> array has some cards left
+		var TDCard = DrawArray[0] # gets the first element value
+		GlobalScript.DebugScript.add("DrawArray drew  "+str(TDCard))
+		DrawArray.pop_front() #pop it out
+		DiscardArray.push_front(TDCard) #push on discard array
+		GlobalScript.DebugScript.add("DiscardArray has  "+str(DiscardArray))
+		GlobalScript.DebugScript.add("DrawArray has  "+str(DrawArray))
+		#adds card to hand
+		DrawnCard.emit(TDCard)
+	else:
+		for n in 12:
+			DrawArray.push_front(DiscardArray[n]) #(dont think this works like I think it does) copy contents from discard back to draw
+		DiscardArray.clear()
+		DrawArray.shuffle() # shuffles the array contents
+		DrawEmpty.emit()
+		var TDCard = DrawArray[0] #since its and if/else, we need to run the code from the if, or else the player would simply not be able to have a card drawn
+		DrawArray.pop_front()
+		DiscardArray.push_front(TDCard)
+		GlobalScript.DebugScript.add("DiscardArray has  "+str(DiscardArray))
+		GlobalScript.DebugScript.add("DrawArray has  "+str(DrawArray))
+
+func _onStartDraw(player_index: int) -> void:
+	# Draw Gunslinger Card
+	DrawnCard.emit(_draw_card(GunslingerArray, player_index, "Gunslinger"))
+
+   #Draw Hired Gun Cards
+	for s in range(3):
+		DrawnCard.emit(_draw_card(HiredGunArray, player_index, "Hired Gun"))
+
+	# Draw Weapon Cards
+	for s in range(5):
+		DrawnCard.emit(_draw_card(WeaponArray, player_index, "Weapon"))
+
+func _draw_card(array: Array, player_index: int, card_type: String) -> Variant:
+	if array.size() == 0:
+		GlobalScript.DebugScript.add("No cards left in " + card_type + " array.")
+		return null
+	var card_index = randi() % array.size()
+	var card = array[card_index]
+	GlobalScript.DebugScript.add.rpc("Player " + str(player_index) + " drew card " + card_type + ": " + card)
+	array.erase(card)  # Remove the drawn card
+	return card

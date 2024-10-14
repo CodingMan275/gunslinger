@@ -5,12 +5,14 @@ extends Node
 #On turn order to other nodes and scenes
 signal order
 
+signal ShowHand
+
 #Sets what the current amount of players is
 #Will be changed to GlobalScript.PlayerInfo.size() in later functions
 @export var numPlayers = 2
 
 #Card stuff
-var Scenes : Array
+#var Scenes : Array
 var drawcard : bool = false
 
 #var PlayerScene = preload("res://Josh_Test_Scenes/Player.tscn")
@@ -24,38 +26,16 @@ var drawcard : bool = false
 @onready var AttackButton = get_node("../CanvasLayer/Attack")
 @onready var HandButton = get_node("../CanvasLayer/Show Hand")
 
+@onready var CardDecks = get_node("../Cards")
+
 #The Player scene which will be instantiated and used for spawning in
 #All peer players
 @export var player_scene : PackedScene
 
 
-#Card stuff
-@export var HiredGunVar = 3
-@export var WeaponCardVar = 5
-
-#Draw and Discard piles that are connected to the multiplayer syncronizer
-#These are updated automatically between peers so every peer
-#Is looking at the card piles with the same order
-#Townie Pile
-@export var DrawArray = ["Td1","Td2","Td3", "Td4", "Td5", "Td6","Td7","Td8","Td9","Td10","Td11","Td12",]
-@export var DiscardArray = []
-#Gunsliger Pile
-@export var GunslingerArray = ["Gun1", "Gun2", "Gun3", "Gun4", "Gun5", "Gun6"]
-#Hired gun pile
-@export var HiredGunArray = ["HGun1","HGun2","HGun3","HGun4","HGun5","HGun6","HGun7","HGun8","HGun9","HGun10","HGun11","HGun12"]
-#Weapon pile
-@export var WeaponArray = ["Rifle1","Rifle2","Rifle3","Rifle4","Knife1","Knife2","Knife3","Knife4","Pistol1","Pistol2","Pistol3","Pistol4","Shotgun1","Shotgun2","Shotgun3","Shotgun4","TwinPistol1","TwinPistol2"]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	
-	#This is called to shuffle the the Townie pile
-	#Becuase there are multiple "Rules_Controller" scenes, as many as there are
-	#peers this will get called multiple times which means it will get shuffled
-	#for however many times there are peers.
-	#This is not a bad thing becuase the multiplayer syncronizer will still
-	#Keeps the piles synced in the end, every peer looks at identical piles
-	DrawArray.shuffle()
 	
 	#Counter variable
 	var index = 0
@@ -101,6 +81,8 @@ func _ready() -> void:
 			#Sets it as player 2
 			currentPlayer.Player_ID = 2
 		#After each player increase the index for the next player to get proper information
+		if(multiplayer.is_server()):
+			CardDecks._onStartDraw(index)
 		index += 1
 	#Setting the turn order 1 to start
 	#Redundant but safe
@@ -169,17 +151,9 @@ func _process(delta: float) -> void:
 			get_tree().quit()
 	pass
 
-
-
-func _onCardDraw() -> void:
-	#Draws from the townie deck, rpc to do rpc functions
-	_drawTownDeck.rpc()
-
 #Unclear what this does, ask michael / Oakley
 func _ClaimCards() -> void:
-	GlobalScript.DebugScript.add("Player "+str(Turn_Order)+" cards")
-	for CardVal in Scenes[Turn_Order -1].Player.Cards:
-		GlobalScript.DebugScript.add(str(CardVal))
+	ShowHand.emit()
 		
 		
 #The RPC updates the health of the local player and all the players it can see
@@ -267,45 +241,3 @@ func DistCheck(player) -> bool:
 func _input(event):
 	if(event.is_action_pressed("Dynamite")):
 		print("BOOM")
-
-#Every peer and the local machine draws from their
-#Appropriate deck in their instances
-@rpc("any_peer","call_local")
-func _drawTownDeck(): # fucntion that simulates the cards being drawn
-	var DrawSize = DrawArray.size() # Checks size of the array we're drawing from
-	if (DrawSize != 0): # first element exists -> array has some cards left
-		var TDCard = DrawArray[0] # gets the first element value
-		GlobalScript.DebugScript.add("DrawArray drew  "+str(TDCard))
-		DrawArray.pop_front() #pop it out
-		DiscardArray.push_front(TDCard) #push on discard array
-		GlobalScript.DebugScript.add("DiscardArray has  "+str(DiscardArray))
-		GlobalScript.DebugScript.add("DrawArray has  "+str(DrawArray))
-	else:
-		for n in 12:
-			DrawArray.push_front(DiscardArray[n]) #(dont think this works like I think it does) copy contents from discard back to draw
-		DiscardArray.clear()
-		DrawArray.shuffle() # shuffles the array contents
-		var TDCard = DrawArray[0] #since its and if/else, we need to run the code from the if, or else the player would simply not be able to have a card drawn
-		DrawArray.pop_front()
-		DiscardArray.push_front(TDCard)
-		GlobalScript.DebugScript.add("DiscardArray has  "+str(DiscardArray))
-		GlobalScript.DebugScript.add("DrawArray has  "+str(DrawArray))
-
-#I have no idea what this does, ask Oakley
-func _onStartDraw(player_index: int) -> void:
-	var gunslinger_card = GunslingerArray[randi() % GunslingerArray.size()]
-	GlobalScript.DebugScript.add("Player " + str(player_index) + " drew card " + gunslinger_card)
-	GunslingerArray.erase(gunslinger_card)  # Remove the drawn card
-	for i in range(3):
-		var hired_gun_index = randi() % HiredGunArray.size()
-		var hired_gun_card = HiredGunArray[hired_gun_index]
-		GlobalScript.DebugScript.add("Player " + str(player_index) + " drew card " + hired_gun_card)
-		Scenes[player_index - 1].Player.add_card(hired_gun_card)
-		HiredGunArray.erase(hired_gun_card)  # Remove the drawn card
-		
-	for i in range(5):
-		var weapon_index = randi() % WeaponArray.size()
-		var weapon_card = WeaponArray[weapon_index]
-		GlobalScript.DebugScript.add("Player " + str(player_index) + " drew card " + weapon_card)
-		Scenes[player_index - 1].Player.add_card(weapon_card)
-		WeaponArray.erase(weapon_card)  # Remove the drawn card

@@ -28,11 +28,16 @@ extends CharacterBody2D
 
 @onready var HandButton = get_parent().HandButton
 
+@onready var CardNodeDeck = get_parent().CardDecks
+
 
 #So the player knows what order it is
 var order = 0
 #determines whether the player can currently move
 var can_move = true
+#Player hand
+#This could be further broken down into Weapon array, Town, Gunslinger, ect
+var PlayerHand : Array
 
 #For node path to tile map
 var tile_map_node
@@ -50,6 +55,12 @@ func _on_ready() -> void:
 	
 	#Format Node_Emitter . Signal_From_Emmiter_Node . Connect( Function you want to run in this scene)
 	rule_scene.order.connect(_update_turn)
+	
+	rule_scene.ShowHand.connect(_showHand)
+	
+	CardNodeDeck.DrawEmpty.connect(_resetAP)
+	
+	CardNodeDeck.DrawnCard.connect(PutCardInHand)
 	
 	#Gets the current order from the parent scene which is the rules controller
 	order = rule_scene.Turn_Order
@@ -80,14 +91,30 @@ func _update_turn(x):
 			can_move = false
 		else:
 			#Set action points back to max
-			action_points = Max_Action_Points
+			#action_points = Max_Action_Points
 			#Allow user to end their turn
 			EndTurnLabel.show()
 			DrawButton.show()
 			AttackButton.show()
 			HandButton.show()
 
-
+#This function is called when the signal from the Cards Node
+#is emitted, resets action points when draw deck empty
+func _resetAP():
+	action_points = Max_Action_Points
+	
+#When a card is drawn the Cards note emits a signal
+func PutCardInHand(Card):
+	#If its your turn add the drawn card to your hand
+	if(order == Player_ID):
+		#Add to player hand array
+		PlayerHand.append(Card)
+	pass
+	
+	
+func _showHand():
+	#for i in PlayerHand.size():
+		GlobalScript.DebugScript.add(str(PlayerHand))
 
 	#Movement
 func _physics_process(delta):
