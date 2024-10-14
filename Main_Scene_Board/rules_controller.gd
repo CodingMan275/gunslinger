@@ -241,3 +241,13 @@ func DistCheck(player) -> bool:
 func _input(event):
 	if(event.is_action_pressed("Dynamite")):
 		print("BOOM")
+		"""
+		for n in numPlayers:
+			if(n+1 != Turn_Order):
+				if(Scenes[Turn_Order-1].Player.location == Scenes[n].Player.SpawnLoc && Scenes[Turn_Order-1].Player.ActionPoint !=0):
+					get_tree().quit()
+				elif(Scenes[Turn_Order-1].Player.ActionPoint == 0):
+					GlobalScript.DebugScript.add("You have no more Action Points ")
+				elif(Scenes[Turn_Order-1].Player.location != Scenes[n].Player.SpawnLoc):
+					GlobalScript.DebugScript.add("You are not on a player stable")
+		"""
