@@ -70,5 +70,5 @@ offset_bottom = -5.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_uqikf")
-volume_db = -20.0
 autoplay = true
+bus = &"Music"

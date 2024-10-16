@@ -122,8 +122,8 @@ scale = Vector2(0.6, 0.6)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_w1s3b")
-volume_db = -20.0
 autoplay = true
+bus = &"Music"
 
 [connection signal="pressed" from="VBoxContainer/Local Button" to="." method="_on_local_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Online Button" to="." method="_on_online_button_pressed"]

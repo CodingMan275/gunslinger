@@ -1,9 +1,19 @@
 extends Control
 
+@onready var fullscreen_button = %Fullscreen_Button
+@onready var check_box = %CheckBox
 
 
-func _on_h_slider_value_changed(value):
-	AudioServer.set_bus_volume_db(0,value/5)
+
+func _ready():
+	if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN:
+		fullscreen_button.button_pressed = true
+	else:
+		fullscreen_button.button_pressed = false
+	if AudioServer.is_bus_mute(0) == true:
+		check_box.button_pressed = true
+	else:
+		check_box.button_pressed = false
 
 
 func _on_check_box_toggled(toggled_on):
@@ -11,10 +21,15 @@ func _on_check_box_toggled(toggled_on):
 	
 
 
+func _on_fullscreen_button_toggled(toggled_on):
+	if toggled_on == true:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+		
+	else:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 
-func _on_1280_x_720_resolution_button_pressed():
-	DisplayServer.window_set_size(Vector2i(1280,720))
 
-
-func _on_1920_x_1080_resolution_button_2_pressed():
-	DisplayServer.window_set_size(Vector2i(1920,1080))
+func _on_confirm_changes_button_pressed():
+	AudioServer.set_bus_volume_db(0, linear_to_db($"TabContainer/Sound/AudioOptions/MarginContainer/VBoxContainer/MasterSlider".value))
+	AudioServer.set_bus_volume_db(1, linear_to_db($"TabContainer/Sound/AudioOptions/MarginContainer/VBoxContainer/SFXSlider".value))
+	AudioServer.set_bus_volume_db(2, linear_to_db($"TabContainer/Sound/AudioOptions/MarginContainer/VBoxContainer/MusicSlider".value))
