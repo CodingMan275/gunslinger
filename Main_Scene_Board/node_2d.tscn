@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://jl7k3ltwbp41"]
+[gd_scene load_steps=17 format=4 uid="uid://jl7k3ltwbp41"]
 
 [ext_resource type="Texture2D" uid="uid://fcuqal2ynbts" path="res://Main_Scene_Board/spritesheet.png" id="1_o8ncf"]
 [ext_resource type="Texture2D" uid="uid://mmea4eto2a6p" path="res://Main_Scene_Board/Rhombus.png" id="2_rfajf"]
@@ -7,7 +7,8 @@
 [ext_resource type="Theme" uid="uid://0qo5my5cfjq1" path="res://Main_Scene_Board/Canvas_Layer/Themes/Debug.tres" id="5_jnad2"]
 [ext_resource type="Script" path="res://Main_Scene_Board/Canvas_Layer/debug.gd" id="6_5svso"]
 [ext_resource type="Script" path="res://Main_Scene_Board/rules_controller.gd" id="6_6e8od"]
-[ext_resource type="PackedScene" uid="uid://x0tek8t1bewj" path="res://Josh_Test_Scenes/Player.tscn" id="7_saeg4"]
+[ext_resource type="PackedScene" uid="uid://x0tek8t1bewj" path="res://CPU_and_Player/Player.tscn" id="7_saeg4"]
+[ext_resource type="PackedScene" uid="uid://cj15kaxvr44m1" path="res://CPU_and_Player/CPU.tscn" id="9_hsfom"]
 [ext_resource type="Script" path="res://Main_Scene_Board/Card_Script.gd" id="9_mpy2d"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p1dyh"]
@@ -309,6 +310,18 @@ offset_right = -0.0400009
 offset_bottom = 0.12999
 text = "Attack"
 
+[node name="Dynamite" type="Button" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.223
+anchor_top = 0.833
+anchor_right = 0.398
+anchor_bottom = 0.948
+offset_left = -0.0400009
+offset_top = 0.0899811
+offset_right = -0.0400085
+offset_bottom = 0.039978
+text = "Dynamite"
+
 [node name="DebugPanel" type="PanelContainer" parent="CanvasLayer"]
 custom_minimum_size = Vector2(200, 50)
 anchors_preset = -1
@@ -339,6 +352,7 @@ size_flags_horizontal = 6
 [node name="Rules_Controller" type="Node" parent="."]
 script = ExtResource("6_6e8od")
 player_scene = ExtResource("7_saeg4")
+CPU_scene = ExtResource("9_hsfom")
 
 [node name="Cards" type="Node" parent="."]
 script = ExtResource("9_mpy2d")
@@ -352,3 +366,4 @@ script = ExtResource("9_mpy2d")
 [connection signal="pressed" from="CanvasLayer/Show Hand" to="Rules_Controller" method="_ClaimCards"]
 [connection signal="pressed" from="CanvasLayer/Show Hand" to="Cards" method="_ClaimCards"]
 [connection signal="pressed" from="CanvasLayer/Attack" to="Rules_Controller" method="Attack"]
+[connection signal="pressed" from="CanvasLayer/Dynamite" to="Rules_Controller" method="Dynamite"]

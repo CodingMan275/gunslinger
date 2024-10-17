@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bjlifhwwfo2ta"]
 
 [ext_resource type="Script" path="res://Josh_Test_Scenes/world.gd" id="1_6igo1"]
-[ext_resource type="PackedScene" uid="uid://x0tek8t1bewj" path="res://Josh_Test_Scenes/Player.tscn" id="2_lorrs"]
+[ext_resource type="PackedScene" uid="uid://x0tek8t1bewj" path="res://CPU_and_Player/Player.tscn" id="2_lorrs"]
 [ext_resource type="PackedScene" uid="uid://hj83ai4o2o5m" path="res://debug_screen/Back_to_Debug_Menu.tscn" id="3_a50rb"]
 
 [node name="World" type="Node2D"]

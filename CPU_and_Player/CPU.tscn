@@ -1,0 +1,64 @@
+[gd_scene load_steps=5 format=3 uid="uid://cj15kaxvr44m1"]
+
+[ext_resource type="Script" path="res://CPU_and_Player/CPU.gd" id="1_eif4d"]
+[ext_resource type="Texture2D" uid="uid://wpqjamy8nklp" path="res://icon.svg" id="2_lu27v"]
+[ext_resource type="Script" path="res://CPU_and_Player/CPU_Label.gd" id="3_yhact"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_42imv"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("Sprite2D/Label:text")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath(".:pos")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath(".:Health")
+properties/3/spawn = true
+properties/3/replication_mode = 1
+properties/4/path = NodePath(".:action_points")
+properties/4/spawn = true
+properties/4/replication_mode = 1
+properties/5/path = NodePath(".:WeaponDmg")
+properties/5/spawn = true
+properties/5/replication_mode = 1
+properties/6/path = NodePath(".:WeaponStun")
+properties/6/spawn = true
+properties/6/replication_mode = 1
+properties/7/path = NodePath(".:StunTracker")
+properties/7/spawn = true
+properties/7/replication_mode = 1
+
+[node name="CPU" type="CharacterBody2D"]
+position = Vector2(-13, -11)
+collision_layer = 2
+script = ExtResource("1_eif4d")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(9.53674e-07, -1)
+scale = Vector2(0.160157, 0.164063)
+texture = ExtResource("2_lu27v")
+
+[node name="Label" type="Label" parent="Sprite2D"]
+visibility_layer = 1023
+anchors_preset = -1
+anchor_top = -0.571
+anchor_right = 1.279
+anchor_bottom = -0.032
+offset_left = -89.3023
+offset_top = -64.0548
+offset_right = -190.014
+offset_bottom = -110.047
+scale = Vector2(3, 3)
+text = "Player X"
+script = ExtResource("3_yhact")
+metadata/_edit_use_anchors_ = true
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_42imv")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]
+[connection signal="ready" from="." to="." method="_on_ready"]

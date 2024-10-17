@@ -25,12 +25,14 @@ var drawcard : bool = false
 @onready var DrawButton = get_node("../CanvasLayer/Draw Card")
 @onready var AttackButton = get_node("../CanvasLayer/Attack")
 @onready var HandButton = get_node("../CanvasLayer/Show Hand")
+@onready var DynamiteButton = get_node("../CanvasLayer/Dynamite")
 
 @onready var CardDecks = get_node("../Cards")
 
 #The Player scene which will be instantiated and used for spawning in
 #All peer players
 @export var player_scene : PackedScene
+@export var CPU_scene : PackedScene
 
 
 
@@ -43,7 +45,44 @@ func _ready() -> void:
 	#peers that joined including name and ID, the ID comes form godots randomly assigned
 	#peer ID which is basically any positive number greater than 1. The host
 	#is ALWAYS peer ID 1.
-	for i in GlobalScript.PlayerInfo:
+	
+	if(!GlobalScript.SinglePlay):
+		for i in GlobalScript.PlayerInfo:
+			MultiPlay(i, index)
+			index += 1
+	else:
+		for i in numPlayers:
+			SinglePlay(i, index)
+			index += 1
+
+	#Setting the turn order 1 to start
+	#Redundant but safe
+	Turn_Order = 1
+	
+	if(multiplayer.is_server()):
+		CardDecks._onStartDraw(index)
+	
+	#Ok so basically what this does is we go through the the Global Script
+	#to to go through all the players info starting at Player 1, we
+	#Find player 1's ID and then set that INT to a String. We know
+	#For a fact we set Player 1's Node in the scene to have the same name as its
+	#ID So player 1's node is named "1", while player 2's maybe "323552154678"
+	#We then go through the entire scene and then get the node with the name
+	#of the ID of the current player we are looking at in this for loop.
+	#We then take that node refrence and add it too a container. Im not sure
+	#What the purpose of this is again, ask michael.
+	#Any questions ask josh
+
+	#Tell all the player scene instances what the current turn order is
+	order.emit(Turn_Order)
+	#In the little debug pop-up after pressing ~ it says this
+	GlobalScript.DebugScript.add("-------  Player 1's Turn  -----------")
+	pass # Replace with function body.
+
+
+
+
+func MultiPlay(i , index):
 		#Create a player instance
 		var currentPlayer = player_scene.instantiate()
 		#The player needs to get information from the tile map
@@ -62,9 +101,10 @@ func _ready() -> void:
 		if index == 0:
 			#Player 1 information
 			#Set player 1 at position 0,0 on the tile map
-			currentPlayer.position = get_node("../Layer0").map_to_local(Vector2 (0,0))
+			currentPlayer.position = get_node("../Layer0").map_to_local(Vector2 (5,5))
 			#Ask michael, sets player node position to somewhere
-			GlobalScript.PlayerNode[index].pos = Vector2 (0,0)
+			GlobalScript.PlayerNode[index].pos = Vector2 (5,5)
+			GlobalScript.PlayerNode[index].Startpos = Vector2(1,1)
 			#Set player label to the name they put in (not needed but fun)
 			currentPlayer.LabelName = GlobalScript.PlayerInfo[i].name
 			#Set it to player 1 which is effectively turn order
@@ -73,47 +113,97 @@ func _ready() -> void:
 		if index == 1:
 			#The next player in the PlayerInfo array, player 2
 			#Sets player 2 at a different position from player 1
-			currentPlayer.position = get_node("../Layer0").map_to_local(Vector2 (0,3))
+			currentPlayer.position = get_node("../Layer0").map_to_local(Vector2 (2,2))
 			#Once ask Michael, sorry this is not good commenting
-			GlobalScript.PlayerNode[index].pos = Vector2 (0,3)
+			GlobalScript.PlayerNode[index].pos = Vector2 (2,2)
+			GlobalScript.PlayerNode[index].Startpos = Vector2(6,6)
 			#Sets the label to the name player 2 picked
 			currentPlayer.LabelName = GlobalScript.PlayerInfo[i].name
 			#Sets it as player 2
 			currentPlayer.Player_ID = 2
-		#After each player increase the index for the next player to get proper information
-		if(multiplayer.is_server()):
-			CardDecks._onStartDraw(index)
-		index += 1
-	#Setting the turn order 1 to start
-	#Redundant but safe
-	Turn_Order = 1
-
-	
-	#Ok so basically what this does is we go through the the Global Script
-	#to to go through all the players info starting at Player 1, we
-	#Find player 1's ID and then set that INT to a String. We know
-	#For a fact we set Player 1's Node in the scene to have the same name as its
-	#ID So player 1's node is named "1", while player 2's maybe "323552154678"
-	#We then go through the entire scene and then get the node with the name
-	#of the ID of the current player we are looking at in this for loop.
-	#We then take that node refrence and add it too a container. Im not sure
-	#What the purpose of this is again, ask michael.
-	#Any questions ask josh
-	for i in GlobalScript.PlayerInfo:
-		GlobalScript.PlayerNode.append(get_node(str(GlobalScript.PlayerInfo[i].ID)))
 		
-	#Tell all the player scene instances what the current turn order is
-	order.emit(Turn_Order)
-	#In the little debug pop-up after pressing ~ it says this
-	GlobalScript.DebugScript.add("-------  Player 1's Turn  -----------")
-	pass # Replace with function body.
-	
+		
+		# Set up that is not co dependent on a set index
+		#GlobalScript.PlayerNode[index].Startpos = GlobalScript.PlayerNode[index].pos
+		
+		#After each player increase the index for the next player to get proper information
+
+func SinglePlay(i , index):
+		print(index)
+		if index == 0:
+			var currentPlayer = player_scene.instantiate()
+			#The player needs to get information from the tile map
+			currentPlayer.tile_map_node = get_node("../Layer0")
+			#Change the name of the instance to the ID of the player
+			#This is important for getting which specific player we want
+			currentPlayer.name = "player"
+			#Make the instance a child to this node, the player can now access what
+			#the rules controller can access
+			add_child(currentPlayer)
+			#Unsure what this does, ask Michael
+			GlobalScript.PlayerNode.append(get_node("player"))
+			#Parts of this could be run at different times for instance Host =/= player 1
+			#Mario party roll to see who starts system before index decides turn order
+			#and such
+			#Player 1 information
+			#Set player 1 at position 0,0 on the tile map
+			currentPlayer.position = get_node("../Layer0").map_to_local(Vector2 (5,5))
+			#Ask michael, sets player node position to somewhere
+			GlobalScript.PlayerNode[index].pos = Vector2 (5,5)
+			GlobalScript.PlayerNode[index].Startpos = Vector2(1,1)
+			#Set player label to the name they put in (not needed but fun)
+			currentPlayer.LabelName = "player"
+			#Set it to player 1 which is effectively turn order
+			currentPlayer.Player_ID = 1
+		if index > 0:
+			print("Create cpu")
+			var currentPlayer = CPU_scene.instantiate()
+			#The player needs to get information from the tile map
+			currentPlayer.tile_map_node = get_node("../Layer0")
+			#Change the name of the instance to the ID of the player
+			#This is important for getting which specific player we want
+			currentPlayer.name = str("CPU " + str(index))
+			#Make the instance a child to this node, the player can now access what
+			#the rules controller can access
+			add_child(currentPlayer)
+			#Unsure what this does, ask Michael
+			GlobalScript.PlayerNode.append(get_node(str("CPU " + str(index))))
+			#Parts of this could be run at different times for instance Host =/= player 1
+			#Mario party roll to see who starts system before index decides turn order
+			#and such
+			#Player 1 information
+			#Set player 1 at position 0,0 on the tile map
+			currentPlayer.position = get_node("../Layer0").map_to_local(Vector2 (0,7))
+			#Ask michael, sets player node position to somewhere
+			GlobalScript.PlayerNode[index].pos = Vector2 (0,7)
+			GlobalScript.PlayerNode[index].Startpos = Vector2(6,6)
+			#Set player label to the name they put in (not needed but fun)
+	#		currentPlayer.LabelName = "CPU"
+			#Set it to player 1 which is effectively turn order
+			currentPlayer.Player_ID = index + 1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 func _on_button_pressed() -> void:
 	#Incremements Turn Order and uses RPC to make sure both the peeers and local machine are updated
-	order_inc.rpc()
+	if(!GlobalScript.SinglePlay):
+		order_inc.rpc()
+	else:
+		order_inc()
 	#Tell the player instance in the scene whos turn it is
-	#Most defienlty not needed but safe
-	order.emit(Turn_Order)
 	pass # Replace with function bod
 	
 
@@ -148,8 +238,13 @@ func _process(delta: float) -> void:
 	#A signal thing, to do later
 	for n in numPlayers:
 		if (GlobalScript.PlayerNode[n].Health <= 0):
-			get_tree().quit()
+			KillAll.rpc()
 	pass
+	
+@rpc("any_peer", "call_local")
+func KillAll():
+	get_tree().quit()
+
 
 #Unclear what this does, ask michael / Oakley
 func _ClaimCards() -> void:
@@ -238,16 +333,28 @@ func DistCheck(player) -> bool:
 		return false
 
 #Throw dynamite, needs work
-func _input(event):
-	if(event.is_action_pressed("Dynamite")):
-		print("BOOM")
-		"""
-		for n in numPlayers:
-			if(n+1 != Turn_Order):
-				if(Scenes[Turn_Order-1].Player.location == Scenes[n].Player.SpawnLoc && Scenes[Turn_Order-1].Player.ActionPoint !=0):
-					get_tree().quit()
-				elif(Scenes[Turn_Order-1].Player.ActionPoint == 0):
-					GlobalScript.DebugScript.add("You have no more Action Points ")
-				elif(Scenes[Turn_Order-1].Player.location != Scenes[n].Player.SpawnLoc):
-					GlobalScript.DebugScript.add("You are not on a player stable")
-		"""
+func Dynamite():
+	if(StableCheck() && GlobalScript.PlayerNode[Turn_Order -1].action_points !=0):
+		KillAll.rpc()
+	elif(GlobalScript.PlayerNode[Turn_Order -1].action_points == 0):
+		GlobalScript.DebugScript.add("You have no more Action Points ")
+	elif(!StableCheck()):
+		GlobalScript.DebugScript.add("You are not on a player stable")
+
+func StableCheck():
+	var PlayerLoc = GlobalScript.PlayerNode[Turn_Order -1].pos
+	var EnemyLoc
+	if (GlobalScript.PlayerNode[Turn_Order -1].Startpos == Vector2(1,1)):
+		EnemyLoc = Vector2(6,6)
+	else:
+		EnemyLoc = Vector2(1,1)
+
+
+	if(EnemyLoc.x < 2):
+		if (PlayerLoc. x <= 2 && PlayerLoc.y <=2 && PlayerLoc != Vector2(2,2)):
+			return true
+	elif(EnemyLoc.x > 5):
+		if (PlayerLoc. x >= 5 && PlayerLoc.y >=5 && PlayerLoc != Vector2(5,5)):
+			return true
+	else:
+		return false
