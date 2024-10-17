@@ -2,7 +2,7 @@ extends Node2D
 #LAN Multiplayer tutorial https://www.youtube.com/watch?v=M0LJ9EsS_Ak
 
 #Peer can be both a client or host, its just who you are
-var peer = ENetMultiplayerPeer.new()
+var peer
 
 
 #This is what the player will be, whatever the player controller is plug in here
@@ -12,71 +12,99 @@ var peer = ENetMultiplayerPeer.new()
 
 func _ready():
 	line_edit.grab_focus()
+	multiplayer.peer_connected.connect(PlayerConnected)
+	multiplayer.peer_disconnected.connect(PlayerDisconnected)
+	multiplayer.connected_to_server.connect(ServerConnected)
+	multiplayer.connection_failed.connect(ServerFailed)
+	
+	
+	#Server and clients called
+func PlayerConnected(ID):
+	print("Player Connected " + str(ID))
+	#Serber and slients called
+func PlayerDisconnected(ID):
+	print("Player Disconnected " + str(ID))
+	#Called only from clients
+func ServerConnected():
+	print("Connected to server")
+	#Calling the host to take this peer's infor and then disperse it
+	#Format for rpc (Host ID, Peer Name, Peer Unique ID)
+	SendPlayerInfo.rpc_id(1, $CanvasLayer/LineEdit2.text, multiplayer.get_unique_id())
+	#Ony called from clients
+func ServerFailed():
+	print("Failed to connect")
 
 #Creating a server on someones machine
 func _on_host_pressed() -> void:
-
+	
+	#Peer can be both a client or host, its just who you are
+	peer = ENetMultiplayerPeer.new()
+	
 	#Will get a window user's LAN IP address, each device has its own unique
 	#LAN IP which needs to be shared somehow
 	#https://forum.godotengine.org/t/how-to-get-local-ip-address/10399/2
 	var LAN_IP = IP.resolve_hostname(str(OS.get_environment("COMPUTERNAME")),1)
 	print(LAN_IP)
+	
+	#Error message
+	var error = peer.create_server(1027)
+	if error != OK:
+		print("Error: ", error)
+		return
+	#peer.get_host().compress(ENetConnection.COMPRESS_RANGE_CODER)
 
-	#Arbitrary port, can be changed later or can be made inputable
-	peer.create_server(1027)
-	#creates the peer who is hosting
-	multiplayer.multiplayer_peer = peer
-	multiplayer.peer_connected.connect(add_player)
-	#Add the player to the scene / game
-	add_player()
-	#Canvas no longer needed
-	$CanvasLayer.hide()
+	#Makes the host now also a peer so it can actually play the game
+	multiplayer.set_multiplayer_peer(peer)	
+	SendPlayerInfo($CanvasLayer/LineEdit2.text, multiplayer.get_unique_id())
+	$CanvasLayer/Start.show()
+	$CanvasLayer/Host.hide()
+	$CanvasLayer/Join.hide()
+	$CanvasLayer/LineEdit.hide()
 
 #Joining someone who is hosting the game
+#Joining someone who is hosting the game
 func _on_join_pressed() -> void:
+	
+	peer = ENetMultiplayerPeer.new()
+	
 	#IP of SUNY Poly, can be changed later
 	peer.create_client(line_edit.text, 1027)
-	#Create client peer
-	multiplayer.multiplayer_peer = peer
+	#peer.create_client("192.168.201.81", 1027)
 	
+	#Same compress of CPU and bandwidth resources
+	#peer.get_host().compress(ENetConnection.COMPRESS_RANGE_CODER)
+	
+	#Create client peer
+	multiplayer.set_multiplayer_peer(peer)
+	
+	$CanvasLayer/Host.hide()
+	$CanvasLayer/Join.hide()
+	$CanvasLayer/LineEdit.hide()
 	
 	#Canvas no longer needed
+#	$CanvasLayer.hide()
+
+func _on_start_pressed() -> void:
+	GameSceneStart.rpc()
+	pass # Replace with function body.
+	
+#Creating the game scene on start
+#This rpc will send out to all peers and the local machine, everyone will do this function
+@rpc("any_peer","call_local")
+func GameSceneStart():
+	var GameScene = load("res://Main_Scene_Board/node_2d.tscn").instantiate()
+	get_tree().root.add_child(GameScene)
 	$CanvasLayer.hide()
 	
-	#Adding player number 1
-func add_player(id = 1):
-	#Create an instance of the player scene
-	var player = player_scene.instantiate()
-	#Makes the player name the ID
-	player.name = str(id)
-	#This should make the instance of the character a child of then scene
-	call_deferred("add_child", player)
-
-	
-	#Exiting the game
-	#This does not work as intended, client is not properly deleted
-	#If host dissconects no one else is booted
-	#Probably has soething to do with clients not having IDs yet
-	#Unclear on how dissconnecting mid match and rejoing would work
-	#I feel confident I could make it work.
-	#Really unclear on how save states would work, not as confident in that
-func exit_game(id):
-	#Deletes host player when they dissconnect
-	multiplayer.peer_disconnected.connect(del_player)
-	del_player(id)
-	
-#Calls rpc for deleting players when it dissconnected
-#Not sure why we need two functions del_player and _del_player
-#Just followed tutorial and it broke when I tried to make it more compact
-#A non-issue
-func del_player(id):
-	rpc("_del_player", id)
-	
-#RPC is very important for multiplayer in godot, apparently
-@rpc("any_peer","call_local")
-
-#Finally deletes player with ID
-func _del_player(id):
-	#deletes node in the world scene
-	get_node(str(id)).queue_free()
-	
+@rpc("any_peer")
+#This first sends the info to the MultiplayerManager on the hosts end
+func SendPlayerInfo(name, ID):
+	if !GlobalScript.PlayerInfo.has(ID):
+		GlobalScript.PlayerInfo[ID]= {
+			"name": name,
+			"ID": ID,			
+		}
+		#Then it is RPC'd to dispress the information to everyone
+	if multiplayer.is_server():
+		for i in GlobalScript.PlayerInfo:
+			SendPlayerInfo.rpc(GlobalScript.PlayerInfo[i].name, i)

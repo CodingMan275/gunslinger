@@ -1,72 +1,287 @@
 extends Node
-
+#Sets the turn order for the game
 @export var Turn_Order = 1
-
+#Creates a signal to be sent out which will contain the information
+#On turn order to other nodes and scenes
 signal order
 
+#Sets what the current amount of players is
+#Will be changed to GlobalScript.PlayerInfo.size() in later functions
 @export var numPlayers = 2
 
+#Card stuff
 var Scenes : Array
 var drawcard : bool = false
-var PlayerScene = preload("res://Josh_Test_Scenes/Player.tscn")
 
-var HiredGunVar = 3
-var WeaponCardVar = 5
+#var PlayerScene = preload("res://Josh_Test_Scenes/Player.tscn")
 
+#Getting the tile map from the current scene when this node is ready
+#@onready var TileMapScene =  get_node("../TileMap")
 
-var DrawArray = ["Td1","Td2","Td3", "Td4", "Td5", "Td6","Td7","Td8","Td9","Td10","Td11","Td12",]
-var DiscardArray = []
+#Getting the turn buttons from the scene when this node is ready
+@onready var EndTurnButton = get_node("../CanvasLayer/Button")
+@onready var DrawButton = get_node("../CanvasLayer/Draw Card")
+@onready var AttackButton = get_node("../CanvasLayer/Attack")
+@onready var HandButton = get_node("../CanvasLayer/Show Hand")
 
-var GunslingerArray = ["Gun1", "Gun2", "Gun3", "Gun4", "Gun5", "Gun6"]
-var HiredGunArray = ["HGun1","HGun2","HGun3","HGun4","HGun5","HGun6","HGun7","HGun8","HGun9","HGun10","HGun11","HGun12"]
-var WeaponArray = ["Rifle1","Rifle2","Rifle3","Rifle4","Knife1","Knife2","Knife3","Knife4","Pistol1","Pistol2","Pistol3","Pistol4","Shotgun1","Shotgun2","Shotgun3","Shotgun4","TwinPistol1","TwinPistol2"]
-#This could be used for signals and such for spawning players
+#The Player scene which will be instantiated and used for spawning in
+#All peer players
 @export var player_scene : PackedScene
+
+
+#Card stuff
+@export var HiredGunVar = 3
+@export var WeaponCardVar = 5
+
+#Draw and Discard piles that are connected to the multiplayer syncronizer
+#These are updated automatically between peers so every peer
+#Is looking at the card piles with the same order
+#Townie Pile
+@export var DrawArray = ["Td1","Td2","Td3", "Td4", "Td5", "Td6","Td7","Td8","Td9","Td10","Td11","Td12",]
+@export var DiscardArray = []
+#Gunsliger Pile
+@export var GunslingerArray = ["Gun1", "Gun2", "Gun3", "Gun4", "Gun5", "Gun6"]
+#Hired gun pile
+@export var HiredGunArray = ["HGun1","HGun2","HGun3","HGun4","HGun5","HGun6","HGun7","HGun8","HGun9","HGun10","HGun11","HGun12"]
+#Weapon pile
+@export var WeaponArray = ["Rifle1","Rifle2","Rifle3","Rifle4","Knife1","Knife2","Knife3","Knife4","Pistol1","Pistol2","Pistol3","Pistol4","Shotgun1","Shotgun2","Shotgun3","Shotgun4","TwinPistol1","TwinPistol2"]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	
+	#This is called to shuffle the the Townie pile
+	#Becuase there are multiple "Rules_Controller" scenes, as many as there are
+	#peers this will get called multiple times which means it will get shuffled
+	#for however many times there are peers.
+	#This is not a bad thing becuase the multiplayer syncronizer will still
+	#Keeps the piles synced in the end, every peer looks at identical piles
+	DrawArray.shuffle()
+	
+	#Counter variable
+	var index = 0
+	#Goes through the preloaded script GlobalScript which has the player info for the
+	#peers that joined including name and ID, the ID comes form godots randomly assigned
+	#peer ID which is basically any positive number greater than 1. The host
+	#is ALWAYS peer ID 1.
+	for i in GlobalScript.PlayerInfo:
+		#Create a player instance
+		var currentPlayer = player_scene.instantiate()
+		#The player needs to get information from the tile map
+		currentPlayer.tile_map_node = get_node("../Layer0")
+		#Change the name of the instance to the ID of the player
+		#This is important for getting which specific player we want
+		currentPlayer.name = str(GlobalScript.PlayerInfo[i].ID)
+		#Make the instance a child to this node, the player can now access what
+		#the rules controller can access
+		add_child(currentPlayer)
+		#Unsure what this does, ask Michael
+		GlobalScript.PlayerNode.append(get_node(str(GlobalScript.PlayerInfo[i].ID)))
+		#Parts of this could be run at different times for instance Host =/= player 1
+		#Mario party roll to see who starts system before index decides turn order
+		#and such
+		if index == 0:
+			#Player 1 information
+			#Set player 1 at position 0,0 on the tile map
+			currentPlayer.position = get_node("../Layer0").map_to_local(Vector2 (0,0))
+			#Ask michael, sets player node position to somewhere
+			GlobalScript.PlayerNode[index].pos = Vector2 (0,0)
+			#Set player label to the name they put in (not needed but fun)
+			currentPlayer.LabelName = GlobalScript.PlayerInfo[i].name
+			#Set it to player 1 which is effectively turn order
+			currentPlayer.Player_ID = 1
+			
+		if index == 1:
+			#The next player in the PlayerInfo array, player 2
+			#Sets player 2 at a different position from player 1
+			currentPlayer.position = get_node("../Layer0").map_to_local(Vector2 (0,3))
+			#Once ask Michael, sorry this is not good commenting
+			GlobalScript.PlayerNode[index].pos = Vector2 (0,3)
+			#Sets the label to the name player 2 picked
+			currentPlayer.LabelName = GlobalScript.PlayerInfo[i].name
+			#Sets it as player 2
+			currentPlayer.Player_ID = 2
+		#After each player increase the index for the next player to get proper information
+		index += 1
+	#Setting the turn order 1 to start
+	#Redundant but safe
 	Turn_Order = 1
-	
-	
-	for n in numPlayers:
-		#Spawn Player
-		var scene = PlayerScene.instantiate()
-		scene.tile_map_node = get_node("../Layer0")
-		Scenes.append(scene)
-		Scenes[n].Player.ID = n+1
-		_onStartDraw(n+1)
-		
-# Add the node as a child of the node the script is attached to.
-		add_child(Scenes[n])
 
-	Scenes[0].position = get_node("../Layer0").map_to_local(Vector2 (0,0))
-	Scenes[0].Player.location = Vector2(0,0)
-	Scenes[0].Player.SpawnLoc = Scenes[0].Player.location
-	Scenes[1].position = get_node("../Layer0").map_to_local(Vector2 (7,7))
-	Scenes[1].Player.location = Vector2(7,7)
-	Scenes[1].Player.SpawnLoc = Scenes[1].Player.location
 	
-	
-	
+	#Ok so basically what this does is we go through the the Global Script
+	#to to go through all the players info starting at Player 1, we
+	#Find player 1's ID and then set that INT to a String. We know
+	#For a fact we set Player 1's Node in the scene to have the same name as its
+	#ID So player 1's node is named "1", while player 2's maybe "323552154678"
+	#We then go through the entire scene and then get the node with the name
+	#of the ID of the current player we are looking at in this for loop.
+	#We then take that node refrence and add it too a container. Im not sure
+	#What the purpose of this is again, ask michael.
+	#Any questions ask josh
+	for i in GlobalScript.PlayerInfo:
+		GlobalScript.PlayerNode.append(get_node(str(GlobalScript.PlayerInfo[i].ID)))
+		
+	#Tell all the player scene instances what the current turn order is
 	order.emit(Turn_Order)
+	#In the little debug pop-up after pressing ~ it says this
 	GlobalScript.DebugScript.add("-------  Player 1's Turn  -----------")
 	pass # Replace with function body.
 	
 func _on_button_pressed() -> void:
-	#Incremements Turn Order
-	Turn_Order = Turn_Order + 1
-	if Turn_Order == numPlayers+1:
-		Turn_Order = 1
-	GlobalScript.DebugScript.add("-------  Player "+str(Turn_Order)+"'s Turn  -----------")
-	DrawArray.shuffle()
-	_drawTownDeck()
-	drawcard = false
+	#Incremements Turn Order and uses RPC to make sure both the peeers and local machine are updated
+	order_inc.rpc()
+	#Tell the player instance in the scene whos turn it is
+	#Most defienlty not needed but safe
 	order.emit(Turn_Order)
 	pass # Replace with function bod
 	
 
-func _drawTownDeck(): # fucntion that simulates the cards being drawn
+
+#Function for incrementing turns
+#RPC that makes all the peers run this function and the local machine
+@rpc("any_peer", "call_local")
+func order_inc():
+	#If current node stunned, ask Michael
+	if(GlobalScript.PlayerNode[Turn_Order -1].StunTracker != 0):
+		GlobalScript.PlayerNode[Turn_Order-1].StunTracker -= 1
+	#Increment turn order
+	Turn_Order = Turn_Order + 1
+	#BEcuase there are only 2 players at turn 2 go back to turn 1
+	#We can change this to like GlobalScript.PlayerInfo.Size() + 1 but im lazy
+	if Turn_Order == numPlayers+1:
+		Turn_Order = 1
+	#Menu says whos turn it is
+	GlobalScript.DebugScript.add("-------  Player "+str(Turn_Order)+"'s Turn  -----------")
 	
+	#Send out a signal so all players know what turn it is
+	order.emit(Turn_Order)
+
+
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	#Go through all the players and their health
+	#If 0 end game,
+	#Does not need to be run constantly we can make this
+	#A signal thing, to do later
+	for n in numPlayers:
+		if (GlobalScript.PlayerNode[n].Health <= 0):
+			get_tree().quit()
+	pass
+
+
+
+func _onCardDraw() -> void:
+	#Draws from the townie deck, rpc to do rpc functions
+	_drawTownDeck.rpc()
+
+#Unclear what this does, ask michael / Oakley
+func _ClaimCards() -> void:
+	GlobalScript.DebugScript.add("Player "+str(Turn_Order)+" cards")
+	for CardVal in Scenes[Turn_Order -1].Player.Cards:
+		GlobalScript.DebugScript.add(str(CardVal))
+		
+		
+#The RPC updates the health of the local player and all the players it can see
+#It also updates for all the ppers so they see the proper health for all their player instances
+@rpc("any_peer","call_local")
+func Attack_Calc(n):
+	#take weapon damage from what the attacking player is holding
+	var damage = GlobalScript.PlayerNode[n].WeaponDmg
+	#Damage the player accordingly
+	#Also logic error? Its taking the the player thats getting attack
+	#Weapon damage, not the attacking players?
+	GlobalScript.PlayerNode[n].Health -= damage
+	#Debug enu to show damage
+	GlobalScript.DebugScript.add("Player "+str(n+1)+" lost "+str(damage)+" points of hp")
+	GlobalScript.DebugScript.add("Player "+str(n+1)+" now has "+str(GlobalScript.PlayerNode[n].Health)+" points of hp")
+	#If overkill, dont
+	if(GlobalScript.PlayerNode[n].Health <= 0):
+		GlobalScript.PlayerNode[n].Health = 0
+	pass
+	
+#Tell everybody which node got stunned
+@rpc("any_peer","call_local")
+func StunPlay(n):
+	#A stun tracker to make sure a stunned player can't move
+	GlobalScript.PlayerNode[n].StunTracker += GlobalScript.PlayerNode[Turn_Order -1].WeaponStun
+	pass
+
+#Attack function
+func Attack() -> void:
+	
+	var Attacked = false;
+	for n in numPlayers:
+		#If its your turned, you haven't atacked, youre not stunned, go
+		if(n+1 != Turn_Order && !Attacked && GlobalScript.PlayerNode[Turn_Order-1].StunTracker ==0):
+			# Current player position checking to match A players position
+			if(DistCheck(n) && GlobalScript.PlayerNode[n].Health != 0 && GlobalScript.PlayerNode[Turn_Order -1].action_points !=0 && GlobalScript.PlayerNode[n].StunTracker == 0):
+				Attacked = true;
+				#Cost an action point
+				GlobalScript.PlayerNode[Turn_Order -1].action_points -= 1
+				#Random attack ccheck
+				var Attack = (randi()%6 + 1)
+				if(Attack < 3): # Miss
+					GlobalScript.DebugScript.add("Target was missed")
+				elif(Attack < 5): # Stun
+					GlobalScript.DebugScript.add("Target was stunned")
+					#Rpc function call
+					StunPlay.rpc(n)
+				else:
+					#Attack hit, rpc function call
+					Attack_Calc.rpc(n)
+			#The playerer youre trying to attack is stunned, cant attack them
+			elif(GlobalScript.PlayerNode[n].StunTracker != 0):
+				GlobalScript.DebugScript.add("Player is Stunned, you cannot attack ")
+		#You have no action points, stop that
+		elif(GlobalScript.PlayerNode[Turn_Order -1].action_points == 0):
+			GlobalScript.DebugScript.add("You have no more Action Points ")
+		#Not in range silly
+		elif(!DistCheck(n)):
+			GlobalScript.DebugScript.add("Target Not in Range")
+		#Youre stunned silly
+		elif(GlobalScript.PlayerNode[n].StunTracker != 0):
+			GlobalScript.DebugScript.add("You are Stunned, you cannot attack ")
+
+#Check the distance from you and the player youre looking at
+func DistCheck(player) -> bool:
+	#Currently hard coded for two players
+	var PlayerLoc = GlobalScript.PlayerNode[Turn_Order -1].pos
+	var EnemyLoc = GlobalScript.PlayerNode[player].pos
+	#Hard coded weapon and player distance
+	var Dist = 2
+	#In range
+	if(PlayerLoc == EnemyLoc):
+		return true
+	#With in one block
+	elif (EnemyLoc.y == PlayerLoc.y && (EnemyLoc.x >= PlayerLoc.x - Dist && EnemyLoc.x <= PlayerLoc.x + Dist)):
+		return true
+	#Within 2 block
+	elif (EnemyLoc.x == PlayerLoc.x && (EnemyLoc.y >= PlayerLoc.y - Dist && EnemyLoc.y <= PlayerLoc.y + Dist)):
+		return true
+	#Not in range orthangonially
+	else:
+		return false
+
+#Throw dynamite, needs work
+func _input(event):
+	if(event.is_action_pressed("Dynamite")):
+		print("BOOM")
+		"""
+		for n in numPlayers:
+			if(n+1 != Turn_Order):
+				if(Scenes[Turn_Order-1].Player.location == Scenes[n].Player.SpawnLoc && Scenes[Turn_Order-1].Player.ActionPoint !=0):
+					get_tree().quit()
+				elif(Scenes[Turn_Order-1].Player.ActionPoint == 0):
+					GlobalScript.DebugScript.add("You have no more Action Points ")
+				elif(Scenes[Turn_Order-1].Player.location != Scenes[n].Player.SpawnLoc):
+					GlobalScript.DebugScript.add("You are not on a player stable")
+		"""
+
+#Every peer and the local machine draws from their
+#Appropriate deck in their instances
+@rpc("any_peer","call_local")
+func _drawTownDeck(): # fucntion that simulates the cards being drawn
 	var DrawSize = DrawArray.size() # Checks size of the array we're drawing from
 	if (DrawSize != 0): # first element exists -> array has some cards left
 		var TDCard = DrawArray[0] # gets the first element value
@@ -75,38 +290,18 @@ func _drawTownDeck(): # fucntion that simulates the cards being drawn
 		DiscardArray.push_front(TDCard) #push on discard array
 		GlobalScript.DebugScript.add("DiscardArray has  "+str(DiscardArray))
 		GlobalScript.DebugScript.add("DrawArray has  "+str(DrawArray))
-		#for n in DrawSize-1: # (in theory) should loop through the array and "push" everything up one spot in the array
-		#	DrawArray[n] = DrawArray[n+1]
 	else:
 		for n in 12:
 			DrawArray.push_front(DiscardArray[n]) #(dont think this works like I think it does) copy contents from discard back to draw
 		DiscardArray.clear()
 		DrawArray.shuffle() # shuffles the array contents
 		var TDCard = DrawArray[0] #since its and if/else, we need to run the code from the if, or else the player would simply not be able to have a card drawn
-		GlobalScript.DebugScript.add("DrawArray drew  "+str(TDCard))
 		DrawArray.pop_front()
 		DiscardArray.push_front(TDCard)
 		GlobalScript.DebugScript.add("DiscardArray has  "+str(DiscardArray))
 		GlobalScript.DebugScript.add("DrawArray has  "+str(DrawArray))
-		#for n in DrawSize-1:
-		#	DrawArray[n] = DrawArray[n+1]
-		
-	
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	for n in numPlayers:
-		if (Scenes[n].Player.Health <= 0):
-			get_tree().quit()
-	pass
-	
-	
-func _on_child_order_changed() -> void:
-	pass # Replace with function body
-
-	
-
+#I have no idea what this does, ask Oakley
 func _onStartDraw(player_index: int) -> void:
 	var gunslinger_card = GunslingerArray[randi() % GunslingerArray.size()]
 	GlobalScript.DebugScript.add("Player " + str(player_index) + " drew card " + gunslinger_card)
@@ -124,68 +319,3 @@ func _onStartDraw(player_index: int) -> void:
 		GlobalScript.DebugScript.add("Player " + str(player_index) + " drew card " + weapon_card)
 		Scenes[player_index - 1].Player.add_card(weapon_card)
 		WeaponArray.erase(weapon_card)  # Remove the drawn card
-
-
-func _onCardDraw() -> void:
-	for HiredGunVar in 3:
-		if(!drawcard):
-			var CardNum = randi()%52+1
-			GlobalScript.DebugScript.add("Player "+str(Turn_Order)+" drew card "+str(CardNum))
-			Scenes[Turn_Order -1].Player.add_card(CardNum)
-			drawcard = true
-
-func _ClaimCards() -> void:
-	GlobalScript.DebugScript.add("Player "+str(Turn_Order)+" cards")
-	for CardVal in Scenes[Turn_Order -1].Player.Cards:
-		GlobalScript.DebugScript.add(str(CardVal))
-
-
-func Attack() -> void:
-	var Attacked = false;
-	for n in numPlayers:
-		if(n+1 != Turn_Order && !Attacked):
-				# Current player position checking to match A players position
-			if(DistCheck(n) && Scenes[n].Player.Health != 0 && Scenes[Turn_Order-1].Player.ActionPoint !=0):
-					# reduces A players health by [1...6]
-				var damage = (randi()%6 + 1)
-				Scenes[n].Player.Health -= damage
-				Attacked = true
-				GlobalScript.DebugScript.add("Player "+str(n+1)+" lost "+str(damage)+" points of hp")
-				GlobalScript.DebugScript.add("Player "+str(n+1)+" now has "+str(Scenes[n].Player.Health)+" points of hp")
-				Scenes[Turn_Order-1].Player.ActionPoint -= 1
-				if(Scenes[n].Player.Health <= 0):
-					Scenes[n].Player.Health = 0
-			elif(Scenes[Turn_Order-1].Player.ActionPoint == 0):
-				GlobalScript.DebugScript.add("You have no more Action Points ")
-			elif(!DistCheck(n)):
-				GlobalScript.DebugScript.add("Target Not in Range")
-
-func DistCheck(player) -> bool:
-	var PlayerLoc = Scenes[Turn_Order-1].Player.location
-	var EnemyLoc = Scenes[player].Player.location
-	var Dist = Scenes[Turn_Order-1].Player.AttackRange
-
-	
-	if(PlayerLoc == EnemyLoc):
-		return true
-	
-	
-	elif (EnemyLoc.y == PlayerLoc.y && (EnemyLoc.x >= PlayerLoc.x - Dist && EnemyLoc.x <= PlayerLoc.x + Dist)):
-		return true
-	elif (EnemyLoc.x == PlayerLoc.x && (EnemyLoc.y >= PlayerLoc.y - Dist && EnemyLoc.y <= PlayerLoc.y + Dist)):
-		return true
-	else:
-		return false
-
-func _input(event):
-	if(event.is_action_pressed("Dynamite")):
-		
-		for n in numPlayers:
-			if(n+1 != Turn_Order):
-				if(Scenes[Turn_Order-1].Player.location == Scenes[n].Player.SpawnLoc && Scenes[Turn_Order-1].Player.ActionPoint !=0):
-					get_tree().quit()
-				elif(Scenes[Turn_Order-1].Player.ActionPoint == 0):
-					GlobalScript.DebugScript.add("You have no more Action Points ")
-				elif(Scenes[Turn_Order-1].Player.location != Scenes[n].Player.SpawnLoc):
-					GlobalScript.DebugScript.add("You are not on a player stable")
-		
