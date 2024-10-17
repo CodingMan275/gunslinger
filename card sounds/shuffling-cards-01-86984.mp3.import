@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://blandlp54m63j"
+path="res://.godot/imported/shuffling-cards-01-86984.mp3-c598a0020a91c85140c2058350d5023b.mp3str"
+
+[deps]
+
+source_file="res://card sounds/shuffling-cards-01-86984.mp3"
+dest_files=["res://.godot/imported/shuffling-cards-01-86984.mp3-c598a0020a91c85140c2058350d5023b.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
