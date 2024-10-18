@@ -236,9 +236,11 @@ func _process(delta: float) -> void:
 	#If 0 end game,
 	#Does not need to be run constantly we can make this
 	#A signal thing, to do later
+	'''
 	for n in numPlayers:
 		if (GlobalScript.PlayerNode[n].Health <= 0):
 			KillAll.rpc()
+			'''
 	pass
 	
 @rpc("any_peer", "call_local")

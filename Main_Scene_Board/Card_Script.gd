@@ -23,6 +23,7 @@ signal DrawEmpty
 #Signal that sends what card was drawn so player can put it in their hadn
 signal DrawnCard
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	
@@ -54,7 +55,7 @@ func _drawTownDeck(): # fucntion that simulates the cards being drawn
 		GlobalScript.DebugScript.add("DiscardArray has  "+str(DiscardArray))
 		GlobalScript.DebugScript.add("DrawArray has  "+str(DrawArray))
 		#adds card to hand
-		DrawnCard.emit(TDCard)
+		DrawnCard.emit(TDCard, false)
 	else:
 		for n in 12:
 			DrawArray.push_front(DiscardArray[n]) #(dont think this works like I think it does) copy contents from discard back to draw
@@ -69,7 +70,8 @@ func _drawTownDeck(): # fucntion that simulates the cards being drawn
 
 func _onStartDraw(player_index: int) -> void:
 	# Draw Gunslinger Card
-	DrawnCard.emit(_draw_card(GunslingerArray, player_index, "Gunslinger"))
+	#Current format Signal.Emit( Gunslinger Card, Is_This_Start_Draw)
+	DrawnCard.emit(_draw_card(GunslingerArray, player_index, "Gunslinger"), true)
 
    #Draw Hired Gun Cards
 	for s in range(3):

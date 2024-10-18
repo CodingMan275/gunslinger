@@ -102,6 +102,7 @@ func _update_turn(x):
 			DrawButton.show()
 			AttackButton.show()
 			HandButton.show()
+			can_move = true
 
 #This function is called when the signal from the Cards Node
 #is emitted, resets action points when draw deck empty
@@ -109,10 +110,15 @@ func _resetAP():
 	action_points = Max_Action_Points
 	
 #When a card is drawn the Cards note emits a signal
-func PutCardInHand(Card):
+func PutCardInHand(Card, FirstDraw):
 	#If its your turn add the drawn card to your hand
-	if(order == Player_ID):
+	if(FirstDraw):
 		PlayerHand.append(Card)
+		
+	if(!FirstDraw):
+		if(order == Player_ID):
+			PlayerHand.append(Card)
+			can_move = false
 	pass
 	
 	
@@ -139,9 +145,10 @@ func MoveMouse():
 					pos = tile_map_node.local_to_map(self.position)
 					print(pos)
 					action_points -= 1
+					DrawButton.hide()
 			elif (Input.is_action_just_pressed("LeftClick") and move_possible() and action_points == 0):
 				GlobalScript.DebugScript.add("You have no more Action Points ")
-			if (!can_move):
-				can_move = true
+		#	if (!can_move):
+			#	can_move = true
 		elif(Input.is_action_just_pressed("LeftClick") and GlobalScript.PlayerNode[order-1].StunTracker != 0):
 			GlobalScript.DebugScript.add("Player is stunned you cannot move")
