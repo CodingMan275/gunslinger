@@ -39,10 +39,12 @@ class Character extends CharacterBody2D:
 		return ActionPoint > 0
 		
 	func can_move():
-		#print(tile_map_node.get_cell_source_id(Vector2(get_global_mouse_position())))
-		return tile_map_node.local_to_map(Vector2(get_global_mouse_position())) in tile_map_node.get_surrounding_cells(tile_map_node.local_to_map(self.global_position)) #and tile_map_node.get_cell_source_id(Vector2(get_global_mouse_position())) != -1
+		return tile_map_node.local_to_map(Vector2(get_global_mouse_position())) in tile_map_node.get_surrounding_cells(tile_map_node.local_to_map(self.global_position)) and tile_map_node.get_cell_source_id(Vector2(get_global_mouse_position())) != -1
 			
 	func can_shoot(char: Character) -> bool:
+		return false
+		
+	func can_brawl() -> bool:
 		return false
 
 	func get_pos() -> Vector2:
@@ -57,17 +59,21 @@ class Character extends CharacterBody2D:
 				self.global_position = Vector2(get_global_mouse_position())
 				pos = tile_map_node.local_to_map(self.position)
 				print(pos)
-				ActionPoint -= 1
 				#DrawButton.hide()
 			elif (Input.is_action_just_pressed("LeftClick") and can_move() and ActionPoint == 0):
 				GlobalScript.DebugScript.add("You have no more Action Points ")
 		
 	func brawl(char: Character) -> void:
+		if can_brawl() and tile_map_node.local_to_map(char.get_pos()) == tile_map_node.local_to_map(pos):
+			attack(char)
+			char.attack(self)
+				
+	func attack(char: Character) -> void:
 		if not has_knife:
 			char.take_damage(base_damage)
 		else:
 			char.take_damage(Knife.get_damage())
-		
+	
 	func shoot(char: Character) -> void:
 		if can_shoot(char):
 			char.take_damage(Gun.get_damage())
