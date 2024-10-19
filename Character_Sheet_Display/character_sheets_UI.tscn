@@ -1,6 +1,140 @@
-[gd_scene load_steps=2 format=3 uid="uid://cutf0gymupvwv"]
+[gd_scene load_steps=19 format=3 uid="uid://cutf0gymupvwv"]
 
 [ext_resource type="Script" path="res://Character_Sheet_Display/character_sheets_ui.gd" id="1_3qc5g"]
+
+[sub_resource type="FontFile" id="FontFile_r7e6y"]
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/10/0/ascent = 0.0
+cache/0/10/0/descent = 0.0
+cache/0/10/0/underline_position = 0.0
+cache/0/10/0/underline_thickness = 0.0
+cache/0/10/0/scale = 1.0
+cache/0/11/0/ascent = 0.0
+cache/0/11/0/descent = 0.0
+cache/0/11/0/underline_position = 0.0
+cache/0/11/0/underline_thickness = 0.0
+cache/0/11/0/scale = 1.0
+cache/0/12/0/ascent = 0.0
+cache/0/12/0/descent = 0.0
+cache/0/12/0/underline_position = 0.0
+cache/0/12/0/underline_thickness = 0.0
+cache/0/12/0/scale = 1.0
+
+[sub_resource type="FontFile" id="FontFile_m1p86"]
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+
+[sub_resource type="FontFile" id="FontFile_hhgt4"]
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+
+[sub_resource type="FontFile" id="FontFile_3q5m4"]
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+
+[sub_resource type="FontFile" id="FontFile_1doox"]
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+
+[sub_resource type="FontFile" id="FontFile_a4ex4"]
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+
+[sub_resource type="FontFile" id="FontFile_lnwms"]
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+
+[sub_resource type="FontFile" id="FontFile_myfds"]
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+
+[sub_resource type="FontFile" id="FontFile_cpxxy"]
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+
+[sub_resource type="FontFile" id="FontFile_qaoxg"]
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+
+[sub_resource type="FontFile" id="FontFile_gp7um"]
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+
+[sub_resource type="FontFile" id="FontFile_6ehyv"]
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+
+[sub_resource type="FontFile" id="FontFile_y14df"]
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+
+[sub_resource type="FontFile" id="FontFile_c7atx"]
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+
+[sub_resource type="FontFile" id="FontFile_1h7o8"]
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+
+[sub_resource type="FontFile" id="FontFile_uylut"]
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+
+[sub_resource type="FontFile" id="FontFile_a1rsy"]
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
 
 [node name="Character Sheets" type="Control"]
 layout_mode = 3
@@ -19,68 +153,56 @@ script = ExtResource("1_3qc5g")
 unique_name_in_owner = true
 
 [node name="Gunslinger 1" type="Panel" parent="Panels"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -434.0
-offset_top = -308.0
-offset_right = 434.0
-offset_bottom = 308.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 84.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.85, 0.85)
 
-[node name="TextEdit" type="TextEdit" parent="Panels/Gunslinger 1"]
+[node name="TextEdit" type="RichTextLabel" parent="Panels/Gunslinger 1"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_readonly_color = Color(1, 1, 1, 1)
-text = "                                                                                Gunslinger 1 – Jon Laramie:
-==============================================================================================
+theme_override_fonts/normal_font = SubResource("FontFile_r7e6y")
+text = "                                           Gunslinger 1 – Jon Laramie:
+================================================
 Description: Hired as a ranch hand in Laramie Jon found himself continually fighting off rustlers and 
-proved so good at it that his boss offered him a permanent job as a hired gun. Eventually Jon went 
-free-lance and drifted around gaining a reputation as an efficient “settler of problems”.
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+proved so good at it that his boss offered him a permanent job as a hired gun. Eventually Jon went free-lance and drifted around gaining a reputation as an efficient “settler of problems”.
+-----------------------------------------------------------------------------------
 Start Location: Own Livery Stable
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------
 Personal Weapons: Rifle, Pistol
----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Weapon Abilities:
  * Rifle – Excellent - 6
  * Pistol –Average - 3
  * Brawl – Good - 5
----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Personal Special Ability: Lariat 
 If in a street space can try and rope another character in the same or adjacent street or boardwalk. 
 If successful that character takes no wound but is automatically stunned. (They are flipped to the floor)
----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Wound Points – 8
----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Action Points - 2
 "
-editable = false
 
 [node name="Gunslinger 2" type="Panel" parent="Panels"]
 visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -372.0
-offset_top = -296.0
-offset_right = 496.0
-offset_bottom = 320.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 84.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.85, 0.85)
 
-[node name="TextEdit" type="TextEdit" parent="Panels/Gunslinger 2"]
+[node name="TextEdit" type="RichTextLabel" parent="Panels/Gunslinger 2"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -89,47 +211,38 @@ offset_left = -1.0
 offset_right = -1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_readonly_color = Color(1, 1, 1, 1)
-text = "                                                                                Gunslinger 2 – The Kid:
-==============================================================================================
-Description: The Kid killed a man while protecting his wounded father when the stage they were travelling 
-was attacked. The local sheriff however did not see it as self-defense and The Kid was forced to flee 
-the county taking with him a reputation as a killer and a bounty on his head. He was forced to grow up 
-quick and really learn how to use his pistols.
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+theme_override_fonts/normal_font = SubResource("FontFile_r7e6y")
+text = "                                              Gunslinger 2 – The Kid:
+================================================
+Description: The Kid killed a man while protecting his wounded father when the stage they were travelling was attacked. The local sheriff however did not see it as self-defense and The Kid was forced to flee the county taking with him a reputation as a killer and a bounty on his head. He was forced to grow up quick and really learn how to use his pistols.
+-----------------------------------------------------------------------------------
 Start Location: Own Livery Stable
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Personal Weapons: Twin Pistols
----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Weapon Abilities:
  * Twin Pistols –Good - 5
  * Brawl – Average - 3
----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Personal Special Ability: Twin Pistol Specialist 
-IWhen firing Twin Pistols at separate targets each die is only -1
----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+When firing Twin Pistols at separate targets each die is only -1
+-----------------------------------------------------------------------------------
 Wound Points – 7
----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Action Points - 2
 "
-editable = false
 
 [node name="Gunslinger 3" type="Panel" parent="Panels"]
 visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -372.0
-offset_top = -296.0
-offset_right = 496.0
-offset_bottom = 320.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 84.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.85, 0.85)
 
-[node name="TextEdit" type="TextEdit" parent="Panels/Gunslinger 3"]
+[node name="TextEdit" type="RichTextLabel" parent="Panels/Gunslinger 3"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -138,47 +251,40 @@ offset_left = -1.0
 offset_right = -1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_readonly_color = Color(1, 1, 1, 1)
-text = "                                                                                Gunslinger 3 – Mad Mike:
-==============================================================================================
+theme_override_fonts/normal_font = SubResource("FontFile_m1p86")
+text = "                                            Gunslinger 3 – Mad Mike:
+================================================
 Description: A huge mountain of a man who really isn’t a gunslinger, more of a pit fighter.
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Start Location: Own Livery Stable
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Personal Weapons: Shotgun, Bowie Knife
----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Weapon Abilities:
  * Shotgun–Average - 3
  * Bowie Knife – Good – 5
 Bowie Knife causes higher wounds than a normal knife and has a greater chance of causing stun 
 (see Calculating if a Character Hits and Wound Damage).
-
----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Personal Special Ability: Hard Headed
 Ignores Stun Results in a Brawl
----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Wound Points – 10
----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Action Points - 2
 "
-editable = false
 
 [node name="Gunslinger 4" type="Panel" parent="Panels"]
 visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -372.0
-offset_top = -296.0
-offset_right = 496.0
-offset_bottom = 320.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 84.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.85, 0.85)
 
-[node name="TextEdit" type="TextEdit" parent="Panels/Gunslinger 4"]
+[node name="TextEdit" type="RichTextLabel" parent="Panels/Gunslinger 4"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -187,16 +293,15 @@ offset_left = -1.0
 offset_right = -1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_readonly_color = Color(1, 1, 1, 1)
-text = "                                                                Gunslinger 4 – Elijah “poker faced” Brown:
-==============================================================================================
-Description: Being a professional poker player Elijah developed an ability to read his opponents, this 
-saved his life on numerous occasions when accused of cheating and guns were drawn.
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+theme_override_fonts/normal_font = SubResource("FontFile_hhgt4")
+text = "                               Gunslinger 4 – Elijah “poker faced” Brown:
+================================================
+Description: Being a professional poker player Elijah developed an ability to read his opponents, this saved his life on numerous occasions when accused of cheating and guns were drawn.
+-----------------------------------------------------------------------------------
 Start Location: Own Livery Stable
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Personal Weapons: Pistol, Knife, Derringer
----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Weapon Abilities:
  * Pistol –Above Average - 4
  * Knife – Above Average – 4
@@ -205,34 +310,28 @@ the Firing. If they Hit the firer does not fire and loses 1 Wound point and is s
  * Derringer – Above Average – 4
 Derringer allows Elijah to Fire whenever he is about to be Brawled. Elijah fires before the Brawl 
 takes place and any effects are applied before the Brawl is worked out.
----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Personal Special Ability: Instinctive Reaction
 If being fired at from the same or an adjacent space, or if they are about to be brawled, Elijah may 
 either use the Knife or Derringer as above, or Roll and Dodge. If they Roll and Dodge immediately place 
 a Stunned Marker on the Elijah counter which means they cannot be fired at or brawled.
----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Wound Points – 7
----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Action Points - 2
 "
-editable = false
 
 [node name="Gunslinger 5" type="Panel" parent="Panels"]
 visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -372.0
-offset_top = -296.0
-offset_right = 496.0
-offset_bottom = 320.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 84.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.85, 0.85)
 
-[node name="TextEdit" type="TextEdit" parent="Panels/Gunslinger 5"]
+[node name="TextEdit" type="RichTextLabel" parent="Panels/Gunslinger 5"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -241,47 +340,39 @@ offset_left = -1.0
 offset_right = -1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_readonly_color = Color(1, 1, 1, 1)
-text = "                                                                Gunslinger 5 – Bob “long strides” Seymour:
-==============================================================================================
-Description: A tall lanky guy who at the end of the war drifted out west with no real idea as to where 
-he was going or why. His military experience and cranky nature seemed to help him find various jobs 
-involving shooting at other people.
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+theme_override_fonts/normal_font = SubResource("FontFile_3q5m4")
+text = "                                 Gunslinger 5 – Bob “long strides” Seymour:
+================================================
+Description: A tall lanky guy who at the end of the war drifted out west with no real idea as to where he was going or why. His military experience and cranky nature seemed to help him find various jobs involving shooting at other people.
+-----------------------------------------------------------------------------------
 Start Location: Own Livery Stable
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Personal Weapons: Rifle, Pistol
----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Weapon Abilities:
  * Rifle –Good - 5
  * Pistol – Good – 5
  * Brawl – Above Average - 4
----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Personal Special Ability: Long Legs
 Once per Turn can Move one space at zero Action Point Cost.
----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Wound Points – 8
----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Action Points - 2
 "
-editable = false
 
 [node name="Gunslinger 6" type="Panel" parent="Panels"]
 visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -372.0
-offset_top = -296.0
-offset_right = 496.0
-offset_bottom = 320.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 84.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.85, 0.85)
 
-[node name="TextEdit" type="TextEdit" parent="Panels/Gunslinger 6"]
+[node name="TextEdit" type="RichTextLabel" parent="Panels/Gunslinger 6"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -290,48 +381,40 @@ offset_left = -1.0
 offset_right = -1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_readonly_color = Color(1, 1, 1, 1)
-text = "                                                                               Gunslinger 6 – Old Smokey:
-==============================================================================================
-Description: Seems just like a regular old guy but years of experience riding as a “shotgun” for Wells Fargo 
-has made him an expert. When he was forcibly retired for getting old, he turned his hand to working for 
-hire as a guard to whoever paid well enough.
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+theme_override_fonts/normal_font = SubResource("FontFile_1doox")
+text = "                                          Gunslinger 6 – Old Smokey:
+================================================
+Description: Seems just like a regular old guy but years of experience riding as a “shotgun” for Wells Fargo has made him an expert. When he was forcibly retired for getting old, he turned his hand to working for hire as a guard to whoever paid well enough.
+-----------------------------------------------------------------------------------
 Start Location: Own Livery Stable
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Personal Weapons: Shotgun, Pistol
----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Weapon Abilities:
  * Shotgun –Excellent- 6
  * Pistol – Above Average- 4
  * Brawl – Below Average - 2
----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Personal Special Ability: Shotgun Specialist
 When using the shotgun does not use the special shotgun collateral damage rules, uses the normal 
 collateral damage rules instead.
----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Wound Points – 7
----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Action Points - 2
 "
-editable = false
 
 [node name="The Preacher" type="Panel" parent="Panels"]
 visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -372.0
-offset_top = -296.0
-offset_right = 496.0
-offset_bottom = 320.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 84.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.85, 0.85)
 
-[node name="TextEdit" type="TextEdit" parent="Panels/The Preacher"]
+[node name="TextEdit" type="RichTextLabel" parent="Panels/The Preacher"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -340,14 +423,13 @@ offset_left = -1.0
 offset_right = -1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_readonly_color = Color(1, 1, 1, 1)
-text = "                                                                                           The Preacher:
-==============================================================================================
-Description: Quiet man with an unknown past but definitely more brutal than the outward appearance of 
-the town pastor would suggest.
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+theme_override_fonts/normal_font = SubResource("FontFile_a4ex4")
+text = "                                                     The Preacher:
+================================================
+Description: Quiet man with an unknown past but definitely more brutal than the outward appearance of the town pastor would suggest.
+-----------------------------------------------------------------------------------
 Start Location: Church, Boot Hill, Doc’s Boardwalk.
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Abilities:
  * Rifle – Poor - 2
  * Pistol – Above average - 4
@@ -355,36 +437,28 @@ Abilities:
  * Shotgun – Average - 3
  * Knife – Below Average - 2
  * Brawl – Above Average - 4
----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Special Ability: Pacify
-Once per game can convince one character (not a gunslinger or the sheriff) who currently occupies the same 
-space as the preacher to renounce violence. That character and the Preacher are immediately moved to the 
-Church. The Preacher may then continue making actions as usual but the pacified character remains in the 
+Once per game can convince one character (not a gunslinger or the sheriff) who currently occupies the same space as the preacher to renounce violence. That character and the Preacher are immediately moved to the Church. The Preacher may then continue making actions as usual but the pacified character remains in the 
 church for the rest of the game. They will defend against a Brawl but otherwise can make no actions 
 for the rest of the game.
----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Wound Points – 6
----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Action Points - 1
 "
-editable = false
 
 [node name="The Doctor" type="Panel" parent="Panels"]
 visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -372.0
-offset_top = -296.0
-offset_right = 496.0
-offset_bottom = 320.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 84.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.85, 0.85)
 
-[node name="TextEdit" type="TextEdit" parent="Panels/The Doctor"]
+[node name="TextEdit" type="RichTextLabel" parent="Panels/The Doctor"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -393,46 +467,40 @@ offset_left = -1.0
 offset_right = -1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_readonly_color = Color(1, 1, 1, 1)
-text = "                                                                                             The Doctor:
-==============================================================================================
+theme_override_fonts/normal_font = SubResource("FontFile_lnwms")
+text = "                                                      The Doctor:
+================================================
 Description: Some would say he was a quack but he is the best there is around these parts.
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Start Location: Doc’s Office, Doc’s Boardwalk, General Store
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Abilities:
  * Rifle – Poor -2 
  * Pistol – Average -3
  * Shotgun – Average -3
  * Knife – Above Average -4
  * Brawl – Poor -2
----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Special Ability: Heal
 Remove 1 Wound Marker from one character who occupies the same space OR 1 Wound Marker 
 from themselves.
----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Wound Points – 5
----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Action Points - 1
 "
-editable = false
 
 [node name="The Sheriff" type="Panel" parent="Panels"]
 visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -372.0
-offset_top = -296.0
-offset_right = 496.0
-offset_bottom = 320.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 84.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.85, 0.85)
 
-[node name="TextEdit" type="TextEdit" parent="Panels/The Sheriff"]
+[node name="TextEdit" type="RichTextLabel" parent="Panels/The Sheriff"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -441,16 +509,14 @@ offset_left = -1.0
 offset_right = -1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_readonly_color = Color(1, 1, 1, 1)
-text = "                                                                                             The Sheriff:
-==============================================================================================
-Description: Involved in all sorts of capers in various towns and counties across the west before being elected 
-Sheriff. Partly thanks to his friend the mayor, but the fact he is cool tempered and pretty handy with a gun 
+theme_override_fonts/normal_font = SubResource("FontFile_myfds")
+text = "                                                        The Sheriff:
+================================================
+Description: Involved in all sorts of capers in various towns and counties across the west before being elected Sheriff. Partly thanks to his friend the mayor, but the fact he is cool tempered and pretty handy with a gun 
 also helped.
 
 Special Sheriff Rules
-The Sheriff starts the game with his own weapons (Rifle, Pistol) they cannot be taken away; but if the Sheriff 
-is a Hired Gun, they can be given additional weapons from the arsenal in the normal way.
+The Sheriff starts the game with his own weapons (Rifle, Pistol) they cannot be taken away; but if the Sheriff is a Hired Gun, they can be given additional weapons from the arsenal in the normal way.
 
 There is no Sheriff Card in the Hired Gun Deck. The Sheriff can only become a hired gun as outlined below:
 If the Sheriff is NOT currently a Hired Gun: If a gunslinger or hired gun intentionally fires at (even if they miss), or Brawls with the sheriff, or if they cause a wound to the sheriff unintentionally then the Sheriff becomes a hired gun for the other side.
@@ -461,44 +527,38 @@ They may swap back and forth any number of times as civilians take wounds.
 NOTE Brawling with a civilian or using a Special Ability on them does not trigger this.
 
 The sheriff may never fire or brawl with a civilian, although they may arrest them using their Special Ability.
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Start Location: Sherriff’s Office, Sheriff’s Boardwalk
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Abilities:
  * Rifle – Good - 5
  * Pistol – Above Average - 4
  * Shotgun – Average - 3
  * Brawl – Good - 5
----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Special Ability: Arrest
 Once per game can arrest one character who occupies the same space as the Sheriff (not a gunslinger or a 
 deputy). That Sheriff and the arrested character are immediately moved to the Sheriff’s Office. The Sheriff may 
 then continue making actions as usual but the arrested character remains in the Sheriff’s Office for the 
 rest of the game. They will defend against a Brawl but otherwise can make no actions for the rest of 
 the game.
----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Wound Points – 8
----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Action Points - 2
 "
-editable = false
 
 [node name="General Store Keeper" type="Panel" parent="Panels"]
 visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -372.0
-offset_top = -296.0
-offset_right = 496.0
-offset_bottom = 320.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 84.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.85, 0.85)
 
-[node name="TextEdit" type="TextEdit" parent="Panels/General Store Keeper"]
+[node name="TextEdit" type="RichTextLabel" parent="Panels/General Store Keeper"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -507,14 +567,13 @@ offset_left = -1.0
 offset_right = -1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_readonly_color = Color(1, 1, 1, 1)
-text = "                                                                                    General Store Keeper:
-==============================================================================================
-Description: Timid man who just wants one or other of the livery stables to leave town so he can get on with 
-his business.
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+theme_override_fonts/normal_font = SubResource("FontFile_cpxxy")
+text = "                                              General Store Keeper:
+================================================
+Description: Timid man who just wants one or other of the livery stables to leave town so he can get on with his business.
+-----------------------------------------------------------------------------------
 Start Location: General Store, General Store’s Boardwalk
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Abilities:
  * Rifle – Below Average - 2
  * Pistol – Below Average -2
@@ -522,33 +581,27 @@ Abilities:
  * Knife – Poor - 1
  * Brawl – Useless
 If Brawled by any character do not roll die Store Keeper automatically takes a Wound and is stunned.
----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Special Ability: Sell Weapons
 If still a civilian and in the General Store with a gunslinger that gunslinger can draw the top two cards from 
 the Weapons Deck (each gunslinger can only do this once per game).
----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Wound Points – 4
----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Action Points - 1
 "
-editable = false
 
 [node name="The Teacher" type="Panel" parent="Panels"]
 visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -372.0
-offset_top = -296.0
-offset_right = 496.0
-offset_bottom = 320.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 84.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.85, 0.85)
 
-[node name="TextEdit" type="TextEdit" parent="Panels/The Teacher"]
+[node name="TextEdit" type="RichTextLabel" parent="Panels/The Teacher"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -557,50 +610,43 @@ offset_left = -1.0
 offset_right = -1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_readonly_color = Color(1, 1, 1, 1)
-text = "                                                                                           The Teacher:
-==============================================================================================
-Description: What’s to say? Well educated by this town’s standards. She teaches the kids basic spelling 
-and math.
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+theme_override_fonts/normal_font = SubResource("FontFile_qaoxg")
+text = "                                                      The Teacher:
+================================================
+Description: What’s to say? Well educated by this town’s standards. She teaches the kids basic spelling and math.
+-----------------------------------------------------------------------------------
 Start Location: School, School Yard
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Personal Weapons: Derringer
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Abilities:
  * Derringer – Special Ability - 4
  * Shotgun – Below Average - 2
  * Brawl – Useless.
 Cannot initiate a brawl, but fires her derringer before the brawl starts. 
----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Special Ability: Derringer Expert
 The Derringer allows her to Fire first whenever she is Brawled. She fires before the Brawl takes place and 
 any effects are applied before the Brawl is worked out. If she does not hit her attacker, she automatically 
 loses the Brawl. Do not roll die Teacher automatically loses a Wound and is stunned.
 She may also Fire the Derringer as her normal action but she can only target a character in the same space.
----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Wound Points – 3
----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Action Points - 1
 "
-editable = false
 
 [node name="The Town Drunk" type="Panel" parent="Panels"]
 visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -372.0
-offset_top = -296.0
-offset_right = 496.0
-offset_bottom = 320.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 84.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.85, 0.85)
 
-[node name="TextEdit" type="TextEdit" parent="Panels/The Town Drunk"]
+[node name="TextEdit" type="RichTextLabel" parent="Panels/The Town Drunk"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -609,13 +655,13 @@ offset_left = -1.0
 offset_right = -1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_readonly_color = Color(1, 1, 1, 1)
-text = "                                                                                        The Town Drunk:
-==============================================================================================
+theme_override_fonts/normal_font = SubResource("FontFile_gp7um")
+text = "                                                   The Town Drunk:
+================================================
 Description: Once a top bounty hunter but now a drunken bum.
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Start Location: Saloon, Saloon’s Boardwalk, Doc’s Boardwalk, Sherriff’s Office (just released from the jail)
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Abilities: (assuming they did not take a drink or a swig)
  * Rifle – Above Average - 4
  * Pistol – Above Average -4
@@ -623,37 +669,31 @@ Abilities: (assuming they did not take a drink or a swig)
  * Shotgun – Average -3
  * Knife – Good -5
  * Brawl – Above Average - 4
----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Special Ability: Variable Action Points
 The drunks Action Points in a turn depend on a Die Roll.
 Whenever the Town Drunk card is drawn, even if still a Civilian, Roll a die, 
 On a 1 or 2 they do nothing this Turn but Take a Drink instead. Remove one Wound marker if they have any. 
 They become lucky; minus 1 to the chance of hitting them when Firing at them but not if Brawled.
 On a 3 or 4 they Take a Swig
----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Action Points - 1
 Firing has a minus 1 to hit, Brawling has a minus 1 to hit and minus 1 damage
 Action Points - 2
----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Wound Points – 6"
-editable = false
 
 [node name="Mountain Man & Prospector" type="Panel" parent="Panels"]
 visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -372.0
-offset_top = -296.0
-offset_right = 496.0
-offset_bottom = 320.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 84.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.85, 0.85)
 
-[node name="TextEdit" type="TextEdit" parent="Panels/Mountain Man & Prospector"]
+[node name="TextEdit" type="RichTextLabel" parent="Panels/Mountain Man & Prospector"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -662,13 +702,13 @@ offset_left = -1.0
 offset_right = -1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_readonly_color = Color(1, 1, 1, 1)
-text = "                                                                             Mountain Man / Prospector:
-==============================================================================================
+theme_override_fonts/normal_font = SubResource("FontFile_6ehyv")
+text = "                                          Mountain Man / Prospector:
+================================================
 Description: Rumored to have fought off a grizzly armed only with a spoon.
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Start Location: Saloon, Saloon’s Boardwalk, Bank’s Boardwalk, Sherriff’s Boardwalk
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Abilities: 
  * Rifle – Above Average - 5
  * Pistol –Average -3
@@ -676,7 +716,7 @@ Abilities:
  * Shotgun – Average -3
  * Knife – Good - 5
  * Brawl – Good - 5
----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Special Ability: Buffalo Gun & Bowie Knife
 If given a Rifle then it is a Sharp’s Buffalo Gun, If Given a Knife it is a Bowie Knife, both of these cause higher 
 wounds than a normal rifle or knife and have a greater chance of causing stun (see Calculating if a Character 
@@ -684,31 +724,25 @@ Hits and Wound Damage).
 The Sharp’s unlike the other rifles in the game, is a single shot weapon and must be reloaded between shots. 
 When it is fired place the Reload Marker on the Character’s Counter. It can be removed using the Reload 
 Rifle Action.
----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Special Turn Actions 
 May Move and Brawl at cost of 1 action point.
----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Wound Points – 8
----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Action Points - 1"
-editable = false
 
 [node name="Barkeep" type="Panel" parent="Panels"]
 visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -372.0
-offset_top = -296.0
-offset_right = 496.0
-offset_bottom = 320.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 84.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.85, 0.85)
 
-[node name="TextEdit" type="TextEdit" parent="Panels/Barkeep"]
+[node name="TextEdit" type="RichTextLabel" parent="Panels/Barkeep"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -717,46 +751,40 @@ offset_left = -1.0
 offset_right = -1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_readonly_color = Color(1, 1, 1, 1)
-text = "                                                                                               Barkeep:
-==============================================================================================
+theme_override_fonts/normal_font = SubResource("FontFile_y14df")
+text = "                                                         Barkeep:
+================================================
 Description: Just your average kind of guy, although he has unrequited feelings for the Teacher.
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Start Location: Saloon, School Yard, School
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Abilities: 
  * Rifle –Average - 3
  * Pistol –Average - 3
  * Shotgun – Average - 3
  * Brawl – Average - 3
----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Special Ability: Puppy Love
 If the Teacher is revealed as a hired gun the Barkeep automatically becomes a hired gun on that side, 
 swapping sides if needed. 
 If they switch sides return any weapons they have to the original gunslinger and immediately relocate the 
 Barkeep to the Saloon.
----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Wound Points – 4
----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Action Points - 1"
-editable = false
 
 [node name="Ranch Hand" type="Panel" parent="Panels"]
 visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -372.0
-offset_top = -296.0
-offset_right = 496.0
-offset_bottom = 320.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 84.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.85, 0.85)
 
-[node name="TextEdit" type="TextEdit" parent="Panels/Ranch Hand"]
+[node name="TextEdit" type="RichTextLabel" parent="Panels/Ranch Hand"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -765,47 +793,41 @@ offset_left = -1.0
 offset_right = -1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_readonly_color = Color(1, 1, 1, 1)
-text = "                                                                                           Ranch Hand:
-==============================================================================================
+theme_override_fonts/normal_font = SubResource("FontFile_c7atx")
+text = "                                                      Ranch Hand:
+================================================
 Description: Just your average kind of cowpoke.
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Start Location: Anywhere except one of the Livery Stables, the School or the School Yard
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Abilities: 
  * Rifle –Average - 3
  * Pistol –Average - 3
  * Shotgun – Average - 3
  * Brawl – Average - 3
----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Special Ability: Lariat
 If in a street space can try and rope another character in the same or adjacent street or boardwalk. 
 If successful that character takes no wound but is automatically stunned. (They are flipped to the floor)
----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Special Turn Actions 
 May Move then Fire at cost of 1 Action Point
----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Wound Points – 5
----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Action Points - 1"
-editable = false
 
 [node name="Bounty Hunter" type="Panel" parent="Panels"]
 visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -372.0
-offset_top = -296.0
-offset_right = 496.0
-offset_bottom = 320.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 84.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.85, 0.85)
 
-[node name="TextEdit" type="TextEdit" parent="Panels/Bounty Hunter"]
+[node name="TextEdit" type="RichTextLabel" parent="Panels/Bounty Hunter"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -814,16 +836,15 @@ offset_left = -1.0
 offset_right = -1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_readonly_color = Color(1, 1, 1, 1)
-text = "                                                                                         Bounty Hunter:
-==============================================================================================
-Description: A mean, ornery, cold hunter of men for money. Just what you need to keep trouble down 
-in the town. Just hope he is not looking for you.
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+theme_override_fonts/normal_font = SubResource("FontFile_1h7o8")
+text = "                                                     Bounty Hunter:
+================================================
+Description: A mean, ornery, cold hunter of men for money. Just what you need to keep trouble down in the town. Just hope he is not looking for you.
+-----------------------------------------------------------------------------------
 Start Location: Saloon, Saloon’s Boardwalk, Doc’s Boardwalk, Sherriff’s Office
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Personal Weapons: Knife
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Abilities: 
  * Rifle – Above Average - 4
  * Pistol – Above Average - 4
@@ -831,34 +852,28 @@ Abilities:
  * Shotgun – Average -3
  * Knife – Special Ability - 4
  * Brawl – Above Average - 4
----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Special Ability: Knife Thrower
 If the Bounty Hunter is fired at from the same or an adjacent space, they may throw their knife. Before 
 calculating the Firing. If they Hit the firer does not fire and loses 1 Wound point. They are not stunned though. 
 They cannot use this ability against the Lariat.
 The Bounty Hunter automatically recovers the knife after throwing whether or not he hits the target.
----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Wound Points – 7
----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Action Points - 2"
-editable = false
 
 [node name="Saloon Girl" type="Panel" parent="Panels"]
 visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -372.0
-offset_top = -296.0
-offset_right = 496.0
-offset_bottom = 320.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 84.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.85, 0.85)
 
-[node name="TextEdit" type="TextEdit" parent="Panels/Saloon Girl"]
+[node name="TextEdit" type="RichTextLabel" parent="Panels/Saloon Girl"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -867,20 +882,20 @@ offset_left = -1.0
 offset_right = -1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_readonly_color = Color(1, 1, 1, 1)
-text = "                                                                                            Saloon Girl:
-==============================================================================================
+theme_override_fonts/normal_font = SubResource("FontFile_uylut")
+text = "                                                      Saloon Girl:
+================================================
 Description: Ostensibly a dancer and server in the saloon but she is also known to administer comfort to the 
 needy – for a price!
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Start Location: Saloon, Saloon’s Boardwalk
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Abilities: 
  * Pistol – Below Average - 2
  * Shotgun – Below Average - 2
  * Knife – Above Average – 4     Automatically starts the game with one.
  * Brawl – Cannot initiate a brawl but counts as having a knife if someone Brawls her.
----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Special Ability: Administer Comfort
 When in the Saloon or on the Saloon’s Boardwalk may automatically remove herself and another character, 
 except the Teacher, occupying the same space as herself temporarily from the game. Remove both counters 
@@ -888,28 +903,22 @@ from the game then roll a die and place that many comfort counters on them (Use 
 time the Saloon Girl card is drawn from the Turn Deck remove a counter. When the last counter is removed 
 immediately place both counters into the Saloon. If the removed character’s card is drawn, they do not take 
 any actions. Play passes to the other player.
----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Wound Points – 3
----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Action Points - 1"
-editable = false
 
 [node name="The Bank Manager" type="Panel" parent="Panels"]
 visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -372.0
-offset_top = -296.0
-offset_right = 496.0
-offset_bottom = 320.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 84.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.85, 0.85)
 
-[node name="TextEdit" type="TextEdit" parent="Panels/The Bank Manager"]
+[node name="TextEdit" type="RichTextLabel" parent="Panels/The Bank Manager"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -918,19 +927,19 @@ offset_left = -1.0
 offset_right = -1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_readonly_color = Color(1, 1, 1, 1)
-text = "                                                                                     The Bank Manager:
-==============================================================================================
+theme_override_fonts/normal_font = SubResource("FontFile_a1rsy")
+text = "                                                 The Bank Manager:
+================================================
 Description: Runs and administers the town’s bank and is very security conscious.
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Start Location: The Bank
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Abilities: 
  * Rifle – Average - 3
  * Pistol –Average - 3
  * Shotgun – Above Average - 4
  * Brawl – Below Average - 2
----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Special Ability: Security Conscious
 If the Bank Manager is not in The Bank no-one else can enter The Bank (the door is firmly locked). If the 
 Bank Manager leaves the Bank anyone else in The Bank is immediately moved to the Bank’s Boardwalk.
@@ -939,41 +948,57 @@ inside. He can force characters out of the Bank before doing so. No-one can now 
 the Bank Manger unlocks the door. If the Bank Manager is removed from the game while the door is locked 
 for any reason the door remains permanently locked for the rest of the game, even if there is someone in 
 the bank.
----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Wound Points – 4
----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 Action Points - 1"
-editable = false
 
 [node name="Close_Button" type="Button" parent="."]
 layout_mode = 1
-anchors_preset = 7
+anchors_preset = 8
 anchor_left = 0.5
-anchor_top = 1.0
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -373.0
-offset_top = 256.0
-offset_right = -323.0
-offset_bottom = 287.0
+anchor_bottom = 0.5
+offset_left = -129.0
+offset_top = 102.0
+offset_right = -79.0
+offset_bottom = 133.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
 text = "Close"
 
 [node name="Next Button" type="Button" parent="."]
-layout_mode = 0
-offset_left = 48.0
-offset_top = 241.0
-offset_right = 93.0
-offset_bottom = 272.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 29.0
+offset_top = 101.0
+offset_right = 74.0
+offset_bottom = 132.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
 text = "Next"
 
 [node name="Previous Button" type="Button" parent="."]
-layout_mode = 0
-offset_left = -116.0
-offset_top = 241.0
-offset_right = -41.0
-offset_bottom = 272.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -53.0
+offset_top = 101.0
+offset_right = 22.0
+offset_bottom = 132.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
 text = "Previous"
 
 [connection signal="pressed" from="Close_Button" to="." method="_on_button_pressed"]

@@ -1,7 +1,8 @@
-Button
-Window
+RichTextLabel
 TextEdit
 Panel
+Window
+Button
 HSlider
 Label
 Control
@@ -11,4 +12,3 @@ Node
 OptionButton
 CheckBox
 VBoxContainer
-MarginContainer
