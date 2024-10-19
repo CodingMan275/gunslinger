@@ -1,10 +1,16 @@
 RichTextLabel
 TextEdit
+VBoxContainer
+Label
+Container
+ScrollContainer
+TextEdit
+Button
+Window
 Panel
 Window
 Button
 HSlider
-Label
 Control
 LinkButton
 CheckButton

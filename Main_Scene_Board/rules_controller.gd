@@ -49,18 +49,20 @@ func _ready() -> void:
 	if(!GlobalScript.SinglePlay):
 		for i in GlobalScript.PlayerInfo:
 			MultiPlay(i, index)
+			if(multiplayer.is_server()):
+				CardDecks._onStartDraw(index)
 			index += 1
 	else:
 		for i in numPlayers:
 			SinglePlay(i, index)
+			if(multiplayer.is_server()):
+				CardDecks._onStartDraw(index)
 			index += 1
 
 	#Setting the turn order 1 to start
 	#Redundant but safe
 	Turn_Order = 1
 	
-	if(multiplayer.is_server()):
-		CardDecks._onStartDraw(index)
 	
 	#Ok so basically what this does is we go through the the Global Script
 	#to to go through all the players info starting at Player 1, we
@@ -101,9 +103,9 @@ func MultiPlay(i , index):
 		if index == 0:
 			#Player 1 information
 			#Set player 1 at position 0,0 on the tile map
-			currentPlayer.position = get_node("../Layer0").map_to_local(Vector2 (5,5))
+			currentPlayer.position = get_node("../Layer0").map_to_local(Vector2 (2,4))
 			#Ask michael, sets player node position to somewhere
-			GlobalScript.PlayerNode[index].pos = Vector2 (5,5)
+			GlobalScript.PlayerNode[index].pos = Vector2 (2,4)
 			GlobalScript.PlayerNode[index].Startpos = Vector2(1,1)
 			#Set player label to the name they put in (not needed but fun)
 			currentPlayer.LabelName = GlobalScript.PlayerInfo[i].name
@@ -236,11 +238,11 @@ func _process(delta: float) -> void:
 	#If 0 end game,
 	#Does not need to be run constantly we can make this
 	#A signal thing, to do later
-	'''
-	for n in numPlayers:
+	
+	for n in GlobalScript.PlayerNode.size():
 		if (GlobalScript.PlayerNode[n].Health <= 0):
 			KillAll.rpc()
-			'''
+			
 	pass
 	
 @rpc("any_peer", "call_local")
@@ -284,12 +286,13 @@ func Attack() -> void:
 	var Attacked = false;
 	for n in numPlayers:
 		#If its your turned, you haven't atacked, youre not stunned, go
-		if(n+1 != Turn_Order && !Attacked && GlobalScript.PlayerNode[Turn_Order-1].StunTracker ==0):
+		if(n+1 != Turn_Order && !Attacked && GlobalScript.PlayerNode[Turn_Order-1].StunTracker ==0 && GlobalScript.PlayerNode[Turn_Order-1].can_act):
 			# Current player position checking to match A players position
 			if(DistCheck(n) && GlobalScript.PlayerNode[n].Health != 0 && GlobalScript.PlayerNode[Turn_Order -1].action_points !=0 && GlobalScript.PlayerNode[n].StunTracker == 0):
 				Attacked = true;
 				#Cost an action point
 				GlobalScript.PlayerNode[Turn_Order -1].action_points -= 1
+				DrawButton.hide()
 				#Random attack ccheck
 				var Attack = (randi()%6 + 1)
 				if(Attack < 3): # Miss
@@ -304,15 +307,18 @@ func Attack() -> void:
 			#The playerer youre trying to attack is stunned, cant attack them
 			elif(GlobalScript.PlayerNode[n].StunTracker != 0):
 				GlobalScript.DebugScript.add("Player is Stunned, you cannot attack ")
+			elif(!DistCheck(n)):
+				GlobalScript.DebugScript.add("Target Not in Range")
+			
+		elif(!GlobalScript.PlayerNode[Turn_Order-1].can_act):
+			GlobalScript.DebugScript.add("You cannot act because you drew a card")
+		#Youre stunned silly
+		elif(GlobalScript.PlayerNode[n].StunTracker != 0):
+			GlobalScript.DebugScript.add("You are Stunned, you cannot attack ")
 		#You have no action points, stop that
 		elif(GlobalScript.PlayerNode[Turn_Order -1].action_points == 0):
 			GlobalScript.DebugScript.add("You have no more Action Points ")
 		#Not in range silly
-		elif(!DistCheck(n)):
-			GlobalScript.DebugScript.add("Target Not in Range")
-		#Youre stunned silly
-		elif(GlobalScript.PlayerNode[n].StunTracker != 0):
-			GlobalScript.DebugScript.add("You are Stunned, you cannot attack ")
 
 #Check the distance from you and the player youre looking at
 func DistCheck(player) -> bool:
@@ -336,8 +342,10 @@ func DistCheck(player) -> bool:
 
 #Throw dynamite, needs work
 func Dynamite():
-	if(StableCheck() && GlobalScript.PlayerNode[Turn_Order -1].action_points !=0):
+	if(StableCheck() && GlobalScript.PlayerNode[Turn_Order -1].action_points !=0 && GlobalScript.PlayerNode[Turn_Order-1].can_act):
 		KillAll.rpc()
+	elif(!GlobalScript.PlayerNode[Turn_Order-1].can_act):
+		GlobalScript.DebugScript.add("You cannot act because you drew a card")
 	elif(GlobalScript.PlayerNode[Turn_Order -1].action_points == 0):
 		GlobalScript.DebugScript.add("You have no more Action Points ")
 	elif(!StableCheck()):

@@ -37,7 +37,7 @@ extends CharacterBody2D
 #So the player knows what order it is
 var order = 0
 #determines whether the player can currently move
-var can_move = true
+@export var can_act = true
 #Player hand
 #This could be further broken down into Weapon array, Town, Gunslinger, ect
 var PlayerHand : Array
@@ -79,7 +79,7 @@ func _on_ready() -> void:
 func _update_turn(x):
 	#This if statement is probably not needed but it just ensures
 	#Only the correct peer will be updated when the signal is recieved
-	if $MultiplayerSynchronizer.get_multiplayer_authority() == multiplayer.get_unique_id():
+	if ($MultiplayerSynchronizer.get_multiplayer_authority() == multiplayer.get_unique_id() || GlobalScript.SinglePlay):
 		#Order is updated from the signal sent by the parent class, rules controller
 		#Could be rewritten as order = rules_scene.Turn_Order
 		order = x
@@ -92,7 +92,7 @@ func _update_turn(x):
 			HandButton.hide()
 			DynamiteButton.hide()
 			#Removes the ability for the player to move
-			can_move = false
+			can_act = false
 		else:
 			#Set action points back to max
 			#action_points = Max_Action_Points
@@ -102,7 +102,7 @@ func _update_turn(x):
 			DrawButton.show()
 			AttackButton.show()
 			HandButton.show()
-			can_move = true
+			can_act = true
 
 #This function is called when the signal from the Cards Node
 #is emitted, resets action points when draw deck empty
@@ -118,7 +118,8 @@ func PutCardInHand(Card, FirstDraw):
 	if(!FirstDraw):
 		if(order == Player_ID):
 			PlayerHand.append(Card)
-			can_move = false
+			can_act = false
+			DrawButton.hide()
 	pass
 	
 	
@@ -139,7 +140,7 @@ func MoveMouse():
 	#who owns this player instance can move it
 	if ($MultiplayerSynchronizer.get_multiplayer_authority() == multiplayer.get_unique_id() || GlobalScript.SinglePlay):
 		if(Player_ID == order && GlobalScript.PlayerNode[order-1].StunTracker == 0):
-			if Input.is_action_just_pressed("LeftClick") and can_move and action_points > 0:
+			if Input.is_action_just_pressed("LeftClick") and can_act and action_points > 0:
 				if  move_possible():
 					self.global_position = Vector2(get_global_mouse_position())
 					pos = tile_map_node.local_to_map(self.position)
@@ -148,7 +149,7 @@ func MoveMouse():
 					DrawButton.hide()
 			elif (Input.is_action_just_pressed("LeftClick") and move_possible() and action_points == 0):
 				GlobalScript.DebugScript.add("You have no more Action Points ")
-		#	if (!can_move):
-			#	can_move = true
+		#	if (!can_act):
+			#	can_act = true
 		elif(Input.is_action_just_pressed("LeftClick") and GlobalScript.PlayerNode[order-1].StunTracker != 0):
 			GlobalScript.DebugScript.add("Player is stunned you cannot move")

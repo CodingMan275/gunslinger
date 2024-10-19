@@ -4,6 +4,8 @@ extends Node2D
 #Peer can be both a client or host, its just who you are
 var peer
 
+@onready var property_container = $CanvasLayer/Container/VBoxContainer
+
 
 #This is what the player will be, whatever the player controller is plug in here
 @export var player_scene : PackedScene
@@ -21,6 +23,8 @@ func _ready():
 	#Server and clients called
 func PlayerConnected(ID):
 	print("Player Connected " + str(ID))
+	if(multiplayer.is_server()):
+		$CanvasLayer/Start.show()
 	#Serber and slients called
 func PlayerDisconnected(ID):
 	print("Player Disconnected " + str(ID))
@@ -30,6 +34,11 @@ func ServerConnected():
 	#Calling the host to take this peer's infor and then disperse it
 	#Format for rpc (Host ID, Peer Name, Peer Unique ID)
 	SendPlayerInfo.rpc_id(1, $CanvasLayer/LineEdit2.text, multiplayer.get_unique_id())
+	# Need to get the host's title but idk how
+	'''
+	add($CanvasLayer/LineEdit2.text)
+	'''
+	add.rpc($CanvasLayer/LineEdit2.text)
 	#Ony called from clients
 func ServerFailed():
 	print("Failed to connect")
@@ -56,10 +65,12 @@ func _on_host_pressed() -> void:
 	#Makes the host now also a peer so it can actually play the game
 	multiplayer.set_multiplayer_peer(peer)	
 	SendPlayerInfo($CanvasLayer/LineEdit2.text, multiplayer.get_unique_id())
-	$CanvasLayer/Start.show()
+	add.rpc($CanvasLayer/LineEdit2.text)
+	#$CanvasLayer/Start.show()
 	$CanvasLayer/Host.hide()
 	$CanvasLayer/Join.hide()
 	$CanvasLayer/LineEdit.hide()
+	$CanvasLayer/Container.show()
 
 #Joining someone who is hosting the game
 #Joining someone who is hosting the game
@@ -80,7 +91,10 @@ func _on_join_pressed() -> void:
 	$CanvasLayer/Host.hide()
 	$CanvasLayer/Join.hide()
 	$CanvasLayer/LineEdit.hide()
+	$CanvasLayer/Container.show()
 	
+	for i in GlobalScript.PlayerInfo:
+		print(GlobalScript.PlayerInfo[i])
 	#Canvas no longer needed
 #	$CanvasLayer.hide()
 
@@ -88,6 +102,20 @@ func _on_start_pressed() -> void:
 	GameSceneStart.rpc()
 	pass # Replace with function body.
 	
+
+
+@rpc("any_peer","call_local")
+func add(title : String):
+	if title.length() < 1:
+		title = str("Player")
+	var property
+	property = property_container.find_child(title,true)
+	property = Label.new()
+	property_container.add_child(property)
+	property.text = title
+
+
+
 #Creating the game scene on start
 #This rpc will send out to all peers and the local machine, everyone will do this function
 @rpc("any_peer","call_local")
