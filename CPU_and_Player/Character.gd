@@ -4,6 +4,8 @@ class Character extends CharacterBody2D:
 	#var ID: int
 	var Health : int = 7
 	
+	var owning_player: int #assigned
+	
 	var SpawnLoc : Vector2
 	var pos : Vector2
 
@@ -38,44 +40,54 @@ class Character extends CharacterBody2D:
 	func can_act() -> bool:
 		return ActionPoint > 0
 		
-	func can_move():
-		return tile_map_node.local_to_map(Vector2(get_global_mouse_position())) in tile_map_node.get_surrounding_cells(tile_map_node.local_to_map(self.global_position)) and tile_map_node.get_cell_source_id(Vector2(get_global_mouse_position())) != -1
+	func is_owning_player(player) -> bool:
+		return owning_player == player
+	
+	func can_move(player):
+		return false
 			
-	func can_shoot(char: Character) -> bool:
+	func move_possible() -> bool:
+		return tile_map_node.local_to_map(Vector2(get_global_mouse_position())) in tile_map_node.get_surrounding_cells(tile_map_node.local_to_map(self.global_position)) and tile_map_node.get_cell_source_id(Vector2(get_global_mouse_position())) != -1
+		
+	func can_shoot(player):
 		return false
 		
-	func can_brawl() -> bool:
+	func can_brawl(player) -> bool:
 		return false
 
 	func get_pos() -> Vector2:
 		return pos
 		
-	func special_ability() -> void:
+	func special_ability(ability) -> void: #takes a lambda that specifies the ability in question
 		pass
 		
-	func move():
-		if Input.is_action_just_pressed("LeftClick") and ActionPoint > 0:
-			if  can_move():
+	func character_in_range(char: Character) -> bool:
+		return false #create function body later
+		
+	#takes the player attempting to make the move for reasons that are applicable in later child classes
+	func move(player):
+		if Input.is_action_just_pressed("LeftClick") and ActionPoint > 0 and move_possible():
+			if  move_possible():
 				self.global_position = Vector2(get_global_mouse_position())
 				pos = tile_map_node.local_to_map(self.position)
 				print(pos)
 				#DrawButton.hide()
-			elif (Input.is_action_just_pressed("LeftClick") and can_move() and ActionPoint == 0):
+			elif (Input.is_action_just_pressed("LeftClick") and can_move(player) and ActionPoint == 0):
 				GlobalScript.DebugScript.add("You have no more Action Points ")
 		
-	func brawl(char: Character) -> void:
-		if can_brawl() and tile_map_node.local_to_map(char.get_pos()) == tile_map_node.local_to_map(pos):
+	func brawl(char: Character, player) -> void:
+		if can_brawl(player) and tile_map_node.local_to_map(char.get_pos()) == tile_map_node.local_to_map(pos):
 			attack(char)
 			char.attack(self)
 				
-	func attack(char: Character) -> void:
+	func attack(char: Character) -> void: #consider adding something for if character is stunned
 		if not has_knife:
 			char.take_damage(base_damage)
 		else:
 			char.take_damage(Knife.get_damage())
 	
-	func shoot(char: Character) -> void:
-		if can_shoot(char):
+	func shoot(char: Character, player) -> void:
+		if can_shoot(player) and character_in_range(char):
 			char.take_damage(Gun.get_damage())
 			
 		
