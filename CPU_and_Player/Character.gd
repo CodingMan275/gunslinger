@@ -14,7 +14,7 @@ class Character extends CharacterBody2D:
 	var ActionPoint = MAX_ACION_PONTS
 	var AttackRange: int = 2
 	
-	var is_stunned: bool = false
+	var stun_counter: int = 0
 	
 	var Gun = WeaponScript.Weapon.new()
 	var Knife = WeaponScript.Weapon.new()
@@ -74,9 +74,13 @@ class Character extends CharacterBody2D:
 				#DrawButton.hide()
 			elif (Input.is_action_just_pressed("LeftClick") and can_move(player) and ActionPoint == 0):
 				GlobalScript.DebugScript.add("You have no more Action Points ")
+				
+	func teleport(new_pos: Vector2):
+		pos = new_pos
+		self.global_position = tile_map_node.map_to_local(new_pos)
 		
 	func brawl(char: Character, player) -> void:
-		if can_brawl(player) and tile_map_node.local_to_map(char.get_pos()) == tile_map_node.local_to_map(pos):
+		if can_brawl(player) and tile_map_node.local_to_map(char.get_pos()) == tile_map_node.local_to_map(pos) and not char.get_is_stunned():
 			attack(char)
 			char.attack(self)
 				
@@ -87,12 +91,19 @@ class Character extends CharacterBody2D:
 			char.take_damage(Knife.get_damage())
 	
 	func shoot(char: Character, player) -> void:
-		if can_shoot(player) and character_in_range(char):
+		if can_shoot(player) and character_in_range(char) and not char.get_is_stunned():
 			char.take_damage(Gun.get_damage())
 			
 		
-	func become_stunned():
-		is_stunned = true
+	func become_stunned(stun_time: int) -> void:
+		stun_counter = stun_time
+		
+	func get_is_stunned():
+		return stun_counter > 0
+		
+	func decrement_stun_counter() -> void:
+		if stun_counter > 0:
+			stun_counter -= 1
 		
 	func take_damage(damage: int):
 		Health -= damage

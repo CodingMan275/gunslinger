@@ -23,12 +23,12 @@ func reveal_hired_gun() -> void:
 	claim_revealed = true
 
 func can_shoot(player) -> bool:
-	if claim_revealed and is_owning_player(player) and has_gun:
+	if claim_revealed and is_owning_player(player) and has_gun and not get_is_stunned():
 		return true
 	return false
 				
 func can_brawl(player) -> bool:
-	if claim_revealed and is_owning_player(player):
+	if claim_revealed and is_owning_player(player) and not get_is_stunned():
 		return true
 	return false
 	
