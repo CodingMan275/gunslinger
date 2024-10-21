@@ -12,9 +12,3 @@ Window
 Button
 HSlider
 Control
-LinkButton
-CheckButton
-Node
-OptionButton
-CheckBox
-VBoxContainer

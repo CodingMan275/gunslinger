@@ -25,7 +25,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 10
 tab_alignment = 1
-current_tab = 1
+current_tab = 2
 
 [node name="Sound" type="TabBar" parent="TabContainer"]
 visible = false
@@ -113,6 +113,7 @@ text = "Apply Changes
 "
 
 [node name="FullScreen" type="TabBar" parent="TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
@@ -140,10 +141,56 @@ size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 25
 text = "Full Screen toggle"
 
+[node name="How to Play" type="TabBar" parent="TabContainer"]
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/How to Play"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/How to Play/MarginContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[center][b][u]Gunslinger Player Guide[/u][/b][/center]
+
+[u]Objective:[/u]
+The objective of Gunslinger is to reach one of the tiles adjacent (tile shares a side and vertex point) your opponent’s stable with your Gunslinger (character type) and destroy their stable with one of your special abilities. Alternatively, you can also eliminate all of your opponent's controlled characters. 
+
+[u]Setup:[/u]
+1. Determine which player goes first by coin flip (P1 or P2).
+
+2. P1 then selects or randomly draws 1 Gunslinger out of the 6 with P2 doing the same with the remaining 5 cards. Gunslingers start at any 1 of the 4 tiles that make up their respective stable (select one if not decided yet).
+  - The remaining 4 are taken out of play
+
+3. P1 is given/draws 5 cards from the “Weapon” deck and 3 from the “Hired Gun” deck (3 cards) to add to their hand. Repeat for P2 after P1 has finished.
+  - Remaining cards from the 2 decks are put on the side for later use
+
+4. P1 draws a card from the Townsfolk deck and places the associated character on 1 of the 3 board locations (any 1 of the tiles that make up that location) assigned to that character. P2 then does the same with the next drawn card/character. This repeats until the all characters have been placed.
+
+5. Repeat the previous step with 4 out of the 6 pieces of cover.
+Wagon must be placed on a street tile (blank/unnamed tile)
+
+[u]Player Turn Actions:[/u]
+1. P1 decides to either use their Gunslinger or draw a card from the Townsfolk deck
+  a. Can not use Gunslinger and draw on the same turn
+
+2. (a) Gunslinger or (b) Card
+  a. You may choose to spend as many of the Gunslingers current AP to perform any of his actions
+"
+
 [node name="Report" type="TabBar" parent="TabContainer"]
 visible = false
 layout_mode = 2
-metadata/_tab_index = 2
+metadata/_tab_index = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="TabContainer/Report"]
 layout_mode = 1
