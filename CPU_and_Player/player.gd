@@ -7,11 +7,14 @@ extends CharacterBody2D
 @export var pos : Vector2
 @export var Startpos : Vector2  #Stable position to use dynamite
 @export var Health = 20
+@export var Name : String
 #determines the current number of Action Points
 @export var action_points = 0
 @export var WeaponDmg = 4
 @export var WeaponStun = 1
+@export var WeaponRange = 2
 @export var StunTracker = 0
+@export var FreeBrawl = true;
 
 #Player is spawned by rules controller as a child of it
 #Getting the parent node which has the emitters we need
@@ -25,7 +28,8 @@ extends CharacterBody2D
 
 @onready var DrawButton = get_parent().DrawButton
 
-@onready var AttackButton = get_parent().AttackButton
+@onready var RangeButton = get_parent().RangeButton
+@onready var BrawlButton = get_parent().BrawlButton
 
 @onready var HandButton = get_parent().HandButton
 
@@ -40,7 +44,7 @@ var order = 0
 @export var can_act = true
 #Player hand
 #This could be further broken down into Weapon array, Town, Gunslinger, ect
-var PlayerHand : Array
+@export var PlayerHand : Array
 
 #For node path to tile map
 var tile_map_node
@@ -59,7 +63,6 @@ func _on_ready() -> void:
 	#Format Node_Emitter . Signal_From_Emmiter_Node . Connect( Function you want to run in this scene)
 	rule_scene.order.connect(_update_turn)
 	
-	rule_scene.ShowHand.connect(_showHand)
 	
 	CardNodeDeck.DrawEmpty.connect(_resetAP)
 	
@@ -88,7 +91,8 @@ func _update_turn(x):
 			#Hide the end turn button so it can not be used
 			EndTurnLabel.hide()
 			DrawButton.hide()
-			AttackButton.hide()
+			RangeButton.hide()
+			BrawlButton.hide()
 			HandButton.hide()
 			DynamiteButton.hide()
 			#Removes the ability for the player to move
@@ -100,9 +104,11 @@ func _update_turn(x):
 			DynamiteButton.show()
 			EndTurnLabel.show()
 			DrawButton.show()
-			AttackButton.show()
+			RangeButton.show()
+			BrawlButton.show()
 			HandButton.show()
 			can_act = true
+			FreeBrawl = true;
 
 #This function is called when the signal from the Cards Node
 #is emitted, resets action points when draw deck empty
@@ -110,10 +116,11 @@ func _resetAP():
 	action_points = Max_Action_Points
 	
 #When a card is drawn the Cards note emits a signal
-func PutCardInHand(Card, FirstDraw):
+func PutCardInHand(Card, FirstDraw, p_i):
 	#If its your turn add the drawn card to your hand
 	if(FirstDraw):
-		PlayerHand.append(Card)
+		if(p_i == Player_ID):
+			PlayerHand.append(Card)
 		
 	if(!FirstDraw):
 		if(order == Player_ID):
@@ -121,11 +128,6 @@ func PutCardInHand(Card, FirstDraw):
 			can_act = false
 			DrawButton.hide()
 	pass
-	
-	
-func _showHand():
-	#for i in PlayerHand.size():
-		GlobalScript.DebugScript.add(str(PlayerHand))
 
 	#Movement
 func _physics_process(delta):
@@ -139,8 +141,8 @@ func MoveMouse():
 	#Another if statement that is probably not needed but ensures that only the peer
 	#who owns this player instance can move it
 	if ($MultiplayerSynchronizer.get_multiplayer_authority() == multiplayer.get_unique_id() || GlobalScript.SinglePlay):
-		if(Player_ID == order && GlobalScript.PlayerNode[order-1].StunTracker == 0):
-			if Input.is_action_just_pressed("LeftClick") and can_act and action_points > 0:
+		if(Player_ID == order):
+			if Input.is_action_just_pressed("LeftClick") and can_act and action_points > 0 && GlobalScript.PlayerNode[order-1].StunTracker == 0:
 				if  move_possible():
 					self.global_position = Vector2(get_global_mouse_position())
 					pos = tile_map_node.local_to_map(self.position)
@@ -151,5 +153,5 @@ func MoveMouse():
 				GlobalScript.DebugScript.add("You have no more Action Points ")
 		#	if (!can_act):
 			#	can_act = true
-		elif(Input.is_action_just_pressed("LeftClick") and GlobalScript.PlayerNode[order-1].StunTracker != 0):
-			GlobalScript.DebugScript.add("Player is stunned you cannot move")
+			elif(Input.is_action_just_pressed("LeftClick") and GlobalScript.PlayerNode[order-1].StunTracker != 0):
+				GlobalScript.DebugScript.add("you are stunned and cannot move")

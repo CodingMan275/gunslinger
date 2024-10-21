@@ -13,9 +13,12 @@ func _ready() -> void:
 	hasName = str(get_parent().get_parent().LabelName).length() > 0
 	
 	if(hasName):
-		text = str(get_parent().get_parent().LabelName, "  " , OverAllHealth,"/",OverAllHealth)
+		GlobalScript.PlayerNode[Order -1].Name = get_parent().get_parent().LabelName
 	else:
-		text = str("Player ", Order , "  " , OverAllHealth,"/",OverAllHealth)
+		GlobalScript.PlayerNode[Order -1].Name = str("Player ", Order)
+		
+		text = str(GlobalScript.PlayerNode[Order -1].Name, "  " , OverAllHealth,"/",OverAllHealth)
+
 	pass # Replace with function body.
 
 
@@ -24,8 +27,5 @@ func _process(delta: float) -> void:
 	var Order = get_parent().get_parent().Player_ID
 	var  health = GlobalScript.PlayerNode[Order -1].Health
 	
-	if(hasName):
-		text = str(get_parent().get_parent().LabelName, "  " , health,"/",OverAllHealth)
-	else:
-		text = str("Player ", Order , "  " , health,"/",OverAllHealth)
+	text = str(GlobalScript.PlayerNode[Order -1].Name, "  " , health,"/",OverAllHealth)
 	pass

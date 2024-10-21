@@ -322,6 +322,19 @@ offset_right = -0.0400009
 offset_bottom = 0.12999
 text = "Attack"
 
+[node name="Brawl" type="Button" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.165
+anchor_top = 0.57
+anchor_right = 0.285
+anchor_bottom = 0.685
+offset_left = -0.200005
+offset_top = 0.0999908
+offset_right = 0.199982
+offset_bottom = 0.0499878
+text = "Brawl
+"
+
 [node name="Dynamite" type="Button" parent="CanvasLayer"]
 anchors_preset = -1
 anchor_left = 0.223
@@ -377,6 +390,6 @@ script = ExtResource("9_mpy2d")
 [connection signal="pressed" from="CanvasLayer/Draw Card" to="Rules_Controller" method="_onCardDraw"]
 [connection signal="pressed" from="CanvasLayer/Draw Card" to="Cards" method="_onCardDraw"]
 [connection signal="pressed" from="CanvasLayer/Show Hand" to="Rules_Controller" method="_ClaimCards"]
-[connection signal="pressed" from="CanvasLayer/Show Hand" to="Cards" method="_ClaimCards"]
-[connection signal="pressed" from="CanvasLayer/Attack" to="Rules_Controller" method="Attack"]
+[connection signal="pressed" from="CanvasLayer/Attack" to="Rules_Controller" method="RangeAttack"]
+[connection signal="pressed" from="CanvasLayer/Brawl" to="Rules_Controller" method="BrawlAttack"]
 [connection signal="pressed" from="CanvasLayer/Dynamite" to="Rules_Controller" method="Dynamite"]

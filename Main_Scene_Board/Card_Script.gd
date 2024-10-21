@@ -8,12 +8,12 @@ extends Node
 #These are updated automatically between peers so every peer
 #Is looking at the card piles with the same order
 #Townie Pile
-@export var DrawArray = ["Td1","Td2","Td3", "Td4", "Td5", "Td6","Td7","Td8","Td9","Td10","Td11","Td12",]
+@export var DrawArray = ["Preacher","Td2","Td3", "Td4", "Td5", "Td6","Td7","Td8","Td9","Td10","Td11","Td12",]
 @export var DiscardArray = []
 #Gunsliger Pile
 @export var GunslingerArray = ["Gun1", "Gun2", "Gun3", "Gun4", "Gun5", "Gun6"]
 #Hired gun pile
-@export var HiredGunArray = ["HGun1","HGun2","HGun3","HGun4","HGun5","HGun6","HGun7","HGun8","HGun9","HGun10","HGun11","HGun12"]
+@export var HiredGunArray = ["Preacher","HGun2","HGun3","HGun4","HGun5","HGun6","HGun7","HGun8","HGun9","HGun10","HGun11","HGun12"]
 #Weapon pile
 @export var WeaponArray = ["Rifle1","Rifle2","Rifle3","Rifle4","Knife1","Knife2","Knife3","Knife4","Pistol1","Pistol2","Pistol3","Pistol4","Shotgun1","Shotgun2","Shotgun3","Shotgun4","TwinPistol1","TwinPistol2"]
 
@@ -55,7 +55,7 @@ func _drawTownDeck(): # fucntion that simulates the cards being drawn
 		GlobalScript.DebugScript.add("DiscardArray has  "+str(DiscardArray))
 		GlobalScript.DebugScript.add("DrawArray has  "+str(DrawArray))
 		#adds card to hand
-		DrawnCard.emit(TDCard, false)
+		DrawnCard.emit(TDCard, false, null)
 	else:
 		for n in 12:
 			DrawArray.push_front(DiscardArray[n]) #(dont think this works like I think it does) copy contents from discard back to draw
@@ -68,18 +68,26 @@ func _drawTownDeck(): # fucntion that simulates the cards being drawn
 		GlobalScript.DebugScript.add("DiscardArray has  "+str(DiscardArray))
 		GlobalScript.DebugScript.add("DrawArray has  "+str(DrawArray))
 
-func _onStartDraw(player_index: int) -> void:
+@rpc("any_peer","call_local")
+func _AddCard(card, player_index):
+	GlobalScript.PlayerNode[player_index].PlayerHand.append(card)
+
+
+
+func _onStartDraw() -> void:
 	# Draw Gunslinger Card
-	#Current format Signal.Emit( Gunslinger Card, Is_This_Start_Draw)
-	DrawnCard.emit(_draw_card(GunslingerArray, player_index, "Gunslinger"), true)
+	for player_index in GlobalScript.PlayerNode.size():
+		_AddCard.rpc(_draw_card(GunslingerArray, player_index, "Gunslinger"),player_index)
 
-   #Draw Hired Gun Cards
-	for s in range(3):
-		DrawnCard.emit(_draw_card(HiredGunArray, player_index, "Hired Gun"))
+	   #Draw Hired Gun Cards
+		for s in range(3):
+			_AddCard.rpc(_draw_card(HiredGunArray, player_index, "Gunslinger"),player_index)
 
-	# Draw Weapon Cards
-	for s in range(5):
-		DrawnCard.emit(_draw_card(WeaponArray, player_index, "Weapon"))
+		# Draw Weapon Cards
+		for s in range(5):
+			_AddCard.rpc(_draw_card(WeaponArray, player_index, "Gunslinger"),player_index)
+
+
 
 func _draw_card(array: Array, player_index: int, card_type: String) -> Variant:
 	if array.size() == 0:
@@ -90,3 +98,6 @@ func _draw_card(array: Array, player_index: int, card_type: String) -> Variant:
 	GlobalScript.DebugScript.add.rpc("Player " + str(player_index) + " drew card " + card_type + ": " + card)
 	array.erase(card)  # Remove the drawn card
 	return card
+	
+func _ClaimCards(player_index):
+	GlobalScript.DebugScript.add(str(GlobalScript.PlayerNode[player_index].PlayerHand))
