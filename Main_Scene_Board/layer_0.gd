@@ -1,10 +1,10 @@
 extends TileMapLayer
 
-@onready var Sound_Player = %Shuffle_Card
-@onready var Sound_Player2 = %Draw_Card
-# Called when the node enters the scene tree for the first time.
+@onready var Sound_Player = $"../CanvasLayer/Join/Shuffle cards"
+@onready var Sound_Player2 = $"../CanvasLayer/Draw Card/Draw cards"
 func _ready():
 	fix_invalid_tiles()
+
 	pass # Replace with function body.
 
 
@@ -15,14 +15,9 @@ func _process(delta):
 
 func _on_join_pressed():
 	Sound_Player.play()
-	pass # Replace with function body.
+	print("Play sound Join")
 
 
 func _on_draw_card_pressed() -> void:
 	Sound_Player2.play()
-	pass # Replace with function body.
-
-
-func _on_host_pressed() -> void:
-	Sound_Player.play()
 	pass # Replace with function body.

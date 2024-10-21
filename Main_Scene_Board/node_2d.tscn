@@ -3,12 +3,12 @@
 [ext_resource type="Texture2D" uid="uid://fcuqal2ynbts" path="res://Main_Scene_Board/spritesheet.png" id="1_o8ncf"]
 [ext_resource type="Texture2D" uid="uid://mmea4eto2a6p" path="res://Main_Scene_Board/Rhombus.png" id="2_rfajf"]
 [ext_resource type="Script" path="res://Main_Scene_Board/layer_0.gd" id="3_8wl58"]
-[ext_resource type="AudioStream" uid="uid://bif0qrmk1g8pf" path="res://card sounds/shuffleandbridge-107641.mp3" id="4_6ywee"]
+[ext_resource type="AudioStream" uid="uid://cslhnxro8mi3y" path="res://Card Game/shuffleandbridge-107641.wav" id="4_euu82"]
 [ext_resource type="Script" path="res://Main_Scene_Board/Canvas_Layer/Turn_Label.gd" id="5_52d0j"]
 [ext_resource type="Theme" uid="uid://0qo5my5cfjq1" path="res://Main_Scene_Board/Canvas_Layer/Themes/Debug.tres" id="5_jnad2"]
-[ext_resource type="AudioStream" uid="uid://c7h423alix0tb" path="res://card sounds/card-sounds-35956.mp3" id="6_3iuxy"]
 [ext_resource type="Script" path="res://Main_Scene_Board/Canvas_Layer/debug.gd" id="6_5svso"]
 [ext_resource type="Script" path="res://Main_Scene_Board/rules_controller.gd" id="6_6e8od"]
+[ext_resource type="AudioStream" uid="uid://ccdn50u37npqi" path="res://Card Game/card-sounds-35956.wav" id="6_ye88j"]
 [ext_resource type="PackedScene" uid="uid://x0tek8t1bewj" path="res://CPU_and_Player/Player.tscn" id="7_saeg4"]
 [ext_resource type="PackedScene" uid="uid://cj15kaxvr44m1" path="res://CPU_and_Player/CPU.tscn" id="9_hsfom"]
 [ext_resource type="Script" path="res://Main_Scene_Board/Card_Script.gd" id="9_mpy2d"]
@@ -247,8 +247,10 @@ offset_bottom = 0.100006
 text = "Join"
 metadata/_edit_use_anchors_ = true
 
-[node name="Shuffle_Card" type="AudioStreamPlayer" parent="CanvasLayer/Join"]
-stream = ExtResource("4_6ywee")
+[node name="Shuffle cards" type="AudioStreamPlayer" parent="CanvasLayer/Join"]
+stream = ExtResource("4_euu82")
+volume_db = 24.0
+pitch_scale = 4.0
 
 [node name="LineEdit" type="LineEdit" parent="CanvasLayer"]
 visible = false
@@ -293,8 +295,10 @@ offset_right = -28.76
 offset_bottom = -0.0400085
 text = "Draw Card"
 
-[node name="Draw_Card" type="AudioStreamPlayer" parent="CanvasLayer/Draw Card"]
-stream = ExtResource("6_3iuxy")
+[node name="Draw cards" type="AudioStreamPlayer" parent="CanvasLayer/Draw Card"]
+stream = ExtResource("6_ye88j")
+volume_db = 24.0
+pitch_scale = 4.0
 
 [node name="Show Hand" type="Button" parent="CanvasLayer"]
 anchors_preset = -1
