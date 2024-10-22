@@ -1,9 +1,8 @@
-[gd_scene load_steps=19 format=4 uid="uid://jl7k3ltwbp41"]
+[gd_scene load_steps=18 format=4 uid="uid://jl7k3ltwbp41"]
 
 [ext_resource type="Texture2D" uid="uid://fcuqal2ynbts" path="res://Main_Scene_Board/spritesheet.png" id="1_o8ncf"]
 [ext_resource type="Texture2D" uid="uid://mmea4eto2a6p" path="res://Main_Scene_Board/Rhombus.png" id="2_rfajf"]
 [ext_resource type="Script" path="res://Main_Scene_Board/layer_0.gd" id="3_8wl58"]
-[ext_resource type="AudioStream" uid="uid://cslhnxro8mi3y" path="res://Card Game/shuffleandbridge-107641.wav" id="4_euu82"]
 [ext_resource type="Script" path="res://Main_Scene_Board/Canvas_Layer/Turn_Label.gd" id="5_52d0j"]
 [ext_resource type="Theme" uid="uid://0qo5my5cfjq1" path="res://Main_Scene_Board/Canvas_Layer/Themes/Debug.tres" id="5_jnad2"]
 [ext_resource type="Script" path="res://Main_Scene_Board/Canvas_Layer/debug.gd" id="6_5svso"]
@@ -246,11 +245,6 @@ offset_right = -0.0400391
 offset_bottom = 0.100006
 text = "Join"
 metadata/_edit_use_anchors_ = true
-
-[node name="Shuffle cards" type="AudioStreamPlayer" parent="CanvasLayer/Join"]
-stream = ExtResource("4_euu82")
-volume_db = 24.0
-pitch_scale = 4.0
 
 [node name="LineEdit" type="LineEdit" parent="CanvasLayer"]
 visible = false
