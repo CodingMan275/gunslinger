@@ -27,6 +27,7 @@ var drawcard : bool = false
 @onready var DynamiteButton = get_node("../CanvasLayer/Dynamite")
 
 @onready var CardDecks = get_node("../Cards")
+@onready var Townie = get_node("../Townie_Logic")
 
 #The Player scene which will be instantiated and used for spawning in
 #All peer players
@@ -180,18 +181,6 @@ func SinglePlay(i , index):
 	#		currentPlayer.LabelName = "CPU"
 			#Set it to player 1 which is effectively turn order
 			currentPlayer.Player_ID = index + 1
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

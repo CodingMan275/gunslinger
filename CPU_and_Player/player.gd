@@ -116,17 +116,21 @@ func _resetAP():
 	action_points = Max_Action_Points
 	
 #When a card is drawn the Cards note emits a signal
+
 func PutCardInHand(Card, FirstDraw, p_i):
-	#If its your turn add the drawn card to your hand
-	if(FirstDraw):
-		if(p_i == Player_ID):
-			PlayerHand.append(Card)
-		
 	if(!FirstDraw):
-		if(order == Player_ID):
-			PlayerHand.append(Card)
-			can_act = false
-			DrawButton.hide()
+		if ($MultiplayerSynchronizer.get_multiplayer_authority() == multiplayer.get_unique_id() || GlobalScript.SinglePlay):
+			if(order == Player_ID):
+			
+			#PlayerHand.append(Card)
+				can_act = false
+			#for cards in PlayerHand.size():
+			#	Card == PlayerHand[cards]
+				get_parent().Townie.get_node(Card).tile_map_node = tile_map_node	
+	#			get_parent().Townie.get_node(Card).MultiplayerAuthority = multiplayer.get_unique_id()
+				get_parent().Townie.get_node(Card).movable = true	
+				#Put button here for to claim
+				DrawButton.hide()
 	pass
 
 	#Movement

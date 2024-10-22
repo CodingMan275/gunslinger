@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://jl7k3ltwbp41"]
+[gd_scene load_steps=22 format=4 uid="uid://jl7k3ltwbp41"]
 
 [ext_resource type="Texture2D" uid="uid://fcuqal2ynbts" path="res://Main_Scene_Board/spritesheet.png" id="1_o8ncf"]
 [ext_resource type="Texture2D" uid="uid://mmea4eto2a6p" path="res://Main_Scene_Board/Rhombus.png" id="2_rfajf"]
@@ -12,6 +12,9 @@
 [ext_resource type="PackedScene" uid="uid://x0tek8t1bewj" path="res://CPU_and_Player/Player.tscn" id="7_saeg4"]
 [ext_resource type="PackedScene" uid="uid://cj15kaxvr44m1" path="res://CPU_and_Player/CPU.tscn" id="9_hsfom"]
 [ext_resource type="Script" path="res://Main_Scene_Board/Card_Script.gd" id="9_mpy2d"]
+[ext_resource type="Script" path="res://Main_Scene_Board/preacher.gd" id="14_8fc0f"]
+[ext_resource type="Script" path="res://Main_Scene_Board/townie_logic.gd" id="14_ub6ke"]
+[ext_resource type="Texture2D" uid="uid://wpqjamy8nklp" path="res://icon.svg" id="15_jqb2v"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p1dyh"]
 texture = ExtResource("1_o8ncf")
@@ -171,6 +174,15 @@ properties/6/replication_mode = 1
 properties/7/path = NodePath("Cards:HiredGunVar")
 properties/7/spawn = true
 properties/7/replication_mode = 1
+properties/8/path = NodePath("Townie_Logic/Preacher:is_hired_gun")
+properties/8/spawn = true
+properties/8/replication_mode = 1
+properties/9/path = NodePath("Townie_Logic/Preacher:claim_revealed")
+properties/9/spawn = true
+properties/9/replication_mode = 1
+properties/10/path = NodePath("Townie_Logic/Preacher:position")
+properties/10/spawn = true
+properties/10/replication_mode = 2
 
 [sub_resource type="GDScript" id="GDScript_7iaxx"]
 script/source = "extends CanvasLayer
@@ -382,6 +394,31 @@ CPU_scene = ExtResource("9_hsfom")
 [node name="Cards" type="Node" parent="."]
 script = ExtResource("9_mpy2d")
 
+[node name="Townie_Logic" type="Node" parent="."]
+script = ExtResource("14_ub6ke")
+
+[node name="Preacher" type="CharacterBody2D" parent="Townie_Logic"]
+script = ExtResource("14_8fc0f")
+
+[node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Preacher"]
+position = Vector2(0, -0.999998)
+scale = Vector2(0.173273, 0.157709)
+texture = ExtResource("15_jqb2v")
+
+[node name="Label" type="Label" parent="Townie_Logic/Preacher/Sprite2D"]
+anchors_preset = -1
+anchor_left = -0.07
+anchor_top = -0.492
+anchor_right = 1.0
+anchor_bottom = -0.156
+offset_left = -64.04
+offset_top = -64.024
+offset_right = -131.0
+offset_bottom = -84.032
+scale = Vector2(2.02606, 2.83457)
+text = "Preacher"
+metadata/_edit_use_anchors_ = true
+
 [connection signal="child_order_changed" from="." to="Rules_Controller" method="_on_node_2d_child_order_changed"]
 [connection signal="pressed" from="CanvasLayer/Host" to="Layer0" method="_on_host_pressed"]
 [connection signal="pressed" from="CanvasLayer/Button" to="CanvasLayer/Label" method="_on_button_pressed"]
@@ -393,3 +430,4 @@ script = ExtResource("9_mpy2d")
 [connection signal="pressed" from="CanvasLayer/Attack" to="Rules_Controller" method="RangeAttack"]
 [connection signal="pressed" from="CanvasLayer/Brawl" to="Rules_Controller" method="BrawlAttack"]
 [connection signal="pressed" from="CanvasLayer/Dynamite" to="Rules_Controller" method="Dynamite"]
+[connection signal="DrawnCard" from="Cards" to="Townie_Logic/Preacher" method="hire_townsfolk"]

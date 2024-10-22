@@ -26,6 +26,8 @@ class Character extends CharacterBody2D:
 	
 	var tile_map_node: TileMapLayer
 	
+	
+	
 	#Functions
 	#_____________________________
 	
@@ -43,11 +45,12 @@ class Character extends CharacterBody2D:
 	func is_owning_player(player) -> bool:
 		return owning_player == player
 	
-	func can_move(player):
-		return false
+	
+	#func can_move(player):
+	#	return false
 			
 	func move_possible() -> bool:
-		return tile_map_node.local_to_map(Vector2(get_global_mouse_position())) in tile_map_node.get_surrounding_cells(tile_map_node.local_to_map(self.global_position)) and tile_map_node.get_cell_source_id(Vector2(get_global_mouse_position())) != -1
+		return tile_map_node.local_to_map(Vector2(get_global_mouse_position())) in tile_map_node.get_surrounding_cells(tile_map_node.local_to_map(self.global_position)) #and tile_map_node.get_cell_source_id(Vector2(get_global_mouse_position())) != -1
 		
 	func can_shoot(player):
 		return false
@@ -63,18 +66,21 @@ class Character extends CharacterBody2D:
 		
 	func character_in_range(char: Character) -> bool:
 		return false #create function body later
-		
+	'''	
 	#takes the player attempting to make the move for reasons that are applicable in later child classes
 	func move(player):
-		if Input.is_action_just_pressed("LeftClick") and ActionPoint > 0 and move_possible():
-			if  move_possible():
+		#print("Move: "+str(move_possible()))
+		#print(ActionPoint)
+		if Input.is_action_just_pressed("LeftClick") and ActionPoint > 0:
+			if move_possible():
 				self.global_position = Vector2(get_global_mouse_position())
-				pos = tile_map_node.local_to_map(self.position)
+			#	pos = tile_map_node.local_to_map(self.position)
 				print(pos)
-				#DrawButton.hide()
-			elif (Input.is_action_just_pressed("LeftClick") and can_move(player) and ActionPoint == 0):
-				GlobalScript.DebugScript.add("You have no more Action Points ")
-				
+				movable = false
+			#DrawButton.hide()
+		elif (Input.is_action_just_pressed("LeftClick") and can_move(player) and ActionPoint == 0):
+			GlobalScript.DebugScript.add("You have no more Action Points ")
+'''
 	func teleport(new_pos: Vector2):
 		pos = new_pos
 		self.global_position = tile_map_node.map_to_local(new_pos)
@@ -125,4 +131,6 @@ class Character extends CharacterBody2D:
 
 	# Called every frame. 'delta' is the elapsed time since the previous frame.
 	func _process(delta: float) -> void:
+	#	if(movable):
+		#	move(owning_player)
 		pass
