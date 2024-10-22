@@ -8,12 +8,12 @@ extends Node
 #These are updated automatically between peers so every peer
 #Is looking at the card piles with the same order
 #Townie Pile
-@export var DrawArray = ["Preacher"]
+@export var DrawArray = ["Preacher","Doctor","Teacher","Town_Drunk", "Bar_Keep", "Ranch_Hand"]
 @export var DiscardArray = []
 #Gunsliger Pile
 @export var GunslingerArray = ["Gun1", "Gun2", "Gun3", "Gun4", "Gun5", "Gun6"]
 #Hired gun pile
-@export var HiredGunArray = ["Preacher","HGun12"]
+@export var HiredGunArray = ["Preacher","Doctor","Teacher","Town_Drunk","Bar_Keep", "Ranch_Hand"]
 #Weapon pile
 @export var WeaponArray = ["Rifle1","Rifle2","Rifle3","Rifle4","Knife1","Knife2","Knife3","Knife4","Pistol1","Pistol2","Pistol3","Pistol4","Shotgun1","Shotgun2","Shotgun3","Shotgun4","TwinPistol1","TwinPistol2"]
 

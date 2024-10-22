@@ -46,6 +46,10 @@ var order = 0
 #This could be further broken down into Weapon array, Town, Gunslinger, ect
 @export var PlayerHand : Array
 
+var DrewCard = false
+
+var CurrentCard
+
 #For node path to tile map
 var tile_map_node
 
@@ -97,6 +101,8 @@ func _update_turn(x):
 			DynamiteButton.hide()
 			#Removes the ability for the player to move
 			can_act = false
+			if(DrewCard):
+				get_parent().Townie.get_node(CurrentCard).movable = false
 		else:
 			#Set action points back to max
 			#action_points = Max_Action_Points
@@ -121,7 +127,8 @@ func PutCardInHand(Card, FirstDraw, p_i):
 	if(!FirstDraw):
 		if ($MultiplayerSynchronizer.get_multiplayer_authority() == multiplayer.get_unique_id() || GlobalScript.SinglePlay):
 			if(order == Player_ID):
-			
+				DrewCard = true
+				CurrentCard = Card
 			#PlayerHand.append(Card)
 				can_act = false
 			#for cards in PlayerHand.size():
