@@ -16,6 +16,7 @@ func _init():
 	pass
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	get_node("../../Cards").DrawnCard.connect(hire_townsfolk)
 	pass # Replace with function body.
 
 
@@ -46,10 +47,10 @@ func UpdateMove(x):
 	pass
 
 func hire_townsfolk(card, FirstDraw, player):
-	if(FirstDraw and (card == "Preacher")):
+	if(FirstDraw and (card == "Bar_Keep")):
 		owning_player = player
 		is_hired_gun = true
-		print("Hired")
+		print("Hired B")
 
 func reveal_hired_gun() -> void:
 	claim_revealed = true

@@ -9,8 +9,13 @@ extends Node
 
 @onready var CardDecks = get_node("../Cards")
 
+var CurrentCard
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	
+	CardDecks.DrawnCard.connect(UpdateCard)
+	
 	Preacher.position = get_node("../Layer0").map_to_local(Vector2 (6,6))
 	Teacher.position = get_node("../Layer0").map_to_local(Vector2 (6,3))
 	Doctor.position = get_node("../Layer0").map_to_local(Vector2 (1,6))
@@ -24,3 +29,14 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+	
+func UpdateCard(x,y,z):
+	if(!y):
+		CurrentCard = x
+	pass
+
+
+func _on_claim_pressed() -> void:
+	get_node(CurrentCard).reveal_hired_gun()
+#	get_node(CurrentCard).movable = false
+	pass # Replace with function body.

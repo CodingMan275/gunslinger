@@ -33,6 +33,8 @@ extends CharacterBody2D
 
 @onready var HandButton = get_parent().HandButton
 
+@onready var ClaimButton = get_parent().ClaimButton
+
 @onready var CardNodeDeck = get_parent().CardDecks
 
 @onready var DynamiteButton = get_parent().DynamiteButton
@@ -44,7 +46,7 @@ var order = 0
 @export var can_act = true
 #Player hand
 #This could be further broken down into Weapon array, Town, Gunslinger, ect
-@export var PlayerHand : Array
+@export var PlayerHand = []
 
 var DrewCard = false
 
@@ -126,18 +128,28 @@ func _resetAP():
 func PutCardInHand(Card, FirstDraw, p_i):
 	if(!FirstDraw):
 		if ($MultiplayerSynchronizer.get_multiplayer_authority() == multiplayer.get_unique_id() || GlobalScript.SinglePlay):
+			Claim(Card)
 			if(order == Player_ID):
 				DrewCard = true
 				CurrentCard = Card
+				
 			#PlayerHand.append(Card)
 				can_act = false
 			#for cards in PlayerHand.size():
 			#	Card == PlayerHand[cards]
 				get_parent().Townie.get_node(Card).tile_map_node = tile_map_node	
-	#			get_parent().Townie.get_node(Card).MultiplayerAuthority = multiplayer.get_unique_id()
 				get_parent().Townie.get_node(Card).movable = true	
 				#Put button here for to claim
 				DrawButton.hide()
+	pass
+	
+@rpc("call_local","any_peer")
+func Claim(x):
+	CurrentCard = x
+	for i in PlayerHand:
+		if(PlayerHand.has(CurrentCard)):
+			if(!get_parent().Townie.get_node(CurrentCard).claim_revealed):
+				ClaimButton.show()
 	pass
 
 	#Movement

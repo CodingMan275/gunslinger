@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://jl7k3ltwbp41"]
+[gd_scene load_steps=28 format=4 uid="uid://jl7k3ltwbp41"]
 
 [ext_resource type="Texture2D" uid="uid://fcuqal2ynbts" path="res://Main_Scene_Board/spritesheet.png" id="1_o8ncf"]
 [ext_resource type="Texture2D" uid="uid://mmea4eto2a6p" path="res://Main_Scene_Board/Rhombus.png" id="2_rfajf"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://x0tek8t1bewj" path="res://CPU_and_Player/Player.tscn" id="7_saeg4"]
 [ext_resource type="PackedScene" uid="uid://cj15kaxvr44m1" path="res://CPU_and_Player/CPU.tscn" id="9_hsfom"]
 [ext_resource type="Script" path="res://Main_Scene_Board/Card_Script.gd" id="9_mpy2d"]
+[ext_resource type="Script" path="res://Main_Scene_Board/claim.gd" id="9_xcao8"]
 [ext_resource type="Script" path="res://Main_Scene_Board/preacher.gd" id="14_8fc0f"]
 [ext_resource type="Script" path="res://Main_Scene_Board/townie_logic.gd" id="14_ub6ke"]
 [ext_resource type="Texture2D" uid="uid://wpqjamy8nklp" path="res://icon.svg" id="15_jqb2v"]
@@ -188,6 +189,51 @@ properties/9/replication_mode = 1
 properties/10/path = NodePath("Townie_Logic/Preacher:position")
 properties/10/spawn = true
 properties/10/replication_mode = 2
+properties/11/path = NodePath("Townie_Logic/Doctor:is_hired_gun")
+properties/11/spawn = true
+properties/11/replication_mode = 1
+properties/12/path = NodePath("Townie_Logic/Doctor:claim_revealed")
+properties/12/spawn = true
+properties/12/replication_mode = 1
+properties/13/path = NodePath("Townie_Logic/Doctor:position")
+properties/13/spawn = true
+properties/13/replication_mode = 1
+properties/14/path = NodePath("Townie_Logic/Teacher:is_hired_gun")
+properties/14/spawn = true
+properties/14/replication_mode = 1
+properties/15/path = NodePath("Townie_Logic/Teacher:claim_revealed")
+properties/15/spawn = true
+properties/15/replication_mode = 1
+properties/16/path = NodePath("Townie_Logic/Teacher:position")
+properties/16/spawn = true
+properties/16/replication_mode = 1
+properties/17/path = NodePath("Townie_Logic/Town_Drunk:is_hired_gun")
+properties/17/spawn = true
+properties/17/replication_mode = 1
+properties/18/path = NodePath("Townie_Logic/Town_Drunk:claim_revealed")
+properties/18/spawn = true
+properties/18/replication_mode = 1
+properties/19/path = NodePath("Townie_Logic/Town_Drunk:position")
+properties/19/spawn = true
+properties/19/replication_mode = 1
+properties/20/path = NodePath("Townie_Logic/Bar_Keep:is_hired_gun")
+properties/20/spawn = true
+properties/20/replication_mode = 1
+properties/21/path = NodePath("Townie_Logic/Bar_Keep:claim_revealed")
+properties/21/spawn = true
+properties/21/replication_mode = 1
+properties/22/path = NodePath("Townie_Logic/Bar_Keep:position")
+properties/22/spawn = true
+properties/22/replication_mode = 1
+properties/23/path = NodePath("Townie_Logic/Ranch_Hand:is_hired_gun")
+properties/23/spawn = true
+properties/23/replication_mode = 1
+properties/24/path = NodePath("Townie_Logic/Ranch_Hand:claim_revealed")
+properties/24/spawn = true
+properties/24/replication_mode = 1
+properties/25/path = NodePath("Townie_Logic/Ranch_Hand:position")
+properties/25/spawn = true
+properties/25/replication_mode = 1
 
 [sub_resource type="GDScript" id="GDScript_7iaxx"]
 script/source = "extends CanvasLayer
@@ -391,6 +437,20 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 6
 
+[node name="Claim" type="Button" parent="CanvasLayer"]
+visible = false
+anchors_preset = -1
+anchor_left = 0.237
+anchor_top = 0.707
+anchor_right = 0.412
+anchor_bottom = 0.811
+offset_left = 0.23999
+offset_top = 0.110001
+offset_right = 0.23999
+offset_bottom = 0.0299835
+text = "Claim"
+script = ExtResource("9_xcao8")
+
 [node name="Rules_Controller" type="Node" parent="."]
 script = ExtResource("6_6e8od")
 player_scene = ExtResource("7_saeg4")
@@ -545,4 +605,11 @@ metadata/_edit_use_anchors_ = true
 [connection signal="pressed" from="CanvasLayer/Attack" to="Rules_Controller" method="RangeAttack"]
 [connection signal="pressed" from="CanvasLayer/Brawl" to="Rules_Controller" method="BrawlAttack"]
 [connection signal="pressed" from="CanvasLayer/Dynamite" to="Rules_Controller" method="Dynamite"]
+[connection signal="pressed" from="CanvasLayer/Claim" to="Townie_Logic" method="_on_claim_pressed"]
+[connection signal="pressed" from="CanvasLayer/Claim" to="CanvasLayer/Claim" method="_on_pressed"]
 [connection signal="DrawnCard" from="Cards" to="Townie_Logic/Preacher" method="hire_townsfolk"]
+[connection signal="DrawnCard" from="Cards" to="Townie_Logic/Doctor" method="hire_townsfolk"]
+[connection signal="DrawnCard" from="Cards" to="Townie_Logic/Teacher" method="hire_townsfolk"]
+[connection signal="DrawnCard" from="Cards" to="Townie_Logic/Town_Drunk" method="hire_townsfolk"]
+[connection signal="DrawnCard" from="Cards" to="Townie_Logic/Bar_Keep" method="hire_townsfolk"]
+[connection signal="DrawnCard" from="Cards" to="Townie_Logic/Ranch_Hand" method="hire_townsfolk"]

@@ -25,6 +25,7 @@ var drawcard : bool = false
 @onready var BrawlButton = get_node("../CanvasLayer/Brawl")
 @onready var HandButton = get_node("../CanvasLayer/Show Hand")
 @onready var DynamiteButton = get_node("../CanvasLayer/Dynamite")
+@onready var ClaimButton = get_node("../CanvasLayer/Claim")
 
 @onready var CardDecks = get_node("../Cards")
 @onready var Townie = get_node("../Townie_Logic")
