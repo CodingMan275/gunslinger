@@ -188,7 +188,7 @@ properties/9/spawn = true
 properties/9/replication_mode = 1
 properties/10/path = NodePath("Townie_Logic/Preacher:position")
 properties/10/spawn = true
-properties/10/replication_mode = 2
+properties/10/replication_mode = 1
 properties/11/path = NodePath("Townie_Logic/Doctor:is_hired_gun")
 properties/11/spawn = true
 properties/11/replication_mode = 1
@@ -608,6 +608,7 @@ metadata/_edit_use_anchors_ = true
 [connection signal="pressed" from="CanvasLayer/Dynamite" to="Rules_Controller" method="Dynamite"]
 [connection signal="pressed" from="CanvasLayer/Claim" to="Townie_Logic" method="_on_claim_pressed"]
 [connection signal="pressed" from="CanvasLayer/Claim" to="CanvasLayer/Claim" method="_on_pressed"]
+[connection signal="DrawnCard" from="Cards" to="Townie_Logic" method="UpdateCard"]
 [connection signal="DrawnCard" from="Cards" to="Townie_Logic/Preacher" method="hire_townsfolk"]
 [connection signal="DrawnCard" from="Cards" to="Townie_Logic/Doctor" method="hire_townsfolk"]
 [connection signal="DrawnCard" from="Cards" to="Townie_Logic/Teacher" method="hire_townsfolk"]

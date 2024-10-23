@@ -43,7 +43,10 @@ class Character extends CharacterBody2D:
 		return ActionPoint > 0
 		
 	func is_owning_player(player) -> bool:
-		return owning_player == player
+		if owning_player == player:
+			return true
+		else:
+			return false
 	
 	
 	#func can_move(player):
