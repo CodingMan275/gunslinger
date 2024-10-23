@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b06k54hxn3lvn"
+path="res://.godot/imported/plastic-cards-credit-debit-etc-76957.mp3-2cb04ac126fb633268086c4f44d22079.mp3str"
+
+[deps]
+
+source_file="res://card sounds/plastic-cards-credit-debit-etc-76957.mp3"
+dest_files=["res://.godot/imported/plastic-cards-credit-debit-etc-76957.mp3-2cb04ac126fb633268086c4f44d22079.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

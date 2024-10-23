@@ -1,8 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://x0tek8t1bewj"]
+[gd_scene load_steps=5 format=3 uid="uid://cj15kaxvr44m1"]
 
-[ext_resource type="Script" path="res://Josh_Test_Scenes/player.gd" id="1_1tt28"]
-[ext_resource type="Texture2D" uid="uid://wpqjamy8nklp" path="res://icon.svg" id="1_37ojv"]
-[ext_resource type="Script" path="res://Josh_Test_Scenes/Player_Label.gd" id="3_hpxdt"]
+[ext_resource type="Script" path="res://CPU_and_Player/CPU.gd" id="1_eif4d"]
+[ext_resource type="Texture2D" uid="uid://wpqjamy8nklp" path="res://icon.svg" id="2_lu27v"]
+[ext_resource type="Script" path="res://CPU_and_Player/CPU_Label.gd" id="3_yhact"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_42imv"]
 properties/0/path = NodePath(".:position")
@@ -30,15 +30,15 @@ properties/7/path = NodePath(".:StunTracker")
 properties/7/spawn = true
 properties/7/replication_mode = 1
 
-[node name="Player" type="CharacterBody2D"]
+[node name="CPU" type="CharacterBody2D"]
 position = Vector2(-13, -11)
 collision_layer = 2
-script = ExtResource("1_1tt28")
+script = ExtResource("1_eif4d")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(9.53674e-07, -1)
 scale = Vector2(0.160157, 0.164063)
-texture = ExtResource("1_37ojv")
+texture = ExtResource("2_lu27v")
 
 [node name="Label" type="Label" parent="Sprite2D"]
 visibility_layer = 1023
@@ -52,7 +52,7 @@ offset_right = -190.014
 offset_bottom = -110.047
 scale = Vector2(3, 3)
 text = "Player X"
-script = ExtResource("3_hpxdt")
+script = ExtResource("3_yhact")
 metadata/_edit_use_anchors_ = true
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]

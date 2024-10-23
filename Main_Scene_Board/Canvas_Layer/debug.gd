@@ -10,7 +10,7 @@ func _ready() -> void:
 func _input(event):
 	if(event.is_action_pressed("Debug")):
 		visible = !visible
-
+@rpc("any_peer","call_local")
 func add(title : String):
 	var property
 	property = property_container.find_child(title,true)

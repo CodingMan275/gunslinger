@@ -5,7 +5,13 @@
 [node name="Character Sheets Window" type="Window"]
 initial_position = 1
 size = Vector2i(800, 600)
-wrap_controls = true
 borderless = true
 
 [node name="Character Sheets" parent="." instance=ExtResource("1_nqwat")]
+anchors_preset = 15
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 0.0
+offset_bottom = 0.0

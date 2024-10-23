@@ -2,6 +2,7 @@ extends Control
 
 
 func _on_local_button_pressed():
+	GlobalScript.SinglePlay = true
 	get_tree().change_scene_to_file("res://Main_Scene_Board/node_2d.tscn")
 
 

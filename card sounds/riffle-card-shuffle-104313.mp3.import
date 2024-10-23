@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ckddkl4y2bf5o"
+path="res://.godot/imported/riffle-card-shuffle-104313.mp3-0f2e0a3bfe20e6d4053b9c2c7f595e9f.mp3str"
+
+[deps]
+
+source_file="res://card sounds/riffle-card-shuffle-104313.mp3"
+dest_files=["res://.godot/imported/riffle-card-shuffle-104313.mp3-0f2e0a3bfe20e6d4053b9c2c7f595e9f.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
