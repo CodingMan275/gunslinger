@@ -11,6 +11,15 @@ class_name Teacher
 
 var movable = false
 
+var CurrentOwner
+
+var RecievedOwner
+
+func UpdateOwner(x):
+	if(!claim_revealed):
+		CurrentOwner = x
+	pass
+
 
 func _init():
 	pass
@@ -22,24 +31,19 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	move()
-	pass
-	
-		#takes the player attempting to make the move for reasons that are applicable in later child classes
-func move():
 	#print("Move: "+str(move_possible()))
 	#print(ActionPoint)
-
-	if Input.is_action_just_pressed("LeftClick") and ActionPoint > 0 and movable:
-		if move_possible():
-			self.global_position = Vector2(get_global_mouse_position())
-			pos = tile_map_node.local_to_map(self.position)
-			UpdateMove.rpc(self.global_position)
-			print(pos)
-			movable = false
+	if CurrentOwner == RecievedOwner:
+		if Input.is_action_just_pressed("LeftClick") and ActionPoint > 0 and movable:
+			if move_possible():
+				self.global_position = Vector2(get_global_mouse_position())
+				pos = tile_map_node.local_to_map(self.position)
+				UpdateMove.rpc(self.global_position)
+				print(pos)
+				movable = false
 		#DrawButton.hide()
-	elif (Input.is_action_just_pressed("LeftClick") and ActionPoint == 0):
-		GlobalScript.DebugScript.add("You have no more Action Points ")
+		elif (Input.is_action_just_pressed("LeftClick") and ActionPoint == 0):
+			GlobalScript.DebugScript.add("You have no more Action Points ")
 
 @rpc("any_peer")
 func UpdateMove(x):
@@ -50,7 +54,7 @@ func hire_townsfolk(card, FirstDraw, player):
 	if(FirstDraw and (card == "Teacher")):
 		owning_player = player
 		is_hired_gun = true
-		print("Hired T")
+		print("Hired P")
 
 func reveal_hired_gun() -> void:
 	claim_revealed = true
