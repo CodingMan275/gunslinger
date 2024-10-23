@@ -59,7 +59,7 @@ func _drawTownDeck(): # fucntion that simulates the cards being drawn
 		#adds card to hand
 		DrawnCard.emit(TDCard, false, null)
 	else:
-		for n in 12:
+		for n in 6:
 			DrawArray.push_front(DiscardArray[n]) #(dont think this works like I think it does) copy contents from discard back to draw
 		DiscardArray.clear()
 		DrawArray.shuffle() # shuffles the array contents
