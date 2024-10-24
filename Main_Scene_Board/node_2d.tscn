@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=4 uid="uid://jl7k3ltwbp41"]
+[gd_scene load_steps=28 format=4 uid="uid://jl7k3ltwbp41"]
 
 [ext_resource type="Texture2D" uid="uid://fcuqal2ynbts" path="res://Main_Scene_Board/spritesheet.png" id="1_o8ncf"]
 [ext_resource type="Texture2D" uid="uid://mmea4eto2a6p" path="res://Main_Scene_Board/Rhombus.png" id="2_rfajf"]
@@ -15,17 +15,12 @@
 [ext_resource type="Script" path="res://Main_Scene_Board/claim.gd" id="9_xcao8"]
 [ext_resource type="Script" path="res://Main_Scene_Board/preacher.gd" id="14_8fc0f"]
 [ext_resource type="Script" path="res://Main_Scene_Board/townie_logic.gd" id="14_ub6ke"]
+[ext_resource type="Texture2D" uid="uid://wpqjamy8nklp" path="res://icon.svg" id="15_jqb2v"]
 [ext_resource type="Script" path="res://CPU_and_Player/doctor.gd" id="16_2qs05"]
-[ext_resource type="Texture2D" uid="uid://bdmvi8qlb5m57" path="res://bobseymour.svg" id="16_8cepm"]
 [ext_resource type="Script" path="res://Main_Scene_Board/teacher.gd" id="17_evase"]
 [ext_resource type="Script" path="res://Main_Scene_Board/town_drunk.gd" id="18_8vpej"]
-[ext_resource type="Texture2D" uid="uid://b3jt8k5v2aeha" path="res://elijahbrown.svg" id="18_rnq7t"]
 [ext_resource type="Script" path="res://Main_Scene_Board/bar_keep.gd" id="19_alpfg"]
-[ext_resource type="Texture2D" uid="uid://jsgp5eehgaib" path="res://jonlaramine.svg" id="20_4xm6a"]
 [ext_resource type="Script" path="res://Main_Scene_Board/ranch_hand.gd" id="20_dwx7h"]
-[ext_resource type="Texture2D" uid="uid://c1keaoj8b1k3k" path="res://madmike.svg" id="22_1hdky"]
-[ext_resource type="Texture2D" uid="uid://dywhqj3m2j1y3" path="res://oldsmokey.svg" id="24_n3rvj"]
-[ext_resource type="Texture2D" uid="uid://c5dj7es7aba7e" path="res://thekid.svg" id="26_6ry6s"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p1dyh"]
 texture = ExtResource("1_o8ncf")
@@ -199,7 +194,7 @@ properties/9/spawn = true
 properties/9/replication_mode = 1
 properties/10/path = NodePath("Townie_Logic/Preacher:position")
 properties/10/spawn = true
-properties/10/replication_mode = 1
+properties/10/replication_mode = 2
 properties/11/path = NodePath("Townie_Logic/Doctor:is_hired_gun")
 properties/11/spawn = true
 properties/11/replication_mode = 1
@@ -479,7 +474,7 @@ script = ExtResource("14_8fc0f")
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Preacher"]
 position = Vector2(0, -0.999998)
 scale = Vector2(0.173273, 0.157709)
-texture = ExtResource("16_8cepm")
+texture = ExtResource("15_jqb2v")
 
 [node name="Label" type="Label" parent="Townie_Logic/Preacher/Sprite2D"]
 anchors_preset = -1
@@ -499,9 +494,9 @@ metadata/_edit_use_anchors_ = true
 script = ExtResource("16_2qs05")
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Doctor"]
-position = Vector2(0, -15)
-scale = Vector2(0.12, 0.11)
-texture = ExtResource("18_rnq7t")
+position = Vector2(0, -0.999998)
+scale = Vector2(0.173273, 0.157709)
+texture = ExtResource("15_jqb2v")
 
 [node name="Label" type="Label" parent="Townie_Logic/Doctor/Sprite2D"]
 anchors_preset = -1
@@ -522,8 +517,8 @@ script = ExtResource("17_evase")
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Teacher"]
 position = Vector2(0, -0.999998)
-scale = Vector2(0.1, 0.091)
-texture = ExtResource("20_4xm6a")
+scale = Vector2(0.173273, 0.157709)
+texture = ExtResource("15_jqb2v")
 
 [node name="Label" type="Label" parent="Townie_Logic/Teacher/Sprite2D"]
 anchors_preset = -1
@@ -543,9 +538,9 @@ metadata/_edit_use_anchors_ = true
 script = ExtResource("18_8vpej")
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Town_Drunk"]
-position = Vector2(0, -10)
-scale = Vector2(0.12, 0.11)
-texture = ExtResource("22_1hdky")
+position = Vector2(0, -0.999998)
+scale = Vector2(0.173273, 0.157709)
+texture = ExtResource("15_jqb2v")
 
 [node name="Label" type="Label" parent="Townie_Logic/Town_Drunk/Sprite2D"]
 anchors_preset = -1
@@ -566,8 +561,8 @@ script = ExtResource("19_alpfg")
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Bar_Keep"]
 position = Vector2(0, -0.999998)
-scale = Vector2(0.07, 0.064)
-texture = ExtResource("24_n3rvj")
+scale = Vector2(0.173273, 0.157709)
+texture = ExtResource("15_jqb2v")
 
 [node name="Label" type="Label" parent="Townie_Logic/Bar_Keep/Sprite2D"]
 anchors_preset = -1
@@ -588,8 +583,8 @@ script = ExtResource("20_dwx7h")
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Ranch_Hand"]
 position = Vector2(0, -0.999998)
-scale = Vector2(0.1, 0.091)
-texture = ExtResource("26_6ry6s")
+scale = Vector2(0.173273, 0.157709)
+texture = ExtResource("15_jqb2v")
 
 [node name="Label" type="Label" parent="Townie_Logic/Ranch_Hand/Sprite2D"]
 anchors_preset = -1
@@ -619,10 +614,6 @@ metadata/_edit_use_anchors_ = true
 [connection signal="pressed" from="CanvasLayer/Dynamite" to="Rules_Controller" method="Dynamite"]
 [connection signal="pressed" from="CanvasLayer/Claim" to="CanvasLayer/Claim" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer/Claim" to="Townie_Logic" method="_on_claim_pressed"]
-<<<<<<< Updated upstream
-[connection signal="DrawnCard" from="Cards" to="Townie_Logic" method="UpdateCard"]
-=======
->>>>>>> Stashed changes
 [connection signal="DrawnCard" from="Cards" to="Townie_Logic/Preacher" method="hire_townsfolk"]
 [connection signal="DrawnCard" from="Cards" to="Townie_Logic/Doctor" method="hire_townsfolk"]
 [connection signal="DrawnCard" from="Cards" to="Townie_Logic/Teacher" method="hire_townsfolk"]

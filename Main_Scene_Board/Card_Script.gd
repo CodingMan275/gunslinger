@@ -54,12 +54,12 @@ func _drawTownDeck(): # fucntion that simulates the cards being drawn
 		GlobalScript.DebugScript.add("DrawArray drew  "+str(TDCard))
 		DrawArray.pop_front() #pop it out
 		DiscardArray.push_front(TDCard) #push on discard array
-		#GlobalScript.DebugScript.add("DiscardArray has  "+str(DiscardArray))
-		#GlobalScript.DebugScript.add("DrawArray has  "+str(DrawArray))
+		GlobalScript.DebugScript.add("DiscardArray has  "+str(DiscardArray))
+		GlobalScript.DebugScript.add("DrawArray has  "+str(DrawArray))
 		#adds card to hand
 		DrawnCard.emit(TDCard, false, null)
 	else:
-		for n in 6:
+		for n in 12:
 			DrawArray.push_front(DiscardArray[n]) #(dont think this works like I think it does) copy contents from discard back to draw
 		DiscardArray.clear()
 		DrawArray.shuffle() # shuffles the array contents
@@ -67,8 +67,8 @@ func _drawTownDeck(): # fucntion that simulates the cards being drawn
 		var TDCard = DrawArray[0] #since its and if/else, we need to run the code from the if, or else the player would simply not be able to have a card drawn
 		DrawArray.pop_front()
 		DiscardArray.push_front(TDCard)
-		#GlobalScript.DebugScript.add("DiscardArray has  "+str(DiscardArray))
-		#GlobalScript.DebugScript.add("DrawArray has  "+str(DrawArray))
+		GlobalScript.DebugScript.add("DiscardArray has  "+str(DiscardArray))
+		GlobalScript.DebugScript.add("DrawArray has  "+str(DrawArray))
 
 @rpc("any_peer","call_local")
 func _AddCard(card, player_index):

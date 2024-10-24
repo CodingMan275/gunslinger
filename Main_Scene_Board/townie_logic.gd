@@ -34,9 +34,12 @@ func _process(delta: float) -> void:
 func UpdateCard(x,y,z):
 	if(!y):
 		CurrentCard = x
-		print("Updated cards")
 	pass
 
 
 func _on_claim_pressed() -> void:
 	get_node(CurrentCard).reveal_hired_gun()
+	get_node(CurrentCard).CurrentOwner = Rules.get_node(str(multiplayer.get_unique_id())).Player_ID
+	get_node(CurrentCard).RecievedOwner = Rules.get_node(str(multiplayer.get_unique_id())).Player_ID
+	pass # Replace with function body.
+	

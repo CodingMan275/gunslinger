@@ -132,22 +132,26 @@ func PutCardInHand(Card, FirstDraw, p_i):
 			if(order == Player_ID):
 				DrewCard = true
 				CurrentCard = Card
+				
 			#PlayerHand.append(Card)
 				can_act = false
 			#for cards in PlayerHand.size():
 			#	Card == PlayerHand[cards]
 				get_parent().Townie.get_node(Card).tile_map_node = tile_map_node	
 				get_parent().Townie.get_node(Card).movable = true	
-		#		get_parent().Townie.get_node(CurrentCard).CurrentOwner = Player_ID
+				get_parent().Townie.get_node(CurrentCard).RecievedOwner = Player_ID
 				#Put button here for to claim
 				DrawButton.hide()
 	pass
 	
+@rpc("call_local","any_peer")
 func Claim(x,y):
 	CurrentCard = x
 	for i in PlayerHand:
 		if(PlayerHand.has(CurrentCard)):
 			if(!get_parent().Townie.get_node(CurrentCard).claim_revealed):
+				get_parent().Townie.get_node(CurrentCard).CurrentOwner = y
+				get_parent().Townie.get_node(CurrentCard).RecievedOwner = y
 				print("Did we even get here")
 				ClaimButton.show()
 	pass

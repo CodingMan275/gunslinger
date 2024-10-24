@@ -11,6 +11,15 @@ class_name Town_Drunk
 
 var movable = false
 
+var CurrentOwner
+
+var RecievedOwner
+
+func UpdateOwner(x):
+	if(!claim_revealed):
+		CurrentOwner = x
+	pass
+
 
 func _init():
 	pass
@@ -18,17 +27,14 @@ func _init():
 func _ready() -> void:
 	get_node("../../Cards").DrawnCard.connect(hire_townsfolk)
 	pass # Replace with function body.
-	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	#print("Move: "+str(move_possible()))
 	#print(ActionPoint)
-	#if CurrentOwner == RecievedOwner:
-	
+	if CurrentOwner == RecievedOwner:
 		if Input.is_action_just_pressed("LeftClick") and ActionPoint > 0 and movable:
-	#	if can_move(RecievedOwner):
 			if move_possible():
 				self.global_position = Vector2(get_global_mouse_position())
 				pos = tile_map_node.local_to_map(self.position)
@@ -64,12 +70,13 @@ func can_brawl(player) -> bool:
 		return true
 	return false
 	
+'''
 func can_move(player) -> bool:
 	if not claim_revealed:
 		return true
 	elif is_owning_player(player):
 		return true
 	else:
-		return false
-
+		'return false
+	'''
 	
