@@ -128,7 +128,7 @@ func _resetAP():
 func PutCardInHand(Card, FirstDraw, p_i):
 	if(!FirstDraw):
 		if ($MultiplayerSynchronizer.get_multiplayer_authority() == multiplayer.get_unique_id() || GlobalScript.SinglePlay):
-			Claim(Card, Player_ID)
+			Claim(Card)
 			if(order == Player_ID):
 				DrewCard = true
 				CurrentCard = Card
@@ -139,20 +139,17 @@ func PutCardInHand(Card, FirstDraw, p_i):
 			#	Card == PlayerHand[cards]
 				get_parent().Townie.get_node(Card).tile_map_node = tile_map_node	
 				get_parent().Townie.get_node(Card).movable = true	
-				get_parent().Townie.get_node(CurrentCard).RecievedOwner = Player_ID
+				get_parent().Townie.get_node(CurrentCard).Player = Player_ID
 				#Put button here for to claim
 				DrawButton.hide()
 	pass
 	
-@rpc("call_local","any_peer")
-func Claim(x,y):
+
+func Claim(x):
 	CurrentCard = x
 	for i in PlayerHand:
 		if(PlayerHand.has(CurrentCard)):
 			if(!get_parent().Townie.get_node(CurrentCard).claim_revealed):
-				get_parent().Townie.get_node(CurrentCard).CurrentOwner = y
-				get_parent().Townie.get_node(CurrentCard).RecievedOwner = y
-				print("Did we even get here")
 				ClaimButton.show()
 	pass
 

@@ -59,7 +59,7 @@ func _drawTownDeck(): # fucntion that simulates the cards being drawn
 		#adds card to hand
 		DrawnCard.emit(TDCard, false, null)
 	else:
-		for n in 12:
+		for n in 6:
 			DrawArray.push_front(DiscardArray[n]) #(dont think this works like I think it does) copy contents from discard back to draw
 		DiscardArray.clear()
 		DrawArray.shuffle() # shuffles the array contents
@@ -102,6 +102,7 @@ func _draw_card(array: Array, player_index: int, card_type: String) -> Variant:
 	if(StartingDraw):
 		DrawnCard.emit(card, true, player_index)
 		print("Sending signal")
+		print(player_index)
 	GlobalScript.DebugScript.add.rpc("Player " + str(player_index) + " drew card " + card_type + ": " + card)
 	array.erase(card)  # Remove the drawn card
 	return card
