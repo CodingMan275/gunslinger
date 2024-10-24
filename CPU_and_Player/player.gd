@@ -176,6 +176,9 @@ func MoveMouse():
 					print(pos)
 					action_points -= 1
 					DrawButton.hide()
+					print("On Boardwalk: " + tile_map_node.is_boardwalk_tile(pos))
+					print("On Building: " + tile_map_node.is_building_tile(pos))
+					print("On Path: " + tile_map_node.is_path_tile(pos))
 			elif (Input.is_action_just_pressed("LeftClick") and move_possible() and action_points == 0):
 				GlobalScript.DebugScript.add("You have no more Action Points ")
 		#	if (!can_act):
