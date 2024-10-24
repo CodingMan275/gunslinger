@@ -1,4 +1,8 @@
+ColorRect
+Panel
+VBoxContainer
 Button
+Window
 Node
 MultiplayerSynchronizer
 Label
@@ -6,9 +10,6 @@ Sprite2D
 CharacterBody2D
 RichTextLabel
 TextEdit
-VBoxContainer
 Container
 ScrollContainer
 TextEdit
-Window
-Panel

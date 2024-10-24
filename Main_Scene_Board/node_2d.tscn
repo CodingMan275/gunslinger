@@ -1,11 +1,21 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=28 format=4 uid="uid://jl7k3ltwbp41"]
+=======
+<<<<<<< HEAD
+[gd_scene load_steps=35 format=4 uid="uid://jl7k3ltwbp41"]
+=======
+[gd_scene load_steps=28 format=4 uid="uid://jl7k3ltwbp41"]
+>>>>>>> 7e6f4296e02da4f0a5e82df55c919675f662b14a
+>>>>>>> Stashed changes
 
 [ext_resource type="Texture2D" uid="uid://fcuqal2ynbts" path="res://Main_Scene_Board/spritesheet.png" id="1_o8ncf"]
 [ext_resource type="Texture2D" uid="uid://mmea4eto2a6p" path="res://Main_Scene_Board/Rhombus.png" id="2_rfajf"]
 [ext_resource type="Script" path="res://Main_Scene_Board/layer_0.gd" id="3_8wl58"]
 [ext_resource type="AudioStream" uid="uid://cslhnxro8mi3y" path="res://Card Game/shuffleandbridge-107641.wav" id="4_euu82"]
+[ext_resource type="PackedScene" uid="uid://dgpg2r0xdtjdm" path="res://Pause_Menu/pause_menu.tscn" id="4_tnbof"]
 [ext_resource type="Script" path="res://Main_Scene_Board/Canvas_Layer/Turn_Label.gd" id="5_52d0j"]
 [ext_resource type="Theme" uid="uid://0qo5my5cfjq1" path="res://Main_Scene_Board/Canvas_Layer/Themes/Debug.tres" id="5_jnad2"]
+[ext_resource type="PackedScene" uid="uid://de4rosvv5eya5" path="res://Pause_Menu/pause_menu_button.tscn" id="5_m0q21"]
 [ext_resource type="Script" path="res://Main_Scene_Board/Canvas_Layer/debug.gd" id="6_5svso"]
 [ext_resource type="Script" path="res://Main_Scene_Board/rules_controller.gd" id="6_6e8od"]
 [ext_resource type="AudioStream" uid="uid://ccdn50u37npqi" path="res://Card Game/card-sounds-35956.wav" id="6_ye88j"]
@@ -456,6 +466,18 @@ offset_right = 0.23999
 offset_bottom = 0.0299835
 text = "Claim"
 script = ExtResource("9_xcao8")
+
+[node name="Pause Menu" type="Node" parent="CanvasLayer"]
+
+[node name="Pause Menu Back Button" parent="CanvasLayer/Pause Menu" instance=ExtResource("5_m0q21")]
+offset_left = 3.0
+offset_top = 28.0
+offset_right = 45.0
+offset_bottom = 70.0
+
+[node name="PauseMenu" parent="CanvasLayer/Pause Menu" instance=ExtResource("4_tnbof")]
+unique_name_in_owner = true
+visible = false
 
 [node name="Rules_Controller" type="Node" parent="."]
 script = ExtResource("6_6e8od")
