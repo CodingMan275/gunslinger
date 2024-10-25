@@ -3,6 +3,7 @@ extends Node
 #Card stuff
 @export var HiredGunVar = 3
 @export var WeaponCardVar = 5
+@onready var Sound_Player2 = $"../CanvasLayer/Draw Card/DrawCardSFX"
 
 #Draw and Discard piles that are connected to the multiplayer syncronizer
 #These are updated automatically between peers so every peer
@@ -48,6 +49,7 @@ func _onCardDraw() -> void:
 #Appropriate deck in their instances
 @rpc("any_peer","call_local")
 func _drawTownDeck(): # fucntion that simulates the cards being drawn
+	Sound_Player2.play()
 	var DrawSize = DrawArray.size() # Checks size of the array we're drawing from
 	if (DrawSize != 0): # first element exists -> array has some cards left
 		var TDCard = DrawArray[0] # gets the first element value

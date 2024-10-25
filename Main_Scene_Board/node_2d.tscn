@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=4 uid="uid://jl7k3ltwbp41"]
+[gd_scene load_steps=35 format=4 uid="uid://jl7k3ltwbp41"]
 
 [ext_resource type="Texture2D" uid="uid://fcuqal2ynbts" path="res://Main_Scene_Board/spritesheet.png" id="1_o8ncf"]
 [ext_resource type="Texture2D" uid="uid://mmea4eto2a6p" path="res://Main_Scene_Board/Rhombus.png" id="2_rfajf"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://Main_Scene_Board/rules_controller.gd" id="6_6e8od"]
 [ext_resource type="AudioStream" uid="uid://ccdn50u37npqi" path="res://Card Game/card-sounds-35956.wav" id="6_ye88j"]
 [ext_resource type="PackedScene" uid="uid://x0tek8t1bewj" path="res://CPU_and_Player/Player.tscn" id="7_saeg4"]
+[ext_resource type="AudioStream" uid="uid://bekgpnqtbfsyc" path="res://Card Game/Stun.wav" id="8_7t4t6"]
 [ext_resource type="PackedScene" uid="uid://cj15kaxvr44m1" path="res://CPU_and_Player/CPU.tscn" id="9_hsfom"]
 [ext_resource type="Script" path="res://Main_Scene_Board/Card_Script.gd" id="9_mpy2d"]
 [ext_resource type="Script" path="res://Main_Scene_Board/claim.gd" id="9_xcao8"]
@@ -26,6 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://c1keaoj8b1k3k" path="res://madmike.svg" id="22_nwhpe"]
 [ext_resource type="Texture2D" uid="uid://dywhqj3m2j1y3" path="res://oldsmokey.svg" id="24_5vq5u"]
 [ext_resource type="Texture2D" uid="uid://c5dj7es7aba7e" path="res://thekid.svg" id="26_ndqm4"]
+[ext_resource type="Texture2D" uid="uid://bnk7r45gr5cn8" path="res://IMG_9861.png" id="27_uadwx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p1dyh"]
 texture = ExtResource("1_o8ncf")
@@ -271,6 +273,14 @@ func _on_VBoxContainer_size_changed():
 
 [node name="Node2D" type="Node2D"]
 
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -224.0
+offset_top = -119.0
+offset_right = 255.0
+offset_bottom = 149.0
+texture = ExtResource("27_uadwx")
+expand_mode = 1
+
 [node name="Layer0" type="TileMapLayer" parent="."]
 use_parent_material = true
 tile_map_data = PackedByteArray("AAAAAAEAAAAIAAUAAAAAAAIAAAAAAAAAAAAAAAMAAAAFAAUAAAAAAAQAAAAFAAUAAAAAAAUAAAAAAAAAAAAAAAYAAAAFAAUAAAAAAAcAAAAFAAUAAAABAAAAAAAIAAUAAAACAAAAAAAAAAAAAAADAAAAAAAFAAUAAAAEAAAAAAAFAAUAAAAFAAAAAAAAAAAAAAAGAAAAAAAHAAMAAAAHAAAAAAAFAAUAAAABAAcAAAAHAAMAAAACAAcAAAAAAAAAAAADAAcAAAAFAAUAAAAEAAcAAAAFAAUAAAAFAAcAAAAAAAAAAAAGAAcAAAAIAAUAAAAHAAcAAAAIAAUAAAAHAAUAAAAAAAAAAAAHAAYAAAAIAAUAAAAHAAQAAAAFAAUAAAAHAAMAAAAFAAUAAAAHAAIAAAAAAAAAAAAHAAEAAAAFAAUAAAABAAEAAAAIAAUAAAADAAMAAAAFAAUAAAADAAQAAAAHAAMAAAAEAAQAAAAFAAUAAAAEAAMAAAAHAAMAAAAGAAYAAAAIAAUAAAAEAAYAAAAHAAMAAAADAAYAAAAHAAMAAAABAAQAAAAHAAMAAAABAAMAAAAHAAMAAAAEAAEAAAAHAAMAAAADAAEAAAAHAAMAAAAGAAEAAAAHAAMAAAAGAAQAAAAHAAMAAAAGAAMAAAAHAAMAAAAGAAUAAAAAAAAAAAAFAAYAAAAAAAAAAAAFAAUAAAAAAAAAAAAEAAUAAAAAAAAAAAADAAUAAAAAAAAAAAACAAUAAAAAAAAAAAACAAYAAAAAAAAAAAABAAYAAAAHAAMAAAABAAUAAAAAAAAAAAACAAQAAAAAAAAAAAACAAMAAAAAAAAAAAACAAIAAAAAAAAAAAABAAIAAAAAAAAAAAACAAEAAAAAAAAAAAAFAAQAAAAAAAAAAAAFAAMAAAAAAAAAAAAFAAIAAAAAAAAAAAADAAIAAAAAAAAAAAAEAAIAAAAAAAAAAAAFAAEAAAAAAAAAAAAGAAIAAAAAAAAAAAAAAAAAAAAIAAUAAAA=")
@@ -368,10 +378,15 @@ offset_right = -28.76
 offset_bottom = -0.0400085
 text = "Draw Card"
 
+[node name="DrawCardSFX" type="AudioStreamPlayer2D" parent="CanvasLayer/Draw Card"]
+position = Vector2(-12, -225)
+stream = ExtResource("6_ye88j")
+
 [node name="Draw cards" type="AudioStreamPlayer" parent="CanvasLayer/Draw Card"]
 stream = ExtResource("6_ye88j")
-volume_db = 24.0
-pitch_scale = 4.0
+volume_db = 6.198
+pitch_scale = 1.95
+bus = &"SFX"
 
 [node name="Show Hand" type="Button" parent="CanvasLayer"]
 anchors_preset = -1
@@ -395,6 +410,9 @@ offset_right = -0.0400009
 offset_bottom = 0.12999
 text = "Attack"
 
+[node name="Attack" type="AudioStreamPlayer2D" parent="CanvasLayer/Attack"]
+stream = ExtResource("8_7t4t6")
+
 [node name="Brawl" type="Button" parent="CanvasLayer"]
 anchors_preset = -1
 anchor_left = 0.165
@@ -407,6 +425,9 @@ offset_right = 0.199982
 offset_bottom = 0.0499878
 text = "Brawl
 "
+
+[node name="Punch" type="AudioStreamPlayer2D" parent="CanvasLayer/Brawl"]
+stream = ExtResource("8_7t4t6")
 
 [node name="Dynamite" type="Button" parent="CanvasLayer"]
 anchors_preset = -1
@@ -612,7 +633,9 @@ metadata/_edit_use_anchors_ = true
 [connection signal="pressed" from="CanvasLayer/Draw Card" to="Rules_Controller" method="_onCardDraw"]
 [connection signal="pressed" from="CanvasLayer/Draw Card" to="Cards" method="_onCardDraw"]
 [connection signal="pressed" from="CanvasLayer/Show Hand" to="Rules_Controller" method="_ClaimCards"]
+[connection signal="pressed" from="CanvasLayer/Attack" to="Layer0" method="_on_attack_pressed"]
 [connection signal="pressed" from="CanvasLayer/Attack" to="Rules_Controller" method="RangeAttack"]
+[connection signal="pressed" from="CanvasLayer/Brawl" to="Layer0" method="_on_brawl_pressed"]
 [connection signal="pressed" from="CanvasLayer/Brawl" to="Rules_Controller" method="BrawlAttack"]
 [connection signal="pressed" from="CanvasLayer/Dynamite" to="Rules_Controller" method="Dynamite"]
 [connection signal="pressed" from="CanvasLayer/Claim" to="CanvasLayer/Claim" method="_on_pressed"]
