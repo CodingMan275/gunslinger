@@ -377,10 +377,15 @@ offset_right = -28.76
 offset_bottom = -0.0400085
 text = "Draw Card"
 
+[node name="DrawCardSFX" type="AudioStreamPlayer2D" parent="CanvasLayer/Draw Card"]
+position = Vector2(-12, -225)
+stream = ExtResource("6_ye88j")
+
 [node name="Draw cards" type="AudioStreamPlayer" parent="CanvasLayer/Draw Card"]
 stream = ExtResource("6_ye88j")
-volume_db = 24.0
-pitch_scale = 4.0
+volume_db = 6.198
+pitch_scale = 1.95
+bus = &"SFX"
 
 [node name="Show Hand" type="Button" parent="CanvasLayer"]
 anchors_preset = -1
