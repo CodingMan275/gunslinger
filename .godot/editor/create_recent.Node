@@ -1,14 +1,14 @@
+TextureRect
+Sprite2D
 VScrollBar
 HScrollBar
 Button
 Node
 MultiplayerSynchronizer
 Label
-Sprite2D
 CharacterBody2D
 RichTextLabel
 TextEdit
 VBoxContainer
 Container
 ScrollContainer
-TextEdit
