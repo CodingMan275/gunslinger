@@ -24,8 +24,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	var Order = get_parent().get_parent().Player_ID
-	var  health = GlobalScript.PlayerNode[Order -1].Health
-	
-	text = str(GlobalScript.PlayerNode[Order -1].Name, "  " , health,"/",OverAllHealth)
-	pass
+	if(GlobalScript.PlayerNode.size() > 0):
+		var Order = get_parent().get_parent().Player_ID
+		var  health = GlobalScript.PlayerNode[Order -1].Health
+		text = str(GlobalScript.PlayerNode[Order -1].Name, "  " , health,"/",OverAllHealth)
+		pass

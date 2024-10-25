@@ -268,7 +268,6 @@ rendering_quadrant_size = 32
 script = ExtResource("3_8wl58")
 
 [node name="Layer1" type="TileMapLayer" parent="."]
-visible = false
 y_sort_enabled = true
 use_parent_material = true
 tile_set = SubResource("TileSet_1y6tq")
@@ -429,7 +428,6 @@ layout_mode = 2
 
 [node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/DebugPanel/MarginContainer"]
 layout_mode = 2
-horizontal_scroll_mode = 0
 script = SubResource("GDScript_brdbx")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/DebugPanel/MarginContainer/ScrollContainer"]
@@ -605,8 +603,8 @@ metadata/_edit_use_anchors_ = true
 [connection signal="pressed" from="CanvasLayer/Attack" to="Rules_Controller" method="RangeAttack"]
 [connection signal="pressed" from="CanvasLayer/Brawl" to="Rules_Controller" method="BrawlAttack"]
 [connection signal="pressed" from="CanvasLayer/Dynamite" to="Rules_Controller" method="Dynamite"]
-[connection signal="pressed" from="CanvasLayer/Claim" to="Townie_Logic" method="_on_claim_pressed"]
 [connection signal="pressed" from="CanvasLayer/Claim" to="CanvasLayer/Claim" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/Claim" to="Townie_Logic" method="_on_claim_pressed"]
 [connection signal="DrawnCard" from="Cards" to="Townie_Logic/Preacher" method="hire_townsfolk"]
 [connection signal="DrawnCard" from="Cards" to="Townie_Logic/Doctor" method="hire_townsfolk"]
 [connection signal="DrawnCard" from="Cards" to="Townie_Logic/Teacher" method="hire_townsfolk"]

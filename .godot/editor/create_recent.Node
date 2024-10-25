@@ -1,3 +1,5 @@
+VScrollBar
+HScrollBar
 Button
 Node
 MultiplayerSynchronizer
@@ -10,5 +12,3 @@ VBoxContainer
 Container
 ScrollContainer
 TextEdit
-Window
-Panel

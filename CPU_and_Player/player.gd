@@ -169,7 +169,6 @@ func MoveMouse():
 				if  move_possible():
 					self.global_position = Vector2(get_global_mouse_position())
 					pos = tile_map_node.local_to_map(self.position)
-					print(pos)
 					action_points -= 1
 					DrawButton.hide()
 			elif (Input.is_action_just_pressed("LeftClick") and move_possible() and action_points == 0):

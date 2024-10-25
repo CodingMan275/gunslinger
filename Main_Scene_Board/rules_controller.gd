@@ -52,7 +52,7 @@ func _ready() -> void:
 			MultiPlay(i, index)
 			index += 1
 	else:
-		for i in numPlayers:
+		for i in 2:
 			SinglePlay(i, index)
 			index += 1
 
@@ -130,8 +130,8 @@ func MultiPlay(i , index):
 		#After each player increase the index for the next player to get proper information
 
 func SinglePlay(i , index):
-		print(index)
 		if index == 0:
+			NoTownies()
 			var currentPlayer = player_scene.instantiate()
 			#The player needs to get information from the tile map
 			currentPlayer.tile_map_node = get_node("../Layer0")
@@ -174,16 +174,24 @@ func SinglePlay(i , index):
 			#and such
 			#Player 1 information
 			#Set player 1 at position 0,0 on the tile map
-			currentPlayer.position = get_node("../Layer0").map_to_local(Vector2 (0,7))
+			currentPlayer.position = get_node("../Layer0").map_to_local(Vector2 (5,5))
 			#Ask michael, sets player node position to somewhere
-			GlobalScript.PlayerNode[index].pos = Vector2 (0,7)
-			GlobalScript.PlayerNode[index].Startpos = Vector2(6,6)
+			GlobalScript.PlayerNode[index].pos = Vector2 (5,5)
+			GlobalScript.PlayerNode[index].Startpos = Vector2(1,1)
+			GlobalScript.PlayerNode[index].TargetStable = Vector2(7-GlobalScript.PlayerNode[index].Startpos.x,7-GlobalScript.PlayerNode[index].Startpos.y)
 			#Set player label to the name they put in (not needed but fun)
 	#		currentPlayer.LabelName = "CPU"
 			#Set it to player 1 which is effectively turn order
 			currentPlayer.Player_ID = index + 1
 
-
+#CPU is not townie ready so we will hide them
+func NoTownies():
+	$"../Townie_Logic/Preacher".hide()
+	$"../Townie_Logic/Doctor".hide()
+	$"../Townie_Logic/Teacher".hide()
+	$"../Townie_Logic/Town_Drunk".hide()
+	$"../Townie_Logic/Bar_Keep".hide()
+	$"../Townie_Logic/Ranch_Hand".hide()
 
 
 func _on_button_pressed() -> void:
@@ -204,6 +212,7 @@ func order_inc():
 	#If current node stunned, ask Michael
 	if(GlobalScript.PlayerNode[Turn_Order -1].StunTracker != 0):
 		GlobalScript.PlayerNode[Turn_Order-1].StunTracker -= 1
+		GlobalScript.PlayerNode[Turn_Order -1].FreeBrawl = true
 	#Increment turn order
 	Turn_Order = Turn_Order + 1
 	#BEcuase there are only 2 players at turn 2 go back to turn 1
@@ -228,13 +237,23 @@ func _process(delta: float) -> void:
 	
 	for n in GlobalScript.PlayerNode.size():
 		if (GlobalScript.PlayerNode[n].Health <= 0):
-			KillAll.rpc()
+			Winner.rpc()
 			
 	pass
-	
+
+#This Function needs to reset everything or start up needs to clear everything
 @rpc("any_peer", "call_local")
-func KillAll():
-	get_tree().quit()
+func Winner():
+	if Turn_Order == 1:
+		get_tree().change_scene_to_file("res://Victory_Screens/player1_victory_screen.tscn")
+	if(!GlobalScript.SinglePlay):
+		if Turn_Order == 2:
+			get_tree().change_scene_to_file("res://Victory_Screens/player2_victory_screen.tscn")
+			get_parent().queue_free()
+	else:
+		get_tree().change_scene_to_file("res://Victory_Screens/CPU2_victory_screen.tscn")
+	GlobalScript.clear()
+
 
 
 #Unclear what this does, ask michael / Oakley
@@ -252,8 +271,8 @@ func Attack_Calc(Enemy, Player):
 	#Weapon damage, not the attacking players?
 	GlobalScript.PlayerNode[Enemy].Health -= damage
 	#Debug enu to show damage
-	GlobalScript.DebugScript.add("Player "+str(Enemy+1)+" lost "+str(damage)+" points of hp")
-	GlobalScript.DebugScript.add("Player "+str(Enemy+1)+" now has "+str(GlobalScript.PlayerNode[Enemy].Health)+" points of hp")
+	GlobalScript.DebugScript.add(GlobalScript.PlayerNode[Enemy].Name + " lost "+str(damage)+" points of hp")
+	GlobalScript.DebugScript.add(GlobalScript.PlayerNode[Enemy].Name + " now has "+str(GlobalScript.PlayerNode[Enemy].Health)+" points of hp")
 	#If overkill, dont
 	if(GlobalScript.PlayerNode[Enemy].Health <= 0):
 		GlobalScript.PlayerNode[Enemy].Health = 0
@@ -275,7 +294,8 @@ func RangeAttack():
 		else:
 			CantAttack(n,GlobalScript.PlayerNode[Turn_Order -1].WeaponRange)
 
-func BrawlAttack():
+func BrawlAttack() -> bool:
+	var ReturnBool
 	for n in numPlayers:
 		if(n+1 != Turn_Order && CanAttack(n,0)):
 			if(!GlobalScript.PlayerNode[Turn_Order -1].FreeBrawl):
@@ -283,8 +303,11 @@ func BrawlAttack():
 			GlobalScript.PlayerNode[Turn_Order -1].FreeBrawl = false
 			Attack(n, Turn_Order -1)
 			Attack(Turn_Order -1 , n)
+			ReturnBool = true
 		else:
 			CantAttack(n , 0)
+			ReturnBool = false
+	return ReturnBool
 
 #Detects if the player is capable of attacking
 func CanAttack(Enemy , range) -> bool:
@@ -341,23 +364,22 @@ func DistCheck(player, Dist) -> bool:
 		return false
 
 #Throw dynamite, needs work
-func Dynamite():
+func Dynamite() -> bool:
 	if(StableCheck() && GlobalScript.PlayerNode[Turn_Order -1].action_points !=0 && GlobalScript.PlayerNode[Turn_Order-1].can_act):
-		KillAll.rpc()
+		if(!GlobalScript.SinglePlay):
+			Winner.rpc()
+		return true
 	elif(!GlobalScript.PlayerNode[Turn_Order-1].can_act):
 		GlobalScript.DebugScript.add("You cannot act because you drew a card")
 	elif(GlobalScript.PlayerNode[Turn_Order -1].action_points == 0):
 		GlobalScript.DebugScript.add("You have no more Action Points ")
 	elif(!StableCheck()):
 		GlobalScript.DebugScript.add("You are not on a player stable")
+	return false
 
 func StableCheck():
 	var PlayerLoc = GlobalScript.PlayerNode[Turn_Order -1].pos
-	var EnemyLoc
-	if (GlobalScript.PlayerNode[Turn_Order -1].Startpos == Vector2(1,1)):
-		EnemyLoc = Vector2(6,6)
-	else:
-		EnemyLoc = Vector2(1,1)
+	var EnemyLoc = Vector2(7-GlobalScript.PlayerNode[Turn_Order -1].Startpos.x,7-GlobalScript.PlayerNode[Turn_Order -1].Startpos.y)
 	if(EnemyLoc.x < 2):
 		if (PlayerLoc. x <= 2 && PlayerLoc.y <=2 && PlayerLoc != Vector2(2,2)):
 			return true

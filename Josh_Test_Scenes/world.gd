@@ -59,6 +59,8 @@ func _on_host_pressed() -> void:
 	var error = peer.create_server(1027)
 	if error != OK:
 		print("Error: ", error)
+		_close_server()
+		_on_host_pressed()
 		return
 	#peer.get_host().compress(ENetConnection.COMPRESS_RANGE_CODER)
 
@@ -79,8 +81,8 @@ func _on_join_pressed() -> void:
 	peer = ENetMultiplayerPeer.new()
 	
 	#IP of SUNY Poly, can be changed later
-	peer.create_client(line_edit.text, 1027)
-	#peer.create_client("192.168.201.81", 1027)
+	#peer.create_client(line_edit.text, 1027)
+	peer.create_client("192.168.201.81", 1027)
 	
 	#Same compress of CPU and bandwidth resources
 	#peer.get_host().compress(ENetConnection.COMPRESS_RANGE_CODER)
@@ -97,6 +99,15 @@ func _on_join_pressed() -> void:
 		print(GlobalScript.PlayerInfo[i])
 	#Canvas no longer needed
 #	$CanvasLayer.hide()
+
+
+func _close_server():
+	print("no")
+	# Help
+
+
+
+
 
 func _on_start_pressed() -> void:
 	GameSceneStart.rpc()

@@ -9,8 +9,11 @@ func _ready() -> void:
 	#Gets the parent node of its parent node
 	var Order = get_parent().get_parent().Player_ID
 	OverAllHealth = GlobalScript.PlayerNode[Order -1].Health
+	
+	GlobalScript.PlayerNode[Order -1].Name = str("CPU ", Order)
+	
+	text = str(GlobalScript.PlayerNode[Order -1].Name, "  " , OverAllHealth,"/",OverAllHealth)
 
-	text = str("CPU ", Order , "  " , OverAllHealth,"/",OverAllHealth)
 	pass # Replace with function body.
 
 
@@ -19,5 +22,5 @@ func _process(delta: float) -> void:
 	var Order = get_parent().get_parent().Player_ID
 	var  health = GlobalScript.PlayerNode[Order -1].Health
 	
-	text = str("CPU ", Order , "  " , health,"/",OverAllHealth)
+	text = str(GlobalScript.PlayerNode[Order -1].Name, "  " , health,"/",OverAllHealth)
 	pass
