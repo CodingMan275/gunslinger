@@ -1,7 +1,8 @@
 extends TileMapLayer
 
-@onready var Sound_Player = $"../CanvasLayer/Join/Shuffle cards"
 @onready var Sound_Player2 = $"../CanvasLayer/Draw Card/Draw cards"
+@onready var Sound_Player3 = $"../CanvasLayer/Attack/Attack"
+@onready var Sound_Player4 = $"../CanvasLayer/Brawl/Punch"
 
 enum TerrainType{
 	DIRT_PATH = 1,
@@ -21,9 +22,6 @@ func _process(delta):
 	pass
 
 
-func _on_join_pressed():
-	Sound_Player.play()
-	print("Play sound Join")
 
 
 func _on_draw_card_pressed() -> void:
@@ -42,3 +40,14 @@ func is_path_tile(location : Vector2) -> bool:
 	
 func is_stable_tile(location : Vector2) -> bool:
 	return get_cell_tile_data(location).get_custom_data("TileType") == TerrainType.STABLE
+
+
+func _on_attack_pressed() -> void:
+	Sound_Player3.play()
+	pass # Replace with function body.
+	
+	
+
+func _on_brawl_pressed() -> void:
+	Sound_Player4.play()
+	pass # Replace with function body.

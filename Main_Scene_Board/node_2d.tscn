@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://jl7k3ltwbp41"]
+[gd_scene load_steps=35 format=4 uid="uid://jl7k3ltwbp41"]
 
 [ext_resource type="Texture2D" uid="uid://fcuqal2ynbts" path="res://Main_Scene_Board/spritesheet.png" id="1_o8ncf"]
 [ext_resource type="Texture2D" uid="uid://mmea4eto2a6p" path="res://Main_Scene_Board/Rhombus.png" id="2_rfajf"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://Main_Scene_Board/rules_controller.gd" id="6_6e8od"]
 [ext_resource type="AudioStream" uid="uid://ccdn50u37npqi" path="res://Card Game/card-sounds-35956.wav" id="6_ye88j"]
 [ext_resource type="PackedScene" uid="uid://x0tek8t1bewj" path="res://CPU_and_Player/Player.tscn" id="7_saeg4"]
+[ext_resource type="AudioStream" uid="uid://bekgpnqtbfsyc" path="res://Card Game/Stun.wav" id="8_7t4t6"]
 [ext_resource type="PackedScene" uid="uid://cj15kaxvr44m1" path="res://CPU_and_Player/CPU.tscn" id="9_hsfom"]
 [ext_resource type="Script" path="res://Main_Scene_Board/Card_Script.gd" id="9_mpy2d"]
 [ext_resource type="Script" path="res://Main_Scene_Board/claim.gd" id="9_xcao8"]
@@ -409,6 +410,9 @@ offset_right = -0.0400009
 offset_bottom = 0.12999
 text = "Attack"
 
+[node name="Attack" type="AudioStreamPlayer2D" parent="CanvasLayer/Attack"]
+stream = ExtResource("8_7t4t6")
+
 [node name="Brawl" type="Button" parent="CanvasLayer"]
 anchors_preset = -1
 anchor_left = 0.165
@@ -421,6 +425,9 @@ offset_right = 0.199982
 offset_bottom = 0.0499878
 text = "Brawl
 "
+
+[node name="Punch" type="AudioStreamPlayer2D" parent="CanvasLayer/Brawl"]
+stream = ExtResource("8_7t4t6")
 
 [node name="Dynamite" type="Button" parent="CanvasLayer"]
 anchors_preset = -1
@@ -626,7 +633,9 @@ metadata/_edit_use_anchors_ = true
 [connection signal="pressed" from="CanvasLayer/Draw Card" to="Rules_Controller" method="_onCardDraw"]
 [connection signal="pressed" from="CanvasLayer/Draw Card" to="Cards" method="_onCardDraw"]
 [connection signal="pressed" from="CanvasLayer/Show Hand" to="Rules_Controller" method="_ClaimCards"]
+[connection signal="pressed" from="CanvasLayer/Attack" to="Layer0" method="_on_attack_pressed"]
 [connection signal="pressed" from="CanvasLayer/Attack" to="Rules_Controller" method="RangeAttack"]
+[connection signal="pressed" from="CanvasLayer/Brawl" to="Layer0" method="_on_brawl_pressed"]
 [connection signal="pressed" from="CanvasLayer/Brawl" to="Rules_Controller" method="BrawlAttack"]
 [connection signal="pressed" from="CanvasLayer/Dynamite" to="Rules_Controller" method="Dynamite"]
 [connection signal="pressed" from="CanvasLayer/Claim" to="CanvasLayer/Claim" method="_on_pressed"]
