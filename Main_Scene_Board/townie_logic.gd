@@ -8,6 +8,7 @@ extends Node
 @onready var Ranch_Hand = get_node("Ranch_Hand")
 
 @onready var CardDecks = get_node("../Cards")
+@onready var Rules = get_node("../Rules_Controller")
 
 var CurrentCard
 
@@ -23,6 +24,12 @@ func _ready() -> void:
 	Bar_Keep.position = get_node("../Layer0").map_to_local(Vector2 (7,0))
 	Ranch_Hand.position = get_node("../Layer0").map_to_local(Vector2 (6,4))
 	
+	Preacher.tile_map_node = get_node("../Layer0")
+	Teacher.tile_map_node = get_node("../Layer0")
+	Doctor.tile_map_node = get_node("../Layer0")
+	Town_Drunk.tile_map_node = get_node("../Layer0")
+	Bar_Keep.tile_map_node = get_node("../Layer0")
+	Ranch_Hand.tile_map_node = get_node("../Layer0")
 	
 	pass # Replace with function body.
 
@@ -38,5 +45,16 @@ func UpdateCard(x,y,z):
 
 func _on_claim_pressed() -> void:
 	get_node(CurrentCard).reveal_hired_gun()
-#	get_node(CurrentCard).movable = false
+	get_node(CurrentCard).movable = true
+	get_node(CurrentCard).Player = Rules.get_node(str(multiplayer.get_unique_id())).Player_ID
+	print(multiplayer.get_unique_id())
+	SchizoFunctionPleaseWork.rpc()
+	#get_node(CurrentCard).RecievedOwner = Rules.get_node(str(multiplayer.get_unique_id())).Player_ID
 	pass # Replace with function body.
+	
+@rpc("any_peer")
+func SchizoFunctionPleaseWork():
+	get_node(CurrentCard).reveal_hired_gun()
+	get_node(CurrentCard).movable = false
+	get_node(CurrentCard).Player = 0
+	pass

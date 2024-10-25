@@ -26,6 +26,7 @@
 texture = ExtResource("1_o8ncf")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
+0:0/0/custom_data_0 = 1
 1:0/0 = 0
 2:0/0 = 0
 3:0/0 = 0
@@ -66,6 +67,7 @@ texture_region_size = Vector2i(32, 32)
 5:3/0 = 0
 6:3/0 = 0
 7:3/0 = 0
+7:3/0/custom_data_0 = 2
 8:3/0 = 0
 9:3/0 = 0
 10:3/0 = 0
@@ -86,9 +88,11 @@ texture_region_size = Vector2i(32, 32)
 3:5/0 = 0
 4:5/0 = 0
 5:5/0 = 0
+5:5/0/custom_data_0 = 3
 6:5/0 = 0
 7:5/0 = 0
 8:5/0 = 0
+8:5/0/custom_data_0 = 4
 9:5/0 = 0
 10:5/0 = 0
 0:6/0 = 0
@@ -152,6 +156,8 @@ texture_region_size = Vector2i(32, 32)
 tile_shape = 1
 tile_layout = 5
 tile_size = Vector2i(32, 16)
+custom_data_layer_0/name = "TileType"
+custom_data_layer_0/type = 2
 sources/0 = SubResource("TileSetAtlasSource_p1dyh")
 sources/1 = SubResource("TileSetAtlasSource_bqeqs")
 
@@ -595,6 +601,7 @@ metadata/_edit_use_anchors_ = true
 [connection signal="child_order_changed" from="." to="Rules_Controller" method="_on_node_2d_child_order_changed"]
 [connection signal="pressed" from="CanvasLayer/Host" to="Layer0" method="_on_host_pressed"]
 [connection signal="pressed" from="CanvasLayer/Button" to="CanvasLayer/Label" method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Button" to="CanvasLayer/Claim" method="_on_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Button" to="Rules_Controller" method="_on_button_pressed"]
 [connection signal="ready" from="CanvasLayer/Label" to="Rules_Controller" method="_on_label_ready"]
 [connection signal="pressed" from="CanvasLayer/Draw Card" to="Rules_Controller" method="_onCardDraw"]
@@ -605,6 +612,7 @@ metadata/_edit_use_anchors_ = true
 [connection signal="pressed" from="CanvasLayer/Dynamite" to="Rules_Controller" method="Dynamite"]
 [connection signal="pressed" from="CanvasLayer/Claim" to="CanvasLayer/Claim" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer/Claim" to="Townie_Logic" method="_on_claim_pressed"]
+[connection signal="DrawnCard" from="Cards" to="Townie_Logic" method="UpdateCard"]
 [connection signal="DrawnCard" from="Cards" to="Townie_Logic/Preacher" method="hire_townsfolk"]
 [connection signal="DrawnCard" from="Cards" to="Townie_Logic/Doctor" method="hire_townsfolk"]
 [connection signal="DrawnCard" from="Cards" to="Townie_Logic/Teacher" method="hire_townsfolk"]

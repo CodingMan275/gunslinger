@@ -11,6 +11,10 @@ class_name Bar_Keep
 
 var movable = false
 
+@export var Player: int
+
+var OwningPlayer
+
 
 func _init():
 	pass
@@ -22,36 +26,35 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	move()
-	pass
-	
-		#takes the player attempting to make the move for reasons that are applicable in later child classes
-func move():
 	#print("Move: "+str(move_possible()))
 	#print(ActionPoint)
-
-	if Input.is_action_just_pressed("LeftClick") and ActionPoint > 0 and movable:
-		if move_possible():
-			self.global_position = Vector2(get_global_mouse_position())
-			pos = tile_map_node.local_to_map(self.position)
-			UpdateMove.rpc(self.global_position)
-			print(pos)
-			movable = false
+		if Input.is_action_just_pressed("LeftClick") and ActionPoint > 0 and movable:
+			if move_possible() and can_move(Player):
+				self.global_position = Vector2(get_global_mouse_position())
+				pos = tile_map_node.local_to_map(self.position)
+				UpdateMove.rpc(self.global_position)
+				print(pos)
+				movable = false
 		#DrawButton.hide()
-	elif (Input.is_action_just_pressed("LeftClick") and ActionPoint == 0):
-		GlobalScript.DebugScript.add("You have no more Action Points ")
+		elif (Input.is_action_just_pressed("LeftClick") and ActionPoint == 0):
+			GlobalScript.DebugScript.add("You have no more Action Points ")
 
 @rpc("any_peer")
 func UpdateMove(x):
 	self.global_position = x
 	pass
-
 func hire_townsfolk(card, FirstDraw, player):
-	if(FirstDraw and (card == "Bar_Keep")):
-		owning_player = player
+	hire_rpc.rpc(card,FirstDraw,player)
+		
+#Theres a way to do this withouth this extra function but its less than 24h
+@rpc("call_local","any_peer")
+func hire_rpc(x,y,z):
+	if(y and (x == "Bar_Keep")):
+		owning_player = z + 1
+		OwningPlayer = owning_player
 		is_hired_gun = true
 		print("Hired B")
-
+	pass
 func reveal_hired_gun() -> void:
 	claim_revealed = true
 	print("claimed")
@@ -66,13 +69,17 @@ func can_brawl(player) -> bool:
 		return true
 	return false
 	
-'''
 func can_move(player) -> bool:
-	if not claim_revealed:
-		return true
-	elif is_owning_player(player):
-		return true
+	if movable:
+		if not claim_revealed:
+			print("Not claimed")
+			return true
+		elif is_owning_player(player):
+			print("I own it")
+			return true
+		else:
+			print("I dont own it")
+			return false
 	else:
-		'return false
-	'''
-	
+		print("movable false")
+		return false

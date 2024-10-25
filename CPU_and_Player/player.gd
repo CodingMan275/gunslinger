@@ -139,11 +139,12 @@ func PutCardInHand(Card, FirstDraw, p_i):
 			#	Card == PlayerHand[cards]
 				get_parent().Townie.get_node(Card).tile_map_node = tile_map_node	
 				get_parent().Townie.get_node(Card).movable = true	
+				get_parent().Townie.get_node(CurrentCard).Player = Player_ID
 				#Put button here for to claim
 				DrawButton.hide()
 	pass
 	
-@rpc("call_local","any_peer")
+
 func Claim(x):
 	CurrentCard = x
 	for i in PlayerHand:
@@ -171,6 +172,9 @@ func MoveMouse():
 					pos = tile_map_node.local_to_map(self.position)
 					action_points -= 1
 					DrawButton.hide()
+					print("On Boardwalk: " + tile_map_node.is_boardwalk_tile(pos))
+					print("On Building: " + tile_map_node.is_building_tile(pos))
+					print("On Path: " + tile_map_node.is_path_tile(pos))
 			elif (Input.is_action_just_pressed("LeftClick") and move_possible() and action_points == 0):
 				GlobalScript.DebugScript.add("You have no more Action Points ")
 		#	if (!can_act):

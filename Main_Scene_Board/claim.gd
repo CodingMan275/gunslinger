@@ -21,3 +21,8 @@ func _on_pressed() -> void:
 func DoneClaiming():
 	self.hide()
 	pass
+
+
+func _on_button_pressed() -> void:
+	DoneClaiming.rpc()
+	pass # Replace with function body.

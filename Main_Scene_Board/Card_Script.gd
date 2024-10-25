@@ -102,6 +102,7 @@ func _draw_card(array: Array, player_index: int, card_type: String) -> Variant:
 	if(StartingDraw):
 		DrawnCard.emit(card, true, player_index)
 		print("Sending signal")
+		print(player_index)
 	GlobalScript.DebugScript.add.rpc("Player " + str(player_index) + " drew card " + card_type + ": " + card)
 	array.erase(card)  # Remove the drawn card
 	return card
