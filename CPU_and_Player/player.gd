@@ -191,6 +191,22 @@ func MoveMouse():
 				GlobalScript.DebugScript.add("you are stunned and cannot move")
 
 #func CardSpriteThingy():
-	#for n in 8:
+	#for n in 9:
 		#print(PlayerHand[n]) 
 		#seems that the index of 1 doesn't exist? Probably bc of the fac tits initially empty
+	'''psuedocode
+	coordx = 50
+	coordy = 50
+	#for n in 9:
+		value = PlayerHand[n]
+		for m in CardDict.size()
+			if value == CardDict[m]
+				SaidCardObj move to coordx and coordy
+				coordx += 10
+			
+	Basically, we have the card as objects, 
+	and in a dictionary nad/or array (idk if possible) that somehow we link with PlayerHand, 
+	basically we get a value and if said value is equal to dict value, you move that object to the coords
+	then we update the x coord, so next card to be placed is moved over
+
+		'''
