@@ -6,10 +6,13 @@ class_name Preacher
 
 @export var is_hired_gun: bool = false
 @export var claim_revealed: bool = false
+@onready var PreacherObj = get_node("../Cards/PreacherCard")
+
 
 #@export var MultiplayerAuthority: int
 
 var movable = false
+
 
 
 @export var Player: int
@@ -23,6 +26,7 @@ func _init():
 func _ready() -> void:
 	get_node("../../Cards").DrawnCard.connect(hire_townsfolk)
 	pass # Replace with function body.
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -56,6 +60,8 @@ func hire_rpc(x,y,z):
 		OwningPlayer = owning_player
 		is_hired_gun = true
 		print("Hired P")
+		#PreacherObj.CardPos = Vector2(-37,-78) 
+		#Invalid assignment of property or key CardPosition with value type Vector2 on a base object of type Nil WHAT DOES IT MEAN
 	pass
 
 func reveal_hired_gun() -> void:

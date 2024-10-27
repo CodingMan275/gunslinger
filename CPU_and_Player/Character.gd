@@ -8,6 +8,7 @@ class Character extends CharacterBody2D:
 	
 	var SpawnLoc : Vector2
 	var pos : Vector2
+	
 
 	const MAX_ACION_PONTS: int = 1
 	

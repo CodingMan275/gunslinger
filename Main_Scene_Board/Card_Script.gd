@@ -26,7 +26,7 @@ signal DrawnCard
 
 var StartingDraw = false
 
-
+var CardPos : Vector2 #hey
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	
@@ -75,6 +75,7 @@ func _drawTownDeck(): # fucntion that simulates the cards being drawn
 @rpc("any_peer","call_local")
 func _AddCard(card, player_index):
 	GlobalScript.PlayerNode[player_index].PlayerHand.append(card)
+	
 
 
 
@@ -111,3 +112,5 @@ func _draw_card(array: Array, player_index: int, card_type: String) -> Variant:
 	
 func _ClaimCards(player_index):
 	GlobalScript.DebugScript.add(str(GlobalScript.PlayerNode[player_index].PlayerHand))
+	
+	

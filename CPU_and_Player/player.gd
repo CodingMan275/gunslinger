@@ -46,7 +46,8 @@ var order = 0
 @export var can_act = true
 #Player hand
 #This could be further broken down into Weapon array, Town, Gunslinger, ect
-@export var PlayerHand = []
+@export var PlayerHand = ["hi"]
+
 
 var DrewCard = false
 
@@ -63,7 +64,9 @@ var Player = preload("res://CPU_and_Player/PlayerClass.gd").Player.new(0)
 
 #Connect to Rules controller signal when spawned
 func _on_ready() -> void:
-		#Sets the player instance multiplayer authority to the correct peer
+	
+	
+	#Sets the player instance multiplayer authority to the correct peer
 	$MultiplayerSynchronizer.set_multiplayer_authority(str(name).to_int())
 	
 	#Format Node_Emitter . Signal_From_Emmiter_Node . Connect( Function you want to run in this scene)
@@ -79,8 +82,10 @@ func _on_ready() -> void:
 	
 	#Sets the action points the player can use
 	action_points = Max_Action_Points
+	
+	
 	pass # Replace with function body.
-
+	#CardSpriteThingy()
 	
 		
 	
@@ -157,6 +162,7 @@ func Claim(x):
 func _physics_process(delta):
 	MoveMouse()
 	
+	
 func move_possible():
 	#print(tile_map_node.get_cell_source_id(Vector2(get_global_mouse_position())))
 	return tile_map_node.local_to_map(Vector2(get_global_mouse_position())) in tile_map_node.get_surrounding_cells(tile_map_node.local_to_map(self.global_position)) #and tile_map_node.get_cell_source_id(Vector2(get_global_mouse_position())) != -1
@@ -183,3 +189,8 @@ func MoveMouse():
 			#	can_act = true
 			elif(Input.is_action_just_pressed("LeftClick") and GlobalScript.PlayerNode[order-1].StunTracker != 0):
 				GlobalScript.DebugScript.add("you are stunned and cannot move")
+
+#func CardSpriteThingy():
+	#for n in 8:
+		#print(PlayerHand[n]) 
+		#seems that the index of 1 doesn't exist? Probably bc of the fac tits initially empty

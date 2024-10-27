@@ -1,14 +1,14 @@
+Sprite2D
+CharacterBody2D
+Node2D
 AudioStreamPlayer2D
 TextureRect
-Sprite2D
 VScrollBar
 HScrollBar
 Button
 Node
 MultiplayerSynchronizer
 Label
-CharacterBody2D
 RichTextLabel
 TextEdit
 VBoxContainer
-Container

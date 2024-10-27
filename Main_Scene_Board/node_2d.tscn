@@ -489,6 +489,10 @@ CPU_scene = ExtResource("9_hsfom")
 [node name="Cards" type="Node" parent="."]
 script = ExtResource("9_mpy2d")
 
+[node name="PreacherCard" type="CharacterBody2D" parent="Cards"]
+
+[node name="PreacherCardSprite" type="Sprite2D" parent="Cards/PreacherCard"]
+
 [node name="Townie_Logic" type="Node" parent="."]
 script = ExtResource("14_ub6ke")
 

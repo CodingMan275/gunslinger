@@ -259,6 +259,8 @@ func Winner():
 #Unclear what this does, ask michael / Oakley
 func _ClaimCards() -> void:
 	CardDecks._ClaimCards(Turn_Order-1)
+	
+	
 		
 #The RPC updates the health of the local player and all the players it can see
 #It also updates for all the ppers so they see the proper health for all their player instances
