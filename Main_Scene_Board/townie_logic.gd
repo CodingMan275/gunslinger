@@ -1,5 +1,9 @@
 extends Node
 
+
+#This gets refrences to the children nodes which we know
+#for a fact are going to be named after the twonies / hired guns
+#becuase we are naming each node properly
 @onready var Preacher = get_node("Preacher")
 @onready var Teacher = get_node("Teacher")
 @onready var Doctor = get_node("Doctor")
@@ -7,15 +11,19 @@ extends Node
 @onready var Bar_Keep = get_node("Bar_Keep")
 @onready var Ranch_Hand = get_node("Ranch_Hand")
 
+#Getting a refrence to the card deck and the rules controller
 @onready var CardDecks = get_node("../Cards")
 @onready var Rules = get_node("../Rules_Controller")
 
+#This empty variable will be filled with which card was most recently drawn
+#This will be helpful for telling which townie to move
 var CurrentCard
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	
-	CardDecks.DrawnCard.connect(UpdateCard)
+	#Connecting to the signal emited from
+#	CardDecks.DrawnCard.connect(UpdateCard)
 	
 	Preacher.position = get_node("../Layer0").map_to_local(Vector2 (6,6))
 	Teacher.position = get_node("../Layer0").map_to_local(Vector2 (6,3))
