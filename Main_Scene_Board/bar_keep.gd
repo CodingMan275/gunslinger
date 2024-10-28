@@ -42,6 +42,7 @@ func _process(delta: float) -> void:
 @rpc("any_peer")
 func UpdateMove(x):
 	self.global_position = x
+	pos = tile_map_node.local_to_map(self.position)
 	pass
 func hire_townsfolk(card, FirstDraw, player):
 	hire_rpc.rpc(card,FirstDraw,player)

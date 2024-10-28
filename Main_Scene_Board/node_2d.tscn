@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=4 uid="uid://jl7k3ltwbp41"]
+[gd_scene load_steps=36 format=4 uid="uid://jl7k3ltwbp41"]
 
 [ext_resource type="Texture2D" uid="uid://fcuqal2ynbts" path="res://Main_Scene_Board/spritesheet.png" id="1_o8ncf"]
 [ext_resource type="Texture2D" uid="uid://mmea4eto2a6p" path="res://Main_Scene_Board/Rhombus.png" id="2_rfajf"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://cj15kaxvr44m1" path="res://CPU_and_Player/CPU.tscn" id="9_hsfom"]
 [ext_resource type="Script" path="res://Main_Scene_Board/Card_Script.gd" id="9_mpy2d"]
 [ext_resource type="Script" path="res://Main_Scene_Board/claim.gd" id="9_xcao8"]
+[ext_resource type="Texture2D" uid="uid://wpqjamy8nklp" path="res://icon.svg" id="12_kmvqj"]
 [ext_resource type="Script" path="res://Main_Scene_Board/preacher.gd" id="14_8fc0f"]
 [ext_resource type="Script" path="res://Main_Scene_Board/townie_logic.gd" id="14_ub6ke"]
 [ext_resource type="Script" path="res://CPU_and_Player/doctor.gd" id="16_2qs05"]
@@ -360,10 +361,10 @@ anchor_left = 0.019
 anchor_top = 0.015
 anchor_right = 0.362
 anchor_bottom = 0.178
-offset_left = -0.120001
-offset_top = -0.0500002
-offset_right = 0.23999
-offset_bottom = -0.0600014
+offset_left = 369.88
+offset_top = 74.95
+offset_right = 370.24
+offset_bottom = 74.94
 text = "Player X Turn"
 script = ExtResource("5_52d0j")
 
@@ -388,57 +389,49 @@ volume_db = 6.198
 pitch_scale = 1.95
 bus = &"SFX"
 
-[node name="Show Hand" type="Button" parent="CanvasLayer"]
-anchors_preset = -1
-anchor_left = 0.025
-anchor_top = 0.696
-anchor_right = 0.225
-anchor_bottom = 0.815
-offset_top = 0.0799866
-offset_bottom = -0.0500336
-text = "Show Hand"
-
 [node name="Attack" type="Button" parent="CanvasLayer"]
 anchors_preset = -1
-anchor_left = 0.027
-anchor_top = 0.567
-anchor_right = 0.148
-anchor_bottom = 0.681
-offset_left = 0.04
+anchor_left = 0.845
+anchor_top = 0.667
+anchor_right = 0.967
+anchor_bottom = 0.781
+offset_left = 0.399994
 offset_top = -0.0900116
-offset_right = -0.0400009
+offset_right = -0.160034
 offset_bottom = 0.12999
 text = "Attack"
 
 [node name="Attack" type="AudioStreamPlayer2D" parent="CanvasLayer/Attack"]
+position = Vector2(-16, -185)
 stream = ExtResource("8_7t4t6")
 
 [node name="Brawl" type="Button" parent="CanvasLayer"]
 anchors_preset = -1
-anchor_left = 0.165
-anchor_top = 0.57
-anchor_right = 0.285
-anchor_bottom = 0.685
-offset_left = -0.200005
-offset_top = 0.0999908
-offset_right = 0.199982
-offset_bottom = 0.0499878
+anchor_left = 0.844
+anchor_top = 0.807
+anchor_right = 0.965
+anchor_bottom = 0.922
+offset_left = -0.120026
+offset_top = 0.109985
+offset_right = -0.200012
+offset_bottom = 0.0599823
 text = "Brawl
 "
 
 [node name="Punch" type="AudioStreamPlayer2D" parent="CanvasLayer/Brawl"]
+position = Vector2(-16, -185)
 stream = ExtResource("8_7t4t6")
 
 [node name="Dynamite" type="Button" parent="CanvasLayer"]
 anchors_preset = -1
-anchor_left = 0.223
-anchor_top = 0.833
-anchor_right = 0.398
-anchor_bottom = 0.948
-offset_left = -0.0400009
-offset_top = 0.0899811
-offset_right = -0.0400085
-offset_bottom = 0.039978
+anchor_left = 0.79
+anchor_top = 0.426
+anchor_right = 0.965
+anchor_bottom = 0.541
+offset_left = -0.200012
+offset_top = -0.0200043
+offset_right = -0.200012
+offset_bottom = -0.0700073
 text = "Dynamite"
 
 [node name="DebugPanel" type="PanelContainer" parent="CanvasLayer"]
@@ -448,8 +441,10 @@ anchor_left = 0.583
 anchor_top = 0.815
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 0.160004
-offset_top = -0.0500183
+offset_left = -125.84
+offset_top = -14.05
+offset_right = -126.0
+offset_bottom = -14.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("5_jnad2")
@@ -480,6 +475,19 @@ offset_right = 0.23999
 offset_bottom = 0.0299835
 text = "Claim"
 script = ExtResource("9_xcao8")
+
+[node name="CurrentTownie" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.046
+anchor_top = 0.5
+anchor_right = 0.196
+anchor_bottom = 0.807
+offset_left = -0.0800018
+offset_top = 2.0
+offset_right = -0.0800018
+offset_bottom = 0.109985
+texture = ExtResource("12_kmvqj")
+expand_mode = 1
 
 [node name="Rules_Controller" type="Node" parent="."]
 script = ExtResource("6_6e8od")
@@ -636,7 +644,6 @@ metadata/_edit_use_anchors_ = true
 [connection signal="ready" from="CanvasLayer/Label" to="Rules_Controller" method="_on_label_ready"]
 [connection signal="pressed" from="CanvasLayer/Draw Card" to="Rules_Controller" method="_onCardDraw"]
 [connection signal="pressed" from="CanvasLayer/Draw Card" to="Cards" method="_onCardDraw"]
-[connection signal="pressed" from="CanvasLayer/Show Hand" to="Rules_Controller" method="_ClaimCards"]
 [connection signal="pressed" from="CanvasLayer/Attack" to="Layer0" method="_on_attack_pressed"]
 [connection signal="pressed" from="CanvasLayer/Attack" to="Rules_Controller" method="RangeAttack"]
 [connection signal="pressed" from="CanvasLayer/Brawl" to="Layer0" method="_on_brawl_pressed"]

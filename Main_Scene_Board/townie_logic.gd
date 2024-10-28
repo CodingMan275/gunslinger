@@ -22,9 +22,6 @@ var CurrentCard
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	
-	#Connecting to the signal emited from
-#	CardDecks.DrawnCard.connect(UpdateCard)
-	
 	Preacher.position = get_node("../Layer0").map_to_local(Vector2 (6,6))
 	Teacher.position = get_node("../Layer0").map_to_local(Vector2 (6,3))
 	Doctor.position = get_node("../Layer0").map_to_local(Vector2 (1,6))
@@ -45,24 +42,59 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 	
+#This function is directly connected to the signal emited from the Cards node
+#We do not need NodeRef.Signal.connect(Function) because these two scripts are in the
+#same scene before run time, so if you click on the node on the right side of the screen
+#and open the "Node" tab in the inspector area you can see which signals are conencted
+#to which functions in the same scene
 func UpdateCard(x,y,z):
+	#Y is the boolean of "FirstDraw", becuase we use the same signal for both the
+	#starting hand and drawing additional cards throughout the game
+	#If y is false, go aka if not the first draw go
 	if(!y):
+		#Set CurrentCard to x, x being the string og the current drawn card
+		#Which will be a name of a townie
 		CurrentCard = x
 	pass
 
-
+#Function and signal connecting same as UodateCard, this time it is triggered
+#When the button from the canvas layer is pressed
 func _on_claim_pressed() -> void:
+	#Get the node with the name of the current card, then when we have that node use the
+	#the function reveal_hired_gun(). Note this will only work and NOT crash if the Node both exists and has
+	#The funciton call
 	get_node(CurrentCard).reveal_hired_gun()
+	#Set movable to be true
 	get_node(CurrentCard).movable = true
+	#Each hird gun will have a variable for which PLayer currently has control over it,
+	#We want to assign this variable to the player ID that clciked the button
+	#To do this we need to use the built in Multiplayer API from Godot,
+	#We use this API's function .get_unique_id(), this will the get the user's current Godot assigned multiplayer ID
+	#From there we convert that INT to a String, now we take that string and will serach all of the
+	#Rules Controller's children that have the same name, we know for a fact we named the ucrrent player's
+	#node the same as their unique id, from there we take the Player_ID we assinged it and then
+	#Set the variable inside the hired gun to be the same INT
 	get_node(CurrentCard).Player = Rules.get_node(str(multiplayer.get_unique_id())).Player_ID
-	print(multiplayer.get_unique_id())
+	#Calls the function and makes sure it uses the RPC properties
+	#Function() =\= Function.rpc()
 	SchizoFunctionPleaseWork.rpc()
-	#get_node(CurrentCard).RecievedOwner = Rules.get_node(str(multiplayer.get_unique_id())).Player_ID
 	pass # Replace with function body.
-	
+
+#Any Peer means that every peer EXCEPT the machine that sent out the rpc call
+#will run the function
 @rpc("any_peer")
+#So the logic here is that only the person who can claim the hired gun and does so
+#Will send the hired gun all the correct information for it to work,
+#which in a sense means everyone else should send it information that makes it no longer work
 func SchizoFunctionPleaseWork():
+	#Make sure everyone knows its revealed
 	get_node(CurrentCard).reveal_hired_gun()
+	#Make it unmovable for everyone else 
 	get_node(CurrentCard).movable = false
+	#Just to be sure tell it that the current player is 0, and there is no player 0
+	#Meaning it will never run
 	get_node(CurrentCard).Player = 0
+	#Keep in mind this is ONLY for everyone else who never even had the abiltiy
+	#To claim this hired gun and once its claimed it does not matter if these values
+	#are wrong becuase once it is claimed it will never ben controlled by anyone else again
 	pass

@@ -46,7 +46,7 @@ var order = 0
 @export var can_act = true
 #Player hand
 #This could be further broken down into Weapon array, Town, Gunslinger, ect
-@export var PlayerHand = ["hi"]
+@export var PlayerHand = []
 
 
 var DrewCard = false
@@ -77,13 +77,20 @@ func _on_ready() -> void:
 	
 	CardNodeDeck.DrawnCard.connect(PutCardInHand)
 	
+	CardNodeDeck.StartDrawOver.connect(_initialDisplay)
+	
 	#Gets the current order from the parent scene which is the rules controller
 	order = rule_scene.Turn_Order
 	
 	#Sets the action points the player can use
 	action_points = Max_Action_Points
 	
-	
+	if self.name == str(multiplayer.get_unique_id()):
+		$CanvasLayer/Left.show()
+		$CanvasLayer/Right.show()
+		$CanvasLayer/Card1.show()
+		$CanvasLayer/Card2.show()
+		$CanvasLayer/Card3.show()
 	pass # Replace with function body.
 	#CardSpriteThingy()
 	
@@ -104,12 +111,15 @@ func _update_turn(x):
 			DrawButton.hide()
 			RangeButton.hide()
 			BrawlButton.hide()
-			HandButton.hide()
+		#	HandButton.hide()
 			DynamiteButton.hide()
 			#Removes the ability for the player to move
 			can_act = false
+			#Did I draw a card?
 			if(DrewCard):
+				#Get the townie I drew and make them unmovable becauseI ended my turn
 				get_parent().Townie.get_node(CurrentCard).movable = false
+				DrewCard = false
 		else:
 			#Set action points back to max
 			#action_points = Max_Action_Points
@@ -119,7 +129,7 @@ func _update_turn(x):
 			DrawButton.show()
 			RangeButton.show()
 			BrawlButton.show()
-			HandButton.show()
+	#		HandButton.show()
 			can_act = true
 			FreeBrawl = true;
 
@@ -128,34 +138,53 @@ func _update_turn(x):
 func _resetAP():
 	action_points = Max_Action_Points
 	
+	
+func _initialDisplay():
+	$CanvasLayer/Card1.texture = ResourceLoader.load(CardNodeDeck.CardArt(PlayerHand[1]))
+	$CanvasLayer/Card2.texture = ResourceLoader.load(CardNodeDeck.CardArt(PlayerHand[2]))
+	$CanvasLayer/Card3.texture = ResourceLoader.load(CardNodeDeck.CardArt(PlayerHand[3]))
+	
+	#Put weapons here
+	
+	pass
+	
 #When a card is drawn the Cards note emits a signal
-
 func PutCardInHand(Card, FirstDraw, p_i):
+	#If this is NOT the first draw
 	if(!FirstDraw):
+		#If I have the authority to access all this
 		if ($MultiplayerSynchronizer.get_multiplayer_authority() == multiplayer.get_unique_id() || GlobalScript.SinglePlay):
+			#See claim()
 			Claim(Card)
+			#Is it my turn?
 			if(order == Player_ID):
+				#Ive drawn a card
 				DrewCard = true
+				#Set the card I'm looking at to be the card I've drawn
 				CurrentCard = Card
-				
-			#PlayerHand.append(Card)
+				#Remove any other action oppurtunities
 				can_act = false
-			#for cards in PlayerHand.size():
-			#	Card == PlayerHand[cards]
+				#Sets the tile_map_node to the proper board refrence
 				get_parent().Townie.get_node(Card).tile_map_node = tile_map_node	
+				#This townie is now movable
 				get_parent().Townie.get_node(Card).movable = true	
+				#The current player controlling it is this player
 				get_parent().Townie.get_node(CurrentCard).Player = Player_ID
-				#Put button here for to claim
+				#Hide the draw button
 				DrawButton.hide()
 	pass
 	
-
+#This function will run and if the player has the hired gun in their hand
+#Then they will get the option to claim it
 func Claim(x):
+	#Again the card we drew is the car we're looking at
 	CurrentCard = x
-	for i in PlayerHand:
-		if(PlayerHand.has(CurrentCard)):
-			if(!get_parent().Townie.get_node(CurrentCard).claim_revealed):
-				ClaimButton.show()
+	#Go through my hand to see if I have this card
+	if(PlayerHand.has(CurrentCard)):
+		#Have I already claimed this card?
+		if(!get_parent().Townie.get_node(CurrentCard).claim_revealed):
+			#Show the claim button
+			ClaimButton.show()
 	pass
 
 	#Movement

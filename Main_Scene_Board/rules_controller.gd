@@ -29,12 +29,14 @@ var drawcard : bool = false
 
 @onready var CardDecks = get_node("../Cards")
 @onready var Townie = get_node("../Townie_Logic")
+@onready var Canvas = get_node("../CanvasLayer")
 
 #The Player scene which will be instantiated and used for spawning in
 #All peer players
 @export var player_scene : PackedScene
 @export var CPU_scene : PackedScene
 
+var DisplayArray = []
 
 
 # Called when the node enters the scene tree for the first time.
@@ -62,17 +64,6 @@ func _ready() -> void:
 	#Redundant but safe
 	Turn_Order = 1
 	
-	
-	#Ok so basically what this does is we go through the the Global Script
-	#to to go through all the players info starting at Player 1, we
-	#Find player 1's ID and then set that INT to a String. We know
-	#For a fact we set Player 1's Node in the scene to have the same name as its
-	#ID So player 1's node is named "1", while player 2's maybe "323552154678"
-	#We then go through the entire scene and then get the node with the name
-	#of the ID of the current player we are looking at in this for loop.
-	#We then take that node refrence and add it too a container. Im not sure
-	#What the purpose of this is again, ask michael.
-	#Any questions ask josh
 
 	#Tell all the player scene instances what the current turn order is
 	order.emit(Turn_Order)
@@ -259,6 +250,12 @@ func Winner():
 #Unclear what this does, ask michael / Oakley
 func _ClaimCards() -> void:
 	CardDecks._ClaimCards(Turn_Order-1)
+	
+	
+	
+func DisplayCards():
+	
+	pass
 	
 	
 		

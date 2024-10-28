@@ -24,6 +24,8 @@ signal DrawEmpty
 #Signal that sends what card was drawn so player can put it in their 
 signal DrawnCard
 
+signal StartDrawOver
+
 var StartingDraw = false
 
 var CardPos : Vector2 #hey
@@ -74,7 +76,7 @@ func _drawTownDeck(): # fucntion that simulates the cards being drawn
 
 @rpc("any_peer","call_local")
 func _AddCard(card, player_index):
-	GlobalScript.PlayerNode[player_index].PlayerHand.append(card)
+	GlobalScript.PlayerNode[player_index].PlayerHand.append(card)	
 	
 
 
@@ -93,7 +95,12 @@ func _onStartDraw() -> void:
 		# Draw Weapon Cards
 		for s in range(5):
 			_AddCard.rpc(_draw_card(WeaponArray, player_index, "Gunslinger"),player_index)
+	SDO.rpc()
 
+@rpc("call_local","any_peer")
+func SDO():
+	StartDrawOver.emit()
+	pass
 
 
 func _draw_card(array: Array, player_index: int, card_type: String) -> Variant:
@@ -102,15 +109,31 @@ func _draw_card(array: Array, player_index: int, card_type: String) -> Variant:
 		return null
 	var card_index = randi() % array.size()
 	var card = array[card_index]
-	if(StartingDraw):
-		DrawnCard.emit(card, true, player_index)
-		print("Sending signal")
-		print(player_index)
 	GlobalScript.DebugScript.add.rpc("Player " + str(player_index) + " drew card " + card_type + ": " + card)
 	array.erase(card)  # Remove the drawn card
 	return card
 	
 func _ClaimCards(player_index):
 	GlobalScript.DebugScript.add(str(GlobalScript.PlayerNode[player_index].PlayerHand))
+	
+	
+
+#Gets and sets card art
+func CardArt(CardName):
+	if(CardName == "Preacher"):
+		return("res://bobseymour.svg")
+	elif(CardName == "Doctor"):
+		return("res://elijahbrown.svg")
+	elif(CardName == "Teacher"):
+		return("res://jonlaramine.svg")
+	elif(CardName == "Town_Drunk"):
+		return("res://madmike.svg")
+	elif(CardName == "Bar_Keep"):
+		return("res://oldsmokey.svg")
+	elif(CardName == "Ranch_Hand"):
+		return("res://thekid.svg")
+	else:
+		return("res://icon.svg")
+	pass
 	
 	
