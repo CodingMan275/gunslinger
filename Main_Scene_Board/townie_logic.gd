@@ -55,6 +55,8 @@ func UpdateCard(x,y,z):
 		#Set CurrentCard to x, x being the string og the current drawn card
 		#Which will be a name of a townie
 		CurrentCard = x
+		$"../CanvasLayer/CurrentTownie".texture =ResourceLoader.load($"../Cards".CardArt(CurrentCard))
+		$"../CanvasLayer/CurrentTownie".show()
 	pass
 
 #Function and signal connecting same as UodateCard, this time it is triggered
