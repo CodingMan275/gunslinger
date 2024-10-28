@@ -202,16 +202,14 @@ func MoveMouse():
 	if ($MultiplayerSynchronizer.get_multiplayer_authority() == multiplayer.get_unique_id() || GlobalScript.SinglePlay):
 		if(Player_ID == order):
 			if Input.is_action_just_pressed("LeftClick") and can_act and action_points > 0 && GlobalScript.PlayerNode[order-1].StunTracker == 0:
-				if  move_possible():
-					self.global_position = Vector2(get_global_mouse_position())
+				var mouse = Vector2(get_global_mouse_position())
+				if  move_possible() && !tile_map_node.Stable(tile_map_node.local_to_map(mouse)):
+					self.global_position = mouse
 					pos = tile_map_node.local_to_map(self.position)
 					action_points -= 1
 					DrawButton.hide()
-					'''
-					print("On Boardwalk: " + tile_map_node.is_boardwalk_tile(pos))
-					print("On Building: " + tile_map_node.is_building_tile(pos))
-					print("On Path: " + tile_map_node.is_path_tile(pos))
-					'''
+				elif(tile_map_node.Stable(tile_map_node.local_to_map(mouse))):
+					GlobalScript.DebugScript.add("You Can not move into a stable ")
 			elif (Input.is_action_just_pressed("LeftClick") and move_possible() and action_points == 0):
 				GlobalScript.DebugScript.add("You have no more Action Points ")
 		#	if (!can_act):

@@ -16,7 +16,7 @@ var drawcard : bool = false
 #var PlayerScene = preload("res://Josh_Test_Scenes/Player.tscn")
 
 #Getting the tile map from the current scene when this node is ready
-#@onready var TileMapScene =  get_node("../TileMap")
+@onready var TileMapScene =  get_node("../Layer0")
 
 #Getting the turn buttons from the scene when this node is ready
 @onready var EndTurnButton = get_node("../CanvasLayer/Button")
@@ -78,7 +78,7 @@ func MultiPlay(i , index):
 		#Create a player instance
 		var currentPlayer = player_scene.instantiate()
 		#The player needs to get information from the tile map
-		currentPlayer.tile_map_node = get_node("../Layer0")
+		currentPlayer.tile_map_node = TileMapScene
 		#Change the name of the instance to the ID of the player
 		#This is important for getting which specific player we want
 		currentPlayer.name = str(GlobalScript.PlayerInfo[i].ID)
@@ -93,9 +93,9 @@ func MultiPlay(i , index):
 		if index == 0:
 			#Player 1 information
 			#Set player 1 at position 0,0 on the tile map
-			currentPlayer.position = get_node("../Layer0").map_to_local(Vector2 (2,2))
+			currentPlayer.position = TileMapScene.map_to_local(Vector2 (2,2))
 			#Ask michael, sets player node position to somewhere
-			GlobalScript.PlayerNode[index].pos = Vector2 (2,2)
+			GlobalScript.PlayerNode[index].pos = currentPlayer.position
 			GlobalScript.PlayerNode[index].Startpos = Vector2(1,1)
 			#Set player label to the name they put in (not needed but fun)
 			currentPlayer.LabelName = GlobalScript.PlayerInfo[i].name
@@ -105,9 +105,9 @@ func MultiPlay(i , index):
 		if index == 1:
 			#The next player in the PlayerInfo array, player 2
 			#Sets player 2 at a different position from player 1
-			currentPlayer.position = get_node("../Layer0").map_to_local(Vector2 (2,2))
+			currentPlayer.position = TileMapScene.map_to_local(Vector2 (2,2))
 			#Once ask Michael, sorry this is not good commenting
-			GlobalScript.PlayerNode[index].pos = Vector2 (2,2)
+			GlobalScript.PlayerNode[index].pos = currentPlayer.position
 			GlobalScript.PlayerNode[index].Startpos = Vector2(6,6)
 			#Sets the label to the name player 2 picked
 			currentPlayer.LabelName = GlobalScript.PlayerInfo[i].name
@@ -125,7 +125,7 @@ func SinglePlay(i , index):
 			NoTownies()
 			var currentPlayer = player_scene.instantiate()
 			#The player needs to get information from the tile map
-			currentPlayer.tile_map_node = get_node("../Layer0")
+			currentPlayer.tile_map_node = TileMapScene
 			#Change the name of the instance to the ID of the player
 			#This is important for getting which specific player we want
 			currentPlayer.name = "player"
@@ -139,9 +139,9 @@ func SinglePlay(i , index):
 			#and such
 			#Player 1 information
 			#Set player 1 at position 0,0 on the tile map
-			currentPlayer.position = get_node("../Layer0").map_to_local(Vector2 (5,5))
+			currentPlayer.position = TileMapScene.map_to_local(Vector2 (5,5))
 			#Ask michael, sets player node position to somewhere
-			GlobalScript.PlayerNode[index].pos = Vector2 (5,5)
+			GlobalScript.PlayerNode[index].pos = currentPlayer.position
 			GlobalScript.PlayerNode[index].Startpos = Vector2(1,1)
 			#Set player label to the name they put in (not needed but fun)
 			currentPlayer.LabelName = "player"
@@ -151,7 +151,7 @@ func SinglePlay(i , index):
 			print("Create cpu")
 			var currentPlayer = CPU_scene.instantiate()
 			#The player needs to get information from the tile map
-			currentPlayer.tile_map_node = get_node("../Layer0")
+			currentPlayer.tile_map_node = TileMapScene
 			#Change the name of the instance to the ID of the player
 			#This is important for getting which specific player we want
 			currentPlayer.name = str("CPU " + str(index))
@@ -165,9 +165,9 @@ func SinglePlay(i , index):
 			#and such
 			#Player 1 information
 			#Set player 1 at position 0,0 on the tile map
-			currentPlayer.position = get_node("../Layer0").map_to_local(Vector2 (5,5))
+			currentPlayer.position = TileMapScene.map_to_local(Vector2 (5,5))
 			#Ask michael, sets player node position to somewhere
-			GlobalScript.PlayerNode[index].pos = Vector2 (5,5)
+			GlobalScript.PlayerNode[index].pos = currentPlayer.position
 			GlobalScript.PlayerNode[index].Startpos = Vector2(1,1)
 			GlobalScript.PlayerNode[index].TargetStable = Vector2(7-GlobalScript.PlayerNode[index].Startpos.x,7-GlobalScript.PlayerNode[index].Startpos.y)
 			#Set player label to the name they put in (not needed but fun)
@@ -221,15 +221,7 @@ func order_inc():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	#Go through all the players and their health
-	#If 0 end game,
-	#Does not need to be run constantly we can make this
-	#A signal thing, to do later
 	
-	for n in GlobalScript.PlayerNode.size():
-		if (GlobalScript.PlayerNode[n].Health <= 0):
-			Winner.rpc()
-			
 	pass
 
 #This Function needs to reset everything or start up needs to clear everything
@@ -272,9 +264,9 @@ func Attack_Calc(Enemy, Player):
 	#Debug enu to show damage
 	GlobalScript.DebugScript.add(GlobalScript.PlayerNode[Enemy].Name + " lost "+str(damage)+" points of hp")
 	GlobalScript.DebugScript.add(GlobalScript.PlayerNode[Enemy].Name + " now has "+str(GlobalScript.PlayerNode[Enemy].Health)+" points of hp")
-	#If overkill, dont
-	if(GlobalScript.PlayerNode[Enemy].Health <= 0):
-		GlobalScript.PlayerNode[Enemy].Health = 0
+	for n in GlobalScript.PlayerNode.size():
+		if (GlobalScript.PlayerNode[n].Health <= 0):
+			Winner.rpc()
 	pass
 	
 #Tell everybody which node got stunned
@@ -287,11 +279,15 @@ func StunPlay(Enemy, Player):
 
 func RangeAttack():
 	for n in numPlayers:
-		if(n+1 != Turn_Order && CanAttack(n,GlobalScript.PlayerNode[Turn_Order -1].WeaponRange)):
-			GlobalScript.PlayerNode[Turn_Order -1].action_points -= 1
-			Attack(n , Turn_Order -1)
+		var range= GlobalScript.PlayerNode[Turn_Order -1].WeaponRange
+		if(n+1 != Turn_Order && range != 0):
+			if(TileMapScene.Boardwalk(GlobalScript.PlayerNode[Turn_Order -1].pos) && TileMapScene.Path(GlobalScript.PlayerNode[n].pos)):
+				range+1
+			if(CanAttack(n,range)):
+				GlobalScript.PlayerNode[Turn_Order -1].action_points -= 1
+				Attack(n , Turn_Order -1)
 		else:
-			CantAttack(n,GlobalScript.PlayerNode[Turn_Order -1].WeaponRange)
+			CantAttack(n,range)
 
 func BrawlAttack() -> bool:
 	var ReturnBool
@@ -336,6 +332,8 @@ func Attack(Enemy, Player) -> void:
 	DrawButton.hide()
 	#Random attack ccheck
 	var Attack = (randi()%6 + 1)
+	if(TileMapScene.Path(GlobalScript.PlayerNode[Player].pos) && TileMapScene.Boardwalk(GlobalScript.PlayerNode[Enemy].pos)):
+		Attack+1
 	if(Attack < 3): # Miss
 		GlobalScript.DebugScript.add(str(GlobalScript.PlayerNode[Enemy].Name + " was missed"))
 	elif(Attack < 5): # Stun
