@@ -109,6 +109,7 @@ func _draw_card(array: Array, player_index: int, card_type: String) -> Variant:
 		return null
 	var card_index = randi() % array.size()
 	var card = array[card_index]
+	DrawnCard.emit(card, true, player_index)
 	GlobalScript.DebugScript.add.rpc("Player " + str(player_index) + " drew card " + card_type + ": " + card)
 	array.erase(card)  # Remove the drawn card
 	return card

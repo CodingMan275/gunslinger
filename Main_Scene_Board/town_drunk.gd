@@ -5,13 +5,13 @@ class_name Town_Drunk
 
 
 @export var is_hired_gun: bool = false
-@export var claim_revealed: bool = false
+#@export var claim_revealed: bool = false
 
 #@export var MultiplayerAuthority: int
 
-var movable = false
+#var movable = false
 
-@export var Player: int
+#@export var Player: int
 
 var OwningPlayer
 
@@ -22,7 +22,7 @@ func _ready() -> void:
 	get_node("../../Cards").DrawnCard.connect(hire_townsfolk)
 	pass # Replace with function body.
 
-
+'''
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	#print("Move: "+str(move_possible()))
@@ -43,7 +43,7 @@ func UpdateMove(x):
 	self.global_position = x
 	pos = tile_map_node.local_to_map(self.position)
 	pass
-
+'''
 func hire_townsfolk(card, FirstDraw, player):
 	hire_rpc.rpc(card,FirstDraw,player)
 		
@@ -57,8 +57,13 @@ func hire_rpc(x,y,z):
 		print("Hired P")
 	pass
 func reveal_hired_gun() -> void:
+		reveal_rpc.rpc()
+
+@rpc("call_local","any_peer")
+func reveal_rpc():
 	claim_revealed = true
-	print("claimed")
+	pass
+
 
 func can_shoot(player) -> bool:
 	if claim_revealed and is_owning_player(player) and has_gun and not get_is_stunned():
@@ -69,7 +74,7 @@ func can_brawl(player) -> bool:
 	if claim_revealed and is_owning_player(player) and not get_is_stunned():
 		return true
 	return false
-	
+	'''
 func can_move(player) -> bool:
 	if movable:
 		if not claim_revealed:
@@ -84,3 +89,4 @@ func can_move(player) -> bool:
 	else:
 		print("Movable false")
 		return false
+'''

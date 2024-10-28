@@ -8,14 +8,14 @@ class_name Preacher
 #If it was hired that should be known by at least every machine not every player
 #IF it was claimed every player should know it
 @export var is_hired_gun: bool = false
-@export var claim_revealed: bool = false
+#@export var claim_revealed: bool = false
 @onready var PreacherObj = get_node("../Cards/PreacherCard")
 
 #Bool for wheather or not the hired gun can move
-var movable = false
+#var movable = false
 
 #Which player drew the card
-var Player: int
+#var Player: int
 
 #Which player owns this hired gun, if any
 var OwningPlayer
@@ -28,7 +28,7 @@ func _ready() -> void:
 	pass # Replace with function body.
 	
 
-
+'''
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 #Every frame check to see if this node is movable
@@ -54,7 +54,7 @@ func UpdateMove(x):
 	self.global_position = x
 	pos = tile_map_node.local_to_map(self.position)
 	pass
-
+'''
 #This function is directly connected to the DrawCard signal form the Cards node
 #To see its connection click the Cards node on the left and then clicked the "Node"
 #tab on the right inspector area
@@ -86,8 +86,12 @@ func hire_rpc(x,y,z):
 func reveal_hired_gun() -> void:
 	#Set bool of claimed to be true, this bool is apart of the multiplayer syncronizer
 	#And so all machines (and ideally all players) know this hired gun is claimed
+	reveal_rpc.rpc()
+
+@rpc("call_local","any_peer")
+func reveal_rpc():
 	claim_revealed = true
-	print("claimed")
+	pass
 
 func can_shoot(player) -> bool:
 	if claim_revealed and is_owning_player(player) and has_gun and not get_is_stunned():
@@ -99,6 +103,7 @@ func can_brawl(player) -> bool:
 		return true
 	return false
 	
+	'''
 #Check to see if the node can move
 func can_move(player) -> bool:
 	#Are we set to be movable?
@@ -119,5 +124,5 @@ func can_move(player) -> bool:
 		#Im not movable
 		print("Movable false")
 		return false
-	
+	'''
 	

@@ -242,12 +242,9 @@ properties/22/replication_mode = 1
 properties/23/path = NodePath("Townie_Logic/Ranch_Hand:is_hired_gun")
 properties/23/spawn = true
 properties/23/replication_mode = 1
-properties/24/path = NodePath("Townie_Logic/Ranch_Hand:claim_revealed")
+properties/24/path = NodePath("Townie_Logic/Ranch_Hand:position")
 properties/24/spawn = true
 properties/24/replication_mode = 1
-properties/25/path = NodePath("Townie_Logic/Ranch_Hand:position")
-properties/25/spawn = true
-properties/25/replication_mode = 1
 
 [sub_resource type="GDScript" id="GDScript_7iaxx"]
 script/source = "extends CanvasLayer
@@ -505,6 +502,7 @@ script = ExtResource("9_mpy2d")
 script = ExtResource("14_ub6ke")
 
 [node name="Preacher" type="CharacterBody2D" parent="Townie_Logic"]
+visible = false
 script = ExtResource("14_8fc0f")
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Preacher"]

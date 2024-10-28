@@ -27,6 +27,12 @@ class Character extends CharacterBody2D:
 	
 	var tile_map_node: TileMapLayer
 	
+	var movable = false
+	
+	@export var claim_revealed: bool = false
+	
+	var Player: int
+	
 	
 	
 	#Functions
@@ -132,6 +138,47 @@ class Character extends CharacterBody2D:
 
 	# Called every frame. 'delta' is the elapsed time since the previous frame.
 	func _process(delta: float) -> void:
-	#	if(movable):
-		#	move(owning_player)
-		pass
+#Every frame check to see if this node is movable
+	#Was left mouse pressed? Enough Action points?
+		if Input.is_action_just_pressed("LeftClick") and ActionPoint > 0:
+		#See move_possible, see can_move()
+			if move_possible() and can_move(Player):
+			#Set node's global position to be the positon of the mouse
+				self.global_position = Vector2(get_global_mouse_position())
+			#Set pos, a variable for storing location, to be the equivelant tile 
+				pos = tile_map_node.local_to_map(self.position)
+			#Calls the UpdateMove function with the rpc call
+				UpdateMove.rpc(self.global_position)
+			#Alright we moved, no more
+				movable = false
+		elif (Input.is_action_just_pressed("LeftClick") and ActionPoint == 0):
+			GlobalScript.DebugScript.add("You have no more Action Points ")
+
+#See rpc exlaination in Townie_Logic
+	@rpc("any_peer")
+#Updates the node's postion for every peer
+	func UpdateMove(x):
+		self.global_position = x
+		pos = tile_map_node.local_to_map(self.position)
+	
+	func can_move(player) -> bool:
+	#Are we set to be movable?
+		if movable:
+		#Have I been claimed?
+			if not claim_revealed:
+				print("Not claimed")
+				return true
+			#Ive been claimed, is the person trying to move me the person who owns me?
+			elif is_owning_player(player):
+				print("I own it")
+				return true
+			else:
+			#Im claimed and the person trying to move me does not own me
+				print("I dont own it")
+				return false
+		else:
+		#Im not movable
+			print("Movable false")
+			return false
+	
+	
