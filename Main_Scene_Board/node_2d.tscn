@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=4 uid="uid://jl7k3ltwbp41"]
+[gd_scene load_steps=40 format=4 uid="uid://jl7k3ltwbp41"]
 
 [ext_resource type="Texture2D" uid="uid://fcuqal2ynbts" path="res://Main_Scene_Board/spritesheet.png" id="1_o8ncf"]
 [ext_resource type="Texture2D" uid="uid://mmea4eto2a6p" path="res://Main_Scene_Board/Rhombus.png" id="2_rfajf"]
@@ -15,9 +15,13 @@
 [ext_resource type="Script" path="res://Main_Scene_Board/Card_Script.gd" id="9_mpy2d"]
 [ext_resource type="Script" path="res://Main_Scene_Board/claim.gd" id="9_xcao8"]
 [ext_resource type="Texture2D" uid="uid://wpqjamy8nklp" path="res://icon.svg" id="12_kmvqj"]
+[ext_resource type="PackedScene" uid="uid://bir8u4hip16in" path="res://pause_menu/pause_menu_button_singleplayer.tscn" id="13_3q2p2"]
 [ext_resource type="Script" path="res://Main_Scene_Board/preacher.gd" id="14_8fc0f"]
+[ext_resource type="PackedScene" uid="uid://b7rfx1nnoi5ev" path="res://pause_menu/pause_menu_singleplayer.tscn" id="14_tll6l"]
 [ext_resource type="Script" path="res://Main_Scene_Board/townie_logic.gd" id="14_ub6ke"]
+[ext_resource type="PackedScene" uid="uid://d0ncmr5j7hrug" path="res://main_menu/options_menu.tscn" id="15_o4h6x"]
 [ext_resource type="Script" path="res://CPU_and_Player/doctor.gd" id="16_2qs05"]
+[ext_resource type="PackedScene" uid="uid://o8s2bfh5cxgj" path="res://pause_menu/close_options_menu_button.tscn" id="16_ljexv"]
 [ext_resource type="Texture2D" uid="uid://bdmvi8qlb5m57" path="res://bobseymour.svg" id="16_tsmpy"]
 [ext_resource type="Script" path="res://Main_Scene_Board/teacher.gd" id="17_evase"]
 [ext_resource type="Script" path="res://Main_Scene_Board/town_drunk.gd" id="18_8vpej"]
@@ -488,6 +492,32 @@ offset_right = -0.0800018
 offset_bottom = 0.109985
 texture = ExtResource("12_kmvqj")
 expand_mode = 1
+
+[node name="Pause_Menu" type="Node" parent="CanvasLayer"]
+
+[node name="PauseMenuButtonSinglePlayer" parent="CanvasLayer/Pause_Menu" instance=ExtResource("13_3q2p2")]
+unique_name_in_owner = true
+visible = false
+offset_left = 7.0
+offset_top = 4.0
+offset_right = -434.0
+offset_bottom = -212.0
+
+[node name="PauseMenuSingleplayer" parent="CanvasLayer/Pause_Menu" instance=ExtResource("14_tll6l")]
+unique_name_in_owner = true
+visible = false
+
+[node name="OptionsMenu" parent="CanvasLayer/Pause_Menu" instance=ExtResource("15_o4h6x")]
+unique_name_in_owner = true
+visible = false
+
+[node name="CloseOptionsMenuButton" parent="CanvasLayer/Pause_Menu" instance=ExtResource("16_ljexv")]
+unique_name_in_owner = true
+visible = false
+offset_left = 7.0
+offset_top = 5.0
+offset_right = -401.0
+offset_bottom = -220.0
 
 [node name="Rules_Controller" type="Node" parent="."]
 script = ExtResource("6_6e8od")
