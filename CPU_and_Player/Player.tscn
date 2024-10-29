@@ -29,6 +29,21 @@ properties/6/replication_mode = 1
 properties/7/path = NodePath(".:StunTracker")
 properties/7/spawn = true
 properties/7/replication_mode = 1
+properties/8/path = NodePath(".:can_act")
+properties/8/spawn = true
+properties/8/replication_mode = 1
+properties/9/path = NodePath(".:WeaponRange")
+properties/9/spawn = true
+properties/9/replication_mode = 1
+properties/10/path = NodePath(".:FreeBrawl")
+properties/10/spawn = true
+properties/10/replication_mode = 1
+properties/11/path = NodePath(".:Name")
+properties/11/spawn = true
+properties/11/replication_mode = 1
+properties/12/path = NodePath(".:PlayerHand")
+properties/12/spawn = true
+properties/12/replication_mode = 1
 
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(-13, -11)

@@ -15,3 +15,5 @@ func _process(delta: float) -> void:
 
 func update_label(x):
 	text = str("Player ", x, "'s Turn")
+	# Trying to get this to work
+	#text = str(GlobalScript.PlayerNode[x-1].Name,"'s Turn")

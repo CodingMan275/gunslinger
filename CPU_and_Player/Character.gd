@@ -1,0 +1,139 @@
+class Character extends CharacterBody2D: 
+	const WeaponScript = preload("res://CPU_and_Player/Weapon.gd")
+	
+	#var ID: int
+	var Health : int = 7
+	
+	var owning_player: int #assigned
+	
+	var SpawnLoc : Vector2
+	var pos : Vector2
+
+	const MAX_ACION_PONTS: int = 1
+	
+	var ActionPoint = MAX_ACION_PONTS
+	var AttackRange: int = 2
+	
+	var stun_counter: int = 0
+	
+	var Gun = WeaponScript.Weapon.new()
+	var Knife = WeaponScript.Weapon.new()
+	
+	var has_gun: bool = false
+	var has_knife: bool = false
+	
+	var base_damage: int = 1
+	
+	var tile_map_node: TileMapLayer
+	
+	
+	
+	#Functions
+	#_____________________________
+	
+		# Called when the node enters the scene tree for the first time.
+	func _ready() -> void:
+		pass # Replace with function body.
+	
+	func _init(id: int):
+		pass
+		#ID = id
+		
+	func can_act() -> bool:
+		return ActionPoint > 0
+		
+	func is_owning_player(player) -> bool:
+		if owning_player == player:
+			return true
+		else:
+			return false
+	
+	
+	#func can_move(player):
+	#	return false
+			
+	func move_possible() -> bool:
+		return tile_map_node.local_to_map(Vector2(get_global_mouse_position())) in tile_map_node.get_surrounding_cells(tile_map_node.local_to_map(self.global_position)) #and tile_map_node.get_cell_source_id(Vector2(get_global_mouse_position())) != -1
+		
+	func can_shoot(player):
+		return false
+		
+	func can_brawl(player) -> bool:
+		return false
+
+	func get_pos() -> Vector2:
+		return pos
+		
+	func special_ability(ability) -> void: #takes a lambda that specifies the ability in question
+		pass
+		
+	func character_in_range(char: Character) -> bool:
+		return false #create function body later
+	'''	
+	#takes the player attempting to make the move for reasons that are applicable in later child classes
+	func move(player):
+		#print("Move: "+str(move_possible()))
+		#print(ActionPoint)
+		if Input.is_action_just_pressed("LeftClick") and ActionPoint > 0:
+			if move_possible():
+				self.global_position = Vector2(get_global_mouse_position())
+			#	pos = tile_map_node.local_to_map(self.position)
+				print(pos)
+				movable = false
+			#DrawButton.hide()
+		elif (Input.is_action_just_pressed("LeftClick") and can_move(player) and ActionPoint == 0):
+			GlobalScript.DebugScript.add("You have no more Action Points ")
+'''
+	func teleport(new_pos: Vector2):
+		pos = new_pos
+		self.global_position = tile_map_node.map_to_local(new_pos)
+		
+	func brawl(char: Character, player) -> void:
+		if can_brawl(player) and tile_map_node.local_to_map(char.get_pos()) == tile_map_node.local_to_map(pos) and not char.get_is_stunned():
+			attack(char)
+			char.attack(self)
+				
+	func attack(char: Character) -> void: #consider adding something for if character is stunned
+		if not has_knife:
+			char.take_damage(base_damage)
+		else:
+			char.take_damage(Knife.get_damage())
+	
+	func shoot(char: Character, player) -> void:
+		if can_shoot(player) and character_in_range(char) and not char.get_is_stunned():
+			char.take_damage(Gun.get_damage())
+			
+		
+	func become_stunned(stun_time: int) -> void:
+		stun_counter = stun_time
+		
+	func get_is_stunned():
+		return stun_counter > 0
+		
+	func decrement_stun_counter() -> void:
+		if stun_counter > 0:
+			stun_counter -= 1
+		
+	func take_damage(damage: int):
+		Health -= damage
+		
+	func get_weapon(weapon) -> void:
+		if (weapon.get_is_gun()):
+			Gun = weapon
+			has_gun = true
+		else:
+			Knife = weapon
+			has_knife = true
+			
+	#need a function that resets Action Points on Signal from Deck
+	func reset_AP_temp():
+		ActionPoint = MAX_ACION_PONTS
+	
+
+
+
+	# Called every frame. 'delta' is the elapsed time since the previous frame.
+	func _process(delta: float) -> void:
+	#	if(movable):
+		#	move(owning_player)
+		pass

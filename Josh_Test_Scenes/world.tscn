@@ -73,6 +73,24 @@ offset_right = -0.0400391
 offset_bottom = 0.0499954
 placeholder_text = "Name"
 
+[node name="Container" type="Container" parent="CanvasLayer"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -71.0
+offset_top = -44.0
+offset_right = 104.0
+offset_bottom = 61.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Container"]
+layout_mode = 2
+
 [node name="BackToDebugMenu" parent="." instance=ExtResource("3_a50rb")]
 anchors_preset = 0
 anchor_right = 0.0

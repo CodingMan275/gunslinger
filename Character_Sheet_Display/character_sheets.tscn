@@ -3,8 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://cutf0gymupvwv" path="res://Character_Sheet_Display/character_sheets_UI.tscn" id="1_nqwat"]
 
 [node name="Character Sheets Window" type="Window"]
+canvas_item_default_texture_filter = 0
 initial_position = 1
-size = Vector2i(800, 600)
+size = Vector2i(460, 250)
 borderless = true
 
 [node name="Character Sheets" parent="." instance=ExtResource("1_nqwat")]

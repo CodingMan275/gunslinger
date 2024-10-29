@@ -1,0 +1,50 @@
+[gd_scene load_steps=3 format=3 uid="uid://cx8ju58gtxw00"]
+
+[ext_resource type="PackedScene" uid="uid://cebcnc652bypc" path="res://main_menu/main_menu_back_button.tscn" id="1_l2o5m"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0iexb"]
+bg_color = Color(0.841237, 0.6895, 0.46809, 1)
+
+[node name="CPU2VictoryScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0iexb")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -205.5
+offset_top = -60.5
+offset_right = 205.5
+offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "CPU 2 Wins!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Main Menu Back Button" parent="." instance=ExtResource("1_l2o5m")]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 237.0
+offset_right = 211.0
+offset_bottom = 279.0
+scale = Vector2(0.6, 0.6)
