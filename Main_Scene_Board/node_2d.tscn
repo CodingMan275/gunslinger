@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=4 uid="uid://jl7k3ltwbp41"]
+[gd_scene load_steps=68 format=4 uid="uid://jl7k3ltwbp41"]
 
 [ext_resource type="Texture2D" uid="uid://fcuqal2ynbts" path="res://Main_Scene_Board/spritesheet.png" id="1_o8ncf"]
 [ext_resource type="Texture2D" uid="uid://mmea4eto2a6p" path="res://Main_Scene_Board/Rhombus.png" id="2_rfajf"]
@@ -44,6 +44,12 @@
 [ext_resource type="Texture2D" uid="uid://dywhqj3m2j1y3" path="res://oldsmokey.svg" id="24_5vq5u"]
 [ext_resource type="Texture2D" uid="uid://c5dj7es7aba7e" path="res://thekid.svg" id="26_ndqm4"]
 [ext_resource type="Texture2D" uid="uid://bnk7r45gr5cn8" path="res://IMG_9861.png" id="27_uadwx"]
+[ext_resource type="Script" path="res://Main_Scene_Board/store_keeper.gd" id="45_l4515"]
+[ext_resource type="Script" path="res://Main_Scene_Board/mountain_man.gd" id="46_08nss"]
+[ext_resource type="Script" path="res://Main_Scene_Board/bounty_hunter.gd" id="47_cjmfn"]
+[ext_resource type="Script" path="res://Main_Scene_Board/saloon_girl.gd" id="48_ai5s4"]
+[ext_resource type="Script" path="res://Main_Scene_Board/bank_manager.gd" id="49_4aoh4"]
+[ext_resource type="Script" path="res://Main_Scene_Board/sheriff.gd" id="50_glnk6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p1dyh"]
 texture = ExtResource("1_o8ncf")
@@ -754,6 +760,138 @@ scale = Vector2(0.0825, 0.0524691)
 texture = ExtResource("26_ndqm4")
 
 [node name="Label" type="Label" parent="Townie_Logic/Ranch_Hand/Sprite2D"]
+anchors_preset = -1
+anchor_left = -0.07
+anchor_top = -0.492
+anchor_right = 1.0
+anchor_bottom = -0.156
+offset_left = -64.04
+offset_top = -64.024
+offset_right = -131.0
+offset_bottom = -84.032
+scale = Vector2(2.02606, 2.83457)
+text = "Ranch Hand"
+metadata/_edit_use_anchors_ = true
+
+[node name="Store_Keeper" type="CharacterBody2D" parent="Townie_Logic"]
+script = ExtResource("45_l4515")
+
+[node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Store_Keeper"]
+position = Vector2(-1.5, 1)
+scale = Vector2(0.0825, 0.0524691)
+texture = ExtResource("26_ndqm4")
+
+[node name="Label" type="Label" parent="Townie_Logic/Store_Keeper/Sprite2D"]
+anchors_preset = -1
+anchor_left = -0.07
+anchor_top = -0.492
+anchor_right = 1.0
+anchor_bottom = -0.156
+offset_left = -64.04
+offset_top = -64.024
+offset_right = -131.0
+offset_bottom = -84.032
+scale = Vector2(2.02606, 2.83457)
+text = "Ranch Hand"
+metadata/_edit_use_anchors_ = true
+
+[node name="Mountain_Man" type="CharacterBody2D" parent="Townie_Logic"]
+script = ExtResource("46_08nss")
+
+[node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Mountain_Man"]
+position = Vector2(-1.5, 1)
+scale = Vector2(0.0825, 0.0524691)
+texture = ExtResource("26_ndqm4")
+
+[node name="Label" type="Label" parent="Townie_Logic/Mountain_Man/Sprite2D"]
+anchors_preset = -1
+anchor_left = -0.07
+anchor_top = -0.492
+anchor_right = 1.0
+anchor_bottom = -0.156
+offset_left = -64.04
+offset_top = -64.024
+offset_right = -131.0
+offset_bottom = -84.032
+scale = Vector2(2.02606, 2.83457)
+text = "Ranch Hand"
+metadata/_edit_use_anchors_ = true
+
+[node name="Bounty_Hunter" type="CharacterBody2D" parent="Townie_Logic"]
+script = ExtResource("47_cjmfn")
+
+[node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Bounty_Hunter"]
+position = Vector2(-1.5, 1)
+scale = Vector2(0.0825, 0.0524691)
+texture = ExtResource("26_ndqm4")
+
+[node name="Label" type="Label" parent="Townie_Logic/Bounty_Hunter/Sprite2D"]
+anchors_preset = -1
+anchor_left = -0.07
+anchor_top = -0.492
+anchor_right = 1.0
+anchor_bottom = -0.156
+offset_left = -64.04
+offset_top = -64.024
+offset_right = -131.0
+offset_bottom = -84.032
+scale = Vector2(2.02606, 2.83457)
+text = "Ranch Hand"
+metadata/_edit_use_anchors_ = true
+
+[node name="Saloon_Girl" type="CharacterBody2D" parent="Townie_Logic"]
+script = ExtResource("48_ai5s4")
+
+[node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Saloon_Girl"]
+position = Vector2(-1.5, 1)
+scale = Vector2(0.0825, 0.0524691)
+texture = ExtResource("26_ndqm4")
+
+[node name="Label" type="Label" parent="Townie_Logic/Saloon_Girl/Sprite2D"]
+anchors_preset = -1
+anchor_left = -0.07
+anchor_top = -0.492
+anchor_right = 1.0
+anchor_bottom = -0.156
+offset_left = -64.04
+offset_top = -64.024
+offset_right = -131.0
+offset_bottom = -84.032
+scale = Vector2(2.02606, 2.83457)
+text = "Ranch Hand"
+metadata/_edit_use_anchors_ = true
+
+[node name="Bank_Manager" type="CharacterBody2D" parent="Townie_Logic"]
+script = ExtResource("49_4aoh4")
+
+[node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Bank_Manager"]
+position = Vector2(-1.5, 1)
+scale = Vector2(0.0825, 0.0524691)
+texture = ExtResource("26_ndqm4")
+
+[node name="Label" type="Label" parent="Townie_Logic/Bank_Manager/Sprite2D"]
+anchors_preset = -1
+anchor_left = -0.07
+anchor_top = -0.492
+anchor_right = 1.0
+anchor_bottom = -0.156
+offset_left = -64.04
+offset_top = -64.024
+offset_right = -131.0
+offset_bottom = -84.032
+scale = Vector2(2.02606, 2.83457)
+text = "Ranch Hand"
+metadata/_edit_use_anchors_ = true
+
+[node name="Sheriff" type="CharacterBody2D" parent="Townie_Logic"]
+script = ExtResource("50_glnk6")
+
+[node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Sheriff"]
+position = Vector2(-1.5, 1)
+scale = Vector2(0.0825, 0.0524691)
+texture = ExtResource("26_ndqm4")
+
+[node name="Label" type="Label" parent="Townie_Logic/Sheriff/Sprite2D"]
 anchors_preset = -1
 anchor_left = -0.07
 anchor_top = -0.492

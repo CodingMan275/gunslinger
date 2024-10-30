@@ -10,6 +10,12 @@ extends Node
 @onready var Town_Drunk = get_node("Town_Drunk")
 @onready var Bar_Keep = get_node("Bar_Keep")
 @onready var Ranch_Hand = get_node("Ranch_Hand")
+@onready var Store_Keeper = get_node("Store_Keeper")
+@onready var Mountain_Man = get_node("Mountain_Man")
+@onready var Bounty_Hunter = get_node("Bounty Hunter")
+@onready var Saloon_Girl = get_node("Saloon Girl")
+@onready var Bank_Manager = get_node("Bank_Manager")
+@onready var SHeriff = get_node("Sheriff")
 
 #Getting a refrence to the card deck and the rules controller
 @onready var CardDecks = get_node("../Cards")
@@ -28,6 +34,12 @@ func _ready() -> void:
 	Town_Drunk.position = get_node("../Layer0").map_to_local(Vector2 (5,4))
 	Bar_Keep.position = get_node("../Layer0").map_to_local(Vector2 (7,0))
 	Ranch_Hand.position = get_node("../Layer0").map_to_local(Vector2 (6,4))
+	#Store_Keeper.position = get_node("../Layer0").map_to_local(Vector2(4,3))
+	#Mountain_Man.position = get_node("../Layer0").map_to_local(Vector2(4,3))
+	#Bounty_Hunter.position = get_node("../Layer0").map_to_local(Vector2(4,3))
+	#Saloon_Girl.position = get_node("../Layer0").map_to_local(Vector2(4,3))
+	#Bank_Manager.position = get_node("../Layer0").map_to_local(Vector2(4,3))
+	#Sheriff.position = get_node("../Layer0").map_to_local(Vector2(4,3))
 	
 	Preacher.tile_map_node = get_node("../Layer0")
 	Teacher.tile_map_node = get_node("../Layer0")
@@ -35,6 +47,12 @@ func _ready() -> void:
 	Town_Drunk.tile_map_node = get_node("../Layer0")
 	Bar_Keep.tile_map_node = get_node("../Layer0")
 	Ranch_Hand.tile_map_node = get_node("../Layer0")
+	#Store_Keeper.tile_map_node = get_node("../Layer0")
+	#Mountain_Man.tile_map_node = get_node("../Layer0")
+	#Bounty_Hunter.tile_map_node = get_node("../Layer0")
+	#Saloon_Girl.tile_map_node = get_node("../Layer0")
+	#Bank_Manager.tile_map_node = get_node("../Layer0")
+	#Sheriff.tile_map_node = get_node("../Layer0")
 	
 	pass # Replace with function body.
 
