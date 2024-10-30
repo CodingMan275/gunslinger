@@ -59,8 +59,8 @@ func _on_host_pressed() -> void:
 	var error = peer.create_server(1027)
 	if error != OK:
 		print("Error: ", error)
-		_close_server()
-		_on_host_pressed()
+		#_close_server()
+		#_on_host_pressed()
 		return
 	#peer.get_host().compress(ENetConnection.COMPRESS_RANGE_CODER)
 
