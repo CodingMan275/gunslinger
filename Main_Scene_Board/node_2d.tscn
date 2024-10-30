@@ -636,7 +636,6 @@ script = ExtResource("9_mpy2d")
 script = ExtResource("14_ub6ke")
 
 [node name="Preacher" type="CharacterBody2D" parent="Townie_Logic"]
-visible = false
 script = ExtResource("14_8fc0f")
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Preacher"]
@@ -659,7 +658,6 @@ text = "Preacher"
 metadata/_edit_use_anchors_ = true
 
 [node name="Doctor" type="CharacterBody2D" parent="Townie_Logic"]
-visible = false
 script = ExtResource("16_2qs05")
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Doctor"]
@@ -682,7 +680,6 @@ text = "Doctor"
 metadata/_edit_use_anchors_ = true
 
 [node name="Teacher" type="CharacterBody2D" parent="Townie_Logic"]
-visible = false
 script = ExtResource("17_evase")
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Teacher"]
@@ -705,7 +702,6 @@ text = "Teacher"
 metadata/_edit_use_anchors_ = true
 
 [node name="Town_Drunk" type="CharacterBody2D" parent="Townie_Logic"]
-visible = false
 script = ExtResource("18_8vpej")
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Town_Drunk"]
@@ -728,7 +724,6 @@ text = "Town Drunk"
 metadata/_edit_use_anchors_ = true
 
 [node name="Bar_Keep" type="CharacterBody2D" parent="Townie_Logic"]
-visible = false
 script = ExtResource("19_alpfg")
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Bar_Keep"]
@@ -751,7 +746,6 @@ text = "Bar Keep"
 metadata/_edit_use_anchors_ = true
 
 [node name="Ranch_Hand" type="CharacterBody2D" parent="Townie_Logic"]
-visible = false
 script = ExtResource("20_dwx7h")
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Ranch_Hand"]
