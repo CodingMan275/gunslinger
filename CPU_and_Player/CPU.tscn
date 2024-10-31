@@ -29,6 +29,9 @@ properties/6/replication_mode = 1
 properties/7/path = NodePath(".:StunTracker")
 properties/7/spawn = true
 properties/7/replication_mode = 1
+properties/8/path = NodePath(".:TargetStable")
+properties/8/spawn = true
+properties/8/replication_mode = 1
 
 [node name="CPU" type="CharacterBody2D"]
 position = Vector2(-13, -11)

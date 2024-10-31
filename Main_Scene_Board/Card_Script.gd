@@ -3,6 +3,7 @@ extends Node
 #Card stuff
 @export var HiredGunVar = 3
 @export var WeaponCardVar = 5
+@onready var Sound_Player2 = $"../CanvasLayer/Draw Card/DrawCardSFX"
 
 #Draw and Discard piles that are connected to the multiplayer syncronizer
 #These are updated automatically between peers so every peer
@@ -23,9 +24,11 @@ signal DrawEmpty
 #Signal that sends what card was drawn so player can put it in their 
 signal DrawnCard
 
+signal StartDrawOver
+
 var StartingDraw = false
 
-
+var CardPos : Vector2 #hey
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	
@@ -48,14 +51,15 @@ func _onCardDraw() -> void:
 #Appropriate deck in their instances
 @rpc("any_peer","call_local")
 func _drawTownDeck(): # fucntion that simulates the cards being drawn
+	Sound_Player2.play()
 	var DrawSize = DrawArray.size() # Checks size of the array we're drawing from
 	if (DrawSize != 0): # first element exists -> array has some cards left
 		var TDCard = DrawArray[0] # gets the first element value
 		GlobalScript.DebugScript.add("DrawArray drew  "+str(TDCard))
 		DrawArray.pop_front() #pop it out
 		DiscardArray.push_front(TDCard) #push on discard array
-		#GlobalScript.DebugScript.add("DiscardArray has  "+str(DiscardArray))
-		#GlobalScript.DebugScript.add("DrawArray has  "+str(DrawArray))
+		GlobalScript.DebugScript.add("DiscardArray has  "+str(DiscardArray))
+		GlobalScript.DebugScript.add("DrawArray has  "+str(DrawArray))
 		#adds card to hand
 		DrawnCard.emit(TDCard, false, null)
 	else:
@@ -67,12 +71,13 @@ func _drawTownDeck(): # fucntion that simulates the cards being drawn
 		var TDCard = DrawArray[0] #since its and if/else, we need to run the code from the if, or else the player would simply not be able to have a card drawn
 		DrawArray.pop_front()
 		DiscardArray.push_front(TDCard)
-		#GlobalScript.DebugScript.add("DiscardArray has  "+str(DiscardArray))
-		#GlobalScript.DebugScript.add("DrawArray has  "+str(DrawArray))
+		GlobalScript.DebugScript.add("DiscardArray has  "+str(DiscardArray))
+		GlobalScript.DebugScript.add("DrawArray has  "+str(DrawArray))
 
 @rpc("any_peer","call_local")
 func _AddCard(card, player_index):
-	GlobalScript.PlayerNode[player_index].PlayerHand.append(card)
+	GlobalScript.PlayerNode[player_index].PlayerHand.append(card)	
+	
 
 
 
@@ -90,7 +95,12 @@ func _onStartDraw() -> void:
 		# Draw Weapon Cards
 		for s in range(5):
 			_AddCard.rpc(_draw_card(WeaponArray, player_index, "Gunslinger"),player_index)
+	SDO.rpc()
 
+@rpc("call_local","any_peer")
+func SDO():
+	StartDrawOver.emit()
+	pass
 
 
 func _draw_card(array: Array, player_index: int, card_type: String) -> Variant:
@@ -99,12 +109,32 @@ func _draw_card(array: Array, player_index: int, card_type: String) -> Variant:
 		return null
 	var card_index = randi() % array.size()
 	var card = array[card_index]
-	if(StartingDraw):
-		DrawnCard.emit(card, true, player_index)
-		print("Sending signal")
+	DrawnCard.emit(card, true, player_index)
 	GlobalScript.DebugScript.add.rpc("Player " + str(player_index) + " drew card " + card_type + ": " + card)
 	array.erase(card)  # Remove the drawn card
 	return card
 	
 func _ClaimCards(player_index):
 	GlobalScript.DebugScript.add(str(GlobalScript.PlayerNode[player_index].PlayerHand))
+	
+	
+
+#Gets and sets card art
+func CardArt(CardName):
+	if(CardName == "Preacher"):
+		return("res://bobseymour.svg")
+	elif(CardName == "Doctor"):
+		return("res://elijahbrown.svg")
+	elif(CardName == "Teacher"):
+		return("res://jonlaramine.svg")
+	elif(CardName == "Town_Drunk"):
+		return("res://madmike.svg")
+	elif(CardName == "Bar_Keep"):
+		return("res://oldsmokey.svg")
+	elif(CardName == "Ranch_Hand"):
+		return("res://thekid.svg")
+	else:
+		return("res://icon.svg")
+	pass
+	
+	

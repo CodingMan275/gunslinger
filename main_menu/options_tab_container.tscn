@@ -25,10 +25,9 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 10
 tab_alignment = 1
-current_tab = 2
+current_tab = 0
 
 [node name="Sound" type="TabBar" parent="TabContainer"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -142,6 +141,7 @@ theme_override_font_sizes/font_size = 25
 text = "Full Screen toggle"
 
 [node name="How to Play" type="TabBar" parent="TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 

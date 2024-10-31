@@ -1,36 +1,61 @@
-[gd_scene load_steps=33 format=4 uid="uid://jl7k3ltwbp41"]
+
+[gd_scene load_steps=58 format=4 uid="uid://jl7k3ltwbp41"]
 
 [ext_resource type="Texture2D" uid="uid://fcuqal2ynbts" path="res://Main_Scene_Board/spritesheet.png" id="1_o8ncf"]
 [ext_resource type="Texture2D" uid="uid://mmea4eto2a6p" path="res://Main_Scene_Board/Rhombus.png" id="2_rfajf"]
 [ext_resource type="Script" path="res://Main_Scene_Board/layer_0.gd" id="3_8wl58"]
 [ext_resource type="AudioStream" uid="uid://cslhnxro8mi3y" path="res://Card Game/shuffleandbridge-107641.wav" id="4_euu82"]
+[ext_resource type="Texture2D" uid="uid://bgfw83igonq2c" path="res://Main_Scene_Board/Updated Tiles/BoardwalkAlpha.png" id="5_28umi"]
 [ext_resource type="Script" path="res://Main_Scene_Board/Canvas_Layer/Turn_Label.gd" id="5_52d0j"]
 [ext_resource type="Theme" uid="uid://0qo5my5cfjq1" path="res://Main_Scene_Board/Canvas_Layer/Themes/Debug.tres" id="5_jnad2"]
 [ext_resource type="Script" path="res://Main_Scene_Board/Canvas_Layer/debug.gd" id="6_5svso"]
 [ext_resource type="Script" path="res://Main_Scene_Board/rules_controller.gd" id="6_6e8od"]
+[ext_resource type="Texture2D" uid="uid://c5600rupuq8tx" path="res://Main_Scene_Board/Updated Tiles/PathSouthWestEndAlpha.png" id="6_58tr5"]
 [ext_resource type="AudioStream" uid="uid://ccdn50u37npqi" path="res://Card Game/card-sounds-35956.wav" id="6_ye88j"]
 [ext_resource type="PackedScene" uid="uid://x0tek8t1bewj" path="res://CPU_and_Player/Player.tscn" id="7_saeg4"]
+[ext_resource type="Texture2D" uid="uid://bykey6wukvbrs" path="res://Main_Scene_Board/Updated Tiles/DoctorsOffice.png" id="7_ujmph"]
+[ext_resource type="AudioStream" uid="uid://bekgpnqtbfsyc" path="res://Card Game/Stun.wav" id="8_7t4t6"]
+[ext_resource type="Texture2D" uid="uid://cwr045wdx36mf" path="res://Main_Scene_Board/Updated Tiles/LawnAlpha.png" id="8_sj1b8"]
+[ext_resource type="Texture2D" uid="uid://th0hdnh1q6wt" path="res://Main_Scene_Board/Updated Tiles/Livery1.png" id="9_8y8qd"]
 [ext_resource type="PackedScene" uid="uid://cj15kaxvr44m1" path="res://CPU_and_Player/CPU.tscn" id="9_hsfom"]
 [ext_resource type="Script" path="res://Main_Scene_Board/Card_Script.gd" id="9_mpy2d"]
 [ext_resource type="Script" path="res://Main_Scene_Board/claim.gd" id="9_xcao8"]
+[ext_resource type="Texture2D" uid="uid://bkdhn6dvbi6op" path="res://Main_Scene_Board/Updated Tiles/Livery2.png" id="10_okhjl"]
+[ext_resource type="Texture2D" uid="uid://bjw3pfr68vfq1" path="res://Main_Scene_Board/Updated Tiles/PathCrossAlpha.png" id="11_pvrpk"]
+[ext_resource type="Texture2D" uid="uid://wpqjamy8nklp" path="res://icon.svg" id="12_kmvqj"]
+
+[ext_resource type="PackedScene" uid="uid://bir8u4hip16in" path="res://pause_menu/pause_menu_button_singleplayer.tscn" id="13_3q2p2"]
 [ext_resource type="Script" path="res://Main_Scene_Board/preacher.gd" id="14_8fc0f"]
+[ext_resource type="PackedScene" uid="uid://b7rfx1nnoi5ev" path="res://pause_menu/pause_menu_singleplayer.tscn" id="14_tll6l"]
 [ext_resource type="Script" path="res://Main_Scene_Board/townie_logic.gd" id="14_ub6ke"]
+[ext_resource type="PackedScene" uid="uid://d0ncmr5j7hrug" path="res://main_menu/options_menu.tscn" id="15_o4h6x"]
+
+[ext_resource type="Texture2D" uid="uid://dnwtxvpqei783" path="res://Main_Scene_Board/Updated Tiles/PathLineEastToWest.png" id="12_wpbnm"]
+[ext_resource type="Texture2D" uid="uid://dxnroepmb6svi" path="res://Main_Scene_Board/Updated Tiles/PathLineWestToEast.png" id="13_j3t7k"]
+[ext_resource type="Script" path="res://Main_Scene_Board/preacher.gd" id="14_8fc0f"]
+[ext_resource type="Texture2D" uid="uid://dl0y4pw78gxau" path="res://Main_Scene_Board/Updated Tiles/PathSouthEastEndAlpha.png" id="14_e8jat"]
+[ext_resource type="Script" path="res://Main_Scene_Board/townie_logic.gd" id="14_ub6ke"]
+[ext_resource type="Script" path="res://Main_Scene_Board/layer_1.gd" id="15_ndo7p"]
+
 [ext_resource type="Script" path="res://CPU_and_Player/doctor.gd" id="16_2qs05"]
-[ext_resource type="Texture2D" uid="uid://bdmvi8qlb5m57" path="res://bobseymour.svg" id="16_8cepm"]
+[ext_resource type="PackedScene" uid="uid://o8s2bfh5cxgj" path="res://pause_menu/close_options_menu_button.tscn" id="16_ljexv"]
+[ext_resource type="Texture2D" uid="uid://bdmvi8qlb5m57" path="res://bobseymour.svg" id="16_tsmpy"]
 [ext_resource type="Script" path="res://Main_Scene_Board/teacher.gd" id="17_evase"]
 [ext_resource type="Script" path="res://Main_Scene_Board/town_drunk.gd" id="18_8vpej"]
-[ext_resource type="Texture2D" uid="uid://b3jt8k5v2aeha" path="res://elijahbrown.svg" id="18_rnq7t"]
+[ext_resource type="Texture2D" uid="uid://b3jt8k5v2aeha" path="res://elijahbrown.svg" id="18_bkvl8"]
 [ext_resource type="Script" path="res://Main_Scene_Board/bar_keep.gd" id="19_alpfg"]
-[ext_resource type="Texture2D" uid="uid://jsgp5eehgaib" path="res://jonlaramine.svg" id="20_4xm6a"]
+[ext_resource type="Texture2D" uid="uid://jsgp5eehgaib" path="res://jonlaramine.svg" id="20_4gd5u"]
 [ext_resource type="Script" path="res://Main_Scene_Board/ranch_hand.gd" id="20_dwx7h"]
-[ext_resource type="Texture2D" uid="uid://c1keaoj8b1k3k" path="res://madmike.svg" id="22_1hdky"]
-[ext_resource type="Texture2D" uid="uid://dywhqj3m2j1y3" path="res://oldsmokey.svg" id="24_n3rvj"]
-[ext_resource type="Texture2D" uid="uid://c5dj7es7aba7e" path="res://thekid.svg" id="26_6ry6s"]
+[ext_resource type="Texture2D" uid="uid://c1keaoj8b1k3k" path="res://madmike.svg" id="22_nwhpe"]
+[ext_resource type="Texture2D" uid="uid://dywhqj3m2j1y3" path="res://oldsmokey.svg" id="24_5vq5u"]
+[ext_resource type="Texture2D" uid="uid://c5dj7es7aba7e" path="res://thekid.svg" id="26_ndqm4"]
+[ext_resource type="Texture2D" uid="uid://bnk7r45gr5cn8" path="res://IMG_9861.png" id="27_uadwx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p1dyh"]
 texture = ExtResource("1_o8ncf")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
+0:0/0/custom_data_0 = 1
 1:0/0 = 0
 2:0/0 = 0
 3:0/0 = 0
@@ -56,10 +81,12 @@ texture_region_size = Vector2i(32, 32)
 1:2/0 = 0
 2:2/0 = 0
 3:2/0 = 0
+3:2/0/custom_data_0 = 2
 4:2/0 = 0
 5:2/0 = 0
 6:2/0 = 0
 7:2/0 = 0
+7:2/0/custom_data_0 = 2
 8:2/0 = 0
 9:2/0 = 0
 10:2/0 = 0
@@ -91,6 +118,7 @@ texture_region_size = Vector2i(32, 32)
 3:5/0 = 0
 4:5/0 = 0
 5:5/0 = 0
+5:5/0/custom_data_0 = 3
 6:5/0 = 0
 7:5/0 = 0
 8:5/0 = 0
@@ -123,6 +151,7 @@ texture_region_size = Vector2i(32, 32)
 2:8/0 = 0
 3:8/0 = 0
 5:8/0 = 0
+5:8/0/custom_data_0 = 4
 9:8/0 = 0
 10:8/0 = 0
 0:9/0 = 0
@@ -157,8 +186,75 @@ texture_region_size = Vector2i(32, 32)
 tile_shape = 1
 tile_layout = 5
 tile_size = Vector2i(32, 16)
+custom_data_layer_0/name = "TileType"
+custom_data_layer_0/type = 2
 sources/0 = SubResource("TileSetAtlasSource_p1dyh")
 sources/1 = SubResource("TileSetAtlasSource_bqeqs")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ksm0c"]
+texture = ExtResource("5_28umi")
+texture_region_size = Vector2i(316, 332)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gq8bu"]
+texture = ExtResource("6_58tr5")
+texture_region_size = Vector2i(316, 332)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ohgiv"]
+texture = ExtResource("7_ujmph")
+texture_region_size = Vector2i(316, 332)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tabrm"]
+texture = ExtResource("8_sj1b8")
+texture_region_size = Vector2i(316, 332)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iqqcw"]
+texture = ExtResource("9_8y8qd")
+texture_region_size = Vector2i(316, 332)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fi4ks"]
+texture = ExtResource("10_okhjl")
+texture_region_size = Vector2i(316, 332)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_012qo"]
+texture = ExtResource("11_pvrpk")
+texture_region_size = Vector2i(316, 332)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7s5b0"]
+texture = ExtResource("12_wpbnm")
+texture_region_size = Vector2i(316, 332)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ho8h4"]
+texture = ExtResource("13_j3t7k")
+texture_region_size = Vector2i(316, 332)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_07q67"]
+texture = ExtResource("14_e8jat")
+texture_region_size = Vector2i(316, 332)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_mbj4e"]
+tile_shape = 1
+tile_layout = 5
+tile_size = Vector2i(316, 216)
+sources/1 = SubResource("TileSetAtlasSource_ksm0c")
+sources/2 = SubResource("TileSetAtlasSource_ohgiv")
+sources/3 = SubResource("TileSetAtlasSource_tabrm")
+sources/4 = SubResource("TileSetAtlasSource_iqqcw")
+sources/5 = SubResource("TileSetAtlasSource_fi4ks")
+sources/6 = SubResource("TileSetAtlasSource_012qo")
+sources/7 = SubResource("TileSetAtlasSource_7s5b0")
+sources/8 = SubResource("TileSetAtlasSource_ho8h4")
+sources/9 = SubResource("TileSetAtlasSource_07q67")
+sources/10 = SubResource("TileSetAtlasSource_gq8bu")
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_mfl53"]
 properties/0/path = NodePath("CanvasLayer/Label:text")
@@ -193,7 +289,7 @@ properties/9/spawn = true
 properties/9/replication_mode = 1
 properties/10/path = NodePath("Townie_Logic/Preacher:position")
 properties/10/spawn = true
-properties/10/replication_mode = 1
+properties/10/replication_mode = 2
 properties/11/path = NodePath("Townie_Logic/Doctor:is_hired_gun")
 properties/11/spawn = true
 properties/11/replication_mode = 1
@@ -233,12 +329,9 @@ properties/22/replication_mode = 1
 properties/23/path = NodePath("Townie_Logic/Ranch_Hand:is_hired_gun")
 properties/23/spawn = true
 properties/23/replication_mode = 1
-properties/24/path = NodePath("Townie_Logic/Ranch_Hand:claim_revealed")
+properties/24/path = NodePath("Townie_Logic/Ranch_Hand:position")
 properties/24/spawn = true
 properties/24/replication_mode = 1
-properties/25/path = NodePath("Townie_Logic/Ranch_Hand:position")
-properties/25/spawn = true
-properties/25/replication_mode = 1
 
 [sub_resource type="GDScript" id="GDScript_7iaxx"]
 script/source = "extends CanvasLayer
@@ -265,21 +358,44 @@ func _on_VBoxContainer_size_changed():
 
 [node name="Node2D" type="Node2D"]
 
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -224.0
+offset_top = -119.0
+offset_right = 255.0
+offset_bottom = 149.0
+texture = ExtResource("27_uadwx")
+expand_mode = 1
+
 [node name="Layer0" type="TileMapLayer" parent="."]
 use_parent_material = true
-tile_map_data = PackedByteArray("AAAAAAEAAAAIAAUAAAAAAAIAAAAAAAAAAAAAAAMAAAAFAAUAAAAAAAQAAAAFAAUAAAAAAAUAAAAAAAAAAAAAAAYAAAAFAAUAAAAAAAcAAAAFAAUAAAABAAAAAAAIAAUAAAACAAAAAAAAAAAAAAADAAAAAAAFAAUAAAAEAAAAAAAFAAUAAAAFAAAAAAAAAAAAAAAGAAAAAAAHAAMAAAAHAAAAAAAFAAUAAAABAAcAAAAHAAMAAAACAAcAAAAAAAAAAAADAAcAAAAFAAUAAAAEAAcAAAAFAAUAAAAFAAcAAAAAAAAAAAAGAAcAAAAIAAUAAAAHAAcAAAAIAAUAAAAHAAUAAAAAAAAAAAAHAAYAAAAIAAUAAAAHAAQAAAAFAAUAAAAHAAMAAAAFAAUAAAAHAAIAAAAAAAAAAAAHAAEAAAAFAAUAAAABAAEAAAAIAAUAAAADAAMAAAAFAAUAAAADAAQAAAAHAAMAAAAEAAQAAAAFAAUAAAAEAAMAAAAHAAMAAAAGAAYAAAAIAAUAAAAEAAYAAAAHAAMAAAADAAYAAAAHAAMAAAABAAQAAAAHAAMAAAABAAMAAAAHAAMAAAAEAAEAAAAHAAMAAAADAAEAAAAHAAMAAAAGAAEAAAAHAAMAAAAGAAQAAAAHAAMAAAAGAAMAAAAHAAMAAAAGAAUAAAAAAAAAAAAFAAYAAAAAAAAAAAAFAAUAAAAAAAAAAAAEAAUAAAAAAAAAAAADAAUAAAAAAAAAAAACAAUAAAAAAAAAAAACAAYAAAAAAAAAAAABAAYAAAAHAAMAAAABAAUAAAAAAAAAAAACAAQAAAAAAAAAAAACAAMAAAAAAAAAAAACAAIAAAAAAAAAAAABAAIAAAAAAAAAAAACAAEAAAAAAAAAAAAFAAQAAAAAAAAAAAAFAAMAAAAAAAAAAAAFAAIAAAAAAAAAAAADAAIAAAAAAAAAAAAEAAIAAAAAAAAAAAAFAAEAAAAAAAAAAAAGAAIAAAAAAAAAAAAAAAAAAAAIAAUAAAA=")
+tile_map_data = PackedByteArray("AAAAAAEAAAAFAAgAAAAAAAIAAAAAAAAAAAAAAAMAAAAFAAUAAAAAAAQAAAAFAAUAAAAAAAUAAAAAAAAAAAAAAAYAAAAHAAIAAAAAAAcAAAAFAAUAAAABAAAAAAAFAAgAAAACAAAAAAAAAAAAAAADAAAAAAAFAAUAAAAEAAAAAAAFAAUAAAAFAAAAAAAAAAAAAAAGAAAAAAAFAAUAAAAHAAAAAAAFAAUAAAABAAcAAAAFAAUAAAACAAcAAAAAAAAAAAADAAcAAAAFAAUAAAAEAAcAAAAFAAUAAAAFAAcAAAAAAAAAAAAGAAcAAAAFAAgAAAAHAAcAAAAFAAgAAAAHAAUAAAAAAAAAAAAHAAYAAAAFAAgAAAAHAAQAAAAGAAUAAAAHAAMAAAAFAAUAAAAHAAIAAAAAAAAAAAAHAAEAAAAHAAIAAAABAAEAAAAFAAgAAAADAAMAAAAFAAUAAAADAAQAAAAFAAUAAAAEAAQAAAAFAAUAAAAEAAMAAAAFAAUAAAAGAAYAAAAFAAgAAAAEAAYAAAADAAIAAAADAAYAAAADAAIAAAABAAQAAAADAAIAAAABAAMAAAADAAIAAAAEAAEAAAADAAIAAAADAAEAAAADAAIAAAAGAAEAAAAHAAIAAAAGAAQAAAADAAIAAAAGAAMAAAADAAIAAAAGAAUAAAAAAAAAAAAFAAYAAAAAAAAAAAAFAAUAAAAAAAAAAAAEAAUAAAAAAAAAAAADAAUAAAAAAAAAAAACAAUAAAAAAAAAAAACAAYAAAAAAAAAAAABAAYAAAAHAAIAAAABAAUAAAAAAAAAAAACAAQAAAAAAAAAAAACAAMAAAAAAAAAAAACAAIAAAAAAAAAAAABAAIAAAAAAAAAAAACAAEAAAAAAAAAAAAFAAQAAAAAAAAAAAAFAAMAAAAAAAAAAAAFAAIAAAAAAAAAAAADAAIAAAAAAAAAAAAEAAIAAAAAAAAAAAAFAAEAAAAAAAAAAAAGAAIAAAAAAAAAAAAAAAAAAAAFAAgAAAA=")
 tile_set = SubResource("TileSet_1y6tq")
 rendering_quadrant_size = 32
 script = ExtResource("3_8wl58")
 
-[node name="Layer1" type="TileMapLayer" parent="."]
-visible = false
+[node name="Ground_Layer" type="TileMapLayer" parent="."]
 y_sort_enabled = true
 use_parent_material = true
-tile_set = SubResource("TileSet_1y6tq")
+tile_map_data = PackedByteArray("AAACAP7/AwAAAAAAAAACAP//AwAAAAAAAAADAP//AwAAAAAAAAADAP7/AwAAAAAAAAACAAAACAAAAAAAAAADAAAACAAAAAAAAAAEAP7/BwAAAAAAAAAEAP//BwAAAAAAAAAEAAEABwAAAAAAAAAEAAIABwAAAAAAAAAEAAQABwAAAAAAAAAEAAUABwAAAAAAAAAHAP7/BwAAAAAAAAAHAP//BwAAAAAAAAAHAAEABwAAAAAAAAAHAAIABwAAAAAAAAAHAAQABwAAAAAAAAAHAAUABwAAAAAAAAAEAAAABgAAAAAAAAAFAAAACAAAAAAAAAAGAAAACAAAAAAAAAAFAAMACAAAAAAAAAAGAAMACAAAAAAAAAACAAMACAAAAAAAAAADAAMACAAAAAAAAAAIAAAACAAAAAAAAAAJAAAACAAAAAAAAAAIAAMACAAAAAAAAAAJAAMACAAAAAAAAAAHAAAABgAAAAAAAAAHAAMABgAAAAAAAAAEAAMABgAAAAAAAAAFAAEAAwAAAAAAAAAFAAIAAwAAAAAAAAAGAAIAAwAAAAAAAAAGAAEAAwAAAAAAAAADAAEAAQAAAAAAAAADAAIAAQAAAAAAAAAFAP//AQAAAAAAAAAGAP//AQAAAAAAAAAIAAEAAQAAAAAAAAAIAAIAAQAAAAAAAAAFAAQAAQAAAAAAAAAGAAQAAQAAAAAAAAADAAQAAwAAAAAAAAADAAUAAwAAAAAAAAAIAP//AwAAAAAAAAAJAP//AwAAAAAAAAAIAP7/AwAAAAAAAAAJAP7/AwAAAAAAAAAFAP7/AwAAAAAAAAAGAP7/AwAAAAAAAAACAAEAAwAAAAAAAAACAAIAAwAAAAAAAAACAAQAAwAAAAAAAAACAAUAAwAAAAAAAAAFAAUAAwAAAAAAAAAGAAUAAwAAAAAAAAAIAAUAAwAAAAAAAAAJAAUAAwAAAAAAAAAJAAQAAwAAAAAAAAAIAAQAAwAAAAAAAAAJAAIAAwAAAAAAAAAJAAEAAwAAAAAAAAA=")
+tile_set = SubResource("TileSet_mbj4e")
+script = ExtResource("15_ndo7p")
+
+[node name="Player_Layer" type="TileMapLayer" parent="."]
+y_sort_enabled = true
+use_parent_material = true
+position = Vector2(0, 160)
+tile_set = SubResource("TileSet_mbj4e")
+
+[node name="Building_Layer" type="TileMapLayer" parent="."]
+y_sort_enabled = true
+use_parent_material = true
+position = Vector2(0, 112)
+tile_map_data = PackedByteArray("AAAHAAMABQAAAAAAAAAIAAMABQAAAAAAAAAHAAQABQAAAAAAAAAIAAQABQAAAAAAAAABAP3/BQAAAAAAAAABAP7/BQAAAAAAAAACAP7/BQAAAAAAAAACAP3/BQAAAAAAAAABAAEAAwAAAAAAAAABAAAAAwAAAAAAAAAEAAEAAwAAAAAAAAAFAAEAAwAAAAAAAAAFAAAAAwAAAAAAAAAEAAAAAwAAAAAAAAAEAP3/AwAAAAAAAAAFAP3/AwAAAAAAAAAIAAAAAwAAAAAAAAAIAAEAAwAAAAAAAAAEAAQAAwAAAAAAAAAFAAQAAwAAAAAAAAABAAQAAwAAAAAAAAACAAQAAwAAAAAAAAAHAP3/AwAAAAAAAAAIAP3/AwAAAAAAAAA=")
+tile_set = SubResource("TileSet_mbj4e")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(16, 16)
+zoom = Vector2(0.5, 0.5)
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_mfl53")
@@ -345,10 +461,10 @@ anchor_left = 0.019
 anchor_top = 0.015
 anchor_right = 0.362
 anchor_bottom = 0.178
-offset_left = -0.120001
-offset_top = -0.0500002
-offset_right = 0.23999
-offset_bottom = -0.0600014
+offset_left = 369.88
+offset_top = 74.95
+offset_right = 370.24
+offset_bottom = 74.94
 text = "Player X Turn"
 script = ExtResource("5_52d0j")
 
@@ -363,56 +479,59 @@ offset_right = -28.76
 offset_bottom = -0.0400085
 text = "Draw Card"
 
+[node name="DrawCardSFX" type="AudioStreamPlayer2D" parent="CanvasLayer/Draw Card"]
+position = Vector2(-12, -225)
+stream = ExtResource("6_ye88j")
+
 [node name="Draw cards" type="AudioStreamPlayer" parent="CanvasLayer/Draw Card"]
 stream = ExtResource("6_ye88j")
-volume_db = 24.0
-pitch_scale = 4.0
-
-[node name="Show Hand" type="Button" parent="CanvasLayer"]
-anchors_preset = -1
-anchor_left = 0.025
-anchor_top = 0.696
-anchor_right = 0.225
-anchor_bottom = 0.815
-offset_top = 0.0799866
-offset_bottom = -0.0500336
-text = "Show Hand"
+volume_db = 6.198
+pitch_scale = 1.95
+bus = &"SFX"
 
 [node name="Attack" type="Button" parent="CanvasLayer"]
 anchors_preset = -1
-anchor_left = 0.027
-anchor_top = 0.567
-anchor_right = 0.148
-anchor_bottom = 0.681
-offset_left = 0.04
+anchor_left = 0.845
+anchor_top = 0.667
+anchor_right = 0.967
+anchor_bottom = 0.781
+offset_left = 0.399994
 offset_top = -0.0900116
-offset_right = -0.0400009
+offset_right = -0.160034
 offset_bottom = 0.12999
 text = "Attack"
 
+[node name="Attack" type="AudioStreamPlayer2D" parent="CanvasLayer/Attack"]
+position = Vector2(-16, -185)
+stream = ExtResource("8_7t4t6")
+
 [node name="Brawl" type="Button" parent="CanvasLayer"]
 anchors_preset = -1
-anchor_left = 0.165
-anchor_top = 0.57
-anchor_right = 0.285
-anchor_bottom = 0.685
-offset_left = -0.200005
-offset_top = 0.0999908
-offset_right = 0.199982
-offset_bottom = 0.0499878
+anchor_left = 0.844
+anchor_top = 0.807
+anchor_right = 0.965
+anchor_bottom = 0.922
+offset_left = -0.120026
+offset_top = 0.109985
+offset_right = -0.200012
+offset_bottom = 0.0599823
 text = "Brawl
 "
 
+[node name="Punch" type="AudioStreamPlayer2D" parent="CanvasLayer/Brawl"]
+position = Vector2(-16, -185)
+stream = ExtResource("8_7t4t6")
+
 [node name="Dynamite" type="Button" parent="CanvasLayer"]
 anchors_preset = -1
-anchor_left = 0.223
-anchor_top = 0.833
-anchor_right = 0.398
-anchor_bottom = 0.948
-offset_left = -0.0400009
-offset_top = 0.0899811
-offset_right = -0.0400085
-offset_bottom = 0.039978
+anchor_left = 0.79
+anchor_top = 0.426
+anchor_right = 0.965
+anchor_bottom = 0.541
+offset_left = -0.200012
+offset_top = -0.0200043
+offset_right = -0.200012
+offset_bottom = -0.0700073
 text = "Dynamite"
 
 [node name="DebugPanel" type="PanelContainer" parent="CanvasLayer"]
@@ -422,8 +541,10 @@ anchor_left = 0.583
 anchor_top = 0.815
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 0.160004
-offset_top = -0.0500183
+offset_left = -125.84
+offset_top = -14.05
+offset_right = -126.0
+offset_bottom = -14.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("5_jnad2")
@@ -434,7 +555,6 @@ layout_mode = 2
 
 [node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/DebugPanel/MarginContainer"]
 layout_mode = 2
-horizontal_scroll_mode = 0
 script = SubResource("GDScript_brdbx")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/DebugPanel/MarginContainer/ScrollContainer"]
@@ -445,16 +565,56 @@ size_flags_horizontal = 6
 [node name="Claim" type="Button" parent="CanvasLayer"]
 visible = false
 anchors_preset = -1
-anchor_left = 0.237
-anchor_top = 0.707
-anchor_right = 0.412
-anchor_bottom = 0.811
-offset_left = 0.23999
-offset_top = 0.110001
-offset_right = 0.23999
-offset_bottom = 0.0299835
+anchor_left = 0.037
+anchor_top = 0.374
+anchor_right = 0.212
+anchor_bottom = 0.5
+offset_left = 0.24
+offset_top = 0.0199966
+offset_right = 0.239983
+offset_bottom = -3.0
 text = "Claim"
 script = ExtResource("9_xcao8")
+
+[node name="CurrentTownie" type="TextureRect" parent="CanvasLayer"]
+visible = false
+anchors_preset = -1
+anchor_left = 0.046
+anchor_top = 0.5
+anchor_right = 0.196
+anchor_bottom = 0.807
+offset_left = -0.0800018
+offset_top = 2.0
+offset_right = -0.0800018
+offset_bottom = 0.109985
+texture = ExtResource("12_kmvqj")
+expand_mode = 1
+
+[node name="Pause_Menu" type="Node" parent="CanvasLayer"]
+
+[node name="PauseMenuButtonSinglePlayer" parent="CanvasLayer/Pause_Menu" instance=ExtResource("13_3q2p2")]
+unique_name_in_owner = true
+visible = false
+offset_left = 7.0
+offset_top = 4.0
+offset_right = -434.0
+offset_bottom = -212.0
+
+[node name="PauseMenuSingleplayer" parent="CanvasLayer/Pause_Menu" instance=ExtResource("14_tll6l")]
+unique_name_in_owner = true
+visible = false
+
+[node name="OptionsMenu" parent="CanvasLayer/Pause_Menu" instance=ExtResource("15_o4h6x")]
+unique_name_in_owner = true
+visible = false
+
+[node name="CloseOptionsMenuButton" parent="CanvasLayer/Pause_Menu" instance=ExtResource("16_ljexv")]
+unique_name_in_owner = true
+visible = false
+offset_left = 7.0
+offset_top = 5.0
+offset_right = -401.0
+offset_bottom = -220.0
 
 [node name="Rules_Controller" type="Node" parent="."]
 script = ExtResource("6_6e8od")
@@ -464,16 +624,21 @@ CPU_scene = ExtResource("9_hsfom")
 [node name="Cards" type="Node" parent="."]
 script = ExtResource("9_mpy2d")
 
+[node name="PreacherCard" type="CharacterBody2D" parent="Cards"]
+
+[node name="PreacherCardSprite" type="Sprite2D" parent="Cards/PreacherCard"]
+
 [node name="Townie_Logic" type="Node" parent="."]
 script = ExtResource("14_ub6ke")
 
 [node name="Preacher" type="CharacterBody2D" parent="Townie_Logic"]
+visible = false
 script = ExtResource("14_8fc0f")
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Preacher"]
-position = Vector2(0, -0.999998)
-scale = Vector2(0.173273, 0.157709)
-texture = ExtResource("16_8cepm")
+position = Vector2(-4.76837e-07, -0.0898228)
+scale = Vector2(0.075, 0.0637124)
+texture = ExtResource("16_tsmpy")
 
 [node name="Label" type="Label" parent="Townie_Logic/Preacher/Sprite2D"]
 anchors_preset = -1
@@ -490,12 +655,13 @@ text = "Preacher"
 metadata/_edit_use_anchors_ = true
 
 [node name="Doctor" type="CharacterBody2D" parent="Townie_Logic"]
+visible = false
 script = ExtResource("16_2qs05")
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Doctor"]
-position = Vector2(0, -15)
-scale = Vector2(0.12, 0.11)
-texture = ExtResource("18_rnq7t")
+position = Vector2(1.49012e-06, 0.083853)
+scale = Vector2(0.065, 0.0645807)
+texture = ExtResource("18_bkvl8")
 
 [node name="Label" type="Label" parent="Townie_Logic/Doctor/Sprite2D"]
 anchors_preset = -1
@@ -512,12 +678,13 @@ text = "Doctor"
 metadata/_edit_use_anchors_ = true
 
 [node name="Teacher" type="CharacterBody2D" parent="Townie_Logic"]
+visible = false
 script = ExtResource("17_evase")
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Teacher"]
-position = Vector2(0, -0.999998)
-scale = Vector2(0.1, 0.091)
-texture = ExtResource("20_4xm6a")
+position = Vector2(-0.5, -0.497126)
+scale = Vector2(0.0475, 0.0432334)
+texture = ExtResource("20_4gd5u")
 
 [node name="Label" type="Label" parent="Townie_Logic/Teacher/Sprite2D"]
 anchors_preset = -1
@@ -534,12 +701,13 @@ text = "Teacher"
 metadata/_edit_use_anchors_ = true
 
 [node name="Town_Drunk" type="CharacterBody2D" parent="Townie_Logic"]
+visible = false
 script = ExtResource("18_8vpej")
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Town_Drunk"]
-position = Vector2(0, -10)
-scale = Vector2(0.12, 0.11)
-texture = ExtResource("22_1hdky")
+position = Vector2(-0.5, -0.544909)
+scale = Vector2(0.0475, 0.0432334)
+texture = ExtResource("22_nwhpe")
 
 [node name="Label" type="Label" parent="Townie_Logic/Town_Drunk/Sprite2D"]
 anchors_preset = -1
@@ -556,12 +724,13 @@ text = "Town Drunk"
 metadata/_edit_use_anchors_ = true
 
 [node name="Bar_Keep" type="CharacterBody2D" parent="Townie_Logic"]
+visible = false
 script = ExtResource("19_alpfg")
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Bar_Keep"]
-position = Vector2(0, -0.999998)
-scale = Vector2(0.07, 0.064)
-texture = ExtResource("24_n3rvj")
+position = Vector2(-0.499999, -0.219522)
+scale = Vector2(0.0575, 0.0523351)
+texture = ExtResource("24_5vq5u")
 
 [node name="Label" type="Label" parent="Townie_Logic/Bar_Keep/Sprite2D"]
 anchors_preset = -1
@@ -578,12 +747,13 @@ text = "Bar Keep"
 metadata/_edit_use_anchors_ = true
 
 [node name="Ranch_Hand" type="CharacterBody2D" parent="Townie_Logic"]
+visible = false
 script = ExtResource("20_dwx7h")
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Ranch_Hand"]
-position = Vector2(0, -0.999998)
-scale = Vector2(0.1, 0.091)
-texture = ExtResource("26_6ry6s")
+position = Vector2(-1.5, 1)
+scale = Vector2(0.0825, 0.0524691)
+texture = ExtResource("26_ndqm4")
 
 [node name="Label" type="Label" parent="Townie_Logic/Ranch_Hand/Sprite2D"]
 anchors_preset = -1
@@ -607,8 +777,9 @@ metadata/_edit_use_anchors_ = true
 [connection signal="ready" from="CanvasLayer/Label" to="Rules_Controller" method="_on_label_ready"]
 [connection signal="pressed" from="CanvasLayer/Draw Card" to="Rules_Controller" method="_onCardDraw"]
 [connection signal="pressed" from="CanvasLayer/Draw Card" to="Cards" method="_onCardDraw"]
-[connection signal="pressed" from="CanvasLayer/Show Hand" to="Rules_Controller" method="_ClaimCards"]
+[connection signal="pressed" from="CanvasLayer/Attack" to="Layer0" method="_on_attack_pressed"]
 [connection signal="pressed" from="CanvasLayer/Attack" to="Rules_Controller" method="RangeAttack"]
+[connection signal="pressed" from="CanvasLayer/Brawl" to="Layer0" method="_on_brawl_pressed"]
 [connection signal="pressed" from="CanvasLayer/Brawl" to="Rules_Controller" method="BrawlAttack"]
 [connection signal="pressed" from="CanvasLayer/Dynamite" to="Rules_Controller" method="Dynamite"]
 [connection signal="pressed" from="CanvasLayer/Claim" to="CanvasLayer/Claim" method="_on_pressed"]

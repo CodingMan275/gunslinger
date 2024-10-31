@@ -48,6 +48,7 @@ var order = 0
 #This could be further broken down into Weapon array, Town, Gunslinger, ect
 @export var PlayerHand = []
 
+
 var DrewCard = false
 
 var CurrentCard
@@ -63,7 +64,9 @@ var Player = preload("res://CPU_and_Player/PlayerClass.gd").Player.new(0)
 
 #Connect to Rules controller signal when spawned
 func _on_ready() -> void:
-		#Sets the player instance multiplayer authority to the correct peer
+	
+	
+	#Sets the player instance multiplayer authority to the correct peer
 	$MultiplayerSynchronizer.set_multiplayer_authority(str(name).to_int())
 	
 	#Format Node_Emitter . Signal_From_Emmiter_Node . Connect( Function you want to run in this scene)
@@ -74,13 +77,22 @@ func _on_ready() -> void:
 	
 	CardNodeDeck.DrawnCard.connect(PutCardInHand)
 	
+	CardNodeDeck.StartDrawOver.connect(_initialDisplay)
+	
 	#Gets the current order from the parent scene which is the rules controller
 	order = rule_scene.Turn_Order
 	
 	#Sets the action points the player can use
 	action_points = Max_Action_Points
+	
+	if self.name == str(multiplayer.get_unique_id()):
+		$CanvasLayer/Left.show()
+		$CanvasLayer/Right.show()
+		$CanvasLayer/Card1.show()
+		$CanvasLayer/Card2.show()
+		$CanvasLayer/Card3.show()
 	pass # Replace with function body.
-
+	#CardSpriteThingy()
 	
 		
 	
@@ -99,12 +111,15 @@ func _update_turn(x):
 			DrawButton.hide()
 			RangeButton.hide()
 			BrawlButton.hide()
-			HandButton.hide()
+		#	HandButton.hide()
 			DynamiteButton.hide()
 			#Removes the ability for the player to move
 			can_act = false
+			#Did I draw a card?
 			if(DrewCard):
+				#Get the townie I drew and make them unmovable becauseI ended my turn
 				get_parent().Townie.get_node(CurrentCard).movable = false
+				DrewCard = false
 		else:
 			#Set action points back to max
 			#action_points = Max_Action_Points
@@ -114,7 +129,7 @@ func _update_turn(x):
 			DrawButton.show()
 			RangeButton.show()
 			BrawlButton.show()
-			HandButton.show()
+	#		HandButton.show()
 			can_act = true
 			FreeBrawl = true;
 
@@ -123,38 +138,59 @@ func _update_turn(x):
 func _resetAP():
 	action_points = Max_Action_Points
 	
+	
+func _initialDisplay():
+	$CanvasLayer/Card1.texture = ResourceLoader.load(CardNodeDeck.CardArt(PlayerHand[1]))
+	$CanvasLayer/Card2.texture = ResourceLoader.load(CardNodeDeck.CardArt(PlayerHand[2]))
+	$CanvasLayer/Card3.texture = ResourceLoader.load(CardNodeDeck.CardArt(PlayerHand[3]))
+	
+	#Put weapons here
+	
+	pass
+	
 #When a card is drawn the Cards note emits a signal
-
 func PutCardInHand(Card, FirstDraw, p_i):
+	#If this is NOT the first draw
 	if(!FirstDraw):
+		#If I have the authority to access all this
 		if ($MultiplayerSynchronizer.get_multiplayer_authority() == multiplayer.get_unique_id() || GlobalScript.SinglePlay):
-			Claim(Card, Player_ID)
+			#See claim()
+			Claim(Card)
+			#Is it my turn?
 			if(order == Player_ID):
+				#Ive drawn a card
 				DrewCard = true
+				#Set the card I'm looking at to be the card I've drawn
 				CurrentCard = Card
-			#PlayerHand.append(Card)
+				#Remove any other action oppurtunities
 				can_act = false
-			#for cards in PlayerHand.size():
-			#	Card == PlayerHand[cards]
+				#Sets the tile_map_node to the proper board refrence
 				get_parent().Townie.get_node(Card).tile_map_node = tile_map_node	
+				#This townie is now movable
 				get_parent().Townie.get_node(Card).movable = true	
-		#		get_parent().Townie.get_node(CurrentCard).CurrentOwner = Player_ID
-				#Put button here for to claim
+				#The current player controlling it is this player
+				get_parent().Townie.get_node(CurrentCard).Player = Player_ID
+				#Hide the draw button
 				DrawButton.hide()
 	pass
 	
-func Claim(x,y):
+#This function will run and if the player has the hired gun in their hand
+#Then they will get the option to claim it
+func Claim(x):
+	#Again the card we drew is the car we're looking at
 	CurrentCard = x
-	for i in PlayerHand:
-		if(PlayerHand.has(CurrentCard)):
-			if(!get_parent().Townie.get_node(CurrentCard).claim_revealed):
-				print("Did we even get here")
-				ClaimButton.show()
+	#Go through my hand to see if I have this card
+	if(PlayerHand.has(CurrentCard)):
+		#Have I already claimed this card?
+		if(!get_parent().Townie.get_node(CurrentCard).claim_revealed):
+			#Show the claim button
+			ClaimButton.show()
 	pass
 
 	#Movement
 func _physics_process(delta):
 	MoveMouse()
+	
 	
 func move_possible():
 	#print(tile_map_node.get_cell_source_id(Vector2(get_global_mouse_position())))
@@ -166,15 +202,38 @@ func MoveMouse():
 	if ($MultiplayerSynchronizer.get_multiplayer_authority() == multiplayer.get_unique_id() || GlobalScript.SinglePlay):
 		if(Player_ID == order):
 			if Input.is_action_just_pressed("LeftClick") and can_act and action_points > 0 && GlobalScript.PlayerNode[order-1].StunTracker == 0:
-				if  move_possible():
-					self.global_position = Vector2(get_global_mouse_position())
+				var mouse = Vector2(get_global_mouse_position())
+				if  move_possible() && !tile_map_node.Stable(tile_map_node.local_to_map(mouse)):
+					self.global_position = mouse
 					pos = tile_map_node.local_to_map(self.position)
-					print(pos)
 					action_points -= 1
 					DrawButton.hide()
+				elif(tile_map_node.Stable(tile_map_node.local_to_map(mouse))):
+					GlobalScript.DebugScript.add("You Can not move into a stable ")
 			elif (Input.is_action_just_pressed("LeftClick") and move_possible() and action_points == 0):
 				GlobalScript.DebugScript.add("You have no more Action Points ")
 		#	if (!can_act):
 			#	can_act = true
 			elif(Input.is_action_just_pressed("LeftClick") and GlobalScript.PlayerNode[order-1].StunTracker != 0):
 				GlobalScript.DebugScript.add("you are stunned and cannot move")
+
+#func CardSpriteThingy():
+	#for n in 9:
+		#print(PlayerHand[n]) 
+		#seems that the index of 1 doesn't exist? Probably bc of the fac tits initially empty
+	'''psuedocode
+	coordx = 50
+	coordy = 50
+	#for n in 9:
+		value = PlayerHand[n]
+		for m in CardDict.size()
+			if value == CardDict[m]
+				SaidCardObj move to coordx and coordy
+				coordx += 10
+			
+	Basically, we have the card as objects, 
+	and in a dictionary nad/or array (idk if possible) that somehow we link with PlayerHand, 
+	basically we get a value and if said value is equal to dict value, you move that object to the coords
+	then we update the x coord, so next card to be placed is moved over
+
+		'''
