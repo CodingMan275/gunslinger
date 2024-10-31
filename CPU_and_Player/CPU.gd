@@ -186,11 +186,11 @@ func move_possible():
 	
 
 func MoveCPU():
-	# Y factor is 8 [8, 120] , X factor is 16 [96 , -128]
 	if  GlobalScript.PlayerNode[order-1].StunTracker == 0:
 		move_possible()
 		await get_tree().create_timer(.1).timeout
-		self.global_position = Vector2(-16*(pos.y-pos.x-1),16*pos.y + (8*(pos.x-pos.y + 1))) #This will take graph cords and turn it into px cords
+		rule_scene.TileMapScene.map_to_local(Vector2(pos.x,pos.y))
+		self.global_position = rule_scene.TileMapScene.map_to_local(pos)
 		action_points -= 1
 	elif(GlobalScript.PlayerNode[order-1].StunTracker != 0):
 			GlobalScript.DebugScript.add("CPU stunned and cannot move")

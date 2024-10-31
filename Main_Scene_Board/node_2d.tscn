@@ -1,5 +1,4 @@
-
-[gd_scene load_steps=58 format=4 uid="uid://jl7k3ltwbp41"]
+[gd_scene load_steps=68 format=4 uid="uid://jl7k3ltwbp41"]
 
 [ext_resource type="Texture2D" uid="uid://fcuqal2ynbts" path="res://Main_Scene_Board/spritesheet.png" id="1_o8ncf"]
 [ext_resource type="Texture2D" uid="uid://mmea4eto2a6p" path="res://Main_Scene_Board/Rhombus.png" id="2_rfajf"]
@@ -23,20 +22,15 @@
 [ext_resource type="Texture2D" uid="uid://bkdhn6dvbi6op" path="res://Main_Scene_Board/Updated Tiles/Livery2.png" id="10_okhjl"]
 [ext_resource type="Texture2D" uid="uid://bjw3pfr68vfq1" path="res://Main_Scene_Board/Updated Tiles/PathCrossAlpha.png" id="11_pvrpk"]
 [ext_resource type="Texture2D" uid="uid://wpqjamy8nklp" path="res://icon.svg" id="12_kmvqj"]
-
-[ext_resource type="PackedScene" uid="uid://bir8u4hip16in" path="res://pause_menu/pause_menu_button_singleplayer.tscn" id="13_3q2p2"]
-[ext_resource type="Script" path="res://Main_Scene_Board/preacher.gd" id="14_8fc0f"]
-[ext_resource type="PackedScene" uid="uid://b7rfx1nnoi5ev" path="res://pause_menu/pause_menu_singleplayer.tscn" id="14_tll6l"]
-[ext_resource type="Script" path="res://Main_Scene_Board/townie_logic.gd" id="14_ub6ke"]
-[ext_resource type="PackedScene" uid="uid://d0ncmr5j7hrug" path="res://main_menu/options_menu.tscn" id="15_o4h6x"]
-
 [ext_resource type="Texture2D" uid="uid://dnwtxvpqei783" path="res://Main_Scene_Board/Updated Tiles/PathLineEastToWest.png" id="12_wpbnm"]
+[ext_resource type="PackedScene" uid="uid://bir8u4hip16in" path="res://pause_menu/pause_menu_button_singleplayer.tscn" id="13_3q2p2"]
 [ext_resource type="Texture2D" uid="uid://dxnroepmb6svi" path="res://Main_Scene_Board/Updated Tiles/PathLineWestToEast.png" id="13_j3t7k"]
 [ext_resource type="Script" path="res://Main_Scene_Board/preacher.gd" id="14_8fc0f"]
 [ext_resource type="Texture2D" uid="uid://dl0y4pw78gxau" path="res://Main_Scene_Board/Updated Tiles/PathSouthEastEndAlpha.png" id="14_e8jat"]
+[ext_resource type="PackedScene" uid="uid://b7rfx1nnoi5ev" path="res://pause_menu/pause_menu_singleplayer.tscn" id="14_tll6l"]
 [ext_resource type="Script" path="res://Main_Scene_Board/townie_logic.gd" id="14_ub6ke"]
 [ext_resource type="Script" path="res://Main_Scene_Board/layer_1.gd" id="15_ndo7p"]
-
+[ext_resource type="PackedScene" uid="uid://d0ncmr5j7hrug" path="res://main_menu/options_menu.tscn" id="15_o4h6x"]
 [ext_resource type="Script" path="res://CPU_and_Player/doctor.gd" id="16_2qs05"]
 [ext_resource type="PackedScene" uid="uid://o8s2bfh5cxgj" path="res://pause_menu/close_options_menu_button.tscn" id="16_ljexv"]
 [ext_resource type="Texture2D" uid="uid://bdmvi8qlb5m57" path="res://bobseymour.svg" id="16_tsmpy"]
@@ -50,12 +44,18 @@
 [ext_resource type="Texture2D" uid="uid://dywhqj3m2j1y3" path="res://oldsmokey.svg" id="24_5vq5u"]
 [ext_resource type="Texture2D" uid="uid://c5dj7es7aba7e" path="res://thekid.svg" id="26_ndqm4"]
 [ext_resource type="Texture2D" uid="uid://bnk7r45gr5cn8" path="res://IMG_9861.png" id="27_uadwx"]
+[ext_resource type="Script" path="res://Main_Scene_Board/store_keeper.gd" id="45_l4515"]
+[ext_resource type="Script" path="res://Main_Scene_Board/mountain_man.gd" id="46_08nss"]
+[ext_resource type="Script" path="res://Main_Scene_Board/bounty_hunter.gd" id="47_cjmfn"]
+[ext_resource type="Script" path="res://Main_Scene_Board/saloon_girl.gd" id="48_ai5s4"]
+[ext_resource type="Script" path="res://Main_Scene_Board/bank_manager.gd" id="49_4aoh4"]
+[ext_resource type="Script" path="res://Main_Scene_Board/sheriff.gd" id="50_glnk6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p1dyh"]
 texture = ExtResource("1_o8ncf")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
-0:0/0/custom_data_0 = 1
+0:0/0/custom_data_0 = 9
 1:0/0 = 0
 2:0/0 = 0
 3:0/0 = 0
@@ -76,20 +76,22 @@ texture_region_size = Vector2i(32, 32)
 7:1/0 = 0
 8:1/0 = 0
 9:1/0 = 0
+9:1/0/custom_data_0 = 7
 10:1/0 = 0
 0:2/0 = 0
+0:2/0/custom_data_0 = 16
 1:2/0 = 0
 2:2/0 = 0
 3:2/0 = 0
-3:2/0/custom_data_0 = 2
+3:2/0/custom_data_0 = 6
 4:2/0 = 0
 5:2/0 = 0
 6:2/0 = 0
 7:2/0 = 0
-7:2/0/custom_data_0 = 2
 8:2/0 = 0
 9:2/0 = 0
 10:2/0 = 0
+10:2/0/custom_data_0 = 12
 0:3/0 = 0
 1:3/0 = 0
 2:3/0 = 0
@@ -98,10 +100,13 @@ texture_region_size = Vector2i(32, 32)
 5:3/0 = 0
 6:3/0 = 0
 7:3/0 = 0
+7:3/0/custom_data_0 = 14
 8:3/0 = 0
 9:3/0 = 0
 10:3/0 = 0
+10:3/0/custom_data_0 = 11
 0:4/0 = 0
+0:4/0/custom_data_0 = 4
 1:4/0 = 0
 2:4/0 = 0
 3:4/0 = 0
@@ -112,30 +117,36 @@ texture_region_size = Vector2i(32, 32)
 8:4/0 = 0
 9:4/0 = 0
 10:4/0 = 0
+10:4/0/custom_data_0 = 1
 0:5/0 = 0
 1:5/0 = 0
 2:5/0 = 0
 3:5/0 = 0
 4:5/0 = 0
 5:5/0 = 0
-5:5/0/custom_data_0 = 3
 6:5/0 = 0
+6:5/0/custom_data_0 = 8
 7:5/0 = 0
 8:5/0 = 0
 9:5/0 = 0
+9:5/0/custom_data_0 = 2
 10:5/0 = 0
 0:6/0 = 0
 1:6/0 = 0
 2:6/0 = 0
 3:6/0 = 0
+3:6/0/custom_data_0 = 3
 4:6/0 = 0
 5:6/0 = 0
+5:6/0/custom_data_0 = 15
 6:6/0 = 0
+6:6/0/custom_data_0 = 5
 7:6/0 = 0
 8:6/0 = 0
 9:6/0 = 0
 10:6/0 = 0
 0:7/0 = 0
+0:7/0/custom_data_0 = 13
 1:7/0 = 0
 2:7/0 = 0
 3:7/0 = 0
@@ -151,7 +162,7 @@ texture_region_size = Vector2i(32, 32)
 2:8/0 = 0
 3:8/0 = 0
 5:8/0 = 0
-5:8/0/custom_data_0 = 4
+5:8/0/custom_data_0 = 10
 9:8/0 = 0
 10:8/0 = 0
 0:9/0 = 0
@@ -368,7 +379,7 @@ expand_mode = 1
 
 [node name="Layer0" type="TileMapLayer" parent="."]
 use_parent_material = true
-tile_map_data = PackedByteArray("AAAAAAEAAAAFAAgAAAAAAAIAAAAAAAAAAAAAAAMAAAAFAAUAAAAAAAQAAAAFAAUAAAAAAAUAAAAAAAAAAAAAAAYAAAAHAAIAAAAAAAcAAAAFAAUAAAABAAAAAAAFAAgAAAACAAAAAAAAAAAAAAADAAAAAAAFAAUAAAAEAAAAAAAFAAUAAAAFAAAAAAAAAAAAAAAGAAAAAAAFAAUAAAAHAAAAAAAFAAUAAAABAAcAAAAFAAUAAAACAAcAAAAAAAAAAAADAAcAAAAFAAUAAAAEAAcAAAAFAAUAAAAFAAcAAAAAAAAAAAAGAAcAAAAFAAgAAAAHAAcAAAAFAAgAAAAHAAUAAAAAAAAAAAAHAAYAAAAFAAgAAAAHAAQAAAAGAAUAAAAHAAMAAAAFAAUAAAAHAAIAAAAAAAAAAAAHAAEAAAAHAAIAAAABAAEAAAAFAAgAAAADAAMAAAAFAAUAAAADAAQAAAAFAAUAAAAEAAQAAAAFAAUAAAAEAAMAAAAFAAUAAAAGAAYAAAAFAAgAAAAEAAYAAAADAAIAAAADAAYAAAADAAIAAAABAAQAAAADAAIAAAABAAMAAAADAAIAAAAEAAEAAAADAAIAAAADAAEAAAADAAIAAAAGAAEAAAAHAAIAAAAGAAQAAAADAAIAAAAGAAMAAAADAAIAAAAGAAUAAAAAAAAAAAAFAAYAAAAAAAAAAAAFAAUAAAAAAAAAAAAEAAUAAAAAAAAAAAADAAUAAAAAAAAAAAACAAUAAAAAAAAAAAACAAYAAAAAAAAAAAABAAYAAAAHAAIAAAABAAUAAAAAAAAAAAACAAQAAAAAAAAAAAACAAMAAAAAAAAAAAACAAIAAAAAAAAAAAABAAIAAAAAAAAAAAACAAEAAAAAAAAAAAAFAAQAAAAAAAAAAAAFAAMAAAAAAAAAAAAFAAIAAAAAAAAAAAADAAIAAAAAAAAAAAAEAAIAAAAAAAAAAAAFAAEAAAAAAAAAAAAGAAIAAAAAAAAAAAAAAAAAAAAFAAgAAAA=")
+tile_map_data = PackedByteArray("AAAAAAEAAAAFAAgAAAAAAAIAAAAAAAAAAAAAAAMAAAADAAYAAAAAAAQAAAADAAYAAAAAAAUAAAAAAAAAAAAAAAYAAAAAAAIAAAAAAAcAAAADAAIAAAABAAAAAAAFAAgAAAACAAAAAAAAAAAAAAADAAAAAAAAAAQAAAAEAAAAAAAAAAQAAAAFAAAAAAAAAAAAAAAGAAAAAAAJAAUAAAAHAAAAAAAJAAUAAAABAAcAAAADAAIAAAACAAcAAAAAAAAAAAADAAcAAAAKAAQAAAAEAAcAAAAKAAQAAAAFAAcAAAAAAAAAAAAGAAcAAAAFAAgAAAAHAAcAAAAFAAgAAAAHAAUAAAAAAAAAAAAHAAYAAAAFAAgAAAAHAAQAAAAGAAUAAAAHAAMAAAAGAAYAAAAHAAIAAAAAAAAAAAAHAAEAAAAKAAIAAAABAAEAAAAFAAgAAAADAAMAAAAJAAEAAAADAAQAAAAJAAEAAAAEAAQAAAAJAAEAAAAEAAMAAAAJAAEAAAAGAAYAAAAFAAgAAAAEAAYAAAAKAAMAAAADAAYAAAAKAAMAAAABAAQAAAAAAAcAAAABAAMAAAAAAAcAAAAEAAEAAAAHAAMAAAADAAEAAAAHAAMAAAAGAAEAAAAKAAIAAAAGAAQAAAAFAAYAAAAGAAMAAAAFAAYAAAAGAAUAAAAAAAAAAAAFAAYAAAAAAAAAAAAFAAUAAAAAAAAAAAAEAAUAAAAAAAAAAAADAAUAAAAAAAAAAAACAAUAAAAAAAAAAAACAAYAAAAAAAAAAAABAAYAAAAAAAIAAAABAAUAAAAAAAAAAAACAAQAAAAAAAAAAAACAAMAAAAAAAAAAAACAAIAAAAAAAAAAAABAAIAAAAAAAAAAAACAAEAAAAAAAAAAAAFAAQAAAAAAAAAAAAFAAMAAAAAAAAAAAAFAAIAAAAAAAAAAAADAAIAAAAAAAAAAAAEAAIAAAAAAAAAAAAFAAEAAAAAAAAAAAAGAAIAAAAAAAAAAAAAAAAAAAAFAAgAAAA=")
 tile_set = SubResource("TileSet_1y6tq")
 rendering_quadrant_size = 32
 script = ExtResource("3_8wl58")
@@ -395,7 +406,6 @@ tile_set = SubResource("TileSet_mbj4e")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(16, 16)
-zoom = Vector2(0.5, 0.5)
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_mfl53")
@@ -632,7 +642,6 @@ script = ExtResource("9_mpy2d")
 script = ExtResource("14_ub6ke")
 
 [node name="Preacher" type="CharacterBody2D" parent="Townie_Logic"]
-visible = false
 script = ExtResource("14_8fc0f")
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Preacher"]
@@ -655,7 +664,6 @@ text = "Preacher"
 metadata/_edit_use_anchors_ = true
 
 [node name="Doctor" type="CharacterBody2D" parent="Townie_Logic"]
-visible = false
 script = ExtResource("16_2qs05")
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Doctor"]
@@ -678,7 +686,6 @@ text = "Doctor"
 metadata/_edit_use_anchors_ = true
 
 [node name="Teacher" type="CharacterBody2D" parent="Townie_Logic"]
-visible = false
 script = ExtResource("17_evase")
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Teacher"]
@@ -701,7 +708,6 @@ text = "Teacher"
 metadata/_edit_use_anchors_ = true
 
 [node name="Town_Drunk" type="CharacterBody2D" parent="Townie_Logic"]
-visible = false
 script = ExtResource("18_8vpej")
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Town_Drunk"]
@@ -724,7 +730,6 @@ text = "Town Drunk"
 metadata/_edit_use_anchors_ = true
 
 [node name="Bar_Keep" type="CharacterBody2D" parent="Townie_Logic"]
-visible = false
 script = ExtResource("19_alpfg")
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Bar_Keep"]
@@ -747,7 +752,6 @@ text = "Bar Keep"
 metadata/_edit_use_anchors_ = true
 
 [node name="Ranch_Hand" type="CharacterBody2D" parent="Townie_Logic"]
-visible = false
 script = ExtResource("20_dwx7h")
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Ranch_Hand"]
@@ -756,6 +760,138 @@ scale = Vector2(0.0825, 0.0524691)
 texture = ExtResource("26_ndqm4")
 
 [node name="Label" type="Label" parent="Townie_Logic/Ranch_Hand/Sprite2D"]
+anchors_preset = -1
+anchor_left = -0.07
+anchor_top = -0.492
+anchor_right = 1.0
+anchor_bottom = -0.156
+offset_left = -64.04
+offset_top = -64.024
+offset_right = -131.0
+offset_bottom = -84.032
+scale = Vector2(2.02606, 2.83457)
+text = "Ranch Hand"
+metadata/_edit_use_anchors_ = true
+
+[node name="Store_Keeper" type="CharacterBody2D" parent="Townie_Logic"]
+script = ExtResource("45_l4515")
+
+[node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Store_Keeper"]
+position = Vector2(-1.5, 1)
+scale = Vector2(0.0825, 0.0524691)
+texture = ExtResource("26_ndqm4")
+
+[node name="Label" type="Label" parent="Townie_Logic/Store_Keeper/Sprite2D"]
+anchors_preset = -1
+anchor_left = -0.07
+anchor_top = -0.492
+anchor_right = 1.0
+anchor_bottom = -0.156
+offset_left = -64.04
+offset_top = -64.024
+offset_right = -131.0
+offset_bottom = -84.032
+scale = Vector2(2.02606, 2.83457)
+text = "Ranch Hand"
+metadata/_edit_use_anchors_ = true
+
+[node name="Mountain_Man" type="CharacterBody2D" parent="Townie_Logic"]
+script = ExtResource("46_08nss")
+
+[node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Mountain_Man"]
+position = Vector2(-1.5, 1)
+scale = Vector2(0.0825, 0.0524691)
+texture = ExtResource("26_ndqm4")
+
+[node name="Label" type="Label" parent="Townie_Logic/Mountain_Man/Sprite2D"]
+anchors_preset = -1
+anchor_left = -0.07
+anchor_top = -0.492
+anchor_right = 1.0
+anchor_bottom = -0.156
+offset_left = -64.04
+offset_top = -64.024
+offset_right = -131.0
+offset_bottom = -84.032
+scale = Vector2(2.02606, 2.83457)
+text = "Ranch Hand"
+metadata/_edit_use_anchors_ = true
+
+[node name="Bounty_Hunter" type="CharacterBody2D" parent="Townie_Logic"]
+script = ExtResource("47_cjmfn")
+
+[node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Bounty_Hunter"]
+position = Vector2(-1.5, 1)
+scale = Vector2(0.0825, 0.0524691)
+texture = ExtResource("26_ndqm4")
+
+[node name="Label" type="Label" parent="Townie_Logic/Bounty_Hunter/Sprite2D"]
+anchors_preset = -1
+anchor_left = -0.07
+anchor_top = -0.492
+anchor_right = 1.0
+anchor_bottom = -0.156
+offset_left = -64.04
+offset_top = -64.024
+offset_right = -131.0
+offset_bottom = -84.032
+scale = Vector2(2.02606, 2.83457)
+text = "Ranch Hand"
+metadata/_edit_use_anchors_ = true
+
+[node name="Saloon_Girl" type="CharacterBody2D" parent="Townie_Logic"]
+script = ExtResource("48_ai5s4")
+
+[node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Saloon_Girl"]
+position = Vector2(-1.5, 1)
+scale = Vector2(0.0825, 0.0524691)
+texture = ExtResource("26_ndqm4")
+
+[node name="Label" type="Label" parent="Townie_Logic/Saloon_Girl/Sprite2D"]
+anchors_preset = -1
+anchor_left = -0.07
+anchor_top = -0.492
+anchor_right = 1.0
+anchor_bottom = -0.156
+offset_left = -64.04
+offset_top = -64.024
+offset_right = -131.0
+offset_bottom = -84.032
+scale = Vector2(2.02606, 2.83457)
+text = "Ranch Hand"
+metadata/_edit_use_anchors_ = true
+
+[node name="Bank_Manager" type="CharacterBody2D" parent="Townie_Logic"]
+script = ExtResource("49_4aoh4")
+
+[node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Bank_Manager"]
+position = Vector2(-1.5, 1)
+scale = Vector2(0.0825, 0.0524691)
+texture = ExtResource("26_ndqm4")
+
+[node name="Label" type="Label" parent="Townie_Logic/Bank_Manager/Sprite2D"]
+anchors_preset = -1
+anchor_left = -0.07
+anchor_top = -0.492
+anchor_right = 1.0
+anchor_bottom = -0.156
+offset_left = -64.04
+offset_top = -64.024
+offset_right = -131.0
+offset_bottom = -84.032
+scale = Vector2(2.02606, 2.83457)
+text = "Ranch Hand"
+metadata/_edit_use_anchors_ = true
+
+[node name="Sheriff" type="CharacterBody2D" parent="Townie_Logic"]
+script = ExtResource("50_glnk6")
+
+[node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Sheriff"]
+position = Vector2(-1.5, 1)
+scale = Vector2(0.0825, 0.0524691)
+texture = ExtResource("26_ndqm4")
+
+[node name="Label" type="Label" parent="Townie_Logic/Sheriff/Sprite2D"]
 anchors_preset = -1
 anchor_left = -0.07
 anchor_top = -0.492

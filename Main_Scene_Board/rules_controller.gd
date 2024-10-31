@@ -93,9 +93,9 @@ func MultiPlay(i , index):
 		if index == 0:
 			#Player 1 information
 			#Set player 1 at position 0,0 on the tile map
-			currentPlayer.position = TileMapScene.map_to_local(Vector2 (2,2))
+			currentPlayer.position = TileMapScene.map_to_local(Vector2 (5,0))
 			#Ask michael, sets player node position to somewhere
-			GlobalScript.PlayerNode[index].pos = currentPlayer.position
+			GlobalScript.PlayerNode[index].pos = Vector2(5,0)
 			GlobalScript.PlayerNode[index].Startpos = Vector2(1,1)
 			#Set player label to the name they put in (not needed but fun)
 			currentPlayer.LabelName = GlobalScript.PlayerInfo[i].name
@@ -105,9 +105,9 @@ func MultiPlay(i , index):
 		if index == 1:
 			#The next player in the PlayerInfo array, player 2
 			#Sets player 2 at a different position from player 1
-			currentPlayer.position = TileMapScene.map_to_local(Vector2 (2,2))
+			currentPlayer.position = TileMapScene.map_to_local(Vector2 (7,4))
 			#Once ask Michael, sorry this is not good commenting
-			GlobalScript.PlayerNode[index].pos = currentPlayer.position
+			GlobalScript.PlayerNode[index].pos = Vector2(7,4)
 			GlobalScript.PlayerNode[index].Startpos = Vector2(6,6)
 			#Sets the label to the name player 2 picked
 			currentPlayer.LabelName = GlobalScript.PlayerInfo[i].name
@@ -141,7 +141,7 @@ func SinglePlay(i , index):
 			#Set player 1 at position 0,0 on the tile map
 			currentPlayer.position = TileMapScene.map_to_local(Vector2 (5,5))
 			#Ask michael, sets player node position to somewhere
-			GlobalScript.PlayerNode[index].pos = currentPlayer.position
+			GlobalScript.PlayerNode[index].pos = Vector2(5,5)
 			GlobalScript.PlayerNode[index].Startpos = Vector2(1,1)
 			#Set player label to the name they put in (not needed but fun)
 			currentPlayer.LabelName = "player"
@@ -165,9 +165,9 @@ func SinglePlay(i , index):
 			#and such
 			#Player 1 information
 			#Set player 1 at position 0,0 on the tile map
-			currentPlayer.position = TileMapScene.map_to_local(Vector2 (5,5))
+			currentPlayer.position = TileMapScene.map_to_local(Vector2 (1,1))
 			#Ask michael, sets player node position to somewhere
-			GlobalScript.PlayerNode[index].pos = currentPlayer.position
+			GlobalScript.PlayerNode[index].pos = Vector2(1,1)
 			GlobalScript.PlayerNode[index].Startpos = Vector2(1,1)
 			GlobalScript.PlayerNode[index].TargetStable = Vector2(7-GlobalScript.PlayerNode[index].Startpos.x,7-GlobalScript.PlayerNode[index].Startpos.y)
 			#Set player label to the name they put in (not needed but fun)
@@ -281,7 +281,8 @@ func RangeAttack():
 	for n in numPlayers:
 		var range= GlobalScript.PlayerNode[Turn_Order -1].WeaponRange
 		if(n+1 != Turn_Order && range != 0):
-			if(TileMapScene.Boardwalk(GlobalScript.PlayerNode[Turn_Order -1].pos) && TileMapScene.Path(GlobalScript.PlayerNode[n].pos)):
+			if(TileMapScene.Boardwalk(GlobalScript.PlayerNode[Turn_Order -1].pos)):
+				print("The range was increased by one")
 				range+1
 			if(CanAttack(n,range)):
 				GlobalScript.PlayerNode[Turn_Order -1].action_points -= 1
@@ -332,8 +333,14 @@ func Attack(Enemy, Player) -> void:
 	DrawButton.hide()
 	#Random attack ccheck
 	var Attack = (randi()%6 + 1)
+	#You are shooting at someone on a boardwalk
 	if(TileMapScene.Path(GlobalScript.PlayerNode[Player].pos) && TileMapScene.Boardwalk(GlobalScript.PlayerNode[Enemy].pos)):
-		Attack+1
+		print("The accuracy was decreased by one")
+		Attack-=1
+	#If you are not in the same building as them
+	if TileMapScene.Building(GlobalScript.PlayerNode[Enemy].pos) && TileMapScene.SameBuilding(GlobalScript.PlayerNode[Player].pos , GlobalScript.PlayerNode[Enemy].pos) :
+		print("The accuracy was decreased by two")
+		Attack-=2
 	if(Attack < 3): # Miss
 		GlobalScript.DebugScript.add(str(GlobalScript.PlayerNode[Enemy].Name + " was missed"))
 	elif(Attack < 5): # Stun

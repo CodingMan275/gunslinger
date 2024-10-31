@@ -202,20 +202,41 @@ func MoveMouse():
 	if ($MultiplayerSynchronizer.get_multiplayer_authority() == multiplayer.get_unique_id() || GlobalScript.SinglePlay):
 		if(Player_ID == order):
 			if Input.is_action_just_pressed("LeftClick") and can_act and action_points > 0 && GlobalScript.PlayerNode[order-1].StunTracker == 0:
-				var mouse = Vector2(get_global_mouse_position())
-				if  move_possible() && !tile_map_node.Stable(tile_map_node.local_to_map(mouse)):
-					self.global_position = mouse
-					pos = tile_map_node.local_to_map(self.position)
-					action_points -= 1
-					DrawButton.hide()
-				elif(tile_map_node.Stable(tile_map_node.local_to_map(mouse))):
-					GlobalScript.DebugScript.add("You Can not move into a stable ")
+				var NewPos = tile_map_node.local_to_map(Vector2(get_global_mouse_position()))
+				if  move_possible():
+					if TileCheck(NewPos):
+						self.global_position = Vector2(get_global_mouse_position())
+						pos = NewPos
+						action_points -= 1
+						DrawButton.hide()
+					elif !TileCheck(NewPos):
+						GlobalScript.DebugScript.add("You Can not move into a wall ")
 			elif (Input.is_action_just_pressed("LeftClick") and move_possible() and action_points == 0):
 				GlobalScript.DebugScript.add("You have no more Action Points ")
 		#	if (!can_act):
 			#	can_act = true
 			elif(Input.is_action_just_pressed("LeftClick") and GlobalScript.PlayerNode[order-1].StunTracker != 0):
 				GlobalScript.DebugScript.add("you are stunned and cannot move")
+
+
+func TileCheck(pos) -> bool:
+	var Ppos = GlobalScript.PlayerNode[order-1].pos
+	#Cannot move into stable , Bank , Church , School from a path
+	if tile_map_node.Path(Ppos) && (tile_map_node.Stable(pos) || tile_map_node.WalledBuilding(pos)) :
+		return false
+	#Cannot move from a special building to a path
+	elif tile_map_node.WalledBuilding(Ppos) && tile_map_node.Path(pos):
+		return false
+	#Can only go from jail to sherrif
+	elif tile_map_node.Jail(Ppos) && !tile_map_node.Building(pos):
+		return false
+	#Can only go from sherrif to jail
+	elif!tile_map_node.Building(Ppos) && tile_map_node.Jail(pos):
+		return false
+	else:
+		return true
+	return true
+
 
 #func CardSpriteThingy():
 	#for n in 9:
