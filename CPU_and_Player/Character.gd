@@ -142,17 +142,18 @@ class Character extends CharacterBody2D:
 	#Was left mouse pressed? Enough Action points?
 		if Input.is_action_just_pressed("LeftClick") and ActionPoint > 0:
 		#See move_possible, see can_move()
-			if move_possible() and can_move(Player):
+			if tile_map_node != null:
+				if move_possible() and can_move(Player):
 			#Set node's global position to be the positon of the mouse
-				self.global_position = Vector2(get_global_mouse_position())
+					self.global_position = Vector2(get_global_mouse_position())
 			#Set pos, a variable for storing location, to be the equivelant tile 
-				pos = tile_map_node.local_to_map(self.position)
+					pos = tile_map_node.local_to_map(self.position)
 			#Calls the UpdateMove function with the rpc call
-				UpdateMove.rpc(self.global_position)
+					UpdateMove.rpc(self.global_position)
 			#Alright we moved, no more
-				movable = false
-		elif (Input.is_action_just_pressed("LeftClick") and ActionPoint == 0):
-			GlobalScript.DebugScript.add("You have no more Action Points ")
+					movable = false
+			elif (Input.is_action_just_pressed("LeftClick") and ActionPoint == 0):
+				GlobalScript.DebugScript.add("You have no more Action Points ")
 
 #See rpc exlaination in Townie_Logic
 	@rpc("any_peer")
