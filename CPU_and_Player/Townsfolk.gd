@@ -3,7 +3,7 @@ class_name Townsfolk
 
 var is_hired_gun: bool = false
 var townsfolk_list: Array = []
-var claim_revealed: bool = false
+
 
 
 
@@ -46,7 +46,7 @@ func can_move(player) -> bool:
 		return false
 
 func _on_specialAbilitiesButton_pressed()-> void:
-	for townssfolk in townsfolk_list:
+	for townsfolk in townsfolk_list:
 		activate_special_abilities(townsfolk)
 
 func activate_special_abilities(townsfolk: Townsfolk) -> void:

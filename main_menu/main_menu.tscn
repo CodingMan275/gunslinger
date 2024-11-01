@@ -129,11 +129,6 @@ stream = ExtResource("2_ret15")
 autoplay = true
 bus = &"Music"
 
-[node name="SpecialAbilitiesButton" type="Button" parent="."]
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
-
 [connection signal="pressed" from="VBoxContainer/Start Button" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Options Button" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Exit Button" to="." method="_on_exit_button_pressed"]
