@@ -1,11 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://pblyho6utls1"]
+[gd_scene load_steps=8 format=3 uid="uid://pblyho6utls1"]
 
 [ext_resource type="Script" path="res://main_menu/main_menu.gd" id="1_a30og"]
-[ext_resource type="Texture2D" uid="uid://bjl6l6es04344" path="res://main_menu/main_menu_art_assets/Mountain background title screen.png" id="2_3u2bp"]
 [ext_resource type="AudioStream" uid="uid://73gync2ngicf" path="res://main_menu/GunSlinger Menu.mp3" id="2_ret15"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hh7re"]
-texture = ExtResource("2_3u2bp")
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tfxyd"]
+bg_color = Color(0.841237, 0.6895, 0.46809, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sac8h"]
 
@@ -46,7 +45,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_hh7re")
+theme_override_styles/panel = SubResource("StyleBoxFlat_tfxyd")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1

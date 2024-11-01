@@ -2,7 +2,12 @@ extends "res://CPU_and_Player/Character.gd".Character
 class_name Townsfolk
 
 var is_hired_gun: bool = false
-var claim_revealed: bool = false
+var townsfolk_list: Array = []
+
+
+
+
+
 
 func _init():
 	pass
@@ -39,4 +44,22 @@ func can_move(player) -> bool:
 		return true
 	else:
 		return false
+
+func _on_specialAbilitiesButton_pressed()-> void:
+	for townsfolk in townsfolk_list:
+		activate_special_abilities(townsfolk)
+
+func activate_special_abilities(townsfolk: Townsfolk) -> void:
+	if townsfolk.is_hired_gun and not townsfolk.claim_revealed:
+		townsfolk.reveal_hired_gun()
+		print("Revealed hired gun ability for: ", townsfolk)
+		if townsfolk.can_shoot(owning_player):
+			print("Townsfolk can shoot!")
+			if townsfolk.can_brawl(owning_player):
+				print("Townsfolk can brawl!")
+				if townsfolk.can_move(owning_player):
+					print("Townsfolk can move!")
+
+
+		
 	

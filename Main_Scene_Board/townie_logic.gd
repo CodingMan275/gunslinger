@@ -121,3 +121,9 @@ func SchizoFunctionPleaseWork():
 	#To claim this hired gun and once its claimed it does not matter if these values
 	#are wrong becuase once it is claimed it will never ben controlled by anyone else again
 	pass
+
+	'''func _input():
+		if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_RIGHT:
+			if get_viewport_rect().has_point(to_local(event.position)):
+				print("You Clicked on This Sprite!")
+'''

@@ -499,6 +499,14 @@ volume_db = 6.198
 pitch_scale = 1.95
 bus = &"SFX"
 
+[node name="SpecialAbilityButton" type="Button" parent="CanvasLayer/Draw Card"]
+layout_mode = 0
+offset_left = 339.0
+offset_top = -71.0
+offset_right = 465.0
+offset_bottom = -46.0
+text = "Special Ability"
+
 [node name="Attack" type="Button" parent="CanvasLayer"]
 anchors_preset = -1
 anchor_left = 0.845
