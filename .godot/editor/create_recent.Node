@@ -1,4 +1,5 @@
 Button
+CanvasLayer
 TextureRect
 Window
 Label
@@ -9,6 +10,5 @@ MarginContainer
 PanelContainer
 VBoxContainer
 TextureButton
-CanvasLayer
 Sprite2D
 CharacterBody2D

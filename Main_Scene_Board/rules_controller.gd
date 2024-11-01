@@ -34,6 +34,7 @@ var accuracy : int
 @onready var CardDecks = get_node("../Cards")
 @onready var Townie = get_node("../Townie_Logic")
 @onready var Canvas = get_node("../CanvasLayer")
+@onready var Setup = get_node("../StartUpCanvas")
 
 #The Player scene which will be instantiated and used for spawning in
 #All peer players
@@ -45,7 +46,17 @@ var DisplayArray = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	Canvas.hide()
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	#Will run while 
+	#if Setup.visible:
 	
+	pass
+	
+func _StartGame() -> void:
+	Setup.hide()
+	Canvas.show()
 	#Counter variable
 	var index = 0
 	#Goes through the preloaded script GlobalScript which has the player info for the
@@ -74,8 +85,6 @@ func _ready() -> void:
 	#In the little debug pop-up after pressing ~ it says this
 	GlobalScript.DebugScript.add("-------  Player 1's Turn  -----------")
 	pass # Replace with function body.
-
-
 
 
 func MultiPlay(i , index):
@@ -225,10 +234,6 @@ func order_inc():
 
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	
-	pass
 
 #This Function needs to reset everything or start up needs to clear everything
 @rpc("any_peer", "call_local")

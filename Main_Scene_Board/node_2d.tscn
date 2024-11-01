@@ -1,9 +1,8 @@
-[gd_scene load_steps=68 format=4 uid="uid://jl7k3ltwbp41"]
+[gd_scene load_steps=67 format=4 uid="uid://jl7k3ltwbp41"]
 
 [ext_resource type="Texture2D" uid="uid://fcuqal2ynbts" path="res://Main_Scene_Board/spritesheet.png" id="1_o8ncf"]
 [ext_resource type="Texture2D" uid="uid://mmea4eto2a6p" path="res://Main_Scene_Board/Rhombus.png" id="2_rfajf"]
 [ext_resource type="Script" path="res://Main_Scene_Board/layer_0.gd" id="3_8wl58"]
-[ext_resource type="AudioStream" uid="uid://cslhnxro8mi3y" path="res://Card Game/shuffleandbridge-107641.wav" id="4_euu82"]
 [ext_resource type="Texture2D" uid="uid://bgfw83igonq2c" path="res://Main_Scene_Board/Updated Tiles/BoardwalkAlpha.png" id="5_28umi"]
 [ext_resource type="Script" path="res://Main_Scene_Board/Canvas_Layer/Turn_Label.gd" id="5_52d0j"]
 [ext_resource type="Theme" uid="uid://0qo5my5cfjq1" path="res://Main_Scene_Board/Canvas_Layer/Themes/Debug.tres" id="5_jnad2"]
@@ -410,51 +409,21 @@ offset = Vector2(16, 16)
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_mfl53")
 
+[node name="StartUpCanvas" type="CanvasLayer" parent="."]
+
+[node name="Start" type="Button" parent="StartUpCanvas"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -48.0
+offset_right = 48.0
+offset_bottom = 31.0
+grow_horizontal = 2
+text = "Start Game"
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 script = SubResource("GDScript_7iaxx")
-
-[node name="Host" type="Button" parent="CanvasLayer"]
-visible = false
-anchors_preset = -1
-anchor_left = 0.454
-anchor_top = 0.615
-anchor_right = 0.82
-anchor_bottom = 0.822
-offset_left = 0.0799866
-offset_top = -0.0500031
-offset_right = 0.103973
-offset_bottom = -0.00396729
-text = "Host"
-metadata/_edit_use_anchors_ = true
-
-[node name="Join" type="Button" parent="CanvasLayer"]
-visible = false
-anchors_preset = -1
-anchor_left = 0.837
-anchor_top = 0.856
-anchor_right = 0.973
-anchor_bottom = 0.97
-offset_left = 0.23999
-offset_top = -0.12001
-offset_right = -0.0400391
-offset_bottom = 0.100006
-text = "Join"
-metadata/_edit_use_anchors_ = true
-
-[node name="Shuffle cards" type="AudioStreamPlayer" parent="CanvasLayer/Join"]
-stream = ExtResource("4_euu82")
-volume_db = 24.0
-pitch_scale = 4.0
-
-[node name="LineEdit" type="LineEdit" parent="CanvasLayer"]
-visible = false
-offset_left = 212.0
-offset_top = 233.0
-offset_right = 393.0
-offset_bottom = 264.0
-placeholder_text = "Enter Ip:"
-clear_button_enabled = true
-metadata/_edit_use_anchors_ = true
 
 [node name="Button" type="Button" parent="CanvasLayer"]
 offset_left = 393.0
@@ -595,7 +564,6 @@ text = "Claim"
 script = ExtResource("9_xcao8")
 
 [node name="CurrentTownie" type="TextureRect" parent="CanvasLayer"]
-visible = false
 anchors_preset = -1
 anchor_left = 0.046
 anchor_top = 0.5
@@ -650,8 +618,10 @@ CPU_scene = ExtResource("9_hsfom")
 script = ExtResource("9_mpy2d")
 
 [node name="PreacherCard" type="CharacterBody2D" parent="Cards"]
+visible = false
 
 [node name="PreacherCardSprite" type="Sprite2D" parent="Cards/PreacherCard"]
+visible = false
 
 [node name="Townie_Logic" type="Node" parent="."]
 script = ExtResource("14_ub6ke")
@@ -921,7 +891,7 @@ text = "Ranch Hand"
 metadata/_edit_use_anchors_ = true
 
 [connection signal="child_order_changed" from="." to="Rules_Controller" method="_on_node_2d_child_order_changed"]
-[connection signal="pressed" from="CanvasLayer/Host" to="Layer0" method="_on_host_pressed"]
+[connection signal="pressed" from="StartUpCanvas/Start" to="Rules_Controller" method="_StartGame"]
 [connection signal="pressed" from="CanvasLayer/Button" to="CanvasLayer/Label" method="_on_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Button" to="CanvasLayer/Claim" method="_on_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Button" to="Rules_Controller" method="_on_button_pressed"]
