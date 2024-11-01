@@ -94,7 +94,10 @@ func _on_claim_pressed() -> void:
 	#Rules Controller's children that have the same name, we know for a fact we named the ucrrent player's
 	#node the same as their unique id, from there we take the Player_ID we assinged it and then
 	#Set the variable inside the hired gun to be the same INT
-	get_node(CurrentCard).Player = Rules.get_node(str(multiplayer.get_unique_id())).Player_ID
+	if(GlobalScript.SinglePlay):
+		get_node(CurrentCard).Player = Rules.get_node("player").Player_ID
+	else:
+		get_node(CurrentCard).Player = Rules.get_node(str(multiplayer.get_unique_id())).Player_ID
 	#Calls the function and makes sure it uses the RPC properties
 	#Function() =\= Function.rpc()
 	SchizoFunctionPleaseWork.rpc()

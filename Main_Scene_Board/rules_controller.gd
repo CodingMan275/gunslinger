@@ -14,6 +14,7 @@ signal move
 #Card stuff
 #var Scenes : Array
 var drawcard : bool = false
+var accuracy : int
 
 #var PlayerScene = preload("res://Josh_Test_Scenes/Player.tscn")
 
@@ -96,9 +97,10 @@ func MultiPlay(i , index):
 		if index == 0:
 			#Player 1 information
 			#Set player 1 at position 0,0 on the tile map
-			currentPlayer.position = TileMapScene.map_to_local(Vector2 (5,0))
+			var Start = Vector2(5,0)
+			currentPlayer.position = TileMapScene.map_to_local(Start)
 			#Ask michael, sets player node position to somewhere
-			GlobalScript.PlayerNode[index].pos = Vector2(5,0)
+			GlobalScript.PlayerNode[index].pos = Start
 			GlobalScript.PlayerNode[index].Startpos = Vector2(1,1)
 			#Set player label to the name they put in (not needed but fun)
 			currentPlayer.LabelName = GlobalScript.PlayerInfo[i].name
@@ -108,9 +110,9 @@ func MultiPlay(i , index):
 		if index == 1:
 			#The next player in the PlayerInfo array, player 2
 			#Sets player 2 at a different position from player 1
-			currentPlayer.position = TileMapScene.map_to_local(Vector2 (7,4))
+			currentPlayer.position = TileMapScene.map_to_local(Vector2 (2,0))
 			#Once ask Michael, sorry this is not good commenting
-			GlobalScript.PlayerNode[index].pos = Vector2(7,4)
+			GlobalScript.PlayerNode[index].pos = Vector2(2,0)
 			GlobalScript.PlayerNode[index].Startpos = Vector2(6,6)
 			#Sets the label to the name player 2 picked
 			currentPlayer.LabelName = GlobalScript.PlayerInfo[i].name
@@ -125,7 +127,7 @@ func MultiPlay(i , index):
 
 func SinglePlay(i , index):
 		if index == 0:
-			NoTownies()
+			#NoTownies()
 			var currentPlayer = player_scene.instantiate()
 			#The player needs to get information from the tile map
 			currentPlayer.tile_map_node = TileMapScene
@@ -142,9 +144,10 @@ func SinglePlay(i , index):
 			#and such
 			#Player 1 information
 			#Set player 1 at position 0,0 on the tile map
-			currentPlayer.position = TileMapScene.map_to_local(Vector2 (5,5))
+			var Start = Vector2 (5,5)
+			currentPlayer.position = TileMapScene.map_to_local(Start)
 			#Ask michael, sets player node position to somewhere
-			GlobalScript.PlayerNode[index].pos = Vector2(5,5)
+			GlobalScript.PlayerNode[index].pos = Start
 			GlobalScript.PlayerNode[index].Startpos = Vector2(1,1)
 			#Set player label to the name they put in (not needed but fun)
 			currentPlayer.LabelName = "player"
@@ -168,9 +171,9 @@ func SinglePlay(i , index):
 			#and such
 			#Player 1 information
 			#Set player 1 at position 0,0 on the tile map
-			currentPlayer.position = TileMapScene.map_to_local(Vector2 (1,1))
+			currentPlayer.position = TileMapScene.map_to_local(Vector2 (6,0))
 			#Ask michael, sets player node position to somewhere
-			GlobalScript.PlayerNode[index].pos = Vector2(1,1)
+			GlobalScript.PlayerNode[index].pos = Vector2(6,0)
 			GlobalScript.PlayerNode[index].Startpos = Vector2(1,1)
 			GlobalScript.PlayerNode[index].TargetStable = Vector2(7-GlobalScript.PlayerNode[index].Startpos.x,7-GlobalScript.PlayerNode[index].Startpos.y)
 			#Set player label to the name they put in (not needed but fun)
@@ -232,12 +235,12 @@ func _process(delta: float) -> void:
 func Winner():
 	if Turn_Order == 1:
 		get_tree().change_scene_to_file("res://Victory_Screens/player1_victory_screen.tscn")
+	elif(GlobalScript.SinglePlay):
+		get_tree().change_scene_to_file("res://Victory_Screens/CPU2_victory_screen.tscn")
 	if(!GlobalScript.SinglePlay):
 		if Turn_Order == 2:
 			get_tree().change_scene_to_file("res://Victory_Screens/player2_victory_screen.tscn")
-			get_parent().queue_free()
-	else:
-		get_tree().change_scene_to_file("res://Victory_Screens/CPU2_victory_screen.tscn")
+			#get_parent().queue_free()
 	GlobalScript.clear()
 
 
@@ -338,12 +341,13 @@ func Attack(Enemy, Player) -> void:
 	var Attack = (randi()%6 + 1)
 	#You are shooting at someone on a boardwalk
 	if(TileMapScene.Path(GlobalScript.PlayerNode[Player].pos) && TileMapScene.Boardwalk(GlobalScript.PlayerNode[Enemy].pos)):
-		print("The accuracy was decreased by one")
-		Attack-=1
+		GlobalScript.DebugScript.add("The accuracy was decreased by one")
+		accuracy -=1
 	#If you are not in the same building as them
-	if TileMapScene.Building(GlobalScript.PlayerNode[Enemy].pos) && TileMapScene.SameBuilding(GlobalScript.PlayerNode[Player].pos , GlobalScript.PlayerNode[Enemy].pos) :
-		print("The accuracy was decreased by two")
-		Attack-=2
+	if TileMapScene.Building(GlobalScript.PlayerNode[Enemy].pos) && !TileMapScene.SameBuilding(GlobalScript.PlayerNode[Player].pos , GlobalScript.PlayerNode[Enemy].pos) :
+		GlobalScript.DebugScript.add("The accuracy was decreased by two")
+		accuracy -=2
+	Attack += accuracy + GlobalScript.PlayerNode[Player].Profficenty
 	if(Attack < 3): # Miss
 		GlobalScript.DebugScript.add(str(GlobalScript.PlayerNode[Enemy].Name + " was missed"))
 	elif(Attack < 5): # Stun
@@ -353,6 +357,7 @@ func Attack(Enemy, Player) -> void:
 	else:
 		#Attack hit, rpc function call
 		Attack_Calc.rpc(Enemy, Player)
+	accuracy = 0
 
 
 #Check the distance from you and the player youre looking at
@@ -360,6 +365,27 @@ func DistCheck(player, Dist) -> bool:
 	#Currently hard coded for two players
 	var PlayerLoc = GlobalScript.PlayerNode[Turn_Order -1].pos
 	var EnemyLoc = GlobalScript.PlayerNode[player].pos
+	
+	#Cannot shoot trough thick walls
+	if (TileMapScene.WalledBuilding(PlayerLoc) || TileMapScene.WalledBuilding(EnemyLoc)) && !TileMapScene.SameBuilding(PlayerLoc,EnemyLoc) && PlayerLoc.y == EnemyLoc.y:
+		return false
+	#Cannot attack people in jail and cannot attack from jail
+	if TileMapScene.Jail(PlayerLoc) || TileMapScene.Jail(EnemyLoc):
+		return false
+	
+	#This checks to see if we shoot over a building  or a boardwalk. If its a building we cant shoot, and if its a boardalk we lose one accuracy point
+	for i in Dist:
+		if EnemyLoc.y == PlayerLoc.y && TileMapScene.Path(PlayerLoc) && TileMapScene.Path(EnemyLoc):
+			if (TileMapScene.Building(Vector2(PlayerLoc.x + i,PlayerLoc.y)) && PlayerLoc.x <= EnemyLoc.x) || (TileMapScene.Building(Vector2(PlayerLoc.x - i,PlayerLoc.y)) && PlayerLoc.x >= EnemyLoc.x):
+				return false
+			elif ((TileMapScene.Boardwalk(Vector2(PlayerLoc.x + i,PlayerLoc.y)) && PlayerLoc.x <= EnemyLoc.x) || (TileMapScene.Boardwalk(Vector2(PlayerLoc.x - i,PlayerLoc.y)) && PlayerLoc.x >= EnemyLoc.x)) && accuracy == 0:
+				accuracy -=1
+		elif EnemyLoc.x == PlayerLoc.x && TileMapScene.Path(PlayerLoc) && TileMapScene.Path(EnemyLoc):
+			if (TileMapScene.Building(Vector2(PlayerLoc.x,PlayerLoc.y+i)) && PlayerLoc.y <= EnemyLoc.y) || (TileMapScene.Building(Vector2(PlayerLoc.x,PlayerLoc.y -i)) && PlayerLoc.y >= EnemyLoc.y):
+				return false
+			elif ((TileMapScene.Boardwalk(Vector2(PlayerLoc.x,PlayerLoc.y +i)) && PlayerLoc.y <= EnemyLoc.y) || (TileMapScene.Boardwalk(Vector2(PlayerLoc.x ,PlayerLoc.y -i)) && PlayerLoc.y >= EnemyLoc.y)) && accuracy == 0:
+				accuracy -=1
+	
 	#Same Y , X Detection
 	if (EnemyLoc.y == PlayerLoc.y && (EnemyLoc.x >= PlayerLoc.x - Dist && EnemyLoc.x <= PlayerLoc.x + Dist)):
 		return true
@@ -375,6 +401,8 @@ func Dynamite() -> bool:
 	if(StableCheck() && GlobalScript.PlayerNode[Turn_Order -1].action_points !=0 && GlobalScript.PlayerNode[Turn_Order-1].can_act):
 		if(!GlobalScript.SinglePlay):
 			Winner.rpc()
+		else:
+			Winner()
 		return true
 	elif(!GlobalScript.PlayerNode[Turn_Order-1].can_act):
 		GlobalScript.DebugScript.add("You cannot act because you drew a card")
@@ -384,14 +412,12 @@ func Dynamite() -> bool:
 		GlobalScript.DebugScript.add("You are not on a player stable")
 	return false
 
-func StableCheck():
+func StableCheck() -> bool:
 	var PlayerLoc = GlobalScript.PlayerNode[Turn_Order -1].pos
 	var EnemyLoc = Vector2(7-GlobalScript.PlayerNode[Turn_Order -1].Startpos.x,7-GlobalScript.PlayerNode[Turn_Order -1].Startpos.y)
-	if(EnemyLoc.x < 2):
-		if (PlayerLoc. x <= 2 && PlayerLoc.y <=2 && PlayerLoc != Vector2(2,2)):
+	if(EnemyLoc.x < 2 && PlayerLoc. x <= 2 && PlayerLoc.y <=2 && PlayerLoc != Vector2(2,2)):
 			return true
-	elif(EnemyLoc.x > 5):
-		if (PlayerLoc. x >= 5 && PlayerLoc.y >=5 && PlayerLoc != Vector2(5,5)):
+	elif(EnemyLoc.x > 5 && PlayerLoc. x >= 5 && PlayerLoc.y >=5 && PlayerLoc != Vector2(5,5)):
 			return true
 	else:
 		return false

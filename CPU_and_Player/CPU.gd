@@ -154,22 +154,27 @@ func PutCardInHand(Card, FirstDraw, p_i):
 				can_act = false
 			#for cards in PlayerHand.size():
 			#	Card == PlayerHand[cards]
-				get_parent().Townie.get_node(Card).tile_map_node = tile_map_node	
-				get_parent().Townie.get_node(Card).movable = true	
+				get_parent().Townie.get_node(Card).tile_map_node = tile_map_node
+				get_parent().Townie.get_node(Card).movable = true
 				#Put button here for to claim
 				DrawButton.hide()
 	pass
 	
 
 
-@rpc("call_local","any_peer")
+#This function will run and if the player has the hired gun in their hand
+#Then they will get the option to claim it
 func Claim(x):
+	#Again the card we drew is the car we're looking at
 	CurrentCard = x
-	for i in PlayerHand:
-		if(PlayerHand.has(CurrentCard)):
-			if(!get_parent().Townie.get_node(CurrentCard).claim_revealed):
-			#	ClaimButton.show()
-				pass
+
+	#Go through my hand to see if I have this card
+	if(PlayerHand.has(CurrentCard)):
+		#Have I already claimed this card?
+		if(!get_parent().Townie.get_node(CurrentCard).claim_revealed):
+			#Show the claim button
+			#ClaimButton.show()
+			print("Card Belongs to CPU")
 	pass
 
 

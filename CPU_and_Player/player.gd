@@ -12,8 +12,9 @@ extends CharacterBody2D
 @export var action_points = 0
 @export var WeaponDmg = 4
 @export var WeaponStun = 1
-@export var WeaponRange = 2
+@export var WeaponRange = 3
 @export var StunTracker = 0
+@export var Profficenty = 0
 @export var FreeBrawl = true;
 
 #Player is spawned by rules controller as a child of it
