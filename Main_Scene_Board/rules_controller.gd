@@ -5,6 +5,8 @@ extends Node
 #On turn order to other nodes and scenes
 signal order
 
+signal move
+
 #Sets what the current amount of players is
 #Will be changed to GlobalScript.PlayerInfo.size() in later functions
 @export var numPlayers = 2
@@ -25,6 +27,7 @@ var drawcard : bool = false
 @onready var BrawlButton = get_node("../CanvasLayer/Brawl")
 @onready var HandButton = get_node("../CanvasLayer/Show Hand")
 @onready var DynamiteButton = get_node("../CanvasLayer/Dynamite")
+@onready var MoveButton = get_node("../CanvasLayer/Move")
 @onready var ClaimButton = get_node("../CanvasLayer/Claim")
 
 @onready var CardDecks = get_node("../Cards")
@@ -392,3 +395,16 @@ func StableCheck():
 			return true
 	else:
 		return false
+
+
+func _on_move_pressed() -> void:
+	if(!GlobalScript.SinglePlay):
+		movePossible.rpc()
+	else:
+		movePossible()
+	pass # Replace with function body.
+	
+@rpc("call_local","any_peer")
+func movePossible():
+	move.emit()
+	pass

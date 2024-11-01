@@ -12,7 +12,7 @@ extends Node
 @export var DrawArray = ["Preacher","Doctor","Teacher","Town_Drunk", "Bar_Keep", "Ranch_Hand"]
 @export var DiscardArray = []
 #Gunsliger Pile
-@export var GunslingerArray = ["Gun1", "Gun2", "Gun3", "Gun4", "Gun5", "Gun6"]
+@export var GunslingerArray = ["Bob", "Elijah"]#, "Jon_Laramie", "Mad_Mike", "Smokey", "The_Kidd"]
 #Hired gun pile
 @export var HiredGunArray = ["Preacher","Doctor","Teacher","Town_Drunk","Bar_Keep", "Ranch_Hand"]
 #Weapon pile

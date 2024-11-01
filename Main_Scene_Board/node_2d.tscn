@@ -626,6 +626,13 @@ offset_top = 5.0
 offset_right = -401.0
 offset_bottom = -220.0
 
+[node name="Move" type="Button" parent="CanvasLayer"]
+offset_left = 352.0
+offset_top = 181.0
+offset_right = 403.0
+offset_bottom = 212.0
+text = "Move"
+
 [node name="Rules_Controller" type="Node" parent="."]
 script = ExtResource("6_6e8od")
 player_scene = ExtResource("7_saeg4")
@@ -920,6 +927,7 @@ metadata/_edit_use_anchors_ = true
 [connection signal="pressed" from="CanvasLayer/Dynamite" to="Rules_Controller" method="Dynamite"]
 [connection signal="pressed" from="CanvasLayer/Claim" to="CanvasLayer/Claim" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer/Claim" to="Townie_Logic" method="_on_claim_pressed"]
+[connection signal="pressed" from="CanvasLayer/Move" to="Rules_Controller" method="_on_move_pressed"]
 [connection signal="DrawnCard" from="Cards" to="Townie_Logic" method="UpdateCard"]
 [connection signal="DrawnCard" from="Cards" to="Townie_Logic/Preacher" method="hire_townsfolk"]
 [connection signal="DrawnCard" from="Cards" to="Townie_Logic/Doctor" method="hire_townsfolk"]

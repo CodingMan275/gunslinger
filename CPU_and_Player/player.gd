@@ -39,6 +39,8 @@ extends CharacterBody2D
 
 @onready var DynamiteButton = get_parent().DynamiteButton
 
+@onready var MoveButton = get_parent().MoveButton
+
 
 #So the player knows what order it is
 var order = 0
@@ -55,6 +57,8 @@ var CurrentCard
 
 #For node path to tile map
 var tile_map_node
+#Movement Button stuff
+var Movable = false
 
 #Label Name to be used by the PLayer label to keep track of who is who
 var LabelName = "TEMP"
@@ -72,6 +76,7 @@ func _on_ready() -> void:
 	#Format Node_Emitter . Signal_From_Emmiter_Node . Connect( Function you want to run in this scene)
 	rule_scene.order.connect(_update_turn)
 	
+	rule_scene.move.connect(_updateMove)
 	
 	CardNodeDeck.DrawEmpty.connect(_resetAP)
 	
@@ -95,7 +100,12 @@ func _on_ready() -> void:
 	#CardSpriteThingy()
 	
 		
-	
+
+func _updateMove():
+	Movable = true	
+	if action_points == 0:
+		MoveButton.hide()
+
 
 func _update_turn(x):
 	#This if statement is probably not needed but it just ensures
@@ -111,6 +121,7 @@ func _update_turn(x):
 			DrawButton.hide()
 			RangeButton.hide()
 			BrawlButton.hide()
+			MoveButton.hide()
 		#	HandButton.hide()
 			DynamiteButton.hide()
 			#Removes the ability for the player to move
@@ -129,6 +140,7 @@ func _update_turn(x):
 			DrawButton.show()
 			RangeButton.show()
 			BrawlButton.show()
+			MoveButton.show()
 	#		HandButton.show()
 			can_act = true
 			FreeBrawl = true;
@@ -201,24 +213,29 @@ func MoveMouse():
 	#who owns this player instance can move it
 	if ($MultiplayerSynchronizer.get_multiplayer_authority() == multiplayer.get_unique_id() || GlobalScript.SinglePlay):
 		if(Player_ID == order):
-			if Input.is_action_just_pressed("LeftClick") and can_act and action_points > 0 && GlobalScript.PlayerNode[order-1].StunTracker == 0:
-				var NewPos = tile_map_node.local_to_map(Vector2(get_global_mouse_position()))
-				if  move_possible():
-					if TileCheck(NewPos):
-						self.global_position = Vector2(get_global_mouse_position())
-						pos = NewPos
-						action_points -= 1
-						DrawButton.hide()
-					elif !TileCheck(NewPos):
-						GlobalScript.DebugScript.add("You Can not move into a wall ")
-			elif (Input.is_action_just_pressed("LeftClick") and move_possible() and action_points == 0):
-				GlobalScript.DebugScript.add("You have no more Action Points ")
-		#	if (!can_act):
-			#	can_act = true
-			elif(Input.is_action_just_pressed("LeftClick") and GlobalScript.PlayerNode[order-1].StunTracker != 0):
-				GlobalScript.DebugScript.add("you are stunned and cannot move")
+			if Movable:
+				if Input.is_action_just_pressed("LeftClick") and can_act and action_points > 0 && GlobalScript.PlayerNode[order-1].StunTracker == 0:
+					var NewPos = tile_map_node.local_to_map(Vector2(get_global_mouse_position()))
+					if  move_possible():
+						if TileCheck(NewPos):
+							self.global_position = Vector2(get_global_mouse_position())
+							pos = NewPos
+							action_points -= 1
+							DrawButton.hide()
+							Movable = false
+							UpdateMove.rpc(self.global_position, NewPos)
+						elif !TileCheck(NewPos):
+							GlobalScript.DebugScript.add("You Can not move into a wall ")
+				elif (Input.is_action_just_pressed("LeftClick") and move_possible() and action_points == 0):
+					GlobalScript.DebugScript.add("You have no more Action Points ")
+				elif(Input.is_action_just_pressed("LeftClick") and GlobalScript.PlayerNode[order-1].StunTracker != 0):
+					GlobalScript.DebugScript.add("you are stunned and cannot move")
 
-
+@rpc("any_peer")
+func UpdateMove(x, NewPos):
+	self.global_position = x
+	pos = NewPos
+	pass
 func TileCheck(pos) -> bool:
 	var Ppos = GlobalScript.PlayerNode[order-1].pos
 	#Cannot move into stable , Bank , Church , School from a path

@@ -168,7 +168,8 @@ func Claim(x):
 	for i in PlayerHand:
 		if(PlayerHand.has(CurrentCard)):
 			if(!get_parent().Townie.get_node(CurrentCard).claim_revealed):
-				ClaimButton.show()
+			#	ClaimButton.show()
+				pass
 	pass
 
 
