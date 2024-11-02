@@ -46,17 +46,30 @@ var DisplayArray = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if !multiplayer.is_server():
+		$"../StartUpCanvas".hide()
 	Canvas.hide()
+	NoTownies()
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	#Will run while 
 	#if Setup.visible:
 	
 	pass
-	
+
+func DeleteLater():
+	if GlobalScript.SinglePlay:
+		_StartGame()
+	else:
+		_StartGame.rpc()
+
+
+@rpc("any_peer","call_local")
 func _StartGame() -> void:
 	Setup.hide()
 	Canvas.show()
+	ShowTownies()
 	#Counter variable
 	var index = 0
 	#Goes through the preloaded script GlobalScript which has the player info for the
@@ -106,11 +119,11 @@ func MultiPlay(i , index):
 		if index == 0:
 			#Player 1 information
 			#Set player 1 at position 0,0 on the tile map
-			var Start = Vector2(5,0)
+			var Start = Vector2(1,1)
 			currentPlayer.position = TileMapScene.map_to_local(Start)
 			#Ask michael, sets player node position to somewhere
 			GlobalScript.PlayerNode[index].pos = Start
-			GlobalScript.PlayerNode[index].Startpos = Vector2(1,1)
+			GlobalScript.PlayerNode[index].Startpos = Start
 			#Set player label to the name they put in (not needed but fun)
 			currentPlayer.LabelName = GlobalScript.PlayerInfo[i].name
 			#Set it to player 1 which is effectively turn order
@@ -119,10 +132,11 @@ func MultiPlay(i , index):
 		if index == 1:
 			#The next player in the PlayerInfo array, player 2
 			#Sets player 2 at a different position from player 1
-			currentPlayer.position = TileMapScene.map_to_local(Vector2 (2,0))
-			#Once ask Michael, sorry this is not good commenting
-			GlobalScript.PlayerNode[index].pos = Vector2(2,0)
-			GlobalScript.PlayerNode[index].Startpos = Vector2(6,6)
+			var Start = Vector2(6,6)
+			currentPlayer.position = TileMapScene.map_to_local(Start)
+			#Ask michael, sets player node position to somewhere
+			GlobalScript.PlayerNode[index].pos = Start
+			GlobalScript.PlayerNode[index].Startpos = Start
 			#Sets the label to the name player 2 picked
 			currentPlayer.LabelName = GlobalScript.PlayerInfo[i].name
 			#Sets it as player 2
@@ -136,7 +150,6 @@ func MultiPlay(i , index):
 
 func SinglePlay(i , index):
 		if index == 0:
-			#NoTownies()
 			var currentPlayer = player_scene.instantiate()
 			#The player needs to get information from the tile map
 			currentPlayer.tile_map_node = TileMapScene
@@ -153,11 +166,11 @@ func SinglePlay(i , index):
 			#and such
 			#Player 1 information
 			#Set player 1 at position 0,0 on the tile map
-			var Start = Vector2 (5,5)
+			var Start = Vector2 (1,1)
 			currentPlayer.position = TileMapScene.map_to_local(Start)
 			#Ask michael, sets player node position to somewhere
 			GlobalScript.PlayerNode[index].pos = Start
-			GlobalScript.PlayerNode[index].Startpos = Vector2(1,1)
+			GlobalScript.PlayerNode[index].Startpos = Start
 			#Set player label to the name they put in (not needed but fun)
 			currentPlayer.LabelName = "player"
 			#Set it to player 1 which is effectively turn order
@@ -180,10 +193,11 @@ func SinglePlay(i , index):
 			#and such
 			#Player 1 information
 			#Set player 1 at position 0,0 on the tile map
-			currentPlayer.position = TileMapScene.map_to_local(Vector2 (6,0))
+			var Start = Vector2(6,6)
+			currentPlayer.position = TileMapScene.map_to_local(Start)
 			#Ask michael, sets player node position to somewhere
-			GlobalScript.PlayerNode[index].pos = Vector2(6,0)
-			GlobalScript.PlayerNode[index].Startpos = Vector2(1,1)
+			GlobalScript.PlayerNode[index].pos = Start
+			GlobalScript.PlayerNode[index].Startpos = Start
 			GlobalScript.PlayerNode[index].TargetStable = Vector2(7-GlobalScript.PlayerNode[index].Startpos.x,7-GlobalScript.PlayerNode[index].Startpos.y)
 			#Set player label to the name they put in (not needed but fun)
 	#		currentPlayer.LabelName = "CPU"
@@ -192,12 +206,12 @@ func SinglePlay(i , index):
 
 #CPU is not townie ready so we will hide them
 func NoTownies():
-	$"../Townie_Logic/Preacher".hide()
-	$"../Townie_Logic/Doctor".hide()
-	$"../Townie_Logic/Teacher".hide()
-	$"../Townie_Logic/Town_Drunk".hide()
-	$"../Townie_Logic/Bar_Keep".hide()
-	$"../Townie_Logic/Ranch_Hand".hide()
+	for i in Townie.get_child_count():
+		Townie.get_child(i-1).hide()
+
+func ShowTownies():
+	for i in 6:
+		Townie.get_child(i).show()
 
 
 func _on_button_pressed() -> void:
@@ -241,6 +255,7 @@ func Winner():
 	if Turn_Order == 1:
 		get_tree().change_scene_to_file("res://Victory_Screens/player1_victory_screen.tscn")
 	elif(GlobalScript.SinglePlay):
+		await get_tree().create_timer(1).timeout
 		get_tree().change_scene_to_file("res://Victory_Screens/CPU2_victory_screen.tscn")
 	if(!GlobalScript.SinglePlay):
 		if Turn_Order == 2:

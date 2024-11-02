@@ -15,6 +15,7 @@ extends CharacterBody2D
 @export var WeaponStun = 1
 @export var WeaponRange = 2
 @export var StunTracker = 0
+@export var Profficenty = 0
 @export var FreeBrawl = true
 
 #Player is spawned by rules controller as a child of it
@@ -102,11 +103,9 @@ func StartTurn():
 		if option <= 50 || action_points == 0:
 			DrawPhase()
 		elif option > 50 && action_points > 0:
-			if(await ActionPhase(option)):
+			if(await ActionPhase(option) && get_tree() != null):
 				await get_tree().create_timer(1).timeout
 				rule_scene._on_button_pressed()
-	else:
-		rule_scene.Winner()
 
 
 func DrawPhase():
@@ -127,8 +126,6 @@ func ActionPhase(option) -> bool:
 			rule_scene.RangeAttack()
 	
 	if(rule_scene.Dynamite()):
-		await get_tree().create_timer(1).timeout
-		rule_scene.Winner()
 		return false
 	else:
 		return true

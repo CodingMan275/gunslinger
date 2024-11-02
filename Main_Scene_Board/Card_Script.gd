@@ -76,7 +76,7 @@ func _drawTownDeck(): # fucntion that simulates the cards being drawn
 
 @rpc("any_peer","call_local")
 func _AddCard(card, player_index):
-	GlobalScript.PlayerNode[player_index].PlayerHand.append(card)	
+	GlobalScript.PlayerNode[player_index].PlayerHand.append(card)
 	
 
 

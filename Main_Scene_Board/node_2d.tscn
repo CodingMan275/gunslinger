@@ -422,7 +422,6 @@ grow_horizontal = 2
 text = "Start Game"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 script = SubResource("GDScript_7iaxx")
 
 [node name="Button" type="Button" parent="CanvasLayer"]
@@ -440,10 +439,10 @@ anchor_left = 0.019
 anchor_top = 0.015
 anchor_right = 0.362
 anchor_bottom = 0.178
-offset_left = 369.88
-offset_top = 74.95
-offset_right = 370.24
-offset_bottom = 74.94
+offset_left = 170.88
+offset_top = -2.05
+offset_right = 171.24
+offset_bottom = -2.06
 text = "Player X Turn"
 script = ExtResource("5_52d0j")
 
@@ -469,6 +468,7 @@ pitch_scale = 1.95
 bus = &"SFX"
 
 [node name="SpecialAbilityButton" type="Button" parent="CanvasLayer/Draw Card"]
+visible = false
 layout_mode = 0
 offset_left = 339.0
 offset_top = -71.0
@@ -564,6 +564,7 @@ text = "Claim"
 script = ExtResource("9_xcao8")
 
 [node name="CurrentTownie" type="TextureRect" parent="CanvasLayer"]
+visible = false
 anchors_preset = -1
 anchor_left = 0.046
 anchor_top = 0.5
@@ -891,7 +892,7 @@ text = "Ranch Hand"
 metadata/_edit_use_anchors_ = true
 
 [connection signal="child_order_changed" from="." to="Rules_Controller" method="_on_node_2d_child_order_changed"]
-[connection signal="pressed" from="StartUpCanvas/Start" to="Rules_Controller" method="_StartGame"]
+[connection signal="pressed" from="StartUpCanvas/Start" to="Rules_Controller" method="DeleteLater"]
 [connection signal="pressed" from="CanvasLayer/Button" to="CanvasLayer/Label" method="_on_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Button" to="CanvasLayer/Claim" method="_on_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Button" to="Rules_Controller" method="_on_button_pressed"]

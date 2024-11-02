@@ -15,7 +15,7 @@ extends CharacterBody2D
 @export var WeaponRange = 3
 @export var StunTracker = 0
 @export var Profficenty = 0
-@export var FreeBrawl = true;
+@export var FreeBrawl = true
 
 #Player is spawned by rules controller as a child of it
 #Getting the parent node which has the emitters we need
@@ -91,19 +91,15 @@ func _on_ready() -> void:
 	#Sets the action points the player can use
 	action_points = Max_Action_Points
 	
-	if self.name == str(multiplayer.get_unique_id()):
-		$CanvasLayer/Left.show()
-		$CanvasLayer/Right.show()
-		$CanvasLayer/Card1.show()
-		$CanvasLayer/Card2.show()
-		$CanvasLayer/Card3.show()
+	if (self.name == str(multiplayer.get_unique_id()))  || GlobalScript.SinglePlay:
+		$CanvasLayer.show()
 	pass # Replace with function body.
 	#CardSpriteThingy()
 	
 		
 
 func _updateMove():
-	Movable = true	
+	Movable = true
 	if action_points == 0:
 		MoveButton.hide()
 
@@ -178,13 +174,16 @@ func PutCardInHand(Card, FirstDraw, p_i):
 				#Remove any other action oppurtunities
 				can_act = false
 				#Sets the tile_map_node to the proper board refrence
-				get_parent().Townie.get_node(Card).tile_map_node = tile_map_node	
+				get_parent().Townie.get_node(Card).tile_map_node = tile_map_node
 				#This townie is now movable
 				get_parent().Townie.get_node(Card).movable = true	
 				#The current player controlling it is this player
 				get_parent().Townie.get_node(CurrentCard).Player = Player_ID
 				#Hide the draw button
 				DrawButton.hide()
+				MoveButton.hide()
+				RangeButton.hide()
+				BrawlButton.hide()
 	pass
 	
 #This function will run and if the player has the hired gun in their hand
