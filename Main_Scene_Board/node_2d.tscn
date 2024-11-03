@@ -818,7 +818,6 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Bounty_Hunter" type="CharacterBody2D" parent="Townie_Logic"]
 script = ExtResource("47_cjmfn")
-is_hired_gun = null
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Bounty_Hunter"]
 position = Vector2(-1.5, 1)

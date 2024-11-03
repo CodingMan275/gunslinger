@@ -26,6 +26,13 @@ func _ready() -> void:
 	OriginalStun = 0
 	OriginalRange = 0
 	
+	Weapon1Name = OriginalWeapon
+	Weapon1Dmg = OriginalDmg
+	Weapon1Stun = OriginalStun
+	Weapon1Range = OriginalRange
+	
+	Weapon1Equiped = true
+	
 	pass # Replace with function body.
 
 '''

@@ -10,10 +10,10 @@ extends CharacterBody2D
 @export var Name : String
 #determines the current number of Action Points
 @export var action_points = 0
-@export var Weapon1Name =""
-@export var Weapon1Dmg = 0
-@export var Weapon1Stun = 0
-@export var Weapon1Range = 0
+@export var Weapon1Name = ""
+@export var Weapon1Dmg = 4
+@export var Weapon1Stun = 1
+@export var Weapon1Range = 2
 @export var Weapon2Name = ""
 @export var Weapon2Dmg = 0
 @export var Weapon2Stun = 0
