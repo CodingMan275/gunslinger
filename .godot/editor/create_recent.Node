@@ -1,6 +1,7 @@
 Button
-CanvasLayer
+Node2D
 TextureRect
+CanvasLayer
 Window
 Label
 ColorRect
@@ -11,4 +12,3 @@ PanelContainer
 VBoxContainer
 TextureButton
 Sprite2D
-CharacterBody2D

@@ -4,6 +4,28 @@ class Character extends CharacterBody2D:
 	#var ID: int
 	var Health : int = 7
 	
+	var Weapon1Equiped = false
+	var Weapon2Equiped = false
+	
+	var OriginalWeapon
+	var OriginalDmg
+	var OriginalStun
+	var OriginalRange
+	
+	var Weapon1Name
+	var Weapon1Dmg
+	var Weapon1Stun
+	var Weapon1Range
+	
+	var Weapon2Name
+	var Weapon2Dmg
+	var Weapon2Stun
+	var Weapon2Range
+	
+	var GivenWeapon
+	var GivenDmg
+	var GivenRange
+	
 	var owning_player: int #assigned
 	
 	var SpawnLoc : Vector2

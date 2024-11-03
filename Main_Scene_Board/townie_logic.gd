@@ -34,6 +34,12 @@ func _ready() -> void:
 	Town_Drunk.position = get_node("../Layer0").map_to_local(Vector2 (5,4))
 	Bar_Keep.position = get_node("../Layer0").map_to_local(Vector2 (7,0))
 	Ranch_Hand.position = get_node("../Layer0").map_to_local(Vector2 (6,4))
+	Preacher.pos = get_node("../Layer0").local_to_map(Preacher.position)
+	Teacher.pos = get_node("../Layer0").local_to_map(Teacher.position)
+	Doctor.pos = get_node("../Layer0").local_to_map(Doctor.position)
+	Town_Drunk.pos = get_node("../Layer0").local_to_map(Town_Drunk.position)
+	Bar_Keep.pos = get_node("../Layer0").local_to_map(Bar_Keep.position)
+	Ranch_Hand.pos = get_node("../Layer0").local_to_map(Ranch_Hand.position)
 	#Store_Keeper.position = get_node("../Layer0").map_to_local(Vector2(4,3))
 	#Mountain_Man.position = get_node("../Layer0").map_to_local(Vector2(4,3))
 	#Bounty_Hunter.position = get_node("../Layer0").map_to_local(Vector2(4,3))
@@ -86,6 +92,8 @@ func _on_claim_pressed() -> void:
 	get_node(CurrentCard).reveal_hired_gun()
 	#Set movable to be true
 	get_node(CurrentCard).movable = true
+	
+	Rules.get_node(str(multiplayer.get_unique_id())).NearbyTownieCheck()
 	#Each hird gun will have a variable for which PLayer currently has control over it,
 	#We want to assign this variable to the player ID that clciked the button
 	#To do this we need to use the built in Multiplayer API from Godot,

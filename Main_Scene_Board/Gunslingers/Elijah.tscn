@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://bq7gwdrowhcg4"]
+
+[ext_resource type="Texture2D" uid="uid://wpqjamy8nklp" path="res://icon.svg" id="1_ltta0"]
+[ext_resource type="Script" path="res://Josh_Test_Scenes/Player_Label.gd" id="2_lk764"]
+
+[node name="Elijah" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -51.9129
+offset_top = -43.8556
+offset_right = 76.0871
+offset_bottom = 84.1444
+scale = Vector2(0.717566, 0.667444)
+texture = ExtResource("1_ltta0")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="TextureRect"]
+visibility_layer = 1023
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.166
+anchor_top = -0.5
+anchor_right = 1.0
+offset_left = -0.0434647
+offset_top = -0.00564575
+offset_right = -18.5795
+offset_bottom = 71.8904
+scale = Vector2(2.53924, 2.42139)
+text = "Player X"
+justification_flags = 161
+script = ExtResource("2_lk764")
+metadata/_edit_use_anchors_ = true

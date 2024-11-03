@@ -18,6 +18,10 @@ config/icon="res://icon.svg"
 [autoload]
 
 GlobalScript="*res://global_script.gd"
+JonLaramie="*res://Main_Scene_Board/Gunslingers/Jon_Laramie.gd"
+MadMike="*res://Main_Scene_Board/Gunslingers/Mad_Mike.gd"
+Smokey="*res://Main_Scene_Board/Gunslingers/Smokey.gd"
+TheKidd="*res://Main_Scene_Board/Gunslingers/The_Kidd.gd"
 
 [display]
 

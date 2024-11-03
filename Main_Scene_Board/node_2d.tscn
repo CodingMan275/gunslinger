@@ -610,6 +610,19 @@ offset_right = 403.0
 offset_bottom = 212.0
 text = "Move"
 
+[node name="Give_Take" type="Button" parent="CanvasLayer"]
+visible = false
+anchors_preset = -1
+anchor_left = 0.729
+anchor_top = 0.796
+anchor_right = 0.84
+anchor_bottom = 0.926
+offset_left = 0.0799866
+offset_top = 0.0799866
+offset_right = -0.200012
+offset_bottom = -0.0200195
+text = "G/T"
+
 [node name="Rules_Controller" type="Node" parent="."]
 script = ExtResource("6_6e8od")
 player_scene = ExtResource("7_saeg4")
@@ -805,6 +818,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Bounty_Hunter" type="CharacterBody2D" parent="Townie_Logic"]
 script = ExtResource("47_cjmfn")
+is_hired_gun = null
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Bounty_Hunter"]
 position = Vector2(-1.5, 1)

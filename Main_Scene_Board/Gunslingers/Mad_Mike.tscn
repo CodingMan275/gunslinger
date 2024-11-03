@@ -1,0 +1,34 @@
+[gd_scene load_steps=4 format=3 uid="uid://cu6rs0tasw3ht"]
+
+[ext_resource type="Texture2D" uid="uid://wpqjamy8nklp" path="res://icon.svg" id="1_5il2m"]
+[ext_resource type="Script" path="res://Main_Scene_Board/Gunslingers/Mad_Mike.gd" id="1_ts1nv"]
+[ext_resource type="Script" path="res://Josh_Test_Scenes/Player_Label.gd" id="2_tk2qi"]
+
+[node name="Mad_Mike" type="Node2D"]
+script = ExtResource("1_ts1nv")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -11.0
+offset_top = -12.0
+offset_right = 117.0
+offset_bottom = 116.0
+scale = Vector2(0.187041, 0.189129)
+texture = ExtResource("1_5il2m")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="TextureRect"]
+visibility_layer = 1023
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.166
+anchor_top = -0.5
+anchor_right = 1.0
+offset_left = -0.0434647
+offset_top = -0.00564575
+offset_right = -18.5795
+offset_bottom = 71.8904
+scale = Vector2(2.53924, 2.42139)
+text = "Player X"
+justification_flags = 161
+script = ExtResource("2_tk2qi")
+metadata/_edit_use_anchors_ = true

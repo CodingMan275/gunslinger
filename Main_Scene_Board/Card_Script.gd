@@ -12,11 +12,11 @@ extends Node
 @export var DrawArray = ["Preacher","Doctor","Teacher","Town_Drunk", "Bar_Keep", "Ranch_Hand"]
 @export var DiscardArray = []
 #Gunsliger Pile
-@export var GunslingerArray = ["Bob", "Elijah"]#, "Jon_Laramie", "Mad_Mike", "Smokey", "The_Kidd"]
+@export var GunslingerArray = ["Bob", "Mad_Mike"]#, "Jon_Laramie", "Elijah", "Smokey", "The_Kidd"]
 #Hired gun pile
 @export var HiredGunArray = ["Preacher","Doctor","Teacher","Town_Drunk","Bar_Keep", "Ranch_Hand"]
 #Weapon pile
-@export var WeaponArray = ["Rifle1","Rifle2","Rifle3","Rifle4","Knife1","Knife2","Knife3","Knife4","Pistol1","Pistol2","Pistol3","Pistol4","Shotgun1","Shotgun2","Shotgun3","Shotgun4","TwinPistol1","TwinPistol2"]
+@export var WeaponArray = ["Rifle","Rifle","Rifle","Rifle","Knife","Knife","Knife","Knife","Pistol","Pistol","Pistol","Pistol","Shotgun","Shotgun","Shotgun","Shotgun","TwinPistol","TwinPistol"]
 
 #Signal for when draw deck is empty and needs to be reshuffled
 signal DrawEmpty
@@ -75,8 +75,12 @@ func _drawTownDeck(): # fucntion that simulates the cards being drawn
 		GlobalScript.DebugScript.add("DrawArray has  "+str(DrawArray))
 
 @rpc("any_peer","call_local")
-func _AddCard(card, player_index):
+func _AddCard(card, player_index, g):
 	GlobalScript.PlayerNode[player_index].PlayerHand.append(card)
+	if g == "g":
+		var GunSlingerNode = load("res://Main_Scene_Board/Gunslingers/"+card+".tscn")
+		var instance = GunSlingerNode.instantiate()
+		GlobalScript.PlayerNode[player_index].add_child(instance)
 	
 
 
@@ -84,17 +88,17 @@ func _AddCard(card, player_index):
 func _onStartDraw() -> void:
 	# Draw Gunslinger Card
 	for player_index in GlobalScript.PlayerNode.size():
-		_AddCard.rpc(_draw_card(GunslingerArray, player_index, "Gunslinger"),player_index)
+		_AddCard.rpc(_draw_card(GunslingerArray, player_index, "Gunslinger"),player_index, "g")
 
 	   #Draw Hired Gun Cards
 		for s in range(3):
 			StartingDraw = true
-			_AddCard.rpc(_draw_card(HiredGunArray, player_index, "Gunslinger"),player_index)
+			_AddCard.rpc(_draw_card(HiredGunArray, player_index, "Gunslinger"),player_index, null)
 			
 		StartingDraw = false
 		# Draw Weapon Cards
 		for s in range(5):
-			_AddCard.rpc(_draw_card(WeaponArray, player_index, "Gunslinger"),player_index)
+			_AddCard.rpc(_draw_card(WeaponArray, player_index, "Gunslinger"),player_index, null)
 	SDO.rpc()
 
 @rpc("call_local","any_peer")

@@ -30,6 +30,7 @@ var accuracy : int
 @onready var DynamiteButton = get_node("../CanvasLayer/Dynamite")
 @onready var MoveButton = get_node("../CanvasLayer/Move")
 @onready var ClaimButton = get_node("../CanvasLayer/Claim")
+@onready var GiveTakeButton = get_node("../CanvasLayer/Give_Take")
 
 @onready var CardDecks = get_node("../Cards")
 @onready var Townie = get_node("../Townie_Logic")
@@ -282,7 +283,7 @@ func DisplayCards():
 @rpc("any_peer","call_local")
 func Attack_Calc(Enemy, Player):
 	#take weapon damage from what the attacking player is holding
-	var damage = GlobalScript.PlayerNode[Player].WeaponDmg
+	var damage = GlobalScript.PlayerNode[Player].Weapon1Dmg
 	#Damage the player accordingly
 	#Also logic error? Its taking the the player thats getting attack
 	#Weapon damage, not the attacking players?
@@ -299,13 +300,15 @@ func Attack_Calc(Enemy, Player):
 @rpc("any_peer","call_local")
 func StunPlay(Enemy, Player):
 	#A stun tracker to make sure a stunned player can't move
-	GlobalScript.PlayerNode[Enemy].StunTracker += GlobalScript.PlayerNode[Player].WeaponStun
+	GlobalScript.PlayerNode[Enemy].StunTracker += GlobalScript.PlayerNode[Player].Weapon1Stun
 	pass
 
 
 func RangeAttack():
+	#Replace for loop with clicking a sprite
+	#Where n will be the target selected
 	for n in numPlayers:
-		var range= GlobalScript.PlayerNode[Turn_Order -1].WeaponRange
+		var range= GlobalScript.PlayerNode[Turn_Order -1].Weapon1Range
 		if(n+1 != Turn_Order && range != 0):
 			if(TileMapScene.Boardwalk(GlobalScript.PlayerNode[Turn_Order -1].pos)):
 				print("The range was increased by one")
@@ -318,6 +321,8 @@ func RangeAttack():
 
 func BrawlAttack() -> bool:
 	var ReturnBool
+	#Replace for loop with selected target
+	#n being the target
 	for n in numPlayers:
 		if(n+1 != Turn_Order && CanAttack(n,0)):
 			if(!GlobalScript.PlayerNode[Turn_Order -1].FreeBrawl):

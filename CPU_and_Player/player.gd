@@ -3,16 +3,21 @@ extends CharacterBody2D
 
 #Player ID make exportable so it cna be changed
 @export var Player_ID = 1
-@export var Max_Action_Points = 2
+@export var Max_Action_Points = 200
 @export var pos : Vector2
 @export var Startpos : Vector2  #Stable position to use dynamite
 @export var Health = 20
 @export var Name : String
 #determines the current number of Action Points
 @export var action_points = 0
-@export var WeaponDmg = 4
-@export var WeaponStun = 1
-@export var WeaponRange = 3
+@export var Weapon1Name =""
+@export var Weapon1Dmg = 0
+@export var Weapon1Stun = 0
+@export var Weapon1Range = 0
+@export var Weapon2Name = ""
+@export var Weapon2Dmg = 0
+@export var Weapon2Stun = 0
+@export var Weapon2Range = 0
 @export var StunTracker = 0
 @export var Profficenty = 0
 @export var FreeBrawl = true
@@ -41,6 +46,8 @@ extends CharacterBody2D
 @onready var DynamiteButton = get_parent().DynamiteButton
 
 @onready var MoveButton = get_parent().MoveButton
+
+@onready var GiveTakeButton = get_parent().GiveTakeButton
 
 
 #So the player knows what order it is
@@ -119,6 +126,7 @@ func _update_turn(x):
 			RangeButton.hide()
 			BrawlButton.hide()
 			MoveButton.hide()
+			GiveTakeButton.hide()
 		#	HandButton.hide()
 			DynamiteButton.hide()
 			#Removes the ability for the player to move
@@ -138,6 +146,7 @@ func _update_turn(x):
 			RangeButton.show()
 			BrawlButton.show()
 			MoveButton.show()
+			NearbyTownieCheck()
 	#		HandButton.show()
 			can_act = true
 			FreeBrawl = true;
@@ -224,6 +233,7 @@ func MoveMouse():
 							DrawButton.hide()
 							Movable = false
 							UpdateMove.rpc(self.global_position, NewPos)
+							NearbyTownieCheck()
 						elif !TileCheck(NewPos):
 							GlobalScript.DebugScript.add("You Can not move into a wall ")
 				elif (Input.is_action_just_pressed("LeftClick") and move_possible() and action_points == 0):
@@ -235,7 +245,19 @@ func MoveMouse():
 func UpdateMove(x, NewPos):
 	self.global_position = x
 	pos = NewPos
+	
+func NearbyTownieCheck():
+	#Checks if a hired gun is on the same sqaure as you or surrounding
+	if order == Player_ID:
+		if (get_parent().Townie.get_node(PlayerHand[1]).pos == pos || get_parent().Townie.get_node(PlayerHand[2]).pos == pos || get_parent().Townie.get_node(PlayerHand[3]).pos == pos || 
+		tile_map_node.local_to_map(Vector2(get_parent().Townie.get_node(PlayerHand[1]).position)) in tile_map_node.get_surrounding_cells(tile_map_node.local_to_map(self.global_position)) || tile_map_node.local_to_map(Vector2(get_parent().Townie.get_node(PlayerHand[2]).position)) in tile_map_node.get_surrounding_cells(tile_map_node.local_to_map(self.global_position)) || tile_map_node.local_to_map(Vector2(get_parent().Townie.get_node(PlayerHand[3]).position)) in tile_map_node.get_surrounding_cells(tile_map_node.local_to_map(self.global_position))):
+	#Checks if they have been reavled
+			if get_parent().Townie.get_node(PlayerHand[1]).claim_revealed || get_parent().Townie.get_node(PlayerHand[2]).claim_revealed || get_parent().Townie.get_node(PlayerHand[3]).claim_revealed:
+				GiveTakeButton.show()
+	else:
+		GiveTakeButton.hide()
 	pass
+
 func TileCheck(pos) -> bool:
 	var Ppos = GlobalScript.PlayerNode[order-1].pos
 	#Cannot move into stable , Bank , Church , School from a path
@@ -253,25 +275,3 @@ func TileCheck(pos) -> bool:
 	else:
 		return true
 	return true
-
-
-#func CardSpriteThingy():
-	#for n in 9:
-		#print(PlayerHand[n]) 
-		#seems that the index of 1 doesn't exist? Probably bc of the fac tits initially empty
-	'''psuedocode
-	coordx = 50
-	coordy = 50
-	#for n in 9:
-		value = PlayerHand[n]
-		for m in CardDict.size()
-			if value == CardDict[m]
-				SaidCardObj move to coordx and coordy
-				coordx += 10
-			
-	Basically, we have the card as objects, 
-	and in a dictionary nad/or array (idk if possible) that somehow we link with PlayerHand, 
-	basically we get a value and if said value is equal to dict value, you move that object to the coords
-	then we update the x coord, so next card to be placed is moved over
-
-		'''
