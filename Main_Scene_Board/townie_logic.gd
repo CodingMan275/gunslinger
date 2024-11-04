@@ -130,8 +130,7 @@ func SchizoFunctionPleaseWork():
 	#are wrong becuase once it is claimed it will never ben controlled by anyone else again
 	pass
 
-	'''func _input():
+"func _input(event: InputEvent) -> void:
 		if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_RIGHT:
-			if get_viewport_rect().has_point(to_local(event.position)):
-				print("You Clicked on This Sprite!")
-'''
+			if get_rect().has_point(to_local(event.position)):
+				print("You Clicked on This Sprite!")"
