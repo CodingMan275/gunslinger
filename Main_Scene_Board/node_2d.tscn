@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=4 uid="uid://jl7k3ltwbp41"]
+[gd_scene load_steps=68 format=4 uid="uid://jl7k3ltwbp41"]
 
 [ext_resource type="Texture2D" uid="uid://fcuqal2ynbts" path="res://Main_Scene_Board/spritesheet.png" id="1_o8ncf"]
 [ext_resource type="Texture2D" uid="uid://mmea4eto2a6p" path="res://Main_Scene_Board/Rhombus.png" id="2_rfajf"]
@@ -43,6 +43,7 @@
 [ext_resource type="Texture2D" uid="uid://dywhqj3m2j1y3" path="res://oldsmokey.svg" id="24_5vq5u"]
 [ext_resource type="Texture2D" uid="uid://c5dj7es7aba7e" path="res://thekid.svg" id="26_ndqm4"]
 [ext_resource type="Texture2D" uid="uid://bnk7r45gr5cn8" path="res://IMG_9861.png" id="27_uadwx"]
+[ext_resource type="Script" path="res://SpriteClick.gd" id="34_hshlf"]
 [ext_resource type="Script" path="res://Main_Scene_Board/store_keeper.gd" id="45_l4515"]
 [ext_resource type="Script" path="res://Main_Scene_Board/mountain_man.gd" id="46_08nss"]
 [ext_resource type="Script" path="res://Main_Scene_Board/bounty_hunter.gd" id="47_cjmfn"]
@@ -643,12 +644,13 @@ script = ExtResource("14_ub6ke")
 [node name="Preacher" type="CharacterBody2D" parent="Townie_Logic"]
 script = ExtResource("14_8fc0f")
 
-[node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Preacher"]
+[node name="PreacherSprite" type="Sprite2D" parent="Townie_Logic/Preacher"]
 position = Vector2(-4.76837e-07, -0.0898228)
 scale = Vector2(0.075, 0.0637124)
 texture = ExtResource("16_tsmpy")
+script = ExtResource("34_hshlf")
 
-[node name="Label" type="Label" parent="Townie_Logic/Preacher/Sprite2D"]
+[node name="Label" type="Label" parent="Townie_Logic/Preacher/PreacherSprite"]
 anchors_preset = -1
 anchor_left = -0.07
 anchor_top = -0.492
@@ -665,12 +667,13 @@ metadata/_edit_use_anchors_ = true
 [node name="Doctor" type="CharacterBody2D" parent="Townie_Logic"]
 script = ExtResource("16_2qs05")
 
-[node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Doctor"]
+[node name="DoctorSprite" type="Sprite2D" parent="Townie_Logic/Doctor"]
 position = Vector2(1.49012e-06, 0.083853)
 scale = Vector2(0.065, 0.0645807)
 texture = ExtResource("18_bkvl8")
+script = ExtResource("34_hshlf")
 
-[node name="Label" type="Label" parent="Townie_Logic/Doctor/Sprite2D"]
+[node name="Label" type="Label" parent="Townie_Logic/Doctor/DoctorSprite"]
 anchors_preset = -1
 anchor_left = -0.07
 anchor_top = -0.492
@@ -687,12 +690,13 @@ metadata/_edit_use_anchors_ = true
 [node name="Teacher" type="CharacterBody2D" parent="Townie_Logic"]
 script = ExtResource("17_evase")
 
-[node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Teacher"]
+[node name="TeacherSprite" type="Sprite2D" parent="Townie_Logic/Teacher"]
 position = Vector2(-0.5, -0.497126)
 scale = Vector2(0.0475, 0.0432334)
 texture = ExtResource("20_4gd5u")
+script = ExtResource("34_hshlf")
 
-[node name="Label" type="Label" parent="Townie_Logic/Teacher/Sprite2D"]
+[node name="Label" type="Label" parent="Townie_Logic/Teacher/TeacherSprite"]
 anchors_preset = -1
 anchor_left = -0.07
 anchor_top = -0.492
@@ -709,12 +713,13 @@ metadata/_edit_use_anchors_ = true
 [node name="Town_Drunk" type="CharacterBody2D" parent="Townie_Logic"]
 script = ExtResource("18_8vpej")
 
-[node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Town_Drunk"]
+[node name="TownDrunkSprite" type="Sprite2D" parent="Townie_Logic/Town_Drunk"]
 position = Vector2(-0.5, -0.544909)
 scale = Vector2(0.0475, 0.0432334)
 texture = ExtResource("22_nwhpe")
+script = ExtResource("34_hshlf")
 
-[node name="Label" type="Label" parent="Townie_Logic/Town_Drunk/Sprite2D"]
+[node name="Label" type="Label" parent="Townie_Logic/Town_Drunk/TownDrunkSprite"]
 anchors_preset = -1
 anchor_left = -0.07
 anchor_top = -0.492
@@ -731,12 +736,13 @@ metadata/_edit_use_anchors_ = true
 [node name="Bar_Keep" type="CharacterBody2D" parent="Townie_Logic"]
 script = ExtResource("19_alpfg")
 
-[node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Bar_Keep"]
+[node name="BarKeepSprite" type="Sprite2D" parent="Townie_Logic/Bar_Keep"]
 position = Vector2(-0.499999, -0.219522)
 scale = Vector2(0.0575, 0.0523351)
 texture = ExtResource("24_5vq5u")
+script = ExtResource("34_hshlf")
 
-[node name="Label" type="Label" parent="Townie_Logic/Bar_Keep/Sprite2D"]
+[node name="Label" type="Label" parent="Townie_Logic/Bar_Keep/BarKeepSprite"]
 anchors_preset = -1
 anchor_left = -0.07
 anchor_top = -0.492
@@ -753,12 +759,13 @@ metadata/_edit_use_anchors_ = true
 [node name="Ranch_Hand" type="CharacterBody2D" parent="Townie_Logic"]
 script = ExtResource("20_dwx7h")
 
-[node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Ranch_Hand"]
+[node name="RanchHandSprite" type="Sprite2D" parent="Townie_Logic/Ranch_Hand"]
 position = Vector2(-1.5, 1)
 scale = Vector2(0.0825, 0.0524691)
 texture = ExtResource("26_ndqm4")
+script = ExtResource("34_hshlf")
 
-[node name="Label" type="Label" parent="Townie_Logic/Ranch_Hand/Sprite2D"]
+[node name="Label" type="Label" parent="Townie_Logic/Ranch_Hand/RanchHandSprite"]
 anchors_preset = -1
 anchor_left = -0.07
 anchor_top = -0.492

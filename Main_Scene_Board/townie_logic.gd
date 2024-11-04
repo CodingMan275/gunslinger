@@ -15,7 +15,7 @@ extends Node
 @onready var Bounty_Hunter = get_node("Bounty Hunter")
 @onready var Saloon_Girl = get_node("Saloon Girl")
 @onready var Bank_Manager = get_node("Bank_Manager")
-@onready var SHeriff = get_node("Sheriff")
+@onready var Sheriff = get_node("Sheriff")
 
 #Getting a refrence to the card deck and the rules controller
 @onready var CardDecks = get_node("../Cards")
@@ -129,8 +129,3 @@ func SchizoFunctionPleaseWork():
 	#To claim this hired gun and once its claimed it does not matter if these values
 	#are wrong becuase once it is claimed it will never ben controlled by anyone else again
 	pass
-
-"func _input(event: InputEvent) -> void:
-		if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_RIGHT:
-			if get_rect().has_point(to_local(event.position)):
-				print("You Clicked on This Sprite!")"
