@@ -283,8 +283,12 @@ func DisplayCards():
 	pass
 	
 
-func SelectTarget(guy : String) -> void:
+func SelectTownie(guy : String) -> void:
 	Target = Townie.get_node(guy)
+	print("Selected Target at: ", Target.pos)
+	
+func SelectGunslinger(guy : int) -> void:
+	Target = GlobalScript.PlayerNode[guy-1]
 	print("Selected Target at: ", Target.pos)
 
 #region Attacking and Dynamite

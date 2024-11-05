@@ -5,7 +5,7 @@ signal gotit
 
 
 @onready var tile_map_node = get_node("Node2D/Layer0")
-@onready var rules = get_node("../../../Rules_Controller")
+@onready var rules = get_parent().get_parent().rule_scene
 var pos : Vector2
 var guyyouclicked
 
@@ -16,6 +16,6 @@ func _input(event):
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_RIGHT: 
 		var camera = get_viewport().get_camera_2d()
 		if get_rect().has_point(to_local(camera.get_global_mouse_position())):
-			guyyouclicked = get_parent().name
+			guyyouclicked = get_parent().get_parent().Player_ID
 			print("You selected:", guyyouclicked)
-			rules.SelectTarget(guyyouclicked)
+			rules.SelectGunslinger(guyyouclicked)
