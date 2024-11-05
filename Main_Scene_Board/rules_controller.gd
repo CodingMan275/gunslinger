@@ -16,6 +16,7 @@ signal move
 var drawcard : bool = false
 var accuracy : int
 
+
 #var PlayerScene = preload("res://Josh_Test_Scenes/Player.tscn")
 
 #Getting the tile map from the current scene when this node is ready
@@ -44,6 +45,7 @@ var accuracy : int
 
 var DisplayArray = []
 
+@export var town : String
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -459,3 +461,6 @@ func _on_move_pressed() -> void:
 func movePossible():
 	move.emit()
 	pass
+
+	
+	
