@@ -1,22 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://dvsi2q2hfwjbe"]
+[gd_scene load_steps=4 format=3 uid="uid://dvsi2q2hfwjbe"]
 
 [ext_resource type="Texture2D" uid="uid://wpqjamy8nklp" path="res://icon.svg" id="1_dm2cv"]
+[ext_resource type="Script" path="res://Main_Scene_Board/Gunslingers/The_Kidd.gd" id="1_gvodk"]
 [ext_resource type="Script" path="res://Josh_Test_Scenes/Player_Label.gd" id="2_ec2k4"]
 
 [node name="The_Kidd" type="Node2D"]
+script = ExtResource("1_gvodk")
 
-[node name="TextureRect" type="TextureRect" parent="."]
-offset_left = -51.9129
-offset_top = -43.8556
-offset_right = 76.0871
-offset_bottom = 84.1444
+[node name="TextureRect" type="Sprite2D" parent="."]
 scale = Vector2(0.717566, 0.667444)
 texture = ExtResource("1_dm2cv")
-expand_mode = 1
 
 [node name="Label" type="Label" parent="TextureRect"]
 visibility_layer = 1023
-layout_mode = 1
 anchors_preset = -1
 anchor_left = -0.166
 anchor_top = -0.5

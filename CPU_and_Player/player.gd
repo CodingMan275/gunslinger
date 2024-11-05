@@ -269,8 +269,8 @@ func TileCheck(pos) -> bool:
 	#Can only go from jail to sherrif
 	elif tile_map_node.Jail(Ppos) && !tile_map_node.Building(pos):
 		return false
-	#Can only go from sherrif to jail
-	elif!tile_map_node.Building(Ppos) && tile_map_node.Jail(pos):
+	#Can not move to jail
+	elif tile_map_node.Jail(pos):
 		return false
 	else:
 		return true

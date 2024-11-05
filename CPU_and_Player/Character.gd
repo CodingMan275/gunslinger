@@ -1,11 +1,14 @@
 class Character extends CharacterBody2D: 
 	const WeaponScript = preload("res://CPU_and_Player/Weapon.gd")
 	
+	var is_gunslinger = false
+	
 	#var ID: int
 	var Health : int = 7
 	
 	var Weapon1Equiped = false
 	var Weapon2Equiped = false
+	
 	
 	var OriginalWeapon
 	var OriginalDmg
@@ -54,6 +57,8 @@ class Character extends CharacterBody2D:
 	@export var claim_revealed: bool = false
 	
 	var Player: int
+	
+	var CanDynamite : bool
 	
 	
 	

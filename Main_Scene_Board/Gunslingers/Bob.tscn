@@ -8,18 +8,12 @@
 scale = Vector2(0.0385261, 0.0456043)
 script = ExtResource("2_xrep5")
 
-[node name="TextureRect" type="TextureRect" parent="."]
-offset_left = -285.521
-offset_top = -285.061
-offset_right = -157.521
-offset_bottom = -157.061
+[node name="TextureRect" type="Sprite2D" parent="."]
 scale = Vector2(4.94107, 3.82189)
 texture = ExtResource("1_gp126")
-expand_mode = 1
 
 [node name="Label" type="Label" parent="TextureRect"]
 visibility_layer = 1023
-layout_mode = 1
 anchors_preset = -1
 anchor_left = -0.166
 anchor_top = -0.5

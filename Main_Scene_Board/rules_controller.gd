@@ -45,7 +45,10 @@ var accuracy : int
 
 var DisplayArray = []
 
-@export var town : String
+var Target : Node
+
+
+#region Start Up System
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -122,7 +125,7 @@ func MultiPlay(i , index):
 		if index == 0:
 			#Player 1 information
 			#Set player 1 at position 0,0 on the tile map
-			var Start = Vector2(1,1)
+			var Start = Vector2(3,3)
 			currentPlayer.position = TileMapScene.map_to_local(Start)
 			#Ask michael, sets player node position to somewhere
 			GlobalScript.PlayerNode[index].pos = Start
@@ -135,7 +138,7 @@ func MultiPlay(i , index):
 		if index == 1:
 			#The next player in the PlayerInfo array, player 2
 			#Sets player 2 at a different position from player 1
-			var Start = Vector2(6,6)
+			var Start = Vector2(4,4)
 			currentPlayer.position = TileMapScene.map_to_local(Start)
 			#Ask michael, sets player node position to somewhere
 			GlobalScript.PlayerNode[index].pos = Start
@@ -173,7 +176,7 @@ func SinglePlay(i , index):
 			currentPlayer.position = TileMapScene.map_to_local(Start)
 			#Ask michael, sets player node position to somewhere
 			GlobalScript.PlayerNode[index].pos = Start
-			GlobalScript.PlayerNode[index].Startpos = Start
+			GlobalScript.PlayerNode[index].Startpos = Vector2 (1,1)
 			#Set player label to the name they put in (not needed but fun)
 			currentPlayer.LabelName = "player"
 			#Set it to player 1 which is effectively turn order
@@ -216,6 +219,7 @@ func ShowTownies():
 	for i in 6:
 		Townie.get_child(i).show()
 
+#endregion
 
 func _on_button_pressed() -> void:
 	#Incremements Turn Order and uses RPC to make sure both the peeers and local machine are updated
@@ -278,8 +282,13 @@ func DisplayCards():
 	
 	pass
 	
-	
-		
+
+func SelectTarget(guy : String) -> void:
+	Target = Townie.get_node(guy)
+	print("Selected Target at: ", Target.pos)
+
+#region Attacking and Dynamite
+
 #The RPC updates the health of the local player and all the players it can see
 #It also updates for all the ppers so they see the proper health for all their player instances
 @rpc("any_peer","call_local")
@@ -290,6 +299,20 @@ func Attack_Calc(Enemy, Player):
 	#Also logic error? Its taking the the player thats getting attack
 	#Weapon damage, not the attacking players?
 	GlobalScript.PlayerNode[Enemy].Health -= damage
+	
+	if GlobalScript.PlayerNode[Enemy].Health <= 0:
+		GlobalScript.PlayerNode[Enemy].Health = 0
+		GlobalScript.PlayerNode[Enemy].PlayerHand.clear()
+	
+	
+	# How to get a players townie
+
+	for i in GlobalScript.PlayerNode.size():
+		print(GlobalScript.PlayerNode[i].name)
+		for x in 3:
+			var HGUN = Townie.get_node(GlobalScript.PlayerNode[i].PlayerHand[x+1])
+			print(HGUN.name)
+
 	#Debug enu to show damage
 	GlobalScript.DebugScript.add(GlobalScript.PlayerNode[Enemy].Name + " lost "+str(damage)+" points of hp")
 	GlobalScript.DebugScript.add(GlobalScript.PlayerNode[Enemy].Name + " now has "+str(GlobalScript.PlayerNode[Enemy].Health)+" points of hp")
@@ -309,33 +332,35 @@ func StunPlay(Enemy, Player):
 func RangeAttack():
 	#Replace for loop with clicking a sprite
 	#Where n will be the target selected
-	for n in numPlayers:
-		var range= GlobalScript.PlayerNode[Turn_Order -1].Weapon1Range
-		if(n+1 != Turn_Order && range != 0):
-			if(TileMapScene.Boardwalk(GlobalScript.PlayerNode[Turn_Order -1].pos)):
-				print("The range was increased by one")
-				range+1
-			if(CanAttack(n,range)):
-				GlobalScript.PlayerNode[Turn_Order -1].action_points -= 1
-				Attack(n , Turn_Order -1)
-		else:
-			CantAttack(n,range)
+	if Target != null:
+		for n in numPlayers:
+			var range= GlobalScript.PlayerNode[Turn_Order -1].Weapon1Range
+			if(n+1 != Turn_Order && range != 0):
+				if(TileMapScene.Boardwalk(GlobalScript.PlayerNode[Turn_Order -1].pos)):
+					print("The range was increased by one")
+					range+1
+				if(CanAttack(n,range)):
+					GlobalScript.PlayerNode[Turn_Order -1].action_points -= 1
+					Attack(n , Turn_Order -1)
+			else:
+				CantAttack(n,range)
 
 func BrawlAttack() -> bool:
-	var ReturnBool
+	var ReturnBool = false
 	#Replace for loop with selected target
 	#n being the target
-	for n in numPlayers:
-		if(n+1 != Turn_Order && CanAttack(n,0)):
-			if(!GlobalScript.PlayerNode[Turn_Order -1].FreeBrawl):
-				GlobalScript.PlayerNode[Turn_Order -1].action_points -= 1
-			GlobalScript.PlayerNode[Turn_Order -1].FreeBrawl = false
-			Attack(n, Turn_Order -1)
-			Attack(Turn_Order -1 , n)
-			ReturnBool = true
-		else:
-			CantAttack(n , 0)
-			ReturnBool = false
+	if Target != null:
+		for n in numPlayers:
+			if(n+1 != Turn_Order && CanAttack(n,0)):
+				if(!GlobalScript.PlayerNode[Turn_Order -1].FreeBrawl):
+					GlobalScript.PlayerNode[Turn_Order -1].action_points -= 1
+				GlobalScript.PlayerNode[Turn_Order -1].FreeBrawl = false
+				Attack(n, Turn_Order -1)
+				Attack(Turn_Order -1 , n)
+				ReturnBool = true
+			else:
+				CantAttack(n , 0)
+				ReturnBool = false
 	return ReturnBool
 
 #Detects if the player is capable of attacking
@@ -449,6 +474,7 @@ func StableCheck() -> bool:
 	else:
 		return false
 
+#endregion
 
 func _on_move_pressed() -> void:
 	if(!GlobalScript.SinglePlay):

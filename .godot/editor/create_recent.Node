@@ -1,3 +1,4 @@
+Sprite2D
 Button
 Node2D
 TextureRect
@@ -11,4 +12,3 @@ MarginContainer
 PanelContainer
 VBoxContainer
 TextureButton
-Sprite2D
