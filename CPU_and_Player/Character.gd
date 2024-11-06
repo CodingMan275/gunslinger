@@ -4,6 +4,7 @@ class Character extends CharacterBody2D:
 	var is_gunslinger = false
 	
 	#var ID: int
+	var Name : String
 	var Health : int = 7
 	
 	var Weapon1Equiped = false
@@ -15,15 +16,15 @@ class Character extends CharacterBody2D:
 	var OriginalStun
 	var OriginalRange
 	
-	var Weapon1Name
-	var Weapon1Dmg
-	var Weapon1Stun
-	var Weapon1Range
+	var Weapon1Name = ""
+	var Weapon1Dmg = 4
+	var Weapon1Stun = 1
+	var Weapon1Range = 2
 	
-	var Weapon2Name
-	var Weapon2Dmg
-	var Weapon2Stun
-	var Weapon2Range
+	var Weapon2Name = ""
+	var Weapon2Dmg = 0
+	var Weapon2Stun = 0
+	var Weapon2Range = 0
 	
 	var GivenWeapon
 	var GivenDmg
@@ -40,7 +41,7 @@ class Character extends CharacterBody2D:
 	var ActionPoint = MAX_ACION_PONTS
 	var AttackRange: int = 2
 	
-	var stun_counter: int = 0
+	var StunTracker: int = 0
 	
 	var Gun = WeaponScript.Weapon.new()
 	var Knife = WeaponScript.Weapon.new()
@@ -136,14 +137,14 @@ class Character extends CharacterBody2D:
 			
 		
 	func become_stunned(stun_time: int) -> void:
-		stun_counter = stun_time
+		StunTracker = stun_time
 		
 	func get_is_stunned():
-		return stun_counter > 0
+		return StunTracker > 0
 		
 	func decrement_stun_counter() -> void:
-		if stun_counter > 0:
-			stun_counter -= 1
+		if StunTracker > 0:
+			StunTracker -= 1
 		
 	func take_damage(damage: int):
 		Health -= damage

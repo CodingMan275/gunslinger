@@ -18,4 +18,4 @@ func _input(event):
 		if get_rect().has_point(to_local(camera.get_global_mouse_position())):
 			guyyouclicked = get_parent().name
 			print("You selected:", guyyouclicked)
-			rules.SelectTownie(guyyouclicked)
+			rules.SelectTownie.rpc(guyyouclicked)

@@ -18,4 +18,4 @@ func _input(event):
 		if get_rect().has_point(to_local(camera.get_global_mouse_position())):
 			guyyouclicked = get_parent().get_parent().Player_ID
 			print("You selected:", guyyouclicked)
-			rules.SelectGunslinger(guyyouclicked)
+			rules.SelectGunslinger.rpc(guyyouclicked)

@@ -20,6 +20,7 @@ func _init():
 	pass
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	Name = get_name()
 	get_node("../../Cards").DrawnCard.connect(hire_townsfolk)
 
 	Weapon1Name = "Rifle"
