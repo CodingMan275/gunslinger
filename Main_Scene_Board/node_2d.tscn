@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=4 uid="uid://jl7k3ltwbp41"]
+[gd_scene load_steps=71 format=4 uid="uid://jl7k3ltwbp41"]
 
 [ext_resource type="Texture2D" uid="uid://fcuqal2ynbts" path="res://Main_Scene_Board/spritesheet.png" id="1_o8ncf"]
 [ext_resource type="Texture2D" uid="uid://mmea4eto2a6p" path="res://Main_Scene_Board/Rhombus.png" id="2_rfajf"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bgfw83igonq2c" path="res://Main_Scene_Board/Updated Tiles/BoardwalkAlpha.png" id="5_28umi"]
 [ext_resource type="Script" path="res://Main_Scene_Board/Canvas_Layer/Turn_Label.gd" id="5_52d0j"]
 [ext_resource type="Theme" uid="uid://0qo5my5cfjq1" path="res://Main_Scene_Board/Canvas_Layer/Themes/Debug.tres" id="5_jnad2"]
+[ext_resource type="Texture2D" uid="uid://dalg3wft2eurb" path="res://Main_Scene_Board/Updated Tiles/Ground Tiles.png" id="5_uc6o5"]
 [ext_resource type="Script" path="res://Main_Scene_Board/Canvas_Layer/debug.gd" id="6_5svso"]
 [ext_resource type="Script" path="res://Main_Scene_Board/rules_controller.gd" id="6_6e8od"]
 [ext_resource type="Texture2D" uid="uid://c5600rupuq8tx" path="res://Main_Scene_Board/Updated Tiles/PathSouthWestEndAlpha.png" id="6_58tr5"]
@@ -34,6 +35,7 @@
 [ext_resource type="PackedScene" uid="uid://o8s2bfh5cxgj" path="res://pause_menu/close_options_menu_button.tscn" id="16_ljexv"]
 [ext_resource type="Texture2D" uid="uid://bdmvi8qlb5m57" path="res://bobseymour.svg" id="16_tsmpy"]
 [ext_resource type="Script" path="res://Main_Scene_Board/teacher.gd" id="17_evase"]
+[ext_resource type="Script" path="res://Main_Scene_Board/player_layer.gd" id="17_kp6gm"]
 [ext_resource type="Script" path="res://Main_Scene_Board/town_drunk.gd" id="18_8vpej"]
 [ext_resource type="Texture2D" uid="uid://b3jt8k5v2aeha" path="res://elijahbrown.svg" id="18_bkvl8"]
 [ext_resource type="Script" path="res://Main_Scene_Board/bar_keep.gd" id="19_alpfg"]
@@ -202,6 +204,42 @@ custom_data_layer_0/type = 2
 sources/0 = SubResource("TileSetAtlasSource_p1dyh")
 sources/1 = SubResource("TileSetAtlasSource_bqeqs")
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8oijh"]
+texture = ExtResource("5_uc6o5")
+texture_region_size = Vector2i(316, 216)
+0:0/0 = 0
+0:0/0/custom_data_0 = 1
+1:0/0 = 0
+1:0/0/custom_data_0 = 2
+2:0/0 = 0
+2:0/0/custom_data_0 = 3
+3:0/0 = 0
+3:0/0/custom_data_0 = 4
+0:1/0 = 0
+0:1/0/custom_data_0 = 5
+1:1/0 = 0
+1:1/0/custom_data_0 = 6
+2:1/0 = 0
+2:1/0/custom_data_0 = 7
+3:1/0 = 0
+3:1/0/custom_data_0 = 8
+0:2/0 = 0
+0:2/0/custom_data_0 = 9
+1:2/0 = 0
+1:2/0/custom_data_0 = 10
+2:2/0 = 0
+2:2/0/custom_data_0 = 11
+3:2/0 = 0
+3:2/0/custom_data_0 = 12
+0:3/0 = 0
+0:3/0/custom_data_0 = 13
+1:3/0 = 0
+1:3/0/custom_data_0 = 14
+2:3/0 = 0
+2:3/0/custom_data_0 = 15
+3:3/0 = 0
+3:3/0/custom_data_0 = 16
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ksm0c"]
 texture = ExtResource("5_28umi")
 texture_region_size = Vector2i(316, 332)
@@ -256,6 +294,8 @@ texture_region_size = Vector2i(316, 332)
 tile_shape = 1
 tile_layout = 5
 tile_size = Vector2i(316, 216)
+custom_data_layer_0/name = "TileType"
+custom_data_layer_0/type = 2
 sources/1 = SubResource("TileSetAtlasSource_ksm0c")
 sources/2 = SubResource("TileSetAtlasSource_ohgiv")
 sources/3 = SubResource("TileSetAtlasSource_tabrm")
@@ -266,6 +306,7 @@ sources/7 = SubResource("TileSetAtlasSource_7s5b0")
 sources/8 = SubResource("TileSetAtlasSource_ho8h4")
 sources/9 = SubResource("TileSetAtlasSource_07q67")
 sources/10 = SubResource("TileSetAtlasSource_gq8bu")
+sources/0 = SubResource("TileSetAtlasSource_8oijh")
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_mfl53"]
 properties/0/path = NodePath("CanvasLayer/Label:text")
@@ -394,8 +435,10 @@ script = ExtResource("15_ndo7p")
 [node name="Player_Layer" type="TileMapLayer" parent="."]
 y_sort_enabled = true
 use_parent_material = true
-position = Vector2(0, 160)
+position = Vector2(632, -56)
+tile_map_data = PackedByteArray("AAAHAAcAAAABAAIAAAAGAAcAAAABAAIAAAAGAAYAAAABAAIAAAAHAAYAAAABAAIAAAAEAAcAAAAAAAAAAAADAAcAAAAAAAAAAAAEAAYAAAACAAIAAAADAAYAAAACAAIAAAABAAcAAAABAAEAAAAAAAcAAAABAAEAAAABAAYAAAADAAMAAAAAAAYAAAADAAMAAAACAAcAAAAAAAIAAAACAAYAAAAAAAIAAAAFAAcAAAAAAAIAAAAFAAYAAAAAAAIAAAAHAAUAAAAAAAIAAAAGAAUAAAAAAAIAAAAFAAUAAAAAAAIAAAAEAAUAAAAAAAIAAAADAAUAAAAAAAIAAAACAAUAAAAAAAIAAAABAAUAAAAAAAIAAAAAAAUAAAAAAAIAAAAAAAQAAAACAAAAAAAAAAMAAAACAAAAAAABAAQAAAAAAAMAAAABAAMAAAAAAAMAAAADAAQAAAACAAEAAAADAAMAAAACAAEAAAAEAAMAAAACAAEAAAAEAAQAAAACAAEAAAAGAAQAAAACAAMAAAAGAAMAAAACAAMAAAAHAAQAAAADAAEAAAAHAAMAAAAAAAEAAAAFAAQAAAAAAAIAAAAFAAMAAAAAAAIAAAACAAQAAAAAAAIAAAACAAMAAAAAAAIAAAAHAAIAAAAAAAIAAAAGAAIAAAAAAAIAAAAFAAIAAAAAAAIAAAAEAAIAAAAAAAIAAAADAAIAAAAAAAIAAAACAAIAAAAAAAIAAAABAAIAAAAAAAIAAAAAAAIAAAAAAAIAAAAFAAEAAAAAAAIAAAAFAAAAAAAAAAIAAAACAAEAAAAAAAIAAAACAAAAAAAAAAIAAAADAAAAAAADAAAAAAAEAAAAAAADAAAAAAADAAEAAAABAAMAAAAEAAEAAAABAAMAAAAGAAAAAAABAAAAAAAHAAAAAAABAAAAAAAGAAEAAAADAAIAAAAHAAEAAAADAAIAAAABAAEAAAABAAIAAAABAAAAAAABAAIAAAAAAAAAAAABAAIAAAAAAAEAAAABAAIAAAA=")
 tile_set = SubResource("TileSet_mbj4e")
+script = ExtResource("17_kp6gm")
 
 [node name="Building_Layer" type="TileMapLayer" parent="."]
 y_sort_enabled = true
@@ -405,7 +448,7 @@ tile_map_data = PackedByteArray("AAAHAAMABQAAAAAAAAAIAAMABQAAAAAAAAAHAAQABQAAAAA
 tile_set = SubResource("TileSet_mbj4e")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-offset = Vector2(16, 16)
+offset = Vector2(760, 760)
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_mfl53")
