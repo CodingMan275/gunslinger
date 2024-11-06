@@ -67,11 +67,11 @@ func activate_special_abilities(townsfolk: Townsfolk) -> void:
 			print("Townsfolk can move!")
 
 		# Specific behavior for the storekeeper
-		if townsfolk.is_storekeeper():  # Assuming you have a way to check if this townsfolk is a storekeeper
+		if townsfolk.is_storekeeper(): 
 			sell_weapon(townsfolk, owning_player)
 
 func sell_weapon(storekeeper: Townsfolk, player: int) -> void:
-	# Example weapon selling logic
+
 	var weapon = "Pistol"  # Example weapon
 	print("Selling ", weapon, " to Player ", player)
 
