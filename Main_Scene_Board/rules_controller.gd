@@ -330,8 +330,11 @@ func RangeAttack(Name : String):
 				print("The range was increased by one")
 				range+1
 			if CanAttack(range):
-				Attacker.action_points -= 1
+				Attacker.action_points -= 1 
+				GlobalScript.DebugScript.add(str(Attacker.Name)+" Attacked "+str(Target.Name))
+				GlobalScript.DebugScript.add(str(Attacker.Name)+" has "+str(Attacker.action_points) + " action points left ")
 				Attack()
+				
 			else:
 				CantAttack(range)
 		else:
@@ -349,6 +352,8 @@ func BrawlAttack(Name : String) -> bool:
 		if CanAttack(0):
 			if(!Attacker.FreeBrawl):
 				Attacker.action_points -= 1
+				GlobalScript.DebugScript.add(str(Attacker.Name)+" Attacked "+str(Target.Name))
+				GlobalScript.DebugScript.add(str(Attacker.Name)+" has "+str(Attacker.action_points) + " action points left ")
 			Attacker.FreeBrawl = false
 			Attack()
 			SwapAttacking.rpc()

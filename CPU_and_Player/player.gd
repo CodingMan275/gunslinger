@@ -230,6 +230,7 @@ func MoveMouse():
 							self.global_position = Vector2(get_global_mouse_position())
 							pos = NewPos
 							action_points -= 1
+							GlobalScript.DebugScript.add(str(self.Name)+" has "+str(self.action_points) + " action points left ")
 							DrawButton.hide()
 							Movable = false
 							UpdateMove.rpc(self.global_position, NewPos)
