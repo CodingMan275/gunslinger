@@ -25,8 +25,13 @@ var accuracy : int
 #Getting the turn buttons from the scene when this node is ready
 @onready var EndTurnButton = get_node("../CanvasLayer/Button")
 @onready var DrawButton = get_node("../CanvasLayer/Draw Card")
-@onready var RangeButton = get_node("../CanvasLayer/Attack")
-@onready var BrawlButton = get_node("../CanvasLayer/Brawl")
+
+@onready var AttackUI = get_node("../AttackingCanvas")
+@onready var RangeButton = get_node("../AttackingCanvas/Range")
+@onready var BrawlButton = get_node("../AttackingCanvas/Brawl")
+@onready var BackButton = get_node("../AttackingCanvas/Back")
+@onready var AttackButton = get_node("../CanvasLayer/Attack")
+
 @onready var HandButton = get_node("../CanvasLayer/Show Hand")
 @onready var DynamiteButton = get_node("../CanvasLayer/Dynamite")
 @onready var MoveButton = get_node("../CanvasLayer/Move")
@@ -524,5 +529,6 @@ func movePossible():
 	move.emit()
 	pass
 
-	
-	
+func PlayerUI(vis : bool) -> void :
+	AttackButton.visible = !vis
+	AttackUI.visible = vis

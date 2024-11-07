@@ -385,6 +385,7 @@ rendering_quadrant_size = 32
 script = ExtResource("3_8wl58")
 
 [node name="Ground_Layer" type="TileMapLayer" parent="."]
+visible = false
 y_sort_enabled = true
 use_parent_material = true
 tile_map_data = PackedByteArray("AAACAP7/AwAAAAAAAAACAP//AwAAAAAAAAADAP//AwAAAAAAAAADAP7/AwAAAAAAAAACAAAACAAAAAAAAAADAAAACAAAAAAAAAAEAP7/BwAAAAAAAAAEAP//BwAAAAAAAAAEAAEABwAAAAAAAAAEAAIABwAAAAAAAAAEAAQABwAAAAAAAAAEAAUABwAAAAAAAAAHAP7/BwAAAAAAAAAHAP//BwAAAAAAAAAHAAEABwAAAAAAAAAHAAIABwAAAAAAAAAHAAQABwAAAAAAAAAHAAUABwAAAAAAAAAEAAAABgAAAAAAAAAFAAAACAAAAAAAAAAGAAAACAAAAAAAAAAFAAMACAAAAAAAAAAGAAMACAAAAAAAAAACAAMACAAAAAAAAAADAAMACAAAAAAAAAAIAAAACAAAAAAAAAAJAAAACAAAAAAAAAAIAAMACAAAAAAAAAAJAAMACAAAAAAAAAAHAAAABgAAAAAAAAAHAAMABgAAAAAAAAAEAAMABgAAAAAAAAAFAAEAAwAAAAAAAAAFAAIAAwAAAAAAAAAGAAIAAwAAAAAAAAAGAAEAAwAAAAAAAAADAAEAAQAAAAAAAAADAAIAAQAAAAAAAAAFAP//AQAAAAAAAAAGAP//AQAAAAAAAAAIAAEAAQAAAAAAAAAIAAIAAQAAAAAAAAAFAAQAAQAAAAAAAAAGAAQAAQAAAAAAAAADAAQAAwAAAAAAAAADAAUAAwAAAAAAAAAIAP//AwAAAAAAAAAJAP//AwAAAAAAAAAIAP7/AwAAAAAAAAAJAP7/AwAAAAAAAAAFAP7/AwAAAAAAAAAGAP7/AwAAAAAAAAACAAEAAwAAAAAAAAACAAIAAwAAAAAAAAACAAQAAwAAAAAAAAACAAUAAwAAAAAAAAAFAAUAAwAAAAAAAAAGAAUAAwAAAAAAAAAIAAUAAwAAAAAAAAAJAAUAAwAAAAAAAAAJAAQAAwAAAAAAAAAIAAQAAwAAAAAAAAAJAAIAAwAAAAAAAAAJAAEAAwAAAAAAAAA=")
@@ -392,12 +393,14 @@ tile_set = SubResource("TileSet_mbj4e")
 script = ExtResource("15_ndo7p")
 
 [node name="Player_Layer" type="TileMapLayer" parent="."]
+visible = false
 y_sort_enabled = true
 use_parent_material = true
 position = Vector2(0, 160)
 tile_set = SubResource("TileSet_mbj4e")
 
 [node name="Building_Layer" type="TileMapLayer" parent="."]
+visible = false
 y_sort_enabled = true
 use_parent_material = true
 position = Vector2(0, 112)
@@ -421,6 +424,49 @@ offset_right = 48.0
 offset_bottom = 31.0
 grow_horizontal = 2
 text = "Start Game"
+
+[node name="AttackingCanvas" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Range" type="Button" parent="AttackingCanvas"]
+anchors_preset = -1
+anchor_left = 0.845
+anchor_top = 0.667
+anchor_right = 0.967
+anchor_bottom = 0.781
+offset_left = -49.6
+offset_top = 51.91
+offset_right = -50.16
+offset_bottom = 53.13
+text = "Range"
+
+[node name="Attack" type="AudioStreamPlayer2D" parent="AttackingCanvas/Range"]
+position = Vector2(-16, -185)
+stream = ExtResource("8_7t4t6")
+
+[node name="Back" type="Button" parent="AttackingCanvas"]
+offset_left = 420.0
+offset_top = 184.0
+offset_right = 465.0
+offset_bottom = 215.0
+text = "Back"
+
+[node name="Brawl" type="Button" parent="AttackingCanvas"]
+anchors_preset = -1
+anchor_left = 0.844
+anchor_top = 0.807
+anchor_right = 0.965
+anchor_bottom = 0.922
+offset_left = 14.88
+offset_top = 13.11
+offset_right = 15.8
+offset_bottom = 16.06
+text = "Brawl
+"
+
+[node name="Punch" type="AudioStreamPlayer2D" parent="AttackingCanvas/Brawl"]
+position = Vector2(-16, -185)
+stream = ExtResource("8_7t4t6")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 script = SubResource("GDScript_7iaxx")
@@ -476,39 +522,6 @@ offset_top = -71.0
 offset_right = 465.0
 offset_bottom = -46.0
 text = "Special Ability"
-
-[node name="Attack" type="Button" parent="CanvasLayer"]
-anchors_preset = -1
-anchor_left = 0.845
-anchor_top = 0.667
-anchor_right = 0.967
-anchor_bottom = 0.781
-offset_left = 0.399994
-offset_top = -0.0900116
-offset_right = -0.160034
-offset_bottom = 0.12999
-text = "Attack"
-
-[node name="Attack" type="AudioStreamPlayer2D" parent="CanvasLayer/Attack"]
-position = Vector2(-16, -185)
-stream = ExtResource("8_7t4t6")
-
-[node name="Brawl" type="Button" parent="CanvasLayer"]
-anchors_preset = -1
-anchor_left = 0.844
-anchor_top = 0.807
-anchor_right = 0.965
-anchor_bottom = 0.922
-offset_left = -0.120026
-offset_top = 0.109985
-offset_right = -0.200012
-offset_bottom = 0.0599823
-text = "Brawl
-"
-
-[node name="Punch" type="AudioStreamPlayer2D" parent="CanvasLayer/Brawl"]
-position = Vector2(-16, -185)
-stream = ExtResource("8_7t4t6")
 
 [node name="Dynamite" type="Button" parent="CanvasLayer"]
 anchors_preset = -1
@@ -623,6 +636,14 @@ offset_top = 0.0799866
 offset_right = -0.200012
 offset_bottom = -0.0200195
 text = "G/T"
+
+[node name="Attack" type="Button" parent="CanvasLayer"]
+offset_left = 412.0
+offset_top = 184.0
+offset_right = 470.0
+offset_bottom = 215.0
+text = "Player
+Attack"
 
 [node name="Rules_Controller" type="Node" parent="."]
 script = ExtResource("6_6e8od")
@@ -913,20 +934,22 @@ metadata/_edit_use_anchors_ = true
 
 [connection signal="child_order_changed" from="." to="Rules_Controller" method="_on_node_2d_child_order_changed"]
 [connection signal="pressed" from="StartUpCanvas/Start" to="Rules_Controller" method="DeleteLater"]
+[connection signal="pressed" from="AttackingCanvas/Range" to="Layer0" method="_on_attack_pressed"]
+[connection signal="pressed" from="AttackingCanvas/Range" to="Rules_Controller" method="RangeAttack" binds= ["Player"]]
+[connection signal="pressed" from="AttackingCanvas/Back" to="Rules_Controller" method="PlayerUI" binds= [false]]
+[connection signal="pressed" from="AttackingCanvas/Brawl" to="Layer0" method="_on_brawl_pressed"]
+[connection signal="pressed" from="AttackingCanvas/Brawl" to="Rules_Controller" method="BrawlAttack" binds= ["Player"]]
 [connection signal="pressed" from="CanvasLayer/Button" to="CanvasLayer/Label" method="_on_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Button" to="CanvasLayer/Claim" method="_on_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Button" to="Rules_Controller" method="_on_button_pressed"]
 [connection signal="ready" from="CanvasLayer/Label" to="Rules_Controller" method="_on_label_ready"]
 [connection signal="pressed" from="CanvasLayer/Draw Card" to="Rules_Controller" method="_onCardDraw"]
 [connection signal="pressed" from="CanvasLayer/Draw Card" to="Cards" method="_onCardDraw"]
-[connection signal="pressed" from="CanvasLayer/Attack" to="Layer0" method="_on_attack_pressed"]
-[connection signal="pressed" from="CanvasLayer/Attack" to="Rules_Controller" method="RangeAttack" binds= ["Player"]]
-[connection signal="pressed" from="CanvasLayer/Brawl" to="Layer0" method="_on_brawl_pressed"]
-[connection signal="pressed" from="CanvasLayer/Brawl" to="Rules_Controller" method="BrawlAttack" binds= ["Player"]]
 [connection signal="pressed" from="CanvasLayer/Dynamite" to="Rules_Controller" method="Dynamite"]
 [connection signal="pressed" from="CanvasLayer/Claim" to="CanvasLayer/Claim" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer/Claim" to="Townie_Logic" method="_on_claim_pressed"]
 [connection signal="pressed" from="CanvasLayer/Move" to="Rules_Controller" method="_on_move_pressed"]
+[connection signal="pressed" from="CanvasLayer/Attack" to="Rules_Controller" method="PlayerUI" binds= [true]]
 [connection signal="DrawnCard" from="Cards" to="Townie_Logic" method="UpdateCard"]
 [connection signal="DrawnCard" from="Cards" to="Townie_Logic/Preacher" method="hire_townsfolk"]
 [connection signal="DrawnCard" from="Cards" to="Townie_Logic/Doctor" method="hire_townsfolk"]
