@@ -411,10 +411,10 @@ func _on_VBoxContainer_size_changed():
 [node name="Node2D" type="Node2D"]
 
 [node name="TextureRect" type="TextureRect" parent="."]
-offset_left = -224.0
-offset_top = -119.0
-offset_right = 255.0
-offset_bottom = 149.0
+offset_left = -1161.0
+offset_top = -321.0
+offset_right = 2687.0
+offset_bottom = 1832.0
 texture = ExtResource("27_uadwx")
 expand_mode = 1
 
@@ -433,6 +433,7 @@ tile_set = SubResource("TileSet_mbj4e")
 script = ExtResource("15_ndo7p")
 
 [node name="Player_Layer" type="TileMapLayer" parent="."]
+visible = false
 y_sort_enabled = true
 use_parent_material = true
 position = Vector2(632, -56)
@@ -526,10 +527,10 @@ anchor_left = 0.845
 anchor_top = 0.667
 anchor_right = 0.967
 anchor_bottom = 0.781
-offset_left = 0.399994
-offset_top = -0.0900116
-offset_right = -0.160034
-offset_bottom = 0.12999
+offset_left = -6.43994
+offset_top = -231.72
+offset_right = -6.99976
+offset_bottom = -231.5
 text = "Attack"
 
 [node name="Attack" type="AudioStreamPlayer2D" parent="CanvasLayer/Attack"]
@@ -542,15 +543,15 @@ anchor_left = 0.844
 anchor_top = 0.807
 anchor_right = 0.965
 anchor_bottom = 0.922
-offset_left = -0.120026
-offset_top = 0.109985
-offset_right = -0.200012
-offset_bottom = 0.0599823
+offset_left = -1.95996
+offset_top = -265.12
+offset_right = -2.03979
+offset_bottom = -265.17
 text = "Brawl
 "
 
 [node name="Punch" type="AudioStreamPlayer2D" parent="CanvasLayer/Brawl"]
-position = Vector2(-16, -185)
+position = Vector2(-22.8398, -416.63)
 stream = ExtResource("8_7t4t6")
 
 [node name="Dynamite" type="Button" parent="CanvasLayer"]
@@ -625,11 +626,10 @@ expand_mode = 1
 
 [node name="PauseMenuButtonSinglePlayer" parent="CanvasLayer/Pause_Menu" instance=ExtResource("13_3q2p2")]
 unique_name_in_owner = true
-visible = false
 offset_left = 7.0
 offset_top = 4.0
-offset_right = -434.0
-offset_bottom = -212.0
+offset_right = -3669.0
+offset_bottom = -2072.0
 
 [node name="PauseMenuSingleplayer" parent="CanvasLayer/Pause_Menu" instance=ExtResource("14_tll6l")]
 unique_name_in_owner = true
@@ -685,6 +685,7 @@ visible = false
 script = ExtResource("14_ub6ke")
 
 [node name="Preacher" type="CharacterBody2D" parent="Townie_Logic"]
+z_index = 1
 script = ExtResource("14_8fc0f")
 
 [node name="PreacherSprite" type="Sprite2D" parent="Townie_Logic/Preacher"]
@@ -708,6 +709,7 @@ text = "Preacher"
 metadata/_edit_use_anchors_ = true
 
 [node name="Doctor" type="CharacterBody2D" parent="Townie_Logic"]
+z_index = 1
 script = ExtResource("16_2qs05")
 
 [node name="DoctorSprite" type="Sprite2D" parent="Townie_Logic/Doctor"]
@@ -731,6 +733,7 @@ text = "Doctor"
 metadata/_edit_use_anchors_ = true
 
 [node name="Teacher" type="CharacterBody2D" parent="Townie_Logic"]
+z_index = 1
 script = ExtResource("17_evase")
 
 [node name="TeacherSprite" type="Sprite2D" parent="Townie_Logic/Teacher"]
@@ -754,6 +757,7 @@ text = "Teacher"
 metadata/_edit_use_anchors_ = true
 
 [node name="Town_Drunk" type="CharacterBody2D" parent="Townie_Logic"]
+z_index = 1
 script = ExtResource("18_8vpej")
 
 [node name="TownDrunkSprite" type="Sprite2D" parent="Townie_Logic/Town_Drunk"]
@@ -777,6 +781,7 @@ text = "Town Drunk"
 metadata/_edit_use_anchors_ = true
 
 [node name="Bar_Keep" type="CharacterBody2D" parent="Townie_Logic"]
+z_index = 1
 script = ExtResource("19_alpfg")
 
 [node name="BarKeepSprite" type="Sprite2D" parent="Townie_Logic/Bar_Keep"]
@@ -800,6 +805,7 @@ text = "Bar Keep"
 metadata/_edit_use_anchors_ = true
 
 [node name="Ranch_Hand" type="CharacterBody2D" parent="Townie_Logic"]
+z_index = 1
 script = ExtResource("20_dwx7h")
 
 [node name="RanchHandSprite" type="Sprite2D" parent="Townie_Logic/Ranch_Hand"]
@@ -823,6 +829,7 @@ text = "Ranch Hand"
 metadata/_edit_use_anchors_ = true
 
 [node name="Store_Keeper" type="CharacterBody2D" parent="Townie_Logic"]
+z_index = 1
 script = ExtResource("45_l4515")
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Store_Keeper"]
@@ -845,6 +852,7 @@ text = "Ranch Hand"
 metadata/_edit_use_anchors_ = true
 
 [node name="Mountain_Man" type="CharacterBody2D" parent="Townie_Logic"]
+z_index = 1
 script = ExtResource("46_08nss")
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Mountain_Man"]
@@ -867,6 +875,7 @@ text = "Ranch Hand"
 metadata/_edit_use_anchors_ = true
 
 [node name="Bounty_Hunter" type="CharacterBody2D" parent="Townie_Logic"]
+z_index = 1
 script = ExtResource("47_cjmfn")
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Bounty_Hunter"]
@@ -889,6 +898,7 @@ text = "Ranch Hand"
 metadata/_edit_use_anchors_ = true
 
 [node name="Saloon_Girl" type="CharacterBody2D" parent="Townie_Logic"]
+z_index = 1
 script = ExtResource("48_ai5s4")
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Saloon_Girl"]
@@ -911,6 +921,7 @@ text = "Ranch Hand"
 metadata/_edit_use_anchors_ = true
 
 [node name="Bank_Manager" type="CharacterBody2D" parent="Townie_Logic"]
+z_index = 1
 script = ExtResource("49_4aoh4")
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Bank_Manager"]
@@ -933,6 +944,7 @@ text = "Ranch Hand"
 metadata/_edit_use_anchors_ = true
 
 [node name="Sheriff" type="CharacterBody2D" parent="Townie_Logic"]
+z_index = 1
 script = ExtResource("50_glnk6")
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Sheriff"]
