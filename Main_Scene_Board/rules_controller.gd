@@ -316,16 +316,19 @@ func SelectAttacker(guy : String) -> void:
 	if !isplayer:
 		Attacker = Townie.get_node(guy)
 
-func RangeAttack():
+func RangeAttack(Name : String):
 	#Replace for loop with clicking a sprite
 	#Where n will be the target selected
 	if Target != null:
-		var range= GlobalScript.PlayerNode[Turn_Order -1].Weapon1Range
+		if Name == "Player":
+			SelectAttacker.rpc(GlobalScript.PlayerNode[Turn_Order -1].Name)
+		else:
+			SelectAttacker.rpc(Name)
+		var range= Attacker.Weapon1Range
 		if range != 0:
-			if(TileMapScene.Boardwalk(GlobalScript.PlayerNode[Turn_Order -1].pos)):
+			if(TileMapScene.Boardwalk(Attacker.pos)):
 				print("The range was increased by one")
 				range+1
-			SelectAttacker.rpc(GlobalScript.PlayerNode[Turn_Order -1].Name)
 			if CanAttack(range):
 				Attacker.action_points -= 1
 				Attack()
@@ -334,12 +337,15 @@ func RangeAttack():
 		else:
 			CantAttack(range)
 
-func BrawlAttack() -> bool:
+func BrawlAttack(Name : String) -> bool:
 	var ReturnBool = false
 	#Replace for loop with selected target
 	#n being the target
 	if Target != null:
-		SelectAttacker.rpc(GlobalScript.PlayerNode[Turn_Order -1].Name)
+		if Name == "Player":
+			SelectAttacker.rpc(GlobalScript.PlayerNode[Turn_Order -1].Name)
+		else:
+			SelectAttacker.rpc(Name)
 		if CanAttack(0):
 			if(!Attacker.FreeBrawl):
 				Attacker.action_points -= 1
