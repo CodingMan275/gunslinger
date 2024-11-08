@@ -45,6 +45,8 @@ var accuracy : int
 
 var DisplayArray = []
 
+signal guyClicked
+
 var Attacker: Node2D
 var Target : Node2D
 var TargetGunSlinger : bool
@@ -291,6 +293,7 @@ func DisplayCards():
 func SelectTownie(guy : String) -> void:
 	TargetGunSlinger = false
 	Target = Townie.get_node(guy)
+	guyClicked.emit()
 
 #Assigns a Gunslinger as a Target
 @rpc("any_peer","call_local")

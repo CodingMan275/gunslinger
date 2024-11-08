@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=4 uid="uid://jl7k3ltwbp41"]
+[gd_scene load_steps=69 format=4 uid="uid://jl7k3ltwbp41"]
 
 [ext_resource type="Texture2D" uid="uid://fcuqal2ynbts" path="res://Main_Scene_Board/spritesheet.png" id="1_o8ncf"]
 [ext_resource type="Texture2D" uid="uid://mmea4eto2a6p" path="res://Main_Scene_Board/Rhombus.png" id="2_rfajf"]
@@ -43,6 +43,7 @@
 [ext_resource type="Texture2D" uid="uid://dywhqj3m2j1y3" path="res://oldsmokey.svg" id="24_5vq5u"]
 [ext_resource type="Texture2D" uid="uid://c5dj7es7aba7e" path="res://thekid.svg" id="26_ndqm4"]
 [ext_resource type="Texture2D" uid="uid://bnk7r45gr5cn8" path="res://IMG_9861.png" id="27_uadwx"]
+[ext_resource type="Script" path="res://Main_Scene_Board/weapons.gd" id="30_sg7ny"]
 [ext_resource type="Script" path="res://TownieSpriteClick.gd" id="34_hshlf"]
 [ext_resource type="Script" path="res://Main_Scene_Board/store_keeper.gd" id="45_l4515"]
 [ext_resource type="Script" path="res://Main_Scene_Board/mountain_man.gd" id="46_08nss"]
@@ -624,10 +625,65 @@ offset_right = -0.200012
 offset_bottom = -0.0200195
 text = "G/T"
 
+[node name="Take" type="Button" parent="CanvasLayer"]
+visible = false
+anchors_preset = -1
+anchor_left = 0.542
+anchor_top = 0.315
+anchor_right = 0.762
+anchor_bottom = 0.467
+offset_left = -0.160034
+offset_top = 1.94999
+offset_right = 0.23999
+offset_bottom = -0.090004
+text = "Take"
+
+[node name="GIve" type="Button" parent="CanvasLayer"]
+visible = false
+anchors_preset = -1
+anchor_left = 0.277
+anchor_top = 0.315
+anchor_right = 0.5
+anchor_bottom = 0.463
+offset_left = 0.0399933
+offset_top = 0.949989
+offset_right = -1.0
+offset_bottom = -0.0100098
+text = "Give"
+
+[node name="Weapon1" type="Button" parent="CanvasLayer"]
+visible = false
+anchors_preset = -1
+anchor_left = 0.187
+anchor_top = 0.226
+anchor_right = 0.452
+anchor_bottom = 0.37
+offset_left = 0.239998
+offset_top = -0.0200043
+offset_right = 0.0399933
+offset_bottom = 0.0999985
+text = "Weapon 1"
+
+[node name="Weapon2" type="Button" parent="CanvasLayer"]
+visible = false
+anchors_preset = -1
+anchor_left = 0.517
+anchor_top = 0.222
+anchor_right = 0.762
+anchor_bottom = 0.37
+offset_left = -0.160004
+offset_top = 0.0599937
+offset_right = 0.23999
+offset_bottom = 0.0999985
+text = "Weapon 2"
+
 [node name="Rules_Controller" type="Node" parent="."]
 script = ExtResource("6_6e8od")
 player_scene = ExtResource("7_saeg4")
 CPU_scene = ExtResource("9_hsfom")
+
+[node name="Weapons" type="Node" parent="."]
+script = ExtResource("30_sg7ny")
 
 [node name="Cards" type="Node" parent="."]
 script = ExtResource("9_mpy2d")
@@ -927,6 +983,11 @@ metadata/_edit_use_anchors_ = true
 [connection signal="pressed" from="CanvasLayer/Claim" to="CanvasLayer/Claim" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer/Claim" to="Townie_Logic" method="_on_claim_pressed"]
 [connection signal="pressed" from="CanvasLayer/Move" to="Rules_Controller" method="_on_move_pressed"]
+[connection signal="pressed" from="CanvasLayer/Give_Take" to="Weapons" method="openGTWindow"]
+[connection signal="pressed" from="CanvasLayer/Take" to="Weapons" method="takeWeapon"]
+[connection signal="pressed" from="CanvasLayer/GIve" to="Weapons" method="giveWeapon"]
+[connection signal="pressed" from="CanvasLayer/Weapon1" to="Weapons" method="takeWeapon1"]
+[connection signal="pressed" from="CanvasLayer/Weapon2" to="Weapons" method="takeWeapon2"]
 [connection signal="DrawnCard" from="Cards" to="Townie_Logic" method="UpdateCard"]
 [connection signal="DrawnCard" from="Cards" to="Townie_Logic/Preacher" method="hire_townsfolk"]
 [connection signal="DrawnCard" from="Cards" to="Townie_Logic/Doctor" method="hire_townsfolk"]

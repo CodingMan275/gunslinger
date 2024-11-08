@@ -11,6 +11,7 @@ var guyyouclicked
 
 
 
+
 func _input(event):
 	#first three lines basically check which sprite you clicked
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_RIGHT: 

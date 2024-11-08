@@ -58,6 +58,8 @@ var order = 0
 #This could be further broken down into Weapon array, Town, Gunslinger, ect
 @export var PlayerHand = []
 
+var MidCard
+
 
 var DrewCard = false
 
@@ -161,7 +163,7 @@ func _initialDisplay():
 	$CanvasLayer/Card1.texture = ResourceLoader.load(CardNodeDeck.CardArt(PlayerHand[1]))
 	$CanvasLayer/Card2.texture = ResourceLoader.load(CardNodeDeck.CardArt(PlayerHand[2]))
 	$CanvasLayer/Card3.texture = ResourceLoader.load(CardNodeDeck.CardArt(PlayerHand[3]))
-	
+	MidCard = PlayerHand[1]
 	#Put weapons here
 	
 	pass
