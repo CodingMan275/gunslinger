@@ -25,8 +25,13 @@ var accuracy : int
 #Getting the turn buttons from the scene when this node is ready
 @onready var EndTurnButton = get_node("../CanvasLayer/Button")
 @onready var DrawButton = get_node("../CanvasLayer/Draw Card")
-@onready var RangeButton = get_node("../CanvasLayer/Attack")
-@onready var BrawlButton = get_node("../CanvasLayer/Brawl")
+
+@onready var AttackUI = get_node("../AttackingCanvas")
+@onready var RangeButton = get_node("../AttackingCanvas/Range")
+@onready var BrawlButton = get_node("../AttackingCanvas/Brawl")
+@onready var BackButton = get_node("../AttackingCanvas/Back")
+@onready var AttackButton = get_node("../CanvasLayer/Attack")
+
 @onready var HandButton = get_node("../CanvasLayer/Show Hand")
 @onready var DynamiteButton = get_node("../CanvasLayer/Dynamite")
 @onready var MoveButton = get_node("../CanvasLayer/Move")
@@ -319,33 +324,44 @@ func SelectAttacker(guy : String) -> void:
 	if !isplayer:
 		Attacker = Townie.get_node(guy)
 
-func RangeAttack():
+func RangeAttack(Name : String):
 	#Replace for loop with clicking a sprite
 	#Where n will be the target selected
 	if Target != null:
-		var range= GlobalScript.PlayerNode[Turn_Order -1].Weapon1Range
+		if Name == "Player":
+			SelectAttacker.rpc(GlobalScript.PlayerNode[Turn_Order -1].Name)
+		else:
+			SelectAttacker.rpc(Name)
+		var range= Attacker.Weapon1Range
 		if range != 0:
-			if(TileMapScene.Boardwalk(GlobalScript.PlayerNode[Turn_Order -1].pos)):
+			if(TileMapScene.Boardwalk(Attacker.pos)):
 				print("The range was increased by one")
 				range+1
-			SelectAttacker.rpc(GlobalScript.PlayerNode[Turn_Order -1].Name)
 			if CanAttack(range):
-				Attacker.action_points -= 1
+				Attacker.action_points -= 1 
+				GlobalScript.DebugScript.add(str(Attacker.Name)+" Attacked "+str(Target.Name))
+				GlobalScript.DebugScript.add(str(Attacker.Name)+" has "+str(Attacker.action_points) + " action points left ")
 				Attack()
+				
 			else:
 				CantAttack(range)
 		else:
 			CantAttack(range)
 
-func BrawlAttack() -> bool:
+func BrawlAttack(Name : String) -> bool:
 	var ReturnBool = false
 	#Replace for loop with selected target
 	#n being the target
 	if Target != null:
-		SelectAttacker.rpc(GlobalScript.PlayerNode[Turn_Order -1].Name)
+		if Name == "Player":
+			SelectAttacker.rpc(GlobalScript.PlayerNode[Turn_Order -1].Name)
+		else:
+			SelectAttacker.rpc(Name)
 		if CanAttack(0):
 			if(!Attacker.FreeBrawl):
 				Attacker.action_points -= 1
+				GlobalScript.DebugScript.add(str(Attacker.Name)+" Attacked "+str(Target.Name))
+				GlobalScript.DebugScript.add(str(Attacker.Name)+" has "+str(Attacker.action_points) + " action points left ")
 			Attacker.FreeBrawl = false
 			Attack()
 			SwapAttacking.rpc()
@@ -516,5 +532,6 @@ func movePossible():
 	move.emit()
 	pass
 
-	
-	
+func PlayerUI(vis : bool) -> void :
+	AttackButton.visible = !vis
+	AttackUI.visible = vis

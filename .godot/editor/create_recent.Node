@@ -1,12 +1,12 @@
-Button
 CanvasLayer
-Node
+Button
 Sprite2D
 Node2D
 TextureRect
 Window
 Label
 ColorRect
+Node
 Panel
 MarginContainer
 PanelContainer

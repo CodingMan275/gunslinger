@@ -34,8 +34,8 @@ extends CharacterBody2D
 
 @onready var DrawButton = get_parent().DrawButton
 
-@onready var RangeButton = get_parent().RangeButton
-@onready var BrawlButton = get_parent().BrawlButton
+@onready var AttackButton = get_parent().AttackButton
+@onready var AttackUI = get_parent().AttackUI
 
 @onready var HandButton = get_parent().HandButton
 
@@ -125,8 +125,8 @@ func _update_turn(x):
 			#Hide the end turn button so it can not be used
 			EndTurnLabel.hide()
 			DrawButton.hide()
-			RangeButton.hide()
-			BrawlButton.hide()
+			rule_scene.PlayerUI(false)
+			AttackButton.hide()
 			MoveButton.hide()
 			GiveTakeButton.hide()
 		#	HandButton.hide()
@@ -145,8 +145,7 @@ func _update_turn(x):
 			DynamiteButton.show()
 			EndTurnLabel.show()
 			DrawButton.show()
-			RangeButton.show()
-			BrawlButton.show()
+			AttackButton.show()
 			MoveButton.show()
 			NearbyTownieCheck()
 	#		HandButton.show()
@@ -193,8 +192,8 @@ func PutCardInHand(Card, FirstDraw, p_i):
 				#Hide the draw button
 				DrawButton.hide()
 				MoveButton.hide()
-				RangeButton.hide()
-				BrawlButton.hide()
+				AttackButton.hide()
+				AttackUI.hide()
 	pass
 	
 #This function will run and if the player has the hired gun in their hand
@@ -232,6 +231,7 @@ func MoveMouse():
 							self.global_position = Vector2(get_global_mouse_position())
 							pos = NewPos
 							action_points -= 1
+							GlobalScript.DebugScript.add(str(self.Name)+" has "+str(self.action_points) + " action points left ")
 							DrawButton.hide()
 							Movable = false
 							UpdateMove.rpc(self.global_position, NewPos)
