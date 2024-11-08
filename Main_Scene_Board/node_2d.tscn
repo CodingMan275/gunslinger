@@ -433,7 +433,6 @@ tile_set = SubResource("TileSet_mbj4e")
 script = ExtResource("15_ndo7p")
 
 [node name="Player_Layer" type="TileMapLayer" parent="."]
-visible = false
 y_sort_enabled = true
 use_parent_material = true
 position = Vector2(632, -56)
@@ -442,6 +441,7 @@ tile_set = SubResource("TileSet_mbj4e")
 script = ExtResource("17_kp6gm")
 
 [node name="Building_Layer" type="TileMapLayer" parent="."]
+visible = false
 y_sort_enabled = true
 use_parent_material = true
 position = Vector2(0, 112)
