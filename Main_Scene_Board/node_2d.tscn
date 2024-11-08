@@ -513,7 +513,6 @@ pitch_scale = 1.95
 bus = &"SFX"
 
 [node name="SpecialAbilityButton" type="Button" parent="CanvasLayer/Draw Card"]
-visible = false
 layout_mode = 0
 offset_left = 339.0
 offset_top = -71.0
