@@ -38,18 +38,18 @@ func Action():
 					rpcWeapon2.rpc(WepStats)
 					giving = false
 				#	if(curPlayer.get_node("CanvasLayer").Middle >4):
-					if(curPlayer.get_node("CanvasLayer").Middle != curPlayer.PlayerHand.size()):
+					if(curPlayer.get_node("CanvasLayer").Middle != curPlayer.PlayerHand.size() - 1):
 						curPlayer.get_node("CanvasLayer")._on_right_pressed()
 				
 						curPlayer.PlayerHand.pop_at(curPlayer.get_node("CanvasLayer").Middle + 1)
 				
 						curPlayer.get_node("CanvasLayer")._on_left_pressed()
 					else:
-						curPlayer.get_node("CanvasLayer")._on_left_pressed()
-				
-						curPlayer.PlayerHand.pop_at(curPlayer.get_node("CanvasLayer").Middle - 1)
-				
-						curPlayer.get_node("CanvasLayer")._on_right_pressed()
+						curPlayer.PlayerHand.pop_at(curPlayer.get_node("CanvasLayer").Middle)
+						curPlayer.get_node("CanvasLayer").Middle -= 1
+						#curPlayer.get_node("CanvasLayer").MaxBound - 1
+						curPlayer.get_node("CanvasLayer").MinBound -= 1
+						curPlayer.get_node("CanvasLayer").refresh()
 				#		curPlayer.get_node("CanvasLayer").MaxBound -= 1
 				#		curPlayer.get_node("CanvasLayer").Middle -= 1
 				#		curPlayer.get_node("CanvasLayer").MinBound -= 1
@@ -72,19 +72,20 @@ func Action():
 				rpcWeapon1.rpc(WepStats)
 				print("Give wepaon 1")
 				giving = false
-				#if(curPlayer.get_node("CanvasLayer").Middle > 4):
-				if(curPlayer.get_node("CanvasLayer").Middle != curPlayer.PlayerHand.size()):
+				if(curPlayer.get_node("CanvasLayer").Middle != curPlayer.PlayerHand.size() - 1):
 					curPlayer.get_node("CanvasLayer")._on_right_pressed()
 				
 					curPlayer.PlayerHand.pop_at(curPlayer.get_node("CanvasLayer").Middle + 1)
 				
 					curPlayer.get_node("CanvasLayer")._on_left_pressed()
 				else:
-					curPlayer.get_node("CanvasLayer")._on_left_pressed()
-				
-					curPlayer.PlayerHand.pop_at(curPlayer.get_node("CanvasLayer").Middle - 1)
-				
-					curPlayer.get_node("CanvasLayer")._on_right_pressed()
+					curPlayer.PlayerHand.pop_at(curPlayer.get_node("CanvasLayer").Middle)
+					curPlayer.get_node("CanvasLayer").Middle -= 1
+				#	curPlayer.get_node("CanvasLayer").MaxBound - 1
+					curPlayer.get_node("CanvasLayer").MinBound -= 1
+					curPlayer.get_node("CanvasLayer").refresh()
+					
+					
 					#curPlayer.get_node("CanvasLayer").MaxBound -= 1
 					#curPlayer.get_node("CanvasLayer").Middle -= 1
 				#	curPlayer.get_node("CanvasLayer").MinBound -= 1
@@ -162,8 +163,16 @@ func hideme(x):
 func rpcWeapon1TAKESIES(X, y):
 	if y == 1:
 		rules.get_node(X).PlayerHand.append(rules.Target.Weapon1Name)
+		if rules.get_node(X).get_node("CanvasLayer").Middle == rules.get_node(X).PlayerHand.size() -2:
+			rules.get_node(X).get_node("CanvasLayer").MaxBound = rules.get_node(X).get_node("CanvasLayer").Middle + 1
+			rules.get_node(X).get_node("CanvasLayer").refresh()
+		#rules.get_node(X).get_node("CanvasLayer").refresh()
 	else:
 		rules.get_node(X).PlayerHand.append(rules.Target.Weapon2Name)
+		if rules.get_node(X).get_node("CanvasLayer").Middle == rules.get_node(X).PlayerHand.size() -2:
+			rules.get_node(X).get_node("CanvasLayer").MaxBound = rules.get_node(X).get_node("CanvasLayer").Middle + 1
+			rules.get_node(X).get_node("CanvasLayer").refresh()
+		#rules.get_node(X).get_node("CanvasLayer").refresh()
 	
 	
 		

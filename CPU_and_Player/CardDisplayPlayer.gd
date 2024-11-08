@@ -53,6 +53,8 @@ func _on_right_pressed() -> void:
 	pass # Replace with function body.
 	
 	#I hopet his wroks forever becuase im fried
+	
+	#Curse you fried Josh this is all nonsense
 func refresh():
 	$Card3.texture = ResourceLoader.load(get_parent().CardNodeDeck.CardArt(get_parent().PlayerHand[MaxBound]))
 	$Card2.texture = ResourceLoader.load(get_parent().CardNodeDeck.CardArt(get_parent().PlayerHand[Middle]))
