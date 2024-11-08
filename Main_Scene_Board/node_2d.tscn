@@ -736,6 +736,49 @@ scale = Vector2(2.02606, 2.83457)
 text = "Preacher"
 metadata/_edit_use_anchors_ = true
 
+[node name="AttackingCanvas" type="CanvasLayer" parent="Townie_Logic/Preacher"]
+visible = false
+
+[node name="Range" type="Button" parent="Townie_Logic/Preacher/AttackingCanvas"]
+anchors_preset = -1
+anchor_left = 0.845
+anchor_top = 0.667
+anchor_right = 0.967
+anchor_bottom = 0.781
+offset_left = -50.6
+offset_top = 45.91
+offset_right = -51.16
+offset_bottom = 46.13
+text = "Range"
+
+[node name="Attack" type="AudioStreamPlayer2D" parent="Townie_Logic/Preacher/AttackingCanvas/Range"]
+position = Vector2(-16, -185)
+stream = ExtResource("8_7t4t6")
+
+[node name="Brawl" type="Button" parent="Townie_Logic/Preacher/AttackingCanvas"]
+anchors_preset = -1
+anchor_left = 0.844
+anchor_top = 0.807
+anchor_right = 0.965
+anchor_bottom = 0.922
+offset_left = 9.88
+offset_top = 8.11
+offset_right = 9.80002
+offset_bottom = 8.06
+text = "Brawl
+"
+
+[node name="Punch" type="AudioStreamPlayer2D" parent="Townie_Logic/Preacher/AttackingCanvas/Brawl"]
+position = Vector2(-16, -185)
+stream = ExtResource("8_7t4t6")
+
+[node name="Back" type="Button" parent="Townie_Logic/Preacher/AttackingCanvas"]
+offset_left = 418.0
+offset_top = 186.0
+offset_right = 463.0
+offset_bottom = 217.0
+text = "Back"
+
 [node name="Doctor" type="CharacterBody2D" parent="Townie_Logic"]
 script = ExtResource("16_2qs05")
 
@@ -758,6 +801,49 @@ offset_bottom = -84.032
 scale = Vector2(2.02606, 2.83457)
 text = "Doctor"
 metadata/_edit_use_anchors_ = true
+
+[node name="AttackingCanvas" type="CanvasLayer" parent="Townie_Logic/Doctor"]
+visible = false
+
+[node name="Range" type="Button" parent="Townie_Logic/Doctor/AttackingCanvas"]
+anchors_preset = -1
+anchor_left = 0.845
+anchor_top = 0.667
+anchor_right = 0.967
+anchor_bottom = 0.781
+offset_left = -50.6
+offset_top = 45.91
+offset_right = -51.16
+offset_bottom = 46.13
+text = "Range"
+
+[node name="Attack" type="AudioStreamPlayer2D" parent="Townie_Logic/Doctor/AttackingCanvas/Range"]
+position = Vector2(-16, -185)
+stream = ExtResource("8_7t4t6")
+
+[node name="Brawl" type="Button" parent="Townie_Logic/Doctor/AttackingCanvas"]
+anchors_preset = -1
+anchor_left = 0.844
+anchor_top = 0.807
+anchor_right = 0.965
+anchor_bottom = 0.922
+offset_left = 9.88
+offset_top = 8.11
+offset_right = 9.80002
+offset_bottom = 8.06
+text = "Brawl
+"
+
+[node name="Punch" type="AudioStreamPlayer2D" parent="Townie_Logic/Doctor/AttackingCanvas/Brawl"]
+position = Vector2(-16, -185)
+stream = ExtResource("8_7t4t6")
+
+[node name="Back" type="Button" parent="Townie_Logic/Doctor/AttackingCanvas"]
+offset_left = 418.0
+offset_top = 186.0
+offset_right = 463.0
+offset_bottom = 217.0
+text = "Back"
 
 [node name="Teacher" type="CharacterBody2D" parent="Townie_Logic"]
 script = ExtResource("17_evase")
@@ -782,6 +868,49 @@ scale = Vector2(2.02606, 2.83457)
 text = "Teacher"
 metadata/_edit_use_anchors_ = true
 
+[node name="AttackingCanvas" type="CanvasLayer" parent="Townie_Logic/Teacher"]
+visible = false
+
+[node name="Range" type="Button" parent="Townie_Logic/Teacher/AttackingCanvas"]
+anchors_preset = -1
+anchor_left = 0.845
+anchor_top = 0.667
+anchor_right = 0.967
+anchor_bottom = 0.781
+offset_left = -50.6
+offset_top = 45.91
+offset_right = -51.16
+offset_bottom = 46.13
+text = "Range"
+
+[node name="Attack" type="AudioStreamPlayer2D" parent="Townie_Logic/Teacher/AttackingCanvas/Range"]
+position = Vector2(-16, -185)
+stream = ExtResource("8_7t4t6")
+
+[node name="Brawl" type="Button" parent="Townie_Logic/Teacher/AttackingCanvas"]
+anchors_preset = -1
+anchor_left = 0.844
+anchor_top = 0.807
+anchor_right = 0.965
+anchor_bottom = 0.922
+offset_left = 9.88
+offset_top = 8.11
+offset_right = 9.80002
+offset_bottom = 8.06
+text = "Brawl
+"
+
+[node name="Punch" type="AudioStreamPlayer2D" parent="Townie_Logic/Teacher/AttackingCanvas/Brawl"]
+position = Vector2(-16, -185)
+stream = ExtResource("8_7t4t6")
+
+[node name="Back" type="Button" parent="Townie_Logic/Teacher/AttackingCanvas"]
+offset_left = 418.0
+offset_top = 186.0
+offset_right = 463.0
+offset_bottom = 217.0
+text = "Back"
+
 [node name="Town_Drunk" type="CharacterBody2D" parent="Townie_Logic"]
 script = ExtResource("18_8vpej")
 
@@ -804,6 +933,49 @@ offset_bottom = -84.032
 scale = Vector2(2.02606, 2.83457)
 text = "Town Drunk"
 metadata/_edit_use_anchors_ = true
+
+[node name="AttackingCanvas" type="CanvasLayer" parent="Townie_Logic/Town_Drunk"]
+visible = false
+
+[node name="Range" type="Button" parent="Townie_Logic/Town_Drunk/AttackingCanvas"]
+anchors_preset = -1
+anchor_left = 0.845
+anchor_top = 0.667
+anchor_right = 0.967
+anchor_bottom = 0.781
+offset_left = -50.6
+offset_top = 45.91
+offset_right = -51.16
+offset_bottom = 46.13
+text = "Range"
+
+[node name="Attack" type="AudioStreamPlayer2D" parent="Townie_Logic/Town_Drunk/AttackingCanvas/Range"]
+position = Vector2(-16, -185)
+stream = ExtResource("8_7t4t6")
+
+[node name="Brawl" type="Button" parent="Townie_Logic/Town_Drunk/AttackingCanvas"]
+anchors_preset = -1
+anchor_left = 0.844
+anchor_top = 0.807
+anchor_right = 0.965
+anchor_bottom = 0.922
+offset_left = 9.88
+offset_top = 8.11
+offset_right = 9.80002
+offset_bottom = 8.06
+text = "Brawl
+"
+
+[node name="Punch" type="AudioStreamPlayer2D" parent="Townie_Logic/Town_Drunk/AttackingCanvas/Brawl"]
+position = Vector2(-16, -185)
+stream = ExtResource("8_7t4t6")
+
+[node name="Back" type="Button" parent="Townie_Logic/Town_Drunk/AttackingCanvas"]
+offset_left = 418.0
+offset_top = 186.0
+offset_right = 463.0
+offset_bottom = 217.0
+text = "Back"
 
 [node name="Bar_Keep" type="CharacterBody2D" parent="Townie_Logic"]
 script = ExtResource("19_alpfg")
@@ -828,6 +1000,49 @@ scale = Vector2(2.02606, 2.83457)
 text = "Bar Keep"
 metadata/_edit_use_anchors_ = true
 
+[node name="AttackingCanvas" type="CanvasLayer" parent="Townie_Logic/Bar_Keep"]
+visible = false
+
+[node name="Range" type="Button" parent="Townie_Logic/Bar_Keep/AttackingCanvas"]
+anchors_preset = -1
+anchor_left = 0.845
+anchor_top = 0.667
+anchor_right = 0.967
+anchor_bottom = 0.781
+offset_left = -50.6
+offset_top = 45.91
+offset_right = -51.16
+offset_bottom = 46.13
+text = "Range"
+
+[node name="Attack" type="AudioStreamPlayer2D" parent="Townie_Logic/Bar_Keep/AttackingCanvas/Range"]
+position = Vector2(-16, -185)
+stream = ExtResource("8_7t4t6")
+
+[node name="Brawl" type="Button" parent="Townie_Logic/Bar_Keep/AttackingCanvas"]
+anchors_preset = -1
+anchor_left = 0.844
+anchor_top = 0.807
+anchor_right = 0.965
+anchor_bottom = 0.922
+offset_left = 9.88
+offset_top = 8.11
+offset_right = 9.80002
+offset_bottom = 8.06
+text = "Brawl
+"
+
+[node name="Punch" type="AudioStreamPlayer2D" parent="Townie_Logic/Bar_Keep/AttackingCanvas/Brawl"]
+position = Vector2(-16, -185)
+stream = ExtResource("8_7t4t6")
+
+[node name="Back" type="Button" parent="Townie_Logic/Bar_Keep/AttackingCanvas"]
+offset_left = 418.0
+offset_top = 186.0
+offset_right = 463.0
+offset_bottom = 217.0
+text = "Back"
+
 [node name="Ranch_Hand" type="CharacterBody2D" parent="Townie_Logic"]
 script = ExtResource("20_dwx7h")
 
@@ -851,6 +1066,49 @@ scale = Vector2(2.02606, 2.83457)
 text = "Ranch Hand"
 metadata/_edit_use_anchors_ = true
 
+[node name="AttackingCanvas" type="CanvasLayer" parent="Townie_Logic/Ranch_Hand"]
+visible = false
+
+[node name="Range" type="Button" parent="Townie_Logic/Ranch_Hand/AttackingCanvas"]
+anchors_preset = -1
+anchor_left = 0.845
+anchor_top = 0.667
+anchor_right = 0.967
+anchor_bottom = 0.781
+offset_left = -50.6
+offset_top = 45.91
+offset_right = -51.16
+offset_bottom = 46.13
+text = "Range"
+
+[node name="Attack" type="AudioStreamPlayer2D" parent="Townie_Logic/Ranch_Hand/AttackingCanvas/Range"]
+position = Vector2(-16, -185)
+stream = ExtResource("8_7t4t6")
+
+[node name="Brawl" type="Button" parent="Townie_Logic/Ranch_Hand/AttackingCanvas"]
+anchors_preset = -1
+anchor_left = 0.844
+anchor_top = 0.807
+anchor_right = 0.965
+anchor_bottom = 0.922
+offset_left = 9.88
+offset_top = 8.11
+offset_right = 9.80002
+offset_bottom = 8.06
+text = "Brawl
+"
+
+[node name="Punch" type="AudioStreamPlayer2D" parent="Townie_Logic/Ranch_Hand/AttackingCanvas/Brawl"]
+position = Vector2(-16, -185)
+stream = ExtResource("8_7t4t6")
+
+[node name="Back" type="Button" parent="Townie_Logic/Ranch_Hand/AttackingCanvas"]
+offset_left = 418.0
+offset_top = 186.0
+offset_right = 463.0
+offset_bottom = 217.0
+text = "Back"
+
 [node name="Store_Keeper" type="CharacterBody2D" parent="Townie_Logic"]
 script = ExtResource("45_l4515")
 
@@ -872,6 +1130,49 @@ offset_bottom = -84.032
 scale = Vector2(2.02606, 2.83457)
 text = "Ranch Hand"
 metadata/_edit_use_anchors_ = true
+
+[node name="AttackingCanvas" type="CanvasLayer" parent="Townie_Logic/Store_Keeper"]
+visible = false
+
+[node name="Range" type="Button" parent="Townie_Logic/Store_Keeper/AttackingCanvas"]
+anchors_preset = -1
+anchor_left = 0.845
+anchor_top = 0.667
+anchor_right = 0.967
+anchor_bottom = 0.781
+offset_left = -50.6
+offset_top = 45.91
+offset_right = -51.16
+offset_bottom = 46.13
+text = "Range"
+
+[node name="Attack" type="AudioStreamPlayer2D" parent="Townie_Logic/Store_Keeper/AttackingCanvas/Range"]
+position = Vector2(-16, -185)
+stream = ExtResource("8_7t4t6")
+
+[node name="Brawl" type="Button" parent="Townie_Logic/Store_Keeper/AttackingCanvas"]
+anchors_preset = -1
+anchor_left = 0.844
+anchor_top = 0.807
+anchor_right = 0.965
+anchor_bottom = 0.922
+offset_left = 9.88
+offset_top = 8.11
+offset_right = 9.80002
+offset_bottom = 8.06
+text = "Brawl
+"
+
+[node name="Punch" type="AudioStreamPlayer2D" parent="Townie_Logic/Store_Keeper/AttackingCanvas/Brawl"]
+position = Vector2(-16, -185)
+stream = ExtResource("8_7t4t6")
+
+[node name="Back" type="Button" parent="Townie_Logic/Store_Keeper/AttackingCanvas"]
+offset_left = 418.0
+offset_top = 186.0
+offset_right = 463.0
+offset_bottom = 217.0
+text = "Back"
 
 [node name="Mountain_Man" type="CharacterBody2D" parent="Townie_Logic"]
 script = ExtResource("46_08nss")
@@ -895,6 +1196,49 @@ scale = Vector2(2.02606, 2.83457)
 text = "Ranch Hand"
 metadata/_edit_use_anchors_ = true
 
+[node name="AttackingCanvas" type="CanvasLayer" parent="Townie_Logic/Mountain_Man"]
+visible = false
+
+[node name="Range" type="Button" parent="Townie_Logic/Mountain_Man/AttackingCanvas"]
+anchors_preset = -1
+anchor_left = 0.845
+anchor_top = 0.667
+anchor_right = 0.967
+anchor_bottom = 0.781
+offset_left = -50.6
+offset_top = 45.91
+offset_right = -51.16
+offset_bottom = 46.13
+text = "Range"
+
+[node name="Attack" type="AudioStreamPlayer2D" parent="Townie_Logic/Mountain_Man/AttackingCanvas/Range"]
+position = Vector2(-16, -185)
+stream = ExtResource("8_7t4t6")
+
+[node name="Brawl" type="Button" parent="Townie_Logic/Mountain_Man/AttackingCanvas"]
+anchors_preset = -1
+anchor_left = 0.844
+anchor_top = 0.807
+anchor_right = 0.965
+anchor_bottom = 0.922
+offset_left = 9.88
+offset_top = 8.11
+offset_right = 9.80002
+offset_bottom = 8.06
+text = "Brawl
+"
+
+[node name="Punch" type="AudioStreamPlayer2D" parent="Townie_Logic/Mountain_Man/AttackingCanvas/Brawl"]
+position = Vector2(-16, -185)
+stream = ExtResource("8_7t4t6")
+
+[node name="Back" type="Button" parent="Townie_Logic/Mountain_Man/AttackingCanvas"]
+offset_left = 418.0
+offset_top = 186.0
+offset_right = 463.0
+offset_bottom = 217.0
+text = "Back"
+
 [node name="Bounty_Hunter" type="CharacterBody2D" parent="Townie_Logic"]
 script = ExtResource("47_cjmfn")
 
@@ -916,6 +1260,49 @@ offset_bottom = -84.032
 scale = Vector2(2.02606, 2.83457)
 text = "Ranch Hand"
 metadata/_edit_use_anchors_ = true
+
+[node name="AttackingCanvas" type="CanvasLayer" parent="Townie_Logic/Bounty_Hunter"]
+visible = false
+
+[node name="Range" type="Button" parent="Townie_Logic/Bounty_Hunter/AttackingCanvas"]
+anchors_preset = -1
+anchor_left = 0.845
+anchor_top = 0.667
+anchor_right = 0.967
+anchor_bottom = 0.781
+offset_left = -50.6
+offset_top = 45.91
+offset_right = -51.16
+offset_bottom = 46.13
+text = "Range"
+
+[node name="Attack" type="AudioStreamPlayer2D" parent="Townie_Logic/Bounty_Hunter/AttackingCanvas/Range"]
+position = Vector2(-16, -185)
+stream = ExtResource("8_7t4t6")
+
+[node name="Brawl" type="Button" parent="Townie_Logic/Bounty_Hunter/AttackingCanvas"]
+anchors_preset = -1
+anchor_left = 0.844
+anchor_top = 0.807
+anchor_right = 0.965
+anchor_bottom = 0.922
+offset_left = 9.88
+offset_top = 8.11
+offset_right = 9.80002
+offset_bottom = 8.06
+text = "Brawl
+"
+
+[node name="Punch" type="AudioStreamPlayer2D" parent="Townie_Logic/Bounty_Hunter/AttackingCanvas/Brawl"]
+position = Vector2(-16, -185)
+stream = ExtResource("8_7t4t6")
+
+[node name="Back" type="Button" parent="Townie_Logic/Bounty_Hunter/AttackingCanvas"]
+offset_left = 418.0
+offset_top = 186.0
+offset_right = 463.0
+offset_bottom = 217.0
+text = "Back"
 
 [node name="Saloon_Girl" type="CharacterBody2D" parent="Townie_Logic"]
 script = ExtResource("48_ai5s4")
@@ -939,6 +1326,49 @@ scale = Vector2(2.02606, 2.83457)
 text = "Ranch Hand"
 metadata/_edit_use_anchors_ = true
 
+[node name="AttackingCanvas" type="CanvasLayer" parent="Townie_Logic/Saloon_Girl"]
+visible = false
+
+[node name="Range" type="Button" parent="Townie_Logic/Saloon_Girl/AttackingCanvas"]
+anchors_preset = -1
+anchor_left = 0.845
+anchor_top = 0.667
+anchor_right = 0.967
+anchor_bottom = 0.781
+offset_left = -50.6
+offset_top = 45.91
+offset_right = -51.16
+offset_bottom = 46.13
+text = "Range"
+
+[node name="Attack" type="AudioStreamPlayer2D" parent="Townie_Logic/Saloon_Girl/AttackingCanvas/Range"]
+position = Vector2(-16, -185)
+stream = ExtResource("8_7t4t6")
+
+[node name="Brawl" type="Button" parent="Townie_Logic/Saloon_Girl/AttackingCanvas"]
+anchors_preset = -1
+anchor_left = 0.844
+anchor_top = 0.807
+anchor_right = 0.965
+anchor_bottom = 0.922
+offset_left = 9.88
+offset_top = 8.11
+offset_right = 9.80002
+offset_bottom = 8.06
+text = "Brawl
+"
+
+[node name="Punch" type="AudioStreamPlayer2D" parent="Townie_Logic/Saloon_Girl/AttackingCanvas/Brawl"]
+position = Vector2(-16, -185)
+stream = ExtResource("8_7t4t6")
+
+[node name="Back" type="Button" parent="Townie_Logic/Saloon_Girl/AttackingCanvas"]
+offset_left = 418.0
+offset_top = 186.0
+offset_right = 463.0
+offset_bottom = 217.0
+text = "Back"
+
 [node name="Bank_Manager" type="CharacterBody2D" parent="Townie_Logic"]
 script = ExtResource("49_4aoh4")
 
@@ -961,6 +1391,49 @@ scale = Vector2(2.02606, 2.83457)
 text = "Ranch Hand"
 metadata/_edit_use_anchors_ = true
 
+[node name="AttackingCanvas" type="CanvasLayer" parent="Townie_Logic/Bank_Manager"]
+visible = false
+
+[node name="Range" type="Button" parent="Townie_Logic/Bank_Manager/AttackingCanvas"]
+anchors_preset = -1
+anchor_left = 0.845
+anchor_top = 0.667
+anchor_right = 0.967
+anchor_bottom = 0.781
+offset_left = -50.6
+offset_top = 45.91
+offset_right = -51.16
+offset_bottom = 46.13
+text = "Range"
+
+[node name="Attack" type="AudioStreamPlayer2D" parent="Townie_Logic/Bank_Manager/AttackingCanvas/Range"]
+position = Vector2(-16, -185)
+stream = ExtResource("8_7t4t6")
+
+[node name="Brawl" type="Button" parent="Townie_Logic/Bank_Manager/AttackingCanvas"]
+anchors_preset = -1
+anchor_left = 0.844
+anchor_top = 0.807
+anchor_right = 0.965
+anchor_bottom = 0.922
+offset_left = 9.88
+offset_top = 8.11
+offset_right = 9.80002
+offset_bottom = 8.06
+text = "Brawl
+"
+
+[node name="Punch" type="AudioStreamPlayer2D" parent="Townie_Logic/Bank_Manager/AttackingCanvas/Brawl"]
+position = Vector2(-16, -185)
+stream = ExtResource("8_7t4t6")
+
+[node name="Back" type="Button" parent="Townie_Logic/Bank_Manager/AttackingCanvas"]
+offset_left = 418.0
+offset_top = 186.0
+offset_right = 463.0
+offset_bottom = 217.0
+text = "Back"
+
 [node name="Sheriff" type="CharacterBody2D" parent="Townie_Logic"]
 script = ExtResource("50_glnk6")
 
@@ -982,6 +1455,49 @@ offset_bottom = -84.032
 scale = Vector2(2.02606, 2.83457)
 text = "Ranch Hand"
 metadata/_edit_use_anchors_ = true
+
+[node name="AttackingCanvas" type="CanvasLayer" parent="Townie_Logic/Sheriff"]
+visible = false
+
+[node name="Range" type="Button" parent="Townie_Logic/Sheriff/AttackingCanvas"]
+anchors_preset = -1
+anchor_left = 0.845
+anchor_top = 0.667
+anchor_right = 0.967
+anchor_bottom = 0.781
+offset_left = -50.6
+offset_top = 45.91
+offset_right = -51.16
+offset_bottom = 46.13
+text = "Range"
+
+[node name="Attack" type="AudioStreamPlayer2D" parent="Townie_Logic/Sheriff/AttackingCanvas/Range"]
+position = Vector2(-16, -185)
+stream = ExtResource("8_7t4t6")
+
+[node name="Brawl" type="Button" parent="Townie_Logic/Sheriff/AttackingCanvas"]
+anchors_preset = -1
+anchor_left = 0.844
+anchor_top = 0.807
+anchor_right = 0.965
+anchor_bottom = 0.922
+offset_left = 9.88
+offset_top = 8.11
+offset_right = 9.80002
+offset_bottom = 8.06
+text = "Brawl
+"
+
+[node name="Punch" type="AudioStreamPlayer2D" parent="Townie_Logic/Sheriff/AttackingCanvas/Brawl"]
+position = Vector2(-16, -185)
+stream = ExtResource("8_7t4t6")
+
+[node name="Back" type="Button" parent="Townie_Logic/Sheriff/AttackingCanvas"]
+offset_left = 418.0
+offset_top = 186.0
+offset_right = 463.0
+offset_bottom = 217.0
+text = "Back"
 
 [connection signal="child_order_changed" from="." to="Rules_Controller" method="_on_node_2d_child_order_changed"]
 [connection signal="pressed" from="StartUpCanvas/Start" to="Rules_Controller" method="DeleteLater"]
@@ -1013,3 +1529,63 @@ metadata/_edit_use_anchors_ = true
 [connection signal="DrawnCard" from="Cards" to="Townie_Logic/Town_Drunk" method="hire_townsfolk"]
 [connection signal="DrawnCard" from="Cards" to="Townie_Logic/Bar_Keep" method="hire_townsfolk"]
 [connection signal="DrawnCard" from="Cards" to="Townie_Logic/Ranch_Hand" method="hire_townsfolk"]
+[connection signal="pressed" from="Townie_Logic/Preacher/AttackingCanvas/Range" to="Layer0" method="_on_attack_pressed"]
+[connection signal="pressed" from="Townie_Logic/Preacher/AttackingCanvas/Range" to="Rules_Controller" method="RangeAttack" binds= ["Preacher"]]
+[connection signal="pressed" from="Townie_Logic/Preacher/AttackingCanvas/Brawl" to="Layer0" method="_on_brawl_pressed"]
+[connection signal="pressed" from="Townie_Logic/Preacher/AttackingCanvas/Brawl" to="Rules_Controller" method="BrawlAttack" binds= ["Preacher"]]
+[connection signal="pressed" from="Townie_Logic/Preacher/AttackingCanvas/Back" to="Rules_Controller" method="PlayerUI" binds= [false]]
+[connection signal="pressed" from="Townie_Logic/Doctor/AttackingCanvas/Range" to="Layer0" method="_on_attack_pressed"]
+[connection signal="pressed" from="Townie_Logic/Doctor/AttackingCanvas/Range" to="Rules_Controller" method="RangeAttack" binds= ["Doctor"]]
+[connection signal="pressed" from="Townie_Logic/Doctor/AttackingCanvas/Brawl" to="Layer0" method="_on_brawl_pressed"]
+[connection signal="pressed" from="Townie_Logic/Doctor/AttackingCanvas/Brawl" to="Rules_Controller" method="BrawlAttack" binds= ["Doctor"]]
+[connection signal="pressed" from="Townie_Logic/Doctor/AttackingCanvas/Back" to="Rules_Controller" method="PlayerUI" binds= [false]]
+[connection signal="pressed" from="Townie_Logic/Teacher/AttackingCanvas/Range" to="Layer0" method="_on_attack_pressed"]
+[connection signal="pressed" from="Townie_Logic/Teacher/AttackingCanvas/Range" to="Rules_Controller" method="RangeAttack" binds= ["Teacher"]]
+[connection signal="pressed" from="Townie_Logic/Teacher/AttackingCanvas/Brawl" to="Layer0" method="_on_brawl_pressed"]
+[connection signal="pressed" from="Townie_Logic/Teacher/AttackingCanvas/Brawl" to="Rules_Controller" method="BrawlAttack" binds= ["Teacher"]]
+[connection signal="pressed" from="Townie_Logic/Teacher/AttackingCanvas/Back" to="Rules_Controller" method="PlayerUI" binds= [false]]
+[connection signal="pressed" from="Townie_Logic/Town_Drunk/AttackingCanvas/Range" to="Layer0" method="_on_attack_pressed"]
+[connection signal="pressed" from="Townie_Logic/Town_Drunk/AttackingCanvas/Range" to="Rules_Controller" method="RangeAttack" binds= ["Town_Drunk"]]
+[connection signal="pressed" from="Townie_Logic/Town_Drunk/AttackingCanvas/Brawl" to="Layer0" method="_on_brawl_pressed"]
+[connection signal="pressed" from="Townie_Logic/Town_Drunk/AttackingCanvas/Brawl" to="Rules_Controller" method="BrawlAttack" binds= ["Town_Drunk"]]
+[connection signal="pressed" from="Townie_Logic/Town_Drunk/AttackingCanvas/Back" to="Rules_Controller" method="PlayerUI" binds= [false]]
+[connection signal="pressed" from="Townie_Logic/Bar_Keep/AttackingCanvas/Range" to="Layer0" method="_on_attack_pressed"]
+[connection signal="pressed" from="Townie_Logic/Bar_Keep/AttackingCanvas/Range" to="Rules_Controller" method="RangeAttack" binds= ["Bar_Keep"]]
+[connection signal="pressed" from="Townie_Logic/Bar_Keep/AttackingCanvas/Brawl" to="Layer0" method="_on_brawl_pressed"]
+[connection signal="pressed" from="Townie_Logic/Bar_Keep/AttackingCanvas/Brawl" to="Rules_Controller" method="BrawlAttack" binds= ["Bar_Keep"]]
+[connection signal="pressed" from="Townie_Logic/Bar_Keep/AttackingCanvas/Back" to="Rules_Controller" method="PlayerUI" binds= [false]]
+[connection signal="pressed" from="Townie_Logic/Ranch_Hand/AttackingCanvas/Range" to="Layer0" method="_on_attack_pressed"]
+[connection signal="pressed" from="Townie_Logic/Ranch_Hand/AttackingCanvas/Range" to="Rules_Controller" method="RangeAttack" binds= ["Ranch_Hand"]]
+[connection signal="pressed" from="Townie_Logic/Ranch_Hand/AttackingCanvas/Brawl" to="Layer0" method="_on_brawl_pressed"]
+[connection signal="pressed" from="Townie_Logic/Ranch_Hand/AttackingCanvas/Brawl" to="Rules_Controller" method="BrawlAttack" binds= ["Ranch_Hand"]]
+[connection signal="pressed" from="Townie_Logic/Ranch_Hand/AttackingCanvas/Back" to="Rules_Controller" method="PlayerUI" binds= [false]]
+[connection signal="pressed" from="Townie_Logic/Store_Keeper/AttackingCanvas/Range" to="Layer0" method="_on_attack_pressed"]
+[connection signal="pressed" from="Townie_Logic/Store_Keeper/AttackingCanvas/Range" to="Rules_Controller" method="RangeAttack" binds= ["Store_Keeper"]]
+[connection signal="pressed" from="Townie_Logic/Store_Keeper/AttackingCanvas/Brawl" to="Layer0" method="_on_brawl_pressed"]
+[connection signal="pressed" from="Townie_Logic/Store_Keeper/AttackingCanvas/Brawl" to="Rules_Controller" method="BrawlAttack" binds= ["Store_Keeper"]]
+[connection signal="pressed" from="Townie_Logic/Store_Keeper/AttackingCanvas/Back" to="Rules_Controller" method="PlayerUI" binds= [false]]
+[connection signal="pressed" from="Townie_Logic/Mountain_Man/AttackingCanvas/Range" to="Layer0" method="_on_attack_pressed"]
+[connection signal="pressed" from="Townie_Logic/Mountain_Man/AttackingCanvas/Range" to="Rules_Controller" method="RangeAttack" binds= ["Mountain_Man"]]
+[connection signal="pressed" from="Townie_Logic/Mountain_Man/AttackingCanvas/Brawl" to="Layer0" method="_on_brawl_pressed"]
+[connection signal="pressed" from="Townie_Logic/Mountain_Man/AttackingCanvas/Brawl" to="Rules_Controller" method="BrawlAttack" binds= ["Mountain_Man"]]
+[connection signal="pressed" from="Townie_Logic/Mountain_Man/AttackingCanvas/Back" to="Rules_Controller" method="PlayerUI" binds= [false]]
+[connection signal="pressed" from="Townie_Logic/Bounty_Hunter/AttackingCanvas/Range" to="Layer0" method="_on_attack_pressed"]
+[connection signal="pressed" from="Townie_Logic/Bounty_Hunter/AttackingCanvas/Range" to="Rules_Controller" method="RangeAttack" binds= ["Bounty_Hunter"]]
+[connection signal="pressed" from="Townie_Logic/Bounty_Hunter/AttackingCanvas/Brawl" to="Layer0" method="_on_brawl_pressed"]
+[connection signal="pressed" from="Townie_Logic/Bounty_Hunter/AttackingCanvas/Brawl" to="Rules_Controller" method="BrawlAttack" binds= ["Bounty_Hunter"]]
+[connection signal="pressed" from="Townie_Logic/Bounty_Hunter/AttackingCanvas/Back" to="Rules_Controller" method="PlayerUI" binds= [false]]
+[connection signal="pressed" from="Townie_Logic/Saloon_Girl/AttackingCanvas/Range" to="Layer0" method="_on_attack_pressed"]
+[connection signal="pressed" from="Townie_Logic/Saloon_Girl/AttackingCanvas/Range" to="Rules_Controller" method="RangeAttack" binds= ["Saloon_Girl"]]
+[connection signal="pressed" from="Townie_Logic/Saloon_Girl/AttackingCanvas/Brawl" to="Layer0" method="_on_brawl_pressed"]
+[connection signal="pressed" from="Townie_Logic/Saloon_Girl/AttackingCanvas/Brawl" to="Rules_Controller" method="BrawlAttack" binds= ["Saloon_Girl"]]
+[connection signal="pressed" from="Townie_Logic/Saloon_Girl/AttackingCanvas/Back" to="Rules_Controller" method="PlayerUI" binds= [false]]
+[connection signal="pressed" from="Townie_Logic/Bank_Manager/AttackingCanvas/Range" to="Layer0" method="_on_attack_pressed"]
+[connection signal="pressed" from="Townie_Logic/Bank_Manager/AttackingCanvas/Range" to="Rules_Controller" method="RangeAttack" binds= ["Bank_Manager"]]
+[connection signal="pressed" from="Townie_Logic/Bank_Manager/AttackingCanvas/Brawl" to="Layer0" method="_on_brawl_pressed"]
+[connection signal="pressed" from="Townie_Logic/Bank_Manager/AttackingCanvas/Brawl" to="Rules_Controller" method="BrawlAttack" binds= ["Bank_Manager"]]
+[connection signal="pressed" from="Townie_Logic/Bank_Manager/AttackingCanvas/Back" to="Rules_Controller" method="PlayerUI" binds= [false]]
+[connection signal="pressed" from="Townie_Logic/Sheriff/AttackingCanvas/Range" to="Layer0" method="_on_attack_pressed"]
+[connection signal="pressed" from="Townie_Logic/Sheriff/AttackingCanvas/Range" to="Rules_Controller" method="RangeAttack" binds= ["Sheriff"]]
+[connection signal="pressed" from="Townie_Logic/Sheriff/AttackingCanvas/Brawl" to="Layer0" method="_on_brawl_pressed"]
+[connection signal="pressed" from="Townie_Logic/Sheriff/AttackingCanvas/Brawl" to="Rules_Controller" method="BrawlAttack" binds= ["Sheriff"]]
+[connection signal="pressed" from="Townie_Logic/Sheriff/AttackingCanvas/Back" to="Rules_Controller" method="PlayerUI" binds= [false]]
