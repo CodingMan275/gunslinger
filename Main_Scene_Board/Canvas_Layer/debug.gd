@@ -5,7 +5,7 @@ extends PanelContainer
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	GlobalScript.DebugScript = self
-	visible = false
+	
 
 func _input(event):
 	if(event.is_action_pressed("Debug")):

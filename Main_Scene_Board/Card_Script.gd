@@ -137,6 +137,16 @@ func CardArt(CardName):
 		return("res://oldsmokey.svg")
 	elif(CardName == "Ranch_Hand"):
 		return("res://thekid.svg")
+	elif(CardName == "Knife"):
+		return("res://Main_Scene_Board/Weapon_Art/Knife.png")
+	elif(CardName == "Pistol"):
+		return("res://Main_Scene_Board/Weapon_Art/pistol.png")
+	elif(CardName == "TwinPistol"):
+		return("res://Main_Scene_Board/Weapon_Art/TwinPistols.png")
+	elif(CardName == "Rifle"):
+		return("res://Main_Scene_Board/Weapon_Art/Rifle.png")
+	elif(CardName == "Shotgun"):
+		return("res://Main_Scene_Board/Weapon_Art/shotgun.png")
 	else:
 		return("res://icon.svg")
 	pass

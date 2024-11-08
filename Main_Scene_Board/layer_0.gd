@@ -1,8 +1,8 @@
 extends TileMapLayer
 
 @onready var Sound_Player2 = $"../CanvasLayer/Draw Card/Draw cards"
-@onready var Sound_Player3 = $"../CanvasLayer/Attack/Attack"
-@onready var Sound_Player4 = $"../CanvasLayer/Brawl/Punch"
+@onready var Sound_Player3 = $"../AttackingCanvas/Range/Attack"
+@onready var Sound_Player4 = $"../AttackingCanvas/Brawl/Punch"
 
 enum TerrainType{
 	

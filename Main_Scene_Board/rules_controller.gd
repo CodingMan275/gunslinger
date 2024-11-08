@@ -25,8 +25,13 @@ var accuracy : int
 #Getting the turn buttons from the scene when this node is ready
 @onready var EndTurnButton = get_node("../CanvasLayer/Button")
 @onready var DrawButton = get_node("../CanvasLayer/Draw Card")
-@onready var RangeButton = get_node("../CanvasLayer/Attack")
-@onready var BrawlButton = get_node("../CanvasLayer/Brawl")
+
+@onready var AttackUI = get_node("../AttackingCanvas")
+@onready var RangeButton = get_node("../AttackingCanvas/Range")
+@onready var BrawlButton = get_node("../AttackingCanvas/Brawl")
+@onready var BackButton = get_node("../AttackingCanvas/Back")
+@onready var AttackButton = get_node("../CanvasLayer/Attack")
+
 @onready var HandButton = get_node("../CanvasLayer/Show Hand")
 @onready var DynamiteButton = get_node("../CanvasLayer/Dynamite")
 @onready var MoveButton = get_node("../CanvasLayer/Move")
@@ -45,8 +50,11 @@ var accuracy : int
 
 var DisplayArray = []
 
-var Target : Node
+signal guyClicked
 
+var Attacker: Node2D
+var Target : Node2D
+var TargetGunSlinger : bool
 
 #region Start Up System
 
@@ -267,7 +275,7 @@ func Winner():
 	if(!GlobalScript.SinglePlay):
 		if Turn_Order == 2:
 			get_tree().change_scene_to_file("res://Victory_Screens/player2_victory_screen.tscn")
-			#get_parent().queue_free()
+	get_parent().queue_free()
 	GlobalScript.clear()
 
 
@@ -281,147 +289,179 @@ func _ClaimCards() -> void:
 func DisplayCards():
 	
 	pass
-	
 
-func SelectTownie(guy : String) -> void:
-	Target = Townie.get_node(guy)
-	print("Selected Target at: ", Target.pos)
-	
-func SelectGunslinger(guy : int) -> void:
-	Target = GlobalScript.PlayerNode[guy-1]
-	print("Selected Target at: ", Target.pos)
 
 #region Attacking and Dynamite
 
-#The RPC updates the health of the local player and all the players it can see
-#It also updates for all the ppers so they see the proper health for all their player instances
+# Assigns a Townie as a target
 @rpc("any_peer","call_local")
-func Attack_Calc(Enemy, Player):
-	#take weapon damage from what the attacking player is holding
-	var damage = GlobalScript.PlayerNode[Player].Weapon1Dmg
-	#Damage the player accordingly
-	#Also logic error? Its taking the the player thats getting attack
-	#Weapon damage, not the attacking players?
-	GlobalScript.PlayerNode[Enemy].Health -= damage
-	
-	if GlobalScript.PlayerNode[Enemy].Health <= 0:
-		GlobalScript.PlayerNode[Enemy].Health = 0
-		GlobalScript.PlayerNode[Enemy].PlayerHand.clear()
-	
-	
-	# How to get a players townie
+func SelectTownie(guy : String) -> void:
+	TargetGunSlinger = false
+	Target = Townie.get_node(guy)
+	guyClicked.emit()
 
+#Assigns a Gunslinger as a Target
+@rpc("any_peer","call_local")
+func SelectGunslinger(guy : int) -> void:
+	TargetGunSlinger = true
+	Target = GlobalScript.PlayerNode[guy-1]
+
+#This will Swap the Attacker and Target. (Mainly used for Brawling)
+@rpc("any_peer","call_local")
+func SwapAttacking()-> void:
+	var Swap = Target
+	Target = Attacker
+	Attacker = Swap 
+
+#Assigment of the Attacker
+@rpc("any_peer","call_local")
+func SelectAttacker(guy : String) -> void:
+	var isplayer = false
 	for i in GlobalScript.PlayerNode.size():
-		print(GlobalScript.PlayerNode[i].name)
-		for x in 3:
-			var HGUN = Townie.get_node(GlobalScript.PlayerNode[i].PlayerHand[x+1])
-			print(HGUN.name)
+		if GlobalScript.PlayerNode[i].Name == guy:
+			isplayer = true
+			Attacker = GlobalScript.PlayerNode[i]
+	if !isplayer:
+		Attacker = Townie.get_node(guy)
 
-	#Debug enu to show damage
-	GlobalScript.DebugScript.add(GlobalScript.PlayerNode[Enemy].Name + " lost "+str(damage)+" points of hp")
-	GlobalScript.DebugScript.add(GlobalScript.PlayerNode[Enemy].Name + " now has "+str(GlobalScript.PlayerNode[Enemy].Health)+" points of hp")
-	for n in GlobalScript.PlayerNode.size():
-		if (GlobalScript.PlayerNode[n].Health <= 0):
-			Winner.rpc()
-	pass
-	
-#Tell everybody which node got stunned
-@rpc("any_peer","call_local")
-func StunPlay(Enemy, Player):
-	#A stun tracker to make sure a stunned player can't move
-	GlobalScript.PlayerNode[Enemy].StunTracker += GlobalScript.PlayerNode[Player].Weapon1Stun
-	pass
-
-
-func RangeAttack():
+func RangeAttack(Name : String):
 	#Replace for loop with clicking a sprite
 	#Where n will be the target selected
 	if Target != null:
-		for n in numPlayers:
-			var range= GlobalScript.PlayerNode[Turn_Order -1].Weapon1Range
-			if(n+1 != Turn_Order && range != 0):
-				if(TileMapScene.Boardwalk(GlobalScript.PlayerNode[Turn_Order -1].pos)):
-					print("The range was increased by one")
-					range+1
-				if(CanAttack(n,range)):
-					GlobalScript.PlayerNode[Turn_Order -1].action_points -= 1
-					Attack(n , Turn_Order -1)
+		if Name == "Player":
+			SelectAttacker.rpc(GlobalScript.PlayerNode[Turn_Order -1].Name)
+		else:
+			SelectAttacker.rpc(Name)
+		var range= Attacker.Weapon1Range
+		if range != 0:
+			if(TileMapScene.Boardwalk(Attacker.pos)):
+				print("The range was increased by one")
+				range+1
+			if CanAttack(range):
+				Attacker.action_points -= 1 
+				GlobalScript.DebugScript.add(str(Attacker.Name)+" Attacked "+str(Target.Name))
+				GlobalScript.DebugScript.add(str(Attacker.Name)+" has "+str(Attacker.action_points) + " action points left ")
+				Attack()
+				
 			else:
-				CantAttack(n,range)
+				CantAttack(range)
+		else:
+			CantAttack(range)
 
-func BrawlAttack() -> bool:
+func BrawlAttack(Name : String) -> bool:
 	var ReturnBool = false
 	#Replace for loop with selected target
 	#n being the target
 	if Target != null:
-		for n in numPlayers:
-			if(n+1 != Turn_Order && CanAttack(n,0)):
-				if(!GlobalScript.PlayerNode[Turn_Order -1].FreeBrawl):
-					GlobalScript.PlayerNode[Turn_Order -1].action_points -= 1
-				GlobalScript.PlayerNode[Turn_Order -1].FreeBrawl = false
-				Attack(n, Turn_Order -1)
-				Attack(Turn_Order -1 , n)
-				ReturnBool = true
-			else:
-				CantAttack(n , 0)
-				ReturnBool = false
+		if Name == "Player":
+			SelectAttacker.rpc(GlobalScript.PlayerNode[Turn_Order -1].Name)
+		else:
+			SelectAttacker.rpc(Name)
+		if CanAttack(0):
+			if(!Attacker.FreeBrawl):
+				Attacker.action_points -= 1
+				GlobalScript.DebugScript.add(str(Attacker.Name)+" Attacked "+str(Target.Name))
+				GlobalScript.DebugScript.add(str(Attacker.Name)+" has "+str(Attacker.action_points) + " action points left ")
+			Attacker.FreeBrawl = false
+			Attack()
+			SwapAttacking.rpc()
+			Attack()
+			SwapAttacking.rpc()
+			ReturnBool = true
+		else:
+			CantAttack(0)
+			ReturnBool = false
 	return ReturnBool
 
 #Detects if the player is capable of attacking
-func CanAttack(Enemy , range) -> bool:
-	return (GlobalScript.PlayerNode[Turn_Order-1].StunTracker ==0 && GlobalScript.PlayerNode[Turn_Order-1].can_act && 
-	GlobalScript.PlayerNode[Turn_Order -1].action_points !=0 && DistCheck(Enemy, range) && GlobalScript.PlayerNode[Enemy].StunTracker == 0)
+func CanAttack(range) -> bool:
+	return (Attacker.StunTracker ==0 && !Attacker.DrewCard && Attacker.action_points !=0 && DistCheck(range) && Target.StunTracker == 0)
 
 #States why a player cannot attack
-func CantAttack(Enemy , range) -> void:
+func CantAttack(range) -> void:
 	#You have no action points, stop that
-	if(GlobalScript.PlayerNode[Turn_Order -1].action_points == 0):
+	if(Attacker.action_points == 0):
 		GlobalScript.DebugScript.add("You have no more Action Points ")
 	#You drew a card and cannot attack
-	elif(!GlobalScript.PlayerNode[Turn_Order-1].can_act):
+	elif(Attacker.DrewCard):
 		GlobalScript.DebugScript.add("You cannot act because you drew a card")
 	#Youre stunned silly
-	elif(GlobalScript.PlayerNode[Turn_Order -1].StunTracker != 0):
+	elif(Attacker.StunTracker != 0):
 		GlobalScript.DebugScript.add("You are Stunned, you cannot attack ")
 	#The playerer youre trying to attack is stunned, cant attack them
-	elif(GlobalScript.PlayerNode[Enemy].StunTracker != 0):
-			GlobalScript.DebugScript.add(str(GlobalScript.PlayerNode[Enemy].Name + " is Stunned, you cannot attack "))
+	elif(Target.StunTracker != 0):
+		GlobalScript.DebugScript.add(str(Target.Name + " is Stunned, you cannot attack "))
 	#The player you are trying to attack is not in range
-	elif(!DistCheck(Enemy , range)):
-		GlobalScript.DebugScript.add(str(GlobalScript.PlayerNode[Enemy].Name + " is Not in Range"))
+	elif(!DistCheck(range)):
+		GlobalScript.DebugScript.add(str(Target.Name + " is Not in Range"))
 
 #Attack function
-func Attack(Enemy, Player) -> void:
+func Attack() -> void:
 	DrawButton.hide()
 	#Random attack ccheck
 	var Attack = (randi()%6 + 1)
 	#You are shooting at someone on a boardwalk
-	if(TileMapScene.Path(GlobalScript.PlayerNode[Player].pos) && TileMapScene.Boardwalk(GlobalScript.PlayerNode[Enemy].pos)):
+	if(TileMapScene.Path(Attacker.pos) && TileMapScene.Boardwalk(Target.pos)):
 		GlobalScript.DebugScript.add("The accuracy was decreased by one")
 		accuracy -=1
 	#If you are not in the same building as them
-	if TileMapScene.Building(GlobalScript.PlayerNode[Enemy].pos) && !TileMapScene.SameBuilding(GlobalScript.PlayerNode[Player].pos , GlobalScript.PlayerNode[Enemy].pos) :
+	if TileMapScene.Building(Target.pos) && !TileMapScene.SameBuilding(Attacker.pos , Target.pos) :
 		GlobalScript.DebugScript.add("The accuracy was decreased by two")
 		accuracy -=2
-	Attack += accuracy + GlobalScript.PlayerNode[Player].Profficenty
+	Attack += 4 #accuracy + GlobalScript.PlayerNode[Player].Profficenty
 	if(Attack < 3): # Miss
-		GlobalScript.DebugScript.add(str(GlobalScript.PlayerNode[Enemy].Name + " was missed"))
+		GlobalScript.DebugScript.add(str(Target.Name + " was missed"))
 	elif(Attack < 5): # Stun
-		GlobalScript.DebugScript.add(str(GlobalScript.PlayerNode[Enemy].Name + " was stunned"))
+		GlobalScript.DebugScript.add(str(Target.Name + " was stunned"))
 	#Rpc function call
-		StunPlay.rpc(Enemy, Player)
+		StunPlay.rpc()
 	else:
 		#Attack hit, rpc function call
-		Attack_Calc.rpc(Enemy, Player)
+		var damage = Attacker.Weapon1Dmg
+		Attack_Calc.rpc(damage)
 	accuracy = 0
+
+#The RPC updates the health of the local player and all the players it can see
+#It also updates for all the ppers so they see the proper health for all their player instances
+@rpc("any_peer","call_local")
+func Attack_Calc(damage):
+	#take weapon damage from what the attacking player is holding
+	#Damage the player accordingly
+	#Also logic error? Its taking the the player thats getting attack
+	#Weapon damage, not the attacking players?
+	Target.Health -= damage
+	'''
+	if GlobalScript.PlayerNode[Enemy].Health <= 0:
+		GlobalScript.PlayerNode[Enemy].Health = 0
+		GlobalScript.PlayerNode[Enemy].PlayerHand.clear()
+	'''
+	'''
+	# How to get a players townie
+	if TargetGunSlinger:
+		for x in 3:
+			var HGUN = Townie.get_node(Attacker.PlayerHand[x+1])
+			print(HGUN.name)
+	'''
+	#Debug enu to show damage
+	GlobalScript.DebugScript.add(Target.Name + " lost "+str(damage)+" points of hp")
+	GlobalScript.DebugScript.add(Target.Name + " now has "+str(Target.Health)+" points of hp")
+	if Target.Health <= 0 && TargetGunSlinger:
+		Winner.rpc()
+	pass
+
+#Tell everybody which node got stunned
+@rpc("any_peer","call_local")
+func StunPlay():
+	#A stun tracker to make sure a stunned player can't move
+	Target.StunTracker += Attacker.Weapon1Stun
+	pass
 
 
 #Check the distance from you and the player youre looking at
-func DistCheck(player, Dist) -> bool:
+func DistCheck(Dist) -> bool:
 	#Currently hard coded for two players
-	var PlayerLoc = GlobalScript.PlayerNode[Turn_Order -1].pos
-	var EnemyLoc = GlobalScript.PlayerNode[player].pos
-	
+	var PlayerLoc = Attacker.pos
+	var EnemyLoc = Target.pos
 	#Cannot shoot trough thick walls
 	if (TileMapScene.WalledBuilding(PlayerLoc) || TileMapScene.WalledBuilding(EnemyLoc)) && !TileMapScene.SameBuilding(PlayerLoc,EnemyLoc) && PlayerLoc.y == EnemyLoc.y:
 		return false
@@ -454,13 +494,13 @@ func DistCheck(player, Dist) -> bool:
 
 #Throw dynamite, needs work
 func Dynamite() -> bool:
-	if(StableCheck() && GlobalScript.PlayerNode[Turn_Order -1].action_points !=0 && GlobalScript.PlayerNode[Turn_Order-1].can_act):
+	if(StableCheck() && GlobalScript.PlayerNode[Turn_Order -1].action_points !=0 && !GlobalScript.PlayerNode[Turn_Order-1].DrewCard):
 		if(!GlobalScript.SinglePlay):
 			Winner.rpc()
 		else:
 			Winner()
 		return true
-	elif(!GlobalScript.PlayerNode[Turn_Order-1].can_act):
+	elif(GlobalScript.PlayerNode[Turn_Order-1].DrewCard):
 		GlobalScript.DebugScript.add("You cannot act because you drew a card")
 	elif(GlobalScript.PlayerNode[Turn_Order -1].action_points == 0):
 		GlobalScript.DebugScript.add("You have no more Action Points ")
@@ -492,5 +532,6 @@ func movePossible():
 	move.emit()
 	pass
 
-	
-	
+func PlayerUI(vis : bool) -> void :
+	AttackButton.visible = !vis
+	AttackUI.visible = vis

@@ -195,5 +195,6 @@ func MoveCPU():
 		rule_scene.TileMapScene.map_to_local(Vector2(pos.x,pos.y))
 		self.global_position = rule_scene.TileMapScene.map_to_local(pos)
 		action_points -= 1
+		GlobalScript.DebugScript.add(str(self.Name)+" has "+str(self.action_points) + " action points left ")
 	elif(GlobalScript.PlayerNode[order-1].StunTracker != 0):
 			GlobalScript.DebugScript.add("CPU stunned and cannot move")
