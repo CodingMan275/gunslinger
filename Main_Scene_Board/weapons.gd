@@ -37,19 +37,30 @@ func Action():
 				if WepStats[0] != "No":
 					rpcWeapon2.rpc(WepStats)
 					giving = false
-					if(curPlayer.get_node("CanvasLayer").Middle >4):
-						curPlayer.PlayerHand.pop_at(curPlayer.get_node("CanvasLayer").Middle)
-						curPlayer.get_node("CanvasLayer").MaxBound -= 1
-						curPlayer.get_node("CanvasLayer").Middle -= 1
-						curPlayer.get_node("CanvasLayer").MinBound -= 1
-						curPlayer.get_node("CanvasLayer").refresh()
-					elif(curPlayer.get_node("CanvasLayer").Middle == 4)	:
+				#	if(curPlayer.get_node("CanvasLayer").Middle >4):
+					if(curPlayer.get_node("CanvasLayer").Middle != curPlayer.PlayerHand.size()):
+						curPlayer.get_node("CanvasLayer")._on_right_pressed()
+				
+						curPlayer.PlayerHand.pop_at(curPlayer.get_node("CanvasLayer").Middle + 1)
+				
+						curPlayer.get_node("CanvasLayer")._on_left_pressed()
+					else:
+						curPlayer.get_node("CanvasLayer")._on_left_pressed()
+				
+						curPlayer.PlayerHand.pop_at(curPlayer.get_node("CanvasLayer").Middle - 1)
+				
+						curPlayer.get_node("CanvasLayer")._on_right_pressed()
+				#		curPlayer.get_node("CanvasLayer").MaxBound -= 1
+				#		curPlayer.get_node("CanvasLayer").Middle -= 1
+				#		curPlayer.get_node("CanvasLayer").MinBound -= 1
+				#		curPlayer.get_node("CanvasLayer").refresh()
+				#	elif(curPlayer.get_node("CanvasLayer").Middle == 4)	:
 						
-						curPlayer.PlayerHand.pop_at(curPlayer.get_node("CanvasLayer").Middle)
-						curPlayer.get_node("CanvasLayer").MaxBound += 1
-						curPlayer.get_node("CanvasLayer").Middle += 1
-						curPlayer.get_node("CanvasLayer").MinBound += 1
-						curPlayer.get_node("CanvasLayer").refresh()
+				#		curPlayer.PlayerHand.pop_at(curPlayer.get_node("CanvasLayer").Middle)
+				#		curPlayer.get_node("CanvasLayer").MaxBound += 1
+				#		curPlayer.get_node("CanvasLayer").Middle += 1
+				#		curPlayer.get_node("CanvasLayer").MinBound += 1
+				#		curPlayer.get_node("CanvasLayer").refresh()
 				else:
 					openGTWindow()
 					giving = false
@@ -61,18 +72,29 @@ func Action():
 				rpcWeapon1.rpc(WepStats)
 				print("Give wepaon 1")
 				giving = false
-				if(curPlayer.get_node("CanvasLayer").Middle > 4):
-					curPlayer.PlayerHand.pop_at(curPlayer.get_node("CanvasLayer").Middle)
-					curPlayer.get_node("CanvasLayer").MaxBound -= 1
-					curPlayer.get_node("CanvasLayer").Middle -= 1
-					curPlayer.get_node("CanvasLayer").MinBound -= 1
-					curPlayer.get_node("CanvasLayer").refresh()
-				elif(curPlayer.get_node("CanvasLayer").Middle == 4)	:
-					curPlayer.PlayerHand.pop_at(curPlayer.get_node("CanvasLayer").Middle)
-					curPlayer.get_node("CanvasLayer").MaxBound += 1
-					curPlayer.get_node("CanvasLayer").Middle += 1
-					curPlayer.get_node("CanvasLayer").MinBound += 1
-					curPlayer.get_node("CanvasLayer").refresh()
+				#if(curPlayer.get_node("CanvasLayer").Middle > 4):
+				if(curPlayer.get_node("CanvasLayer").Middle != curPlayer.PlayerHand.size()):
+					curPlayer.get_node("CanvasLayer")._on_right_pressed()
+				
+					curPlayer.PlayerHand.pop_at(curPlayer.get_node("CanvasLayer").Middle + 1)
+				
+					curPlayer.get_node("CanvasLayer")._on_left_pressed()
+				else:
+					curPlayer.get_node("CanvasLayer")._on_left_pressed()
+				
+					curPlayer.PlayerHand.pop_at(curPlayer.get_node("CanvasLayer").Middle - 1)
+				
+					curPlayer.get_node("CanvasLayer")._on_right_pressed()
+					#curPlayer.get_node("CanvasLayer").MaxBound -= 1
+					#curPlayer.get_node("CanvasLayer").Middle -= 1
+				#	curPlayer.get_node("CanvasLayer").MinBound -= 1
+				#	curPlayer.get_node("CanvasLayer").refresh()
+			#	elif(curPlayer.get_node("CanvasLayer").Middle == 4)	:
+			#		curPlayer.PlayerHand.pop_at(curPlayer.get_node("CanvasLayer").Middle)
+			#		curPlayer.get_node("CanvasLayer").MaxBound += 1
+			#		curPlayer.get_node("CanvasLayer").Middle += 1
+			#		curPlayer.get_node("CanvasLayer").MinBound += 1
+			#		curPlayer.get_node("CanvasLayer").refresh()
 				#curPlayer.PlayerHand.pop_at(curPlayer.get_node("CanvasLayer").Middle)
 			else:
 				openGTWindow()
@@ -81,7 +103,7 @@ func Action():
 	elif taking:
 		print("TAKE")
 		#var curPlayer
-		if rules.Target.Weapon2Equiped:
+		if rules.Target.Weapon2Equiped and rules.Target.Weapon1Equiped:
 			#Im so sorry im coding this while and high
 			#fucked numbers man
 			#jnwnjwnjnjfewikjgebgnrgjgnjWREWB;R RICE KRISPIUES
@@ -89,9 +111,12 @@ func Action():
 			$"../CanvasLayer/Weapon1".text = rules.Target.Weapon1Name
 			$"../CanvasLayer/Weapon1".show()
 			$"../CanvasLayer/Weapon2".show()
-		else:
+		elif rules.Target.Weapon1Equiped:
 			$"../CanvasLayer/Weapon1".text = rules.Target.Weapon1Name
 			$"../CanvasLayer/Weapon1".show()
+		elif rules.Target.Weapon2Equiped:
+			$"../CanvasLayer/Weapon2".text = rules.Target.Weapon2Name
+			$"../CanvasLayer/Weapon2".show()
 	else:
 		print(giving)
 		
@@ -108,6 +133,7 @@ func takeWeapon1():
 	rules.Target.Weapon1Stun = 0
 	rules.Target.Weapon1Range = 0
 	rules.Target.Weapon1Equiped = false
+	taking = false
 #curPlayer.PlayerHand.append(rules.Target.Weapon1Name)
 	$"../CanvasLayer/Weapon1".hide()
 	$"../CanvasLayer/Weapon2".hide()
@@ -115,6 +141,12 @@ func takeWeapon1():
 func takeWeapon2():
 	curPlayer = rules.get_node(str(multiplayer.get_unique_id()))
 	rpcWeapon1TAKESIES.rpc(str(multiplayer.get_unique_id()), 2)
+	rules.Target.Weapon2Name = "nope"
+	rules.Target.Weapon2Dmg = 0
+	rules.Target.Weapon2Stun = 0
+	rules.Target.Weapon2Range = 0
+	rules.Target.Weapon2Equiped = false
+	taking = false
 	$"../CanvasLayer/Weapon2".hide()
 	$"../CanvasLayer/Weapon1".hide()
 	
