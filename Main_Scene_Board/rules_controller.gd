@@ -42,7 +42,9 @@ var accuracy : int
 @onready var Townie = get_node("../Townie_Logic")
 @onready var Canvas = get_node("../CanvasLayer")
 @onready var Setup = get_node("../StartUpCanvas")
+@onready var Profic = get_node("res://proficiencylogic.gd")
 
+var AttackerProf
 #The Player scene which will be instantiated and used for spawning in
 #All peer players
 @export var player_scene : PackedScene
@@ -304,6 +306,7 @@ func SelectTownie(guy : String) -> void:
 @rpc("any_peer","call_local")
 func SelectGunslinger(guy : int) -> void:
 	TargetGunSlinger = true
+	
 	Target = GlobalScript.PlayerNode[guy-1]
 
 #This will Swap the Attacker and Target. (Mainly used for Brawling)
@@ -316,17 +319,21 @@ func SwapAttacking()-> void:
 #Assigment of the Attacker
 @rpc("any_peer","call_local")
 func SelectAttacker(guy : String) -> void:
+	AttackerProf = 0
 	var isplayer = false
 	for i in GlobalScript.PlayerNode.size():
 		if GlobalScript.PlayerNode[i].Name == guy:
 			isplayer = true
 			Attacker = GlobalScript.PlayerNode[i]
+			AttackerProf += Profic.GunslingerProficiencyCalc(i)
 	if !isplayer:
 		Attacker = Townie.get_node(guy)
+		AttackerProf += Profic.TownieProficiencyCalc(guy)
 
 func RangeAttack(Name : String):
 	#Replace for loop with clicking a sprite
 	#Where n will be the target selected
+	
 	if Target != null:
 		if Name == "Player":
 			SelectAttacker.rpc(GlobalScript.PlayerNode[Turn_Order -1].Name)

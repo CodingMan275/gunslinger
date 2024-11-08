@@ -15,6 +15,13 @@ class_name Town_Drunk
 
 var OwningPlayer
 
+var KnifeProf = 1
+var PistolProf = 1
+var RifleProf = 1
+var ShotgunProf = 0
+var TwinPistolProf = 1
+var BrawlProf = 1
+
 func _init():
 	pass
 # Called when the node enters the scene tree for the first time.

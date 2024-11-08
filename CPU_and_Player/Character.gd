@@ -1,6 +1,9 @@
 class Character extends CharacterBody2D: 
 	const WeaponScript = preload("res://CPU_and_Player/Weapon.gd")
 	
+	@onready var rules = get_node("res://Main_Scene_Board/rules_controller.gd")
+	
+	
 	var is_gunslinger = false
 	
 	#var ID: int
@@ -10,6 +13,7 @@ class Character extends CharacterBody2D:
 	var Weapon1Equiped = false
 	var Weapon2Equiped = false
 	
+	var proficiency
 	
 	var OriginalWeapon
 	var OriginalDmg
@@ -166,7 +170,7 @@ class Character extends CharacterBody2D:
 
 	# Called every frame. 'delta' is the elapsed time since the previous frame.
 	func _process(delta: float) -> void:
-#Every frame check to see if this node is movable
+	#Every frame check to see if this node is movable
 	#Was left mouse pressed? Enough Action points?
 		if Input.is_action_just_pressed("LeftClick") and ActionPoint > 0:
 		#See move_possible, see can_move()

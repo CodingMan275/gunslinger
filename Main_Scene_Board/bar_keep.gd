@@ -15,6 +15,12 @@ class_name Bar_Keep
 
 var OwningPlayer
 
+var KnifeProf = 0
+var PistolProf = 0
+var RifleProf = 0
+var ShotgunProf = 0
+var TwinPistolProf = 0
+var BrawlProf = 0
 
 func _init():
 	pass

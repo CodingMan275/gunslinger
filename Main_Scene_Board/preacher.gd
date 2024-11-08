@@ -20,6 +20,12 @@ class_name Preacher
 #Which player owns this hired gun, if any
 var OwningPlayer
 
+var KnifeProf = -1
+var PistolProf = 1
+var RifleProf = -1
+var ShotgunProf = 0
+var TwinPistolProf = 0
+var BrawlProf = 1
 
 func _init():
 	pass

@@ -15,6 +15,12 @@ class_name Saloon_Girl
 
 var OwningPlayer
 
+var KnifeProf = 1
+var PistolProf = -1
+var RifleProf = -1
+var ShotgunProf = -1
+var TwinPistolProf = 0
+var BrawlProf = 0
 
 func _init():
 	pass

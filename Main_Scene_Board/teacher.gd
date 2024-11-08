@@ -15,6 +15,13 @@ class_name Teacher
 
 var OwningPlayer
 
+var KnifeProf = 0
+var PistolProf = 0
+var RifleProf = 0
+var ShotgunProf =-1
+var TwinPistolProf = 0
+var BrawlProf = 0
+var DerringerProf = 1
 
 func _init():
 	pass

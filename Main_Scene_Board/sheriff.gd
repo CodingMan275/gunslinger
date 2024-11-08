@@ -15,6 +15,12 @@ class_name Sheriff
 
 var OwningPlayer
 
+var KnifeProf = 0
+var PistolProf = 1
+var RifleProf = 1
+var ShotgunProf = 0
+var TwinPistolProf = 0
+var BrawlProf = 1
 
 func _init():
 	pass

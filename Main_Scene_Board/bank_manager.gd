@@ -15,6 +15,12 @@ class_name Bank_Manager
 
 var OwningPlayer
 
+var KnifeProf = 0
+var PistolProf = 0
+var RifleProf = 0
+var ShotgunProf = 1
+var TwinPistolProf = 0
+var BrawlProf = -1
 
 func _init():
 	pass

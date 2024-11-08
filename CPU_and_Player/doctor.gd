@@ -15,6 +15,12 @@ class_name Doctor
 
 var OwningPlayer
 
+var KnifeProf = 1
+var PistolProf = 0
+var RifleProf = -1
+var ShotgunProf = 0
+var TwinPistolProf = 0
+var BrawlProf = -1
 
 func _init():
 	pass
