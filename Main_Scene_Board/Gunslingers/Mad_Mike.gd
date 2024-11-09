@@ -20,6 +20,13 @@ func _ready() -> void:
 	get_parent().Weapon2Dmg = 2
 	get_parent().Weapon2Stun = 1
 	get_parent().Weapon2Range = 0
+	
+	get_parent().KnifeProf = KnifeProf
+	get_parent().PistolProf = PistolProf
+	get_parent().RifleProf = RifleProf
+	get_parent().ShotgunProf = ShotgunProf
+	get_parent().TwinPistolProf = TwinPistolProf
+	get_parent().BrawlProf = BrawlProf
 
 	
 	pass # Replace with function body.

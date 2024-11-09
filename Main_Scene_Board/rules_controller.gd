@@ -44,7 +44,7 @@ var accuracy : int
 @onready var Setup = get_node("../StartUpCanvas")
 @onready var Profic = get_node("../ProficiencyNode")
 
-var AttackerProf
+@export var AttackerProf:int
 #The Player scene which will be instantiated and used for spawning in
 #All peer players
 @export var player_scene : PackedScene
