@@ -42,7 +42,7 @@ var accuracy : int
 @onready var Townie = get_node("../Townie_Logic")
 @onready var Canvas = get_node("../CanvasLayer")
 @onready var Setup = get_node("../StartUpCanvas")
-@onready var Profic = get_node("res://proficiencylogic.gd")
+@onready var Profic = get_node("../ProficiencyNode")
 
 var AttackerProf
 #The Player scene which will be instantiated and used for spawning in

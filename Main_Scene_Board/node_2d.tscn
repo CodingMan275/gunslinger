@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=4 uid="uid://jl7k3ltwbp41"]
+[gd_scene load_steps=70 format=4 uid="uid://jl7k3ltwbp41"]
 
 [ext_resource type="Texture2D" uid="uid://fcuqal2ynbts" path="res://Main_Scene_Board/spritesheet.png" id="1_o8ncf"]
 [ext_resource type="Texture2D" uid="uid://mmea4eto2a6p" path="res://Main_Scene_Board/Rhombus.png" id="2_rfajf"]
@@ -42,6 +42,7 @@
 [ext_resource type="Texture2D" uid="uid://c1keaoj8b1k3k" path="res://madmike.svg" id="22_nwhpe"]
 [ext_resource type="Texture2D" uid="uid://dywhqj3m2j1y3" path="res://oldsmokey.svg" id="24_5vq5u"]
 [ext_resource type="Texture2D" uid="uid://c5dj7es7aba7e" path="res://thekid.svg" id="26_ndqm4"]
+[ext_resource type="Script" path="res://proficiencylogic.gd" id="27_bf6tm"]
 [ext_resource type="Texture2D" uid="uid://bnk7r45gr5cn8" path="res://IMG_9861.png" id="27_uadwx"]
 [ext_resource type="Script" path="res://Main_Scene_Board/weapons.gd" id="30_sg7ny"]
 [ext_resource type="Script" path="res://TownieSpriteClick.gd" id="34_hshlf"]
@@ -692,6 +693,9 @@ offset_top = 182.0
 offset_right = 467.0
 offset_bottom = 213.0
 text = "Attack"
+
+[node name="ProficiencyNode" type="Node" parent="."]
+script = ExtResource("27_bf6tm")
 
 [node name="Rules_Controller" type="Node" parent="."]
 script = ExtResource("6_6e8od")

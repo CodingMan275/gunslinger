@@ -1,3 +1,4 @@
+Node
 Button
 CanvasLayer
 Sprite2D
@@ -6,7 +7,6 @@ TextureRect
 Window
 Label
 ColorRect
-Node
 Panel
 MarginContainer
 PanelContainer
