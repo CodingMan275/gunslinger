@@ -10,7 +10,8 @@ func _ready() -> void:
 	var Order = get_parent().get_parent().get_parent().Player_ID
 	OverAllHealth = GlobalScript.PlayerNode[Order -1].Health
 	
-	hasName = str(get_parent().get_parent().get_parent().LabelName).length() > 0
+	if !GlobalScript.SinglePlay:
+		hasName = str(get_parent().get_parent().get_parent().LabelName).length() > 0
 	
 	if(hasName):
 		GlobalScript.PlayerNode[Order -1].Name = get_parent().get_parent().get_parent().LabelName

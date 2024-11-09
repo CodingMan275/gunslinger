@@ -11,12 +11,24 @@ extends CharacterBody2D
 @export var Name : String
 #determines the current number of Action Points
 @export var action_points = 0
-@export var WeaponDmg = 4
-@export var WeaponStun = 1
-@export var WeaponRange = 2
+@export var Weapon1Name = ""
+@export var Weapon1Dmg = 4
+@export var Weapon1Stun = 1
+@export var Weapon1Range = 2
+@export var Weapon2Name = ""
+@export var Weapon2Dmg = 4
+@export var Weapon2Stun = 1
+@export var Weapon2Range = 2
 @export var StunTracker = 0
 @export var Profficenty = 0
 @export var FreeBrawl = true
+
+var KnifeProf = 0
+var PistolProf = 0
+var RifleProf = 0
+var ShotgunProf = 0
+var TwinPistolProf = 0
+var BrawlProf = 0
 
 #Player is spawned by rules controller as a child of it
 #Getting the parent node which has the emitters we need
