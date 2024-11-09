@@ -1,3 +1,5 @@
+Control
+CharacterBody2D
 Node
 Button
 CanvasLayer
@@ -11,4 +13,3 @@ Panel
 MarginContainer
 PanelContainer
 VBoxContainer
-TextureButton

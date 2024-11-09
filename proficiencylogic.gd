@@ -2,7 +2,7 @@ extends Node
 
 
 @onready var rules = get_node("../Rules_Controller")
-@onready var Weapon = get_node("res://CPU_and_Player/Character.gd")
+
 
 
 var Target : Node2D
@@ -11,15 +11,15 @@ var proficiency
 
 func TownieProficiencyCalc(guy : String) -> int:
 	Target = rules.Townie.get_node(guy)
-	if(Weapon.Weapon1Name == "Knife"):
+	if(Target.Weapon1Name == "Knife"):
 		proficiency = Target.KnifeProf
-	elif(Weapon.Weapon1Name == "Rifle"):
+	elif(Target.Weapon1Name == "Rifle"):
 		proficiency = Target.RifleProf
-	elif(Weapon.Weapon1Name == "TwinPistol"):
+	elif(Target.Weapon1Name == "TwinPistol"):
 		proficiency = Target.TwinPistolProf
-	elif(Weapon.Weapon1Name == "Pistol"):
+	elif(Target.Weapon1Name == "Pistol"):
 		proficiency == Target.PistolProf
-	elif(Weapon.Weapon1Name == "Shotgun"):
+	elif(Target.Weapon1Name == "Shotgun"):
 		proficiency = Target.ShotgunProf
 	else:
 		proficiency = Target.BrawlProf
@@ -27,15 +27,15 @@ func TownieProficiencyCalc(guy : String) -> int:
 	
 func GunslingerProficiencyCalc(guy : int) -> int:
 	Target = GlobalScript.PlayerNode[guy-1]
-	if(Weapon.Weapon1Name == "Knife"):
+	if(Target.Weapon1Name == "Knife"):
 		proficiency = Target.KnifeProf
-	elif(Weapon.Weapon1Name == "Rifle"):
+	elif(Target.Weapon1Name == "Rifle"):
 		proficiency = Target.RifleProf
-	elif(Weapon.Weapon1Name == "TwinPistol"):
+	elif(Target.Weapon1Name == "TwinPistol"):
 		proficiency = Target.TwinPistolProf
-	elif(Weapon.Weapon1Name == "Pistol"):
+	elif(Target.Weapon1Name == "Pistol"):
 		proficiency == Target.PistolProf
-	elif(Weapon.Weapon1Name == "Shotgun"):
+	elif(Target.Weapon1Name == "Shotgun"):
 		proficiency = Target.ShotgunProf
 	else:
 		proficiency = Target.BrawlProf
