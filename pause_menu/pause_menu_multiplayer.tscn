@@ -1,0 +1,171 @@
+[gd_scene load_steps=8 format=3 uid="uid://dfytnujg1s2es"]
+
+[ext_resource type="Shader" path="res://pause_menu/pause_menu_singleplayer.gdshader" id="1_2kl5h"]
+[ext_resource type="Script" path="res://pause_menu/pause_menu_multiplayer.gd" id="1_7u3h1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k5u20"]
+shader = ExtResource("1_2kl5h")
+shader_parameter/lod = 3.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_glenx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xqge4"]
+bg_color = Color(0.621524, 0.621524, 0.621524, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f2kk0"]
+bg_color = Color(0.621524, 0.621524, 0.621524, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xm4pd"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[node name="PauseMenuMultiplayer" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7u3h1")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_k5u20")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 141.0
+offset_top = 47.0
+offset_right = 339.0
+offset_bottom = 223.0
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -85.0
+offset_top = -76.0
+offset_right = 87.0
+offset_bottom = 75.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="Resume_Button" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_glenx")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xqge4")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_f2kk0")
+theme_override_styles/normal = SubResource("StyleBoxFlat_xm4pd")
+text = "Resume"
+
+[node name="Options_Button" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_glenx")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xqge4")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_f2kk0")
+theme_override_styles/normal = SubResource("StyleBoxFlat_xm4pd")
+text = "Options"
+
+[node name="Quit_Button" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_glenx")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xqge4")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_f2kk0")
+theme_override_styles/normal = SubResource("StyleBoxFlat_xm4pd")
+text = "Quit"
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -85.0
+offset_top = -76.0
+offset_right = 87.0
+offset_bottom = 75.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 18
+
+[node name="Label" type="RichTextLabel" parent="MarginContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 15
+text = "Are you sure you want to quit (This will mean you forfit)?"
+fit_content = true
+
+[node name="Yes_Button" type="Button" parent="MarginContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_glenx")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xqge4")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_f2kk0")
+theme_override_styles/normal = SubResource("StyleBoxFlat_xm4pd")
+text = "Yes"
+
+[node name="No_Button" type="Button" parent="MarginContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_glenx")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xqge4")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_f2kk0")
+theme_override_styles/normal = SubResource("StyleBoxFlat_xm4pd")
+text = "No"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Resume_Button" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Options_Button" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit_Button" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="MarginContainer2/VBoxContainer/Yes_Button" to="." method="_on_yes_button_pressed"]
+[connection signal="pressed" from="MarginContainer2/VBoxContainer/No_Button" to="." method="_on_no_button_pressed"]

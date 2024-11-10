@@ -1,4 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://c83b4qbnujsby"]
+[gd_scene load_steps=6 format=3 uid="uid://c83b4qbnujsby"]
+
+[ext_resource type="Script" path="res://pause_menu/pause_menu_button_multiplayer.gd" id="1_hngp3"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wlhlq"]
 
@@ -23,7 +25,7 @@ corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
-[node name="PauseMenuButton" type="Button"]
+[node name="PauseMenuButtonMultiplayer" type="Button"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -41,3 +43,6 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_yfeuf")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_a2nxc")
 theme_override_styles/normal = SubResource("StyleBoxFlat_gp72c")
 text = "||"
+script = ExtResource("1_hngp3")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

@@ -1,13 +1,13 @@
 extends Button
 
-@onready var pause_menu_singleplayer = %PauseMenuSingleplayer
-@onready var pause_menu_button_singleplayer = %PauseMenuButtonSinglePlayer
+@onready var pause_menu_multiplayer = %PauseMenuMultiplayer
+@onready var pause_menu_button_multiplayer = %PauseMenuButtonMultiplayer
+
 
 func _ready():
-	if GlobalScript.SinglePlay == true:
-		pause_menu_button_singleplayer.show()
-		print("Singleplayer Button visible")
+	if GlobalScript.SinglePlay == false:
+		pause_menu_button_multiplayer.show()
+		print("Multiplayer Button visible")
 
 func _on_pressed():
-	pause_menu_singleplayer.show()
-	print("Singleplayer Pause Menu open")
+	pause_menu_multiplayer.show()

@@ -1,13 +1,13 @@
 [gd_scene load_steps=7 format=3 uid="uid://d0ncmr5j7hrug"]
 
+[ext_resource type="Texture2D" uid="uid://xf2r52dg4fpm" path="res://main_menu/main_menu_art_assets/settings background blurred darkened.png" id="1_ai21t"]
 [ext_resource type="PackedScene" uid="uid://cebcnc652bypc" path="res://main_menu/main_menu_back_button.tscn" id="1_iekfw"]
 [ext_resource type="PackedScene" uid="uid://dx8bf3sg52wqi" path="res://main_menu/options_tab_container.tscn" id="1_pldix"]
-[ext_resource type="Texture2D" uid="uid://bjl6l6es04344" path="res://main_menu/main_menu_art_assets/Mountain background title screen.png" id="1_q7cdi"]
 [ext_resource type="PackedScene" uid="uid://hj83ai4o2o5m" path="res://debug_screen/Back_to_Debug_Menu.tscn" id="2_no4dn"]
 [ext_resource type="AudioStream" uid="uid://73gync2ngicf" path="res://main_menu/GunSlinger Menu.mp3" id="3_uqikf"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_s68js"]
-texture = ExtResource("1_q7cdi")
+texture = ExtResource("1_ai21t")
 
 [node name="OptionsMenu" type="Control"]
 layout_mode = 3
