@@ -135,7 +135,7 @@ func MultiPlay(i , index):
 		if index == 0:
 			#Player 1 information
 			#Set player 1 at position 0,0 on the tile map
-			var Start = Vector2(3,3)
+			var Start = Vector2(6,6)
 			currentPlayer.position = TileMapScene.map_to_local(Start)
 			#Ask michael, sets player node position to somewhere
 			GlobalScript.PlayerNode[index].pos = Start
@@ -148,7 +148,7 @@ func MultiPlay(i , index):
 		if index == 1:
 			#The next player in the PlayerInfo array, player 2
 			#Sets player 2 at a different position from player 1
-			var Start = Vector2(4,4)
+			var Start = Vector2(1,1)
 			currentPlayer.position = TileMapScene.map_to_local(Start)
 			#Ask michael, sets player node position to somewhere
 			GlobalScript.PlayerNode[index].pos = Start

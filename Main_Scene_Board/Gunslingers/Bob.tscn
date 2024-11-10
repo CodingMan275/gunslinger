@@ -6,11 +6,10 @@
 [ext_resource type="Script" path="res://GunslingerSpriteClick.gd" id="3_ue563"]
 
 [node name="Bob" type="Node2D"]
-scale = Vector2(0.0385261, 0.0456043)
 script = ExtResource("2_xrep5")
 
 [node name="TextureRect" type="Sprite2D" parent="."]
-scale = Vector2(1.292, 1)
+scale = Vector2(0.1, 0.1)
 texture = ExtResource("1_gp126")
 script = ExtResource("3_ue563")
 

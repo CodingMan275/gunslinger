@@ -2,11 +2,11 @@ extends Node
 
 
 var KnifeProf = 1
-var PistolProf = 2
-var RifleProf = 3
-var ShotgunProf = 4
-var TwinPistolProf = 5
-var BrawlProf = 6
+var PistolProf = 0
+var RifleProf = -1
+var ShotgunProf = 0
+var TwinPistolProf = 0
+var BrawlProf = -1
 
 
 

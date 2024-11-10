@@ -518,6 +518,7 @@ pitch_scale = 1.95
 bus = &"SFX"
 
 [node name="SpecialAbilityButton" type="Button" parent="CanvasLayer/Draw Card"]
+visible = false
 layout_mode = 0
 offset_left = 339.0
 offset_top = -71.0
@@ -673,10 +674,11 @@ offset_bottom = 213.0
 text = "Attack"
 
 [node name="Character_Sheets_View_Button" parent="CanvasLayer" instance=ExtResource("23_55pyv")]
-offset_left = 361.0
-offset_top = 221.0
-offset_right = 532.0
-offset_bottom = 284.0
+offset_left = 382.0
+offset_top = 84.0
+offset_right = 547.0
+offset_bottom = 140.0
+scale = Vector2(0.5, 0.5)
 
 [node name="Character Sheets Window" parent="CanvasLayer" instance=ExtResource("24_eaxtu")]
 unique_name_in_owner = true
