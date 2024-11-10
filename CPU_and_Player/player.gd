@@ -49,12 +49,12 @@ extends CharacterBody2D
 
 @onready var GiveTakeButton = get_parent().GiveTakeButton
 
-var KnifeProf = 0
-var PistolProf = 0
-var RifleProf = 0
-var ShotgunProf = 0
-var TwinPistolProf = 0
-var BrawlProf = 0
+var KnifeProf = 3
+var PistolProf = 3
+var RifleProf = 3
+var ShotgunProf = 3
+var TwinPistolProf = 3
+var BrawlProf = 3
 
 
 #So the player knows what order it is

@@ -407,6 +407,10 @@ func Attack() -> void:
 	DrawButton.hide()
 	#Random attack ccheck
 	var Attack = (randi()%6 + 1)
+	accuracy = 0
+	print("before", Attack)
+	print("AttackProf", AttackerProf)
+	Attack += AttackerProf
 	#You are shooting at someone on a boardwalk
 	if(TileMapScene.Path(Attacker.pos) && TileMapScene.Boardwalk(Target.pos)):
 		GlobalScript.DebugScript.add("The accuracy was decreased by one")
@@ -415,7 +419,8 @@ func Attack() -> void:
 	if TileMapScene.Building(Target.pos) && !TileMapScene.SameBuilding(Attacker.pos , Target.pos) :
 		GlobalScript.DebugScript.add("The accuracy was decreased by two")
 		accuracy -=2
-	Attack += 4 #accuracy + GlobalScript.PlayerNode[Player].Profficenty
+	Attack += accuracy #accuracy + GlobalScript.PlayerNode[Player].Profficenty
+	print("accuracy", accuracy)
 	if(Attack < 3): # Miss
 		GlobalScript.DebugScript.add(str(Target.Name + " was missed"))
 	elif(Attack < 5): # Stun
@@ -426,7 +431,8 @@ func Attack() -> void:
 		#Attack hit, rpc function call
 		var damage = Attacker.Weapon1Dmg
 		Attack_Calc.rpc(damage)
-	accuracy = 0
+	print("after", Attack)
+	
 
 #The RPC updates the health of the local player and all the players it can see
 #It also updates for all the ppers so they see the proper health for all their player instances
