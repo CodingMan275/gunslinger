@@ -57,6 +57,7 @@ signal guyClicked
 var Attacker: Node2D
 var Target : Node2D
 var TargetGunSlinger : bool
+var FirstDeath : bool = false
 
 #region Start Up System
 
@@ -135,7 +136,7 @@ func MultiPlay(i , index):
 		if index == 0:
 			#Player 1 information
 			#Set player 1 at position 0,0 on the tile map
-			var Start = Vector2(6,6)
+			var Start = Vector2(3,3)
 			currentPlayer.position = TileMapScene.map_to_local(Start)
 			#Ask michael, sets player node position to somewhere
 			GlobalScript.PlayerNode[index].pos = Start
@@ -148,7 +149,7 @@ func MultiPlay(i , index):
 		if index == 1:
 			#The next player in the PlayerInfo array, player 2
 			#Sets player 2 at a different position from player 1
-			var Start = Vector2(1,1)
+			var Start = Vector2(4,4)
 			currentPlayer.position = TileMapScene.map_to_local(Start)
 			#Ask michael, sets player node position to somewhere
 			GlobalScript.PlayerNode[index].pos = Start
@@ -271,12 +272,12 @@ func order_inc():
 func Winner():
 	if Turn_Order == 1:
 		get_tree().change_scene_to_file("res://Victory_Screens/player1_victory_screen.tscn")
-	elif(GlobalScript.SinglePlay):
-		await get_tree().create_timer(1).timeout
-		get_tree().change_scene_to_file("res://Victory_Screens/CPU2_victory_screen.tscn")
-	if(!GlobalScript.SinglePlay):
-		if Turn_Order == 2:
+	if Turn_Order == 2:
+		if(!GlobalScript.SinglePlay):
 			get_tree().change_scene_to_file("res://Victory_Screens/player2_victory_screen.tscn")
+		elif(GlobalScript.SinglePlay):
+			await get_tree().create_timer(1).timeout
+			get_tree().change_scene_to_file("res://Victory_Screens/CPU2_victory_screen.tscn")
 	get_parent().queue_free()
 	GlobalScript.clear()
 
@@ -388,13 +389,13 @@ func CanAttack(range) -> bool:
 func CantAttack(range) -> void:
 	#You have no action points, stop that
 	if(Attacker.action_points == 0):
-		GlobalScript.DebugScript.add("You have no more Action Points ")
+		GlobalScript.DebugScript.add(str(Attacker.action_points) + " has no more Action Points ")
 	#You drew a card and cannot attack
 	elif(Attacker.DrewCard):
-		GlobalScript.DebugScript.add("You cannot act because you drew a card")
+		GlobalScript.DebugScript.add(str(Attacker.action_points) + " cannot act because they drew a card")
 	#Youre stunned silly
 	elif(Attacker.StunTracker != 0):
-		GlobalScript.DebugScript.add("You are Stunned, you cannot attack ")
+		GlobalScript.DebugScript.add(str(Attacker.action_points) + " is Stunned and cannot attack ")
 	#The playerer youre trying to attack is stunned, cant attack them
 	elif(Target.StunTracker != 0):
 		GlobalScript.DebugScript.add(str(Target.Name + " is Stunned, you cannot attack "))
@@ -419,7 +420,7 @@ func Attack() -> void:
 	if TileMapScene.Building(Target.pos) && !TileMapScene.SameBuilding(Attacker.pos , Target.pos) :
 		GlobalScript.DebugScript.add("The accuracy was decreased by two")
 		accuracy -=2
-	Attack += accuracy #accuracy + GlobalScript.PlayerNode[Player].Profficenty
+	Attack += 10 #accuracy + GlobalScript.PlayerNode[Player].Profficenty
 	print("accuracy", accuracy)
 	if(Attack < 3): # Miss
 		GlobalScript.DebugScript.add(str(Target.Name + " was missed"))
@@ -459,7 +460,20 @@ func Attack_Calc(damage):
 	GlobalScript.DebugScript.add(Target.Name + " lost "+str(damage)+" points of hp")
 	GlobalScript.DebugScript.add(Target.Name + " now has "+str(Target.Health)+" points of hp")
 	if Target.Health <= 0 && TargetGunSlinger:
-		Winner.rpc()
+		#Checks to see if Gunslinger Claimed anyone
+		var HasTownie = false
+		for i in 3:
+			if Townie.get_node(Attacker.PlayerHand[i+1]).claim_revealed:
+				HasTownie = true
+				
+		#Give pre first death Claimed Townies the ability to dynamite
+		if !FirstDeath:
+			FirstDeath = true
+			for i in 6:
+				if Townie.get_node(GlobalScript.PlayerNode[int(i/3)].PlayerHand[int((i%3)+1)]).claim_revealed:
+					Townie.get_node(GlobalScript.PlayerNode[int(i/3)].PlayerHand[int((i%3)+1)]).CanDynamite = true
+		if !HasTownie:
+			Winner.rpc()
 	pass
 
 #Tell everybody which node got stunned
@@ -507,10 +521,10 @@ func DistCheck(Dist) -> bool:
 
 #Throw dynamite, needs work
 func Dynamite() -> bool:
-	if(StableCheck() && GlobalScript.PlayerNode[Turn_Order -1].action_points !=0 && !GlobalScript.PlayerNode[Turn_Order-1].DrewCard):
+	if(StableCheck() && GlobalScript.PlayerNode[Turn_Order -1].action_points !=0 && !GlobalScript.PlayerNode[Turn_Order-1].DrewCard && Attacker.CanDynamite):
 		if(!GlobalScript.SinglePlay):
 			Winner.rpc()
-		else:
+		else: 
 			Winner()
 		return true
 	elif(GlobalScript.PlayerNode[Turn_Order-1].DrewCard):

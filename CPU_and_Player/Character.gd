@@ -64,7 +64,7 @@ class Character extends CharacterBody2D:
 	
 	var Player: int
 	
-	var CanDynamite : bool
+	var CanDynamite : bool = false
 	
 	
 	

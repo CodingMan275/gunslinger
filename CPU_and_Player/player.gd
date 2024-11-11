@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 #Player ID make exportable so it cna be changed
 @export var Player_ID = 1
-@export var Max_Action_Points = 2
+@export var Max_Action_Points = 200
 @export var pos : Vector2
 @export var Startpos : Vector2  #Stable position to use dynamite
 @export var Health = 20
@@ -80,6 +80,7 @@ var Movable = false
 #Label Name to be used by the PLayer label to keep track of who is who
 var LabelName = "TEMP"
 
+var CanDynamite : bool = true
 
 var Player = preload("res://CPU_and_Player/PlayerClass.gd").Player.new(0)
 

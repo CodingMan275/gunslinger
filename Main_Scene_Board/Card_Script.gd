@@ -54,16 +54,7 @@ func _onCardDraw() -> void:
 func _drawTownDeck(): # fucntion that simulates the cards being drawn
 	Sound_Player2.play()
 	var DrawSize = DrawArray.size() # Checks size of the array we're drawing from
-	if (DrawSize != 0): # first element exists -> array has some cards left
-		var TDCard = DrawArray[0] # gets the first element value
-		GlobalScript.DebugScript.add("DrawArray drew  "+str(TDCard))
-		DrawArray.pop_front() #pop it out
-		DiscardArray.push_front(TDCard) #push on discard array
-		GlobalScript.DebugScript.add("DiscardArray has  "+str(DiscardArray))
-		GlobalScript.DebugScript.add("DrawArray has  "+str(DrawArray))
-		#adds card to hand
-		DrawnCard.emit(TDCard, false, null)
-	else:
+	if (DrawSize == 0): # first element exists -> array has some cards left
 		for n in 6:
 			DrawArray.push_front(DiscardArray[n]) #(dont think this works like I think it does) copy contents from discard back to draw
 		DiscardArray.clear()
@@ -72,8 +63,11 @@ func _drawTownDeck(): # fucntion that simulates the cards being drawn
 		var TDCard = DrawArray[0] #since its and if/else, we need to run the code from the if, or else the player would simply not be able to have a card drawn
 		DrawArray.pop_front()
 		DiscardArray.push_front(TDCard)
-		GlobalScript.DebugScript.add("DiscardArray has  "+str(DiscardArray))
-		GlobalScript.DebugScript.add("DrawArray has  "+str(DrawArray))
+	var TDCard = DrawArray[0] # gets the first element value
+	DrawArray.pop_front() #pop it out
+	DiscardArray.push_front(TDCard) #push on discard array
+	#adds card to hand
+	DrawnCard.emit(TDCard, false, null)
 
 @rpc("any_peer","call_local")
 func _AddCard(card, player_index, g):
@@ -110,7 +104,6 @@ func SDO():
 
 func _draw_card(array: Array, player_index: int, card_type: String) -> Variant:
 	if array.size() == 0:
-		GlobalScript.DebugScript.add("No cards left in " + card_type + " array.")
 		return null
 	var card_index = randi() % array.size()
 	var card = array[card_index]

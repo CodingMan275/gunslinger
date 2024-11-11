@@ -133,13 +133,14 @@ func SchizoFunctionPleaseWork():
 
 
 func ShowAttackUICheck():
-	var thing = get_node(CurrentCard)
-	if ((thing.OwningPlayer == GlobalScript.PlayerNode[Rules.Turn_Order-1].Player_ID) and (thing.claim_revealed == false)):
-		thing.get_child(1).visible = true
-	elif((thing.OwningPlayer == GlobalScript.PlayerNode[Rules.Turn_Order-1].Player_ID) and (thing.claim_revealed == true)):
-		thing.get_child(2).visible = true
-	else:
-		thing.get_child(1).visible = true
+	if CurrentCard != null:
+		var thing = get_node(CurrentCard)
+		if ((thing.OwningPlayer == GlobalScript.PlayerNode[Rules.Turn_Order-1].Player_ID) and (thing.claim_revealed == false)):
+			thing.get_child(1).visible = true
+		elif((thing.OwningPlayer == GlobalScript.PlayerNode[Rules.Turn_Order-1].Player_ID) and (thing.claim_revealed == true)):
+			thing.get_child(2).visible = true
+		else:
+			thing.get_child(1).visible = true
 
 func _on_button_pressed() -> void:
 	HideAttackUI.rpc()
