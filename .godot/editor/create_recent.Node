@@ -1,11 +1,11 @@
 Button
+CanvasLayer
 RichTextLabel
 Label
 Panel
 Control
 CharacterBody2D
 Node
-CanvasLayer
 Sprite2D
 Node2D
 TextureRect

@@ -4,6 +4,7 @@ extends Node
 @export var HiredGunVar = 3
 @export var WeaponCardVar = 5
 @onready var Sound_Player2 = $"../CanvasLayer/Draw Card/DrawCardSFX"
+@onready var CardUI = get_node("../Townie_Logic")
 
 #Draw and Discard piles that are connected to the multiplayer syncronizer
 #These are updated automatically between peers so every peer
@@ -45,7 +46,7 @@ func _ready() -> void:
 func _onCardDraw() -> void:
 	#Draws from the townie deck, rpc to do rpc functions
 	_drawTownDeck.rpc()
-	
+	CardUI.ShowAttackUICheck()
 
 #Every peer and the local machine draws from their
 #Appropriate deck in their instances
