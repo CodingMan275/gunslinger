@@ -143,7 +143,8 @@ func ShowAttackUICheck():
 			thing.get_child(1).visible = true
 
 func _on_button_pressed() -> void:
-	HideAttackUI.rpc()
+	if CurrentCard != null:
+		HideAttackUI.rpc()
 	pass # Replace with function body.
 @rpc("any_peer","call_local")
 func HideAttackUI() -> void:
