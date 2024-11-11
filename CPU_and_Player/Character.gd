@@ -14,6 +14,7 @@ class Character extends CharacterBody2D:
 	var Weapon2Equiped = false
 	
 	var proficiency
+	var DrewCard = false
 	
 	var OriginalWeapon
 	var OriginalDmg
@@ -42,7 +43,7 @@ class Character extends CharacterBody2D:
 
 	const MAX_ACION_PONTS: int = 1
 	
-	var ActionPoint = MAX_ACION_PONTS
+	var action_points = MAX_ACION_PONTS
 	var AttackRange: int = 2
 	
 	var StunTracker: int = 0
@@ -79,7 +80,7 @@ class Character extends CharacterBody2D:
 		#ID = id
 		
 	func can_act() -> bool:
-		return ActionPoint > 0
+		return action_points > 0
 		
 	func is_owning_player(player) -> bool:
 		return owning_player == player
@@ -163,7 +164,7 @@ class Character extends CharacterBody2D:
 			
 	#need a function that resets Action Points on Signal from Deck
 	func reset_AP_temp():
-		ActionPoint = MAX_ACION_PONTS
+		action_points = MAX_ACION_PONTS
 	
 
 
@@ -172,7 +173,7 @@ class Character extends CharacterBody2D:
 	func _process(delta: float) -> void:
 	#Every frame check to see if this node is movable
 	#Was left mouse pressed? Enough Action points?
-		if Input.is_action_just_pressed("LeftClick") and ActionPoint > 0:
+		if Input.is_action_just_pressed("LeftClick") and action_points > 0:
 		#See move_possible, see can_move()
 			if tile_map_node != null:
 				if move_possible() and can_move(Player):
@@ -184,7 +185,7 @@ class Character extends CharacterBody2D:
 					UpdateMove.rpc(self.global_position)
 			#Alright we moved, no more
 					movable = false
-			elif (Input.is_action_just_pressed("LeftClick") and ActionPoint == 0):
+			elif (Input.is_action_just_pressed("LeftClick") and action_points == 0):
 				GlobalScript.DebugScript.add("You have no more Action Points ")
 
 #See rpc exlaination in Townie_Logic

@@ -1541,6 +1541,7 @@ text = "Back"
 [connection signal="pressed" from="CanvasLayer/Button" to="CanvasLayer/Label" method="_on_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Button" to="CanvasLayer/Claim" method="_on_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Button" to="Rules_Controller" method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Button" to="Townie_Logic" method="ShowAttackUI"]
 [connection signal="ready" from="CanvasLayer/Label" to="Rules_Controller" method="_on_label_ready"]
 [connection signal="pressed" from="CanvasLayer/Draw Card" to="Rules_Controller" method="_onCardDraw"]
 [connection signal="pressed" from="CanvasLayer/Draw Card" to="Cards" method="_onCardDraw"]

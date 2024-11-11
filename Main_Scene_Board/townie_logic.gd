@@ -92,7 +92,7 @@ func _on_claim_pressed() -> void:
 	get_node(CurrentCard).reveal_hired_gun()
 	#Set movable to be true
 	get_node(CurrentCard).movable = true
-	
+	get_node(CurrentCard).get_child(1).visible = true
 	Rules.get_node(str(multiplayer.get_unique_id())).NearbyTownieCheck()
 	#Each hird gun will have a variable for which PLayer currently has control over it,
 	#We want to assign this variable to the player ID that clciked the button
@@ -129,3 +129,8 @@ func SchizoFunctionPleaseWork():
 	#To claim this hired gun and once its claimed it does not matter if these values
 	#are wrong becuase once it is claimed it will never ben controlled by anyone else again
 	pass
+
+
+func ShowAttackUI() -> void:
+	get_node(CurrentCard).get_child(1).visible = false
+	pass # Replace with function body.
