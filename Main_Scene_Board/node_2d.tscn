@@ -371,7 +371,8 @@ script/source = "extends ScrollContainer
 
 func _on_VBoxContainer_size_changed():
 	# Set the scroll position to the maximum value
-	scroll_vertical = get_v_scroll()"
+	scroll_vertical = get_v_scroll()
+"
 
 [node name="Node2D" type="Node2D"]
 

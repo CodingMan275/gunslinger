@@ -1,10 +1,10 @@
+Button
 RichTextLabel
 Label
 Panel
 Control
 CharacterBody2D
 Node
-Button
 CanvasLayer
 Sprite2D
 Node2D
