@@ -123,7 +123,10 @@ func add(title : String):
 	property = property_container.find_child(title,true)
 	property = Label.new()
 	property_container.add_child(property)
+	property.theme = Theme.new()
+	property.add_theme_font_size_override(" ", 60)
 	property.text = title
+	
 
 
 

@@ -33,7 +33,7 @@ offset_top = 3.0
 offset_right = 468.0
 offset_bottom = 48.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 60
 text = "Options"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -55,11 +55,12 @@ size_flags_vertical = 3
 
 [node name="Main Menu Back Button" parent="." instance=ExtResource("1_iekfw")]
 layout_mode = 0
-offset_left = 2.0
-offset_top = 243.0
-offset_right = 200.0
-offset_bottom = 280.0
+offset_left = 51.0
+offset_top = 892.0
+offset_right = 612.0
+offset_bottom = 975.0
 scale = Vector2(0.6, 0.6)
+theme_override_font_sizes/font_size = 60
 
 [node name="BackToDebugMenu" parent="." instance=ExtResource("2_no4dn")]
 visible = false

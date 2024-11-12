@@ -233,6 +233,7 @@ func MoveMouse():
 			if Movable:
 				if Input.is_action_just_pressed("LeftClick") and can_act and action_points > 0 && GlobalScript.PlayerNode[order-1].StunTracker == 0:
 					var NewPos = tile_map_node.local_to_map(Vector2(get_global_mouse_position()))
+					print(NewPos)
 					if  move_possible():
 						if TileCheck(NewPos):
 							self.global_position = Vector2(get_global_mouse_position())

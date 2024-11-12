@@ -21,6 +21,7 @@ offset_left = 0.23999
 offset_top = 0.0399933
 offset_right = 0.0799866
 offset_bottom = -0.0900116
+theme_override_font_sizes/font_size = 60
 text = "Host"
 
 [node name="Join" type="Button" parent="CanvasLayer"]
@@ -33,6 +34,7 @@ offset_left = -0.0400391
 offset_top = 0.0599976
 offset_right = 0.159973
 offset_bottom = 0.00999451
+theme_override_font_sizes/font_size = 60
 text = "Join"
 
 [node name="LineEdit" type="LineEdit" parent="CanvasLayer"]
@@ -45,11 +47,11 @@ offset_left = 0.159988
 offset_top = 0.0899963
 offset_right = 0.199982
 offset_bottom = -0.119995
+theme_override_font_sizes/font_size = 60
 placeholder_text = "Enter Ip:"
 clear_button_enabled = true
 
 [node name="Start" type="Button" parent="CanvasLayer"]
-visible = false
 anchors_preset = -1
 anchor_left = 0.033
 anchor_top = 0.789
@@ -59,6 +61,7 @@ offset_left = 0.16
 offset_top = -0.030014
 offset_right = 0.199997
 offset_bottom = -0.0400085
+theme_override_font_sizes/font_size = 60
 text = "Start Game"
 
 [node name="LineEdit2" type="LineEdit" parent="CanvasLayer"]
@@ -71,6 +74,7 @@ offset_left = 0.0800018
 offset_top = 0.0999985
 offset_right = -0.0400391
 offset_bottom = 0.0499954
+theme_override_font_sizes/font_size = 60
 placeholder_text = "Name"
 
 [node name="Container" type="Container" parent="CanvasLayer"]

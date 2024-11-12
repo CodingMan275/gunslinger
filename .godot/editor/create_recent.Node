@@ -1,3 +1,4 @@
+RichTextLabel
 Control
 CharacterBody2D
 Node
@@ -12,4 +13,3 @@ ColorRect
 Panel
 MarginContainer
 PanelContainer
-VBoxContainer

@@ -20,7 +20,7 @@ var accuracy : int
 #var PlayerScene = preload("res://Josh_Test_Scenes/Player.tscn")
 
 #Getting the tile map from the current scene when this node is ready
-@onready var TileMapScene =  get_node("../Layer0")
+@onready var TileMapScene =  get_node("../Player_Layer")
 
 #Getting the turn buttons from the scene when this node is ready
 @onready var EndTurnButton = get_node("../CanvasLayer/Button")

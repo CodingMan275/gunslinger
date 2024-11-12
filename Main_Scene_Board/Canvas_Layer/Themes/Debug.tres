@@ -3,7 +3,7 @@
 [ext_resource type="StyleBox" uid="uid://unpancs51v13" path="res://Main_Scene_Board/Canvas_Layer/Themes/Debug_Style.tres" id="1_u7h7v"]
 
 [resource]
-default_font_size = 10
+default_font_size = 50
 MarginContainer/constants/margin_bottom = 5
 MarginContainer/constants/margin_left = 5
 MarginContainer/constants/margin_right = 5

@@ -21,8 +21,8 @@ GlobalScript="*res://global_script.gd"
 
 [display]
 
-window/size/viewport_width=480
-window/size/viewport_height=270
+window/size/viewport_width=3840
+window/size/viewport_height=2160
 window/size/window_width_override=1440
 window/size/window_height_override=810
 window/stretch/mode="canvas_items"

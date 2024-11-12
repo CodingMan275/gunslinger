@@ -4,7 +4,7 @@ signal gotit
 
 
 
-@onready var tile_map_node = get_node("Node2D/Layer0")
+@onready var tile_map_node = get_node("Node2D/Player_Layer")
 @onready var rules = get_parent().get_parent().rule_scene
 var pos : Vector2
 var guyyouclicked
