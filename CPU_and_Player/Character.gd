@@ -176,7 +176,7 @@ class Character extends CharacterBody2D:
 		if Input.is_action_just_pressed("LeftClick") and action_points > 0:
 		#See move_possible, see can_move()
 			if tile_map_node != null:
-				if move_possible() and can_move(Player):
+				if move_possible() and can_move(Player):# and movable:
 			#Set node's global position to be the positon of the mouse
 					self.global_position = Vector2(get_global_mouse_position())
 			#Set pos, a variable for storing location, to be the equivelant tile 
