@@ -116,9 +116,14 @@ func _on_ready() -> void:
 		
 
 func _updateMove():
-	Movable = true
-	if action_points == 0:
+	if !DrewCard:
+		Movable = true
+		if action_points == 0:
+			MoveButton.hide()
+	else:
+		get_parent().Townie.get_node(CurrentCard).movable = true
 		MoveButton.hide()
+	
 
 
 func _update_turn(x):
@@ -194,12 +199,12 @@ func PutCardInHand(Card, FirstDraw, p_i):
 				#Sets the tile_map_node to the proper board refrence
 				get_parent().Townie.get_node(Card).tile_map_node = tile_map_node
 				#This townie is now movable
-				get_parent().Townie.get_node(Card).movable = true	
+				#get_parent().Townie.get_node(Card).movable = true	
 				#The current player controlling it is this player
 				get_parent().Townie.get_node(CurrentCard).Player = Player_ID
 				#Hide the draw button
 				DrawButton.hide()
-				MoveButton.hide()
+				#MoveButton.hide()
 				AttackButton.hide()
 				AttackUI.hide()
 	pass
@@ -232,26 +237,25 @@ func MoveMouse():
 	#who owns this player instance can move it
 	if ($MultiplayerSynchronizer.get_multiplayer_authority() == multiplayer.get_unique_id() || GlobalScript.SinglePlay):
 		if(Player_ID == order):
-			if Movable:
-				if Input.is_action_just_pressed("LeftClick") and can_act and action_points > 0 && GlobalScript.PlayerNode[order-1].StunTracker == 0:
-					var NewPos = tile_map_node.local_to_map(Vector2(get_global_mouse_position()))
-					if  move_possible():
-						if TileCheck(NewPos):
-							self.global_position = Vector2(get_global_mouse_position())
-							pos = NewPos
-							action_points -= 1
-							GlobalScript.DebugScript.add(str(self.Name)+" has "+str(self.action_points) + " action points left ")
-							DrawButton.hide()
-							Movable = false
-							UpdateMove.rpc(self.global_position, NewPos)
-							NearbyTownieCheck()
-						elif !TileCheck(NewPos):
-							GlobalScript.DebugScript.add("You Can not move into a wall ")
-				elif (Input.is_action_just_pressed("LeftClick") and move_possible() and action_points == 0):
-					GlobalScript.DebugScript.add("You have no more Action Points ")
+				if Movable:
+					if Input.is_action_just_pressed("LeftClick") and can_act and action_points > 0 && GlobalScript.PlayerNode[order-1].StunTracker == 0:
+						var NewPos = tile_map_node.local_to_map(Vector2(get_global_mouse_position()))
+						if  move_possible():
+							if TileCheck(NewPos):
+								self.global_position = Vector2(get_global_mouse_position())
+								pos = NewPos
+								action_points -= 1
+								GlobalScript.DebugScript.add(str(self.Name)+" has "+str(self.action_points) + " action points left ")
+								DrawButton.hide()
+								Movable = false
+								UpdateMove.rpc(self.global_position, NewPos)
+								NearbyTownieCheck()
+							elif !TileCheck(NewPos):
+								GlobalScript.DebugScript.add("You Can not move into a wall ")
+					elif (Input.is_action_just_pressed("LeftClick") and move_possible() and action_points == 0):
+						GlobalScript.DebugScript.add("You have no more Action Points ")
 				elif(Input.is_action_just_pressed("LeftClick") and GlobalScript.PlayerNode[order-1].StunTracker != 0):
 					GlobalScript.DebugScript.add("you are stunned and cannot move")
-
 @rpc("any_peer")
 func UpdateMove(x, NewPos):
 	self.global_position = x
