@@ -49,7 +49,7 @@
 [ext_resource type="Script" path="res://proficiencylogic.gd" id="27_bf6tm"]
 [ext_resource type="Texture2D" uid="uid://bnk7r45gr5cn8" path="res://IMG_9861.png" id="27_uadwx"]
 [ext_resource type="Script" path="res://Main_Scene_Board/weapons.gd" id="30_sg7ny"]
-[ext_resource type="Script" path="res://TownieSpriteClick.gd" id="34_hshlf"]
+[ext_resource type="Script" path="res://CPU_and_Player/TownieSpriteClick.gd" id="34_hshlf"]
 [ext_resource type="Script" path="res://Main_Scene_Board/store_keeper.gd" id="45_l4515"]
 [ext_resource type="Script" path="res://Main_Scene_Board/mountain_man.gd" id="46_08nss"]
 [ext_resource type="Script" path="res://Main_Scene_Board/bounty_hunter.gd" id="47_cjmfn"]
@@ -911,6 +911,23 @@ offset_right = 469.0
 offset_bottom = 180.0
 text = "Special Ability"
 
+[node name="HealStunUI" type="CanvasLayer" parent="Townie_Logic/Doctor"]
+visible = false
+
+[node name="Heal" type="Button" parent="Townie_Logic/Doctor/HealStunUI"]
+offset_left = 414.0
+offset_top = 218.0
+offset_right = 461.0
+offset_bottom = 250.0
+text = "Heal"
+
+[node name="Stun" type="Button" parent="Townie_Logic/Doctor/HealStunUI"]
+offset_left = 355.0
+offset_top = 218.0
+offset_right = 407.0
+offset_bottom = 250.0
+text = "Stun"
+
 [node name="Teacher" type="CharacterBody2D" parent="Townie_Logic"]
 script = ExtResource("17_evase")
 
@@ -1771,11 +1788,14 @@ text = "Special Ability"
 [connection signal="pressed" from="Townie_Logic/Preacher/AttackingCanvas/Brawl" to="Layer0" method="_on_brawl_pressed"]
 [connection signal="pressed" from="Townie_Logic/Preacher/AttackingCanvas/Brawl" to="Rules_Controller" method="BrawlAttack" binds= ["Preacher"]]
 [connection signal="pressed" from="Townie_Logic/Preacher/AttackingCanvas/Back" to="Rules_Controller" method="PlayerUI" binds= [false]]
+[connection signal="pressed" from="Townie_Logic/Doctor/DefaultDrawUI/Special Ability" to="Townie_Logic/Doctor" method="_on_special_ability_pressed"]
 [connection signal="pressed" from="Townie_Logic/Doctor/AttackingCanvas/Range" to="Layer0" method="_on_attack_pressed"]
 [connection signal="pressed" from="Townie_Logic/Doctor/AttackingCanvas/Range" to="Rules_Controller" method="RangeAttack" binds= ["Doctor"]]
 [connection signal="pressed" from="Townie_Logic/Doctor/AttackingCanvas/Brawl" to="Layer0" method="_on_brawl_pressed"]
 [connection signal="pressed" from="Townie_Logic/Doctor/AttackingCanvas/Brawl" to="Rules_Controller" method="BrawlAttack" binds= ["Doctor"]]
 [connection signal="pressed" from="Townie_Logic/Doctor/AttackingCanvas/Back" to="Rules_Controller" method="PlayerUI" binds= [false]]
+[connection signal="pressed" from="Townie_Logic/Doctor/HealStunUI/Heal" to="Townie_Logic/Doctor" method="_on_heal_pressed"]
+[connection signal="pressed" from="Townie_Logic/Doctor/HealStunUI/Stun" to="Townie_Logic/Doctor" method="_on_stun_pressed"]
 [connection signal="pressed" from="Townie_Logic/Teacher/AttackingCanvas/Range" to="Layer0" method="_on_attack_pressed"]
 [connection signal="pressed" from="Townie_Logic/Teacher/AttackingCanvas/Range" to="Rules_Controller" method="RangeAttack" binds= ["Teacher"]]
 [connection signal="pressed" from="Townie_Logic/Teacher/AttackingCanvas/Brawl" to="Layer0" method="_on_brawl_pressed"]

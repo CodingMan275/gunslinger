@@ -3,6 +3,8 @@ class_name Doctor
 
 @onready var TownieLogic = get_parent()
 
+@onready var Rules = get_node("../../Rules_Controller")
+@onready var selected = get_node("res://TownieSpriteClick.gd")
 
 @export var is_hired_gun: bool = false
 #@export var claim_revealed: bool = false
@@ -12,6 +14,8 @@ class_name Doctor
 #var movable = false
 
 #@export var Player: int
+
+var post : Vector2
 
 var OwningPlayer
 
@@ -98,3 +102,26 @@ func can_move(player) -> bool:
 		print("Movable false")
 		return false
 '''
+
+	
+	
+
+func _on_special_ability_pressed() -> void:
+	print(self.pos)
+	print(Rules.Target.pos)
+	if(self.pos == Rules.Target.pos):
+		self.get_child(1).visible = false
+		self.get_child(2).visible = false
+		self.get_child(3).visible = true
+	else:
+		print("can't do")
+		
+
+
+func _on_heal_pressed() -> void:
+	Rules.Target.Health += 1
+	self.get_child(3).visible = false
+
+func _on_stun_pressed() -> void:
+	Rules.Target.StunTracker = 0
+	self.get_child(3).visible = false
