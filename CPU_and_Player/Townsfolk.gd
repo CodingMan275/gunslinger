@@ -164,8 +164,9 @@ func _on_special_abilities_button_pressed() -> void:
 	print("Special abilities activated!")  # Replace with your logic
 
 func pacify(character: Townsfolk) --> void:
-	if
-	print(self.name, " is now pacified ")
+	if me.pos == target.pos:
+		 TileMapScene.church()
+		print(self.name, " is now pacified ")
 
 func puppy_love() -> void:
 
