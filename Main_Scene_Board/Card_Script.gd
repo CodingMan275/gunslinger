@@ -120,27 +120,27 @@ func _ClaimCards(player_index):
 #Gets and sets card art
 func CardArt(CardName):
 	if(CardName == "Preacher"):
-		return("res://bobseymour.svg")
+		return("res://preachersprite.png")
 	elif(CardName == "Doctor"):
-		return("res://elijahbrown.svg")
+		return("res://doctorsprite.png")
 	elif(CardName == "Teacher"):
-		return("res://jonlaramine.svg")
+		return("res://Main_Scene_Board/Gunslingers/The_teacher_character card.png")
 	elif(CardName == "Town_Drunk"):
-		return("res://madmike.svg")
+		return("res://towndrunksprite.png")
 	elif(CardName == "Bar_Keep"):
-		return("res://oldsmokey.svg")
+		return("res://barkeepsprite.png")
 	elif(CardName == "Ranch_Hand"):
-		return("res://thekid.svg")
+		return("res://ranchhand.png")
 	elif(CardName == "Knife"):
-		return("res://Main_Scene_Board/Weapon_Art/Knife.png")
+		return("res://Main_Scene_Board/Weapon_Art/Knife weapon card.png")
 	elif(CardName == "Pistol"):
-		return("res://Main_Scene_Board/Weapon_Art/pistol.png")
+		return("res://Main_Scene_Board/Weapon_Art/Pistol weapon card.png")
 	elif(CardName == "TwinPistol"):
-		return("res://Main_Scene_Board/Weapon_Art/TwinPistols.png")
+		return("res://Main_Scene_Board/Weapon_Art/Twin Pistol weapon card.png")
 	elif(CardName == "Rifle"):
 		return("res://Main_Scene_Board/Weapon_Art/Rifle.png")
 	elif(CardName == "Shotgun"):
-		return("res://Main_Scene_Board/Weapon_Art/shotgun.png")
+		return("res://Main_Scene_Board/Weapon_Art/Shotgun weapon card.png")
 	else:
 		return("res://icon.svg")
 	pass

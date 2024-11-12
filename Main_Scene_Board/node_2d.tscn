@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=4 uid="uid://jl7k3ltwbp41"]
+[gd_scene load_steps=75 format=4 uid="uid://jl7k3ltwbp41"]
 
 [ext_resource type="Texture2D" uid="uid://fcuqal2ynbts" path="res://Main_Scene_Board/spritesheet.png" id="1_o8ncf"]
 [ext_resource type="Texture2D" uid="uid://mmea4eto2a6p" path="res://Main_Scene_Board/Rhombus.png" id="2_rfajf"]
@@ -31,16 +31,11 @@
 [ext_resource type="Script" path="res://Main_Scene_Board/layer_1.gd" id="15_ndo7p"]
 [ext_resource type="Script" path="res://CPU_and_Player/doctor.gd" id="16_2qs05"]
 [ext_resource type="PackedScene" uid="uid://o8s2bfh5cxgj" path="res://pause_menu/close_options_menu_button.tscn" id="16_ljexv"]
-[ext_resource type="Texture2D" uid="uid://bdmvi8qlb5m57" path="res://bobseymour.svg" id="16_tsmpy"]
 [ext_resource type="Script" path="res://Main_Scene_Board/teacher.gd" id="17_evase"]
 [ext_resource type="Script" path="res://Main_Scene_Board/town_drunk.gd" id="18_8vpej"]
-[ext_resource type="Texture2D" uid="uid://b3jt8k5v2aeha" path="res://elijahbrown.svg" id="18_bkvl8"]
 [ext_resource type="Script" path="res://Main_Scene_Board/bar_keep.gd" id="19_alpfg"]
-[ext_resource type="Texture2D" uid="uid://jsgp5eehgaib" path="res://jonlaramine.svg" id="20_4gd5u"]
 [ext_resource type="Script" path="res://Main_Scene_Board/ranch_hand.gd" id="20_dwx7h"]
-[ext_resource type="Texture2D" uid="uid://c1keaoj8b1k3k" path="res://madmike.svg" id="22_nwhpe"]
 [ext_resource type="PackedScene" uid="uid://b7u7m7egwoa2q" path="res://Character_Sheet_Display/character_sheets_view_button.tscn" id="23_55pyv"]
-[ext_resource type="Texture2D" uid="uid://dywhqj3m2j1y3" path="res://oldsmokey.svg" id="24_5vq5u"]
 [ext_resource type="PackedScene" uid="uid://b0digwxc3kp7x" path="res://Character_Sheet_Display/character_sheets.tscn" id="24_eaxtu"]
 [ext_resource type="PackedScene" uid="uid://c83b4qbnujsby" path="res://pause_menu/pause_menu_button_multiplayer.tscn" id="25_tkin4"]
 [ext_resource type="PackedScene" uid="uid://c7m45jbop48f3" path="res://pause_menu/Pause_menu_options_screen.tscn" id="25_vu6ki"]
@@ -50,11 +45,17 @@
 [ext_resource type="Texture2D" uid="uid://bnk7r45gr5cn8" path="res://IMG_9861.png" id="27_uadwx"]
 [ext_resource type="Script" path="res://Main_Scene_Board/weapons.gd" id="30_sg7ny"]
 [ext_resource type="Script" path="res://TownieSpriteClick.gd" id="34_hshlf"]
+[ext_resource type="Texture2D" uid="uid://b8xf3kpnn037f" path="res://preachersprite.png" id="39_c8vu0"]
+[ext_resource type="Texture2D" uid="uid://co1ynyp2wonl3" path="res://doctorsprite.png" id="42_8hrxn"]
+[ext_resource type="Texture2D" uid="uid://npb4ov8dsqjk" path="res://teachersprite.png" id="44_408tl"]
 [ext_resource type="Script" path="res://Main_Scene_Board/store_keeper.gd" id="45_l4515"]
 [ext_resource type="Script" path="res://Main_Scene_Board/mountain_man.gd" id="46_08nss"]
+[ext_resource type="Texture2D" uid="uid://4js47xf3xilk" path="res://towndrunksprite.png" id="46_lq56h"]
 [ext_resource type="Script" path="res://Main_Scene_Board/bounty_hunter.gd" id="47_cjmfn"]
 [ext_resource type="Script" path="res://Main_Scene_Board/saloon_girl.gd" id="48_ai5s4"]
+[ext_resource type="Texture2D" uid="uid://bbno4nr3bl5lf" path="res://barkeepsprite.png" id="48_i2agf"]
 [ext_resource type="Script" path="res://Main_Scene_Board/bank_manager.gd" id="49_4aoh4"]
+[ext_resource type="Texture2D" uid="uid://cmgkkwmsfwmk5" path="res://ranchhandsprite.png" id="50_3rfuy"]
 [ext_resource type="Script" path="res://Main_Scene_Board/sheriff.gd" id="50_glnk6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p1dyh"]
@@ -749,9 +750,10 @@ script = ExtResource("14_ub6ke")
 script = ExtResource("14_8fc0f")
 
 [node name="PreacherSprite" type="Sprite2D" parent="Townie_Logic/Preacher"]
-position = Vector2(-4.76837e-07, -0.0898228)
-scale = Vector2(0.075, 0.0637124)
-texture = ExtResource("16_tsmpy")
+position = Vector2(-2.5, 2.33)
+scale = Vector2(0.037, 0.0314315)
+texture = ExtResource("39_c8vu0")
+offset = Vector2(15, -300)
 script = ExtResource("34_hshlf")
 
 [node name="Label" type="Label" parent="Townie_Logic/Preacher/PreacherSprite"]
@@ -833,8 +835,8 @@ script = ExtResource("16_2qs05")
 
 [node name="DoctorSprite" type="Sprite2D" parent="Townie_Logic/Doctor"]
 position = Vector2(1.49012e-06, 0.083853)
-scale = Vector2(0.065, 0.0645807)
-texture = ExtResource("18_bkvl8")
+scale = Vector2(0.0117187, 0.0116432)
+texture = ExtResource("42_8hrxn")
 script = ExtResource("34_hshlf")
 
 [node name="Label" type="Label" parent="Townie_Logic/Doctor/DoctorSprite"]
@@ -934,7 +936,7 @@ script = ExtResource("17_evase")
 [node name="TeacherSprite" type="Sprite2D" parent="Townie_Logic/Teacher"]
 position = Vector2(-0.5, -0.497126)
 scale = Vector2(0.0475, 0.0432334)
-texture = ExtResource("20_4gd5u")
+texture = ExtResource("44_408tl")
 script = ExtResource("34_hshlf")
 
 [node name="Label" type="Label" parent="Townie_Logic/Teacher/TeacherSprite"]
@@ -1017,7 +1019,7 @@ script = ExtResource("18_8vpej")
 [node name="TownDrunkSprite" type="Sprite2D" parent="Townie_Logic/Town_Drunk"]
 position = Vector2(-0.5, -0.544909)
 scale = Vector2(0.0475, 0.0432334)
-texture = ExtResource("22_nwhpe")
+texture = ExtResource("46_lq56h")
 script = ExtResource("34_hshlf")
 
 [node name="Label" type="Label" parent="Townie_Logic/Town_Drunk/TownDrunkSprite"]
@@ -1099,8 +1101,8 @@ script = ExtResource("19_alpfg")
 
 [node name="BarKeepSprite" type="Sprite2D" parent="Townie_Logic/Bar_Keep"]
 position = Vector2(-0.499999, -0.219522)
-scale = Vector2(0.0575, 0.0523351)
-texture = ExtResource("24_5vq5u")
+scale = Vector2(0.0151367, 0.0137771)
+texture = ExtResource("48_i2agf")
 script = ExtResource("34_hshlf")
 
 [node name="Label" type="Label" parent="Townie_Logic/Bar_Keep/BarKeepSprite"]
@@ -1182,8 +1184,8 @@ script = ExtResource("20_dwx7h")
 
 [node name="RanchHandSprite" type="Sprite2D" parent="Townie_Logic/Ranch_Hand"]
 position = Vector2(-1.5, 1)
-scale = Vector2(0.0825, 0.0524691)
-texture = ExtResource("26_ndqm4")
+scale = Vector2(0.047, 0.0445263)
+texture = ExtResource("50_3rfuy")
 script = ExtResource("34_hshlf")
 
 [node name="Label" type="Label" parent="Townie_Logic/Ranch_Hand/RanchHandSprite"]

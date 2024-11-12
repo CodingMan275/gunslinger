@@ -1,17 +1,16 @@
 [gd_scene load_steps=5 format=3 uid="uid://cu6rs0tasw3ht"]
 
-[ext_resource type="Texture2D" uid="uid://wpqjamy8nklp" path="res://icon.svg" id="1_5il2m"]
 [ext_resource type="Script" path="res://Main_Scene_Board/Gunslingers/Mad_Mike.gd" id="1_ts1nv"]
 [ext_resource type="Script" path="res://Josh_Test_Scenes/Player_Label.gd" id="2_tk2qi"]
+[ext_resource type="Texture2D" uid="uid://c1keaoj8b1k3k" path="res://madmike.svg" id="2_xpfgp"]
 [ext_resource type="Script" path="res://GunslingerSpriteClick.gd" id="3_cobit"]
 
 [node name="Mad_Mike" type="Node2D"]
 script = ExtResource("1_ts1nv")
 
 [node name="TextureRect" type="Sprite2D" parent="."]
-rotation = 1.5708
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("1_5il2m")
+texture = ExtResource("2_xpfgp")
 script = ExtResource("3_cobit")
 
 [node name="Label" type="Label" parent="TextureRect"]
