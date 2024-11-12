@@ -127,7 +127,11 @@ func get_characters_in_same_space(position: Vector2) -> Array:
 			characters.append(townsfolk)
 	return characters
 
-
+func heal(character: Townsfolk) -> void:
+	character.wounds -= 1  # Assuming there is a wounds property on the character
+	if character.wounds < 0:
+		character.wounds = 0  # Prevent negative wounds
+	print(character.name, " has been healed. Remaining wounds: ", character.wounds)
 
 var wounds: int = 0  # Current wounds
 var max_wounds: int = 3  # Example maximum wounds

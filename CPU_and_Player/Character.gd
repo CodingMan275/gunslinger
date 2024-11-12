@@ -4,7 +4,6 @@ class Character extends CharacterBody2D:
 	@onready var rules = get_node("res://Main_Scene_Board/rules_controller.gd")
 	
 	
-	
 	var is_gunslinger = false
 	
 	#var ID: int
