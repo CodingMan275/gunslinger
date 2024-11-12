@@ -64,26 +64,6 @@ properties/17/replication_mode = 1
 position = Vector2(-13, -11)
 collision_layer = 2
 script = ExtResource("1_evqc0")
-Player_ID = null
-Max_Action_Points = null
-pos = null
-Startpos = null
-Health = null
-Name = null
-action_points = null
-Weapon1Name = null
-Weapon1Dmg = null
-Weapon1Stun = null
-Weapon1Range = null
-Weapon2Name = null
-Weapon2Dmg = null
-Weapon2Stun = null
-Weapon2Range = null
-StunTracker = null
-Profficenty = null
-FreeBrawl = null
-can_act = null
-PlayerHand = null
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_42imv")

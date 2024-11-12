@@ -216,7 +216,7 @@ func Claim(x):
 	CurrentCard = x
 	#Go through my hand to see if I have this card
 	if(PlayerHand.has(CurrentCard)):
-		GlobalScript.DebugScript.add(str(self.Name+ " Has claimed " +CurrentCard)
+		GlobalScript.DebugScript.add(str(self.Name+ " Has claimed " +CurrentCard))
 		#Have I already claimed this card?
 		if(!get_parent().Townie.get_node(CurrentCard).claim_revealed):
 			#Show the claim button

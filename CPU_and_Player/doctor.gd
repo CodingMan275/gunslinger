@@ -3,6 +3,7 @@ class_name Doctor
 
 @onready var TownieLogic = get_parent()
 
+@onready var Rules = get_node("../../Rules_Controller")
 
 @export var is_hired_gun: bool = false
 #@export var claim_revealed: bool = false
@@ -98,3 +99,22 @@ func can_move(player) -> bool:
 		print("Movable false")
 		return false
 '''
+
+
+func _on_special_ability_pressed() -> void:
+	if(self.pos == Rules.Target.pos):
+		self.get_child(1).visible = false
+		self.get_child(2).visible = false
+		self.get_child(3).visible = true
+	else:
+		print("can't do")
+
+
+func _on_heal_pressed() -> void:
+	Rules.Target.Health += 1
+	self.get_child(3).visible = false
+
+
+func _on_stun_pressed() -> void:
+	Rules.Target.StunTracker = 0
+	self.get_child(3).visible = false
