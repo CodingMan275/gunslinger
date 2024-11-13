@@ -1,6 +1,6 @@
-RichTextLabel
 Button
 CanvasLayer
+RichTextLabel
 RichTextLabel
 Label
 Panel
@@ -12,5 +12,3 @@ Node2D
 TextureRect
 Window
 ColorRect
-MarginContainer
-PanelContainer

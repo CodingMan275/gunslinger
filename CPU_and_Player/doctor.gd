@@ -102,10 +102,13 @@ func can_move(player) -> bool:
 
 
 func _on_special_ability_pressed() -> void:
-	if(self.pos == Rules.Target.pos):
-		self.get_child(1).visible = false
-		self.get_child(2).visible = false
-		self.get_child(3).visible = true
+	if(Rules.Target != null):
+		if(self.pos == Rules.Target.pos):
+			self.get_child(1).visible = false
+			self.get_child(2).visible = false
+			self.get_child(3).visible = true
+		else:
+			print("Can't do")
 	else:
 		print("can't do")
 
