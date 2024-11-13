@@ -1,8 +1,8 @@
 extends Button
 
-@onready var options_menu = %OptionsMenu
+@onready var pause_menu_options_screen = %PauseMenuOptionsScreen
 @onready var close_options_menu_button = %CloseOptionsMenuButton
 
 func _on_pressed():
-	options_menu.hide()
+	pause_menu_options_screen.hide()
 	close_options_menu_button.hide()

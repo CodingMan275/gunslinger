@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" path="res://main_menu/mode_selection_screen.gd" id="1_1je3l"]
 [ext_resource type="PackedScene" uid="uid://cebcnc652bypc" path="res://main_menu/main_menu_back_button.tscn" id="2_8og0i"]
-[ext_resource type="Texture2D" uid="uid://bjl6l6es04344" path="res://main_menu/main_menu_art_assets/Mountain background title screen.png" id="2_u31vd"]
+[ext_resource type="Texture2D" uid="uid://cy6y6rhfvniq0" path="res://main_menu/main_menu_art_assets/Select Mode Background.png" id="2_a1lon"]
 [ext_resource type="AudioStream" uid="uid://73gync2ngicf" path="res://main_menu/GunSlinger Menu.mp3" id="3_w1s3b"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_d8s71"]
-texture = ExtResource("2_u31vd")
+texture = ExtResource("2_a1lon")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wlhlq"]
 
@@ -126,5 +126,99 @@ stream = ExtResource("3_w1s3b")
 autoplay = true
 bus = &"Music"
 
+[node name="Single-Player_Warning_Message" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -112.0
+offset_top = -65.0
+offset_right = 116.0
+offset_bottom = 92.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="RichTextLabel" parent="Single-Player_Warning_Message"]
+layout_mode = 0
+offset_left = 11.0
+offset_right = 218.0
+offset_bottom = 69.0
+theme_override_font_sizes/normal_font_size = 15
+text = "Are you sure you want to start a new game (save file will be overwritten)?
+"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Single-Player_Warning_Message"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -44.0
+offset_top = -5.5
+offset_right = 151.0
+offset_bottom = 168.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.4, 0.4)
+theme_override_constants/separation = 30
+
+[node name="Yes Button" type="Button" parent="Single-Player_Warning_Message/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wlhlq")
+theme_override_styles/hover = SubResource("StyleBoxFlat_yfeuf")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_a2nxc")
+theme_override_styles/normal = SubResource("StyleBoxFlat_gp72c")
+text = "Yes"
+
+[node name="No Button" type="Button" parent="Single-Player_Warning_Message/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wlhlq")
+theme_override_styles/hover = SubResource("StyleBoxFlat_yfeuf")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_a2nxc")
+theme_override_styles/normal = SubResource("StyleBoxFlat_gp72c")
+text = "No"
+
+[node name="Continue_Button" type="Button" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 140.0
+offset_top = 98.0
+offset_right = 231.0
+offset_bottom = 127.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 15
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wlhlq")
+theme_override_styles/hover = SubResource("StyleBoxFlat_yfeuf")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_a2nxc")
+theme_override_styles/normal = SubResource("StyleBoxFlat_gp72c")
+text = "Continue"
+
 [connection signal="pressed" from="VBoxContainer/Local Button" to="." method="_on_local_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Online Button" to="." method="_on_online_button_pressed"]
+[connection signal="pressed" from="Continue_Button" to="." method="_on_continue_button_pressed"]

@@ -71,6 +71,8 @@ var CurrentCard
 #For node path to tile map
 var tile_map_node
 
+var CanDynamite : bool = true
+
 #Connect to Rules controller signal when spawned
 func _on_ready() -> void:
 		#Sets the player instance multiplayer authority to the correct peer
@@ -104,7 +106,8 @@ func _update_turn(x):
 				get_parent().Townie.get_node(CurrentCard).movable = false
 		else:
 			can_act = true
-			FreeBrawl = true;
+			FreeBrawl = true
+			DrewCard = false
 			StartTurn()
 
 
@@ -134,8 +137,9 @@ func ActionPhase(option) -> bool:
 	if option <= 75:
 		MoveCPU()
 	else:
-		if(!rule_scene.BrawlAttack()):
-			rule_scene.RangeAttack()
+		rule_scene.Target = GlobalScript.PlayerNode[0]
+		if(!rule_scene.BrawlAttack("Player")):
+			rule_scene.RangeAttack("Player")
 	
 	if(rule_scene.Dynamite()):
 		return false

@@ -86,11 +86,11 @@ func activate_special_abilities(townsfolk: Townsfolk, player: int) -> void:
 		"Doctor":
 			heal(townsfolk)  # Example of healing action
 		"Preacher":
-			townsfolk.activate_special_ability()  # Preacher's ability
+			townsfolk.pacify()  # Preacher's ability
 		"Town Drunk":
 			townsfolk.cause_ruckus()  # Town Drunk's ability
 		"Bar Keep":
-			townsfolk.serve_drinks()  # Bar Keep's ability
+			townsfolk.puppy_love()  # Bar Keep's ability
 		"Ranch Hand":
 			townsfolk.help_with_ranching()  # Ranch Hand's ability
 		"Store Keeper":
@@ -162,3 +162,16 @@ func _ready() -> void:
 
 func _on_special_abilities_button_pressed() -> void:
 	print("Special abilities activated!")  # Replace with your logic
+
+func pacify(character: Townsfolk) --> void:
+	if me.pos == target.pos:
+		 TileMapScene.church()
+		print(self.name, " is now pacified ")
+
+func puppy_love() -> void:
+
+func cause_ruckus() -> void:
+
+func enforce_law() -> void:
+
+func manage_funds() -> void:

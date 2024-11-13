@@ -27,7 +27,7 @@ func _ready() -> void:
 	get_parent().ShotgunProf = ShotgunProf
 	get_parent().TwinPistolProf = TwinPistolProf
 	get_parent().BrawlProf = BrawlProf
-
+	
 	
 	pass # Replace with function body.
 

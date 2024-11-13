@@ -35,29 +35,34 @@
 [ext_resource type="PackedScene" uid="uid://b7rfx1nnoi5ev" path="res://pause_menu/pause_menu_singleplayer.tscn" id="14_tll6l"]
 [ext_resource type="Script" path="res://Main_Scene_Board/townie_logic.gd" id="14_ub6ke"]
 [ext_resource type="Script" path="res://Main_Scene_Board/layer_1.gd" id="15_ndo7p"]
-[ext_resource type="PackedScene" uid="uid://d0ncmr5j7hrug" path="res://main_menu/options_menu.tscn" id="15_o4h6x"]
 [ext_resource type="Script" path="res://CPU_and_Player/doctor.gd" id="16_2qs05"]
 [ext_resource type="PackedScene" uid="uid://o8s2bfh5cxgj" path="res://pause_menu/close_options_menu_button.tscn" id="16_ljexv"]
-[ext_resource type="Texture2D" uid="uid://bdmvi8qlb5m57" path="res://bobseymour.svg" id="16_tsmpy"]
 [ext_resource type="Script" path="res://Main_Scene_Board/teacher.gd" id="17_evase"]
 [ext_resource type="Script" path="res://Main_Scene_Board/player_layer.gd" id="17_una0y"]
 [ext_resource type="Script" path="res://Main_Scene_Board/town_drunk.gd" id="18_8vpej"]
-[ext_resource type="Texture2D" uid="uid://b3jt8k5v2aeha" path="res://elijahbrown.svg" id="18_bkvl8"]
 [ext_resource type="Script" path="res://Main_Scene_Board/bar_keep.gd" id="19_alpfg"]
-[ext_resource type="Texture2D" uid="uid://jsgp5eehgaib" path="res://jonlaramine.svg" id="20_4gd5u"]
 [ext_resource type="Script" path="res://Main_Scene_Board/ranch_hand.gd" id="20_dwx7h"]
-[ext_resource type="Texture2D" uid="uid://c1keaoj8b1k3k" path="res://madmike.svg" id="22_nwhpe"]
-[ext_resource type="Texture2D" uid="uid://dywhqj3m2j1y3" path="res://oldsmokey.svg" id="24_5vq5u"]
+[ext_resource type="PackedScene" uid="uid://b7u7m7egwoa2q" path="res://Character_Sheet_Display/character_sheets_view_button.tscn" id="23_55pyv"]
+[ext_resource type="PackedScene" uid="uid://b0digwxc3kp7x" path="res://Character_Sheet_Display/character_sheets.tscn" id="24_eaxtu"]
+[ext_resource type="PackedScene" uid="uid://c83b4qbnujsby" path="res://pause_menu/pause_menu_button_multiplayer.tscn" id="25_tkin4"]
+[ext_resource type="PackedScene" uid="uid://c7m45jbop48f3" path="res://pause_menu/Pause_menu_options_screen.tscn" id="25_vu6ki"]
+[ext_resource type="PackedScene" uid="uid://dfytnujg1s2es" path="res://pause_menu/pause_menu_multiplayer.tscn" id="26_bqjto"]
 [ext_resource type="Texture2D" uid="uid://c5dj7es7aba7e" path="res://thekid.svg" id="26_ndqm4"]
 [ext_resource type="Script" path="res://proficiencylogic.gd" id="27_bf6tm"]
 [ext_resource type="Texture2D" uid="uid://bnk7r45gr5cn8" path="res://IMG_9861.png" id="27_uadwx"]
 [ext_resource type="Script" path="res://Main_Scene_Board/weapons.gd" id="30_sg7ny"]
 [ext_resource type="Script" path="res://TownieSpriteClick.gd" id="34_hshlf"]
+[ext_resource type="Texture2D" uid="uid://b8xf3kpnn037f" path="res://preachersprite.png" id="39_c8vu0"]
+[ext_resource type="Texture2D" uid="uid://co1ynyp2wonl3" path="res://doctorsprite.png" id="42_8hrxn"]
+[ext_resource type="Texture2D" uid="uid://npb4ov8dsqjk" path="res://teachersprite.png" id="44_408tl"]
 [ext_resource type="Script" path="res://Main_Scene_Board/store_keeper.gd" id="45_l4515"]
 [ext_resource type="Script" path="res://Main_Scene_Board/mountain_man.gd" id="46_08nss"]
+[ext_resource type="Texture2D" uid="uid://4js47xf3xilk" path="res://towndrunksprite.png" id="46_lq56h"]
 [ext_resource type="Script" path="res://Main_Scene_Board/bounty_hunter.gd" id="47_cjmfn"]
 [ext_resource type="Script" path="res://Main_Scene_Board/saloon_girl.gd" id="48_ai5s4"]
+[ext_resource type="Texture2D" uid="uid://bbno4nr3bl5lf" path="res://barkeepsprite.png" id="48_i2agf"]
 [ext_resource type="Script" path="res://Main_Scene_Board/bank_manager.gd" id="49_4aoh4"]
+[ext_resource type="Texture2D" uid="uid://cmgkkwmsfwmk5" path="res://ranchhandsprite.png" id="50_3rfuy"]
 [ext_resource type="Script" path="res://Main_Scene_Board/sheriff.gd" id="50_glnk6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p1dyh"]
@@ -615,6 +620,7 @@ pitch_scale = 1.95
 bus = &"SFX"
 
 [node name="SpecialAbilityButton" type="Button" parent="CanvasLayer/Draw Card"]
+visible = false
 layout_mode = 0
 offset_left = 7.0
 offset_top = -136.0
@@ -691,32 +697,6 @@ offset_right = -0.0800018
 offset_bottom = 0.109985
 texture = ExtResource("12_kmvqj")
 expand_mode = 1
-
-[node name="Pause_Menu" type="Node" parent="CanvasLayer"]
-
-[node name="PauseMenuButtonSinglePlayer" parent="CanvasLayer/Pause_Menu" instance=ExtResource("13_3q2p2")]
-unique_name_in_owner = true
-visible = false
-offset_left = 7.0
-offset_top = 4.0
-offset_right = -434.0
-offset_bottom = -212.0
-
-[node name="PauseMenuSingleplayer" parent="CanvasLayer/Pause_Menu" instance=ExtResource("14_tll6l")]
-unique_name_in_owner = true
-visible = false
-
-[node name="OptionsMenu" parent="CanvasLayer/Pause_Menu" instance=ExtResource("15_o4h6x")]
-unique_name_in_owner = true
-visible = false
-
-[node name="CloseOptionsMenuButton" parent="CanvasLayer/Pause_Menu" instance=ExtResource("16_ljexv")]
-unique_name_in_owner = true
-visible = false
-offset_left = 7.0
-offset_top = 5.0
-offset_right = -401.0
-offset_bottom = -220.0
 
 [node name="Move" type="Button" parent="CanvasLayer"]
 offset_left = 46.0
@@ -799,6 +779,54 @@ offset_bottom = 262.0
 theme_override_font_sizes/font_size = 32
 text = "Attack"
 
+[node name="Character_Sheets_View_Button" parent="CanvasLayer" instance=ExtResource("23_55pyv")]
+offset_left = 382.0
+offset_top = 84.0
+offset_right = 547.0
+offset_bottom = 140.0
+scale = Vector2(0.5, 0.5)
+
+[node name="Character Sheets Window" parent="CanvasLayer" instance=ExtResource("24_eaxtu")]
+unique_name_in_owner = true
+visible = false
+
+[node name="Pause_Menu" type="Node" parent="CanvasLayer"]
+
+[node name="PauseMenuButtonSinglePlayer" parent="CanvasLayer/Pause_Menu" instance=ExtResource("13_3q2p2")]
+unique_name_in_owner = true
+offset_left = 7.0
+offset_top = 4.0
+offset_right = -434.0
+offset_bottom = -212.0
+
+[node name="PauseMenuSingleplayer" parent="CanvasLayer/Pause_Menu" instance=ExtResource("14_tll6l")]
+unique_name_in_owner = true
+visible = false
+
+[node name="PauseMenuButtonMultiplayer" parent="CanvasLayer/Pause_Menu" instance=ExtResource("25_tkin4")]
+unique_name_in_owner = true
+visible = false
+offset_left = 7.0
+offset_top = 4.0
+offset_right = -434.0
+offset_bottom = -212.0
+
+[node name="PauseMenuMultiplayer" parent="CanvasLayer/Pause_Menu" instance=ExtResource("26_bqjto")]
+unique_name_in_owner = true
+visible = false
+
+[node name="PauseMenuOptionsScreen" parent="CanvasLayer/Pause_Menu" instance=ExtResource("25_vu6ki")]
+unique_name_in_owner = true
+visible = false
+
+[node name="CloseOptionsMenuButton" parent="CanvasLayer/Pause_Menu" instance=ExtResource("16_ljexv")]
+unique_name_in_owner = true
+visible = false
+offset_left = 7.0
+offset_top = 5.0
+offset_right = -401.0
+offset_bottom = -220.0
+
 [node name="ProficiencyNode" type="Node" parent="."]
 script = ExtResource("27_bf6tm")
 
@@ -826,9 +854,10 @@ script = ExtResource("14_ub6ke")
 script = ExtResource("14_8fc0f")
 
 [node name="PreacherSprite" type="Sprite2D" parent="Townie_Logic/Preacher"]
-position = Vector2(-4.76837e-07, -0.0898228)
-scale = Vector2(0.5, 0.426)
-texture = ExtResource("16_tsmpy")
+position = Vector2(-2.5, 2.33)
+scale = Vector2(0.037, 0.0314315)
+texture = ExtResource("39_c8vu0")
+offset = Vector2(15, -300)
 script = ExtResource("34_hshlf")
 
 [node name="Label" type="Label" parent="Townie_Logic/Preacher/PreacherSprite"]
@@ -845,6 +874,16 @@ scale = Vector2(2.02606, 2.83457)
 theme_override_font_sizes/font_size = 32
 text = "Preacher"
 metadata/_edit_use_anchors_ = true
+
+[node name="DefaultDrawUI" type="CanvasLayer" parent="Townie_Logic/Preacher"]
+visible = false
+
+[node name="Special Ability" type="Button" parent="Townie_Logic/Preacher/DefaultDrawUI"]
+offset_left = 353.0
+offset_top = 149.0
+offset_right = 469.0
+offset_bottom = 180.0
+text = "Special Ability"
 
 [node name="AttackingCanvas" type="CanvasLayer" parent="Townie_Logic/Preacher"]
 visible = false
@@ -889,6 +928,13 @@ offset_right = 463.0
 offset_bottom = 217.0
 text = "Back"
 
+[node name="Special Ability" type="Button" parent="Townie_Logic/Preacher/AttackingCanvas"]
+offset_left = 353.0
+offset_top = 149.0
+offset_right = 469.0
+offset_bottom = 180.0
+text = "Special Ability"
+
 [node name="Doctor" type="CharacterBody2D" parent="Townie_Logic"]
 script = ExtResource("16_2qs05")
 
@@ -912,6 +958,16 @@ scale = Vector2(2.02606, 2.83457)
 theme_override_font_sizes/font_size = 32
 text = "Doctor"
 metadata/_edit_use_anchors_ = true
+
+[node name="DefaultDrawUI" type="CanvasLayer" parent="Townie_Logic/Doctor"]
+visible = false
+
+[node name="Special Ability" type="Button" parent="Townie_Logic/Doctor/DefaultDrawUI"]
+offset_left = 353.0
+offset_top = 149.0
+offset_right = 469.0
+offset_bottom = 180.0
+text = "Special Ability"
 
 [node name="AttackingCanvas" type="CanvasLayer" parent="Townie_Logic/Doctor"]
 visible = false
@@ -956,6 +1012,30 @@ offset_right = 463.0
 offset_bottom = 217.0
 text = "Back"
 
+[node name="Special Ability" type="Button" parent="Townie_Logic/Doctor/AttackingCanvas"]
+offset_left = 353.0
+offset_top = 149.0
+offset_right = 469.0
+offset_bottom = 180.0
+text = "Special Ability"
+
+[node name="HealStunUI" type="CanvasLayer" parent="Townie_Logic/Doctor"]
+visible = false
+
+[node name="Heal" type="Button" parent="Townie_Logic/Doctor/HealStunUI"]
+offset_left = 411.0
+offset_top = 218.0
+offset_right = 465.0
+offset_bottom = 247.0
+text = "Heal"
+
+[node name="Stun" type="Button" parent="Townie_Logic/Doctor/HealStunUI"]
+offset_left = 356.0
+offset_top = 217.0
+offset_right = 403.0
+offset_bottom = 245.0
+text = "Stun"
+
 [node name="Teacher" type="CharacterBody2D" parent="Townie_Logic"]
 script = ExtResource("17_evase")
 
@@ -979,6 +1059,16 @@ scale = Vector2(2.02606, 2.83457)
 theme_override_font_sizes/font_size = 32
 text = "Teacher"
 metadata/_edit_use_anchors_ = true
+
+[node name="DefaultDrawUI" type="CanvasLayer" parent="Townie_Logic/Teacher"]
+visible = false
+
+[node name="Special Ability" type="Button" parent="Townie_Logic/Teacher/DefaultDrawUI"]
+offset_left = 353.0
+offset_top = 149.0
+offset_right = 469.0
+offset_bottom = 180.0
+text = "Special Ability"
 
 [node name="AttackingCanvas" type="CanvasLayer" parent="Townie_Logic/Teacher"]
 visible = false
@@ -1023,6 +1113,13 @@ offset_right = 463.0
 offset_bottom = 217.0
 text = "Back"
 
+[node name="Special Ability" type="Button" parent="Townie_Logic/Teacher/AttackingCanvas"]
+offset_left = 353.0
+offset_top = 149.0
+offset_right = 469.0
+offset_bottom = 180.0
+text = "Special Ability"
+
 [node name="Town_Drunk" type="CharacterBody2D" parent="Townie_Logic"]
 script = ExtResource("18_8vpej")
 
@@ -1046,6 +1143,16 @@ scale = Vector2(2.02606, 2.83457)
 theme_override_font_sizes/font_size = 32
 text = "Town Drunk"
 metadata/_edit_use_anchors_ = true
+
+[node name="DefaultDrawUI" type="CanvasLayer" parent="Townie_Logic/Town_Drunk"]
+visible = false
+
+[node name="Special Ability" type="Button" parent="Townie_Logic/Town_Drunk/DefaultDrawUI"]
+offset_left = 353.0
+offset_top = 149.0
+offset_right = 469.0
+offset_bottom = 180.0
+text = "Special Ability"
 
 [node name="AttackingCanvas" type="CanvasLayer" parent="Townie_Logic/Town_Drunk"]
 visible = false
@@ -1090,6 +1197,13 @@ offset_right = 463.0
 offset_bottom = 217.0
 text = "Back"
 
+[node name="Special Ability" type="Button" parent="Townie_Logic/Town_Drunk/AttackingCanvas"]
+offset_left = 353.0
+offset_top = 149.0
+offset_right = 469.0
+offset_bottom = 180.0
+text = "Special Ability"
+
 [node name="Bar_Keep" type="CharacterBody2D" parent="Townie_Logic"]
 script = ExtResource("19_alpfg")
 
@@ -1113,6 +1227,16 @@ scale = Vector2(2.02606, 2.83457)
 theme_override_font_sizes/font_size = 32
 text = "Bar Keep"
 metadata/_edit_use_anchors_ = true
+
+[node name="DefaultDrawUI" type="CanvasLayer" parent="Townie_Logic/Bar_Keep"]
+visible = false
+
+[node name="Special Ability" type="Button" parent="Townie_Logic/Bar_Keep/DefaultDrawUI"]
+offset_left = 353.0
+offset_top = 149.0
+offset_right = 469.0
+offset_bottom = 180.0
+text = "Special Ability"
 
 [node name="AttackingCanvas" type="CanvasLayer" parent="Townie_Logic/Bar_Keep"]
 visible = false
@@ -1157,6 +1281,13 @@ offset_right = 463.0
 offset_bottom = 217.0
 text = "Back"
 
+[node name="Special Ability" type="Button" parent="Townie_Logic/Bar_Keep/AttackingCanvas"]
+offset_left = 353.0
+offset_top = 149.0
+offset_right = 469.0
+offset_bottom = 180.0
+text = "Special Ability"
+
 [node name="Ranch_Hand" type="CharacterBody2D" parent="Townie_Logic"]
 script = ExtResource("20_dwx7h")
 
@@ -1180,6 +1311,16 @@ scale = Vector2(2.02606, 2.83457)
 theme_override_font_sizes/font_size = 32
 text = "Ranch Hand"
 metadata/_edit_use_anchors_ = true
+
+[node name="DefaultDrawUI" type="CanvasLayer" parent="Townie_Logic/Ranch_Hand"]
+visible = false
+
+[node name="Special Ability" type="Button" parent="Townie_Logic/Ranch_Hand/DefaultDrawUI"]
+offset_left = 353.0
+offset_top = 149.0
+offset_right = 469.0
+offset_bottom = 180.0
+text = "Special Ability"
 
 [node name="AttackingCanvas" type="CanvasLayer" parent="Townie_Logic/Ranch_Hand"]
 visible = false
@@ -1224,6 +1365,13 @@ offset_right = 463.0
 offset_bottom = 217.0
 text = "Back"
 
+[node name="Special Ability" type="Button" parent="Townie_Logic/Ranch_Hand/AttackingCanvas"]
+offset_left = 353.0
+offset_top = 149.0
+offset_right = 469.0
+offset_bottom = 180.0
+text = "Special Ability"
+
 [node name="Store_Keeper" type="CharacterBody2D" parent="Townie_Logic"]
 script = ExtResource("45_l4515")
 
@@ -1246,6 +1394,16 @@ scale = Vector2(2.02606, 2.83457)
 theme_override_font_sizes/font_size = 32
 text = "Ranch Hand"
 metadata/_edit_use_anchors_ = true
+
+[node name="DefaultDrawUI" type="CanvasLayer" parent="Townie_Logic/Store_Keeper"]
+visible = false
+
+[node name="Special Ability" type="Button" parent="Townie_Logic/Store_Keeper/DefaultDrawUI"]
+offset_left = 353.0
+offset_top = 149.0
+offset_right = 469.0
+offset_bottom = 180.0
+text = "Special Ability"
 
 [node name="AttackingCanvas" type="CanvasLayer" parent="Townie_Logic/Store_Keeper"]
 visible = false
@@ -1290,6 +1448,13 @@ offset_right = 463.0
 offset_bottom = 217.0
 text = "Back"
 
+[node name="Special Ability" type="Button" parent="Townie_Logic/Store_Keeper/AttackingCanvas"]
+offset_left = 353.0
+offset_top = 149.0
+offset_right = 469.0
+offset_bottom = 180.0
+text = "Special Ability"
+
 [node name="Mountain_Man" type="CharacterBody2D" parent="Townie_Logic"]
 script = ExtResource("46_08nss")
 
@@ -1312,6 +1477,16 @@ scale = Vector2(2.02606, 2.83457)
 theme_override_font_sizes/font_size = 32
 text = "Ranch Hand"
 metadata/_edit_use_anchors_ = true
+
+[node name="DefaultDrawUI" type="CanvasLayer" parent="Townie_Logic/Mountain_Man"]
+visible = false
+
+[node name="Special Ability" type="Button" parent="Townie_Logic/Mountain_Man/DefaultDrawUI"]
+offset_left = 353.0
+offset_top = 149.0
+offset_right = 469.0
+offset_bottom = 180.0
+text = "Special Ability"
 
 [node name="AttackingCanvas" type="CanvasLayer" parent="Townie_Logic/Mountain_Man"]
 visible = false
@@ -1356,6 +1531,13 @@ offset_right = 463.0
 offset_bottom = 217.0
 text = "Back"
 
+[node name="Special Ability" type="Button" parent="Townie_Logic/Mountain_Man/AttackingCanvas"]
+offset_left = 353.0
+offset_top = 149.0
+offset_right = 469.0
+offset_bottom = 180.0
+text = "Special Ability"
+
 [node name="Bounty_Hunter" type="CharacterBody2D" parent="Townie_Logic"]
 script = ExtResource("47_cjmfn")
 
@@ -1378,6 +1560,16 @@ scale = Vector2(2.02606, 2.83457)
 theme_override_font_sizes/font_size = 32
 text = "Ranch Hand"
 metadata/_edit_use_anchors_ = true
+
+[node name="DefaultDrawUI" type="CanvasLayer" parent="Townie_Logic/Bounty_Hunter"]
+visible = false
+
+[node name="Special Ability" type="Button" parent="Townie_Logic/Bounty_Hunter/DefaultDrawUI"]
+offset_left = 353.0
+offset_top = 149.0
+offset_right = 469.0
+offset_bottom = 180.0
+text = "Special Ability"
 
 [node name="AttackingCanvas" type="CanvasLayer" parent="Townie_Logic/Bounty_Hunter"]
 visible = false
@@ -1422,6 +1614,13 @@ offset_right = 463.0
 offset_bottom = 217.0
 text = "Back"
 
+[node name="Special Ability" type="Button" parent="Townie_Logic/Bounty_Hunter/AttackingCanvas"]
+offset_left = 353.0
+offset_top = 149.0
+offset_right = 469.0
+offset_bottom = 180.0
+text = "Special Ability"
+
 [node name="Saloon_Girl" type="CharacterBody2D" parent="Townie_Logic"]
 script = ExtResource("48_ai5s4")
 
@@ -1444,6 +1643,16 @@ scale = Vector2(2.02606, 2.83457)
 theme_override_font_sizes/font_size = 32
 text = "Ranch Hand"
 metadata/_edit_use_anchors_ = true
+
+[node name="DefaultDrawUI" type="CanvasLayer" parent="Townie_Logic/Saloon_Girl"]
+visible = false
+
+[node name="Special Ability" type="Button" parent="Townie_Logic/Saloon_Girl/DefaultDrawUI"]
+offset_left = 353.0
+offset_top = 149.0
+offset_right = 469.0
+offset_bottom = 180.0
+text = "Special Ability"
 
 [node name="AttackingCanvas" type="CanvasLayer" parent="Townie_Logic/Saloon_Girl"]
 visible = false
@@ -1488,6 +1697,13 @@ offset_right = 463.0
 offset_bottom = 217.0
 text = "Back"
 
+[node name="Special Ability" type="Button" parent="Townie_Logic/Saloon_Girl/AttackingCanvas"]
+offset_left = 353.0
+offset_top = 149.0
+offset_right = 469.0
+offset_bottom = 180.0
+text = "Special Ability"
+
 [node name="Bank_Manager" type="CharacterBody2D" parent="Townie_Logic"]
 script = ExtResource("49_4aoh4")
 
@@ -1510,6 +1726,16 @@ scale = Vector2(2.02606, 2.83457)
 theme_override_font_sizes/font_size = 32
 text = "Ranch Hand"
 metadata/_edit_use_anchors_ = true
+
+[node name="DefaultDrawUI" type="CanvasLayer" parent="Townie_Logic/Bank_Manager"]
+visible = false
+
+[node name="Special Ability" type="Button" parent="Townie_Logic/Bank_Manager/DefaultDrawUI"]
+offset_left = 353.0
+offset_top = 149.0
+offset_right = 469.0
+offset_bottom = 180.0
+text = "Special Ability"
 
 [node name="AttackingCanvas" type="CanvasLayer" parent="Townie_Logic/Bank_Manager"]
 visible = false
@@ -1554,6 +1780,13 @@ offset_right = 463.0
 offset_bottom = 217.0
 text = "Back"
 
+[node name="Special Ability" type="Button" parent="Townie_Logic/Bank_Manager/AttackingCanvas"]
+offset_left = 353.0
+offset_top = 149.0
+offset_right = 469.0
+offset_bottom = 180.0
+text = "Special Ability"
+
 [node name="Sheriff" type="CharacterBody2D" parent="Townie_Logic"]
 script = ExtResource("50_glnk6")
 
@@ -1576,6 +1809,16 @@ scale = Vector2(2.02606, 2.83457)
 theme_override_font_sizes/font_size = 32
 text = "Ranch Hand"
 metadata/_edit_use_anchors_ = true
+
+[node name="DefaultDrawUI" type="CanvasLayer" parent="Townie_Logic/Sheriff"]
+visible = false
+
+[node name="Special Ability" type="Button" parent="Townie_Logic/Sheriff/DefaultDrawUI"]
+offset_left = 353.0
+offset_top = 149.0
+offset_right = 469.0
+offset_bottom = 180.0
+text = "Special Ability"
 
 [node name="AttackingCanvas" type="CanvasLayer" parent="Townie_Logic/Sheriff"]
 visible = false
@@ -1620,6 +1863,13 @@ offset_right = 463.0
 offset_bottom = 217.0
 text = "Back"
 
+[node name="Special Ability" type="Button" parent="Townie_Logic/Sheriff/AttackingCanvas"]
+offset_left = 353.0
+offset_top = 149.0
+offset_right = 469.0
+offset_bottom = 180.0
+text = "Special Ability"
+
 [connection signal="child_order_changed" from="." to="Rules_Controller" method="_on_node_2d_child_order_changed"]
 [connection signal="pressed" from="StartUpCanvas/Start" to="Rules_Controller" method="DeleteLater"]
 [connection signal="pressed" from="AttackingCanvas/Range" to="Layer0" method="_on_attack_pressed"]
@@ -1630,6 +1880,7 @@ text = "Back"
 [connection signal="pressed" from="CanvasLayer/Button" to="CanvasLayer/Label" method="_on_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Button" to="CanvasLayer/Claim" method="_on_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Button" to="Rules_Controller" method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Button" to="Townie_Logic" method="_on_button_pressed"]
 [connection signal="ready" from="CanvasLayer/Label" to="Rules_Controller" method="_on_label_ready"]
 [connection signal="pressed" from="CanvasLayer/Draw Card" to="Rules_Controller" method="_onCardDraw"]
 [connection signal="pressed" from="CanvasLayer/Draw Card" to="Cards" method="_onCardDraw"]
@@ -1655,11 +1906,14 @@ text = "Back"
 [connection signal="pressed" from="Townie_Logic/Preacher/AttackingCanvas/Brawl" to="Layer0" method="_on_brawl_pressed"]
 [connection signal="pressed" from="Townie_Logic/Preacher/AttackingCanvas/Brawl" to="Rules_Controller" method="BrawlAttack" binds= ["Preacher"]]
 [connection signal="pressed" from="Townie_Logic/Preacher/AttackingCanvas/Back" to="Rules_Controller" method="PlayerUI" binds= [false]]
+[connection signal="pressed" from="Townie_Logic/Doctor/DefaultDrawUI/Special Ability" to="Townie_Logic/Doctor" method="_on_special_ability_pressed"]
 [connection signal="pressed" from="Townie_Logic/Doctor/AttackingCanvas/Range" to="Layer0" method="_on_attack_pressed"]
 [connection signal="pressed" from="Townie_Logic/Doctor/AttackingCanvas/Range" to="Rules_Controller" method="RangeAttack" binds= ["Doctor"]]
 [connection signal="pressed" from="Townie_Logic/Doctor/AttackingCanvas/Brawl" to="Layer0" method="_on_brawl_pressed"]
 [connection signal="pressed" from="Townie_Logic/Doctor/AttackingCanvas/Brawl" to="Rules_Controller" method="BrawlAttack" binds= ["Doctor"]]
 [connection signal="pressed" from="Townie_Logic/Doctor/AttackingCanvas/Back" to="Rules_Controller" method="PlayerUI" binds= [false]]
+[connection signal="pressed" from="Townie_Logic/Doctor/HealStunUI/Heal" to="Townie_Logic/Doctor" method="_on_heal_pressed"]
+[connection signal="pressed" from="Townie_Logic/Doctor/HealStunUI/Stun" to="Townie_Logic/Doctor" method="_on_stun_pressed"]
 [connection signal="pressed" from="Townie_Logic/Teacher/AttackingCanvas/Range" to="Layer0" method="_on_attack_pressed"]
 [connection signal="pressed" from="Townie_Logic/Teacher/AttackingCanvas/Range" to="Rules_Controller" method="RangeAttack" binds= ["Teacher"]]
 [connection signal="pressed" from="Townie_Logic/Teacher/AttackingCanvas/Brawl" to="Layer0" method="_on_brawl_pressed"]

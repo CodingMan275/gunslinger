@@ -92,7 +92,8 @@ func _on_claim_pressed() -> void:
 	get_node(CurrentCard).reveal_hired_gun()
 	#Set movable to be true
 	get_node(CurrentCard).movable = true
-	
+	get_node(CurrentCard).get_child(2).visible = true
+	HideSpecialAbility.rpc()
 	Rules.get_node(str(multiplayer.get_unique_id())).NearbyTownieCheck()
 	#Each hird gun will have a variable for which PLayer currently has control over it,
 	#We want to assign this variable to the player ID that clciked the button
@@ -129,3 +130,26 @@ func SchizoFunctionPleaseWork():
 	#To claim this hired gun and once its claimed it does not matter if these values
 	#are wrong becuase once it is claimed it will never ben controlled by anyone else again
 	pass
+
+
+func ShowAttackUICheck():
+	if CurrentCard != null:
+		var thing = get_node(CurrentCard)
+		if ((thing.OwningPlayer == GlobalScript.PlayerNode[Rules.Turn_Order-1].Player_ID) and (thing.claim_revealed == false)):
+			thing.get_child(1).visible = true
+		elif((thing.OwningPlayer == GlobalScript.PlayerNode[Rules.Turn_Order-1].Player_ID) and (thing.claim_revealed == true)):
+			thing.get_child(2).visible = true
+		else:
+			thing.get_child(1).visible = true
+
+func _on_button_pressed() -> void:
+	if CurrentCard != null:
+		HideAttackUI.rpc()
+	pass # Replace with function body.
+@rpc("any_peer","call_local")
+func HideAttackUI() -> void:
+	get_node(CurrentCard).get_child(1).visible = false
+	get_node(CurrentCard).get_child(2).visible = false
+@rpc("any_peer","call_local")
+func HideSpecialAbility():
+	get_node(CurrentCard).get_child(1).visible = false

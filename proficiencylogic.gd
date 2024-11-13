@@ -23,10 +23,11 @@ func TownieProficiencyCalc(guy : String) -> int:
 		proficiency = Target.ShotgunProf
 	else:
 		proficiency = Target.BrawlProf
+	print("prof is ", proficiency)
 	return proficiency
 	
 func GunslingerProficiencyCalc(guy : int) -> int:
-	Target = GlobalScript.PlayerNode[guy-1]
+	Target = GlobalScript.PlayerNode[guy]
 	if(Target.Weapon1Name == "Knife"):
 		proficiency = Target.KnifeProf
 	elif(Target.Weapon1Name == "Rifle"):
@@ -39,4 +40,5 @@ func GunslingerProficiencyCalc(guy : int) -> int:
 		proficiency = Target.ShotgunProf
 	else:
 		proficiency = Target.BrawlProf
+	print("prof is ", proficiency)
 	return proficiency

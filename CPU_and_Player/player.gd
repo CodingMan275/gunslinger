@@ -49,12 +49,12 @@ extends CharacterBody2D
 
 @onready var GiveTakeButton = get_parent().GiveTakeButton
 
-var KnifeProf = 0
-var PistolProf = 0
-var RifleProf = 0
-var ShotgunProf = 0
-var TwinPistolProf = 0
-var BrawlProf = 0
+var KnifeProf = 3
+var PistolProf = 3
+var RifleProf = 3
+var ShotgunProf = 3
+var TwinPistolProf = 3
+var BrawlProf = 3
 
 
 #So the player knows what order it is
@@ -80,6 +80,7 @@ var Movable = false
 #Label Name to be used by the PLayer label to keep track of who is who
 var LabelName = "TEMP"
 
+var CanDynamite : bool = true
 
 var Player = preload("res://CPU_and_Player/PlayerClass.gd").Player.new(0)
 
@@ -115,9 +116,14 @@ func _on_ready() -> void:
 		
 
 func _updateMove():
-	Movable = true
-	if action_points == 0:
+	if !DrewCard:
+		Movable = true
+		if action_points == 0:
+			MoveButton.hide()
+	else:
+		get_parent().Townie.get_node(CurrentCard).movable = true
 		MoveButton.hide()
+	
 
 
 func _update_turn(x):
@@ -193,12 +199,12 @@ func PutCardInHand(Card, FirstDraw, p_i):
 				#Sets the tile_map_node to the proper board refrence
 				get_parent().Townie.get_node(Card).tile_map_node = tile_map_node
 				#This townie is now movable
-				get_parent().Townie.get_node(Card).movable = true	
+				#get_parent().Townie.get_node(Card).movable = true	
 				#The current player controlling it is this player
 				get_parent().Townie.get_node(CurrentCard).Player = Player_ID
 				#Hide the draw button
 				DrawButton.hide()
-				MoveButton.hide()
+				#MoveButton.hide()
 				AttackButton.hide()
 				AttackUI.hide()
 	pass
@@ -210,6 +216,7 @@ func Claim(x):
 	CurrentCard = x
 	#Go through my hand to see if I have this card
 	if(PlayerHand.has(CurrentCard)):
+		GlobalScript.DebugScript.add(str(self.Name+ " Has claimed " +CurrentCard))
 		#Have I already claimed this card?
 		if(!get_parent().Townie.get_node(CurrentCard).claim_revealed):
 			#Show the claim button
@@ -250,7 +257,6 @@ func MoveMouse():
 					GlobalScript.DebugScript.add("You have no more Action Points ")
 				elif(Input.is_action_just_pressed("LeftClick") and GlobalScript.PlayerNode[order-1].StunTracker != 0):
 					GlobalScript.DebugScript.add("you are stunned and cannot move")
-
 @rpc("any_peer")
 func UpdateMove(x, NewPos):
 	self.global_position = x

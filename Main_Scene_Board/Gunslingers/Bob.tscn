@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bd050uxh0srui"]
 
-[ext_resource type="Texture2D" uid="uid://wpqjamy8nklp" path="res://icon.svg" id="1_gp126"]
+[ext_resource type="Texture2D" uid="uid://bdmvi8qlb5m57" path="res://bobseymour.svg" id="2_ikm7n"]
 [ext_resource type="Script" path="res://Main_Scene_Board/Gunslingers/Bob.gd" id="2_xrep5"]
 [ext_resource type="Script" path="res://Josh_Test_Scenes/Player_Label.gd" id="3_jvavq"]
 [ext_resource type="Script" path="res://GunslingerSpriteClick.gd" id="3_ue563"]

@@ -72,7 +72,7 @@ grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 25
+theme_override_constants/separation = 15
 
 [node name="Resume_Button" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -99,6 +99,19 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_yfeuf")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_a2nxc")
 theme_override_styles/normal = SubResource("StyleBoxFlat_gp72c")
 text = "Options"
+
+[node name="Save&Reload_Button" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wlhlq")
+theme_override_styles/hover = SubResource("StyleBoxFlat_yfeuf")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_a2nxc")
+theme_override_styles/normal = SubResource("StyleBoxFlat_gp72c")
+text = "Save & Reload"
 
 [node name="Quit_Button" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -131,27 +144,15 @@ grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2"]
 layout_mode = 2
-theme_override_constants/separation = 25
+theme_override_constants/separation = 10
 
-[node name="Label" type="Label" parent="MarginContainer2/VBoxContainer"]
+[node name="Label" type="RichTextLabel" parent="MarginContainer2/VBoxContainer"]
 layout_mode = 2
-text = "Are you sure you want
-to quit?"
+theme_override_font_sizes/normal_font_size = 14
+text = "Do you want to save or reload a previous save?"
+fit_content = true
 
-[node name="Yes_Button" type="Button" parent="MarginContainer2/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_styles/focus = SubResource("StyleBoxEmpty_wlhlq")
-theme_override_styles/hover = SubResource("StyleBoxFlat_yfeuf")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_a2nxc")
-theme_override_styles/normal = SubResource("StyleBoxFlat_gp72c")
-text = "Yes"
-
-[node name="No_Button" type="Button" parent="MarginContainer2/VBoxContainer"]
+[node name="Save_Button" type="Button" parent="MarginContainer2/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
@@ -162,10 +163,38 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_wlhlq")
 theme_override_styles/hover = SubResource("StyleBoxFlat_yfeuf")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_a2nxc")
 theme_override_styles/normal = SubResource("StyleBoxFlat_gp72c")
-text = "No"
+text = "Save"
+
+[node name="Reload_Button" type="Button" parent="MarginContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wlhlq")
+theme_override_styles/hover = SubResource("StyleBoxFlat_yfeuf")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_a2nxc")
+theme_override_styles/normal = SubResource("StyleBoxFlat_gp72c")
+text = "Reload"
+
+[node name="Cancel" type="Button" parent="MarginContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wlhlq")
+theme_override_styles/hover = SubResource("StyleBoxFlat_yfeuf")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_a2nxc")
+theme_override_styles/normal = SubResource("StyleBoxFlat_gp72c")
+text = "Cancel"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Resume_Button" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Options_Button" to="." method="_on_options__button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Save&Reload_Button" to="." method="_on_save_reload_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Quit_Button" to="." method="_on_quit__button_pressed"]
-[connection signal="pressed" from="MarginContainer2/VBoxContainer/Yes_Button" to="." method="_on_yes_button_pressed"]
-[connection signal="pressed" from="MarginContainer2/VBoxContainer/No_Button" to="." method="_on_no_button_pressed"]
+[connection signal="pressed" from="MarginContainer2/VBoxContainer/Save_Button" to="." method="_on_save_button_pressed"]
+[connection signal="pressed" from="MarginContainer2/VBoxContainer/Reload_Button" to="." method="_on_reload_button_pressed"]
+[connection signal="pressed" from="MarginContainer2/VBoxContainer/Cancel" to="." method="_on_cancel_pressed"]

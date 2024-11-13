@@ -4,6 +4,7 @@ extends Node
 @export var HiredGunVar = 3
 @export var WeaponCardVar = 5
 @onready var Sound_Player2 = $"../CanvasLayer/Draw Card/DrawCardSFX"
+@onready var CardUI = get_node("../Townie_Logic")
 
 #Draw and Discard piles that are connected to the multiplayer syncronizer
 #These are updated automatically between peers so every peer
@@ -12,7 +13,7 @@ extends Node
 @export var DrawArray = ["Preacher","Doctor","Teacher","Town_Drunk", "Bar_Keep", "Ranch_Hand"]
 @export var DiscardArray = []
 #Gunsliger Pile
-@export var GunslingerArray = ["Bob", "Mad_Mike"]#, "Jon_Laramie", "Elijah", "Smokey", "The_Kidd"]
+@export var GunslingerArray = ["Bob", "Mad_Mike", "Jon_Laramie", "Elijah", "Smokey", "The_Kidd"]
 #Hired gun pile
 @export var HiredGunArray = ["Preacher","Doctor","Teacher","Town_Drunk","Bar_Keep", "Ranch_Hand"]
 #Weapon pile
@@ -45,7 +46,7 @@ func _ready() -> void:
 func _onCardDraw() -> void:
 	#Draws from the townie deck, rpc to do rpc functions
 	_drawTownDeck.rpc()
-	
+	CardUI.ShowAttackUICheck()
 
 #Every peer and the local machine draws from their
 #Appropriate deck in their instances
@@ -53,16 +54,7 @@ func _onCardDraw() -> void:
 func _drawTownDeck(): # fucntion that simulates the cards being drawn
 	Sound_Player2.play()
 	var DrawSize = DrawArray.size() # Checks size of the array we're drawing from
-	if (DrawSize != 0): # first element exists -> array has some cards left
-		var TDCard = DrawArray[0] # gets the first element value
-		GlobalScript.DebugScript.add("DrawArray drew  "+str(TDCard))
-		DrawArray.pop_front() #pop it out
-		DiscardArray.push_front(TDCard) #push on discard array
-		GlobalScript.DebugScript.add("DiscardArray has  "+str(DiscardArray))
-		GlobalScript.DebugScript.add("DrawArray has  "+str(DrawArray))
-		#adds card to hand
-		DrawnCard.emit(TDCard, false, null)
-	else:
+	if (DrawSize == 0): # first element exists -> array has some cards left
 		for n in 6:
 			DrawArray.push_front(DiscardArray[n]) #(dont think this works like I think it does) copy contents from discard back to draw
 		DiscardArray.clear()
@@ -71,8 +63,11 @@ func _drawTownDeck(): # fucntion that simulates the cards being drawn
 		var TDCard = DrawArray[0] #since its and if/else, we need to run the code from the if, or else the player would simply not be able to have a card drawn
 		DrawArray.pop_front()
 		DiscardArray.push_front(TDCard)
-		GlobalScript.DebugScript.add("DiscardArray has  "+str(DiscardArray))
-		GlobalScript.DebugScript.add("DrawArray has  "+str(DrawArray))
+	var TDCard = DrawArray[0] # gets the first element value
+	DrawArray.pop_front() #pop it out
+	DiscardArray.push_front(TDCard) #push on discard array
+	#adds card to hand
+	DrawnCard.emit(TDCard, false, null)
 
 @rpc("any_peer","call_local")
 func _AddCard(card, player_index, g):
@@ -109,7 +104,6 @@ func SDO():
 
 func _draw_card(array: Array, player_index: int, card_type: String) -> Variant:
 	if array.size() == 0:
-		GlobalScript.DebugScript.add("No cards left in " + card_type + " array.")
 		return null
 	var card_index = randi() % array.size()
 	var card = array[card_index]
@@ -126,27 +120,27 @@ func _ClaimCards(player_index):
 #Gets and sets card art
 func CardArt(CardName):
 	if(CardName == "Preacher"):
-		return("res://bobseymour.svg")
+		return("res://Main_Scene_Board/Gunslingers/The Preacher character card.png")
 	elif(CardName == "Doctor"):
-		return("res://elijahbrown.svg")
+		return("res://Main_Scene_Board/Gunslingers/the doctor character card.png")
 	elif(CardName == "Teacher"):
-		return("res://jonlaramine.svg")
+		return("res://Main_Scene_Board/Gunslingers/The_teacher_character card.png")
 	elif(CardName == "Town_Drunk"):
-		return("res://madmike.svg")
+		return("res://Main_Scene_Board/Gunslingers/town drunk character card.png")
 	elif(CardName == "Bar_Keep"):
-		return("res://oldsmokey.svg")
+		return("res://Main_Scene_Board/Gunslingers/barkeep character card.png")
 	elif(CardName == "Ranch_Hand"):
-		return("res://thekid.svg")
+		return("res://Main_Scene_Board/Gunslingers/ranch hand character card.png")
 	elif(CardName == "Knife"):
-		return("res://Main_Scene_Board/Weapon_Art/Knife.png")
+		return("res://Main_Scene_Board/Weapon_Art/Knife weapon card.png")
 	elif(CardName == "Pistol"):
-		return("res://Main_Scene_Board/Weapon_Art/pistol.png")
+		return("res://Main_Scene_Board/Weapon_Art/Pistol weapon card.png")
 	elif(CardName == "TwinPistol"):
-		return("res://Main_Scene_Board/Weapon_Art/TwinPistols.png")
+		return("res://Main_Scene_Board/Weapon_Art/Twin Pistol weapon card.png")
 	elif(CardName == "Rifle"):
 		return("res://Main_Scene_Board/Weapon_Art/Rifle.png")
 	elif(CardName == "Shotgun"):
-		return("res://Main_Scene_Board/Weapon_Art/shotgun.png")
+		return("res://Main_Scene_Board/Weapon_Art/Shotgun weapon card.png")
 	else:
 		return("res://icon.svg")
 	pass
