@@ -1,15 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://ue2n1ujfj846"]
+[gd_scene load_steps=5 format=3 uid="uid://ue2n1ujfj846"]
 
 [ext_resource type="Script" path="res://Main_Scene_Board/Gunslingers/Smokey.gd" id="1_8l8q0"]
-[ext_resource type="Texture2D" uid="uid://wpqjamy8nklp" path="res://icon.svg" id="1_30ipu"]
+[ext_resource type="Texture2D" uid="uid://dywhqj3m2j1y3" path="res://oldsmokey.svg" id="2_8lil0"]
 [ext_resource type="Script" path="res://Josh_Test_Scenes/Player_Label.gd" id="2_gva66"]
+[ext_resource type="Script" path="res://GunslingerSpriteClick.gd" id="3_kp434"]
 
 [node name="Smokey" type="Node2D"]
 script = ExtResource("1_8l8q0")
 
 [node name="TextureRect" type="Sprite2D" parent="."]
-scale = Vector2(0.717566, 0.667444)
-texture = ExtResource("1_30ipu")
+scale = Vector2(0.065, 0.0604598)
+texture = ExtResource("2_8lil0")
+script = ExtResource("3_kp434")
 
 [node name="Label" type="Label" parent="TextureRect"]
 visibility_layer = 1023

@@ -1,15 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://bq7gwdrowhcg4"]
+[gd_scene load_steps=5 format=3 uid="uid://bq7gwdrowhcg4"]
 
-[ext_resource type="Texture2D" uid="uid://wpqjamy8nklp" path="res://icon.svg" id="1_ltta0"]
 [ext_resource type="Script" path="res://Main_Scene_Board/Gunslingers/Elijah.gd" id="1_yq5b0"]
 [ext_resource type="Script" path="res://Josh_Test_Scenes/Player_Label.gd" id="2_lk764"]
+[ext_resource type="Texture2D" uid="uid://b3jt8k5v2aeha" path="res://elijahbrown.svg" id="2_wutq3"]
+[ext_resource type="Script" path="res://GunslingerSpriteClick.gd" id="3_aohub"]
 
 [node name="Elijah" type="Node2D"]
 script = ExtResource("1_yq5b0")
 
 [node name="TextureRect" type="Sprite2D" parent="."]
-scale = Vector2(0.717566, 0.667444)
-texture = ExtResource("1_ltta0")
+scale = Vector2(0.08, 0.074412)
+texture = ExtResource("2_wutq3")
+script = ExtResource("3_aohub")
 
 [node name="Label" type="Label" parent="TextureRect"]
 visibility_layer = 1023

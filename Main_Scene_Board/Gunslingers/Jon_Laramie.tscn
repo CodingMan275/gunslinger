@@ -1,15 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://c2kyy4l0dwbhx"]
+[gd_scene load_steps=5 format=3 uid="uid://c2kyy4l0dwbhx"]
 
 [ext_resource type="Script" path="res://Main_Scene_Board/Gunslingers/jon_laramie.gd" id="1_vha0c"]
-[ext_resource type="Texture2D" uid="uid://wpqjamy8nklp" path="res://icon.svg" id="1_x14em"]
 [ext_resource type="Script" path="res://Josh_Test_Scenes/Player_Label.gd" id="2_6ft1r"]
+[ext_resource type="Texture2D" uid="uid://jsgp5eehgaib" path="res://jonlaramine.svg" id="2_r3q38"]
+[ext_resource type="Script" path="res://GunslingerSpriteClick.gd" id="3_ir77t"]
 
 [node name="Jon_Laramie" type="Node2D"]
 script = ExtResource("1_vha0c")
 
 [node name="TextureRect" type="Sprite2D" parent="."]
-scale = Vector2(0.717566, 0.667444)
-texture = ExtResource("1_x14em")
+scale = Vector2(0.065, 0.0604597)
+texture = ExtResource("2_r3q38")
+script = ExtResource("3_ir77t")
 
 [node name="Label" type="Label" parent="TextureRect"]
 visibility_layer = 1023
