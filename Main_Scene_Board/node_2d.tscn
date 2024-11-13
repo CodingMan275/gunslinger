@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=4 uid="uid://jl7k3ltwbp41"]
+[gd_scene load_steps=85 format=4 uid="uid://jl7k3ltwbp41"]
 
 [ext_resource type="Texture2D" uid="uid://fcuqal2ynbts" path="res://Main_Scene_Board/spritesheet.png" id="1_o8ncf"]
 [ext_resource type="Texture2D" uid="uid://mmea4eto2a6p" path="res://Main_Scene_Board/Rhombus.png" id="2_rfajf"]
@@ -38,27 +38,29 @@
 [ext_resource type="PackedScene" uid="uid://d0ncmr5j7hrug" path="res://main_menu/options_menu.tscn" id="15_o4h6x"]
 [ext_resource type="Script" path="res://CPU_and_Player/doctor.gd" id="16_2qs05"]
 [ext_resource type="PackedScene" uid="uid://o8s2bfh5cxgj" path="res://pause_menu/close_options_menu_button.tscn" id="16_ljexv"]
-[ext_resource type="Texture2D" uid="uid://bdmvi8qlb5m57" path="res://bobseymour.svg" id="16_tsmpy"]
 [ext_resource type="Script" path="res://Main_Scene_Board/teacher.gd" id="17_evase"]
 [ext_resource type="Script" path="res://Main_Scene_Board/player_layer.gd" id="17_una0y"]
 [ext_resource type="Script" path="res://Main_Scene_Board/town_drunk.gd" id="18_8vpej"]
-[ext_resource type="Texture2D" uid="uid://b3jt8k5v2aeha" path="res://elijahbrown.svg" id="18_bkvl8"]
 [ext_resource type="Script" path="res://Main_Scene_Board/bar_keep.gd" id="19_alpfg"]
-[ext_resource type="Texture2D" uid="uid://jsgp5eehgaib" path="res://jonlaramine.svg" id="20_4gd5u"]
 [ext_resource type="Script" path="res://Main_Scene_Board/ranch_hand.gd" id="20_dwx7h"]
-[ext_resource type="Texture2D" uid="uid://c1keaoj8b1k3k" path="res://madmike.svg" id="22_nwhpe"]
-[ext_resource type="Texture2D" uid="uid://dywhqj3m2j1y3" path="res://oldsmokey.svg" id="24_5vq5u"]
+[ext_resource type="AudioStream" uid="uid://c2r1hmhy4jh73" path="res://shuffling-cards-74757.mp3" id="25_3oti0"]
 [ext_resource type="Texture2D" uid="uid://c5dj7es7aba7e" path="res://thekid.svg" id="26_ndqm4"]
 [ext_resource type="Script" path="res://proficiencylogic.gd" id="27_bf6tm"]
 [ext_resource type="Texture2D" uid="uid://bnk7r45gr5cn8" path="res://IMG_9861.png" id="27_uadwx"]
 [ext_resource type="Script" path="res://Main_Scene_Board/weapons.gd" id="30_sg7ny"]
 [ext_resource type="Script" path="res://TownieSpriteClick.gd" id="34_hshlf"]
+[ext_resource type="Texture2D" uid="uid://b8xf3kpnn037f" path="res://preachersprite.png" id="43_4q8lf"]
 [ext_resource type="Script" path="res://Main_Scene_Board/store_keeper.gd" id="45_l4515"]
 [ext_resource type="Script" path="res://Main_Scene_Board/mountain_man.gd" id="46_08nss"]
+[ext_resource type="Texture2D" uid="uid://co1ynyp2wonl3" path="res://doctorsprite.png" id="46_puujp"]
 [ext_resource type="Script" path="res://Main_Scene_Board/bounty_hunter.gd" id="47_cjmfn"]
 [ext_resource type="Script" path="res://Main_Scene_Board/saloon_girl.gd" id="48_ai5s4"]
+[ext_resource type="Texture2D" uid="uid://npb4ov8dsqjk" path="res://teachersprite.png" id="48_eyjeu"]
 [ext_resource type="Script" path="res://Main_Scene_Board/bank_manager.gd" id="49_4aoh4"]
+[ext_resource type="Texture2D" uid="uid://4js47xf3xilk" path="res://towndrunksprite.png" id="50_4ds6b"]
 [ext_resource type="Script" path="res://Main_Scene_Board/sheriff.gd" id="50_glnk6"]
+[ext_resource type="Texture2D" uid="uid://bbno4nr3bl5lf" path="res://barkeepsprite.png" id="52_bghbv"]
+[ext_resource type="Texture2D" uid="uid://cmgkkwmsfwmk5" path="res://ranchhandsprite.png" id="54_2nfar"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p1dyh"]
 texture = ExtResource("1_o8ncf")
@@ -604,6 +606,10 @@ offset_bottom = -0.0400085
 theme_override_font_sizes/font_size = 32
 text = "Draw Card"
 
+[node name="ShuffleSoundSFX" type="AudioStreamPlayer2D" parent="CanvasLayer/Draw Card"]
+stream = ExtResource("25_3oti0")
+volume_db = 7.429
+
 [node name="DrawCardSFX" type="AudioStreamPlayer2D" parent="CanvasLayer/Draw Card"]
 position = Vector2(-12, -225)
 stream = ExtResource("6_ye88j")
@@ -726,6 +732,8 @@ offset_bottom = 257.0
 theme_override_font_sizes/font_size = 32
 text = "Move"
 
+[node name="WalkSFX" type="AudioStreamPlayer2D" parent="CanvasLayer/Move"]
+
 [node name="Give_Take" type="Button" parent="CanvasLayer"]
 visible = false
 anchors_preset = -1
@@ -799,6 +807,8 @@ offset_bottom = 262.0
 theme_override_font_sizes/font_size = 32
 text = "Attack"
 
+[node name="DiceRollSFX" type="AudioStreamPlayer2D" parent="CanvasLayer/Attack"]
+
 [node name="ProficiencyNode" type="Node" parent="."]
 script = ExtResource("27_bf6tm")
 
@@ -827,8 +837,8 @@ script = ExtResource("14_8fc0f")
 
 [node name="PreacherSprite" type="Sprite2D" parent="Townie_Logic/Preacher"]
 position = Vector2(-4.76837e-07, -0.0898228)
-scale = Vector2(0.5, 0.426)
-texture = ExtResource("16_tsmpy")
+scale = Vector2(0.304, 0.259008)
+texture = ExtResource("43_4q8lf")
 script = ExtResource("34_hshlf")
 
 [node name="Label" type="Label" parent="Townie_Logic/Preacher/PreacherSprite"]
@@ -911,8 +921,8 @@ script = ExtResource("16_2qs05")
 
 [node name="DoctorSprite" type="Sprite2D" parent="Townie_Logic/Doctor"]
 position = Vector2(1.49012e-06, 0.083853)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("18_bkvl8")
+scale = Vector2(0.0830078, 0.0830078)
+texture = ExtResource("46_puujp")
 script = ExtResource("34_hshlf")
 
 [node name="Label" type="Label" parent="Townie_Logic/Doctor/DoctorSprite"]
@@ -1012,8 +1022,8 @@ script = ExtResource("17_evase")
 
 [node name="TeacherSprite" type="Sprite2D" parent="Townie_Logic/Teacher"]
 position = Vector2(-0.5, -0.497126)
-scale = Vector2(0.395, 0.361)
-texture = ExtResource("20_4gd5u")
+scale = Vector2(0.289, 0.264124)
+texture = ExtResource("48_eyjeu")
 script = ExtResource("34_hshlf")
 
 [node name="Label" type="Label" parent="Townie_Logic/Teacher/TeacherSprite"]
@@ -1096,8 +1106,8 @@ script = ExtResource("18_8vpej")
 
 [node name="TownDrunkSprite" type="Sprite2D" parent="Townie_Logic/Town_Drunk"]
 position = Vector2(-0.5, -0.544909)
-scale = Vector2(0.5, 0.457)
-texture = ExtResource("22_nwhpe")
+scale = Vector2(0.333, 0.304362)
+texture = ExtResource("50_4ds6b")
 script = ExtResource("34_hshlf")
 
 [node name="Label" type="Label" parent="Townie_Logic/Town_Drunk/TownDrunkSprite"]
@@ -1180,8 +1190,8 @@ script = ExtResource("19_alpfg")
 
 [node name="BarKeepSprite" type="Sprite2D" parent="Townie_Logic/Bar_Keep"]
 position = Vector2(-0.499999, -0.219522)
-scale = Vector2(0.285, 0.255)
-texture = ExtResource("24_5vq5u")
+scale = Vector2(0.104004, 0.0930561)
+texture = ExtResource("52_bghbv")
 script = ExtResource("34_hshlf")
 
 [node name="Label" type="Label" parent="Townie_Logic/Bar_Keep/BarKeepSprite"]
@@ -1264,8 +1274,8 @@ script = ExtResource("20_dwx7h")
 
 [node name="RanchHandSprite" type="Sprite2D" parent="Townie_Logic/Ranch_Hand"]
 position = Vector2(-1.5, 1)
-scale = Vector2(0.5, 0.313)
-texture = ExtResource("26_ndqm4")
+scale = Vector2(0.387, 0.242262)
+texture = ExtResource("54_2nfar")
 script = ExtResource("34_hshlf")
 
 [node name="Label" type="Label" parent="Townie_Logic/Ranch_Hand/RanchHandSprite"]

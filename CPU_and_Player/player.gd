@@ -48,6 +48,7 @@ extends CharacterBody2D
 @onready var MoveButton = get_parent().MoveButton
 
 @onready var GiveTakeButton = get_parent().GiveTakeButton
+@onready var Walking = $"../CanvasLayer/Move/WalkSFX"
 
 var KnifeProf = 3
 var PistolProf = 3
@@ -235,6 +236,7 @@ func move_possible():
 func MoveMouse():
 	#Another if statement that is probably not needed but ensures that only the peer
 	#who owns this player instance can move it
+	
 	if ($MultiplayerSynchronizer.get_multiplayer_authority() == multiplayer.get_unique_id() || GlobalScript.SinglePlay):
 		if(Player_ID == order):
 			if Movable:
@@ -243,6 +245,7 @@ func MoveMouse():
 					print(NewPos)
 					if  move_possible():
 						if TileCheck(NewPos):
+							Walking.play()
 							self.global_position = Vector2(get_global_mouse_position())
 							pos = NewPos
 							action_points -= 1

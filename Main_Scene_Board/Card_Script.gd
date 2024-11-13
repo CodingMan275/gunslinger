@@ -4,6 +4,7 @@ extends Node
 @export var HiredGunVar = 3
 @export var WeaponCardVar = 5
 @onready var Sound_Player2 = $"../CanvasLayer/Draw Card/DrawCardSFX"
+@onready var ShuffleSound = $"../CanvasLayer/Draw Card/ShuffleSoundSFX"
 @onready var CardUI = get_node("../Townie_Logic")
 
 #Draw and Discard piles that are connected to the multiplayer syncronizer
@@ -59,6 +60,7 @@ func _drawTownDeck(): # fucntion that simulates the cards being drawn
 			DrawArray.push_front(DiscardArray[n]) #(dont think this works like I think it does) copy contents from discard back to draw
 		DiscardArray.clear()
 		DrawArray.shuffle() # shuffles the array contents
+		ShuffleSound.play(1) #should play when decks reshuffled
 		DrawEmpty.emit()
 		var TDCard = DrawArray[0] #since its and if/else, we need to run the code from the if, or else the player would simply not be able to have a card drawn
 		DrawArray.pop_front()

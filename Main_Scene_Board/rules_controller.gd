@@ -3,6 +3,7 @@ extends Node
 @export var Turn_Order = 1
 #Creates a signal to be sent out which will contain the information
 #On turn order to other nodes and scenes
+@onready var DiceRoll = $"../CanvasLayer/Attack/DiceRollSFX"
 signal order
 
 signal move
@@ -357,6 +358,7 @@ func RangeAttack(Name : String):
 			CantAttack(range)
 
 func BrawlAttack(Name : String) -> bool:
+	#target == "teacher"
 	var ReturnBool = false
 	#Replace for loop with selected target
 	#n being the target
@@ -406,6 +408,7 @@ func CantAttack(range) -> void:
 #Attack function
 func Attack() -> void:
 	DrawButton.hide()
+	DiceRoll.play()
 	#Random attack ccheck
 	var Attack = (randi()%6 + 1)
 	accuracy = 0
