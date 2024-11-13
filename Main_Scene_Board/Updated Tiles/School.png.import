@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dt4kb238pqpff"
-path="res://.godot/imported/DoctorsOffice.png-c3fc6e17ae4a7649e670233d679e3392.ctex"
+uid="uid://stdd55mk8v0k"
+path="res://.godot/imported/School.png-c0c19fab572c49a9c5d4d87ef8d24e9f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Main_Scene_Board/Updated Tiles/DoctorsOffice.png"
-dest_files=["res://.godot/imported/DoctorsOffice.png-c3fc6e17ae4a7649e670233d679e3392.ctex"]
+source_file="res://Main_Scene_Board/Updated Tiles/School.png"
+dest_files=["res://.godot/imported/School.png-c0c19fab572c49a9c5d4d87ef8d24e9f.ctex"]
 
 [params]
 

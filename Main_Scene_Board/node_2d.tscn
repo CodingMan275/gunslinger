@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=4 uid="uid://jl7k3ltwbp41"]
+[gd_scene load_steps=83 format=4 uid="uid://jl7k3ltwbp41"]
 
 [ext_resource type="Texture2D" uid="uid://fcuqal2ynbts" path="res://Main_Scene_Board/spritesheet.png" id="1_o8ncf"]
 [ext_resource type="Texture2D" uid="uid://mmea4eto2a6p" path="res://Main_Scene_Board/Rhombus.png" id="2_rfajf"]
@@ -12,15 +12,20 @@
 [ext_resource type="Texture2D" uid="uid://c5600rupuq8tx" path="res://Main_Scene_Board/Updated Tiles/PathSouthWestEndAlpha.png" id="6_58tr5"]
 [ext_resource type="AudioStream" uid="uid://ccdn50u37npqi" path="res://Card Game/card-sounds-35956.wav" id="6_ye88j"]
 [ext_resource type="PackedScene" uid="uid://x0tek8t1bewj" path="res://CPU_and_Player/Player.tscn" id="7_saeg4"]
-[ext_resource type="Texture2D" uid="uid://bykey6wukvbrs" path="res://Main_Scene_Board/Updated Tiles/DoctorsOffice.png" id="7_ujmph"]
+[ext_resource type="Texture2D" uid="uid://dt4kb238pqpff" path="res://Main_Scene_Board/Updated Tiles/DoctorsOffice.png" id="7_ujmph"]
 [ext_resource type="AudioStream" uid="uid://bekgpnqtbfsyc" path="res://Card Game/Stun.wav" id="8_7t4t6"]
+[ext_resource type="Texture2D" uid="uid://c5jlo685cefy5" path="res://Main_Scene_Board/Updated Tiles/Stable 1.png" id="8_ov0g8"]
 [ext_resource type="Texture2D" uid="uid://cwr045wdx36mf" path="res://Main_Scene_Board/Updated Tiles/LawnAlpha.png" id="8_sj1b8"]
-[ext_resource type="Texture2D" uid="uid://th0hdnh1q6wt" path="res://Main_Scene_Board/Updated Tiles/Livery1.png" id="9_8y8qd"]
+[ext_resource type="Texture2D" uid="uid://b011txk3p20u1" path="res://Main_Scene_Board/Updated Tiles/Livery1.png" id="9_8y8qd"]
+[ext_resource type="Texture2D" uid="uid://bjpwuwhp4j6fg" path="res://Main_Scene_Board/Updated Tiles/School_V1_11_8_24_Auper_Lashlee_Gunslinger.png" id="9_chn60"]
 [ext_resource type="PackedScene" uid="uid://cj15kaxvr44m1" path="res://CPU_and_Player/CPU.tscn" id="9_hsfom"]
 [ext_resource type="Script" path="res://Main_Scene_Board/Card_Script.gd" id="9_mpy2d"]
 [ext_resource type="Script" path="res://Main_Scene_Board/claim.gd" id="9_xcao8"]
-[ext_resource type="Texture2D" uid="uid://bkdhn6dvbi6op" path="res://Main_Scene_Board/Updated Tiles/Livery2.png" id="10_okhjl"]
+[ext_resource type="Texture2D" uid="uid://diiu2osp2ss7u" path="res://Main_Scene_Board/Updated Tiles/Stable 2.png" id="10_hix82"]
+[ext_resource type="Texture2D" uid="uid://cp7ccxsdolbco" path="res://Main_Scene_Board/Updated Tiles/Livery2.png" id="10_okhjl"]
+[ext_resource type="Texture2D" uid="uid://stdd55mk8v0k" path="res://Main_Scene_Board/Updated Tiles/School.png" id="11_5y4ys"]
 [ext_resource type="Texture2D" uid="uid://bjw3pfr68vfq1" path="res://Main_Scene_Board/Updated Tiles/PathCrossAlpha.png" id="11_pvrpk"]
+[ext_resource type="Texture2D" uid="uid://o8yrpil2wgv2" path="res://Main_Scene_Board/Updated Tiles/DoctorsOfficeV2.png" id="12_2ad7n"]
 [ext_resource type="Texture2D" uid="uid://wpqjamy8nklp" path="res://icon.svg" id="12_kmvqj"]
 [ext_resource type="Texture2D" uid="uid://dnwtxvpqei783" path="res://Main_Scene_Board/Updated Tiles/PathLineEastToWest.png" id="12_wpbnm"]
 [ext_resource type="PackedScene" uid="uid://bir8u4hip16in" path="res://pause_menu/pause_menu_button_singleplayer.tscn" id="13_3q2p2"]
@@ -252,6 +257,33 @@ texture = ExtResource("6_58tr5")
 texture_region_size = Vector2i(316, 332)
 0:0/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_if2kg"]
+texture = ExtResource("8_ov0g8")
+texture_region_size = Vector2i(316, 216)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a487p"]
+texture = ExtResource("9_chn60")
+texture_region_size = Vector2i(316, 329)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kswnl"]
+texture = ExtResource("10_hix82")
+texture_region_size = Vector2i(316, 332)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e7o5l"]
+texture = ExtResource("11_5y4ys")
+texture_region_size = Vector2i(316, 332)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5q3yn"]
+texture = ExtResource("12_2ad7n")
+texture_region_size = Vector2i(474, 498)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(-79, 141)
+0:1/0 = 0
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ohgiv"]
 texture = ExtResource("7_ujmph")
 texture_region_size = Vector2i(316, 332)
@@ -264,13 +296,16 @@ texture_region_size = Vector2i(316, 332)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iqqcw"]
 texture = ExtResource("9_8y8qd")
-texture_region_size = Vector2i(316, 332)
+texture_region_size = Vector2i(632, 664)
 0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fi4ks"]
 texture = ExtResource("10_okhjl")
-texture_region_size = Vector2i(316, 332)
+texture_region_size = Vector2i(632, 664)
 0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_012qo"]
 texture = ExtResource("11_pvrpk")
@@ -309,6 +344,11 @@ sources/8 = SubResource("TileSetAtlasSource_ho8h4")
 sources/9 = SubResource("TileSetAtlasSource_07q67")
 sources/10 = SubResource("TileSetAtlasSource_gq8bu")
 sources/0 = SubResource("TileSetAtlasSource_d0p86")
+sources/11 = SubResource("TileSetAtlasSource_if2kg")
+sources/12 = SubResource("TileSetAtlasSource_a487p")
+sources/13 = SubResource("TileSetAtlasSource_kswnl")
+sources/14 = SubResource("TileSetAtlasSource_e7o5l")
+sources/15 = SubResource("TileSetAtlasSource_5q3yn")
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_mfl53"]
 properties/0/path = NodePath("CanvasLayer/Label:text")
@@ -446,11 +486,18 @@ tile_map_data = PackedByteArray("AAAGAAAAAAABAAAAAAAHAAAAAAABAAAAAAAAAAMAAAACAAA
 tile_set = SubResource("TileSet_mbj4e")
 script = ExtResource("17_una0y")
 
+[node name="Larg_ buildings" type="TileMapLayer" parent="."]
+y_sort_enabled = true
+use_parent_material = true
+position = Vector2(0, -56)
+tile_map_data = PackedByteArray("AAAGAAAAAAABAAAAAAAGAAYABAAAAAAAAAAAAAAABQAAAAAAAAAAAAQADwAAAAAAAAA=")
+tile_set = SubResource("TileSet_mbj4e")
+
 [node name="Building_Layer" type="TileMapLayer" parent="."]
 y_sort_enabled = true
 use_parent_material = true
 position = Vector2(-632, 112)
-tile_map_data = PackedByteArray("AAAHAAMABQAAAAAAAAAIAAMABQAAAAAAAAAHAAQABQAAAAAAAAAIAAQABQAAAAAAAAABAP3/BQAAAAAAAAABAP7/BQAAAAAAAAACAP7/BQAAAAAAAAACAP3/BQAAAAAAAAABAAEAAwAAAAAAAAABAAAAAwAAAAAAAAAEAAEAAwAAAAAAAAAFAAEAAwAAAAAAAAAFAAAAAwAAAAAAAAAEAAAAAwAAAAAAAAAEAP3/AwAAAAAAAAAFAP3/AwAAAAAAAAAIAAAAAwAAAAAAAAAIAAEAAwAAAAAAAAAEAAQAAwAAAAAAAAAFAAQAAwAAAAAAAAABAAQAAwAAAAAAAAACAAQAAwAAAAAAAAAHAP3/AwAAAAAAAAAIAP3/AwAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAAEAAEAAwAAAAAAAAAFAAEAAwAAAAAAAAAFAAAAAwAAAAAAAAAEAAAAAwAAAAAAAAAEAP3/AwAAAAAAAAAFAP3/AwAAAAAAAAAIAAAAAwAAAAAAAAAIAAEAAwAAAAAAAAAEAAQAAwAAAAAAAAAFAAQAAwAAAAAAAAABAAQADgAAAAAAAAACAAQADgAAAAAAAAAHAP3/AwAAAAAAAAAIAP3/AwAAAAAAAAA=")
 tile_set = SubResource("TileSet_mbj4e")
 
 [node name="Camera2D" type="Camera2D" parent="."]

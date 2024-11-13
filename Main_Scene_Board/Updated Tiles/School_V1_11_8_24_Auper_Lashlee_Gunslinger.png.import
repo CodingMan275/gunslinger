@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dt4kb238pqpff"
-path="res://.godot/imported/DoctorsOffice.png-c3fc6e17ae4a7649e670233d679e3392.ctex"
+uid="uid://bjpwuwhp4j6fg"
+path="res://.godot/imported/School_V1_11_8_24_Auper_Lashlee_Gunslinger.png-0d98431765eca0664b6b03481b197a23.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Main_Scene_Board/Updated Tiles/DoctorsOffice.png"
-dest_files=["res://.godot/imported/DoctorsOffice.png-c3fc6e17ae4a7649e670233d679e3392.ctex"]
+source_file="res://Main_Scene_Board/Updated Tiles/School_V1_11_8_24_Auper_Lashlee_Gunslinger.png"
+dest_files=["res://.godot/imported/School_V1_11_8_24_Auper_Lashlee_Gunslinger.png-0d98431765eca0664b6b03481b197a23.ctex"]
 
 [params]
 
