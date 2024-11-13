@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dvsi2q2hfwjbe"]
+[gd_scene load_steps=4 format=3 uid="uid://dvsi2q2hfwjbe"]
 
+[ext_resource type="Texture2D" uid="uid://wpqjamy8nklp" path="res://icon.svg" id="1_dm2cv"]
 [ext_resource type="Script" path="res://Main_Scene_Board/Gunslingers/The_Kidd.gd" id="1_gvodk"]
-[ext_resource type="Texture2D" uid="uid://c5dj7es7aba7e" path="res://thekid.svg" id="2_75il2"]
 [ext_resource type="Script" path="res://Josh_Test_Scenes/Player_Label.gd" id="2_ec2k4"]
-[ext_resource type="Script" path="res://GunslingerSpriteClick.gd" id="3_lu05c"]
 
 [node name="The_Kidd" type="Node2D"]
 script = ExtResource("1_gvodk")
