@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bsftm7av7font"
-path="res://.godot/imported/The Preacher character card.png-4f2e0dd481fb76696325e68c225904f8.ctex"
+uid="uid://cpw2quhkpl322"
+path="res://.godot/imported/Bowie Knife weapon card.png-55e34394c1467ddb5476d66090d6e454.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Main_Scene_Board/Gunslingers/The Preacher character card.png"
-dest_files=["res://.godot/imported/The Preacher character card.png-4f2e0dd481fb76696325e68c225904f8.ctex"]
+source_file="res://Main_Scene_Board/Weapon_Art/Bowie Knife weapon card.png"
+dest_files=["res://.godot/imported/Bowie Knife weapon card.png-55e34394c1467ddb5476d66090d6e454.ctex"]
 
 [params]
 

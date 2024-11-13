@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ia2yk6sf5ew0"
-path="res://.godot/imported/the doctor character card.png-5f4cdbfcbc88e3370dc66e46d53c878b.ctex"
+uid="uid://bsftm7av7font"
+path="res://.godot/imported/The Preacher character card.png-26ef96e28ce44b7415a686995396861f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Main_Scene_Board/Gunslingers/the doctor character card.png"
-dest_files=["res://.godot/imported/the doctor character card.png-5f4cdbfcbc88e3370dc66e46d53c878b.ctex"]
+source_file="res://Main_Scene_Board/Townsfolk/The Preacher character card.png"
+dest_files=["res://.godot/imported/The Preacher character card.png-26ef96e28ce44b7415a686995396861f.ctex"]
 
 [params]
 
