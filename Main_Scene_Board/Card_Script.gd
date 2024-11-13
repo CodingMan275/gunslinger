@@ -122,19 +122,19 @@ func _ClaimCards(player_index):
 #Gets and sets card art
 func CardArt(CardName):
 	if(CardName == "Preacher"):
-		return("res://Main_Scene_Board/Gunslingers/The Preacher character card.png")
+		return("res://Main_Scene_Board/Townsfolk/The Preacher character card.png")
 	elif(CardName == "Doctor"):
-		return("res://Main_Scene_Board/Gunslingers/the doctor character card.png")
+		return("res://Main_Scene_Board/Townsfolk/the doctor character card.png")
 	elif(CardName == "Teacher"):
-		return("res://Main_Scene_Board/Gunslingers/The_teacher_character card.png")
+		return("res://Main_Scene_Board/Townsfolk/The_teacher_character card.png")
 	elif(CardName == "Town_Drunk"):
-		return("res://Main_Scene_Board/Gunslingers/town drunk character card.png")
+		return("res://Main_Scene_Board/Townsfolk/town drunk character card.png")
 	elif(CardName == "Bar_Keep"):
-		return("res://Main_Scene_Board/Gunslingers/barkeep character card.png")
+		return("res://Main_Scene_Board/Townsfolk/barkeep character card.png")
 	elif(CardName == "Ranch_Hand"):
-		return("res://Main_Scene_Board/Gunslingers/ranch hand character card.png")
+		return("res://Main_Scene_Board/Townsfolk/ranch hand character card.png")
 	elif(CardName == "Sheriff"):
-		return("res://Main_Scene_Board/Gunslingers/the sherrif character card")
+		return("res://Main_Scene_Board/Townsfolk/the sherrif character card.png")
 	elif(CardName == "Knife"):
 		return("res://Main_Scene_Board/Weapon_Art/Knife weapon card.png")
 	elif(CardName == "Pistol"):
