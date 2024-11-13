@@ -13,7 +13,7 @@ extends Node
 @export var DrawArray = ["Preacher","Doctor","Teacher","Town_Drunk", "Bar_Keep", "Ranch_Hand"]
 @export var DiscardArray = []
 #Gunsliger Pile
-@export var GunslingerArray = ["Bob", "Mad_Mike"]#, "Jon_Laramie", "Elijah", "Smokey", "The_Kidd"]
+@export var GunslingerArray = ["Bob", "Mad_Mike", "Jon_Laramie", "Elijah", "Smokey", "The_Kidd"]
 #Hired gun pile
 @export var HiredGunArray = ["Preacher","Doctor","Teacher","Town_Drunk","Bar_Keep", "Ranch_Hand"]
 #Weapon pile
@@ -120,17 +120,17 @@ func _ClaimCards(player_index):
 #Gets and sets card art
 func CardArt(CardName):
 	if(CardName == "Preacher"):
-		return("res://preachersprite.png")
+		return("res://Main_Scene_Board/Gunslingers/The Preacher character card.png")
 	elif(CardName == "Doctor"):
-		return("res://doctorsprite.png")
+		return("res://Main_Scene_Board/Gunslingers/the doctor character card.png")
 	elif(CardName == "Teacher"):
 		return("res://Main_Scene_Board/Gunslingers/The_teacher_character card.png")
 	elif(CardName == "Town_Drunk"):
-		return("res://towndrunksprite.png")
+		return("res://Main_Scene_Board/Gunslingers/town drunk character card.png")
 	elif(CardName == "Bar_Keep"):
-		return("res://barkeepsprite.png")
+		return("res://Main_Scene_Board/Gunslingers/barkeep character card.png")
 	elif(CardName == "Ranch_Hand"):
-		return("res://ranchhand.png")
+		return("res://Main_Scene_Board/Gunslingers/ranch hand character card.png")
 	elif(CardName == "Knife"):
 		return("res://Main_Scene_Board/Weapon_Art/Knife weapon card.png")
 	elif(CardName == "Pistol"):
