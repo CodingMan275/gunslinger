@@ -11,7 +11,7 @@ extends Node
 #These are updated automatically between peers so every peer
 #Is looking at the card piles with the same order
 #Townie Pile
-@export var DrawArray = ["Preacher","Doctor","Teacher","Town_Drunk", "Bar_Keep", "Ranch_Hand"]
+@export var DrawArray = ["Preacher","Doctor","Teacher","Town_Drunk", "Bar_Keep", "Ranch_Hand", "Sheriff"]
 @export var DiscardArray = []
 #Gunsliger Pile
 @export var GunslingerArray = ["Bob", "Mad_Mike", "Jon_Laramie", "Elijah", "Smokey", "The_Kidd"]
@@ -56,7 +56,7 @@ func _drawTownDeck(): # fucntion that simulates the cards being drawn
 	Sound_Player2.play()
 	var DrawSize = DrawArray.size() # Checks size of the array we're drawing from
 	if (DrawSize == 0): # first element exists -> array has some cards left
-		for n in 6:
+		for n in 7  :
 			DrawArray.push_front(DiscardArray[n]) #(dont think this works like I think it does) copy contents from discard back to draw
 		DiscardArray.clear()
 		DrawArray.shuffle() # shuffles the array contents
@@ -133,6 +133,8 @@ func CardArt(CardName):
 		return("res://Main_Scene_Board/Gunslingers/barkeep character card.png")
 	elif(CardName == "Ranch_Hand"):
 		return("res://Main_Scene_Board/Gunslingers/ranch hand character card.png")
+	elif(CardName == "Sheriff"):
+		return("res://Main_Scene_Board/Gunslingers/the sherrif character card")
 	elif(CardName == "Knife"):
 		return("res://Main_Scene_Board/Weapon_Art/Knife weapon card.png")
 	elif(CardName == "Pistol"):

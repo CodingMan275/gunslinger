@@ -1771,12 +1771,13 @@ text = "Special Ability"
 [node name="Sheriff" type="CharacterBody2D" parent="Townie_Logic"]
 script = ExtResource("50_glnk6")
 
-[node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Sheriff"]
+[node name="SheriffSprite" type="Sprite2D" parent="Townie_Logic/Sheriff"]
 position = Vector2(-1.5, 1)
 scale = Vector2(0.5, 0.313)
 texture = ExtResource("26_ndqm4")
+script = ExtResource("34_hshlf")
 
-[node name="Label" type="Label" parent="Townie_Logic/Sheriff/Sprite2D"]
+[node name="Label" type="Label" parent="Townie_Logic/Sheriff/SheriffSprite"]
 anchors_preset = -1
 anchor_left = -0.07
 anchor_top = -0.492
@@ -1788,7 +1789,7 @@ offset_right = -131.0
 offset_bottom = -84.032
 scale = Vector2(2.02606, 2.83457)
 theme_override_font_sizes/font_size = 32
-text = "Ranch Hand"
+text = "Sheriff"
 metadata/_edit_use_anchors_ = true
 
 [node name="DefaultDrawUI" type="CanvasLayer" parent="Townie_Logic/Sheriff"]
