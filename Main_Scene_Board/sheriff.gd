@@ -3,18 +3,10 @@ class_name Sheriff
 
 @onready var TownieLogic = get_parent()
 
-
 @export var is_hired_gun: bool = false
-#@export var claim_revealed: bool = false
-
-#@export var MultiplayerAuthority: int
-
-#var movable = false
-
-#@export var Player: int
-
 var OwningPlayer
 
+# Weapon proficiency
 var KnifeProf = 0
 var PistolProf = 1
 var RifleProf = 1
@@ -22,93 +14,65 @@ var ShotgunProf = 0
 var TwinPistolProf = 0
 var BrawlProf = 1
 
+
+
+# Jail state variables
+var is_in_jail: bool = false
+var jail_turns_remaining: int = 0
+var shuffle_count: int = 0
+
 func _init():
 	pass
-# Called when the node enters the scene tree for the first time.
+
 func _ready() -> void:
 	Name = get_name()
 	get_node("../../Cards").DrawnCard.connect(hire_townsfolk)
 
-	Weapon1Name = "Rifle"
-	Weapon1Dmg = 3
-	Weapon1Stun = 2
-	Weapon1Range = 2
-	
-	Weapon1Equiped = true
-	
-	Weapon2Name = "Pistol"
-	Weapon2Dmg = 2
-	Weapon2Stun = 1
-	Weapon2Range = 1
-	
-	Weapon2Equiped = true
-	pass # Replace with function body.
-
-'''
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	#print("Move: "+str(move_possible()))
-	#print(ActionPoint)
-		if Input.is_action_just_pressed("LeftClick") and ActionPoint > 0 and movable:
-			if move_possible() and can_move(Player):
-				self.global_position = Vector2(get_global_mouse_position())
-				pos = tile_map_node.local_to_map(self.position)
-				UpdateMove.rpc(self.global_position)
-				print(pos)
-				movable = false
-		#DrawButton.hide()
-		elif (Input.is_action_just_pressed("LeftClick") and ActionPoint == 0):
-			GlobalScript.DebugScript.add("You have no more Action Points ")
-
-@rpc("any_peer")
-func UpdateMove(x):
-	self.global_position = x
-	pos = tile_map_node.local_to_map(self.position)
-	pass
-'''
 func hire_townsfolk(card, FirstDraw, player):
-	hire_rpc.rpc(card,FirstDraw,player)
-		
-#Theres a way to do this withouth this extra function but its less than 24h
-@rpc("call_local","any_peer")
-func hire_rpc(x,y,z):
-	if(y and (x == "Sheriff")):
-		owning_player = z + 1
-		OwningPlayer = owning_player
-		is_hired_gun = true
-		print("Hired P")
-	pass
-func reveal_hired_gun() -> void:
-		reveal_rpc.rpc()
+	hire_rpc.rpc(card, FirstDraw, player)
 
-@rpc("call_local","any_peer")
+@rpc("call_local", "any_peer")
+func hire_rpc(x, y, z):
+	if (y and (x == "Sheriff")):
+		OwningPlayer = z + 1
+		is_hired_gun = true
+		print("Hired Player")
+
+func reveal_hired_gun() -> void:
+	reveal_rpc.rpc()
+
+@rpc("call_local", "any_peer")
 func reveal_rpc():
 	claim_revealed = true
-	pass
+
+# Special ability function to move character to jail
+func activate_special_ability(target_character):
+	if target_character.position == self.position and not target_character.is_in_jail:
+		target_character.move_to_jail()
+		print("Target moved to jail")
+
+func move_to_jail():
+	is_in_jail = true
+	jail_turns_remaining = 3  # Target cannot act for 3 turns
+	print(Name + " has been jailed.")
+
+# Check if the character can act
+func can_act() -> bool:
+	return not is_in_jail
+
+# Handle turn logic
+func end_turn():
+	if is_in_jail:
+		jail_turns_remaining -= 1
+		if jail_turns_remaining <= 0:
+			is_in_jail = false
+			print(Name + " can now act again.")
+	
+	if shuffle_count >= 3:
+		print(Name + " can leave jail after the deck has been shuffled 3 times.")
+		# Allow leaving jail logic here
 
 
-func can_shoot(player) -> bool:
-	if claim_revealed and is_owning_player(player) and has_gun and not get_is_stunned():
-		return true
-	return false
-				
-func can_brawl(player) -> bool:
-	if claim_revealed and is_owning_player(player) and not get_is_stunned():
-		return true
-	return false
-	'''
-func can_move(player) -> bool:
-	if movable:
-		if not claim_revealed:
-			print("Not claimed")
-			return true
-		elif is_owning_player(player):
-			print("I own it")
-			return true
-		else:
-			print("I dont own it")
-			return false
-	else:
-		print("Movable false")
-		return false
-'''
+func shuffle_deck():
+	shuffle_count += 1
+	print("Deck shuffled. Shuffle count: " + str(shuffle_count))
