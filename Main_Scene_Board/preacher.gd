@@ -10,6 +10,7 @@ class_name Preacher
 @export var is_hired_gun: bool = false
 #@export var claim_revealed: bool = false
 @onready var PreacherObj = get_node("../Cards/PreacherCard")
+@onready var Rules = get_node("../../Rules_Controller")
 
 #Bool for wheather or not the hired gun can move
 #var movable = false
@@ -132,3 +133,11 @@ func can_move(player) -> bool:
 		return false
 	'''
 	
+
+
+func _on_special_ability_pressed() -> void:
+	if self.pos == Rules.Target.pos:
+		Rules.Target.pos = Vector2(7,0)
+		StunTracker = 3
+		GlobalScript.DebugScript.add(str(Rules.Target.Name, " is now pacified"))
+		pass # Replace with function body.

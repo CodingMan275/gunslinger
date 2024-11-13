@@ -166,7 +166,7 @@ func _on_special_abilities_button_pressed() -> void:
 func pacify(character: Townsfolk) --> void:
 	if me.pos == target.pos:
 		 TileMapScene.church()
-		print(self.name, " is now pacified ")
+		print(self.name, " is now pacified")
 
 func puppy_love() -> void:
 
