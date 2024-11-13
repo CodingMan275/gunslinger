@@ -135,6 +135,16 @@ func CardArt(CardName):
 		return("res://Main_Scene_Board/Townsfolk/ranch hand character card.png")
 	elif(CardName == "Sheriff"):
 		return("res://Main_Scene_Board/Townsfolk/the sherrif character card.png")
+	elif(CardName == "Saloon_Girl"):
+		return("res://Main_Scene_Board/Townsfolk/Saloon girl character card.png")
+	elif(CardName == "Mountain_Man"):
+		return("res://Main_Scene_Board/Townsfolk/Mountain_Man_character card.png")
+	elif(CardName == "Store_Keeper"):
+		return("res://Main_Scene_Board/Townsfolk/General_Store_Keeper_character card.png")
+	elif(CardName == "Bank_Manager"):
+		return("res://Main_Scene_Board/Townsfolk/barkeep character card.png")
+	elif(CardName == "Bounty_Hunter"):
+		return("res://Main_Scene_Board/Townsfolk/Bounty hunter character card.png")
 	elif(CardName == "Knife"):
 		return("res://Main_Scene_Board/Weapon_Art/Knife weapon card.png")
 	elif(CardName == "Pistol"):

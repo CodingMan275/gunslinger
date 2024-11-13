@@ -42,11 +42,11 @@ func _ready() -> void:
 	Bar_Keep.pos = get_node("../Player_Layer").local_to_map(Bar_Keep.position)
 	Ranch_Hand.pos = get_node("../Player_Layer").local_to_map(Ranch_Hand.position)
 	Sheriff.pos = get_node("../Player_Layer").local_to_map(Sheriff.position)
-	#Store_Keeper.position = get_node("../Player_Layer").map_to_local(Vector2(4,3))
-	#Mountain_Man.position = get_node("../Player_Layer").map_to_local(Vector2(4,3))
-	#Bounty_Hunter.position = get_node("../Player_Layer").map_to_local(Vector2(4,3))
-	#Saloon_Girl.position = get_node("../Player_Layer").map_to_local(Vector2(4,3))
-	#Bank_Manager.position = get_node("../Player_Layer").map_to_local(Vector2(4,3))
+	Store_Keeper.position = get_node("../Player_Layer").map_to_local(Vector2(4,3))
+	Mountain_Man.position = get_node("../Player_Layer").map_to_local(Vector2(4,3))
+	Bounty_Hunter.position = get_node("../Player_Layer").map_to_local(Vector2(4,3))
+	Saloon_Girl.position = get_node("../Player_Layer").map_to_local(Vector2(4,3))
+	Bank_Manager.position = get_node("../Player_Layer").map_to_local(Vector2(4,3))
 	
 	
 	Preacher.tile_map_node = get_node("../Player_Layer")
@@ -55,11 +55,11 @@ func _ready() -> void:
 	Town_Drunk.tile_map_node = get_node("../Player_Layer")
 	Bar_Keep.tile_map_node = get_node("../Player_Layer")
 	Ranch_Hand.tile_map_node = get_node("../Player_Layer")
-	#Store_Keeper.tile_map_node = get_node("../Player_Layer")
-	#Mountain_Man.tile_map_node = get_node("../Player_Layer")
-	#Bounty_Hunter.tile_map_node = get_node("../Player_Layer")
-	#Saloon_Girl.tile_map_node = get_node("../Player_Layer")
-	#Bank_Manager.tile_map_node = get_node("../Player_Layer")
+	Store_Keeper.tile_map_node = get_node("../Player_Layer")
+	Mountain_Man.tile_map_node = get_node("../Player_Layer")
+	Bounty_Hunter.tile_map_node = get_node("../Player_Layer")
+	Saloon_Girl.tile_map_node = get_node("../Player_Layer")
+	Bank_Manager.tile_map_node = get_node("../Player_Layer")
 	Sheriff.tile_map_node = get_node("../Player_Layer")
 	
 	pass # Replace with function body.
