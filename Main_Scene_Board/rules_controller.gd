@@ -94,7 +94,6 @@ func _StartGame() -> void:
 	#peers that joined including name and ID, the ID comes form godots randomly assigned
 	#peer ID which is basically any positive number greater than 1. The host
 	#is ALWAYS peer ID 1.
-	
 	if(!GlobalScript.SinglePlay):
 		for i in GlobalScript.PlayerInfo:
 			MultiPlay(i, index)
@@ -109,8 +108,7 @@ func _StartGame() -> void:
 	#Setting the turn order 1 to start
 	#Redundant but safe
 	Turn_Order = 1
-	
-
+	SelectAttacker.rpc(str(GlobalScript.PlayerNode[Turn_Order-1].Name))
 	#Tell all the player scene instances what the current turn order is
 	order.emit(Turn_Order)
 	#In the little debug pop-up after pressing ~ it says this
@@ -137,7 +135,7 @@ func MultiPlay(i , index):
 		if index == 0:
 			#Player 1 information
 			#Set player 1 at position 0,0 on the tile map
-			var Start = Vector2(3,3)
+			var Start = Vector2(1,1)
 			currentPlayer.position = TileMapScene.map_to_local(Start)
 			#Ask michael, sets player node position to somewhere
 			GlobalScript.PlayerNode[index].pos = Start
@@ -150,7 +148,7 @@ func MultiPlay(i , index):
 		if index == 1:
 			#The next player in the PlayerInfo array, player 2
 			#Sets player 2 at a different position from player 1
-			var Start = Vector2(4,4)
+			var Start = Vector2(6,6)
 			currentPlayer.position = TileMapScene.map_to_local(Start)
 			#Ask michael, sets player node position to somewhere
 			GlobalScript.PlayerNode[index].pos = Start
@@ -260,7 +258,7 @@ func order_inc():
 		Turn_Order = 1
 	#Menu says whos turn it is
 	GlobalScript.DebugScript.add("-------  "+str(GlobalScript.PlayerNode[Turn_Order -1].Name)+"'s Turn  -----------")
-	
+	SelectAttacker.rpc(str(GlobalScript.PlayerNode[Turn_Order-1].Name))
 	#Send out a signal so all players know what turn it is
 	order.emit(Turn_Order)
 
