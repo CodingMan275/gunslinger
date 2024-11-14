@@ -11,15 +11,14 @@ extends Control
 
 func _on_resume_button_pressed():
 	pause_menu_singleplayer.hide()
-	#get_tree().paused = false
-
+	
 
 func _on_options__button_pressed():
 	pause_menu_options_screen.show()
 	close_options_menu_button.show()
 
 
-func _on_save_reload_button_pressed():
+func _on_save_load_button_pressed():
 	margin_container.hide()
 	margin_container_2.show()
 

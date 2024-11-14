@@ -17,10 +17,10 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 30.0
-offset_top = 50.0
-offset_right = -30.0
-offset_bottom = -30.0
+offset_left = 120.0
+offset_top = 300.0
+offset_right = -120.0
+offset_bottom = -250.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 60
@@ -45,17 +45,21 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 9.99997
+offset_right = -1543.0
+offset_bottom = -575.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 12
-theme_override_constants/margin_top = 12
-theme_override_constants/margin_right = 12
-theme_override_constants/margin_bottom = 12
+scale = Vector2(1.75, 1.75)
+theme_override_constants/margin_left = 144
+theme_override_constants/margin_top = 144
+theme_override_constants/margin_right = 144
+theme_override_constants/margin_bottom = 144
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Sound/AudioOptions/MarginContainer"]
 layout_mode = 2
-size_flags_vertical = 0
-theme_override_constants/separation = -1
+theme_override_constants/separation = 30
 alignment = 1
 
 [node name="Master" type="Label" parent="TabContainer/Sound/AudioOptions/MarginContainer/VBoxContainer"]
@@ -65,6 +69,7 @@ text = "Master"
 
 [node name="MasterSlider" type="HSlider" parent="TabContainer/Sound/AudioOptions/MarginContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 1
 max_value = 1.0
 step = 0.05
 
@@ -99,18 +104,19 @@ Mute All Audio
 [node name="CheckBox" type="CheckBox" parent="TabContainer/Sound/AudioOptions/MarginContainer/VBoxContainer/Mute"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 432.0
-offset_top = 106.0
-offset_right = 503.0
-offset_bottom = 164.0
+offset_left = 422.0
+offset_top = 67.0
+offset_right = 446.0
+offset_bottom = 95.0
+scale = Vector2(5, 5)
 
 [node name="Confirm_Changes_Button" type="Button" parent="TabContainer/Sound/AudioOptions"]
 layout_mode = 0
-offset_left = 402.0
-offset_top = 511.0
-offset_right = 481.0
-offset_bottom = 533.0
-theme_override_font_sizes/font_size = 60
+offset_left = 2450.0
+offset_top = 1282.0
+offset_right = 3308.0
+offset_bottom = 1455.0
+theme_override_font_sizes/font_size = 120
 text = "Apply Changes
 "
 
@@ -124,8 +130,11 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -2700.0
+offset_bottom = -1141.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(4, 4)
 theme_override_constants/margin_left = 12
 theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 12
@@ -140,7 +149,7 @@ alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 40
 text = "Full Screen toggle"
 
 [node name="How to Play" type="TabBar" parent="TabContainer"]
@@ -162,6 +171,8 @@ theme_override_constants/margin_bottom = 12
 
 [node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/How to Play/MarginContainer"]
 layout_mode = 2
+theme_override_font_sizes/normal_font_size = 100
+theme_override_font_sizes/bold_font_size = 100
 bbcode_enabled = true
 text = "[center][b][u]Gunslinger Player Guide[/u][/b][/center]
 
@@ -200,8 +211,13 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 14.0
+offset_top = 7.0
+offset_right = -2692.0
+offset_bottom = -1137.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(4, 4)
 theme_override_constants/margin_left = 12
 theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 12
@@ -219,7 +235,7 @@ theme_override_colors/font_color = Color(0, 0.980392, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0.980392, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0.980392, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(0, 0.980392, 0, 1)
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 40
 text = "Report a Bug."
 uri = "https://forms.gle/K7jM6tUjXU1nM7fS6"
 

@@ -56,13 +56,12 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -320.0
+offset_left = -521.0
 offset_top = 7.0
-offset_right = 736.0
+offset_right = 535.0
 offset_bottom = 713.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.6, 0.6)
 theme_override_constants/separation = 30
 
 [node name="Local Button" type="Button" parent="VBoxContainer"]
@@ -100,10 +99,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -677.0
-offset_top = -337.0
-offset_right = 730.0
-offset_bottom = -9.0
+offset_left = -700.0
+offset_top = -420.0
+offset_right = 724.0
+offset_bottom = -92.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -114,12 +113,10 @@ vertical_alignment = 1
 
 [node name="Main Menu Back Button" parent="." instance=ExtResource("2_8og0i")]
 layout_mode = 0
-offset_left = 4.0
-offset_top = 237.0
-offset_right = 211.0
-offset_bottom = 279.0
-scale = Vector2(0.6, 0.6)
-theme_override_font_sizes/font_size = 60
+offset_left = 24.0
+offset_top = 1964.0
+offset_right = 809.0
+offset_bottom = 2134.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_w1s3b")
@@ -134,21 +131,20 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -112.0
-offset_top = -65.0
-offset_right = 116.0
-offset_bottom = 92.0
+offset_left = -866.0
+offset_top = -502.0
+offset_right = -251.0
+offset_bottom = -61.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(3, 3)
 
-[node name="Label" type="RichTextLabel" parent="Single-Player_Warning_Message"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Single-Player_Warning_Message"]
 layout_mode = 0
-offset_left = 11.0
-offset_right = 218.0
-offset_bottom = 69.0
-theme_override_font_sizes/normal_font_size = 15
-text = "Are you sure you want to start a new game (save file will be overwritten)?
-"
+offset_right = 613.0
+offset_bottom = 185.0
+theme_override_font_sizes/normal_font_size = 40
+text = "Are you sure you want to start a new game (save file will be overwritten)?"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Single-Player_Warning_Message"]
 layout_mode = 1
@@ -157,13 +153,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -44.0
-offset_top = -5.5
-offset_right = 151.0
-offset_bottom = 168.5
+offset_left = -155.5
+offset_top = -22.8333
+offset_right = 301.5
+offset_bottom = 296.167
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.4, 0.4)
+scale = Vector2(0.6, 0.6)
 theme_override_constants/separation = 30
 
 [node name="Yes Button" type="Button" parent="Single-Player_Warning_Message/VBoxContainer"]
@@ -173,7 +169,7 @@ theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 80
 theme_override_styles/focus = SubResource("StyleBoxEmpty_wlhlq")
 theme_override_styles/hover = SubResource("StyleBoxFlat_yfeuf")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_a2nxc")
@@ -187,7 +183,7 @@ theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 80
 theme_override_styles/focus = SubResource("StyleBoxEmpty_wlhlq")
 theme_override_styles/hover = SubResource("StyleBoxFlat_yfeuf")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_a2nxc")
@@ -202,17 +198,17 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 140.0
-offset_top = 98.0
-offset_right = 231.0
-offset_bottom = 127.0
+offset_left = 1289.0
+offset_top = 848.0
+offset_right = 1867.0
+offset_bottom = 1030.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 15
+theme_override_font_sizes/font_size = 120
 theme_override_styles/focus = SubResource("StyleBoxEmpty_wlhlq")
 theme_override_styles/hover = SubResource("StyleBoxFlat_yfeuf")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_a2nxc")
