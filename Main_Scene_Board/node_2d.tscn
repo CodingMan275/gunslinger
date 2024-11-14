@@ -1,4 +1,4 @@
-[gd_scene load_steps=101 format=4 uid="uid://jl7k3ltwbp41"]
+[gd_scene load_steps=103 format=4 uid="uid://jl7k3ltwbp41"]
 
 [ext_resource type="Texture2D" uid="uid://fcuqal2ynbts" path="res://Main_Scene_Board/spritesheet.png" id="1_o8ncf"]
 [ext_resource type="Texture2D" uid="uid://mmea4eto2a6p" path="res://Main_Scene_Board/Rhombus.png" id="2_rfajf"]
@@ -35,7 +35,6 @@
 [ext_resource type="PackedScene" uid="uid://b7rfx1nnoi5ev" path="res://pause_menu/pause_menu_singleplayer.tscn" id="14_tll6l"]
 [ext_resource type="Script" path="res://Main_Scene_Board/townie_logic.gd" id="14_ub6ke"]
 [ext_resource type="Script" path="res://Main_Scene_Board/layer_1.gd" id="15_ndo7p"]
-[ext_resource type="PackedScene" uid="uid://d0ncmr5j7hrug" path="res://main_menu/options_menu.tscn" id="15_o4h6x"]
 [ext_resource type="Script" path="res://CPU_and_Player/doctor.gd" id="16_2qs05"]
 [ext_resource type="PackedScene" uid="uid://o8s2bfh5cxgj" path="res://pause_menu/close_options_menu_button.tscn" id="16_ljexv"]
 [ext_resource type="Script" path="res://Main_Scene_Board/teacher.gd" id="17_evase"]
@@ -58,8 +57,11 @@
 [ext_resource type="Texture2D" uid="uid://bnp4fs70s6nu5" path="res://button icons/Attack Button.png" id="37_xxu0v"]
 [ext_resource type="Texture2D" uid="uid://b8xf3kpnn037f" path="res://preachersprite.png" id="43_4q8lf"]
 [ext_resource type="AudioStream" uid="uid://blh34wfm1qxqf" path="res://main_menu/Boardwalk Steps.wav" id="43_g76mt"]
+[ext_resource type="PackedScene" uid="uid://c83b4qbnujsby" path="res://pause_menu/pause_menu_button_multiplayer.tscn" id="44_58jka"]
+[ext_resource type="PackedScene" uid="uid://c7m45jbop48f3" path="res://pause_menu/Pause_menu_options_screen.tscn" id="44_802bl"]
 [ext_resource type="Script" path="res://Main_Scene_Board/store_keeper.gd" id="45_l4515"]
 [ext_resource type="AudioStream" uid="uid://dxcw87s1guini" path="res://main_menu/man-hurt-3.wav" id="45_vtqg2"]
+[ext_resource type="PackedScene" uid="uid://dfytnujg1s2es" path="res://pause_menu/pause_menu_multiplayer.tscn" id="45_x8onr"]
 [ext_resource type="Script" path="res://Main_Scene_Board/mountain_man.gd" id="46_08nss"]
 [ext_resource type="Texture2D" uid="uid://co1ynyp2wonl3" path="res://doctorsprite.png" id="46_puujp"]
 [ext_resource type="Script" path="res://Main_Scene_Board/bounty_hunter.gd" id="47_cjmfn"]
@@ -754,31 +756,6 @@ offset_bottom = -1043.89
 texture = ExtResource("12_kmvqj")
 expand_mode = 1
 
-[node name="Pause_Menu" type="Node" parent="CanvasLayer"]
-
-[node name="PauseMenuButtonSinglePlayer" parent="CanvasLayer/Pause_Menu" instance=ExtResource("13_3q2p2")]
-unique_name_in_owner = true
-offset_left = 7.0
-offset_top = 4.0
-offset_right = -3488.0
-offset_bottom = -2041.0
-
-[node name="PauseMenuSingleplayer" parent="CanvasLayer/Pause_Menu" instance=ExtResource("14_tll6l")]
-unique_name_in_owner = true
-visible = false
-
-[node name="OptionsMenu" parent="CanvasLayer/Pause_Menu" instance=ExtResource("15_o4h6x")]
-unique_name_in_owner = true
-visible = false
-
-[node name="CloseOptionsMenuButton" parent="CanvasLayer/Pause_Menu" instance=ExtResource("16_ljexv")]
-unique_name_in_owner = true
-visible = false
-offset_left = 7.0
-offset_top = 5.0
-offset_right = -401.0
-offset_bottom = -220.0
-
 [node name="Move" type="Button" parent="CanvasLayer"]
 offset_left = 13.0
 offset_top = 270.0
@@ -794,6 +771,64 @@ texture = ExtResource("36_1sjo4")
 
 [node name="WalkSFX" type="AudioStreamPlayer2D" parent="CanvasLayer/Move"]
 stream = ExtResource("43_g76mt")
+
+[node name="Attack" type="Button" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_top = -0.0171296
+anchor_right = 0.0367187
+offset_left = 16.0
+offset_top = 464.0
+offset_right = 274.0
+offset_bottom = 560.0
+theme_override_font_sizes/font_size = 32
+text = "Attack"
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Attack"]
+position = Vector2(201, -504)
+scale = Vector2(2, 2)
+texture = ExtResource("37_xxu0v")
+
+[node name="DiceRollSFX" type="AudioStreamPlayer2D" parent="CanvasLayer/Attack"]
+stream = ExtResource("43_g76mt")
+volume_db = 2.053
+
+[node name="HurtSFX" type="AudioStreamPlayer2D" parent="CanvasLayer/Attack"]
+stream = ExtResource("45_vtqg2")
+
+[node name="Pause_Menu" type="Node" parent="CanvasLayer"]
+
+[node name="PauseMenuButtonSinglePlayer" parent="CanvasLayer/Pause_Menu" instance=ExtResource("13_3q2p2")]
+unique_name_in_owner = true
+offset_left = 7.0
+offset_top = 4.0
+offset_right = -3654.0
+offset_bottom = -1961.0
+
+[node name="PauseMenuSingleplayer" parent="CanvasLayer/Pause_Menu" instance=ExtResource("14_tll6l")]
+unique_name_in_owner = true
+visible = false
+
+[node name="PauseMenuButtonMultiplayer" parent="CanvasLayer/Pause_Menu" instance=ExtResource("44_58jka")]
+unique_name_in_owner = true
+visible = false
+offset_right = -3650.0
+
+[node name="PauseMenuMultiplayer" parent="CanvasLayer/Pause_Menu" instance=ExtResource("45_x8onr")]
+unique_name_in_owner = true
+visible = false
+
+[node name="PauseMenuOptionsScreen" parent="CanvasLayer/Pause_Menu" instance=ExtResource("44_802bl")]
+unique_name_in_owner = true
+visible = false
+
+[node name="CloseOptionsMenuButton" parent="CanvasLayer/Pause_Menu" instance=ExtResource("16_ljexv")]
+unique_name_in_owner = true
+visible = false
+offset_left = 51.0
+offset_top = 47.0
+offset_right = -3334.0
+offset_bottom = -1938.0
 
 [node name="Give_Take" type="Button" parent="CanvasLayer"]
 visible = false
@@ -864,30 +899,6 @@ offset_right = 0.23999
 offset_bottom = 0.0999985
 theme_override_font_sizes/font_size = 60
 text = "Weapon 2"
-
-[node name="Attack" type="Button" parent="CanvasLayer"]
-anchors_preset = -1
-anchor_top = -0.0171296
-anchor_right = 0.0367187
-offset_left = 16.0
-offset_top = 464.0
-offset_right = 274.0
-offset_bottom = 560.0
-theme_override_font_sizes/font_size = 32
-text = "Attack"
-metadata/_edit_use_anchors_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Attack"]
-position = Vector2(201, -504)
-scale = Vector2(2, 2)
-texture = ExtResource("37_xxu0v")
-
-[node name="DiceRollSFX" type="AudioStreamPlayer2D" parent="CanvasLayer/Attack"]
-stream = ExtResource("43_g76mt")
-volume_db = 2.053
-
-[node name="HurtSFX" type="AudioStreamPlayer2D" parent="CanvasLayer/Attack"]
-stream = ExtResource("45_vtqg2")
 
 [node name="ProficiencyNode" type="Node" parent="."]
 script = ExtResource("27_bf6tm")
@@ -1955,12 +1966,12 @@ text = "Special Ability"
 [connection signal="pressed" from="CanvasLayer/Claim" to="CanvasLayer/Claim" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer/Claim" to="Townie_Logic" method="_on_claim_pressed"]
 [connection signal="pressed" from="CanvasLayer/Move" to="Rules_Controller" method="_on_move_pressed"]
+[connection signal="pressed" from="CanvasLayer/Attack" to="Rules_Controller" method="PlayerUI" binds= [true]]
 [connection signal="pressed" from="CanvasLayer/Give_Take" to="Weapons" method="openGTWindow"]
 [connection signal="pressed" from="CanvasLayer/Take" to="Weapons" method="takeWeapon"]
 [connection signal="pressed" from="CanvasLayer/GIve" to="Weapons" method="giveWeapon"]
 [connection signal="pressed" from="CanvasLayer/Weapon1" to="Weapons" method="takeWeapon1"]
 [connection signal="pressed" from="CanvasLayer/Weapon2" to="Weapons" method="takeWeapon2"]
-[connection signal="pressed" from="CanvasLayer/Attack" to="Rules_Controller" method="PlayerUI" binds= [true]]
 [connection signal="DrawnCard" from="Cards" to="Townie_Logic" method="UpdateCard"]
 [connection signal="DrawnCard" from="Cards" to="Townie_Logic/Preacher" method="hire_townsfolk"]
 [connection signal="DrawnCard" from="Cards" to="Townie_Logic/Doctor" method="hire_townsfolk"]

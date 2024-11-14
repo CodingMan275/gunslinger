@@ -1,7 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://b7rfx1nnoi5ev"]
+[gd_scene load_steps=10 format=3 uid="uid://b7rfx1nnoi5ev"]
 
 [ext_resource type="Script" path="res://pause_menu/pause_menu_singleplayer.gd" id="1_wagrc"]
 [ext_resource type="Shader" path="res://pause_menu/pause_menu_singleplayer.gdshader" id="2_6kaoc"]
+[ext_resource type="Texture2D" uid="uid://bhg13q4fcuwsx" path="res://button icons/Options Button.png" id="3_q66iv"]
+[ext_resource type="Texture2D" uid="uid://cdo2v2x75y08t" path="res://button icons/Quit Button.png" id="4_gb887"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_45qoc"]
 shader = ExtResource("2_6kaoc")
@@ -50,10 +52,10 @@ grow_vertical = 2
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 2
-offset_left = 141.0
-offset_top = 47.0
-offset_right = 339.0
-offset_bottom = 223.0
+offset_left = 1354.0
+offset_top = 561.0
+offset_right = 2498.0
+offset_bottom = 1594.0
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 unique_name_in_owner = true
@@ -63,16 +65,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -85.0
-offset_top = -76.0
-offset_right = 87.0
-offset_bottom = 75.0
+offset_left = -350.0
+offset_top = -405.0
+offset_right = 353.0
+offset_bottom = 405.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 15
+theme_override_constants/separation = 50
 
 [node name="Resume_Button" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -81,7 +83,7 @@ theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 60
+theme_override_font_sizes/font_size = 120
 theme_override_styles/focus = SubResource("StyleBoxEmpty_wlhlq")
 theme_override_styles/hover = SubResource("StyleBoxFlat_yfeuf")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_a2nxc")
@@ -95,26 +97,27 @@ theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 60
-theme_override_styles/focus = SubResource("StyleBoxEmpty_wlhlq")
-theme_override_styles/hover = SubResource("StyleBoxFlat_yfeuf")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_a2nxc")
-theme_override_styles/normal = SubResource("StyleBoxFlat_gp72c")
+theme_override_font_sizes/font_size = 120
 text = "Options"
 
-[node name="Save&Reload_Button" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/VBoxContainer/Options_Button"]
+position = Vector2(1116, 147.5)
+scale = Vector2(3.73856, 2.48939)
+texture = ExtResource("3_q66iv")
+
+[node name="Save&Load_Button" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 60
+theme_override_font_sizes/font_size = 120
 theme_override_styles/focus = SubResource("StyleBoxEmpty_wlhlq")
 theme_override_styles/hover = SubResource("StyleBoxFlat_yfeuf")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_a2nxc")
 theme_override_styles/normal = SubResource("StyleBoxFlat_gp72c")
-text = "Save & Reload"
+text = "Save & Load"
 
 [node name="Quit_Button" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -123,12 +126,13 @@ theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 60
-theme_override_styles/focus = SubResource("StyleBoxEmpty_wlhlq")
-theme_override_styles/hover = SubResource("StyleBoxFlat_yfeuf")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_a2nxc")
-theme_override_styles/normal = SubResource("StyleBoxFlat_gp72c")
+theme_override_font_sizes/font_size = 120
 text = "Quit"
+
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/VBoxContainer/Quit_Button"]
+position = Vector2(1116, -87.5)
+scale = Vector2(3.73856, 2.48939)
+texture = ExtResource("4_gb887")
 
 [node name="MarginContainer2" type="MarginContainer" parent="."]
 unique_name_in_owner = true
@@ -139,21 +143,21 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -85.0
-offset_top = -76.0
-offset_right = 87.0
-offset_bottom = 75.0
+offset_left = -407.5
+offset_top = -405.5
+offset_right = 409.5
+offset_bottom = 404.5
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2"]
 layout_mode = 2
-theme_override_constants/separation = 10
+theme_override_constants/separation = 50
 
 [node name="Label" type="RichTextLabel" parent="MarginContainer2/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/normal_font_size = 14
-text = "Do you want to save or reload a previous save?"
+theme_override_font_sizes/normal_font_size = 80
+text = "Do you want to save or load a previous save?"
 fit_content = true
 
 [node name="Save_Button" type="Button" parent="MarginContainer2/VBoxContainer"]
@@ -163,24 +167,26 @@ theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 120
 theme_override_styles/focus = SubResource("StyleBoxEmpty_wlhlq")
 theme_override_styles/hover = SubResource("StyleBoxFlat_yfeuf")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_a2nxc")
 theme_override_styles/normal = SubResource("StyleBoxFlat_gp72c")
 text = "Save"
 
-[node name="Reload_Button" type="Button" parent="MarginContainer2/VBoxContainer"]
+[node name="Load_Button" type="Button" parent="MarginContainer2/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 120
 theme_override_styles/focus = SubResource("StyleBoxEmpty_wlhlq")
 theme_override_styles/hover = SubResource("StyleBoxFlat_yfeuf")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_a2nxc")
 theme_override_styles/normal = SubResource("StyleBoxFlat_gp72c")
-text = "Reload"
+text = "Load"
 
 [node name="Cancel" type="Button" parent="MarginContainer2/VBoxContainer"]
 layout_mode = 2
@@ -189,6 +195,7 @@ theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 120
 theme_override_styles/focus = SubResource("StyleBoxEmpty_wlhlq")
 theme_override_styles/hover = SubResource("StyleBoxFlat_yfeuf")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_a2nxc")
@@ -197,8 +204,8 @@ text = "Cancel"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Resume_Button" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Options_Button" to="." method="_on_options__button_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Save&Reload_Button" to="." method="_on_save_reload_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Save&Load_Button" to="." method="_on_save_load_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Quit_Button" to="." method="_on_quit__button_pressed"]
 [connection signal="pressed" from="MarginContainer2/VBoxContainer/Save_Button" to="." method="_on_save_button_pressed"]
-[connection signal="pressed" from="MarginContainer2/VBoxContainer/Reload_Button" to="." method="_on_reload_button_pressed"]
+[connection signal="pressed" from="MarginContainer2/VBoxContainer/Load_Button" to="." method="_on_load_button_pressed"]
 [connection signal="pressed" from="MarginContainer2/VBoxContainer/Cancel" to="." method="_on_cancel_pressed"]

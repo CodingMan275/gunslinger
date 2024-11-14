@@ -1,7 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://dfytnujg1s2es"]
+[gd_scene load_steps=10 format=3 uid="uid://dfytnujg1s2es"]
 
 [ext_resource type="Shader" path="res://pause_menu/pause_menu_singleplayer.gdshader" id="1_2kl5h"]
 [ext_resource type="Script" path="res://pause_menu/pause_menu_multiplayer.gd" id="1_7u3h1"]
+[ext_resource type="Texture2D" uid="uid://bhg13q4fcuwsx" path="res://button icons/Options Button.png" id="3_vfq8y"]
+[ext_resource type="Texture2D" uid="uid://cdo2v2x75y08t" path="res://button icons/Quit Button.png" id="4_7eljc"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k5u20"]
 shader = ExtResource("1_2kl5h")
@@ -50,10 +52,10 @@ grow_vertical = 2
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
-offset_left = 141.0
-offset_top = 47.0
-offset_right = 339.0
-offset_bottom = 223.0
+offset_left = 1354.0
+offset_top = 561.0
+offset_right = 2498.0
+offset_bottom = 1594.0
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 unique_name_in_owner = true
@@ -63,16 +65,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -85.0
-offset_top = -76.0
-offset_right = 87.0
-offset_bottom = 75.0
+offset_left = -350.5
+offset_top = -405.5
+offset_right = 352.5
+offset_bottom = 404.5
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 25
+theme_override_constants/separation = 50
 
 [node name="Resume_Button" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -81,6 +83,7 @@ theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 120
 theme_override_styles/focus = SubResource("StyleBoxEmpty_glenx")
 theme_override_styles/hover = SubResource("StyleBoxFlat_xqge4")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_f2kk0")
@@ -94,11 +97,13 @@ theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_styles/focus = SubResource("StyleBoxEmpty_glenx")
-theme_override_styles/hover = SubResource("StyleBoxFlat_xqge4")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_f2kk0")
-theme_override_styles/normal = SubResource("StyleBoxFlat_xm4pd")
+theme_override_font_sizes/font_size = 120
 text = "Options"
+
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/VBoxContainer/Options_Button"]
+position = Vector2(1115, 205)
+scale = Vector2(3.73856, 3.42045)
+texture = ExtResource("3_vfq8y")
 
 [node name="Quit_Button" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -107,11 +112,13 @@ theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_styles/focus = SubResource("StyleBoxEmpty_glenx")
-theme_override_styles/hover = SubResource("StyleBoxFlat_xqge4")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_f2kk0")
-theme_override_styles/normal = SubResource("StyleBoxFlat_xm4pd")
+theme_override_font_sizes/font_size = 120
 text = "Quit"
+
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/VBoxContainer/Quit_Button"]
+position = Vector2(1115, -116)
+scale = Vector2(3.73856, 3.42045)
+texture = ExtResource("4_7eljc")
 
 [node name="MarginContainer2" type="MarginContainer" parent="."]
 unique_name_in_owner = true
@@ -122,20 +129,20 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -85.0
-offset_top = -76.0
-offset_right = 87.0
-offset_bottom = 75.0
+offset_left = -344.0
+offset_top = -434.0
+offset_right = 359.0
+offset_bottom = 436.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2"]
 layout_mode = 2
-theme_override_constants/separation = 18
+theme_override_constants/separation = 50
 
 [node name="Label" type="RichTextLabel" parent="MarginContainer2/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/normal_font_size = 15
+theme_override_font_sizes/normal_font_size = 80
 text = "Are you sure you want to quit (This will mean you forfit)?"
 fit_content = true
 
@@ -146,6 +153,7 @@ theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 120
 theme_override_styles/focus = SubResource("StyleBoxEmpty_glenx")
 theme_override_styles/hover = SubResource("StyleBoxFlat_xqge4")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_f2kk0")
@@ -159,6 +167,7 @@ theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 120
 theme_override_styles/focus = SubResource("StyleBoxEmpty_glenx")
 theme_override_styles/hover = SubResource("StyleBoxFlat_xqge4")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_f2kk0")

@@ -19,7 +19,7 @@ func _on_options__button_pressed():
 	close_options_menu_button.show()
 
 
-func _on_save_reload_button_pressed():
+func _on_save_load_button_pressed():
 	margin_container.hide()
 	margin_container_2.show()
 
@@ -27,7 +27,7 @@ func _on_quit__button_pressed():
 	get_tree().change_scene_to_file("res://main_menu/main_menu.tscn")
 
 
-func _on_reload_button_pressed():
+func _on_load_button_pressed():
 	pass
 
 

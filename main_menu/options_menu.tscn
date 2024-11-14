@@ -27,13 +27,16 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_s68js")
 
 [node name="Label" type="Label" parent="."]
-layout_mode = 2
-offset_left = 12.0
-offset_top = 3.0
-offset_right = 468.0
-offset_bottom = 48.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -512.0
+offset_right = 513.0
+offset_bottom = 311.0
+grow_horizontal = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 60
+theme_override_font_sizes/font_size = 200
 text = "Options"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -55,12 +58,10 @@ size_flags_vertical = 3
 
 [node name="Main Menu Back Button" parent="." instance=ExtResource("1_iekfw")]
 layout_mode = 0
-offset_left = 51.0
-offset_top = 892.0
-offset_right = 612.0
-offset_bottom = 975.0
-scale = Vector2(0.6, 0.6)
-theme_override_font_sizes/font_size = 60
+offset_left = 33.0
+offset_top = 1984.0
+offset_right = 780.0
+offset_bottom = 2118.0
 
 [node name="BackToDebugMenu" parent="." instance=ExtResource("2_no4dn")]
 visible = false
