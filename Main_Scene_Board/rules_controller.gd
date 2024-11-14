@@ -44,8 +44,10 @@ var accuracy : int
 @onready var Canvas = get_node("../CanvasLayer")
 @onready var Setup = get_node("../StartUpCanvas")
 @onready var Profic = get_node("../ProficiencyNode")
+@onready var Hurt = $"../CanvasLayer/Attack/HurtSFX"
 
-@export var AttackerProf:int
+
+@export var AttackerProf : int
 #The Player scene which will be instantiated and used for spawning in
 #All peer players
 @export var player_scene : PackedScene
@@ -269,14 +271,18 @@ func order_inc():
 #This Function needs to reset everything or start up needs to clear everything
 @rpc("any_peer", "call_local")
 func Winner():
+	
 	if Turn_Order == 1:
 		get_tree().change_scene_to_file("res://Victory_Screens/player1_victory_screen.tscn")
+		
 	if Turn_Order == 2:
 		if(!GlobalScript.SinglePlay):
 			get_tree().change_scene_to_file("res://Victory_Screens/player2_victory_screen.tscn")
+			
 		elif(GlobalScript.SinglePlay):
 			await get_tree().create_timer(1).timeout
 			get_tree().change_scene_to_file("res://Victory_Screens/CPU2_victory_screen.tscn")
+			
 	get_parent().queue_free()
 	GlobalScript.clear()
 
@@ -406,7 +412,7 @@ func CantAttack(range) -> void:
 #Attack function
 func Attack() -> void:
 	DrawButton.hide()
-	#DiceRoll.play()
+	DiceRoll.play()
 	#Random attack ccheck
 	var Attack = (randi()%6 + 1)
 	accuracy = 0
@@ -431,6 +437,7 @@ func Attack() -> void:
 		StunPlay.rpc()
 	else:
 		#Attack hit, rpc function call
+		Hurt.play()
 		var damage = Attacker.Weapon1Dmg
 		Attack_Calc.rpc(damage)
 	print("after", Attack)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=93 format=4 uid="uid://jl7k3ltwbp41"]
+[gd_scene load_steps=96 format=4 uid="uid://jl7k3ltwbp41"]
 
 [ext_resource type="Texture2D" uid="uid://fcuqal2ynbts" path="res://Main_Scene_Board/spritesheet.png" id="1_o8ncf"]
 [ext_resource type="Texture2D" uid="uid://mmea4eto2a6p" path="res://Main_Scene_Board/Rhombus.png" id="2_rfajf"]
@@ -44,20 +44,23 @@
 [ext_resource type="Script" path="res://Main_Scene_Board/bar_keep.gd" id="19_alpfg"]
 [ext_resource type="Script" path="res://Main_Scene_Board/ranch_hand.gd" id="20_dwx7h"]
 [ext_resource type="Texture2D" uid="uid://y5grgqvpm68u" path="res://button icons/Start Button.png" id="23_6f3f6"]
+[ext_resource type="AudioStream" uid="uid://donl5bgw25cim" path="res://main_menu/GameVictory.wav" id="23_8pn6l"]
 [ext_resource type="Texture2D" uid="uid://blwke6qxx6grk" path="res://button icons/End Turn Button.png" id="24_4137c"]
-[ext_resource type="AudioStream" uid="uid://c2r1hmhy4jh73" path="res://shuffling-cards-74757.mp3" id="25_3oti0"]
 [ext_resource type="Texture2D" uid="uid://c5dj7es7aba7e" path="res://thekid.svg" id="26_ndqm4"]
 [ext_resource type="Texture2D" uid="uid://c2w48yl67xfwr" path="res://button icons/Draw Card Button.png" id="26_wbco5"]
 [ext_resource type="Script" path="res://proficiencylogic.gd" id="27_bf6tm"]
 [ext_resource type="Texture2D" uid="uid://bnk7r45gr5cn8" path="res://IMG_9861.png" id="27_uadwx"]
 [ext_resource type="Texture2D" uid="uid://wfdwfv0wnt73" path="res://button icons/Dynamite Button.png" id="28_34ner"]
+[ext_resource type="AudioStream" uid="uid://c3ck66836g0a1" path="res://main_menu/card-sounds-35956.mp3" id="29_m30mc"]
 [ext_resource type="Script" path="res://Main_Scene_Board/weapons.gd" id="30_sg7ny"]
 [ext_resource type="Texture2D" uid="uid://duoy8ty6p53x1" path="res://button icons/Claim_Button_Darius.png" id="33_lhyn0"]
 [ext_resource type="Script" path="res://TownieSpriteClick.gd" id="34_hshlf"]
 [ext_resource type="Texture2D" uid="uid://t41eioyq4op0" path="res://button icons/Move Button.png" id="36_1sjo4"]
 [ext_resource type="Texture2D" uid="uid://bnp4fs70s6nu5" path="res://button icons/Attack Button.png" id="37_xxu0v"]
 [ext_resource type="Texture2D" uid="uid://b8xf3kpnn037f" path="res://preachersprite.png" id="43_4q8lf"]
+[ext_resource type="AudioStream" uid="uid://blh34wfm1qxqf" path="res://main_menu/Boardwalk Steps.wav" id="43_g76mt"]
 [ext_resource type="Script" path="res://Main_Scene_Board/store_keeper.gd" id="45_l4515"]
+[ext_resource type="AudioStream" uid="uid://dxcw87s1guini" path="res://main_menu/man-hurt-3.wav" id="45_vtqg2"]
 [ext_resource type="Script" path="res://Main_Scene_Board/mountain_man.gd" id="46_08nss"]
 [ext_resource type="Texture2D" uid="uid://co1ynyp2wonl3" path="res://doctorsprite.png" id="46_puujp"]
 [ext_resource type="Script" path="res://Main_Scene_Board/bounty_hunter.gd" id="47_cjmfn"]
@@ -516,6 +519,10 @@ position = Vector2(157, 785)
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_mfl53")
 
+[node name="Victory" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("23_8pn6l")
+volume_db = 0.684
+
 [node name="StartUpCanvas" type="CanvasLayer" parent="."]
 
 [node name="Start" type="Button" parent="StartUpCanvas"]
@@ -634,7 +641,7 @@ theme_override_font_sizes/font_size = 32
 text = "Draw Card"
 
 [node name="ShuffleSoundSFX" type="AudioStreamPlayer2D" parent="CanvasLayer/Draw Card"]
-stream = ExtResource("25_3oti0")
+stream = ExtResource("29_m30mc")
 volume_db = 7.429
 
 [node name="DrawCardSFX" type="AudioStreamPlayer2D" parent="CanvasLayer/Draw Card"]
@@ -781,6 +788,7 @@ scale = Vector2(2, 2)
 texture = ExtResource("36_1sjo4")
 
 [node name="WalkSFX" type="AudioStreamPlayer2D" parent="CanvasLayer/Move"]
+stream = ExtResource("43_g76mt")
 
 [node name="Give_Take" type="Button" parent="CanvasLayer"]
 visible = false
@@ -870,6 +878,11 @@ scale = Vector2(2, 2)
 texture = ExtResource("37_xxu0v")
 
 [node name="DiceRollSFX" type="AudioStreamPlayer2D" parent="CanvasLayer/Attack"]
+stream = ExtResource("43_g76mt")
+volume_db = 2.053
+
+[node name="HurtSFX" type="AudioStreamPlayer2D" parent="CanvasLayer/Attack"]
+stream = ExtResource("45_vtqg2")
 
 [node name="ProficiencyNode" type="Node" parent="."]
 script = ExtResource("27_bf6tm")

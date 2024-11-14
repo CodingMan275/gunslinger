@@ -1,5 +1,6 @@
-Sprite2D
+Node
 AudioStreamPlayer2D
+Sprite2D
 Button
 CanvasLayer
 RichTextLabel
@@ -8,7 +9,6 @@ Label
 Panel
 Control
 CharacterBody2D
-Node
 Node2D
 TextureRect
 Window
