@@ -1,4 +1,4 @@
-[gd_scene load_steps=103 format=4 uid="uid://jl7k3ltwbp41"]
+[gd_scene load_steps=104 format=4 uid="uid://jl7k3ltwbp41"]
 
 [ext_resource type="Texture2D" uid="uid://fcuqal2ynbts" path="res://Main_Scene_Board/spritesheet.png" id="1_o8ncf"]
 [ext_resource type="Texture2D" uid="uid://mmea4eto2a6p" path="res://Main_Scene_Board/Rhombus.png" id="2_rfajf"]
@@ -45,6 +45,7 @@
 [ext_resource type="Texture2D" uid="uid://y5grgqvpm68u" path="res://button icons/Start Button.png" id="23_6f3f6"]
 [ext_resource type="AudioStream" uid="uid://donl5bgw25cim" path="res://main_menu/GameVictory.wav" id="23_8pn6l"]
 [ext_resource type="Texture2D" uid="uid://blwke6qxx6grk" path="res://button icons/End Turn Button.png" id="24_4137c"]
+[ext_resource type="AudioStream" uid="uid://hpux0mx0kufi" path="res://main_menu/Pistol Shoot.wav" id="25_bu3kd"]
 [ext_resource type="Texture2D" uid="uid://c2w48yl67xfwr" path="res://button icons/Draw Card Button.png" id="26_wbco5"]
 [ext_resource type="Script" path="res://proficiencylogic.gd" id="27_bf6tm"]
 [ext_resource type="Texture2D" uid="uid://bnk7r45gr5cn8" path="res://IMG_9861.png" id="27_uadwx"]
@@ -564,9 +565,9 @@ offset_bottom = -271.5
 theme_override_font_sizes/font_size = 60
 text = "Range"
 
-[node name="Attack" type="AudioStreamPlayer2D" parent="AttackingCanvas/Range"]
+[node name="ranged attack" type="AudioStreamPlayer2D" parent="AttackingCanvas/Range"]
 position = Vector2(-16, -185)
-stream = ExtResource("8_7t4t6")
+stream = ExtResource("25_bu3kd")
 
 [node name="Brawl" type="Button" parent="AttackingCanvas"]
 anchors_preset = -1
@@ -1950,7 +1951,7 @@ text = "Special Ability"
 
 [connection signal="child_order_changed" from="." to="Rules_Controller" method="_on_node_2d_child_order_changed"]
 [connection signal="pressed" from="StartUpCanvas/Start" to="Rules_Controller" method="DeleteLater"]
-[connection signal="pressed" from="AttackingCanvas/Range" to="Layer0" method="_on_attack_pressed"]
+[connection signal="pressed" from="AttackingCanvas/Range" to="Layer0" method="_on_range_pressed"]
 [connection signal="pressed" from="AttackingCanvas/Range" to="Rules_Controller" method="RangeAttack" binds= ["Player"]]
 [connection signal="pressed" from="AttackingCanvas/Brawl" to="Layer0" method="_on_brawl_pressed"]
 [connection signal="pressed" from="AttackingCanvas/Brawl" to="Rules_Controller" method="BrawlAttack" binds= ["Player"]]

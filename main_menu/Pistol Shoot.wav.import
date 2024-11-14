@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://hpux0mx0kufi"
+path="res://.godot/imported/Pistol Shoot.wav-f07e808221aca03e9446395e2e796a48.sample"
+
+[deps]
+
+source_file="res://main_menu/Pistol Shoot.wav"
+dest_files=["res://.godot/imported/Pistol Shoot.wav-f07e808221aca03e9446395e2e796a48.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

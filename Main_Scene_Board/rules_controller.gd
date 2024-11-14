@@ -4,6 +4,7 @@ extends Node
 #Creates a signal to be sent out which will contain the information
 #On turn order to other nodes and scenes
 @onready var DiceRoll = $"../CanvasLayer/Attack/DiceRollSFX"
+@onready var Victory = $"../Victory"
 signal order
 
 signal move
@@ -274,11 +275,11 @@ func Winner():
 	
 	if Turn_Order == 1:
 		get_tree().change_scene_to_file("res://Victory_Screens/player1_victory_screen.tscn")
-		
+		Victory.play()
 	if Turn_Order == 2:
 		if(!GlobalScript.SinglePlay):
 			get_tree().change_scene_to_file("res://Victory_Screens/player2_victory_screen.tscn")
-			
+			Victory.play()
 		elif(GlobalScript.SinglePlay):
 			await get_tree().create_timer(1).timeout
 			get_tree().change_scene_to_file("res://Victory_Screens/CPU2_victory_screen.tscn")
