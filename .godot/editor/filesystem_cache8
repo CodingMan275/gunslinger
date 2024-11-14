@@ -1,5 +1,5 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1731604123
+::res://::1731605526
 Bank_Manager sprite.png::CompressedTexture2D::9167941705125950007::1731538997::1731595623::1::::<><>::
 barkeepsprite.png::CompressedTexture2D::2484348974395105563::1731460809::1731595623::1::::<><>::
 bobseymour.svg::CompressedTexture2D::2623050849344995884::1729713395::1731595621::1::::<><>::
@@ -13,10 +13,10 @@ GeneralStoreKeeper sprite.png::CompressedTexture2D::2454261735326088215::1731538
 global_script.gd::GDScript::-1::1730857735::0::1::::<>Node<>::
 GunslingerSpriteClick.gd::GDScript::-1::1731460809::0::1::::<>Sprite2D<>::
 icon.svg::CompressedTexture2D::1576107790049741733::1725910236::1731595621::1::::<><>::
-icon.tscn::PackedScene::5402456571018545550::1731602367::0::1::::<><>::uid://wpqjamy8nklp::::res://icon.svg
+icon.tscn::PackedScene::5402456571018545550::1731605322::0::1::::<><>::uid://wpqjamy8nklp::::res://icon.svg
 IMG_9861.png::CompressedTexture2D::3321494300610828707::1729822396::1731595624::1::::<><>::
 jonlaramine.svg::CompressedTexture2D::669251063251593777::1729713395::1731595621::1::::<><>::
-lan.tscn::PackedScene::546660338068700008::1731602367::0::1::::<><>::
+lan.tscn::PackedScene::546660338068700008::1731605322::0::1::::<><>::
 madmike.svg::CompressedTexture2D::6618638698218589226::1729713395::1731595621::1::::<><>::
 MountainMan sprite.png::CompressedTexture2D::6977633964091186471::1731538997::1731595621::1::::<><>::
 oldsmokey.svg::CompressedTexture2D::8889664717179604780::1729713395::1731595621::1::::<><>::
@@ -60,49 +60,49 @@ character_sheets_ui.gd::GDScript::-1::1728855339::0::1::::<>Control<>::
 character_sheets_UI.tscn::PackedScene::6216190000073413517::1729542343::0::1::::<><>::res://Character_Sheet_Display/character_sheets_ui.gd
 character_sheets_view_button.gd::GDScript::-1::1728855339::0::1::::<>Button<>::
 character_sheets_view_button.tscn::PackedScene::4675717295715703862::1731305363::0::1::::<><>::res://Character_Sheet_Display/character_sheets_view_button.gd
-::res://CPU_and_Player/::1731602366
+::res://CPU_and_Player/::1731605322
 bob__seymour_v2_10_22_24_Nicholas_Littlefield_Gunslinger.png::CompressedTexture2D::2111402868160945134::1729713395::1731595622::1::::<><>::
 CardDisplayPlayer.gd::GDScript::-1::1731106433::0::1::::<>CanvasLayer<>::
 Character.gd::GDScript::-1::1731442300::0::1::::<>RefCounted<>::
 CPU.gd::GDScript::-1::1731363910::0::1::::<>CharacterBody2D<>::
-CPU.tscn::PackedScene::5460054185964627582::1731602366::0::1::::<><>::res://CPU_and_Player/CPU.gd
+CPU.tscn::PackedScene::5460054185964627582::1731605322::0::1::::<><>::res://CPU_and_Player/CPU.gd
 CPU_Label.gd::GDScript::-1::1731442300::0::1::::<>Label<>::
 doctor.gd::GDScript::-1::1731482229::0::1::::Doctor<>CharacterBody2D<>::
 Ground Tiles.png::CompressedTexture2D::2102011228855269826::1731460809::1731595622::1::::<><>::
 player.gd::GDScript::-1::1731595583::0::1::::<>CharacterBody2D<>::
-Player.tscn::PackedScene::1667114190674531277::1731602366::0::1::::<><>::res://CPU_and_Player/player.gd<>uid://wpqjamy8nklp::::res://icon.svg<>uid://dfgvy8221qmt8::::res://button icons/Left Arrow Button.png<>res://CPU_and_Player/CardDisplayPlayer.gd<>uid://bj1fnrkj1qswk::::res://button icons/Right Arrow Button.png
+Player.tscn::PackedScene::1667114190674531277::1731605322::0::1::::<><>::res://CPU_and_Player/player.gd<>uid://wpqjamy8nklp::::res://icon.svg<>uid://dfgvy8221qmt8::::res://button icons/Left Arrow Button.png<>res://CPU_and_Player/CardDisplayPlayer.gd<>uid://bj1fnrkj1qswk::::res://button icons/Right Arrow Button.png
 PlayerClass.gd::GDScript::-1::1728855339::0::1::::<>RefCounted<>::
 Show Hands Button.png::CompressedTexture2D::8439429782816230510::1731595583::1731595622::1::::<><>::
 Special button.png::CompressedTexture2D::157117994512978270::1731595583::1731595622::1::::<><>::
-Townsfolk.gd::GDScript::-1::1731460818::0::1::::Townsfolk<>CharacterBody2D<>::
+Townsfolk.gd::GDScript::-1::1731605322::0::1::::Townsfolk<>CharacterBody2D<>::
 Weapon.gd::GDScript::-1::1729542343::0::1::::<>RefCounted<>::
-::res://debug_screen/::1731602367
+::res://debug_screen/::1731605322
 back_to_debug_menu.gd::GDScript::-1::1728855340::0::1::::<>Button<>::
-Back_to_Debug_Menu.tscn::PackedScene::511954981939244824::1731602367::0::1::::<><>::res://debug_screen/back_to_debug_menu.gd
+Back_to_Debug_Menu.tscn::PackedScene::511954981939244824::1731605322::0::1::::<><>::res://debug_screen/back_to_debug_menu.gd
 debug_button.gd::GDScript::-1::1728855340::0::1::::<>Button<>::
-debug_button.tscn::PackedScene::8203076168435353091::1731602367::0::1::::<><>::res://debug_screen/debug_button.gd
+debug_button.tscn::PackedScene::8203076168435353091::1731605322::0::1::::<><>::res://debug_screen/debug_button.gd
 debug_menu.gd::GDScript::-1::1728855340::0::1::::<>Control<>::
-debug_menu.tscn::PackedScene::2017106292229758417::1731602367::0::1::::<><>::res://debug_screen/debug_menu.gd
-::res://Josh_Test_Scenes/::1731602367
+debug_menu.tscn::PackedScene::2017106292229758417::1731605322::0::1::::<><>::res://debug_screen/debug_menu.gd
+::res://Josh_Test_Scenes/::1731605323
 Player_Label.gd::GDScript::-1::1731442300::0::1::::<>Label<>::
 world.gd::GDScript::-1::1731460809::0::1::::<>Node2D<>::
-world.tscn::PackedScene::3041323499297697522::1731602367::0::1::::<><>::res://Josh_Test_Scenes/world.gd<>uid://x0tek8t1bewj::::res://CPU_and_Player/Player.tscn<>uid://hj83ai4o2o5m::::res://debug_screen/Back_to_Debug_Menu.tscn
-::res://main_menu/::1731602367
+world.tscn::PackedScene::3041323499297697522::1731605323::0::1::::<><>::res://Josh_Test_Scenes/world.gd<>uid://x0tek8t1bewj::::res://CPU_and_Player/Player.tscn<>uid://hj83ai4o2o5m::::res://debug_screen/Back_to_Debug_Menu.tscn
+::res://main_menu/::1731605323
 audio_options.gd::GDScript::-1::1729116062::0::1::::<>Control<>::
 Boardwalk Steps.wav::AudioStreamWAV::3174701635628929761::1731595583::1731595625::1::::<><>::
 card-sounds-35956.mp3::AudioStreamMP3::6742921954814228062::1731595584::1731595620::1::::<><>::
 GameVictory.wav::AudioStreamWAV::8169464296381130372::1731595584::1731595625::1::::<><>::
 GunSlinger Menu.mp3::AudioStreamMP3::2304253421678560969::1728855340::1731595620::1::::<><>::
 main_menu.gd::GDScript::-1::1728855340::0::1::::<>Control<>::
-main_menu.tscn::PackedScene::1055608169025391970::1731602367::0::1::::<><>::res://main_menu/main_menu.gd<>uid://bjl6l6es04344::::res://main_menu/main_menu_art_assets/Mountain background title screen.png<>uid://73gync2ngicf::::res://main_menu/GunSlinger Menu.mp3
+main_menu.tscn::PackedScene::1055608169025391970::1731605322::0::1::::<><>::res://main_menu/main_menu.gd<>uid://bjl6l6es04344::::res://main_menu/main_menu_art_assets/Mountain background title screen.png<>uid://73gync2ngicf::::res://main_menu/GunSlinger Menu.mp3
 main_menu_back_button.gd::GDScript::-1::1728855340::0::1::::<>Button<>::
-main_menu_back_button.tscn::PackedScene::5055805923333536536::1731602367::0::1::::<><>::res://main_menu/main_menu_back_button.gd
+main_menu_back_button.tscn::PackedScene::5055805923333536536::1731605323::0::1::::<><>::res://main_menu/main_menu_back_button.gd
 man-hurt-3.wav::AudioStreamWAV::8779130625045710242::1731595584::1731595625::1::::<><>::
 mode_selection_screen.gd::GDScript::-1::1731305364::0::1::::<>Control<>::
-mode_selection_screen.tscn::PackedScene::2527043604269230864::1731602367::0::1::::<><>::res://main_menu/mode_selection_screen.gd<>uid://cebcnc652bypc::::res://main_menu/main_menu_back_button.tscn<>uid://cy6y6rhfvniq0::::res://main_menu/main_menu_art_assets/Select Mode Background.png<>uid://73gync2ngicf::::res://main_menu/GunSlinger Menu.mp3
-options_menu.tscn::PackedScene::8940963856038343498::1731602367::0::1::::<><>::uid://xf2r52dg4fpm::::res://main_menu/main_menu_art_assets/settings background blurred darkened.png<>uid://cebcnc652bypc::::res://main_menu/main_menu_back_button.tscn<>uid://dx8bf3sg52wqi::::res://main_menu/options_tab_container.tscn<>uid://hj83ai4o2o5m::::res://debug_screen/Back_to_Debug_Menu.tscn<>uid://73gync2ngicf::::res://main_menu/GunSlinger Menu.mp3
+mode_selection_screen.tscn::PackedScene::2527043604269230864::1731605322::0::1::::<><>::res://main_menu/mode_selection_screen.gd<>uid://cebcnc652bypc::::res://main_menu/main_menu_back_button.tscn<>uid://cy6y6rhfvniq0::::res://main_menu/main_menu_art_assets/Select Mode Background.png<>uid://73gync2ngicf::::res://main_menu/GunSlinger Menu.mp3
+options_menu.tscn::PackedScene::8940963856038343498::1731605322::0::1::::<><>::uid://xf2r52dg4fpm::::res://main_menu/main_menu_art_assets/settings background blurred darkened.png<>uid://cebcnc652bypc::::res://main_menu/main_menu_back_button.tscn<>uid://dx8bf3sg52wqi::::res://main_menu/options_tab_container.tscn<>uid://hj83ai4o2o5m::::res://debug_screen/Back_to_Debug_Menu.tscn<>uid://73gync2ngicf::::res://main_menu/GunSlinger Menu.mp3
 options_tab_container.gd::GDScript::-1::1729116062::0::1::::<>Control<>::
-options_tab_container.tscn::PackedScene::8841801065374384888::1731602367::0::1::::<><>::res://main_menu/options_tab_container.gd<>res://main_menu/audio_options.gd
+options_tab_container.tscn::PackedScene::8841801065374384888::1731605323::0::1::::<><>::res://main_menu/options_tab_container.gd<>res://main_menu/audio_options.gd
 ::res://main_menu/main_menu_art_assets/::1731595623
 Mountain background title screen.png::CompressedTexture2D::3042731937494255647::1730399982::1731595622::1::::<><>::
 Options Button.png::CompressedTexture2D::440349776642321817::1730399982::1731595622::1::::<><>::
@@ -110,7 +110,7 @@ Quit Button.png::CompressedTexture2D::4118448707516924066::1730399982::173159562
 Select Mode Background.png::CompressedTexture2D::6522882796478623601::1731305364::1731595622::1::::<><>::
 settings background blurred darkened.png::CompressedTexture2D::1626336627301815430::1731305364::1731595622::1::::<><>::
 Start Button.png::CompressedTexture2D::8107848278485568661::1730399982::1731595623::1::::<><>::
-::res://Main_Scene_Board/::1731604122
+::res://Main_Scene_Board/::1731605475
 bank_manager.gd::GDScript::-1::1731106433::0::1::::Bank_Manager<>CharacterBody2D<>::
 bar_keep.gd::GDScript::-1::1731106433::0::1::::Bar_Keep<>CharacterBody2D<>::
 bounty_hunter.gd::GDScript::-1::1731106433::0::1::::Bounty_Hunter<>CharacterBody2D<>::
@@ -120,8 +120,8 @@ layer_0.gd::GDScript::-1::1731444433::0::1::::<>TileMapLayer<>::
 layer_1.gd::GDScript::-1::1730399982::0::1::::<>TileMapLayer<>::
 mountain_man.gd::GDScript::-1::1731106433::0::1::::Mountain_Man<>CharacterBody2D<>::
 moveable_player.gd::GDScript::-1::1728855340::0::1::::<>CharacterBody2D<>::
-moveable_player.tscn::PackedScene::6597460110306373176::1731602367::0::1::::<><>::res://Main_Scene_Board/moveable_player.gd<>uid://wpqjamy8nklp::::res://icon.svg
-node_2d.tscn::PackedScene::656370038283907512::1731604122::0::1::::<><>::uid://fcuqal2ynbts::::res://Main_Scene_Board/spritesheet.png<>uid://mmea4eto2a6p::::res://Main_Scene_Board/Rhombus.png<>res://Main_Scene_Board/layer_0.gd<>uid://bgfw83igonq2c::::res://Main_Scene_Board/Updated Tiles/BoardwalkAlpha.png<>res://Main_Scene_Board/Canvas_Layer/Turn_Label.gd<>uid://47h22ob018yo::::res://CPU_and_Player/Ground Tiles.png<>uid://0qo5my5cfjq1::::res://Main_Scene_Board/Canvas_Layer/Themes/Debug.tres<>res://Main_Scene_Board/Canvas_Layer/debug.gd<>res://Main_Scene_Board/rules_controller.gd<>uid://c5600rupuq8tx::::res://Main_Scene_Board/Updated Tiles/PathSouthWestEndAlpha.png<>uid://ccdn50u37npqi::::res://Card Game/card-sounds-35956.wav<>uid://x0tek8t1bewj::::res://CPU_and_Player/Player.tscn<>uid://dt4kb238pqpff::::res://Main_Scene_Board/Updated Tiles/DoctorsOffice.png<>uid://bekgpnqtbfsyc::::res://Card Game/Stun.wav<>uid://c5jlo685cefy5::::res://Main_Scene_Board/Updated Tiles/Stable 1.png<>uid://cwr045wdx36mf::::res://Main_Scene_Board/Updated Tiles/LawnAlpha.png<>uid://b011txk3p20u1::::res://Main_Scene_Board/Updated Tiles/Livery1.png<>uid://bjpwuwhp4j6fg::::res://Main_Scene_Board/Updated Tiles/School_V1_11_8_24_Auper_Lashlee_Gunslinger.png<>uid://cj15kaxvr44m1::::res://CPU_and_Player/CPU.tscn<>res://Main_Scene_Board/Card_Script.gd<>res://Main_Scene_Board/claim.gd<>uid://diiu2osp2ss7u::::res://Main_Scene_Board/Updated Tiles/Stable 2.png<>uid://cp7ccxsdolbco::::res://Main_Scene_Board/Updated Tiles/Livery2.png<>uid://stdd55mk8v0k::::res://Main_Scene_Board/Updated Tiles/School.png<>uid://bjw3pfr68vfq1::::res://Main_Scene_Board/Updated Tiles/PathCrossAlpha.png<>uid://o8yrpil2wgv2::::res://Main_Scene_Board/Updated Tiles/DoctorsOfficeV2.png<>uid://wpqjamy8nklp::::res://icon.svg<>uid://dnwtxvpqei783::::res://Main_Scene_Board/Updated Tiles/PathLineEastToWest.png<>uid://bir8u4hip16in::::res://pause_menu/pause_menu_button_singleplayer.tscn<>uid://dxnroepmb6svi::::res://Main_Scene_Board/Updated Tiles/PathLineWestToEast.png<>res://Main_Scene_Board/preacher.gd<>uid://dl0y4pw78gxau::::res://Main_Scene_Board/Updated Tiles/PathSouthEastEndAlpha.png<>uid://b7rfx1nnoi5ev::::res://pause_menu/pause_menu_singleplayer.tscn<>res://Main_Scene_Board/townie_logic.gd<>res://Main_Scene_Board/layer_1.gd<>uid://d0ncmr5j7hrug::::res://main_menu/options_menu.tscn<>res://CPU_and_Player/doctor.gd<>uid://o8s2bfh5cxgj::::res://pause_menu/close_options_menu_button.tscn<>res://Main_Scene_Board/teacher.gd<>res://Main_Scene_Board/player_layer.gd<>res://Main_Scene_Board/town_drunk.gd<>res://Main_Scene_Board/bar_keep.gd<>res://Main_Scene_Board/ranch_hand.gd<>uid://y5grgqvpm68u::::res://button icons/Start Button.png<>uid://donl5bgw25cim::::res://main_menu/GameVictory.wav<>uid://blwke6qxx6grk::::res://button icons/End Turn Button.png<>uid://c5dj7es7aba7e::::res://thekid.svg<>uid://c2w48yl67xfwr::::res://button icons/Draw Card Button.png<>res://proficiencylogic.gd<>uid://bnk7r45gr5cn8::::res://IMG_9861.png<>uid://wfdwfv0wnt73::::res://button icons/Dynamite Button.png<>uid://c3ck66836g0a1::::res://main_menu/card-sounds-35956.mp3<>res://Main_Scene_Board/weapons.gd<>uid://duoy8ty6p53x1::::res://button icons/Claim_Button_Darius.png<>res://TownieSpriteClick.gd<>uid://t41eioyq4op0::::res://button icons/Move Button.png<>uid://bnp4fs70s6nu5::::res://button icons/Attack Button.png<>uid://b8xf3kpnn037f::::res://preachersprite.png<>uid://blh34wfm1qxqf::::res://main_menu/Boardwalk Steps.wav<>res://Main_Scene_Board/store_keeper.gd<>uid://dxcw87s1guini::::res://main_menu/man-hurt-3.wav<>res://Main_Scene_Board/mountain_man.gd<>uid://co1ynyp2wonl3::::res://doctorsprite.png<>res://Main_Scene_Board/bounty_hunter.gd<>res://Main_Scene_Board/saloon_girl.gd<>uid://npb4ov8dsqjk::::res://teachersprite.png<>res://Main_Scene_Board/bank_manager.gd<>uid://4js47xf3xilk::::res://towndrunksprite.png<>res://Main_Scene_Board/sheriff.gd<>uid://bbno4nr3bl5lf::::res://barkeepsprite.png<>uid://cmgkkwmsfwmk5::::res://ranchhandsprite.png<>uid://babn4p6kuyg7m::::res://button icons/Brawl Button.png
+moveable_player.tscn::PackedScene::6597460110306373176::1731605323::0::1::::<><>::res://Main_Scene_Board/moveable_player.gd<>uid://wpqjamy8nklp::::res://icon.svg
+node_2d.tscn::PackedScene::656370038283907512::1731605475::0::1::::<><>::uid://fcuqal2ynbts::::res://Main_Scene_Board/spritesheet.png<>uid://mmea4eto2a6p::::res://Main_Scene_Board/Rhombus.png<>res://Main_Scene_Board/layer_0.gd<>uid://bgfw83igonq2c::::res://Main_Scene_Board/Updated Tiles/BoardwalkAlpha.png<>res://Main_Scene_Board/Canvas_Layer/Turn_Label.gd<>uid://47h22ob018yo::::res://CPU_and_Player/Ground Tiles.png<>uid://0qo5my5cfjq1::::res://Main_Scene_Board/Canvas_Layer/Themes/Debug.tres<>res://Main_Scene_Board/Canvas_Layer/debug.gd<>res://Main_Scene_Board/rules_controller.gd<>uid://c5600rupuq8tx::::res://Main_Scene_Board/Updated Tiles/PathSouthWestEndAlpha.png<>uid://ccdn50u37npqi::::res://Card Game/card-sounds-35956.wav<>uid://x0tek8t1bewj::::res://CPU_and_Player/Player.tscn<>uid://dt4kb238pqpff::::res://Main_Scene_Board/Updated Tiles/DoctorsOffice.png<>uid://bekgpnqtbfsyc::::res://Card Game/Stun.wav<>uid://c5jlo685cefy5::::res://Main_Scene_Board/Updated Tiles/Stable 1.png<>uid://cwr045wdx36mf::::res://Main_Scene_Board/Updated Tiles/LawnAlpha.png<>uid://b011txk3p20u1::::res://Main_Scene_Board/Updated Tiles/Livery1.png<>uid://bjpwuwhp4j6fg::::res://Main_Scene_Board/Updated Tiles/School_V1_11_8_24_Auper_Lashlee_Gunslinger.png<>uid://cj15kaxvr44m1::::res://CPU_and_Player/CPU.tscn<>res://Main_Scene_Board/Card_Script.gd<>res://Main_Scene_Board/claim.gd<>uid://diiu2osp2ss7u::::res://Main_Scene_Board/Updated Tiles/Stable 2.png<>uid://cp7ccxsdolbco::::res://Main_Scene_Board/Updated Tiles/Livery2.png<>uid://stdd55mk8v0k::::res://Main_Scene_Board/Updated Tiles/School.png<>uid://bjw3pfr68vfq1::::res://Main_Scene_Board/Updated Tiles/PathCrossAlpha.png<>uid://o8yrpil2wgv2::::res://Main_Scene_Board/Updated Tiles/DoctorsOfficeV2.png<>uid://wpqjamy8nklp::::res://icon.svg<>uid://dnwtxvpqei783::::res://Main_Scene_Board/Updated Tiles/PathLineEastToWest.png<>uid://bir8u4hip16in::::res://pause_menu/pause_menu_button_singleplayer.tscn<>uid://dxnroepmb6svi::::res://Main_Scene_Board/Updated Tiles/PathLineWestToEast.png<>res://Main_Scene_Board/preacher.gd<>uid://dl0y4pw78gxau::::res://Main_Scene_Board/Updated Tiles/PathSouthEastEndAlpha.png<>uid://b7rfx1nnoi5ev::::res://pause_menu/pause_menu_singleplayer.tscn<>res://Main_Scene_Board/townie_logic.gd<>res://Main_Scene_Board/layer_1.gd<>uid://d0ncmr5j7hrug::::res://main_menu/options_menu.tscn<>res://CPU_and_Player/doctor.gd<>uid://o8s2bfh5cxgj::::res://pause_menu/close_options_menu_button.tscn<>res://Main_Scene_Board/teacher.gd<>res://Main_Scene_Board/player_layer.gd<>res://Main_Scene_Board/town_drunk.gd<>res://Main_Scene_Board/bar_keep.gd<>res://Main_Scene_Board/ranch_hand.gd<>uid://y5grgqvpm68u::::res://button icons/Start Button.png<>uid://donl5bgw25cim::::res://main_menu/GameVictory.wav<>uid://blwke6qxx6grk::::res://button icons/End Turn Button.png<>uid://c5dj7es7aba7e::::res://thekid.svg<>uid://c2w48yl67xfwr::::res://button icons/Draw Card Button.png<>res://proficiencylogic.gd<>uid://bnk7r45gr5cn8::::res://IMG_9861.png<>uid://wfdwfv0wnt73::::res://button icons/Dynamite Button.png<>uid://c3ck66836g0a1::::res://main_menu/card-sounds-35956.mp3<>res://Main_Scene_Board/weapons.gd<>uid://duoy8ty6p53x1::::res://button icons/Claim_Button_Darius.png<>res://TownieSpriteClick.gd<>uid://t41eioyq4op0::::res://button icons/Move Button.png<>uid://bnp4fs70s6nu5::::res://button icons/Attack Button.png<>uid://b8xf3kpnn037f::::res://preachersprite.png<>uid://blh34wfm1qxqf::::res://main_menu/Boardwalk Steps.wav<>res://Main_Scene_Board/store_keeper.gd<>uid://dxcw87s1guini::::res://main_menu/man-hurt-3.wav<>res://Main_Scene_Board/mountain_man.gd<>uid://co1ynyp2wonl3::::res://doctorsprite.png<>res://Main_Scene_Board/bounty_hunter.gd<>res://Main_Scene_Board/saloon_girl.gd<>uid://npb4ov8dsqjk::::res://teachersprite.png<>res://Main_Scene_Board/bank_manager.gd<>uid://4js47xf3xilk::::res://towndrunksprite.png<>res://Main_Scene_Board/sheriff.gd<>uid://bbno4nr3bl5lf::::res://barkeepsprite.png<>uid://cmgkkwmsfwmk5::::res://ranchhandsprite.png<>uid://babn4p6kuyg7m::::res://button icons/Brawl Button.png
 player_layer.gd::GDScript::-1::1731460809::0::1::::<>TileMapLayer<>::
 preacher.gd::GDScript::-1::1731460818::0::1::::Preacher<>CharacterBody2D<>::
 ranch_hand.gd::GDScript::-1::1731106433::0::1::::Ranch_Hand<>CharacterBody2D<>::
@@ -143,25 +143,25 @@ Turn_Label.gd::GDScript::-1::1729542343::0::1::::<>Label<>::
 ::res://Main_Scene_Board/Canvas_Layer/Themes/::1731460809
 Debug.tres::Theme::1788655415453093990::1731460809::0::1::::<><>::uid://unpancs51v13::::res://Main_Scene_Board/Canvas_Layer/Themes/Debug_Style.tres
 Debug_Style.tres::StyleBoxFlat::1431525225207057236::1728855340::0::1::::<><>::
-::res://Main_Scene_Board/Gunslingers/::1731604122
+::res://Main_Scene_Board/Gunslingers/::1731605323
 Bob.gd::GDScript::-1::1731305364::0::1::::<>Node<>::
-Bob.tscn::PackedScene::2650463899438997556::1731602367::0::1::::<><>::uid://3wwye5jcxi8o::::res://bob__seymour_v2_10_22_24_Nicholas_Littlefield_Gunslinger.png<>res://Main_Scene_Board/Gunslingers/Bob.gd<>res://Josh_Test_Scenes/Player_Label.gd<>res://GunslingerSpriteClick.gd
+Bob.tscn::PackedScene::2650463899438997556::1731605323::0::1::::<><>::uid://3wwye5jcxi8o::::res://bob__seymour_v2_10_22_24_Nicholas_Littlefield_Gunslinger.png<>res://Main_Scene_Board/Gunslingers/Bob.gd<>res://Josh_Test_Scenes/Player_Label.gd<>res://GunslingerSpriteClick.gd
 Bob_Seymour Character card.png::CompressedTexture2D::2155555775592068997::1731599528::1731602817::1::::<><>::
 Elijah.gd::GDScript::-1::1731106433::0::1::::<>Node<>::
-Elijah.tscn::PackedScene::3575906043951537033::1731602366::0::1::::<><>::res://Main_Scene_Board/Gunslingers/Elijah.gd<>res://Josh_Test_Scenes/Player_Label.gd<>uid://b3jt8k5v2aeha::::res://elijahbrown.svg<>res://GunslingerSpriteClick.gd
+Elijah.tscn::PackedScene::3575906043951537033::1731605322::0::1::::<><>::res://Main_Scene_Board/Gunslingers/Elijah.gd<>res://Josh_Test_Scenes/Player_Label.gd<>uid://b3jt8k5v2aeha::::res://elijahbrown.svg<>res://GunslingerSpriteClick.gd
 Elijah_Brown Character Card.png::CompressedTexture2D::2656010270073951826::1731599528::1731602832::1::::<><>::
 Jon_Laramie character card.png::CompressedTexture2D::2389131946128511821::1731599528::1731602865::1::::<><>::
 Jon_Laramie.gd::GDScript::-1::1731106433::0::1::::<>Node<>::
-Jon_Laramie.tscn::PackedScene::6690085531344550345::1731602366::0::1::::<><>::res://Main_Scene_Board/Gunslingers/jon_laramie.gd<>res://Josh_Test_Scenes/Player_Label.gd<>uid://jsgp5eehgaib::::res://jonlaramine.svg<>res://GunslingerSpriteClick.gd
+Jon_Laramie.tscn::PackedScene::6690085531344550345::1731605322::0::1::::<><>::res://Main_Scene_Board/Gunslingers/jon_laramie.gd<>res://Josh_Test_Scenes/Player_Label.gd<>uid://jsgp5eehgaib::::res://jonlaramine.svg<>res://GunslingerSpriteClick.gd
 Mad_Mike Character Card.png::CompressedTexture2D::7223912864488643955::1731599686::1731602887::1::::<><>::
 Mad_Mike.gd::GDScript::-1::1731305364::0::1::::<>Node<>::
-Mad_Mike.tscn::PackedScene::6241679626150009729::1731602366::0::1::::<><>::res://Main_Scene_Board/Gunslingers/Mad_Mike.gd<>res://Josh_Test_Scenes/Player_Label.gd<>uid://c1keaoj8b1k3k::::res://madmike.svg<>res://GunslingerSpriteClick.gd
+Mad_Mike.tscn::PackedScene::6241679626150009729::1731605322::0::1::::<><>::res://Main_Scene_Board/Gunslingers/Mad_Mike.gd<>res://Josh_Test_Scenes/Player_Label.gd<>uid://c1keaoj8b1k3k::::res://madmike.svg<>res://GunslingerSpriteClick.gd
 Old_Smokey Character Card.png::CompressedTexture2D::6962170834210509600::1731599528::1731602900::1::::<><>::
 Smokey.gd::GDScript::-1::1731106433::0::1::::<>Node<>::
-Smokey.tscn::PackedScene::1413698354821530421::1731602366::0::1::::<><>::res://Main_Scene_Board/Gunslingers/Smokey.gd<>uid://dywhqj3m2j1y3::::res://oldsmokey.svg<>res://Josh_Test_Scenes/Player_Label.gd<>res://GunslingerSpriteClick.gd
+Smokey.tscn::PackedScene::1413698354821530421::1731605322::0::1::::<><>::res://Main_Scene_Board/Gunslingers/Smokey.gd<>uid://dywhqj3m2j1y3::::res://oldsmokey.svg<>res://Josh_Test_Scenes/Player_Label.gd<>res://GunslingerSpriteClick.gd
 The_Kid Character Card.png::CompressedTexture2D::8407288215776212110::1731599528::1731602762::1::::<><>::
 The_Kidd.gd::GDScript::-1::1731106433::0::1::::<>Node<>::
-The_Kidd.tscn::PackedScene::8670921401837549418::1731602366::0::1::::<><>::uid://wpqjamy8nklp::::res://icon.svg<>res://Main_Scene_Board/Gunslingers/The_Kidd.gd<>res://Josh_Test_Scenes/Player_Label.gd
+The_Kidd.tscn::PackedScene::8670921401837549418::1731605322::0::1::::<><>::uid://wpqjamy8nklp::::res://icon.svg<>res://Main_Scene_Board/Gunslingers/The_Kidd.gd<>res://Josh_Test_Scenes/Player_Label.gd
 ::res://Main_Scene_Board/Townsfolk/::1731595623
 Bank manager character card.png::CompressedTexture2D::122418202084574472::1731536823::1731595623::1::::<><>::
 barkeep character card.png::CompressedTexture2D::6042121261539905432::1731535034::1731595623::1::::<><>::
@@ -207,7 +207,7 @@ Shotgun weapon card.png::CompressedTexture2D::7609386587532545269::1731460809::1
 shotgun.png::CompressedTexture2D::6974689337298304057::1731106433::1731595623::1::::<><>::
 Twin Pistol weapon card.png::CompressedTexture2D::2451898243420635572::1731460809::1731595621::1::::<><>::
 TwinPistols.png::CompressedTexture2D::4003501870708572415::1731106433::1731595621::1::::<><>::
-::res://pause_menu/::1731602367
+::res://pause_menu/::1731605323
 close_options_menu_button.gd::GDScript::-1::1731305364::0::1::::<>Button<>::
 close_options_menu_button.tscn::PackedScene::1051909459727270209::1730399982::0::1::::<><>::res://pause_menu/close_options_menu_button.gd
 pause_menu_button_multiplayer.gd::GDScript::-1::1731305364::0::1::::<>Button<>::
@@ -216,16 +216,16 @@ pause_menu_button_singleplayer.gd::GDScript::-1::1730399982::0::1::::<>Button<>:
 pause_menu_button_singleplayer.tscn::PackedScene::2985066765631139097::1730399982::0::1::::<><>::res://pause_menu/pause_menu_button_singleplayer.gd
 pause_menu_multiplayer.gd::GDScript::-1::1731305364::0::1::::<>Control<>::
 pause_menu_multiplayer.tscn::PackedScene::7560929238228564918::1731305364::0::1::::<><>::res://pause_menu/pause_menu_singleplayer.gdshader<>res://pause_menu/pause_menu_multiplayer.gd
-Pause_menu_options_screen.tscn::PackedScene::7045471738371604898::1731602367::0::1::::<><>::uid://xf2r52dg4fpm::::res://main_menu/main_menu_art_assets/settings background blurred darkened.png<>uid://dx8bf3sg52wqi::::res://main_menu/options_tab_container.tscn
+Pause_menu_options_screen.tscn::PackedScene::7045471738371604898::1731605323::0::1::::<><>::uid://xf2r52dg4fpm::::res://main_menu/main_menu_art_assets/settings background blurred darkened.png<>uid://dx8bf3sg52wqi::::res://main_menu/options_tab_container.tscn
 pause_menu_singleplayer.gd::GDScript::-1::1731305364::0::1::::<>Control<>::
 pause_menu_singleplayer.gdshader::Shader::-1::1730399982::0::1::::<><>::
-pause_menu_singleplayer.tscn::PackedScene::4667904146452078101::1731602367::0::1::::<><>::res://pause_menu/pause_menu_singleplayer.gd<>res://pause_menu/pause_menu_singleplayer.gdshader
+pause_menu_singleplayer.tscn::PackedScene::4667904146452078101::1731605323::0::1::::<><>::res://pause_menu/pause_menu_singleplayer.gd<>res://pause_menu/pause_menu_singleplayer.gdshader
 ::res://save_system/::1731305364
 save_system.gd::GDScript::-1::1731305364::0::1::::<>Node<>::
-::res://Victory_Screens/::1731602367
+::res://Victory_Screens/::1731605323
 CPU1_victory_screen.tscn::PackedScene::680061504416825516::1729542343::0::1::::<><>::uid://cebcnc652bypc::::res://main_menu/main_menu_back_button.tscn
 CPU2_victory_screen.tscn::PackedScene::6455893032735898923::1729542343::0::1::::<><>::uid://cebcnc652bypc::::res://main_menu/main_menu_back_button.tscn
-player1_victory_screen.tscn::PackedScene::1084832499405301610::1731602367::0::1::::<><>::uid://cebcnc652bypc::::res://main_menu/main_menu_back_button.tscn<>uid://b37vlv5ha5b2m::::res://Victory_Screens/Victory_screen_art_assets/player1winscreen_v1_11_09_24_michele_deblasi_gunslinger.png
+player1_victory_screen.tscn::PackedScene::1084832499405301610::1731605323::0::1::::<><>::uid://cebcnc652bypc::::res://main_menu/main_menu_back_button.tscn<>uid://b37vlv5ha5b2m::::res://Victory_Screens/Victory_screen_art_assets/player1winscreen_v1_11_09_24_michele_deblasi_gunslinger.png
 player2_victory_screen.tscn::PackedScene::6486840492509983334::1731305364::0::1::::<><>::uid://dax2rsuw6pbj4::::res://Victory_Screens/Victory_screen_art_assets/player2winscreen_v1_11_09_24_michele_deblasi_gunslinger.png<>uid://cebcnc652bypc::::res://main_menu/main_menu_back_button.tscn
 victory.gd::GDScript::-1::1731595583::0::1::::<>Node<>::
 ::res://Victory_Screens/Victory_screen_art_assets/::1731595622

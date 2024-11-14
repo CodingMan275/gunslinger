@@ -47,7 +47,11 @@ func _ready() -> void:
 	Bounty_Hunter.position = get_node("../Player_Layer").map_to_local(Vector2(4,3))
 	Saloon_Girl.position = get_node("../Player_Layer").map_to_local(Vector2(4,3))
 	Bank_Manager.position = get_node("../Player_Layer").map_to_local(Vector2(4,3))
-	
+	Store_Keeper.pos = get_node("../Player_Layer").local_to_map(Store_Keeper.position)
+	Mountain_Man.pos = get_node("../Player_Layer").local_to_map(Mountain_Man.position)
+	Bounty_Hunter.pos = get_node("../Player_Layer").local_to_map(Bounty_Hunter.position)
+	Saloon_Girl.pos = get_node("../Player_Layer").local_to_map(Saloon_Girl.position)
+	Bank_Manager.pos = get_node("../Player_Layer").local_to_map(Bank_Manager.position)
 	
 	Preacher.tile_map_node = get_node("../Player_Layer")
 	Teacher.tile_map_node = get_node("../Player_Layer")

@@ -9,7 +9,7 @@
 script = ExtResource("1_vha0c")
 
 [node name="TextureRect" type="Sprite2D" parent="."]
-scale = Vector2(0.3, 0.277)
+scale = Vector2(0.45, 0.416)
 texture = ExtResource("2_r3q38")
 script = ExtResource("3_ir77t")
 
