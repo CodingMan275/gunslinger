@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dw8bb1fsi6fcd"
-path="res://.godot/imported/The_teacher_character card.png-da8033a5b6f75db5aafa238e6f028d52.ctex"
+uid="uid://csc34bx3kwwya"
+path="res://.godot/imported/barkeep character card.png-b612762a10bd54de7a91bba9fc0429c2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Main_Scene_Board/Gunslingers/The_teacher_character card.png"
-dest_files=["res://.godot/imported/The_teacher_character card.png-da8033a5b6f75db5aafa238e6f028d52.ctex"]
+source_file="res://Main_Scene_Board/Townsfolk/barkeep character card.png"
+dest_files=["res://.godot/imported/barkeep character card.png-b612762a10bd54de7a91bba9fc0429c2.ctex"]
 
 [params]
 

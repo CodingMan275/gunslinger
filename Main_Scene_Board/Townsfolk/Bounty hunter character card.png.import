@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://csc34bx3kwwya"
-path="res://.godot/imported/barkeep character card.png-eb2193698d716cb339beaa872a6dccc1.ctex"
+uid="uid://dyrqsgsr8gjm1"
+path="res://.godot/imported/Bounty hunter character card.png-0e62a7cdaa879f25648f465b03d98cdc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Main_Scene_Board/Gunslingers/barkeep character card.png"
-dest_files=["res://.godot/imported/barkeep character card.png-eb2193698d716cb339beaa872a6dccc1.ctex"]
+source_file="res://Main_Scene_Board/Townsfolk/Bounty hunter character card.png"
+dest_files=["res://.godot/imported/Bounty hunter character card.png-0e62a7cdaa879f25648f465b03d98cdc.ctex"]
 
 [params]
 

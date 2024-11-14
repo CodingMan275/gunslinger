@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bkxdojx7mjsm3"
-path="res://.godot/imported/ranch hand character card.png-b9fd48bc8ace3eaac988a602f2431e94.ctex"
+uid="uid://cbypvint6goh2"
+path="res://.godot/imported/Rifle weapon card.png-f42f45359975fe397bddf4d5f6f39cde.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Main_Scene_Board/Gunslingers/ranch hand character card.png"
-dest_files=["res://.godot/imported/ranch hand character card.png-b9fd48bc8ace3eaac988a602f2431e94.ctex"]
+source_file="res://Main_Scene_Board/Weapon_Art/Rifle weapon card.png"
+dest_files=["res://.godot/imported/Rifle weapon card.png-f42f45359975fe397bddf4d5f6f39cde.ctex"]
 
 [params]
 

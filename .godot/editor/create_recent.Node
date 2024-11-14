@@ -1,4 +1,5 @@
 Sprite2D
+AudioStreamPlayer2D
 Button
 CanvasLayer
 RichTextLabel
@@ -11,4 +12,3 @@ Node
 Node2D
 TextureRect
 Window
-ColorRect

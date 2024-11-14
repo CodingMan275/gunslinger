@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ia2yk6sf5ew0"
-path="res://.godot/imported/the doctor character card.png-5f4cdbfcbc88e3370dc66e46d53c878b.ctex"
+uid="uid://l8ko8ant2rl7"
+path="res://.godot/imported/the sherrif character card.png-a09825c96407865445da458dbe26608a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Main_Scene_Board/Gunslingers/the doctor character card.png"
-dest_files=["res://.godot/imported/the doctor character card.png-5f4cdbfcbc88e3370dc66e46d53c878b.ctex"]
+source_file="res://Main_Scene_Board/Townsfolk/the sherrif character card.png"
+dest_files=["res://.godot/imported/the sherrif character card.png-a09825c96407865445da458dbe26608a.ctex"]
 
 [params]
 

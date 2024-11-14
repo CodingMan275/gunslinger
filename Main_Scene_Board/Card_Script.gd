@@ -4,13 +4,14 @@ extends Node
 @export var HiredGunVar = 3
 @export var WeaponCardVar = 5
 @onready var Sound_Player2 = $"../CanvasLayer/Draw Card/DrawCardSFX"
+@onready var ShuffleSound = $"../CanvasLayer/Draw Card/ShuffleSoundSFX"
 @onready var CardUI = get_node("../Townie_Logic")
 
 #Draw and Discard piles that are connected to the multiplayer syncronizer
 #These are updated automatically between peers so every peer
 #Is looking at the card piles with the same order
 #Townie Pile
-@export var DrawArray = ["Preacher","Doctor","Teacher","Town_Drunk", "Bar_Keep", "Ranch_Hand"]
+@export var DrawArray = ["Preacher","Doctor","Teacher","Town_Drunk", "Bar_Keep", "Ranch_Hand", "Sheriff"]
 @export var DiscardArray = []
 #Gunsliger Pile
 @export var GunslingerArray = ["Bob", "Mad_Mike", "Jon_Laramie", "Elijah", "Smokey", "The_Kidd"]
@@ -55,10 +56,11 @@ func _drawTownDeck(): # fucntion that simulates the cards being drawn
 	Sound_Player2.play()
 	var DrawSize = DrawArray.size() # Checks size of the array we're drawing from
 	if (DrawSize == 0): # first element exists -> array has some cards left
-		for n in 6:
+		for n in 7  :
 			DrawArray.push_front(DiscardArray[n]) #(dont think this works like I think it does) copy contents from discard back to draw
 		DiscardArray.clear()
 		DrawArray.shuffle() # shuffles the array contents
+		ShuffleSound.play(1) #should play when decks reshuffled
 		DrawEmpty.emit()
 		var TDCard = DrawArray[0] #since its and if/else, we need to run the code from the if, or else the player would simply not be able to have a card drawn
 		DrawArray.pop_front()
@@ -120,17 +122,29 @@ func _ClaimCards(player_index):
 #Gets and sets card art
 func CardArt(CardName):
 	if(CardName == "Preacher"):
-		return("res://Main_Scene_Board/Gunslingers/The Preacher character card.png")
+		return("res://Main_Scene_Board/Townsfolk/The Preacher character card.png")
 	elif(CardName == "Doctor"):
-		return("res://Main_Scene_Board/Gunslingers/the doctor character card.png")
+		return("res://Main_Scene_Board/Townsfolk/the doctor character card.png")
 	elif(CardName == "Teacher"):
-		return("res://Main_Scene_Board/Gunslingers/The_teacher_character card.png")
+		return("res://Main_Scene_Board/Townsfolk/The_teacher_character card.png")
 	elif(CardName == "Town_Drunk"):
-		return("res://Main_Scene_Board/Gunslingers/town drunk character card.png")
+		return("res://Main_Scene_Board/Townsfolk/town drunk character card.png")
 	elif(CardName == "Bar_Keep"):
-		return("res://Main_Scene_Board/Gunslingers/barkeep character card.png")
+		return("res://Main_Scene_Board/Townsfolk/barkeep character card.png")
 	elif(CardName == "Ranch_Hand"):
-		return("res://Main_Scene_Board/Gunslingers/ranch hand character card.png")
+		return("res://Main_Scene_Board/Townsfolk/ranch hand character card.png")
+	elif(CardName == "Sheriff"):
+		return("res://Main_Scene_Board/Townsfolk/the sherrif character card.png")
+	elif(CardName == "Saloon_Girl"):
+		return("res://Main_Scene_Board/Townsfolk/Saloon girl character card.png")
+	elif(CardName == "Mountain_Man"):
+		return("res://Main_Scene_Board/Townsfolk/Mountain_Man_character card.png")
+	elif(CardName == "Store_Keeper"):
+		return("res://Main_Scene_Board/Townsfolk/General_Store_Keeper_character card.png")
+	elif(CardName == "Bank_Manager"):
+		return("res://Main_Scene_Board/Townsfolk/barkeep character card.png")
+	elif(CardName == "Bounty_Hunter"):
+		return("res://Main_Scene_Board/Townsfolk/Bounty hunter character card.png")
 	elif(CardName == "Knife"):
 		return("res://Main_Scene_Board/Weapon_Art/Knife weapon card.png")
 	elif(CardName == "Pistol"):
