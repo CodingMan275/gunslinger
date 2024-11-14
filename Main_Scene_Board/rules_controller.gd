@@ -228,7 +228,7 @@ func NoTownies():
 		Townie.get_child(i-1).hide()
 
 func ShowTownies():
-	for i in 6:
+	for i in 12:
 		Townie.get_child(i).show()
 
 #endregion

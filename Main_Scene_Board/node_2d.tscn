@@ -1443,7 +1443,7 @@ script = ExtResource("45_l4515")
 
 [node name="Storekeeper sprite" type="Sprite2D" parent="Townie_Logic/Store_Keeper"]
 position = Vector2(-1.5, 1)
-scale = Vector2(0.5, 0.313)
+scale = Vector2(0.35, 0.22)
 texture = ExtResource("67_tdm6s")
 
 [node name="Label" type="Label" parent="Townie_Logic/Store_Keeper/Storekeeper sprite"]
@@ -1458,7 +1458,7 @@ offset_right = -131.0
 offset_bottom = -84.032
 scale = Vector2(2.02606, 2.83457)
 theme_override_font_sizes/font_size = 32
-text = "Ranch Hand"
+text = "Storekeeper"
 metadata/_edit_use_anchors_ = true
 
 [node name="DefaultDrawUI" type="CanvasLayer" parent="Townie_Logic/Store_Keeper"]
@@ -1526,7 +1526,7 @@ script = ExtResource("46_08nss")
 
 [node name="MountainmanspriteD" type="Sprite2D" parent="Townie_Logic/Mountain_Man"]
 position = Vector2(-1.5, 1)
-scale = Vector2(0.5, 0.313)
+scale = Vector2(0.3, 0.189)
 texture = ExtResource("69_qvtfu")
 
 [node name="Label" type="Label" parent="Townie_Logic/Mountain_Man/MountainmanspriteD"]
@@ -1541,7 +1541,7 @@ offset_right = -131.0
 offset_bottom = -84.032
 scale = Vector2(2.02606, 2.83457)
 theme_override_font_sizes/font_size = 32
-text = "Ranch Hand"
+text = "Mountain Man"
 metadata/_edit_use_anchors_ = true
 
 [node name="DefaultDrawUI" type="CanvasLayer" parent="Townie_Logic/Mountain_Man"]
@@ -1609,7 +1609,7 @@ script = ExtResource("47_cjmfn")
 
 [node name="Bountyhuntersprite" type="Sprite2D" parent="Townie_Logic/Bounty_Hunter"]
 position = Vector2(-1.5, 1)
-scale = Vector2(0.5, 0.313)
+scale = Vector2(0.08, 0.08)
 texture = ExtResource("71_fevbq")
 
 [node name="Label" type="Label" parent="Townie_Logic/Bounty_Hunter/Bountyhuntersprite"]
@@ -1624,7 +1624,7 @@ offset_right = -131.0
 offset_bottom = -84.032
 scale = Vector2(2.02606, 2.83457)
 theme_override_font_sizes/font_size = 32
-text = "Ranch Hand"
+text = "Bounty Hunter"
 metadata/_edit_use_anchors_ = true
 
 [node name="DefaultDrawUI" type="CanvasLayer" parent="Townie_Logic/Bounty_Hunter"]
@@ -1692,7 +1692,7 @@ script = ExtResource("48_ai5s4")
 
 [node name="Saloongirlsprite" type="Sprite2D" parent="Townie_Logic/Saloon_Girl"]
 position = Vector2(-1.5, 1)
-scale = Vector2(0.5, 0.313)
+scale = Vector2(0.08, 0.084)
 texture = ExtResource("73_fjwl0")
 
 [node name="Label" type="Label" parent="Townie_Logic/Saloon_Girl/Saloongirlsprite"]
@@ -1707,7 +1707,7 @@ offset_right = -131.0
 offset_bottom = -84.032
 scale = Vector2(2.02606, 2.83457)
 theme_override_font_sizes/font_size = 32
-text = "Ranch Hand"
+text = "Saloon Girl"
 metadata/_edit_use_anchors_ = true
 
 [node name="DefaultDrawUI" type="CanvasLayer" parent="Townie_Logic/Saloon_Girl"]
@@ -1775,7 +1775,7 @@ script = ExtResource("49_4aoh4")
 
 [node name="Bankersprite" type="Sprite2D" parent="Townie_Logic/Bank_Manager"]
 position = Vector2(-1.5, 1)
-scale = Vector2(0.5, 0.313)
+scale = Vector2(0.08, 0.08)
 texture = ExtResource("75_w7ra8")
 
 [node name="Label" type="Label" parent="Townie_Logic/Bank_Manager/Bankersprite"]
@@ -1790,7 +1790,7 @@ offset_right = -131.0
 offset_bottom = -84.032
 scale = Vector2(2.02606, 2.83457)
 theme_override_font_sizes/font_size = 32
-text = "Ranch Hand"
+text = "Bank Manager"
 metadata/_edit_use_anchors_ = true
 
 [node name="DefaultDrawUI" type="CanvasLayer" parent="Townie_Logic/Bank_Manager"]
@@ -1858,7 +1858,7 @@ script = ExtResource("50_glnk6")
 
 [node name="SheriffSprite" type="Sprite2D" parent="Townie_Logic/Sheriff"]
 position = Vector2(-1.5, 1)
-scale = Vector2(0.5, 0.313)
+scale = Vector2(0.35, 0.219)
 texture = ExtResource("77_rplwb")
 script = ExtResource("34_hshlf")
 
