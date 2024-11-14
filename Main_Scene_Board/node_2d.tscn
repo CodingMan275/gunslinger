@@ -1,4 +1,4 @@
-[gd_scene load_steps=85 format=4 uid="uid://jl7k3ltwbp41"]
+[gd_scene load_steps=93 format=4 uid="uid://jl7k3ltwbp41"]
 
 [ext_resource type="Texture2D" uid="uid://fcuqal2ynbts" path="res://Main_Scene_Board/spritesheet.png" id="1_o8ncf"]
 [ext_resource type="Texture2D" uid="uid://mmea4eto2a6p" path="res://Main_Scene_Board/Rhombus.png" id="2_rfajf"]
@@ -43,9 +43,7 @@
 [ext_resource type="Script" path="res://Main_Scene_Board/town_drunk.gd" id="18_8vpej"]
 [ext_resource type="Script" path="res://Main_Scene_Board/bar_keep.gd" id="19_alpfg"]
 [ext_resource type="Script" path="res://Main_Scene_Board/ranch_hand.gd" id="20_dwx7h"]
-[ext_resource type="Texture2D" uid="uid://c1keaoj8b1k3k" path="res://madmike.svg" id="22_nwhpe"]
 [ext_resource type="Texture2D" uid="uid://y5grgqvpm68u" path="res://button icons/Start Button.png" id="23_6f3f6"]
-[ext_resource type="Texture2D" uid="uid://dywhqj3m2j1y3" path="res://oldsmokey.svg" id="24_5vq5u"]
 [ext_resource type="Texture2D" uid="uid://blwke6qxx6grk" path="res://button icons/End Turn Button.png" id="24_4137c"]
 [ext_resource type="AudioStream" uid="uid://c2r1hmhy4jh73" path="res://shuffling-cards-74757.mp3" id="25_3oti0"]
 [ext_resource type="Texture2D" uid="uid://c5dj7es7aba7e" path="res://thekid.svg" id="26_ndqm4"]
@@ -68,9 +66,9 @@
 [ext_resource type="Script" path="res://Main_Scene_Board/bank_manager.gd" id="49_4aoh4"]
 [ext_resource type="Texture2D" uid="uid://4js47xf3xilk" path="res://towndrunksprite.png" id="50_4ds6b"]
 [ext_resource type="Script" path="res://Main_Scene_Board/sheriff.gd" id="50_glnk6"]
-[ext_resource type="Texture2D" uid="uid://babn4p6kuyg7m" path="res://button icons/Brawl Button.png" id="55_gm3vd"]
 [ext_resource type="Texture2D" uid="uid://bbno4nr3bl5lf" path="res://barkeepsprite.png" id="52_bghbv"]
 [ext_resource type="Texture2D" uid="uid://cmgkkwmsfwmk5" path="res://ranchhandsprite.png" id="54_2nfar"]
+[ext_resource type="Texture2D" uid="uid://babn4p6kuyg7m" path="res://button icons/Brawl Button.png" id="55_gm3vd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p1dyh"]
 texture = ExtResource("1_o8ncf")
@@ -545,10 +543,11 @@ anchor_left = 0.845
 anchor_top = 0.667
 anchor_right = 0.967
 anchor_bottom = 0.781
-offset_left = -50.6
-offset_top = 45.91
-offset_right = -51.16
-offset_bottom = 46.13
+offset_left = 76.2
+offset_top = -271.72
+offset_right = 75.6401
+offset_bottom = -271.5
+theme_override_font_sizes/font_size = 60
 text = "Range"
 
 [node name="Attack" type="AudioStreamPlayer2D" parent="AttackingCanvas/Range"]
@@ -561,10 +560,10 @@ anchor_left = 0.844
 anchor_top = 0.807
 anchor_right = 0.965
 anchor_bottom = 0.922
-offset_left = 9.88
-offset_top = 8.11
-offset_right = 9.80002
-offset_bottom = 8.06
+offset_left = 71.04
+offset_top = -301.12
+offset_right = 70.9602
+offset_bottom = -301.17
 text = "Brawl
 "
 
@@ -572,11 +571,17 @@ text = "Brawl
 position = Vector2(-16, -185)
 stream = ExtResource("8_7t4t6")
 
+[node name="Sprite2D" type="Sprite2D" parent="AttackingCanvas/Brawl"]
+position = Vector2(231, 227)
+scale = Vector2(2, 2)
+texture = ExtResource("55_gm3vd")
+
 [node name="Back" type="Button" parent="AttackingCanvas"]
-offset_left = 418.0
-offset_top = 186.0
-offset_right = 463.0
-offset_bottom = 217.0
+offset_left = 146.0
+offset_top = 454.0
+offset_right = 292.0
+offset_bottom = 545.0
+theme_override_font_sizes/font_size = 60
 text = "Back"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -773,6 +778,7 @@ text = "Move"
 position = Vector2(198, -321)
 scale = Vector2(2, 2)
 texture = ExtResource("36_1sjo4")
+
 [node name="WalkSFX" type="AudioStreamPlayer2D" parent="CanvasLayer/Move"]
 
 [node name="Give_Take" type="Button" parent="CanvasLayer"]
@@ -782,10 +788,10 @@ anchor_left = 0.729
 anchor_top = 0.796
 anchor_right = 0.84
 anchor_bottom = 0.926
-offset_left = 0.0799866
-offset_top = 0.0799866
-offset_right = -0.200012
-offset_bottom = -0.0200195
+offset_left = 23.6401
+offset_top = -320.36
+offset_right = 23.3601
+offset_bottom = -320.46
 theme_override_font_sizes/font_size = 60
 text = "G/T"
 
@@ -824,10 +830,10 @@ anchor_left = 0.187
 anchor_top = 0.226
 anchor_right = 0.452
 anchor_bottom = 0.37
-offset_left = 0.239998
-offset_top = -0.0200043
-offset_right = 0.0399933
-offset_bottom = 0.0999985
+offset_left = 179.92
+offset_top = -8.16
+offset_right = 179.72
+offset_bottom = -8.03998
 theme_override_font_sizes/font_size = 60
 text = "Weapon 1"
 

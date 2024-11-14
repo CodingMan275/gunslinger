@@ -12,8 +12,8 @@ extends Node
 @onready var Ranch_Hand = get_node("Ranch_Hand")
 @onready var Store_Keeper = get_node("Store_Keeper")
 @onready var Mountain_Man = get_node("Mountain_Man")
-@onready var Bounty_Hunter = get_node("Bounty Hunter")
-@onready var Saloon_Girl = get_node("Saloon Girl")
+@onready var Bounty_Hunter = get_node("Bounty_Hunter")
+@onready var Saloon_Girl = get_node("Saloon_Girl")
 @onready var Bank_Manager = get_node("Bank_Manager")
 @onready var Sheriff = get_node("Sheriff")
 

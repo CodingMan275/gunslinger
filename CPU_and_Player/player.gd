@@ -245,7 +245,7 @@ func MoveMouse():
 					print(NewPos)
 					if  move_possible():
 						if TileCheck(NewPos):
-							Walking.play()
+							#Walking.play()
 							self.global_position = Vector2(get_global_mouse_position())
 							pos = NewPos
 							action_points -= 1

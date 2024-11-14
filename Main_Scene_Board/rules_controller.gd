@@ -408,7 +408,7 @@ func CantAttack(range) -> void:
 #Attack function
 func Attack() -> void:
 	DrawButton.hide()
-	DiceRoll.play()
+	#DiceRoll.play()
 	#Random attack ccheck
 	var Attack = (randi()%6 + 1)
 	accuracy = 0
