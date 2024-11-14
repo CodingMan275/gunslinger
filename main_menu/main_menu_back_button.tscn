@@ -26,14 +26,14 @@ corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
 [node name="Main Menu Back Button" type="Button"]
-offset_right = 799.0
-offset_bottom = 110.0
+offset_right = 207.0
+offset_bottom = 42.0
 size_flags_vertical = 3
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 80
+theme_override_font_sizes/font_size = 20
 theme_override_styles/focus = SubResource("StyleBoxEmpty_wlhlq")
 theme_override_styles/hover = SubResource("StyleBoxFlat_yfeuf")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_a2nxc")
