@@ -1,3 +1,4 @@
+Sprite2D
 Button
 CanvasLayer
 RichTextLabel
@@ -7,7 +8,6 @@ Panel
 Control
 CharacterBody2D
 Node
-Sprite2D
 Node2D
 TextureRect
 Window

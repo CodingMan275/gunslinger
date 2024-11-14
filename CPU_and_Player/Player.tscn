@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://x0tek8t1bewj"]
+[gd_scene load_steps=7 format=3 uid="uid://x0tek8t1bewj"]
 
 [ext_resource type="Script" path="res://CPU_and_Player/player.gd" id="1_evqc0"]
 [ext_resource type="Texture2D" uid="uid://wpqjamy8nklp" path="res://icon.svg" id="2_o20gk"]
+[ext_resource type="Texture2D" uid="uid://dfgvy8221qmt8" path="res://button icons/Left Arrow Button.png" id="4_a4h2l"]
 [ext_resource type="Script" path="res://CPU_and_Player/CardDisplayPlayer.gd" id="4_cqdm7"]
+[ext_resource type="Texture2D" uid="uid://bj1fnrkj1qswk" path="res://button icons/Right Arrow Button.png" id="5_pxm6l"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_42imv"]
 properties/0/path = NodePath(".:pos")
@@ -61,7 +63,7 @@ properties/17/spawn = true
 properties/17/replication_mode = 1
 
 [node name="Player" type="CharacterBody2D"]
-position = Vector2(-13, -11)
+position = Vector2(20, 1414)
 collision_layer = 2
 script = ExtResource("1_evqc0")
 
@@ -69,46 +71,67 @@ script = ExtResource("1_evqc0")
 replication_config = SubResource("SceneReplicationConfig_42imv")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 script = ExtResource("4_cqdm7")
 
-[node name="Left" type="Button" parent="CanvasLayer"]
-offset_left = 93.0
-offset_top = 37.0
-offset_right = 123.0
-offset_bottom = 80.0
-text = "L"
-
-[node name="Right" type="Button" parent="CanvasLayer"]
-offset_left = 351.0
-offset_top = 37.0
-offset_right = 381.0
-offset_bottom = 80.0
-text = "R"
-
 [node name="Card1" type="TextureRect" parent="CanvasLayer"]
-offset_left = 128.0
-offset_top = 27.0
-offset_right = 194.0
-offset_bottom = 92.0
+offset_left = -48.0
+offset_top = 1445.0
+offset_right = 18.0
+offset_bottom = 1510.0
+scale = Vector2(12, 12)
 texture = ExtResource("2_o20gk")
 expand_mode = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="Card2" type="TextureRect" parent="CanvasLayer"]
-offset_left = 204.0
-offset_top = 27.0
-offset_right = 270.0
-offset_bottom = 92.0
+offset_left = 331.0
+offset_top = 1442.0
+offset_right = 397.0
+offset_bottom = 1507.0
+scale = Vector2(12, 12)
 texture = ExtResource("2_o20gk")
 expand_mode = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="Card3" type="TextureRect" parent="CanvasLayer"]
-offset_left = 278.0
-offset_top = 27.0
-offset_right = 343.0
-offset_bottom = 93.0
+offset_left = 741.0
+offset_top = 1435.0
+offset_right = 806.0
+offset_bottom = 1501.0
+scale = Vector2(12, 12)
 texture = ExtResource("2_o20gk")
 expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Left" type="Button" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = -0.00989583
+offset_left = 55.0
+offset_top = 1748.0
+offset_right = 128.0
+offset_bottom = 1921.0
+theme_override_font_sizes/font_size = 120
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Left"]
+position = Vector2(61, 521)
+scale = Vector2(2, 2)
+texture = ExtResource("4_a4h2l")
+
+[node name="Right" type="Button" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_right = 0.0151042
+offset_left = 1249.0
+offset_top = 1751.0
+offset_right = 1334.0
+offset_bottom = 1924.0
+theme_override_font_sizes/font_size = 120
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Right"]
+position = Vector2(-18, 514)
+scale = Vector2(2, 2)
+texture = ExtResource("5_pxm6l")
 
 [connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]
 [connection signal="ready" from="." to="." method="_on_ready"]

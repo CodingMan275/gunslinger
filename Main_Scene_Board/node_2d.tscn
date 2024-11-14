@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=4 uid="uid://jl7k3ltwbp41"]
+[gd_scene load_steps=91 format=4 uid="uid://jl7k3ltwbp41"]
 
 [ext_resource type="Texture2D" uid="uid://fcuqal2ynbts" path="res://Main_Scene_Board/spritesheet.png" id="1_o8ncf"]
 [ext_resource type="Texture2D" uid="uid://mmea4eto2a6p" path="res://Main_Scene_Board/Rhombus.png" id="2_rfajf"]
@@ -47,18 +47,26 @@
 [ext_resource type="Texture2D" uid="uid://jsgp5eehgaib" path="res://jonlaramine.svg" id="20_4gd5u"]
 [ext_resource type="Script" path="res://Main_Scene_Board/ranch_hand.gd" id="20_dwx7h"]
 [ext_resource type="Texture2D" uid="uid://c1keaoj8b1k3k" path="res://madmike.svg" id="22_nwhpe"]
+[ext_resource type="Texture2D" uid="uid://y5grgqvpm68u" path="res://button icons/Start Button.png" id="23_6f3f6"]
 [ext_resource type="Texture2D" uid="uid://dywhqj3m2j1y3" path="res://oldsmokey.svg" id="24_5vq5u"]
+[ext_resource type="Texture2D" uid="uid://blwke6qxx6grk" path="res://button icons/End Turn Button.png" id="24_4137c"]
 [ext_resource type="Texture2D" uid="uid://c5dj7es7aba7e" path="res://thekid.svg" id="26_ndqm4"]
+[ext_resource type="Texture2D" uid="uid://c2w48yl67xfwr" path="res://button icons/Draw Card Button.png" id="26_wbco5"]
 [ext_resource type="Script" path="res://proficiencylogic.gd" id="27_bf6tm"]
 [ext_resource type="Texture2D" uid="uid://bnk7r45gr5cn8" path="res://IMG_9861.png" id="27_uadwx"]
+[ext_resource type="Texture2D" uid="uid://wfdwfv0wnt73" path="res://button icons/Dynamite Button.png" id="28_34ner"]
 [ext_resource type="Script" path="res://Main_Scene_Board/weapons.gd" id="30_sg7ny"]
+[ext_resource type="Texture2D" uid="uid://duoy8ty6p53x1" path="res://button icons/Claim_Button_Darius.png" id="33_lhyn0"]
 [ext_resource type="Script" path="res://TownieSpriteClick.gd" id="34_hshlf"]
+[ext_resource type="Texture2D" uid="uid://t41eioyq4op0" path="res://button icons/Move Button.png" id="36_1sjo4"]
+[ext_resource type="Texture2D" uid="uid://bnp4fs70s6nu5" path="res://button icons/Attack Button.png" id="37_xxu0v"]
 [ext_resource type="Script" path="res://Main_Scene_Board/store_keeper.gd" id="45_l4515"]
 [ext_resource type="Script" path="res://Main_Scene_Board/mountain_man.gd" id="46_08nss"]
 [ext_resource type="Script" path="res://Main_Scene_Board/bounty_hunter.gd" id="47_cjmfn"]
 [ext_resource type="Script" path="res://Main_Scene_Board/saloon_girl.gd" id="48_ai5s4"]
 [ext_resource type="Script" path="res://Main_Scene_Board/bank_manager.gd" id="49_4aoh4"]
 [ext_resource type="Script" path="res://Main_Scene_Board/sheriff.gd" id="50_glnk6"]
+[ext_resource type="Texture2D" uid="uid://babn4p6kuyg7m" path="res://button icons/Brawl Button.png" id="55_gm3vd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p1dyh"]
 texture = ExtResource("1_o8ncf")
@@ -512,12 +520,17 @@ replication_config = SubResource("SceneReplicationConfig_mfl53")
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -433.0
-offset_right = 440.0
-offset_bottom = 233.0
+offset_left = -179.0
+offset_right = 203.0
+offset_bottom = 144.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 50
 text = "Start Game"
+
+[node name="Sprite2D" type="Sprite2D" parent="StartUpCanvas/Start"]
+position = Vector2(598, 307)
+scale = Vector2(2, 2)
+texture = ExtResource("23_6f3f6")
 
 [node name="AttackingCanvas" type="CanvasLayer" parent="."]
 visible = false
@@ -567,16 +580,22 @@ script = SubResource("GDScript_7iaxx")
 
 [node name="Button" type="Button" parent="CanvasLayer"]
 anchors_preset = -1
-anchor_right = 0.0325521
-anchor_bottom = 0.0328704
-offset_left = 393.0
-offset_top = 9.0
-offset_right = 471.0
-offset_bottom = 44.0
+anchor_left = 0.00833333
+anchor_right = 0.0924479
+anchor_bottom = 0.0486111
+offset_left = -16.0
+offset_top = 581.0
+offset_right = 62.0
+offset_bottom = 616.0
 theme_override_font_sizes/font_size = 32
 action_mode = 0
 text = "End Turn"
 metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Button"]
+position = Vector2(201, -616)
+scale = Vector2(2, 2)
+texture = ExtResource("24_4137c")
 
 [node name="Label" type="Label" parent="CanvasLayer"]
 anchors_preset = -1
@@ -584,10 +603,10 @@ anchor_left = 0.019
 anchor_top = 0.015
 anchor_right = 0.362
 anchor_bottom = 0.178
-offset_left = -13.96
-offset_top = 250.6
-offset_right = -13.6
-offset_bottom = 250.59
+offset_left = -59.96
+offset_top = 170.6
+offset_right = -382.08
+offset_bottom = -75.48
 theme_override_font_sizes/font_size = 32
 text = "Player X Turn"
 script = ExtResource("5_52d0j")
@@ -598,9 +617,10 @@ anchor_left = 0.025
 anchor_top = 0.833
 anchor_right = 0.212
 anchor_bottom = 0.952
-offset_top = 0.0899811
-offset_right = -28.76
-offset_bottom = -0.0400085
+offset_left = -79.0
+offset_top = -898.28
+offset_right = -395.08
+offset_bottom = -1008.32
 theme_override_font_sizes/font_size = 32
 text = "Draw Card"
 
@@ -616,12 +636,17 @@ bus = &"SFX"
 
 [node name="SpecialAbilityButton" type="Button" parent="CanvasLayer/Draw Card"]
 layout_mode = 0
-offset_left = 7.0
-offset_top = -136.0
-offset_right = 465.0
-offset_bottom = -40.0
+offset_left = -1.0
+offset_top = 166.0
+offset_right = 457.0
+offset_bottom = 262.0
 theme_override_font_sizes/font_size = 32
 text = "Special Ability"
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Draw Card"]
+position = Vector2(202, 74)
+scale = Vector2(2, 2)
+texture = ExtResource("26_wbco5")
 
 [node name="Dynamite" type="Button" parent="CanvasLayer"]
 anchors_preset = -1
@@ -629,12 +654,17 @@ anchor_left = 0.79
 anchor_top = 0.426
 anchor_right = 0.965
 anchor_bottom = 0.541
-offset_left = -0.200012
-offset_top = -0.0200043
-offset_right = -0.200012
-offset_bottom = -0.0700073
+offset_left = -3017.6
+offset_top = -185.16
+offset_right = -3284.6
+offset_bottom = -285.56
 theme_override_font_sizes/font_size = 32
 text = "Dynamite"
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Dynamite"]
+position = Vector2(215, 125)
+scale = Vector2(2, 2)
+texture = ExtResource("28_34ner")
 
 [node name="DebugPanel" type="PanelContainer" parent="CanvasLayer"]
 custom_minimum_size = Vector2(200, 50)
@@ -667,16 +697,22 @@ size_flags_horizontal = 6
 [node name="Claim" type="Button" parent="CanvasLayer"]
 visible = false
 anchors_preset = -1
-anchor_left = 0.037
-anchor_top = 0.374
-anchor_right = 0.212
-anchor_bottom = 0.5
-offset_left = 0.24
-offset_top = 0.0199966
-offset_right = 0.239983
-offset_bottom = -3.0
+anchor_left = 0.004
+anchor_top = 0.548
+anchor_right = 0.112
+anchor_bottom = 0.616
+offset_left = -1.36
+offset_top = -0.680054
+offset_right = -0.0800171
+offset_bottom = 0.439819
+theme_override_font_sizes/font_size = 60
 text = "Claim"
 script = ExtResource("9_xcao8")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Claim"]
+position = Vector2(266.68, 251.14)
+scale = Vector2(2, 2)
+texture = ExtResource("33_lhyn0")
 
 [node name="CurrentTownie" type="TextureRect" parent="CanvasLayer"]
 visible = false
@@ -696,11 +732,10 @@ expand_mode = 1
 
 [node name="PauseMenuButtonSinglePlayer" parent="CanvasLayer/Pause_Menu" instance=ExtResource("13_3q2p2")]
 unique_name_in_owner = true
-visible = false
 offset_left = 7.0
 offset_top = 4.0
-offset_right = -434.0
-offset_bottom = -212.0
+offset_right = -3488.0
+offset_bottom = -2041.0
 
 [node name="PauseMenuSingleplayer" parent="CanvasLayer/Pause_Menu" instance=ExtResource("14_tll6l")]
 unique_name_in_owner = true
@@ -719,12 +754,17 @@ offset_right = -401.0
 offset_bottom = -220.0
 
 [node name="Move" type="Button" parent="CanvasLayer"]
-offset_left = 46.0
-offset_top = 162.0
-offset_right = 308.0
-offset_bottom = 257.0
+offset_left = 13.0
+offset_top = 270.0
+offset_right = 409.0
+offset_bottom = 406.0
 theme_override_font_sizes/font_size = 32
 text = "Move"
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Move"]
+position = Vector2(198, -321)
+scale = Vector2(2, 2)
+texture = ExtResource("36_1sjo4")
 
 [node name="Give_Take" type="Button" parent="CanvasLayer"]
 visible = false
@@ -737,6 +777,7 @@ offset_left = 0.0799866
 offset_top = 0.0799866
 offset_right = -0.200012
 offset_bottom = -0.0200195
+theme_override_font_sizes/font_size = 60
 text = "G/T"
 
 [node name="Take" type="Button" parent="CanvasLayer"]
@@ -750,6 +791,7 @@ offset_left = -0.160034
 offset_top = 1.94999
 offset_right = 0.23999
 offset_bottom = -0.090004
+theme_override_font_sizes/font_size = 60
 text = "Take"
 
 [node name="GIve" type="Button" parent="CanvasLayer"]
@@ -763,6 +805,7 @@ offset_left = 0.0399933
 offset_top = 0.949989
 offset_right = -1.0
 offset_bottom = -0.0100098
+theme_override_font_sizes/font_size = 60
 text = "Give"
 
 [node name="Weapon1" type="Button" parent="CanvasLayer"]
@@ -776,6 +819,7 @@ offset_left = 0.239998
 offset_top = -0.0200043
 offset_right = 0.0399933
 offset_bottom = 0.0999985
+theme_override_font_sizes/font_size = 60
 text = "Weapon 1"
 
 [node name="Weapon2" type="Button" parent="CanvasLayer"]
@@ -789,15 +833,25 @@ offset_left = -0.160004
 offset_top = 0.0599937
 offset_right = 0.23999
 offset_bottom = 0.0999985
+theme_override_font_sizes/font_size = 60
 text = "Weapon 2"
 
 [node name="Attack" type="Button" parent="CanvasLayer"]
-offset_left = 335.0
-offset_top = 166.0
-offset_right = 593.0
-offset_bottom = 262.0
+anchors_preset = -1
+anchor_top = -0.0171296
+anchor_right = 0.0367187
+offset_left = 16.0
+offset_top = 464.0
+offset_right = 274.0
+offset_bottom = 560.0
 theme_override_font_sizes/font_size = 32
 text = "Attack"
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Attack"]
+position = Vector2(201, -504)
+scale = Vector2(2, 2)
+texture = ExtResource("37_xxu0v")
 
 [node name="ProficiencyNode" type="Node" parent="."]
 script = ExtResource("27_bf6tm")
@@ -1130,14 +1184,14 @@ visible = false
 
 [node name="Range" type="Button" parent="Townie_Logic/Town_Drunk/AttackingCanvas"]
 anchors_preset = -1
-anchor_left = 0.845
-anchor_top = 0.667
-anchor_right = 0.967
-anchor_bottom = 0.781
-offset_left = -50.6
-offset_top = 45.91
-offset_right = -51.16
-offset_bottom = 46.13
+anchor_left = 0.871
+anchor_top = 0.612
+anchor_right = 0.993
+anchor_bottom = 0.726
+offset_left = -0.640137
+offset_top = 0.0799561
+offset_right = -1.19995
+offset_bottom = 0.300049
 text = "Range"
 
 [node name="Attack" type="AudioStreamPlayer2D" parent="Townie_Logic/Town_Drunk/AttackingCanvas/Range"]
@@ -1146,20 +1200,25 @@ stream = ExtResource("8_7t4t6")
 
 [node name="Brawl" type="Button" parent="Townie_Logic/Town_Drunk/AttackingCanvas"]
 anchors_preset = -1
-anchor_left = 0.844
-anchor_top = 0.807
-anchor_right = 0.965
-anchor_bottom = 0.922
-offset_left = 9.88
-offset_top = 8.11
-offset_right = 9.80002
-offset_bottom = 8.06
+anchor_left = 0.863
+anchor_top = 0.78
+anchor_right = 0.962
+anchor_bottom = 0.846
+offset_left = 112.08
+offset_top = -101.8
+offset_right = 113.92
+offset_bottom = -100.36
 text = "Brawl
 "
 
 [node name="Punch" type="AudioStreamPlayer2D" parent="Townie_Logic/Town_Drunk/AttackingCanvas/Brawl"]
 position = Vector2(-16, -185)
 stream = ExtResource("8_7t4t6")
+
+[node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Town_Drunk/AttackingCanvas/Brawl"]
+position = Vector2(192, 171)
+scale = Vector2(2, 2)
+texture = ExtResource("55_gm3vd")
 
 [node name="Back" type="Button" parent="Townie_Logic/Town_Drunk/AttackingCanvas"]
 offset_left = 418.0
@@ -1169,10 +1228,10 @@ offset_bottom = 217.0
 text = "Back"
 
 [node name="Special Ability" type="Button" parent="Townie_Logic/Town_Drunk/AttackingCanvas"]
-offset_left = 3055.0
-offset_top = 1189.0
-offset_right = 3701.0
-offset_bottom = 1405.0
+offset_left = 3167.0
+offset_top = 1088.0
+offset_right = 3813.0
+offset_bottom = 1304.0
 text = "Special Ability"
 
 [node name="Bar_Keep" type="CharacterBody2D" parent="Townie_Logic"]
