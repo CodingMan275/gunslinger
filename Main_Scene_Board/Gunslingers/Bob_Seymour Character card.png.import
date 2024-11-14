@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://hjqt8ttcm20"
-path="res://.godot/imported/MadMikeCard.png-a1d750c3dfbdb6a6004fcba9c859f8c5.ctex"
+uid="uid://5yfxoeny4wmn"
+path="res://.godot/imported/Bob_Seymour Character card.png-f7f0ddb88e1f9288d419c93801a05eff.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://MadMikeCard.png"
-dest_files=["res://.godot/imported/MadMikeCard.png-a1d750c3dfbdb6a6004fcba9c859f8c5.ctex"]
+source_file="res://Main_Scene_Board/Gunslingers/Bob_Seymour Character card.png"
+dest_files=["res://.godot/imported/Bob_Seymour Character card.png-f7f0ddb88e1f9288d419c93801a05eff.ctex"]
 
 [params]
 

@@ -11,14 +11,14 @@ extends Node
 #These are updated automatically between peers so every peer
 #Is looking at the card piles with the same order
 #Townie Pile
-@export var DrawArray = ["Preacher","Doctor","Teacher","Town_Drunk", "Bar_Keep", "Ranch_Hand", "Sheriff"]
+@export var DrawArray = ["Preacher","Doctor","Teacher","Town_Drunk", "Bar_Keep", "Ranch_Hand", "Sheriff", "Bank_Manager", "Bounty_Hunter", "Store_Keeper", "Mountain_Man", "Saloon_Girl"]
 @export var DiscardArray = []
 #Gunsliger Pile
 @export var GunslingerArray = ["Bob", "Mad_Mike", "Jon_Laramie", "Elijah", "Smokey", "The_Kidd"]
 #Hired gun pile
-@export var HiredGunArray = ["Preacher","Doctor","Teacher","Town_Drunk","Bar_Keep", "Ranch_Hand"]
+@export var HiredGunArray = ["Preacher","Teacher","Town_Drunk","Bar_Keep", "Ranch_Hand", "Bounty_Hunter", "Mountain_Man", "Saloon_Girl"]
 #Weapon pile
-@export var WeaponArray = ["Rifle","Rifle","Rifle","Rifle","Knife","Knife","Knife","Knife","Pistol","Pistol","Pistol","Pistol","Shotgun","Shotgun","Shotgun","Shotgun","TwinPistol","TwinPistol"]
+@export var WeaponArray = ["Rifle","Rifle","Rifle","Rifle","Knife","Knife","Knife","Knife","Pistol","Pistol","Pistol","Pistol","Shotgun","Shotgun","Shotgun","Shotgun","TwinPistol","TwinPistol", "TwinPistol", "TwinPistol"]
 
 #Signal for when draw deck is empty and needs to be reshuffled
 signal DrawEmpty
@@ -152,7 +152,7 @@ func CardArt(CardName):
 	elif(CardName == "TwinPistol"):
 		return("res://Main_Scene_Board/Weapon_Art/Twin Pistol weapon card.png")
 	elif(CardName == "Rifle"):
-		return("res://Main_Scene_Board/Weapon_Art/Rifle.png")
+		return("res://Main_Scene_Board/Weapon_Art/Rifle weapon card.png")
 	elif(CardName == "Shotgun"):
 		return("res://Main_Scene_Board/Weapon_Art/Shotgun weapon card.png")
 	else:
