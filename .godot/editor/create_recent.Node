@@ -1,5 +1,6 @@
-Node
 AudioStreamPlayer2D
+AudioStreamPlayer
+Node
 Sprite2D
 Button
 CanvasLayer
@@ -11,4 +12,3 @@ Control
 CharacterBody2D
 Node2D
 TextureRect
-Window

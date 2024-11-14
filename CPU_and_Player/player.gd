@@ -48,7 +48,8 @@ extends CharacterBody2D
 @onready var MoveButton = get_parent().MoveButton
 
 @onready var GiveTakeButton = get_parent().GiveTakeButton
-@onready var Walking = $"../CanvasLayer/Move/WalkSFX"
+
+
 
 var KnifeProf = 3
 var PistolProf = 3
@@ -229,6 +230,7 @@ func _physics_process(delta):
 	MoveMouse()
 	
 	
+	
 func move_possible():
 	#print(tile_map_node.get_cell_source_id(Vector2(get_global_mouse_position())))
 	return tile_map_node.local_to_map(Vector2(get_global_mouse_position())) in tile_map_node.get_surrounding_cells(tile_map_node.local_to_map(self.global_position)) #and tile_map_node.get_cell_source_id(Vector2(get_global_mouse_position())) != -1
@@ -245,7 +247,7 @@ func MoveMouse():
 					print(NewPos)
 					if  move_possible():
 						if TileCheck(NewPos):
-							#Walking.play()
+							
 							self.global_position = Vector2(get_global_mouse_position())
 							pos = NewPos
 							action_points -= 1
@@ -265,6 +267,7 @@ func UpdateMove(x, NewPos):
 	self.global_position = x
 	pos = NewPos
 	
+
 func NearbyTownieCheck():
 	#Checks if a hired gun is on the same sqaure as you or surrounding
 	if order == Player_ID:

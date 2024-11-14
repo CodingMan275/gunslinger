@@ -3,8 +3,8 @@ extends Node
 #Card stuff
 @export var HiredGunVar = 3
 @export var WeaponCardVar = 5
-@onready var Sound_Player2 = $"../CanvasLayer/Draw Card/DrawCardSFX"
-@onready var ShuffleSound = $"../CanvasLayer/Draw Card/ShuffleSoundSFX"
+
+@onready var draw_card1: AudioStreamPlayer2D = $"../CanvasLayer/Draw Card/DrawCardSFX"
 @onready var CardUI = get_node("../Townie_Logic")
 
 #Draw and Discard piles that are connected to the multiplayer syncronizer
@@ -47,20 +47,23 @@ func _ready() -> void:
 func _onCardDraw() -> void:
 	#Draws from the townie deck, rpc to do rpc functions
 	_drawTownDeck.rpc()
+	
 	CardUI.ShowAttackUICheck()
 
 #Every peer and the local machine draws from their
 #Appropriate deck in their instances
 @rpc("any_peer","call_local")
 func _drawTownDeck(): # fucntion that simulates the cards being drawn
-	Sound_Player2.play()
+	var draw_card: AudioStreamPlayer2D = $"../CanvasLayer/Draw Card/DrawCardSFX"
+	draw_card.play()
 	var DrawSize = DrawArray.size() # Checks size of the array we're drawing from
 	if (DrawSize == 0): # first element exists -> array has some cards left
-		for n in 7  :
+		for n in 12  :
 			DrawArray.push_front(DiscardArray[n]) #(dont think this works like I think it does) copy contents from discard back to draw
 		DiscardArray.clear()
 		DrawArray.shuffle() # shuffles the array contents
-		ShuffleSound.play(1) #should play when decks reshuffled
+		var shuffle_sound: AudioStreamPlayer2D = $"../CanvasLayer/Draw Card/ShuffleSoundFX"
+		shuffle_sound.play() #should play when decks reshuffled
 		DrawEmpty.emit()
 		var TDCard = DrawArray[0] #since its and if/else, we need to run the code from the if, or else the player would simply not be able to have a card drawn
 		DrawArray.pop_front()
@@ -111,6 +114,7 @@ func _draw_card(array: Array, player_index: int, card_type: String) -> Variant:
 	var card = array[card_index]
 	DrawnCard.emit(card, true, player_index)
 	GlobalScript.DebugScript.add.rpc("Player " + str(player_index) + " drew card " + card_type + ": " + card)
+	
 	array.erase(card)  # Remove the drawn card
 	return card
 	

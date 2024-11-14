@@ -3,7 +3,7 @@ extends Node
 @export var Turn_Order = 1
 #Creates a signal to be sent out which will contain the information
 #On turn order to other nodes and scenes
-@onready var DiceRoll = $"../CanvasLayer/Attack/DiceRollSFX"
+
 @onready var Victory = $"../Victory"
 signal order
 
@@ -46,6 +46,11 @@ var accuracy : int
 @onready var Setup = get_node("../StartUpCanvas")
 @onready var Profic = get_node("../ProficiencyNode")
 @onready var Hurt = $"../CanvasLayer/Attack/HurtSFX"
+@onready var DiceRoll = $"../CanvasLayer/Attack/DiceRollSFX"
+@onready var Miss = $"../CanvasLayer/Attack/MissSFX"
+@onready var EndTurn = $"../CanvasLayer/Button/EndTurnSFX"
+@onready var Walking = $"../CanvasLayer/Move/WalkSFX"
+@onready var Stun = $"..CanvasLayer/Attack/StunSFX/"
 
 
 @export var AttackerProf : int
@@ -236,6 +241,7 @@ func ShowTownies():
 
 func _on_button_pressed() -> void:
 	#Incremements Turn Order and uses RPC to make sure both the peeers and local machine are updated
+	EndTurn.play()
 	if(!GlobalScript.SinglePlay):
 		order_inc.rpc()
 	else:
@@ -432,7 +438,9 @@ func Attack() -> void:
 	print("accuracy", accuracy)
 	if(Attack < 3): # Miss
 		GlobalScript.DebugScript.add(str(Target.Name + " was missed"))
+		Miss.play()
 	elif(Attack < 5): # Stun
+		Stun.play()
 		GlobalScript.DebugScript.add(str(Target.Name + " was stunned"))
 	#Rpc function call
 		StunPlay.rpc()
@@ -557,6 +565,7 @@ func StableCheck() -> bool:
 #endregion
 
 func _on_move_pressed() -> void:
+	Walking.play()
 	if(!GlobalScript.SinglePlay):
 		movePossible.rpc()
 	else:
