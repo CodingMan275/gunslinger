@@ -97,7 +97,7 @@ func _on_claim_pressed() -> void:
 	#The funciton call
 	get_node(CurrentCard).reveal_hired_gun()
 	#Set movable to be true
-	get_node(CurrentCard).movable = true
+	get_node(CurrentCard).movable = false
 	get_node(CurrentCard).get_child(2).visible = true
 	HideSpecialAbility.rpc()
 	Rules.get_node(str(multiplayer.get_unique_id())).NearbyTownieCheck()
@@ -113,7 +113,9 @@ func _on_claim_pressed() -> void:
 		get_node(CurrentCard).Player = Rules.get_node("player").Player_ID
 	else:
 		get_node(CurrentCard).Player = Rules.get_node(str(multiplayer.get_unique_id())).Player_ID
-	#Calls the function and makes sure it uses the RPC properties
+		Rules.get_node(str(multiplayer.get_unique_id())).MoveButton.show()
+		Rules.get_node(str(multiplayer.get_unique_id())).EndTurnLabel.show()
+	#Calls the# function and makes sure it uses the RPC properties
 	#Function() =\= Function.rpc()
 	SchizoFunctionPleaseWork.rpc()
 	pass # Replace with function body.
@@ -132,6 +134,8 @@ func SchizoFunctionPleaseWork():
 	#Just to be sure tell it that the current player is 0, and there is no player 0
 	#Meaning it will never run
 	get_node(CurrentCard).Player = 0
+	Rules.get_node(str(GlobalScript.PlayerNode[Rules.Turn_Order-1].name)).MoveButton.hide()
+	Rules.get_node(str(GlobalScript.PlayerNode[Rules.Turn_Order-1].name)).EndTurnLabel.hide()
 	#Keep in mind this is ONLY for everyone else who never even had the abiltiy
 	#To claim this hired gun and once its claimed it does not matter if these values
 	#are wrong becuase once it is claimed it will never ben controlled by anyone else again

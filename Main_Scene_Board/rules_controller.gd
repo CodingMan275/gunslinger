@@ -241,7 +241,7 @@ func ShowTownies():
 
 func _on_button_pressed() -> void:
 	#Incremements Turn Order and uses RPC to make sure both the peeers and local machine are updated
-	EndTurn.play()
+	#EndTurn.play()
 	if(!GlobalScript.SinglePlay):
 		order_inc.rpc()
 	else:
@@ -278,14 +278,13 @@ func order_inc():
 #This Function needs to reset everything or start up needs to clear everything
 @rpc("any_peer", "call_local")
 func Winner():
-	
 	if Turn_Order == 1:
 		get_tree().change_scene_to_file("res://Victory_Screens/player1_victory_screen.tscn")
-		Victory.play()
+	#	Victory.play()
 	if Turn_Order == 2:
 		if(!GlobalScript.SinglePlay):
 			get_tree().change_scene_to_file("res://Victory_Screens/player2_victory_screen.tscn")
-			Victory.play()
+	#		Victory.play()
 		elif(GlobalScript.SinglePlay):
 			await get_tree().create_timer(1).timeout
 			get_tree().change_scene_to_file("res://Victory_Screens/CPU2_victory_screen.tscn")
@@ -419,7 +418,7 @@ func CantAttack(range) -> void:
 #Attack function
 func Attack() -> void:
 	DrawButton.hide()
-	DiceRoll.play()
+	#DiceRoll.play()
 	#Random attack ccheck
 	var Attack = (randi()%6 + 1)
 	accuracy = 0
@@ -437,15 +436,15 @@ func Attack() -> void:
 	print("accuracy", accuracy)
 	if(Attack < 3): # Miss
 		GlobalScript.DebugScript.add(str(Target.Name + " was missed"))
-		Miss.play()
+	#	Miss.play()
 	elif(Attack < 5): # Stun
-		Stun.play()
+	#	Stun.play()
 		GlobalScript.DebugScript.add(str(Target.Name + " was stunned"))
 	#Rpc function call
 		StunPlay.rpc()
 	else:
 		#Attack hit, rpc function call
-		Hurt.play()
+	#	Hurt.play()
 		var damage = Attacker.Weapon1Dmg
 		Attack_Calc.rpc(damage)
 	print("after", Attack)
@@ -564,7 +563,7 @@ func StableCheck() -> bool:
 #endregion
 
 func _on_move_pressed() -> void:
-	Walking.play()
+	#Walking.play()
 	if(!GlobalScript.SinglePlay):
 		movePossible.rpc()
 	else:
