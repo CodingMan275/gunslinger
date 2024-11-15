@@ -71,6 +71,7 @@ script = ExtResource("1_evqc0")
 replication_config = SubResource("SceneReplicationConfig_42imv")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 script = ExtResource("4_cqdm7")
 
 [node name="Card1" type="TextureRect" parent="CanvasLayer"]

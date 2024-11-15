@@ -124,7 +124,8 @@ func _updateMove():
 			MoveButton.hide()
 	else:
 		get_parent().Townie.get_node(CurrentCard).movable = true
-		MoveButton.hide()
+		if get_parent().Townie.get_node(CurrentCard).action_points == 0:
+			MoveButton.hide()
 	
 
 
