@@ -11,6 +11,23 @@ var BrawlProf = -1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	get_parent().Weapon1Name = "Rifle"
+	get_parent().Weapon1Dmg = 3
+	get_parent().Weapon1Stun = 2
+	get_parent().Weapon1Range = 2
+	
+	get_parent().Weapon2Name = "Pistol"
+	get_parent().Weapon2Dmg = 2
+	get_parent().Weapon2Stun = 1
+	get_parent().Weapon2Range = 1
+	
+	
+	get_parent().KnifeProf = KnifeProf
+	get_parent().PistolProf = PistolProf
+	get_parent().RifleProf = RifleProf
+	get_parent().ShotgunProf = ShotgunProf
+	get_parent().TwinPistolProf = TwinPistolProf
+	get_parent().BrawlProf = BrawlProf
 	pass # Replace with function body.
 
 

@@ -1,7 +1,7 @@
 extends TileMapLayer
 
 @onready var Sound_Player2 = $"../CanvasLayer/Draw Card/Draw cards"
-@onready var Sound_Player3 = $"../AttackingCanvas/Range/Attack"
+@onready var Sound_Player3 = $"../AttackingCanvas/Range/ranged attack"
 @onready var Sound_Player4 = $"../AttackingCanvas/Brawl/Punch"
 
 enum TerrainType{
@@ -83,10 +83,13 @@ func _on_draw_card_pressed() -> void:
 	Sound_Player2.play()
 	pass # Replace with function body.
 
-func _on_attack_pressed() -> void:
-	Sound_Player3.play()
-	pass # Replace with function body.
+
 
 func _on_brawl_pressed() -> void:
 	Sound_Player4.play()
+	pass # Replace with function body.
+
+
+func _on_range_pressed() -> void:
+	Sound_Player3.play()
 	pass # Replace with function body.

@@ -3,6 +3,8 @@ extends Node
 @export var Turn_Order = 1
 #Creates a signal to be sent out which will contain the information
 #On turn order to other nodes and scenes
+
+@onready var Victory = $"../Victory"
 signal order
 
 signal move
@@ -43,8 +45,15 @@ var accuracy : int
 @onready var Canvas = get_node("../CanvasLayer")
 @onready var Setup = get_node("../StartUpCanvas")
 @onready var Profic = get_node("../ProficiencyNode")
+@onready var Hurt = $"../CanvasLayer/Attack/HurtSFX"
+@onready var DiceRoll = $"../CanvasLayer/Attack/DiceRollSFX"
+@onready var Miss = $"../CanvasLayer/Attack/MissSFX"
+@onready var EndTurn = $"../CanvasLayer/Button/EndTurnSFX"
+@onready var Walking = $"../CanvasLayer/Move/WalkSFX"
+@onready var Stun = $"..CanvasLayer/Attack/StunSFX/"
 
-@export var AttackerProf:int
+
+@export var AttackerProf : int
 #The Player scene which will be instantiated and used for spawning in
 #All peer players
 @export var player_scene : PackedScene
@@ -93,7 +102,6 @@ func _StartGame() -> void:
 	#peers that joined including name and ID, the ID comes form godots randomly assigned
 	#peer ID which is basically any positive number greater than 1. The host
 	#is ALWAYS peer ID 1.
-	
 	if(!GlobalScript.SinglePlay):
 		for i in GlobalScript.PlayerInfo:
 			MultiPlay(i, index)
@@ -108,8 +116,7 @@ func _StartGame() -> void:
 	#Setting the turn order 1 to start
 	#Redundant but safe
 	Turn_Order = 1
-	
-
+	SelectAttacker.rpc(str(GlobalScript.PlayerNode[Turn_Order-1].Name))
 	#Tell all the player scene instances what the current turn order is
 	order.emit(Turn_Order)
 	#In the little debug pop-up after pressing ~ it says this
@@ -136,7 +143,7 @@ func MultiPlay(i , index):
 		if index == 0:
 			#Player 1 information
 			#Set player 1 at position 0,0 on the tile map
-			var Start = Vector2(3,3)
+			var Start = Vector2(1,1)
 			currentPlayer.position = TileMapScene.map_to_local(Start)
 			#Ask michael, sets player node position to somewhere
 			GlobalScript.PlayerNode[index].pos = Start
@@ -149,7 +156,7 @@ func MultiPlay(i , index):
 		if index == 1:
 			#The next player in the PlayerInfo array, player 2
 			#Sets player 2 at a different position from player 1
-			var Start = Vector2(4,4)
+			var Start = Vector2(6,6)
 			currentPlayer.position = TileMapScene.map_to_local(Start)
 			#Ask michael, sets player node position to somewhere
 			GlobalScript.PlayerNode[index].pos = Start
@@ -227,13 +234,14 @@ func NoTownies():
 		Townie.get_child(i-1).hide()
 
 func ShowTownies():
-	for i in 6:
+	for i in 12:
 		Townie.get_child(i).show()
 
 #endregion
 
 func _on_button_pressed() -> void:
 	#Incremements Turn Order and uses RPC to make sure both the peeers and local machine are updated
+	#EndTurn.play()
 	if(!GlobalScript.SinglePlay):
 		order_inc.rpc()
 	else:
@@ -259,7 +267,7 @@ func order_inc():
 		Turn_Order = 1
 	#Menu says whos turn it is
 	GlobalScript.DebugScript.add("-------  "+str(GlobalScript.PlayerNode[Turn_Order -1].Name)+"'s Turn  -----------")
-	
+	SelectAttacker.rpc(str(GlobalScript.PlayerNode[Turn_Order-1].Name))
 	#Send out a signal so all players know what turn it is
 	order.emit(Turn_Order)
 
@@ -272,12 +280,15 @@ func order_inc():
 func Winner():
 	if Turn_Order == 1:
 		get_tree().change_scene_to_file("res://Victory_Screens/player1_victory_screen.tscn")
+	#	Victory.play()
 	if Turn_Order == 2:
 		if(!GlobalScript.SinglePlay):
 			get_tree().change_scene_to_file("res://Victory_Screens/player2_victory_screen.tscn")
+	#		Victory.play()
 		elif(GlobalScript.SinglePlay):
 			await get_tree().create_timer(1).timeout
 			get_tree().change_scene_to_file("res://Victory_Screens/CPU2_victory_screen.tscn")
+			
 	get_parent().queue_free()
 	GlobalScript.clear()
 
@@ -357,6 +368,7 @@ func RangeAttack(Name : String):
 			CantAttack(range)
 
 func BrawlAttack(Name : String) -> bool:
+	#target == "teacher"
 	var ReturnBool = false
 	#Replace for loop with selected target
 	#n being the target
@@ -406,12 +418,12 @@ func CantAttack(range) -> void:
 #Attack function
 func Attack() -> void:
 	DrawButton.hide()
+	#DiceRoll.play()
 	#Random attack ccheck
 	var Attack = (randi()%6 + 1)
 	accuracy = 0
 	print("before", Attack)
 	print("AttackProf", AttackerProf)
-	Attack += AttackerProf
 	#You are shooting at someone on a boardwalk
 	if(TileMapScene.Path(Attacker.pos) && TileMapScene.Boardwalk(Target.pos)):
 		GlobalScript.DebugScript.add("The accuracy was decreased by one")
@@ -420,16 +432,19 @@ func Attack() -> void:
 	if TileMapScene.Building(Target.pos) && !TileMapScene.SameBuilding(Attacker.pos , Target.pos) :
 		GlobalScript.DebugScript.add("The accuracy was decreased by two")
 		accuracy -=2
-	Attack += 10 #accuracy + GlobalScript.PlayerNode[Player].Profficenty
+	Attack += accuracy + AttackerProf
 	print("accuracy", accuracy)
 	if(Attack < 3): # Miss
 		GlobalScript.DebugScript.add(str(Target.Name + " was missed"))
+	#	Miss.play()
 	elif(Attack < 5): # Stun
+	#	Stun.play()
 		GlobalScript.DebugScript.add(str(Target.Name + " was stunned"))
 	#Rpc function call
 		StunPlay.rpc()
 	else:
 		#Attack hit, rpc function call
+	#	Hurt.play()
 		var damage = Attacker.Weapon1Dmg
 		Attack_Calc.rpc(damage)
 	print("after", Attack)
@@ -548,6 +563,7 @@ func StableCheck() -> bool:
 #endregion
 
 func _on_move_pressed() -> void:
+	#Walking.play()
 	if(!GlobalScript.SinglePlay):
 		movePossible.rpc()
 	else:

@@ -1,34 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://pblyho6utls1"]
+[gd_scene load_steps=8 format=3 uid="uid://pblyho6utls1"]
 
 [ext_resource type="Script" path="res://main_menu/main_menu.gd" id="1_a30og"]
 [ext_resource type="Texture2D" uid="uid://bjl6l6es04344" path="res://main_menu/main_menu_art_assets/Mountain background title screen.png" id="2_oms57"]
 [ext_resource type="AudioStream" uid="uid://73gync2ngicf" path="res://main_menu/GunSlinger Menu.mp3" id="2_ret15"]
+[ext_resource type="Texture2D" uid="uid://y5grgqvpm68u" path="res://button icons/Start Button.png" id="3_0igva"]
+[ext_resource type="Texture2D" uid="uid://bhg13q4fcuwsx" path="res://button icons/Options Button.png" id="4_xut14"]
+[ext_resource type="Texture2D" uid="uid://cdo2v2x75y08t" path="res://button icons/Quit Button.png" id="5_mvg2b"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wcu22"]
 texture = ExtResource("2_oms57")
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sac8h"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wcsvy"]
-bg_color = Color(0.621524, 0.621524, 0.621524, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f5emo"]
-bg_color = Color(0.621524, 0.621524, 0.621524, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_odufc"]
-bg_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -55,14 +35,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -102.0
-offset_top = -29.0
-offset_right = 244.0
-offset_bottom = 144.0
+offset_left = -505.0
+offset_top = -47.0
+offset_right = 650.0
+offset_bottom = 831.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.6, 0.6)
-theme_override_constants/separation = 10
+scale = Vector2(0.9, 0.9)
+theme_override_constants/separation = 50
 
 [node name="Start Button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -71,12 +51,13 @@ theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 60
-theme_override_styles/focus = SubResource("StyleBoxEmpty_sac8h")
-theme_override_styles/hover = SubResource("StyleBoxFlat_wcsvy")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_f5emo")
-theme_override_styles/normal = SubResource("StyleBoxFlat_odufc")
+theme_override_font_sizes/font_size = 120
 text = "Start Game"
+
+[node name="Sprite2D" type="Sprite2D" parent="VBoxContainer/Start Button"]
+position = Vector2(1828.33, 610.629)
+scale = Vector2(6.13834, 4.00271)
+texture = ExtResource("3_0igva")
 
 [node name="Options Button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -85,12 +66,13 @@ theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 60
-theme_override_styles/focus = SubResource("StyleBoxEmpty_sac8h")
-theme_override_styles/hover = SubResource("StyleBoxFlat_wcsvy")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_f5emo")
-theme_override_styles/normal = SubResource("StyleBoxFlat_odufc")
+theme_override_font_sizes/font_size = 120
 text = "Options"
+
+[node name="Sprite2D" type="Sprite2D" parent="VBoxContainer/Options Button"]
+position = Vector2(1828.33, 230.629)
+scale = Vector2(6.13834, 4.00271)
+texture = ExtResource("4_xut14")
 
 [node name="Exit Button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -99,12 +81,13 @@ theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 60
-theme_override_styles/focus = SubResource("StyleBoxEmpty_sac8h")
-theme_override_styles/hover = SubResource("StyleBoxFlat_wcsvy")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_f5emo")
-theme_override_styles/normal = SubResource("StyleBoxFlat_odufc")
+theme_override_font_sizes/font_size = 120
 text = "Exit"
+
+[node name="Sprite2D" type="Sprite2D" parent="VBoxContainer/Exit Button"]
+position = Vector2(1828.33, -140.482)
+scale = Vector2(6.13834, 4.00271)
+texture = ExtResource("5_mvg2b")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
@@ -113,14 +96,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -311.0
-offset_top = -241.0
-offset_right = 318.0
-offset_bottom = -76.0
+offset_left = -621.0
+offset_top = -512.0
+offset_right = 636.0
+offset_bottom = -184.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 120
+theme_override_font_sizes/font_size = 240
 text = "Gunslinger"
 horizontal_alignment = 1
 vertical_alignment = 1

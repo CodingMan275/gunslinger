@@ -9,7 +9,7 @@
 script = ExtResource("1_yq5b0")
 
 [node name="TextureRect" type="Sprite2D" parent="."]
-scale = Vector2(0.08, 0.074412)
+scale = Vector2(0.6, 0.556)
 texture = ExtResource("2_wutq3")
 script = ExtResource("3_aohub")
 
@@ -24,7 +24,7 @@ offset_top = -84.8265
 offset_right = -97.6272
 offset_bottom = -12.9304
 scale = Vector2(2.53924, 2.42139)
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 32
 text = "Player X"
 justification_flags = 161
 script = ExtResource("2_lk764")

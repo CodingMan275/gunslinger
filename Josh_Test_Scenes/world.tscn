@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bjlifhwwfo2ta"]
+[gd_scene load_steps=5 format=3 uid="uid://bjlifhwwfo2ta"]
 
 [ext_resource type="Script" path="res://Josh_Test_Scenes/world.gd" id="1_6igo1"]
 [ext_resource type="PackedScene" uid="uid://x0tek8t1bewj" path="res://CPU_and_Player/Player.tscn" id="2_lorrs"]
 [ext_resource type="PackedScene" uid="uid://hj83ai4o2o5m" path="res://debug_screen/Back_to_Debug_Menu.tscn" id="3_a50rb"]
+[ext_resource type="PackedScene" uid="uid://cebcnc652bypc" path="res://main_menu/main_menu_back_button.tscn" id="4_pf7yt"]
 
 [node name="World" type="Node2D"]
 position = Vector2(238, 140)
@@ -52,6 +53,7 @@ placeholder_text = "Enter Ip:"
 clear_button_enabled = true
 
 [node name="Start" type="Button" parent="CanvasLayer"]
+visible = false
 anchors_preset = -1
 anchor_left = 0.033
 anchor_top = 0.789
@@ -96,6 +98,7 @@ size_flags_vertical = 4
 layout_mode = 2
 
 [node name="BackToDebugMenu" parent="." instance=ExtResource("3_a50rb")]
+visible = false
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
@@ -105,6 +108,12 @@ offset_right = 237.0
 offset_bottom = -94.0
 grow_horizontal = 1
 grow_vertical = 1
+
+[node name="Main Menu Back Button" parent="." instance=ExtResource("4_pf7yt")]
+offset_left = -182.0
+offset_top = -55.0
+offset_right = 565.0
+offset_bottom = 55.0
 
 [connection signal="pressed" from="CanvasLayer/Host" to="." method="_on_host_pressed"]
 [connection signal="pressed" from="CanvasLayer/Join" to="." method="_on_join_pressed"]

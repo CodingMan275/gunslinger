@@ -3,18 +3,18 @@ extends CharacterBody2D
 
 #Player ID make exportable so it cna be changed
 @export var Player_ID = 1
-@export var Max_Action_Points = 200
+@export var Max_Action_Points = 2
 @export var pos : Vector2
 @export var Startpos : Vector2  #Stable position to use dynamite
 @export var Health = 20
 @export var Name : String
 #determines the current number of Action Points
 @export var action_points = 0
-@export var Weapon1Name = ""
+@export var Weapon1Name = "Filler"
 @export var Weapon1Dmg = 4
 @export var Weapon1Stun = 1
 @export var Weapon1Range = 2
-@export var Weapon2Name = ""
+@export var Weapon2Name = "Filler"
 @export var Weapon2Dmg = 0
 @export var Weapon2Stun = 0
 @export var Weapon2Range = 0
@@ -48,6 +48,8 @@ extends CharacterBody2D
 @onready var MoveButton = get_parent().MoveButton
 
 @onready var GiveTakeButton = get_parent().GiveTakeButton
+
+
 
 var KnifeProf = 3
 var PistolProf = 3
@@ -122,7 +124,8 @@ func _updateMove():
 			MoveButton.hide()
 	else:
 		get_parent().Townie.get_node(CurrentCard).movable = true
-		MoveButton.hide()
+		if get_parent().Townie.get_node(CurrentCard).action_points == 0:
+			MoveButton.hide()
 	
 
 
@@ -228,6 +231,7 @@ func _physics_process(delta):
 	MoveMouse()
 	
 	
+	
 func move_possible():
 	#print(tile_map_node.get_cell_source_id(Vector2(get_global_mouse_position())))
 	return tile_map_node.local_to_map(Vector2(get_global_mouse_position())) in tile_map_node.get_surrounding_cells(tile_map_node.local_to_map(self.global_position)) #and tile_map_node.get_cell_source_id(Vector2(get_global_mouse_position())) != -1
@@ -235,6 +239,7 @@ func move_possible():
 func MoveMouse():
 	#Another if statement that is probably not needed but ensures that only the peer
 	#who owns this player instance can move it
+	
 	if ($MultiplayerSynchronizer.get_multiplayer_authority() == multiplayer.get_unique_id() || GlobalScript.SinglePlay):
 		if(Player_ID == order):
 			if Movable:
@@ -243,6 +248,7 @@ func MoveMouse():
 					print(NewPos)
 					if  move_possible():
 						if TileCheck(NewPos):
+							
 							self.global_position = Vector2(get_global_mouse_position())
 							pos = NewPos
 							action_points -= 1
@@ -262,6 +268,7 @@ func UpdateMove(x, NewPos):
 	self.global_position = x
 	pos = NewPos
 	
+
 func NearbyTownieCheck():
 	#Checks if a hired gun is on the same sqaure as you or surrounding
 	if order == Player_ID:

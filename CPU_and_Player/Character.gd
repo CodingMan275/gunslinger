@@ -41,7 +41,7 @@ class Character extends CharacterBody2D:
 	var pos : Vector2
 	
 
-	const MAX_ACION_PONTS: int = 1
+	const MAX_ACION_PONTS: int = 10
 	
 	var action_points = MAX_ACION_PONTS
 	var AttackRange: int = 2
@@ -176,24 +176,47 @@ class Character extends CharacterBody2D:
 		if Input.is_action_just_pressed("LeftClick") and action_points > 0:
 		#See move_possible, see can_move()
 			if tile_map_node != null:
+				var NewPos = tile_map_node.local_to_map(Vector2(get_global_mouse_position()))
 				if move_possible() and can_move(Player):# and movable:
-			#Set node's global position to be the positon of the mouse
-					self.global_position = Vector2(get_global_mouse_position())
-			#Set pos, a variable for storing location, to be the equivelant tile 
-					pos = tile_map_node.local_to_map(self.position)
-			#Calls the UpdateMove function with the rpc call
-					UpdateMove.rpc(self.global_position)
-			#Alright we moved, no more
-					movable = false
+					if TileCheck(NewPos):
+						#Set node's global position to be the positon of the mouse
+						self.global_position = Vector2(get_global_mouse_position())
+						#Set pos, a variable for storing location, to be the equivelant tile 
+						pos = tile_map_node.local_to_map(self.position)
+						action_points -= 1
+						#Calls the UpdateMove function with the rpc call
+						UpdateMove.rpc(self.global_position)
+						#Alright we moved, no more
+						movable = false
 			elif (Input.is_action_just_pressed("LeftClick") and action_points == 0):
 				GlobalScript.DebugScript.add("You have no more Action Points ")
 
+
+
+
+	func TileCheck(Mouse) -> bool:
+		var Ppos = pos
+		#Cannot move into stable , Bank , Church , School from a path
+		if tile_map_node.Path(Ppos) && (tile_map_node.Stable(Mouse) || tile_map_node.WalledBuilding(Mouse)) :
+			return false
+		#Cannot move from a special building to a path
+		elif tile_map_node.WalledBuilding(Ppos) && tile_map_node.Path(Mouse):
+			return false
+		#Can only go from jail to sherrif
+		elif tile_map_node.Jail(Ppos) && !tile_map_node.Building(Mouse):
+			return false
+		#Can not move to jail
+		elif tile_map_node.Jail(Mouse):
+			return false
+		else:
+			return true
+		return true
 #See rpc exlaination in Townie_Logic
 	@rpc("any_peer")
 #Updates the node's postion for every peer
 	func UpdateMove(x):
 		self.global_position = x
-		pos = tile_map_node.local_to_map(self.position)
+		pos = tile_map_node.local_to_map(self.position) 
 	
 	func can_move(player) -> bool:
 	#Are we set to be movable?
