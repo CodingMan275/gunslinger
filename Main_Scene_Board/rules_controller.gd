@@ -425,7 +425,6 @@ func Attack() -> void:
 	accuracy = 0
 	print("before", Attack)
 	print("AttackProf", AttackerProf)
-	Attack += AttackerProf
 	#You are shooting at someone on a boardwalk
 	if(TileMapScene.Path(Attacker.pos) && TileMapScene.Boardwalk(Target.pos)):
 		GlobalScript.DebugScript.add("The accuracy was decreased by one")
@@ -434,7 +433,7 @@ func Attack() -> void:
 	if TileMapScene.Building(Target.pos) && !TileMapScene.SameBuilding(Attacker.pos , Target.pos) :
 		GlobalScript.DebugScript.add("The accuracy was decreased by two")
 		accuracy -=2
-	Attack += 10 #accuracy + GlobalScript.PlayerNode[Player].Profficenty
+	Attack += accuracy + AttackerProf
 	print("accuracy", accuracy)
 	if(Attack < 3): # Miss
 		GlobalScript.DebugScript.add(str(Target.Name + " was missed"))
