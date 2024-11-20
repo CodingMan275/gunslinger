@@ -72,9 +72,9 @@ var FirstDeath : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	if !multiplayer.is_server():
-		$"../StartUpCanvas".hide()
-	Canvas.hide()
+	print("Testing")
+	if multiplayer.is_server() || GlobalScript.SinglePlay:
+		$"../StartUpCanvas".show()
 	NoTownies()
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -268,6 +268,7 @@ func order_inc():
 		Turn_Order = 1
 	#Menu says whos turn it is
 	GlobalScript.DebugScript.add("-------  "+str(GlobalScript.PlayerNode[Turn_Order -1].Name)+"'s Turn  -----------")
+	print("Name check is:" , str(GlobalScript.PlayerNode[Turn_Order-1].Name) , " Name")
 	SelectAttacker.rpc(str(GlobalScript.PlayerNode[Turn_Order-1].Name))
 	#Send out a signal so all players know what turn it is
 	order.emit(Turn_Order)
@@ -290,11 +291,10 @@ func Winner(con : int , Quit : bool):
 			else:
 				await get_tree().create_timer(1).timeout
 				get_tree().change_scene_to_file("res://Victory_Screens/CPU2_victory_screen.tscn")
-	#Victory.play()
-		
+		#Victory.play()
+		get_parent().queue_free()
 	else:
 		get_tree().change_scene_to_file("res://main_menu/main_menu.tscn")
-	get_parent().queue_free()
 	GlobalScript.clear()
 
 

@@ -373,6 +373,7 @@ stream = ExtResource("23_8pn6l")
 volume_db = 0.684
 
 [node name="StartUpCanvas" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="Start" type="Button" parent="StartUpCanvas"]
 anchors_preset = 5
@@ -441,6 +442,7 @@ theme_override_font_sizes/font_size = 60
 text = "Back"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 script = SubResource("GDScript_7iaxx")
 
 [node name="Button" type="Button" parent="CanvasLayer"]
