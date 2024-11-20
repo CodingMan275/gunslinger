@@ -282,8 +282,6 @@ func Winner(con : int , Quit : bool):
 # Con is the turn Order , and if con is less than 0 it was a force quit
 	print("Con is: ",con," and Quit is: ",Quit )
 	if con > 0 :
-		get_tree().root.get_node("World").HardDisconnect = false
-		get_tree().root.get_node("World").peer.close()
 		if (con == 1 && !Quit) || (con == 2 && Quit) :
 			get_tree().change_scene_to_file("res://Victory_Screens/player1_victory_screen.tscn")
 		if (con == 2 && !Quit) || (con == 1 && Quit):

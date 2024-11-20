@@ -12,7 +12,6 @@ var peer
 
 @onready var line_edit = get_node("CanvasLayer/LineEdit")
 
-var HardDisconnect = true
 
 func _ready():
 	line_edit.grab_focus()
@@ -31,13 +30,13 @@ func PlayerConnected(ID):
 func PlayerDisconnected(ID):
 	print("Player Disconnected " + str(ID))
 	#if multiplayer.is_server():
-	if HardDisconnect:
-		peer.close()
+	#if HardDisconnect:
+	peer.close()
 	#var GameScene = load("res://main_menu/main_menu.tscn").instantiate()
-		get_tree().root.get_node("Node2D").queue_free()
+	get_tree().root.get_node("Node2D").queue_free()
 #	get_tree().root.add_child(GameScene)
-		GlobalScript.clear()
-		get_tree().change_scene_to_file("res://main_menu/main_menu.tscn")
+	GlobalScript.clear()
+	get_tree().change_scene_to_file("res://main_menu/main_menu.tscn")
 	
 	#Called only from clients
 func ServerConnected():
@@ -74,7 +73,7 @@ func _on_host_pressed() -> void:
 		#_close_server()
 		#_on_host_pressed()
 		return
-	HardDisconnect = true
+
 	#peer.get_host().compress(ENetConnection.COMPRESS_RANGE_CODER)
 
 	#Makes the host now also a peer so it can actually play the game
@@ -103,7 +102,6 @@ func _on_join_pressed() -> void:
 	#Create client peer
 	multiplayer.set_multiplayer_peer(peer)
 	
-	HardDisconnect = true
 	
 	$CanvasLayer/Host.hide()
 	$CanvasLayer/Join.hide()
