@@ -1,8 +1,5 @@
-[gd_scene load_steps=107 format=4 uid="uid://jl7k3ltwbp41"]
+[gd_scene load_steps=101 format=4 uid="uid://jl7k3ltwbp41"]
 
-[ext_resource type="Texture2D" uid="uid://fcuqal2ynbts" path="res://Main_Scene_Board/spritesheet.png" id="1_o8ncf"]
-[ext_resource type="Texture2D" uid="uid://mmea4eto2a6p" path="res://Main_Scene_Board/Rhombus.png" id="2_rfajf"]
-[ext_resource type="Script" path="res://Main_Scene_Board/layer_0.gd" id="3_8wl58"]
 [ext_resource type="Texture2D" uid="uid://bgfw83igonq2c" path="res://Main_Scene_Board/Updated Tiles/BoardwalkAlpha.png" id="5_28umi"]
 [ext_resource type="Script" path="res://Main_Scene_Board/Canvas_Layer/Turn_Label.gd" id="5_52d0j"]
 [ext_resource type="Texture2D" uid="uid://47h22ob018yo" path="res://CPU_and_Player/Ground Tiles.png" id="5_fl2th"]
@@ -83,157 +80,6 @@
 [ext_resource type="Texture2D" uid="uid://3a484ecmpmkn" path="res://Saloon_Girl sprite.png" id="73_fjwl0"]
 [ext_resource type="Texture2D" uid="uid://d3vawpps5iokl" path="res://Bank_Manager sprite.png" id="75_w7ra8"]
 [ext_resource type="Texture2D" uid="uid://cekcp777sbsp4" path="res://the_sheriff sprite.png" id="77_rplwb"]
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p1dyh"]
-texture = ExtResource("1_o8ncf")
-texture_region_size = Vector2i(32, 32)
-0:0/0 = 0
-0:0/0/custom_data_0 = 9
-1:0/0 = 0
-2:0/0 = 0
-3:0/0 = 0
-4:0/0 = 0
-5:0/0 = 0
-6:0/0 = 0
-7:0/0 = 0
-8:0/0 = 0
-9:0/0 = 0
-10:0/0 = 0
-0:1/0 = 0
-1:1/0 = 0
-2:1/0 = 0
-3:1/0 = 0
-4:1/0 = 0
-5:1/0 = 0
-6:1/0 = 0
-7:1/0 = 0
-8:1/0 = 0
-9:1/0 = 0
-9:1/0/custom_data_0 = 7
-10:1/0 = 0
-0:2/0 = 0
-0:2/0/custom_data_0 = 16
-1:2/0 = 0
-2:2/0 = 0
-3:2/0 = 0
-3:2/0/custom_data_0 = 6
-4:2/0 = 0
-5:2/0 = 0
-6:2/0 = 0
-7:2/0 = 0
-8:2/0 = 0
-9:2/0 = 0
-10:2/0 = 0
-10:2/0/custom_data_0 = 12
-0:3/0 = 0
-1:3/0 = 0
-2:3/0 = 0
-3:3/0 = 0
-4:3/0 = 0
-5:3/0 = 0
-6:3/0 = 0
-7:3/0 = 0
-7:3/0/custom_data_0 = 14
-8:3/0 = 0
-9:3/0 = 0
-10:3/0 = 0
-10:3/0/custom_data_0 = 11
-0:4/0 = 0
-0:4/0/custom_data_0 = 4
-1:4/0 = 0
-2:4/0 = 0
-3:4/0 = 0
-4:4/0 = 0
-5:4/0 = 0
-6:4/0 = 0
-7:4/0 = 0
-8:4/0 = 0
-9:4/0 = 0
-10:4/0 = 0
-10:4/0/custom_data_0 = 1
-0:5/0 = 0
-1:5/0 = 0
-2:5/0 = 0
-3:5/0 = 0
-4:5/0 = 0
-5:5/0 = 0
-6:5/0 = 0
-6:5/0/custom_data_0 = 8
-7:5/0 = 0
-8:5/0 = 0
-9:5/0 = 0
-9:5/0/custom_data_0 = 2
-10:5/0 = 0
-0:6/0 = 0
-1:6/0 = 0
-2:6/0 = 0
-3:6/0 = 0
-3:6/0/custom_data_0 = 3
-4:6/0 = 0
-5:6/0 = 0
-5:6/0/custom_data_0 = 15
-6:6/0 = 0
-6:6/0/custom_data_0 = 5
-7:6/0 = 0
-8:6/0 = 0
-9:6/0 = 0
-10:6/0 = 0
-0:7/0 = 0
-0:7/0/custom_data_0 = 13
-1:7/0 = 0
-2:7/0 = 0
-3:7/0 = 0
-4:7/0 = 0
-5:7/0 = 0
-6:7/0 = 0
-7:7/0 = 0
-8:7/0 = 0
-9:7/0 = 0
-10:7/0 = 0
-0:8/0 = 0
-1:8/0 = 0
-2:8/0 = 0
-3:8/0 = 0
-5:8/0 = 0
-5:8/0/custom_data_0 = 10
-9:8/0 = 0
-10:8/0 = 0
-0:9/0 = 0
-1:9/0 = 0
-2:9/0 = 0
-3:9/0 = 0
-4:9/0 = 0
-5:9/0 = 0
-6:9/0 = 0
-7:9/0 = 0
-8:9/0 = 0
-9:9/0 = 0
-10:9/0 = 0
-0:10/0 = 0
-1:10/0 = 0
-2:10/0 = 0
-3:10/0 = 0
-4:10/0 = 0
-5:10/0 = 0
-6:10/0 = 0
-7:10/0 = 0
-8:10/0 = 0
-9:10/0 = 0
-10:10/0 = 0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bqeqs"]
-texture = ExtResource("2_rfajf")
-texture_region_size = Vector2i(32, 32)
-0:0/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_1y6tq"]
-tile_shape = 1
-tile_layout = 5
-tile_size = Vector2i(32, 16)
-custom_data_layer_0/name = "TileType"
-custom_data_layer_0/type = 2
-sources/0 = SubResource("TileSetAtlasSource_p1dyh")
-sources/1 = SubResource("TileSetAtlasSource_bqeqs")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d0p86"]
 texture = ExtResource("5_fl2th")
@@ -484,14 +330,6 @@ offset_right = 2080.0
 offset_bottom = 1861.0
 texture = ExtResource("27_uadwx")
 expand_mode = 1
-
-[node name="Layer0" type="TileMapLayer" parent="."]
-visible = false
-use_parent_material = true
-tile_map_data = PackedByteArray("AAAAAAEAAAAFAAgAAAAAAAIAAAAAAAAAAAAAAAMAAAADAAYAAAAAAAQAAAADAAYAAAAAAAUAAAAAAAAAAAAAAAYAAAAAAAIAAAAAAAcAAAADAAIAAAABAAAAAAAFAAgAAAACAAAAAAAAAAAAAAADAAAAAAAAAAQAAAAEAAAAAAAAAAQAAAAFAAAAAAAAAAAAAAAGAAAAAAAJAAUAAAAHAAAAAAAJAAUAAAABAAcAAAADAAIAAAACAAcAAAAAAAAAAAADAAcAAAAKAAQAAAAEAAcAAAAKAAQAAAAFAAcAAAAAAAAAAAAGAAcAAAAFAAgAAAAHAAcAAAAFAAgAAAAHAAUAAAAAAAAAAAAHAAYAAAAFAAgAAAAHAAQAAAAGAAUAAAAHAAMAAAAGAAYAAAAHAAIAAAAAAAAAAAAHAAEAAAAKAAIAAAABAAEAAAAFAAgAAAADAAMAAAAJAAEAAAADAAQAAAAJAAEAAAAEAAQAAAAJAAEAAAAEAAMAAAAJAAEAAAAGAAYAAAAFAAgAAAAEAAYAAAAKAAMAAAADAAYAAAAKAAMAAAABAAQAAAAAAAcAAAABAAMAAAAAAAcAAAAEAAEAAAAHAAMAAAADAAEAAAAHAAMAAAAGAAEAAAAKAAIAAAAGAAQAAAAFAAYAAAAGAAMAAAAFAAYAAAAGAAUAAAAAAAAAAAAFAAYAAAAAAAAAAAAFAAUAAAAAAAAAAAAEAAUAAAAAAAAAAAADAAUAAAAAAAAAAAACAAUAAAAAAAAAAAACAAYAAAAAAAAAAAABAAYAAAAAAAIAAAABAAUAAAAAAAAAAAACAAQAAAAAAAAAAAACAAMAAAAAAAAAAAACAAIAAAAAAAAAAAABAAIAAAAAAAAAAAACAAEAAAAAAAAAAAAFAAQAAAAAAAAAAAAFAAMAAAAAAAAAAAAFAAIAAAAAAAAAAAADAAIAAAAAAAAAAAAEAAIAAAAAAAAAAAAFAAEAAAAAAAAAAAAGAAIAAAAAAAAAAAAAAAAAAAAFAAgAAAA=")
-tile_set = SubResource("TileSet_1y6tq")
-rendering_quadrant_size = 32
-script = ExtResource("3_8wl58")
 
 [node name="Ground_Layer" type="TileMapLayer" parent="."]
 y_sort_enabled = true
@@ -1942,9 +1780,7 @@ text = "Special Ability"
 
 [connection signal="child_order_changed" from="." to="Rules_Controller" method="_on_node_2d_child_order_changed"]
 [connection signal="pressed" from="StartUpCanvas/Start" to="Rules_Controller" method="DeleteLater"]
-[connection signal="pressed" from="AttackingCanvas/Range" to="Layer0" method="_on_range_pressed"]
 [connection signal="pressed" from="AttackingCanvas/Range" to="Rules_Controller" method="RangeAttack" binds= ["Player"]]
-[connection signal="pressed" from="AttackingCanvas/Brawl" to="Layer0" method="_on_brawl_pressed"]
 [connection signal="pressed" from="AttackingCanvas/Brawl" to="Rules_Controller" method="BrawlAttack" binds= ["Player"]]
 [connection signal="pressed" from="AttackingCanvas/Back" to="Rules_Controller" method="PlayerUI" binds= [false]]
 [connection signal="pressed" from="CanvasLayer/Button" to="CanvasLayer/Label" method="_on_button_pressed"]
@@ -1971,55 +1807,31 @@ text = "Special Ability"
 [connection signal="DrawnCard" from="Cards" to="Townie_Logic/Town_Drunk" method="hire_townsfolk"]
 [connection signal="DrawnCard" from="Cards" to="Townie_Logic/Bar_Keep" method="hire_townsfolk"]
 [connection signal="DrawnCard" from="Cards" to="Townie_Logic/Ranch_Hand" method="hire_townsfolk"]
-[connection signal="pressed" from="Townie_Logic/Preacher/AttackingCanvas/Range" to="Layer0" method="_on_attack_pressed"]
 [connection signal="pressed" from="Townie_Logic/Preacher/AttackingCanvas/Range" to="Rules_Controller" method="RangeAttack" binds= ["Preacher"]]
-[connection signal="pressed" from="Townie_Logic/Preacher/AttackingCanvas/Brawl" to="Layer0" method="_on_brawl_pressed"]
 [connection signal="pressed" from="Townie_Logic/Preacher/AttackingCanvas/Brawl" to="Rules_Controller" method="BrawlAttack" binds= ["Preacher"]]
 [connection signal="pressed" from="Townie_Logic/Doctor/DefaultDrawUI/Special Ability" to="Townie_Logic/Doctor" method="_on_special_ability_pressed"]
-[connection signal="pressed" from="Townie_Logic/Doctor/AttackingCanvas/Range" to="Layer0" method="_on_attack_pressed"]
 [connection signal="pressed" from="Townie_Logic/Doctor/AttackingCanvas/Range" to="Rules_Controller" method="RangeAttack" binds= ["Doctor"]]
-[connection signal="pressed" from="Townie_Logic/Doctor/AttackingCanvas/Brawl" to="Layer0" method="_on_brawl_pressed"]
 [connection signal="pressed" from="Townie_Logic/Doctor/AttackingCanvas/Brawl" to="Rules_Controller" method="BrawlAttack" binds= ["Doctor"]]
 [connection signal="pressed" from="Townie_Logic/Doctor/AttackingCanvas/Special Ability" to="Townie_Logic/Doctor" method="_on_special_ability_pressed"]
 [connection signal="pressed" from="Townie_Logic/Doctor/HealStunUI/Heal" to="Townie_Logic/Doctor" method="_on_heal_pressed"]
 [connection signal="pressed" from="Townie_Logic/Doctor/HealStunUI/Stun" to="Townie_Logic/Doctor" method="_on_stun_pressed"]
-[connection signal="pressed" from="Townie_Logic/Teacher/AttackingCanvas/Range" to="Layer0" method="_on_attack_pressed"]
 [connection signal="pressed" from="Townie_Logic/Teacher/AttackingCanvas/Range" to="Rules_Controller" method="RangeAttack" binds= ["Teacher"]]
-[connection signal="pressed" from="Townie_Logic/Teacher/AttackingCanvas/Brawl" to="Layer0" method="_on_brawl_pressed"]
 [connection signal="pressed" from="Townie_Logic/Teacher/AttackingCanvas/Brawl" to="Rules_Controller" method="BrawlAttack" binds= ["Teacher"]]
-[connection signal="pressed" from="Townie_Logic/Town_Drunk/AttackingCanvas/Range" to="Layer0" method="_on_attack_pressed"]
 [connection signal="pressed" from="Townie_Logic/Town_Drunk/AttackingCanvas/Range" to="Rules_Controller" method="RangeAttack" binds= ["Town_Drunk"]]
-[connection signal="pressed" from="Townie_Logic/Town_Drunk/AttackingCanvas/Brawl" to="Layer0" method="_on_brawl_pressed"]
 [connection signal="pressed" from="Townie_Logic/Town_Drunk/AttackingCanvas/Brawl" to="Rules_Controller" method="BrawlAttack" binds= ["Town_Drunk"]]
-[connection signal="pressed" from="Townie_Logic/Bar_Keep/AttackingCanvas/Range" to="Layer0" method="_on_attack_pressed"]
 [connection signal="pressed" from="Townie_Logic/Bar_Keep/AttackingCanvas/Range" to="Rules_Controller" method="RangeAttack" binds= ["Bar_Keep"]]
-[connection signal="pressed" from="Townie_Logic/Bar_Keep/AttackingCanvas/Brawl" to="Layer0" method="_on_brawl_pressed"]
 [connection signal="pressed" from="Townie_Logic/Bar_Keep/AttackingCanvas/Brawl" to="Rules_Controller" method="BrawlAttack" binds= ["Bar_Keep"]]
-[connection signal="pressed" from="Townie_Logic/Ranch_Hand/AttackingCanvas/Range" to="Layer0" method="_on_attack_pressed"]
 [connection signal="pressed" from="Townie_Logic/Ranch_Hand/AttackingCanvas/Range" to="Rules_Controller" method="RangeAttack" binds= ["Ranch_Hand"]]
-[connection signal="pressed" from="Townie_Logic/Ranch_Hand/AttackingCanvas/Brawl" to="Layer0" method="_on_brawl_pressed"]
 [connection signal="pressed" from="Townie_Logic/Ranch_Hand/AttackingCanvas/Brawl" to="Rules_Controller" method="BrawlAttack" binds= ["Ranch_Hand"]]
-[connection signal="pressed" from="Townie_Logic/Store_Keeper/AttackingCanvas/Range" to="Layer0" method="_on_attack_pressed"]
 [connection signal="pressed" from="Townie_Logic/Store_Keeper/AttackingCanvas/Range" to="Rules_Controller" method="RangeAttack" binds= ["Store_Keeper"]]
-[connection signal="pressed" from="Townie_Logic/Store_Keeper/AttackingCanvas/Brawl" to="Layer0" method="_on_brawl_pressed"]
 [connection signal="pressed" from="Townie_Logic/Store_Keeper/AttackingCanvas/Brawl" to="Rules_Controller" method="BrawlAttack" binds= ["Store_Keeper"]]
-[connection signal="pressed" from="Townie_Logic/Mountain_Man/AttackingCanvas/Range" to="Layer0" method="_on_attack_pressed"]
 [connection signal="pressed" from="Townie_Logic/Mountain_Man/AttackingCanvas/Range" to="Rules_Controller" method="RangeAttack" binds= ["Mountain_Man"]]
-[connection signal="pressed" from="Townie_Logic/Mountain_Man/AttackingCanvas/Brawl" to="Layer0" method="_on_brawl_pressed"]
 [connection signal="pressed" from="Townie_Logic/Mountain_Man/AttackingCanvas/Brawl" to="Rules_Controller" method="BrawlAttack" binds= ["Mountain_Man"]]
-[connection signal="pressed" from="Townie_Logic/Bounty_Hunter/AttackingCanvas/Range" to="Layer0" method="_on_attack_pressed"]
 [connection signal="pressed" from="Townie_Logic/Bounty_Hunter/AttackingCanvas/Range" to="Rules_Controller" method="RangeAttack" binds= ["Bounty_Hunter"]]
-[connection signal="pressed" from="Townie_Logic/Bounty_Hunter/AttackingCanvas/Brawl" to="Layer0" method="_on_brawl_pressed"]
 [connection signal="pressed" from="Townie_Logic/Bounty_Hunter/AttackingCanvas/Brawl" to="Rules_Controller" method="BrawlAttack" binds= ["Bounty_Hunter"]]
-[connection signal="pressed" from="Townie_Logic/Saloon_Girl/AttackingCanvas/Range" to="Layer0" method="_on_attack_pressed"]
 [connection signal="pressed" from="Townie_Logic/Saloon_Girl/AttackingCanvas/Range" to="Rules_Controller" method="RangeAttack" binds= ["Saloon_Girl"]]
-[connection signal="pressed" from="Townie_Logic/Saloon_Girl/AttackingCanvas/Brawl" to="Layer0" method="_on_brawl_pressed"]
 [connection signal="pressed" from="Townie_Logic/Saloon_Girl/AttackingCanvas/Brawl" to="Rules_Controller" method="BrawlAttack" binds= ["Saloon_Girl"]]
-[connection signal="pressed" from="Townie_Logic/Bank_Manager/AttackingCanvas/Range" to="Layer0" method="_on_attack_pressed"]
 [connection signal="pressed" from="Townie_Logic/Bank_Manager/AttackingCanvas/Range" to="Rules_Controller" method="RangeAttack" binds= ["Bank_Manager"]]
-[connection signal="pressed" from="Townie_Logic/Bank_Manager/AttackingCanvas/Brawl" to="Layer0" method="_on_brawl_pressed"]
 [connection signal="pressed" from="Townie_Logic/Bank_Manager/AttackingCanvas/Brawl" to="Rules_Controller" method="BrawlAttack" binds= ["Bank_Manager"]]
-[connection signal="pressed" from="Townie_Logic/Sheriff/AttackingCanvas/Range" to="Layer0" method="_on_attack_pressed"]
 [connection signal="pressed" from="Townie_Logic/Sheriff/AttackingCanvas/Range" to="Rules_Controller" method="RangeAttack" binds= ["Sheriff"]]
-[connection signal="pressed" from="Townie_Logic/Sheriff/AttackingCanvas/Brawl" to="Layer0" method="_on_brawl_pressed"]
 [connection signal="pressed" from="Townie_Logic/Sheriff/AttackingCanvas/Brawl" to="Rules_Controller" method="BrawlAttack" binds= ["Sheriff"]]

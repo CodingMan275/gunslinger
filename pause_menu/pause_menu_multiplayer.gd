@@ -5,7 +5,7 @@ extends Control
 @onready var margin_container_2 = %MarginContainer2
 @onready var pause_menu_options_screen = %PauseMenuOptionsScreen
 @onready var close_options_menu_button = %CloseOptionsMenuButton
-
+@onready var RuleController = $"../../../Rules_Controller"
 
 
 
@@ -29,5 +29,8 @@ func _on_no_button_pressed():
 
 
 func _on_yes_button_pressed():
+	if(!GlobalScript.SinglePlay):
+		RuleController.Winner.rpc(RuleController.Turn_Order , true)
+	else:
+		RuleController.Winner(-1)
 	pass
-	#get_tree().change_scene_to_file("res://main_menu/main_menu.tscn")
