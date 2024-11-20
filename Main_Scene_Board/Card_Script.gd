@@ -14,8 +14,8 @@ extends Node
 @export var DrawArray = ["Preacher","Doctor","Teacher","Town_Drunk", "Bar_Keep", "Ranch_Hand", "Sheriff", "Bank_Manager", "Bounty_Hunter", "Store_Keeper", "Mountain_Man", "Saloon_Girl"]
 @export var DiscardArray = []
 #Gunsliger Pile
-#["Bob", "Mad_Mike", "Jon_Laramie", "Elijah", "Smokey", "The_Kidd"]
-@export var GunslingerArray = ["Smokey", "The_Kidd"]
+
+@export var GunslingerArray = ["Bob", "Mad_Mike", "Jon_Laramie", "Elijah", "Smokey", "The_Kidd"]
 #Hired gun pile
 @export var HiredGunArray = ["Preacher","Teacher","Town_Drunk","Bar_Keep", "Ranch_Hand", "Bounty_Hunter", "Mountain_Man", "Saloon_Girl"]
 #Weapon pile
