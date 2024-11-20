@@ -24,8 +24,8 @@ func _on_save_load_button_pressed():
 	margin_container_2.show()
 
 func _on_quit__button_pressed():
+	GlobalScript.clear()
 	get_tree().change_scene_to_file("res://main_menu/main_menu.tscn")
-
 
 func _on_load_button_pressed():
 	pass

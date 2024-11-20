@@ -174,6 +174,7 @@ func MultiPlay(i , index):
 
 func SinglePlay(i , index):
 		if index == 0:
+			#await get_tree().create_timer(.2).timeout
 			var currentPlayer = player_scene.instantiate()
 			#The player needs to get information from the tile map
 			currentPlayer.tile_map_node = TileMapScene
