@@ -45,8 +45,7 @@ vertical_alignment = 1
 
 [node name="Main Menu Back Button" parent="." instance=ExtResource("1_0kua6")]
 layout_mode = 0
-offset_left = 4.0
-offset_top = 237.0
-offset_right = 211.0
-offset_bottom = 279.0
-scale = Vector2(0.6, 0.6)
+offset_left = 40.0
+offset_top = 1923.0
+offset_right = 849.0
+offset_bottom = 2101.0
