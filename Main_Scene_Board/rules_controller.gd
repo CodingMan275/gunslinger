@@ -278,18 +278,21 @@ func order_inc():
 
 #This Function needs to reset everything or start up needs to clear everything
 @rpc("any_peer", "call_local")
-func Winner():
-	if Turn_Order == 1:
-		get_tree().change_scene_to_file("res://Victory_Screens/player1_victory_screen.tscn")
-	#	Victory.play()
-	if Turn_Order == 2:
-		if(!GlobalScript.SinglePlay):
-			get_tree().change_scene_to_file("res://Victory_Screens/player2_victory_screen.tscn")
-	#		Victory.play()
-		elif(GlobalScript.SinglePlay):
-			await get_tree().create_timer(1).timeout
-			get_tree().change_scene_to_file("res://Victory_Screens/CPU2_victory_screen.tscn")
-			
+func Winner(con : int , Quit : bool):
+# Con is the turn Order , and if con is less than 0 it was a force quit
+	print("Con is: ",con," and Quit is: ",Quit )
+	if con > 0 :
+		if (con == 1 && !Quit) || (con == 2 && Quit) :
+			get_tree().change_scene_to_file("res://Victory_Screens/player1_victory_screen.tscn")
+		if (con == 2 && !Quit) || (con == 1 && Quit):
+			if(!GlobalScript.SinglePlay):
+				get_tree().change_scene_to_file("res://Victory_Screens/player2_victory_screen.tscn")
+			else:
+				await get_tree().create_timer(1).timeout
+				get_tree().change_scene_to_file("res://Victory_Screens/CPU2_victory_screen.tscn")
+	#Victory.play()
+	else:
+		get_tree().change_scene_to_file("res://main_menu/main_menu.tscn")
 	get_parent().queue_free()
 	GlobalScript.clear()
 
@@ -478,6 +481,7 @@ func Attack_Calc(damage):
 	if Target.Health <= 0 && TargetGunSlinger:
 		#Checks to see if Gunslinger Claimed anyone
 		var HasTownie = false
+		'''
 		for i in 3:
 			if Townie.get_node(Attacker.PlayerHand[i+1]).claim_revealed:
 				HasTownie = true
@@ -488,8 +492,9 @@ func Attack_Calc(damage):
 			for i in 6:
 				if Townie.get_node(GlobalScript.PlayerNode[int(i/3)].PlayerHand[int((i%3)+1)]).claim_revealed:
 					Townie.get_node(GlobalScript.PlayerNode[int(i/3)].PlayerHand[int((i%3)+1)]).CanDynamite = true
+		'''
 		if !HasTownie:
-			Winner.rpc()
+			Winner.rpc(Turn_Order , false)
 	pass
 
 #Tell everybody which node got stunned
@@ -539,9 +544,9 @@ func DistCheck(Dist) -> bool:
 func Dynamite() -> bool:
 	if(StableCheck() && GlobalScript.PlayerNode[Turn_Order -1].action_points !=0 && !GlobalScript.PlayerNode[Turn_Order-1].DrewCard && Attacker.CanDynamite):
 		if(!GlobalScript.SinglePlay):
-			Winner.rpc()
+			Winner.rpc(Turn_Order ,false)
 		else: 
-			Winner()
+			Winner(1 , false)
 		return true
 	elif(GlobalScript.PlayerNode[Turn_Order-1].DrewCard):
 		GlobalScript.DebugScript.add("You cannot act because you drew a card")

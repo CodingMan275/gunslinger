@@ -41,7 +41,7 @@ class Character extends CharacterBody2D:
 	var pos : Vector2
 	
 
-	const MAX_ACION_PONTS: int = 10
+	const MAX_ACION_PONTS: int = 1
 	
 	var action_points = MAX_ACION_PONTS
 	var AttackRange: int = 2

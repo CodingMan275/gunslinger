@@ -60,7 +60,7 @@ var BrawlProf = 3
 
 
 #So the player knows what order it is
-var order = 0
+@export var order = 0
 #determines whether the player can currently move
 @export var can_act = true
 #Player hand
@@ -120,8 +120,6 @@ func _on_ready() -> void:
 func _updateMove():
 	if !DrewCard:
 		Movable = true
-		if action_points == 0:
-			MoveButton.hide()
 	else:
 		get_parent().Townie.get_node(CurrentCard).movable = true
 		if get_parent().Townie.get_node(CurrentCard).action_points == 0:
@@ -158,11 +156,12 @@ func _update_turn(x):
 			#Set action points back to max
 			#action_points = Max_Action_Points
 			#Allow user to end their turn
-			DynamiteButton.show()
 			EndTurnLabel.show()
 			DrawButton.show()
-			AttackButton.show()
-			MoveButton.show()
+			if action_points != 0:
+				DynamiteButton.show()
+				AttackButton.show()
+				MoveButton.show()
 			NearbyTownieCheck()
 	#		HandButton.show()
 			can_act = true
@@ -252,6 +251,8 @@ func MoveMouse():
 							self.global_position = Vector2(get_global_mouse_position())
 							pos = NewPos
 							action_points -= 1
+							if action_points == 0:
+								MoveButton.hide()
 							GlobalScript.DebugScript.add(str(self.Name)+" has "+str(self.action_points) + " action points left ")
 							DrawButton.hide()
 							Movable = false
