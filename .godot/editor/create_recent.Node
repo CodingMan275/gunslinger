@@ -1,3 +1,4 @@
+Label
 AudioStreamPlayer2D
 AudioStreamPlayer
 Node
@@ -6,7 +7,6 @@ Button
 CanvasLayer
 RichTextLabel
 RichTextLabel
-Label
 Panel
 Control
 CharacterBody2D

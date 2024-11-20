@@ -62,7 +62,8 @@ func _on_host_pressed() -> void:
 	#https://forum.godotengine.org/t/how-to-get-local-ip-address/10399/2
 	var LAN_IP = IP.resolve_hostname(str(OS.get_environment("COMPUTERNAME")),1)
 	print(LAN_IP)
-	
+	$CanvasLayer/Heres_Your_IP.text = "Heres The LAN IP We found! :]" + "\n" +str(LAN_IP)
+	$CanvasLayer/Heres_Your_IP.show()
 	#Error message
 	var error = peer.create_server(1027)
 	if error != OK:
