@@ -12,6 +12,8 @@ var peer
 
 @onready var line_edit = get_node("CanvasLayer/LineEdit")
 
+var HardDisconnect = true
+
 func _ready():
 	line_edit.grab_focus()
 	multiplayer.peer_connected.connect(PlayerConnected)
@@ -29,12 +31,13 @@ func PlayerConnected(ID):
 func PlayerDisconnected(ID):
 	print("Player Disconnected " + str(ID))
 	#if multiplayer.is_server():
-	peer.close()
+	if HardDisconnect:
+		peer.close()
 	#var GameScene = load("res://main_menu/main_menu.tscn").instantiate()
-	get_tree().root.get_node("Node2D").queue_free()
+		get_tree().root.get_node("Node2D").queue_free()
 #	get_tree().root.add_child(GameScene)
-	GlobalScript.clear()
-	get_tree().change_scene_to_file("res://main_menu/main_menu.tscn")
+		GlobalScript.clear()
+		get_tree().change_scene_to_file("res://main_menu/main_menu.tscn")
 	
 	#Called only from clients
 func ServerConnected():
