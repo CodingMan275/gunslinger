@@ -29,8 +29,6 @@ func _on_no_button_pressed():
 
 
 func _on_yes_button_pressed():
-	if(!GlobalScript.SinglePlay):
-		RuleController.Winner.rpc(RuleController.Turn_Order , true)
-	else:
-		RuleController.Winner(-1)
+	var ID = RuleController.get_node(str(multiplayer.get_unique_id())).Player_ID
+	RuleController.Winner.rpc(ID , true)
 	pass

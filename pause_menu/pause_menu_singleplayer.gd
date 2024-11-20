@@ -5,6 +5,7 @@ extends Control
 @onready var margin_container_2 = %MarginContainer2
 @onready var pause_menu_options_screen = %PauseMenuOptionsScreen
 @onready var close_options_menu_button = %CloseOptionsMenuButton
+@onready var RuleController = $"../../../Rules_Controller"
 
 
 
@@ -24,8 +25,7 @@ func _on_save_load_button_pressed():
 	margin_container_2.show()
 
 func _on_quit__button_pressed():
-	GlobalScript.clear()
-	get_tree().change_scene_to_file("res://main_menu/main_menu.tscn")
+	RuleController.Winner(-1 , false)
 
 func _on_load_button_pressed():
 	pass
