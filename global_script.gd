@@ -1,5 +1,7 @@
 extends Node
 
+
+
 var DebugScript # refrence to DebugPanel Script
  
 var PlayerInfo = {}
@@ -11,6 +13,7 @@ var PlayerNode : Array
 var SinglePlay : bool = false
 var FirstKill : bool = false
 
+@onready var VictoryMusic = $"../VictoryMusic"
 func clear():
 	PlayerInfo.clear()
 	CPUInfo.clear()

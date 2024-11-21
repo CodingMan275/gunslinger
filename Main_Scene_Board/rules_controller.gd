@@ -51,7 +51,7 @@ var accuracy : int
 @onready var EndTurn = $"../CanvasLayer/Button/EndTurnSFX"
 @onready var Walking = $"../CanvasLayer/Move/WalkSFX"
 @onready var Stun = $"..CanvasLayer/Attack/StunSFX/"
-
+@onready var VictoryMusic = get_node("/root/GlobalScript")
 
 @export var AttackerProf : int
 #The Player scene which will be instantiated and used for spawning in
@@ -280,7 +280,8 @@ func order_inc():
 #This Function needs to reset everything or start up needs to clear everything
 @rpc("any_peer", "call_local")
 func Winner(con : int , Quit : bool):
-# Con is the turn Order , and if con is less than 0 it was a force quit
+	
+	# Con is the turn Order , and if con is less than 0 it was a force quit
 	print("Con is: ",con," and Quit is: ",Quit )
 	if con > 0 :
 		if (con == 1 && !Quit) || (con == 2 && Quit) :
@@ -585,3 +586,5 @@ func movePossible():
 func PlayerUI(vis : bool) -> void :
 	AttackButton.visible = !vis
 	AttackUI.visible = vis
+func playWalk():
+	Walking.play()

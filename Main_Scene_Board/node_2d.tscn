@@ -330,6 +330,7 @@ offset_right = 2080.0
 offset_bottom = 1861.0
 texture = ExtResource("27_uadwx")
 expand_mode = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="Ground_Layer" type="TileMapLayer" parent="."]
 y_sort_enabled = true
