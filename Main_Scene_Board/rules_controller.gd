@@ -23,6 +23,7 @@ var accuracy : int
 
 #Getting the tile map from the current scene when this node is ready
 @onready var TileMapScene =  get_node("../Player_Layer")
+@onready var HighlightScene =  get_node("../Highlight_Layer")
 
 #Getting the turn buttons from the scene when this node is ready
 @onready var EndTurnButton = get_node("../CanvasLayer/Button")
@@ -129,6 +130,7 @@ func MultiPlay(i , index):
 		var currentPlayer = player_scene.instantiate()
 		#The player needs to get information from the tile map
 		currentPlayer.tile_map_node = TileMapScene
+		currentPlayer.highlight_node = HighlightScene
 		#Change the name of the instance to the ID of the player
 		#This is important for getting which specific player we want
 		currentPlayer.name = str(GlobalScript.PlayerInfo[i].ID)
@@ -178,6 +180,7 @@ func SinglePlay(i , index):
 			var currentPlayer = player_scene.instantiate()
 			#The player needs to get information from the tile map
 			currentPlayer.tile_map_node = TileMapScene
+			currentPlayer.highlight_node = HighlightScene
 			#Change the name of the instance to the ID of the player
 			#This is important for getting which specific player we want
 			currentPlayer.name = "player"
@@ -205,6 +208,7 @@ func SinglePlay(i , index):
 			var currentPlayer = CPU_scene.instantiate()
 			#The player needs to get information from the tile map
 			currentPlayer.tile_map_node = TileMapScene
+			currentPlayer.highlight_node = HighlightScene
 			#Change the name of the instance to the ID of the player
 			#This is important for getting which specific player we want
 			currentPlayer.name = str("CPU " + str(index))

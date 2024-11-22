@@ -76,6 +76,7 @@ var CurrentCard
 
 #For node path to tile map
 var tile_map_node
+var highlight_node
 #Movement Button stuff
 var Movable = false
 
@@ -269,6 +270,13 @@ func UpdateMove(x, NewPos):
 	self.global_position = x
 	pos = NewPos
 	
+func show_possible_moves(pos):
+	for tile in tile_map_node.get_surrounding_cells(pos):
+		if TileCheck(tile):
+			highlight_node.set_cell(tile, 16, Vector2i(0,0))
+	
+func hide_possible_moves():
+	highlight_node.clear()
 
 func NearbyTownieCheck():
 	#Checks if a hired gun is on the same sqaure as you or surrounding
