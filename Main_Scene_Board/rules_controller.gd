@@ -53,6 +53,8 @@ var accuracy : int
 @onready var Walking = $"../CanvasLayer/Move/WalkSFX"
 @onready var Stun = $"..CanvasLayer/Attack/StunSFX/"
 
+@onready var PlayerGuy = get_child(Turn_Order)
+
 
 @export var AttackerProf : int
 #The Player scene which will be instantiated and used for spawning in
@@ -579,6 +581,7 @@ func _on_move_pressed() -> void:
 		movePossible.rpc()
 	else:
 		movePossible()
+	
 	pass # Replace with function body.
 	
 @rpc("call_local","any_peer")

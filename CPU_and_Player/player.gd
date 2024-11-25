@@ -234,6 +234,7 @@ func _physics_process(delta):
 	
 func move_possible():
 	#print(tile_map_node.get_cell_source_id(Vector2(get_global_mouse_position())))
+	show_possible_moves(pos)
 	return tile_map_node.local_to_map(Vector2(get_global_mouse_position())) in tile_map_node.get_surrounding_cells(tile_map_node.local_to_map(self.global_position)) #and tile_map_node.get_cell_source_id(Vector2(get_global_mouse_position())) != -1
 
 func MoveMouse():
@@ -259,12 +260,16 @@ func MoveMouse():
 							Movable = false
 							UpdateMove.rpc(self.global_position, NewPos)
 							NearbyTownieCheck()
+							hide_possible_moves()
 						elif !TileCheck(NewPos):
 							GlobalScript.DebugScript.add("You Can not move into a wall ")
+							hide_possible_moves()
 				elif (Input.is_action_just_pressed("LeftClick") and move_possible() and action_points == 0):
 					GlobalScript.DebugScript.add("You have no more Action Points ")
+					hide_possible_moves()
 				elif(Input.is_action_just_pressed("LeftClick") and GlobalScript.PlayerNode[order-1].StunTracker != 0):
 					GlobalScript.DebugScript.add("you are stunned and cannot move")
+					hide_possible_moves()
 @rpc("any_peer")
 func UpdateMove(x, NewPos):
 	self.global_position = x
