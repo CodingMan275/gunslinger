@@ -1,4 +1,4 @@
-[gd_scene load_steps=101 format=4 uid="uid://jl7k3ltwbp41"]
+[gd_scene load_steps=103 format=4 uid="uid://jl7k3ltwbp41"]
 
 [ext_resource type="Texture2D" uid="uid://bgfw83igonq2c" path="res://Main_Scene_Board/Updated Tiles/BoardwalkAlpha.png" id="5_28umi"]
 [ext_resource type="Script" path="res://Main_Scene_Board/Canvas_Layer/Turn_Label.gd" id="5_52d0j"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://cj15kaxvr44m1" path="res://CPU_and_Player/CPU.tscn" id="9_hsfom"]
 [ext_resource type="Script" path="res://Main_Scene_Board/Card_Script.gd" id="9_mpy2d"]
 [ext_resource type="Script" path="res://Main_Scene_Board/claim.gd" id="9_xcao8"]
+[ext_resource type="Texture2D" uid="uid://b4kep1hpy4ft" path="res://Main_Scene_Board/TransparentTile.png" id="10_h0ucs"]
 [ext_resource type="Texture2D" uid="uid://diiu2osp2ss7u" path="res://Main_Scene_Board/Updated Tiles/Stable 2.png" id="10_hix82"]
 [ext_resource type="Texture2D" uid="uid://cp7ccxsdolbco" path="res://Main_Scene_Board/Updated Tiles/Livery2.png" id="10_okhjl"]
 [ext_resource type="Texture2D" uid="uid://stdd55mk8v0k" path="res://Main_Scene_Board/Updated Tiles/School.png" id="11_5y4ys"]
@@ -154,6 +155,12 @@ texture_region_size = Vector2i(474, 498)
 0:0/0/texture_origin = Vector2i(-79, 141)
 0:1/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5d8yt"]
+resource_name = "Transparent"
+texture = ExtResource("10_h0ucs")
+texture_region_size = Vector2i(316, 216)
+0:0/0 = 0
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ohgiv"]
 texture = ExtResource("7_ujmph")
 texture_region_size = Vector2i(316, 332)
@@ -219,6 +226,7 @@ sources/12 = SubResource("TileSetAtlasSource_a487p")
 sources/13 = SubResource("TileSetAtlasSource_kswnl")
 sources/14 = SubResource("TileSetAtlasSource_e7o5l")
 sources/15 = SubResource("TileSetAtlasSource_5q3yn")
+sources/16 = SubResource("TileSetAtlasSource_5d8yt")
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_mfl53"]
 properties/0/path = NodePath("CanvasLayer/Label:text")
@@ -346,6 +354,13 @@ y_sort_enabled = true
 use_parent_material = true
 position = Vector2(0, -56)
 tile_map_data = PackedByteArray("AAAGAAAAAAABAAAAAAAHAAAAAAABAAAAAAAAAAMAAAACAAAAAAAAAAQAAAACAAAAAAADAAcAAAAAAAAAAAAEAAcAAAAAAAAAAAADAAAAAAADAAAAAAAEAAAAAAADAAAAAAAHAAMAAAAAAAEAAAABAAcAAAABAAEAAAAAAAcAAAABAAEAAAADAAMAAAACAAEAAAAEAAMAAAACAAEAAAAEAAQAAAACAAEAAAADAAQAAAACAAEAAAAHAAQAAAADAAEAAAAAAAUAAAAAAAIAAAABAAUAAAAAAAIAAAACAAUAAAAAAAIAAAADAAUAAAAAAAIAAAAEAAUAAAAAAAIAAAAFAAUAAAAAAAIAAAAGAAUAAAAAAAIAAAAHAAUAAAAAAAIAAAAAAAIAAAAAAAIAAAABAAIAAAAAAAIAAAACAAIAAAAAAAIAAAADAAIAAAAAAAIAAAAEAAIAAAAAAAIAAAAFAAIAAAAAAAIAAAAGAAIAAAAAAAIAAAAHAAIAAAAAAAIAAAACAAcAAAAAAAIAAAACAAYAAAAAAAIAAAACAAQAAAAAAAIAAAACAAMAAAAAAAIAAAACAAEAAAAAAAIAAAACAAAAAAAAAAIAAAAFAAcAAAAAAAIAAAAFAAYAAAAAAAIAAAAFAAQAAAAAAAIAAAAFAAMAAAAAAAIAAAAFAAEAAAAAAAIAAAAFAAAAAAAAAAIAAAABAAEAAAABAAIAAAAAAAEAAAABAAIAAAAAAAAAAAABAAIAAAABAAAAAAABAAIAAAAGAAYAAAABAAIAAAAGAAcAAAABAAIAAAAHAAcAAAABAAIAAAAHAAYAAAABAAIAAAADAAYAAAACAAIAAAAEAAYAAAACAAIAAAABAAMAAAAAAAMAAAABAAQAAAAAAAMAAAAGAAEAAAADAAIAAAAHAAEAAAADAAIAAAAGAAQAAAACAAMAAAAGAAMAAAACAAMAAAAEAAEAAAABAAMAAAADAAEAAAABAAMAAAABAAYAAAADAAMAAAAAAAYAAAADAAMAAAA=")
+tile_set = SubResource("TileSet_mbj4e")
+script = ExtResource("17_una0y")
+
+[node name="Highlight_Layer" type="TileMapLayer" parent="."]
+y_sort_enabled = true
+use_parent_material = true
+position = Vector2(0, -56)
 tile_set = SubResource("TileSet_mbj4e")
 script = ExtResource("17_una0y")
 
