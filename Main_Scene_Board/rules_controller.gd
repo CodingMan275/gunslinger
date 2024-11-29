@@ -50,7 +50,7 @@ var accuracy : int
 @onready var DiceRoll = $"../CanvasLayer/Attack/DiceRollSFX"
 @onready var Miss = $"../CanvasLayer/Attack/MissSFX"
 @onready var EndTurn = $"../CanvasLayer/Button/EndTurnSFX"
-@onready var Walking = $"../CanvasLayer/Move/WalkSFX"
+@onready var Walking = $"../CanvasLayer/WalkSFX"
 @onready var Stun = $"..CanvasLayer/Attack/StunSFX/"
 @onready var VictoryMusic = get_node("/root/GlobalScript")
 @onready var PlayerGuy = get_child(Turn_Order)

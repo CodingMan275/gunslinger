@@ -1,9 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://b7rfx1nnoi5ev"]
+[gd_scene load_steps=14 format=3 uid="uid://b7rfx1nnoi5ev"]
 
 [ext_resource type="Script" path="res://pause_menu/pause_menu_singleplayer.gd" id="1_wagrc"]
 [ext_resource type="Shader" path="res://pause_menu/pause_menu_singleplayer.gdshader" id="2_6kaoc"]
+[ext_resource type="Texture2D" uid="uid://otxjchlhwjap" path="res://button icons/Resume Button.png" id="3_foio0"]
 [ext_resource type="Texture2D" uid="uid://bhg13q4fcuwsx" path="res://button icons/Options Button.png" id="3_q66iv"]
+[ext_resource type="Texture2D" uid="uid://dxhxebc7l28ox" path="res://pause_menu/Pause menu art assets/Save-Load Button.png" id="4_avwqh"]
 [ext_resource type="Texture2D" uid="uid://cdo2v2x75y08t" path="res://button icons/Quit Button.png" id="4_gb887"]
+[ext_resource type="Texture2D" uid="uid://b5b1ah8tuih8l" path="res://pause_menu/Pause menu art assets/Save button.png" id="7_lufox"]
+[ext_resource type="Texture2D" uid="uid://bsg1kdxrxvsd4" path="res://pause_menu/Pause menu art assets/Load save button.png" id="8_dpfa2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_45qoc"]
 shader = ExtResource("2_6kaoc")
@@ -84,11 +88,12 @@ theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 120
-theme_override_styles/focus = SubResource("StyleBoxEmpty_wlhlq")
-theme_override_styles/hover = SubResource("StyleBoxFlat_yfeuf")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_a2nxc")
-theme_override_styles/normal = SubResource("StyleBoxFlat_gp72c")
 text = "Resume"
+
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/VBoxContainer/Resume_Button"]
+position = Vector2(352, 84)
+scale = Vector2(3.73, 2.48)
+texture = ExtResource("3_foio0")
 
 [node name="Options_Button" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -113,11 +118,12 @@ theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 120
-theme_override_styles/focus = SubResource("StyleBoxEmpty_wlhlq")
-theme_override_styles/hover = SubResource("StyleBoxFlat_yfeuf")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_a2nxc")
-theme_override_styles/normal = SubResource("StyleBoxFlat_gp72c")
 text = "Save & Load"
+
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/VBoxContainer/Save&Load_Button"]
+position = Vector2(352, 70)
+scale = Vector2(3.73, 2.48)
+texture = ExtResource("4_avwqh")
 
 [node name="Quit_Button" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -174,6 +180,11 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_a2nxc")
 theme_override_styles/normal = SubResource("StyleBoxFlat_gp72c")
 text = "Save"
 
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer2/VBoxContainer/Save_Button"]
+position = Vector2(1680.5, 342)
+scale = Vector2(4.4, 2.35)
+texture = ExtResource("7_lufox")
+
 [node name="Load_Button" type="Button" parent="MarginContainer2/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -187,6 +198,11 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_yfeuf")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_a2nxc")
 theme_override_styles/normal = SubResource("StyleBoxFlat_gp72c")
 text = "Load"
+
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer2/VBoxContainer/Load_Button"]
+position = Vector2(1684.5, 109)
+scale = Vector2(4.4, 2.35)
+texture = ExtResource("8_dpfa2")
 
 [node name="Cancel" type="Button" parent="MarginContainer2/VBoxContainer"]
 layout_mode = 2

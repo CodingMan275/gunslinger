@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://pprbd47wg7es"]
+[gd_scene load_steps=7 format=3 uid="uid://pprbd47wg7es"]
 
 [ext_resource type="PackedScene" uid="uid://cebcnc652bypc" path="res://main_menu/main_menu_back_button.tscn" id="1_0kua6"]
 [ext_resource type="Script" path="res://Victory_Screens/player_1_victory_screen.gd" id="1_6s4ht"]
 [ext_resource type="Texture2D" uid="uid://b37vlv5ha5b2m" path="res://Victory_Screens/Victory_screen_art_assets/player1winscreen_v1_11_09_24_michele_deblasi_gunslinger.png" id="1_dlf7v"]
 [ext_resource type="AudioStream" uid="uid://donl5bgw25cim" path="res://main_menu/GameVictory.wav" id="3_3qyw3"]
+[ext_resource type="Texture2D" uid="uid://wixoxljvtrll" path="res://main_menu/main_menu_art_assets/Main Menu button.png" id="4_nq1ck"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0x5v4"]
 texture = ExtResource("1_dlf7v")
@@ -52,6 +53,11 @@ offset_left = 40.0
 offset_top = 1923.0
 offset_right = 849.0
 offset_bottom = 2101.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Main Menu Back Button"]
+position = Vector2(405, 91)
+scale = Vector2(4.3, 2.6)
+texture = ExtResource("4_nq1ck")
 
 [node name="VictoryMusic" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_3qyw3")

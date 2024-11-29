@@ -1,9 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://bcaeblbfexkia"]
+[gd_scene load_steps=13 format=3 uid="uid://bcaeblbfexkia"]
 
 [ext_resource type="Script" path="res://main_menu/mode_selection_screen.gd" id="1_1je3l"]
 [ext_resource type="PackedScene" uid="uid://cebcnc652bypc" path="res://main_menu/main_menu_back_button.tscn" id="2_8og0i"]
 [ext_resource type="Texture2D" uid="uid://cy6y6rhfvniq0" path="res://main_menu/main_menu_art_assets/Select Mode Background.png" id="2_a1lon"]
+[ext_resource type="Texture2D" uid="uid://cn8ccvu10ckb" path="res://main_menu/Single Player Button.png" id="3_0fwyy"]
 [ext_resource type="AudioStream" uid="uid://73gync2ngicf" path="res://main_menu/GunSlinger Menu.mp3" id="3_w1s3b"]
+[ext_resource type="Texture2D" uid="uid://cvdvcyi7kp14k" path="res://main_menu/main_menu_art_assets/Multiplayer Button.png" id="4_75dok"]
+[ext_resource type="Texture2D" uid="uid://wixoxljvtrll" path="res://main_menu/main_menu_art_assets/Main Menu button.png" id="7_o52br"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_d8s71"]
 texture = ExtResource("2_a1lon")
@@ -72,11 +75,12 @@ theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 120
-theme_override_styles/focus = SubResource("StyleBoxEmpty_wlhlq")
-theme_override_styles/hover = SubResource("StyleBoxFlat_yfeuf")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_a2nxc")
-theme_override_styles/normal = SubResource("StyleBoxFlat_gp72c")
 text = "Single Player"
+
+[node name="Sprite2D" type="Sprite2D" parent="VBoxContainer/Local Button"]
+position = Vector2(527, 546)
+scale = Vector2(5.6, 5.2)
+texture = ExtResource("3_0fwyy")
 
 [node name="Online Button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -86,11 +90,12 @@ theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 120
-theme_override_styles/focus = SubResource("StyleBoxEmpty_wlhlq")
-theme_override_styles/hover = SubResource("StyleBoxFlat_yfeuf")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_a2nxc")
-theme_override_styles/normal = SubResource("StyleBoxFlat_gp72c")
 text = "Multiplayer"
+
+[node name="Sprite2D" type="Sprite2D" parent="VBoxContainer/Online Button"]
+position = Vector2(666, -5)
+scale = Vector2(5.6, 5.2)
+texture = ExtResource("4_75dok")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
@@ -99,10 +104,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -700.0
-offset_top = -444.0
-offset_right = 707.0
-offset_bottom = -116.0
+offset_left = -673.0
+offset_top = -672.0
+offset_right = 734.0
+offset_bottom = -344.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -215,6 +220,11 @@ offset_left = 29.0
 offset_top = 1963.0
 offset_right = 821.0
 offset_bottom = 2124.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Main Menu Back Button"]
+position = Vector2(397, 80)
+scale = Vector2(4.2, 3)
+texture = ExtResource("7_o52br")
 
 [connection signal="pressed" from="VBoxContainer/Local Button" to="." method="_on_local_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Online Button" to="." method="_on_online_button_pressed"]
