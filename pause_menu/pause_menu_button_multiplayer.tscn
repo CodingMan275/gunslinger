@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://c83b4qbnujsby"]
+[gd_scene load_steps=7 format=3 uid="uid://c83b4qbnujsby"]
 
 [ext_resource type="Script" path="res://pause_menu/pause_menu_button_multiplayer.gd" id="1_hngp3"]
+[ext_resource type="Texture2D" uid="uid://qxty718v8c8x" path="res://button icons/Pause icon button.png" id="2_dsmvb"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wlhlq"]
 
@@ -44,5 +45,10 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_a2nxc")
 theme_override_styles/normal = SubResource("StyleBoxFlat_gp72c")
 text = "||"
 script = ExtResource("1_hngp3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(95, 99)
+scale = Vector2(1.5, 2.95)
+texture = ExtResource("2_dsmvb")
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]

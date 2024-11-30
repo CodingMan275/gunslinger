@@ -1,4 +1,4 @@
-[gd_scene load_steps=103 format=4 uid="uid://jl7k3ltwbp41"]
+[gd_scene load_steps=109 format=4 uid="uid://jl7k3ltwbp41"]
 
 [ext_resource type="Texture2D" uid="uid://bgfw83igonq2c" path="res://Main_Scene_Board/Updated Tiles/BoardwalkAlpha.png" id="5_28umi"]
 [ext_resource type="Script" path="res://Main_Scene_Board/Canvas_Layer/Turn_Label.gd" id="5_52d0j"]
@@ -43,18 +43,20 @@
 [ext_resource type="Texture2D" uid="uid://y5grgqvpm68u" path="res://button icons/Start Button.png" id="23_6f3f6"]
 [ext_resource type="AudioStream" uid="uid://donl5bgw25cim" path="res://main_menu/GameVictory.wav" id="23_8pn6l"]
 [ext_resource type="Texture2D" uid="uid://blwke6qxx6grk" path="res://button icons/End Turn Button.png" id="24_4137c"]
+[ext_resource type="Texture2D" uid="uid://bboh4etnme1xk" path="res://CPU_and_Player/Range button.png" id="24_jnf2a"]
 [ext_resource type="AudioStream" uid="uid://hpux0mx0kufi" path="res://main_menu/Pistol Shoot.wav" id="25_bu3kd"]
 [ext_resource type="Texture2D" uid="uid://c2w48yl67xfwr" path="res://button icons/Draw Card Button.png" id="26_wbco5"]
+[ext_resource type="Texture2D" uid="uid://b2cqg2fsxsldm" path="res://main_menu/main_menu_art_assets/Back button.png" id="27_10slo"]
 [ext_resource type="Script" path="res://proficiencylogic.gd" id="27_bf6tm"]
 [ext_resource type="Texture2D" uid="uid://bnk7r45gr5cn8" path="res://IMG_9861.png" id="27_uadwx"]
 [ext_resource type="Texture2D" uid="uid://wfdwfv0wnt73" path="res://button icons/Dynamite Button.png" id="28_34ner"]
 [ext_resource type="AudioStream" uid="uid://fdspr4skwi7h" path="res://main_menu/End turn Or Discard.wav" id="29_k5qo4"]
 [ext_resource type="Script" path="res://Main_Scene_Board/weapons.gd" id="30_sg7ny"]
 [ext_resource type="AudioStream" uid="uid://cslhnxro8mi3y" path="res://Card Game/shuffleandbridge-107641.wav" id="31_xv3hg"]
-[ext_resource type="Texture2D" uid="uid://duoy8ty6p53x1" path="res://button icons/Claim_Button_Darius.png" id="33_lhyn0"]
 [ext_resource type="Script" path="res://TownieSpriteClick.gd" id="34_hshlf"]
 [ext_resource type="Texture2D" uid="uid://t41eioyq4op0" path="res://button icons/Move Button.png" id="36_1sjo4"]
 [ext_resource type="Texture2D" uid="uid://bnp4fs70s6nu5" path="res://button icons/Attack Button.png" id="37_xxu0v"]
+[ext_resource type="Texture2D" uid="uid://dftnafsw6bext" path="res://button icons/Claim button 2.png" id="38_n7iip"]
 [ext_resource type="AudioStream" uid="uid://but0japjdntn5" path="res://main_menu/Dice throw.wav" id="42_7ghtk"]
 [ext_resource type="Texture2D" uid="uid://b8xf3kpnn037f" path="res://preachersprite.png" id="43_4q8lf"]
 [ext_resource type="AudioStream" uid="uid://blh34wfm1qxqf" path="res://main_menu/Boardwalk Steps.wav" id="43_g76mt"]
@@ -71,10 +73,14 @@
 [ext_resource type="Texture2D" uid="uid://npb4ov8dsqjk" path="res://teachersprite.png" id="48_eyjeu"]
 [ext_resource type="Script" path="res://Main_Scene_Board/bank_manager.gd" id="49_4aoh4"]
 [ext_resource type="Texture2D" uid="uid://4js47xf3xilk" path="res://towndrunksprite.png" id="50_4ds6b"]
+[ext_resource type="Texture2D" uid="uid://d26wpu8fdnbdd" path="res://button icons/G-T Button.png" id="50_gghc4"]
 [ext_resource type="Script" path="res://Main_Scene_Board/sheriff.gd" id="50_glnk6"]
+[ext_resource type="Texture2D" uid="uid://cgvb28llv6vnx" path="res://button icons/Take button.png" id="51_m7xrc"]
 [ext_resource type="Texture2D" uid="uid://bbno4nr3bl5lf" path="res://barkeepsprite.png" id="52_bghbv"]
+[ext_resource type="Texture2D" uid="uid://bb7qm4lgyjr5o" path="res://button icons/Give button.png" id="52_xqhx6"]
 [ext_resource type="Texture2D" uid="uid://cmgkkwmsfwmk5" path="res://ranchhandsprite.png" id="54_2nfar"]
 [ext_resource type="Texture2D" uid="uid://babn4p6kuyg7m" path="res://button icons/Brawl Button.png" id="55_gm3vd"]
+[ext_resource type="Texture2D" uid="uid://cidyfieluehq" path="res://CPU_and_Player/Special button.png" id="65_itkqt"]
 [ext_resource type="Texture2D" uid="uid://ba74lkbeo36md" path="res://GeneralStoreKeeper sprite.png" id="67_tdm6s"]
 [ext_resource type="Texture2D" uid="uid://c6oau2n3epgtr" path="res://MountainMan sprite.png" id="69_qvtfu"]
 [ext_resource type="Texture2D" uid="uid://bjx8ge4ondb6c" path="res://Bounty_Hunter sprite.png" id="71_fevbq"]
@@ -416,16 +422,21 @@ anchor_left = 0.845
 anchor_top = 0.667
 anchor_right = 0.967
 anchor_bottom = 0.781
-offset_left = 76.2
+offset_left = 65.2
 offset_top = -271.72
-offset_right = 75.6401
-offset_bottom = -271.5
+offset_right = -4.28003
+offset_bottom = -384.96
 theme_override_font_sizes/font_size = 60
 text = "Range"
 
 [node name="ranged attack" type="AudioStreamPlayer2D" parent="AttackingCanvas/Range"]
 position = Vector2(-16, -185)
 stream = ExtResource("25_bu3kd")
+
+[node name="Sprite2D" type="Sprite2D" parent="AttackingCanvas/Range"]
+position = Vector2(200, 70)
+scale = Vector2(2.15, 1.9)
+texture = ExtResource("24_jnf2a")
 
 [node name="Brawl" type="Button" parent="AttackingCanvas"]
 anchors_preset = -1
@@ -435,8 +446,8 @@ anchor_right = 0.965
 anchor_bottom = 0.922
 offset_left = 71.04
 offset_top = -301.12
-offset_right = 70.9602
-offset_bottom = -301.17
+offset_right = 5.40015
+offset_bottom = -416.52
 text = "Brawl
 "
 
@@ -445,17 +456,22 @@ position = Vector2(-16, -185)
 stream = ExtResource("8_7t4t6")
 
 [node name="Sprite2D" type="Sprite2D" parent="AttackingCanvas/Brawl"]
-position = Vector2(231, 227)
-scale = Vector2(2, 2)
+position = Vector2(201, 161)
+scale = Vector2(2.15, 1.9)
 texture = ExtResource("55_gm3vd")
 
 [node name="Back" type="Button" parent="AttackingCanvas"]
-offset_left = 146.0
-offset_top = 454.0
-offset_right = 292.0
-offset_bottom = 545.0
+offset_left = 16.0
+offset_top = 427.0
+offset_right = 415.0
+offset_bottom = 560.0
 theme_override_font_sizes/font_size = 60
 text = "Back"
+
+[node name="Sprite2D" type="Sprite2D" parent="AttackingCanvas/Back"]
+position = Vector2(203, 70)
+scale = Vector2(2, 2)
+texture = ExtResource("27_10slo")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 visible = false
@@ -604,9 +620,9 @@ text = "Claim"
 script = ExtResource("9_xcao8")
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Claim"]
-position = Vector2(266.68, 251.14)
-scale = Vector2(2, 2)
-texture = ExtResource("33_lhyn0")
+position = Vector2(210, 74.0001)
+scale = Vector2(2.23, 2.15)
+texture = ExtResource("38_n7iip")
 
 [node name="CurrentTownie" type="TextureRect" parent="CanvasLayer"]
 visible = false
@@ -635,7 +651,7 @@ position = Vector2(198, -321)
 scale = Vector2(2, 2)
 texture = ExtResource("36_1sjo4")
 
-[node name="WalkSFX" type="AudioStreamPlayer" parent="CanvasLayer/Move"]
+[node name="WalkSFX" type="AudioStreamPlayer2D" parent="CanvasLayer/Move"]
 stream = ExtResource("43_g76mt")
 
 [node name="Attack" type="Button" parent="CanvasLayer"]
@@ -672,10 +688,11 @@ stream = ExtResource("8_7t4t6")
 
 [node name="PauseMenuButtonSinglePlayer" parent="CanvasLayer/Pause_Menu" instance=ExtResource("13_3q2p2")]
 unique_name_in_owner = true
+visible = false
 offset_left = 7.0
 offset_top = 4.0
-offset_right = -3654.0
-offset_bottom = -1961.0
+offset_right = -3643.0
+offset_bottom = -1956.0
 
 [node name="PauseMenuSingleplayer" parent="CanvasLayer/Pause_Menu" instance=ExtResource("14_tll6l")]
 unique_name_in_owner = true
@@ -684,7 +701,10 @@ visible = false
 [node name="PauseMenuButtonMultiplayer" parent="CanvasLayer/Pause_Menu" instance=ExtResource("44_58jka")]
 unique_name_in_owner = true
 visible = false
-offset_right = -3650.0
+offset_left = 7.0
+offset_top = 4.0
+offset_right = -3643.0
+offset_bottom = -1956.0
 
 [node name="PauseMenuMultiplayer" parent="CanvasLayer/Pause_Menu" instance=ExtResource("45_x8onr")]
 unique_name_in_owner = true
@@ -716,6 +736,11 @@ offset_bottom = -320.46
 theme_override_font_sizes/font_size = 60
 text = "G/T"
 
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Give_Take"]
+position = Vector2(213, 139)
+scale = Vector2(2.3, 3.5)
+texture = ExtResource("50_gghc4")
+
 [node name="Take" type="Button" parent="CanvasLayer"]
 visible = false
 anchors_preset = -1
@@ -730,6 +755,11 @@ offset_bottom = -0.090004
 theme_override_font_sizes/font_size = 60
 text = "Take"
 
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Take"]
+position = Vector2(415.88, 110.65)
+scale = Vector2(4.6, 4.6)
+texture = ExtResource("51_m7xrc")
+
 [node name="GIve" type="Button" parent="CanvasLayer"]
 visible = false
 anchors_preset = -1
@@ -743,6 +773,11 @@ offset_right = -1.0
 offset_bottom = -0.0100098
 theme_override_font_sizes/font_size = 60
 text = "Give"
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/GIve"]
+position = Vector2(381.28, 101.65)
+scale = Vector2(4.6, 4.6)
+texture = ExtResource("52_xqhx6")
 
 [node name="Weapon1" type="Button" parent="CanvasLayer"]
 visible = false
@@ -829,6 +864,11 @@ offset_right = 3701.0
 offset_bottom = 1405.0
 text = "Special Ability"
 
+[node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Preacher/DefaultDrawUI/Special Ability"]
+position = Vector2(317, 392)
+scale = Vector2(3.4, 3)
+texture = ExtResource("65_itkqt")
+
 [node name="AttackingCanvas" type="CanvasLayer" parent="Townie_Logic/Preacher"]
 visible = false
 
@@ -838,15 +878,20 @@ anchor_left = 0.871
 anchor_top = 0.612
 anchor_right = 0.993
 anchor_bottom = 0.726
-offset_left = -0.640137
-offset_top = 0.0799561
-offset_right = -1.19995
-offset_bottom = 0.300049
+offset_left = 81.3601
+offset_top = 0.0800781
+offset_right = -5.11987
+offset_bottom = -102.16
 text = "Range"
 
 [node name="Attack" type="AudioStreamPlayer2D" parent="Townie_Logic/Preacher/AttackingCanvas/Range"]
 position = Vector2(-16, -185)
 stream = ExtResource("8_7t4t6")
+
+[node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Preacher/AttackingCanvas/Range"]
+position = Vector2(192, 72)
+scale = Vector2(2, 2)
+texture = ExtResource("24_jnf2a")
 
 [node name="Brawl" type="Button" parent="Townie_Logic/Preacher/AttackingCanvas"]
 anchors_preset = -1
@@ -871,11 +916,16 @@ scale = Vector2(2, 2)
 texture = ExtResource("55_gm3vd")
 
 [node name="Special Ability" type="Button" parent="Townie_Logic/Preacher/AttackingCanvas"]
-offset_left = 3167.0
+offset_left = 3426.0
 offset_top = 1088.0
-offset_right = 3813.0
-offset_bottom = 1304.0
+offset_right = 3808.0
+offset_bottom = 1232.0
 text = "Special Ability"
+
+[node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Preacher/AttackingCanvas/Special Ability"]
+position = Vector2(192, 261)
+scale = Vector2(2, 2)
+texture = ExtResource("65_itkqt")
 
 [node name="Doctor" type="CharacterBody2D" parent="Townie_Logic"]
 script = ExtResource("16_2qs05")
@@ -911,6 +961,11 @@ offset_right = 3701.0
 offset_bottom = 1405.0
 text = "Special Ability"
 
+[node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Doctor/DefaultDrawUI/Special Ability"]
+position = Vector2(317, 392)
+scale = Vector2(3.4, 3)
+texture = ExtResource("65_itkqt")
+
 [node name="AttackingCanvas" type="CanvasLayer" parent="Townie_Logic/Doctor"]
 visible = false
 
@@ -920,15 +975,20 @@ anchor_left = 0.871
 anchor_top = 0.612
 anchor_right = 0.993
 anchor_bottom = 0.726
-offset_left = -0.640137
-offset_top = 0.0799561
-offset_right = -1.19995
-offset_bottom = 0.300049
+offset_left = 81.3601
+offset_top = 0.0800781
+offset_right = -5.11987
+offset_bottom = -102.16
 text = "Range"
 
 [node name="Attack" type="AudioStreamPlayer2D" parent="Townie_Logic/Doctor/AttackingCanvas/Range"]
 position = Vector2(-16, -185)
 stream = ExtResource("8_7t4t6")
+
+[node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Doctor/AttackingCanvas/Range"]
+position = Vector2(192, 72)
+scale = Vector2(2, 2)
+texture = ExtResource("24_jnf2a")
 
 [node name="Brawl" type="Button" parent="Townie_Logic/Doctor/AttackingCanvas"]
 anchors_preset = -1
@@ -953,11 +1013,16 @@ scale = Vector2(2, 2)
 texture = ExtResource("55_gm3vd")
 
 [node name="Special Ability" type="Button" parent="Townie_Logic/Doctor/AttackingCanvas"]
-offset_left = 3167.0
+offset_left = 3426.0
 offset_top = 1088.0
-offset_right = 3813.0
-offset_bottom = 1304.0
+offset_right = 3808.0
+offset_bottom = 1232.0
 text = "Special Ability"
+
+[node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Doctor/AttackingCanvas/Special Ability"]
+position = Vector2(192, 261)
+scale = Vector2(2, 2)
+texture = ExtResource("65_itkqt")
 
 [node name="HealStunUI" type="CanvasLayer" parent="Townie_Logic/Doctor"]
 visible = false
@@ -1010,6 +1075,11 @@ offset_right = 3701.0
 offset_bottom = 1405.0
 text = "Special Ability"
 
+[node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Teacher/DefaultDrawUI/Special Ability"]
+position = Vector2(317, 392)
+scale = Vector2(3.4, 3)
+texture = ExtResource("65_itkqt")
+
 [node name="AttackingCanvas" type="CanvasLayer" parent="Townie_Logic/Teacher"]
 visible = false
 
@@ -1019,15 +1089,20 @@ anchor_left = 0.871
 anchor_top = 0.612
 anchor_right = 0.993
 anchor_bottom = 0.726
-offset_left = -0.640137
-offset_top = 0.0799561
-offset_right = -1.19995
-offset_bottom = 0.300049
+offset_left = 81.3601
+offset_top = 0.0800781
+offset_right = -205.12
+offset_bottom = -102.16
 text = "Range"
 
 [node name="Attack" type="AudioStreamPlayer2D" parent="Townie_Logic/Teacher/AttackingCanvas/Range"]
 position = Vector2(-16, -185)
 stream = ExtResource("8_7t4t6")
+
+[node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Teacher/AttackingCanvas/Range"]
+position = Vector2(192, 71)
+scale = Vector2(2, 2)
+texture = ExtResource("24_jnf2a")
 
 [node name="Brawl" type="Button" parent="Townie_Logic/Teacher/AttackingCanvas"]
 anchors_preset = -1
@@ -1052,11 +1127,16 @@ scale = Vector2(2, 2)
 texture = ExtResource("55_gm3vd")
 
 [node name="Special Ability" type="Button" parent="Townie_Logic/Teacher/AttackingCanvas"]
-offset_left = 3167.0
+offset_left = 3426.0
 offset_top = 1088.0
-offset_right = 3813.0
-offset_bottom = 1304.0
+offset_right = 3808.0
+offset_bottom = 1232.0
 text = "Special Ability"
+
+[node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Teacher/AttackingCanvas/Special Ability"]
+position = Vector2(192, 261)
+scale = Vector2(2, 2)
+texture = ExtResource("65_itkqt")
 
 [node name="Town_Drunk" type="CharacterBody2D" parent="Townie_Logic"]
 script = ExtResource("18_8vpej")
@@ -1092,6 +1172,11 @@ offset_right = 3701.0
 offset_bottom = 1405.0
 text = "Special Ability"
 
+[node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Town_Drunk/DefaultDrawUI/Special Ability"]
+position = Vector2(317, 392)
+scale = Vector2(3.4, 3)
+texture = ExtResource("65_itkqt")
+
 [node name="AttackingCanvas" type="CanvasLayer" parent="Townie_Logic/Town_Drunk"]
 visible = false
 
@@ -1101,15 +1186,20 @@ anchor_left = 0.871
 anchor_top = 0.612
 anchor_right = 0.993
 anchor_bottom = 0.726
-offset_left = -0.640137
-offset_top = 0.0799561
-offset_right = -1.19995
-offset_bottom = 0.300049
+offset_left = 81.3601
+offset_top = 0.0800781
+offset_right = -5.11987
+offset_bottom = -102.16
 text = "Range"
 
 [node name="Attack" type="AudioStreamPlayer2D" parent="Townie_Logic/Town_Drunk/AttackingCanvas/Range"]
 position = Vector2(-16, -185)
 stream = ExtResource("8_7t4t6")
+
+[node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Town_Drunk/AttackingCanvas/Range"]
+position = Vector2(192, 72)
+scale = Vector2(2, 2)
+texture = ExtResource("24_jnf2a")
 
 [node name="Brawl" type="Button" parent="Townie_Logic/Town_Drunk/AttackingCanvas"]
 anchors_preset = -1
@@ -1134,11 +1224,16 @@ scale = Vector2(2, 2)
 texture = ExtResource("55_gm3vd")
 
 [node name="Special Ability" type="Button" parent="Townie_Logic/Town_Drunk/AttackingCanvas"]
-offset_left = 3167.0
+offset_left = 3426.0
 offset_top = 1088.0
-offset_right = 3813.0
-offset_bottom = 1304.0
+offset_right = 3808.0
+offset_bottom = 1232.0
 text = "Special Ability"
+
+[node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Town_Drunk/AttackingCanvas/Special Ability"]
+position = Vector2(192, 261)
+scale = Vector2(2, 2)
+texture = ExtResource("65_itkqt")
 
 [node name="Bar_Keep" type="CharacterBody2D" parent="Townie_Logic"]
 script = ExtResource("19_alpfg")
@@ -1174,6 +1269,11 @@ offset_right = 3701.0
 offset_bottom = 1405.0
 text = "Special Ability"
 
+[node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Bar_Keep/DefaultDrawUI/Special Ability"]
+position = Vector2(317, 392)
+scale = Vector2(3.4, 3)
+texture = ExtResource("65_itkqt")
+
 [node name="AttackingCanvas" type="CanvasLayer" parent="Townie_Logic/Bar_Keep"]
 visible = false
 
@@ -1183,15 +1283,20 @@ anchor_left = 0.871
 anchor_top = 0.612
 anchor_right = 0.993
 anchor_bottom = 0.726
-offset_left = -0.640137
-offset_top = 0.0799561
-offset_right = -1.19995
-offset_bottom = 0.300049
+offset_left = 81.3601
+offset_top = 0.0800781
+offset_right = -5.11987
+offset_bottom = -102.16
 text = "Range"
 
 [node name="Attack" type="AudioStreamPlayer2D" parent="Townie_Logic/Bar_Keep/AttackingCanvas/Range"]
 position = Vector2(-16, -185)
 stream = ExtResource("8_7t4t6")
+
+[node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Bar_Keep/AttackingCanvas/Range"]
+position = Vector2(192, 72)
+scale = Vector2(2, 2)
+texture = ExtResource("24_jnf2a")
 
 [node name="Brawl" type="Button" parent="Townie_Logic/Bar_Keep/AttackingCanvas"]
 anchors_preset = -1
@@ -1216,11 +1321,16 @@ scale = Vector2(2, 2)
 texture = ExtResource("55_gm3vd")
 
 [node name="Special Ability" type="Button" parent="Townie_Logic/Bar_Keep/AttackingCanvas"]
-offset_left = 3167.0
+offset_left = 3426.0
 offset_top = 1088.0
-offset_right = 3813.0
-offset_bottom = 1304.0
+offset_right = 3808.0
+offset_bottom = 1232.0
 text = "Special Ability"
+
+[node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Bar_Keep/AttackingCanvas/Special Ability"]
+position = Vector2(192, 261)
+scale = Vector2(2, 2)
+texture = ExtResource("65_itkqt")
 
 [node name="Ranch_Hand" type="CharacterBody2D" parent="Townie_Logic"]
 script = ExtResource("20_dwx7h")
@@ -1256,6 +1366,11 @@ offset_right = 3701.0
 offset_bottom = 1405.0
 text = "Special Ability"
 
+[node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Ranch_Hand/DefaultDrawUI/Special Ability"]
+position = Vector2(317, 392)
+scale = Vector2(3.4, 3)
+texture = ExtResource("65_itkqt")
+
 [node name="AttackingCanvas" type="CanvasLayer" parent="Townie_Logic/Ranch_Hand"]
 visible = false
 
@@ -1265,15 +1380,20 @@ anchor_left = 0.871
 anchor_top = 0.612
 anchor_right = 0.993
 anchor_bottom = 0.726
-offset_left = -0.640137
-offset_top = 0.0799561
-offset_right = -1.19995
-offset_bottom = 0.300049
+offset_left = 81.3601
+offset_top = 0.0800781
+offset_right = -5.11987
+offset_bottom = -102.16
 text = "Range"
 
 [node name="Attack" type="AudioStreamPlayer2D" parent="Townie_Logic/Ranch_Hand/AttackingCanvas/Range"]
 position = Vector2(-16, -185)
 stream = ExtResource("8_7t4t6")
+
+[node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Ranch_Hand/AttackingCanvas/Range"]
+position = Vector2(192, 72)
+scale = Vector2(2, 2)
+texture = ExtResource("24_jnf2a")
 
 [node name="Brawl" type="Button" parent="Townie_Logic/Ranch_Hand/AttackingCanvas"]
 anchors_preset = -1
@@ -1298,11 +1418,16 @@ scale = Vector2(2, 2)
 texture = ExtResource("55_gm3vd")
 
 [node name="Special Ability" type="Button" parent="Townie_Logic/Ranch_Hand/AttackingCanvas"]
-offset_left = 3167.0
+offset_left = 3426.0
 offset_top = 1088.0
-offset_right = 3813.0
-offset_bottom = 1304.0
+offset_right = 3808.0
+offset_bottom = 1232.0
 text = "Special Ability"
+
+[node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Ranch_Hand/AttackingCanvas/Special Ability"]
+position = Vector2(192, 261)
+scale = Vector2(2, 2)
+texture = ExtResource("65_itkqt")
 
 [node name="Store_Keeper" type="CharacterBody2D" parent="Townie_Logic"]
 script = ExtResource("45_l4515")
@@ -1338,6 +1463,11 @@ offset_right = 3701.0
 offset_bottom = 1405.0
 text = "Special Ability"
 
+[node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Store_Keeper/DefaultDrawUI/Special Ability"]
+position = Vector2(317, 392)
+scale = Vector2(3.4, 3)
+texture = ExtResource("65_itkqt")
+
 [node name="AttackingCanvas" type="CanvasLayer" parent="Townie_Logic/Store_Keeper"]
 visible = false
 
@@ -1347,15 +1477,20 @@ anchor_left = 0.871
 anchor_top = 0.612
 anchor_right = 0.993
 anchor_bottom = 0.726
-offset_left = -0.640137
-offset_top = 0.0799561
-offset_right = -1.19995
-offset_bottom = 0.300049
+offset_left = 81.3601
+offset_top = 0.0800781
+offset_right = -5.11987
+offset_bottom = -102.16
 text = "Range"
 
 [node name="Attack" type="AudioStreamPlayer2D" parent="Townie_Logic/Store_Keeper/AttackingCanvas/Range"]
 position = Vector2(-16, -185)
 stream = ExtResource("8_7t4t6")
+
+[node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Store_Keeper/AttackingCanvas/Range"]
+position = Vector2(192, 72)
+scale = Vector2(2, 2)
+texture = ExtResource("24_jnf2a")
 
 [node name="Brawl" type="Button" parent="Townie_Logic/Store_Keeper/AttackingCanvas"]
 anchors_preset = -1
@@ -1380,11 +1515,16 @@ scale = Vector2(2, 2)
 texture = ExtResource("55_gm3vd")
 
 [node name="Special Ability" type="Button" parent="Townie_Logic/Store_Keeper/AttackingCanvas"]
-offset_left = 3167.0
+offset_left = 3426.0
 offset_top = 1088.0
-offset_right = 3813.0
-offset_bottom = 1304.0
+offset_right = 3808.0
+offset_bottom = 1232.0
 text = "Special Ability"
+
+[node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Store_Keeper/AttackingCanvas/Special Ability"]
+position = Vector2(192, 261)
+scale = Vector2(2, 2)
+texture = ExtResource("65_itkqt")
 
 [node name="Mountain_Man" type="CharacterBody2D" parent="Townie_Logic"]
 script = ExtResource("46_08nss")
@@ -1420,6 +1560,11 @@ offset_right = 3701.0
 offset_bottom = 1405.0
 text = "Special Ability"
 
+[node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Mountain_Man/DefaultDrawUI/Special Ability"]
+position = Vector2(317, 392)
+scale = Vector2(3.4, 3)
+texture = ExtResource("65_itkqt")
+
 [node name="AttackingCanvas" type="CanvasLayer" parent="Townie_Logic/Mountain_Man"]
 visible = false
 
@@ -1429,15 +1574,20 @@ anchor_left = 0.871
 anchor_top = 0.612
 anchor_right = 0.993
 anchor_bottom = 0.726
-offset_left = -0.640137
-offset_top = 0.0799561
-offset_right = -1.19995
-offset_bottom = 0.300049
+offset_left = 81.3601
+offset_top = 0.0800781
+offset_right = -5.11987
+offset_bottom = -102.16
 text = "Range"
 
 [node name="Attack" type="AudioStreamPlayer2D" parent="Townie_Logic/Mountain_Man/AttackingCanvas/Range"]
 position = Vector2(-16, -185)
 stream = ExtResource("8_7t4t6")
+
+[node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Mountain_Man/AttackingCanvas/Range"]
+position = Vector2(192, 72)
+scale = Vector2(2, 2)
+texture = ExtResource("24_jnf2a")
 
 [node name="Brawl" type="Button" parent="Townie_Logic/Mountain_Man/AttackingCanvas"]
 anchors_preset = -1
@@ -1462,11 +1612,16 @@ scale = Vector2(2, 2)
 texture = ExtResource("55_gm3vd")
 
 [node name="Special Ability" type="Button" parent="Townie_Logic/Mountain_Man/AttackingCanvas"]
-offset_left = 3167.0
+offset_left = 3426.0
 offset_top = 1088.0
-offset_right = 3813.0
-offset_bottom = 1304.0
+offset_right = 3808.0
+offset_bottom = 1232.0
 text = "Special Ability"
+
+[node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Mountain_Man/AttackingCanvas/Special Ability"]
+position = Vector2(192, 261)
+scale = Vector2(2, 2)
+texture = ExtResource("65_itkqt")
 
 [node name="Bounty_Hunter" type="CharacterBody2D" parent="Townie_Logic"]
 script = ExtResource("47_cjmfn")
@@ -1502,6 +1657,11 @@ offset_right = 3701.0
 offset_bottom = 1405.0
 text = "Special Ability"
 
+[node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Bounty_Hunter/DefaultDrawUI/Special Ability"]
+position = Vector2(317, 392)
+scale = Vector2(3.4, 3)
+texture = ExtResource("65_itkqt")
+
 [node name="AttackingCanvas" type="CanvasLayer" parent="Townie_Logic/Bounty_Hunter"]
 visible = false
 
@@ -1511,15 +1671,20 @@ anchor_left = 0.871
 anchor_top = 0.612
 anchor_right = 0.993
 anchor_bottom = 0.726
-offset_left = -0.640137
-offset_top = 0.0799561
-offset_right = -1.19995
-offset_bottom = 0.300049
+offset_left = 81.3601
+offset_top = 0.0800781
+offset_right = -5.11987
+offset_bottom = -102.16
 text = "Range"
 
 [node name="Attack" type="AudioStreamPlayer2D" parent="Townie_Logic/Bounty_Hunter/AttackingCanvas/Range"]
 position = Vector2(-16, -185)
 stream = ExtResource("8_7t4t6")
+
+[node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Bounty_Hunter/AttackingCanvas/Range"]
+position = Vector2(192, 72)
+scale = Vector2(2, 2)
+texture = ExtResource("24_jnf2a")
 
 [node name="Brawl" type="Button" parent="Townie_Logic/Bounty_Hunter/AttackingCanvas"]
 anchors_preset = -1
@@ -1544,11 +1709,16 @@ scale = Vector2(2, 2)
 texture = ExtResource("55_gm3vd")
 
 [node name="Special Ability" type="Button" parent="Townie_Logic/Bounty_Hunter/AttackingCanvas"]
-offset_left = 3167.0
+offset_left = 3426.0
 offset_top = 1088.0
-offset_right = 3813.0
-offset_bottom = 1304.0
+offset_right = 3808.0
+offset_bottom = 1232.0
 text = "Special Ability"
+
+[node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Bounty_Hunter/AttackingCanvas/Special Ability"]
+position = Vector2(192, 261)
+scale = Vector2(2, 2)
+texture = ExtResource("65_itkqt")
 
 [node name="Saloon_Girl" type="CharacterBody2D" parent="Townie_Logic"]
 script = ExtResource("48_ai5s4")
@@ -1584,6 +1754,11 @@ offset_right = 3701.0
 offset_bottom = 1405.0
 text = "Special Ability"
 
+[node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Saloon_Girl/DefaultDrawUI/Special Ability"]
+position = Vector2(317, 392)
+scale = Vector2(3.4, 3)
+texture = ExtResource("65_itkqt")
+
 [node name="AttackingCanvas" type="CanvasLayer" parent="Townie_Logic/Saloon_Girl"]
 visible = false
 
@@ -1593,15 +1768,20 @@ anchor_left = 0.871
 anchor_top = 0.612
 anchor_right = 0.993
 anchor_bottom = 0.726
-offset_left = -0.640137
-offset_top = 0.0799561
-offset_right = -1.19995
-offset_bottom = 0.300049
+offset_left = 81.3601
+offset_top = 0.0800781
+offset_right = -5.11987
+offset_bottom = -102.16
 text = "Range"
 
 [node name="Attack" type="AudioStreamPlayer2D" parent="Townie_Logic/Saloon_Girl/AttackingCanvas/Range"]
 position = Vector2(-16, -185)
 stream = ExtResource("8_7t4t6")
+
+[node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Saloon_Girl/AttackingCanvas/Range"]
+position = Vector2(192, 72)
+scale = Vector2(2, 2)
+texture = ExtResource("24_jnf2a")
 
 [node name="Brawl" type="Button" parent="Townie_Logic/Saloon_Girl/AttackingCanvas"]
 anchors_preset = -1
@@ -1626,11 +1806,16 @@ scale = Vector2(2, 2)
 texture = ExtResource("55_gm3vd")
 
 [node name="Special Ability" type="Button" parent="Townie_Logic/Saloon_Girl/AttackingCanvas"]
-offset_left = 3167.0
+offset_left = 3426.0
 offset_top = 1088.0
-offset_right = 3813.0
-offset_bottom = 1304.0
+offset_right = 3808.0
+offset_bottom = 1232.0
 text = "Special Ability"
+
+[node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Saloon_Girl/AttackingCanvas/Special Ability"]
+position = Vector2(192, 261)
+scale = Vector2(2, 2)
+texture = ExtResource("65_itkqt")
 
 [node name="Bank_Manager" type="CharacterBody2D" parent="Townie_Logic"]
 script = ExtResource("49_4aoh4")
@@ -1666,6 +1851,11 @@ offset_right = 3701.0
 offset_bottom = 1405.0
 text = "Special Ability"
 
+[node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Bank_Manager/DefaultDrawUI/Special Ability"]
+position = Vector2(317, 392)
+scale = Vector2(3.4, 3)
+texture = ExtResource("65_itkqt")
+
 [node name="AttackingCanvas" type="CanvasLayer" parent="Townie_Logic/Bank_Manager"]
 visible = false
 
@@ -1675,15 +1865,20 @@ anchor_left = 0.871
 anchor_top = 0.612
 anchor_right = 0.993
 anchor_bottom = 0.726
-offset_left = -0.640137
-offset_top = 0.0799561
-offset_right = -1.19995
-offset_bottom = 0.300049
+offset_left = 81.3601
+offset_top = 0.0800781
+offset_right = -5.11987
+offset_bottom = -102.16
 text = "Range"
 
 [node name="Attack" type="AudioStreamPlayer2D" parent="Townie_Logic/Bank_Manager/AttackingCanvas/Range"]
 position = Vector2(-16, -185)
 stream = ExtResource("8_7t4t6")
+
+[node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Bank_Manager/AttackingCanvas/Range"]
+position = Vector2(192, 72)
+scale = Vector2(2, 2)
+texture = ExtResource("24_jnf2a")
 
 [node name="Brawl" type="Button" parent="Townie_Logic/Bank_Manager/AttackingCanvas"]
 anchors_preset = -1
@@ -1708,11 +1903,16 @@ scale = Vector2(2, 2)
 texture = ExtResource("55_gm3vd")
 
 [node name="Special Ability" type="Button" parent="Townie_Logic/Bank_Manager/AttackingCanvas"]
-offset_left = 3167.0
+offset_left = 3426.0
 offset_top = 1088.0
-offset_right = 3813.0
-offset_bottom = 1304.0
+offset_right = 3808.0
+offset_bottom = 1232.0
 text = "Special Ability"
+
+[node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Bank_Manager/AttackingCanvas/Special Ability"]
+position = Vector2(192, 261)
+scale = Vector2(2, 2)
+texture = ExtResource("65_itkqt")
 
 [node name="Sheriff" type="CharacterBody2D" parent="Townie_Logic"]
 script = ExtResource("50_glnk6")
@@ -1747,6 +1947,11 @@ offset_right = 3701.0
 offset_bottom = 1405.0
 text = "Special Ability"
 
+[node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Sheriff/DefaultDrawUI/Special Ability"]
+position = Vector2(317, 392)
+scale = Vector2(3.4, 3)
+texture = ExtResource("65_itkqt")
+
 [node name="AttackingCanvas" type="CanvasLayer" parent="Townie_Logic/Sheriff"]
 visible = false
 
@@ -1756,15 +1961,20 @@ anchor_left = 0.871
 anchor_top = 0.612
 anchor_right = 0.993
 anchor_bottom = 0.726
-offset_left = -0.640137
-offset_top = 0.0799561
-offset_right = -1.19995
-offset_bottom = 0.300049
+offset_left = 81.3601
+offset_top = 0.0800781
+offset_right = -5.11987
+offset_bottom = -102.16
 text = "Range"
 
 [node name="Attack" type="AudioStreamPlayer2D" parent="Townie_Logic/Sheriff/AttackingCanvas/Range"]
 position = Vector2(-16, -185)
 stream = ExtResource("8_7t4t6")
+
+[node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Sheriff/AttackingCanvas/Range"]
+position = Vector2(192, 72)
+scale = Vector2(2, 2)
+texture = ExtResource("24_jnf2a")
 
 [node name="Brawl" type="Button" parent="Townie_Logic/Sheriff/AttackingCanvas"]
 anchors_preset = -1
@@ -1789,11 +1999,16 @@ scale = Vector2(2, 2)
 texture = ExtResource("55_gm3vd")
 
 [node name="Special Ability" type="Button" parent="Townie_Logic/Sheriff/AttackingCanvas"]
-offset_left = 3167.0
+offset_left = 3426.0
 offset_top = 1088.0
-offset_right = 3813.0
-offset_bottom = 1304.0
+offset_right = 3808.0
+offset_bottom = 1232.0
 text = "Special Ability"
+
+[node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Sheriff/AttackingCanvas/Special Ability"]
+position = Vector2(192, 261)
+scale = Vector2(2, 2)
+texture = ExtResource("65_itkqt")
 
 [connection signal="child_order_changed" from="." to="Rules_Controller" method="_on_node_2d_child_order_changed"]
 [connection signal="pressed" from="StartUpCanvas/Start" to="Rules_Controller" method="DeleteLater"]
