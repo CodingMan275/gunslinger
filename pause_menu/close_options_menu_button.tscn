@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://o8s2bfh5cxgj"]
+[gd_scene load_steps=7 format=3 uid="uid://o8s2bfh5cxgj"]
 
 [ext_resource type="Script" path="res://pause_menu/close_options_menu_button.gd" id="1_csma2"]
+[ext_resource type="Texture2D" uid="uid://bkk1m035fvd3i" path="res://button icons/Close Button.png" id="2_2yknk"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wlhlq"]
 
@@ -44,5 +45,10 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_a2nxc")
 theme_override_styles/normal = SubResource("StyleBoxFlat_gp72c")
 text = "Close"
 script = ExtResource("1_csma2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(229, 90)
+scale = Vector2(2.45, 2.55)
+texture = ExtResource("2_2yknk")
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]

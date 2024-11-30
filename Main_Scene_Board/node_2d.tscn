@@ -1,4 +1,4 @@
-[gd_scene load_steps=109 format=4 uid="uid://jl7k3ltwbp41"]
+[gd_scene load_steps=111 format=4 uid="uid://jl7k3ltwbp41"]
 
 [ext_resource type="Texture2D" uid="uid://bgfw83igonq2c" path="res://Main_Scene_Board/Updated Tiles/BoardwalkAlpha.png" id="5_28umi"]
 [ext_resource type="Script" path="res://Main_Scene_Board/Canvas_Layer/Turn_Label.gd" id="5_52d0j"]
@@ -80,6 +80,8 @@
 [ext_resource type="Texture2D" uid="uid://bb7qm4lgyjr5o" path="res://button icons/Give button.png" id="52_xqhx6"]
 [ext_resource type="Texture2D" uid="uid://cmgkkwmsfwmk5" path="res://ranchhandsprite.png" id="54_2nfar"]
 [ext_resource type="Texture2D" uid="uid://babn4p6kuyg7m" path="res://button icons/Brawl Button.png" id="55_gm3vd"]
+[ext_resource type="Texture2D" uid="uid://b6dh3ci7oc56m" path="res://button icons/weapon 1 button.png" id="55_ju5bv"]
+[ext_resource type="Texture2D" uid="uid://bqghemmbyb73e" path="res://button icons/weapon 2 button.png" id="56_380ho"]
 [ext_resource type="Texture2D" uid="uid://cidyfieluehq" path="res://CPU_and_Player/Special button.png" id="65_itkqt"]
 [ext_resource type="Texture2D" uid="uid://ba74lkbeo36md" path="res://GeneralStoreKeeper sprite.png" id="67_tdm6s"]
 [ext_resource type="Texture2D" uid="uid://c6oau2n3epgtr" path="res://MountainMan sprite.png" id="69_qvtfu"]
@@ -793,6 +795,11 @@ offset_bottom = -8.03998
 theme_override_font_sizes/font_size = 60
 text = "Weapon 1"
 
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Weapon1"]
+position = Vector2(360, 239)
+scale = Vector2(5.4, 4.5)
+texture = ExtResource("55_ju5bv")
+
 [node name="Weapon2" type="Button" parent="CanvasLayer"]
 visible = false
 anchors_preset = -1
@@ -800,12 +807,17 @@ anchor_left = 0.517
 anchor_top = 0.222
 anchor_right = 0.762
 anchor_bottom = 0.37
-offset_left = -0.160004
-offset_top = 0.0599937
-offset_right = 0.23999
-offset_bottom = 0.0999985
+offset_left = 8.71997
+offset_top = 0.47998
+offset_right = 85.3198
+offset_bottom = -8.04004
 theme_override_font_sizes/font_size = 60
 text = "Weapon 2"
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Weapon2"]
+position = Vector2(509.88, 153.42)
+scale = Vector2(5.4, 4.5)
+texture = ExtResource("56_380ho")
 
 [node name="ProficiencyNode" type="Node" parent="."]
 script = ExtResource("27_bf6tm")

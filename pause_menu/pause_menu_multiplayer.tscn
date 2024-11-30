@@ -1,37 +1,16 @@
-[gd_scene load_steps=11 format=3 uid="uid://dfytnujg1s2es"]
+[gd_scene load_steps=9 format=3 uid="uid://dfytnujg1s2es"]
 
 [ext_resource type="Shader" path="res://pause_menu/pause_menu_singleplayer.gdshader" id="1_2kl5h"]
 [ext_resource type="Script" path="res://pause_menu/pause_menu_multiplayer.gd" id="1_7u3h1"]
 [ext_resource type="Texture2D" uid="uid://otxjchlhwjap" path="res://button icons/Resume Button.png" id="3_3xnyv"]
 [ext_resource type="Texture2D" uid="uid://bhg13q4fcuwsx" path="res://button icons/Options Button.png" id="3_vfq8y"]
 [ext_resource type="Texture2D" uid="uid://cdo2v2x75y08t" path="res://button icons/Quit Button.png" id="4_7eljc"]
+[ext_resource type="Texture2D" uid="uid://ccv0gcxe5en8x" path="res://button icons/Yes word button.png" id="6_olbno"]
+[ext_resource type="Texture2D" uid="uid://pt2sbrqwsefx" path="res://button icons/No word button.png" id="7_b6woe"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k5u20"]
 shader = ExtResource("1_2kl5h")
 shader_parameter/lod = 3.0
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_glenx"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xqge4"]
-bg_color = Color(0.621524, 0.621524, 0.621524, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f2kk0"]
-bg_color = Color(0.621524, 0.621524, 0.621524, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xm4pd"]
-bg_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
 
 [node name="PauseMenuMultiplayer" type="Control"]
 layout_mode = 3
@@ -156,11 +135,12 @@ theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 120
-theme_override_styles/focus = SubResource("StyleBoxEmpty_glenx")
-theme_override_styles/hover = SubResource("StyleBoxFlat_xqge4")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_f2kk0")
-theme_override_styles/normal = SubResource("StyleBoxFlat_xm4pd")
 text = "Yes"
+
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer2/VBoxContainer/Yes_Button"]
+position = Vector2(287, 69)
+scale = Vector2(5.73, 3.5)
+texture = ExtResource("6_olbno")
 
 [node name="No_Button" type="Button" parent="MarginContainer2/VBoxContainer"]
 layout_mode = 2
@@ -170,11 +150,12 @@ theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 120
-theme_override_styles/focus = SubResource("StyleBoxEmpty_glenx")
-theme_override_styles/hover = SubResource("StyleBoxFlat_xqge4")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_f2kk0")
-theme_override_styles/normal = SubResource("StyleBoxFlat_xm4pd")
 text = "No"
+
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer2/VBoxContainer/No_Button"]
+position = Vector2(354, 54)
+scale = Vector2(5.73, 3.5)
+texture = ExtResource("7_b6woe")
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Resume_Button" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Options_Button" to="." method="_on_options_button_pressed"]
