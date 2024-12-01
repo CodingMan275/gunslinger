@@ -148,6 +148,7 @@ func _update_turn(x):
 			DynamiteButton.hide()
 			#Removes the ability for the player to move
 			can_act = false
+			Movable = false
 			#Did I draw a card?
 			if(DrewCard):
 				#Get the townie I drew and make them unmovable becauseI ended my turn
