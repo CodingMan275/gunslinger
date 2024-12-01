@@ -1,10 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://d0ncmr5j7hrug"]
+[gd_scene load_steps=6 format=3 uid="uid://d0ncmr5j7hrug"]
 
 [ext_resource type="Texture2D" uid="uid://xf2r52dg4fpm" path="res://main_menu/main_menu_art_assets/settings background blurred darkened.png" id="1_ai21t"]
 [ext_resource type="PackedScene" uid="uid://cebcnc652bypc" path="res://main_menu/main_menu_back_button.tscn" id="1_iekfw"]
 [ext_resource type="PackedScene" uid="uid://dx8bf3sg52wqi" path="res://main_menu/options_tab_container.tscn" id="1_pldix"]
 [ext_resource type="PackedScene" uid="uid://hj83ai4o2o5m" path="res://debug_screen/Back_to_Debug_Menu.tscn" id="2_no4dn"]
-[ext_resource type="AudioStream" uid="uid://73gync2ngicf" path="res://main_menu/GunSlinger Menu.mp3" id="3_uqikf"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_s68js"]
 texture = ExtResource("1_ai21t")
@@ -56,13 +55,6 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Main Menu Back Button" parent="." instance=ExtResource("1_iekfw")]
-layout_mode = 0
-offset_left = 33.0
-offset_top = 1984.0
-offset_right = 780.0
-offset_bottom = 2118.0
-
 [node name="BackToDebugMenu" parent="." instance=ExtResource("2_no4dn")]
 visible = false
 layout_mode = 1
@@ -71,7 +63,9 @@ offset_top = 230.0
 offset_right = -6.0
 offset_bottom = -5.0
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_uqikf")
-autoplay = true
-bus = &"Music"
+[node name="Main Menu Back Button" parent="." instance=ExtResource("1_iekfw")]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 1947.0
+offset_right = 795.0
+offset_bottom = 2116.0

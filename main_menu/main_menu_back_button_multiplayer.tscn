@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://d3lpon4vdk0x4"]
+
+[ext_resource type="Script" path="res://main_menu/main_menu_back_button_multiplayer.gd" id="1_csclk"]
+[ext_resource type="Texture2D" uid="uid://wixoxljvtrll" path="res://main_menu/main_menu_art_assets/Main Menu button.png" id="2_3kad4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wlhlq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yfeuf"]
+bg_color = Color(0.621524, 0.621524, 0.621524, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a2nxc"]
+bg_color = Color(0.621524, 0.621524, 0.621524, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gp72c"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[node name="Main Menu Back Button (Multiplayer)" type="Button"]
+offset_right = 747.0
+offset_bottom = 169.0
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wlhlq")
+theme_override_styles/hover = SubResource("StyleBoxFlat_yfeuf")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_a2nxc")
+theme_override_styles/normal = SubResource("StyleBoxFlat_gp72c")
+text = "Back to main menu"
+script = ExtResource("1_csclk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(378, 87)
+scale = Vector2(4.2, 3)
+texture = ExtResource("2_3kad4")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

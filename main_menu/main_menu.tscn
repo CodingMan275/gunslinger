@@ -1,8 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://pblyho6utls1"]
+[gd_scene load_steps=8 format=3 uid="uid://pblyho6utls1"]
 
 [ext_resource type="Script" path="res://main_menu/main_menu.gd" id="1_a30og"]
 [ext_resource type="Texture2D" uid="uid://bjl6l6es04344" path="res://main_menu/main_menu_art_assets/Mountain background title screen.png" id="2_oms57"]
-[ext_resource type="AudioStream" uid="uid://73gync2ngicf" path="res://main_menu/GunSlinger Menu.mp3" id="2_ret15"]
 [ext_resource type="Texture2D" uid="uid://y5grgqvpm68u" path="res://button icons/Start Button.png" id="3_0igva"]
 [ext_resource type="Texture2D" uid="uid://bhg13q4fcuwsx" path="res://button icons/Options Button.png" id="4_xut14"]
 [ext_resource type="Texture2D" uid="uid://cdo2v2x75y08t" path="res://button icons/Quit Button.png" id="5_mvg2b"]
@@ -89,11 +88,6 @@ text = "Exit"
 position = Vector2(1828.33, -140.482)
 scale = Vector2(6.13834, 4.00271)
 texture = ExtResource("5_mvg2b")
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_ret15")
-autoplay = true
-bus = &"Music"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(1930, 563)

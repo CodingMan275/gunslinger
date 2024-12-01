@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cyojkylsg3khq"]
+[gd_scene load_steps=4 format=3 uid="uid://cyojkylsg3khq"]
 
 [ext_resource type="Texture2D" uid="uid://dax2rsuw6pbj4" path="res://Victory_Screens/Victory_screen_art_assets/player2winscreen_v1_11_09_24_michele_deblasi_gunslinger.png" id="1_1n82t"]
-[ext_resource type="PackedScene" uid="uid://cebcnc652bypc" path="res://main_menu/main_menu_back_button.tscn" id="1_rqbap"]
-[ext_resource type="Texture2D" uid="uid://wixoxljvtrll" path="res://main_menu/main_menu_art_assets/Main Menu button.png" id="3_bqr2n"]
+[ext_resource type="PackedScene" uid="uid://dswxiutero3mg" path="res://main_menu/main_menu_back_button_victory.tscn" id="2_27dsy"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4dxd1"]
 texture = ExtResource("1_1n82t")
@@ -44,14 +43,8 @@ text = "Player 2 Wins!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Main Menu Back Button" parent="." instance=ExtResource("1_rqbap")]
-layout_mode = 0
-offset_left = 40.0
-offset_top = 1923.0
-offset_right = 849.0
-offset_bottom = 2101.0
-
-[node name="Sprite2D" type="Sprite2D" parent="Main Menu Back Button"]
-position = Vector2(405, 91)
-scale = Vector2(4.3, 2.6)
-texture = ExtResource("3_bqr2n")
+[node name="Main Menu Back Button (Victory)" parent="." instance=ExtResource("2_27dsy")]
+offset_left = 1527.0
+offset_top = 1918.0
+offset_right = 2274.0
+offset_bottom = 2087.0

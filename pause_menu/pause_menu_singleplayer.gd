@@ -25,6 +25,7 @@ func _on_save_load_button_pressed():
 	margin_container_2.show()
 
 func _on_quit__button_pressed():
+	AudioPlayer.play()
 	RuleController.Winner(-1 , false)
 
 func _on_load_button_pressed():

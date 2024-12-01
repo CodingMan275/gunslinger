@@ -1,5 +1,7 @@
 extends Control
 
+func _ready():
+	AudioPlayer.play_music_main_menu()
 
 func _on_start_button_pressed():
 	get_tree().change_scene_to_file("res://main_menu/mode_selection_screen.tscn")
