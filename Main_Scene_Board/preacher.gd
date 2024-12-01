@@ -33,6 +33,8 @@ func _init():
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Name = get_name()
+	rules = get_parent().get_parent().get_node("Rules_Controller")
+	cards = get_parent().get_parent().get_node("Cards")
 	pass # Replace with function body.
 
 '''

@@ -1,10 +1,14 @@
 class Character extends CharacterBody2D: 
 	const WeaponScript = preload("res://CPU_and_Player/Weapon.gd")
 	
-	@onready var rules = get_node("res://Main_Scene_Board/rules_controller.gd")
+	var rules 
+	
+	var cards
 	
 	
 	var is_gunslinger = false
+	
+	var is_dead = false
 	
 	#var ID: int
 	var Name : String
@@ -106,21 +110,25 @@ class Character extends CharacterBody2D:
 		
 	func character_in_range(char: Character) -> bool:
 		return false #create function body later
-	'''	
-	#takes the player attempting to make the move for reasons that are applicable in later child classes
-	func move(player):
-		#print("Move: "+str(move_possible()))
-		#print(ActionPoint)
-		if Input.is_action_just_pressed("LeftClick") and ActionPoint > 0:
-			if move_possible():
-				self.global_position = Vector2(get_global_mouse_position())
-			#	pos = tile_map_node.local_to_map(self.position)
-				print(pos)
-				movable = false
-			#DrawButton.hide()
-		elif (Input.is_action_just_pressed("LeftClick") and can_move(player) and ActionPoint == 0):
-			GlobalScript.DebugScript.add("You have no more Action Points ")
-'''
+	@rpc("any_peer","call_local")
+	func HealthCheck():
+		if Health <= 0:
+			if cards.DrawArray.has(rules.Target.name):
+				for i in cards.DrawArray.size() - 1:
+					if cards.DrawArray[i] == rules.Target.name:
+						cards.DrawArray.pop_at(i)
+			elif cards.DiscardArray.has(rules.Target.name):
+				for i in cards.DiscardArray.size() - 1:
+					if cards.DiscardArray[i] == rules.Target.name:
+						cards.DiscardArray.pop_at(i)
+			self.pos = Vector2(13,13)
+			is_dead = true
+			self.hide()
+			print("I'm dead")
+		else:
+			pass
+	
+	
 	func teleport(new_pos: Vector2):
 		pos = new_pos
 		self.global_position = tile_map_node.map_to_local(new_pos)

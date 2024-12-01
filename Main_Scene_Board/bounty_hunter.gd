@@ -28,6 +28,8 @@ func _init():
 func _ready() -> void:
 	Name = get_name()
 	get_node("../../Cards").DrawnCard.connect(hire_townsfolk)
+	rules = get_parent().get_parent().get_node("Rules_Controller")
+	cards = get_parent().get_parent().get_node("Cards")
 	OriginalWeapon = "Knife"
 	OriginalDmg = 1
 	OriginalStun = 0

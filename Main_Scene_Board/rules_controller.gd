@@ -210,7 +210,8 @@ func SinglePlay(i , index):
 			var currentPlayer = CPU_scene.instantiate()
 			#The player needs to get information from the tile map
 			currentPlayer.tile_map_node = TileMapScene
-			currentPlayer.highlight_node = HighlightScene
+			#Had to comment this out becuase its messing with cpu for testing
+	#		currentPlayer.highlight_node = HighlightScene
 			#Change the name of the instance to the ID of the player
 			#This is important for getting which specific player we want
 			currentPlayer.name = str("CPU " + str(index))
@@ -471,6 +472,7 @@ func Attack_Calc(damage):
 	#Also logic error? Its taking the the player thats getting attack
 	#Weapon damage, not the attacking players?
 	Target.Health -= damage
+	Target.HealthCheck.rpc()
 	'''
 	if GlobalScript.PlayerNode[Enemy].Health <= 0:
 		GlobalScript.PlayerNode[Enemy].Health = 0
