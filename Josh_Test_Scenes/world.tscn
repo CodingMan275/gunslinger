@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Josh_Test_Scenes/world.gd" id="1_6igo1"]
 [ext_resource type="PackedScene" uid="uid://x0tek8t1bewj" path="res://CPU_and_Player/Player.tscn" id="2_lorrs"]
 [ext_resource type="PackedScene" uid="uid://hj83ai4o2o5m" path="res://debug_screen/Back_to_Debug_Menu.tscn" id="3_a50rb"]
-[ext_resource type="PackedScene" uid="uid://cebcnc652bypc" path="res://main_menu/main_menu_back_button.tscn" id="4_pf7yt"]
+[ext_resource type="PackedScene" uid="uid://d3lpon4vdk0x4" path="res://main_menu/main_menu_back_button_multiplayer.tscn" id="4_hnq3p"]
 
 [node name="World" type="Node2D"]
 position = Vector2(238, 140)
@@ -126,11 +126,7 @@ offset_bottom = -94.0
 grow_horizontal = 1
 grow_vertical = 1
 
-[node name="Main Menu Back Button" parent="." instance=ExtResource("4_pf7yt")]
-offset_left = -182.0
-offset_top = -55.0
-offset_right = 565.0
-offset_bottom = 55.0
+[node name="Main Menu Back Button (Multiplayer)" parent="." instance=ExtResource("4_hnq3p")]
 
 [connection signal="pressed" from="CanvasLayer/Host" to="." method="_on_host_pressed"]
 [connection signal="pressed" from="CanvasLayer/Join" to="." method="_on_join_pressed"]

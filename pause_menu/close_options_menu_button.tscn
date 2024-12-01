@@ -1,30 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://o8s2bfh5cxgj"]
+[gd_scene load_steps=3 format=3 uid="uid://o8s2bfh5cxgj"]
 
 [ext_resource type="Script" path="res://pause_menu/close_options_menu_button.gd" id="1_csma2"]
 [ext_resource type="Texture2D" uid="uid://bkk1m035fvd3i" path="res://button icons/Close Button.png" id="2_2yknk"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wlhlq"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yfeuf"]
-bg_color = Color(0.621524, 0.621524, 0.621524, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a2nxc"]
-bg_color = Color(0.621524, 0.621524, 0.621524, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gp72c"]
-bg_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
 
 [node name="CloseOptionsMenuButton" type="Button"]
 anchors_preset = 15
@@ -39,10 +16,6 @@ theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 120
-theme_override_styles/focus = SubResource("StyleBoxEmpty_wlhlq")
-theme_override_styles/hover = SubResource("StyleBoxFlat_yfeuf")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_a2nxc")
-theme_override_styles/normal = SubResource("StyleBoxFlat_gp72c")
 text = "Close"
 script = ExtResource("1_csma2")
 

@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 GlobalScript="*res://global_script.gd"
+AudioPlayer="*res://main_menu/main_menu_music_control/audio_player.tscn"
 
 [display]
 

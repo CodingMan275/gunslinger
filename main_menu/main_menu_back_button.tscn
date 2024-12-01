@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://cebcnc652bypc"]
+[gd_scene load_steps=7 format=3 uid="uid://cebcnc652bypc"]
 
 [ext_resource type="Script" path="res://main_menu/main_menu_back_button.gd" id="1_wegko"]
+[ext_resource type="Texture2D" uid="uid://wixoxljvtrll" path="res://main_menu/main_menu_art_assets/Main Menu button.png" id="2_5202v"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wlhlq"]
 
@@ -26,8 +27,8 @@ corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
 [node name="Main Menu Back Button" type="Button"]
-offset_right = 294.0
-offset_bottom = 78.0
+offset_right = 747.0
+offset_bottom = 169.0
 size_flags_vertical = 3
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
@@ -40,5 +41,10 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_a2nxc")
 theme_override_styles/normal = SubResource("StyleBoxFlat_gp72c")
 text = "Back to main menu"
 script = ExtResource("1_wegko")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(378, 87)
+scale = Vector2(4.2, 3)
+texture = ExtResource("2_5202v")
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]
