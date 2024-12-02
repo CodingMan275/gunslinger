@@ -55,8 +55,8 @@ theme_override_font_sizes/font_size = 120
 text = "Start Game"
 
 [node name="Sprite2D" type="Sprite2D" parent="VBoxContainer/Start Button"]
-position = Vector2(1828.33, 610.629)
-scale = Vector2(6.13834, 4.00271)
+position = Vector2(1954.44, 647.778)
+scale = Vector2(6.7, 4.35)
 texture = ExtResource("3_0igva")
 
 [node name="Options Button" type="Button" parent="VBoxContainer"]
@@ -70,8 +70,8 @@ theme_override_font_sizes/font_size = 120
 text = "Options"
 
 [node name="Sprite2D" type="Sprite2D" parent="VBoxContainer/Options Button"]
-position = Vector2(1828.33, 230.629)
-scale = Vector2(6.13834, 4.00271)
+position = Vector2(1954.44, 239.889)
+scale = Vector2(6.7, 4.35)
 texture = ExtResource("4_xut14")
 
 [node name="Exit Button" type="Button" parent="VBoxContainer"]
@@ -85,8 +85,8 @@ theme_override_font_sizes/font_size = 120
 text = "Exit"
 
 [node name="Sprite2D" type="Sprite2D" parent="VBoxContainer/Exit Button"]
-position = Vector2(1828.33, -140.482)
-scale = Vector2(6.13834, 4.00271)
+position = Vector2(1946.67, -164.667)
+scale = Vector2(6.7, 4.35)
 texture = ExtResource("5_mvg2b")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

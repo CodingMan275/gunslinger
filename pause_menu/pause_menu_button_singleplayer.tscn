@@ -48,8 +48,8 @@ text = "||"
 script = ExtResource("1_lxkji")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(95, 99)
-scale = Vector2(1.5, 2.95)
+position = Vector2(95, 99.25)
+scale = Vector2(1.6, 3.15)
 texture = ExtResource("2_nxumk")
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]

@@ -67,8 +67,8 @@ theme_override_font_sizes/font_size = 120
 text = "Resume"
 
 [node name="Sprite2D" type="Sprite2D" parent="MarginContainer/VBoxContainer/Resume_Button"]
-position = Vector2(350.5, 122.5)
-scale = Vector2(3.73, 3.42)
+position = Vector2(354.5, 117.5)
+scale = Vector2(4.3, 3.65)
 texture = ExtResource("3_3xnyv")
 
 [node name="Options_Button" type="Button" parent="MarginContainer/VBoxContainer"]
@@ -82,8 +82,8 @@ theme_override_font_sizes/font_size = 120
 text = "Options"
 
 [node name="Sprite2D" type="Sprite2D" parent="MarginContainer/VBoxContainer/Options_Button"]
-position = Vector2(1115, 205)
-scale = Vector2(3.73856, 3.42045)
+position = Vector2(1230.5, 210.5)
+scale = Vector2(4.3, 3.65)
 texture = ExtResource("3_vfq8y")
 
 [node name="Quit_Button" type="Button" parent="MarginContainer/VBoxContainer"]
@@ -97,8 +97,8 @@ theme_override_font_sizes/font_size = 120
 text = "Quit"
 
 [node name="Sprite2D" type="Sprite2D" parent="MarginContainer/VBoxContainer/Quit_Button"]
-position = Vector2(1115, -116)
-scale = Vector2(3.73856, 3.42045)
+position = Vector2(1225.5, -131.5)
+scale = Vector2(4.3, 3.65)
 texture = ExtResource("4_7eljc")
 
 [node name="MarginContainer2" type="MarginContainer" parent="."]
@@ -139,7 +139,7 @@ text = "Yes"
 
 [node name="Sprite2D" type="Sprite2D" parent="MarginContainer2/VBoxContainer/Yes_Button"]
 position = Vector2(287, 69)
-scale = Vector2(5.73, 3.5)
+scale = Vector2(6.5, 4.25)
 texture = ExtResource("6_olbno")
 
 [node name="No_Button" type="Button" parent="MarginContainer2/VBoxContainer"]
@@ -154,7 +154,7 @@ text = "No"
 
 [node name="Sprite2D" type="Sprite2D" parent="MarginContainer2/VBoxContainer/No_Button"]
 position = Vector2(354, 54)
-scale = Vector2(5.73, 3.5)
+scale = Vector2(6.5, 4.25)
 texture = ExtResource("7_b6woe")
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Resume_Button" to="." method="_on_resume_button_pressed"]

@@ -20,8 +20,8 @@ text = "Close"
 script = ExtResource("1_csma2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(229, 90)
-scale = Vector2(2.45, 2.55)
+position = Vector2(230, 88)
+scale = Vector2(2.7, 2.85)
 texture = ExtResource("2_2yknk")
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]

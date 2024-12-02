@@ -44,6 +44,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Main Menu Back Button (Victory)" parent="." instance=ExtResource("2_27dsy")]
+layout_mode = 0
 offset_left = 1527.0
 offset_top = 1918.0
 offset_right = 2274.0
