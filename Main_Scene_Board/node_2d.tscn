@@ -1,4 +1,4 @@
-[gd_scene load_steps=111 format=4 uid="uid://jl7k3ltwbp41"]
+[gd_scene load_steps=116 format=4 uid="uid://jl7k3ltwbp41"]
 
 [ext_resource type="Texture2D" uid="uid://bgfw83igonq2c" path="res://Main_Scene_Board/Updated Tiles/BoardwalkAlpha.png" id="5_28umi"]
 [ext_resource type="Script" path="res://Main_Scene_Board/Canvas_Layer/Turn_Label.gd" id="5_52d0j"]
@@ -23,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://cp7ccxsdolbco" path="res://Main_Scene_Board/Updated Tiles/Livery2.png" id="10_okhjl"]
 [ext_resource type="Texture2D" uid="uid://stdd55mk8v0k" path="res://Main_Scene_Board/Updated Tiles/School.png" id="11_5y4ys"]
 [ext_resource type="Texture2D" uid="uid://bjw3pfr68vfq1" path="res://Main_Scene_Board/Updated Tiles/PathCrossAlpha.png" id="11_pvrpk"]
+[ext_resource type="Texture2D" uid="uid://dm07irrq3j8us" path="res://Main_Scene_Board/Updated Tiles/School_V2_11_20_2024_Auper_Gunslinger.png" id="11_tanfh"]
 [ext_resource type="Texture2D" uid="uid://o8yrpil2wgv2" path="res://Main_Scene_Board/Updated Tiles/DoctorsOfficeV2.png" id="12_2ad7n"]
 [ext_resource type="Texture2D" uid="uid://wpqjamy8nklp" path="res://icon.svg" id="12_kmvqj"]
 [ext_resource type="Texture2D" uid="uid://dnwtxvpqei783" path="res://Main_Scene_Board/Updated Tiles/PathLineEastToWest.png" id="12_wpbnm"]
@@ -40,10 +41,13 @@
 [ext_resource type="Script" path="res://Main_Scene_Board/town_drunk.gd" id="18_8vpej"]
 [ext_resource type="Script" path="res://Main_Scene_Board/bar_keep.gd" id="19_alpfg"]
 [ext_resource type="Script" path="res://Main_Scene_Board/ranch_hand.gd" id="20_dwx7h"]
+[ext_resource type="Texture2D" uid="uid://dvbxmh0y7cakq" path="res://Main_Scene_Board/Updated Tiles/Jail_V2_11_12_2024_Milo_Hustins_Gunslinger.png" id="22_hsdbo"]
 [ext_resource type="Texture2D" uid="uid://y5grgqvpm68u" path="res://button icons/Start Button.png" id="23_6f3f6"]
 [ext_resource type="AudioStream" uid="uid://donl5bgw25cim" path="res://main_menu/GameVictory.wav" id="23_8pn6l"]
+[ext_resource type="Texture2D" uid="uid://ccc6sj372utu3" path="res://Main_Scene_Board/Updated Tiles/General_Store_V2_11_25_2024_Milo_Hustins_Gunslinger.png" id="23_xvqhx"]
 [ext_resource type="Texture2D" uid="uid://blwke6qxx6grk" path="res://button icons/End Turn Button.png" id="24_4137c"]
 [ext_resource type="Texture2D" uid="uid://bboh4etnme1xk" path="res://CPU_and_Player/Range button.png" id="24_jnf2a"]
+[ext_resource type="Texture2D" uid="uid://c6aocq6kpwmjg" path="res://Main_Scene_Board/Updated Tiles/Saloon_V2_11_17_2024_Milo_Hustins_Gunslinger.png" id="24_oq3uo"]
 [ext_resource type="AudioStream" uid="uid://hpux0mx0kufi" path="res://main_menu/Pistol Shoot.wav" id="25_bu3kd"]
 [ext_resource type="Texture2D" uid="uid://c2w48yl67xfwr" path="res://button icons/Draw Card Button.png" id="26_wbco5"]
 [ext_resource type="Texture2D" uid="uid://b2cqg2fsxsldm" path="res://main_menu/main_menu_art_assets/Back button.png" id="27_10slo"]
@@ -169,6 +173,12 @@ texture = ExtResource("10_h0ucs")
 texture_region_size = Vector2i(316, 216)
 0:0/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5urnf"]
+texture = ExtResource("11_tanfh")
+texture_region_size = Vector2i(474, 411)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(-66, -9)
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ohgiv"]
 texture = ExtResource("7_ujmph")
 texture_region_size = Vector2i(316, 332)
@@ -235,6 +245,7 @@ sources/13 = SubResource("TileSetAtlasSource_kswnl")
 sources/14 = SubResource("TileSetAtlasSource_e7o5l")
 sources/15 = SubResource("TileSetAtlasSource_5q3yn")
 sources/16 = SubResource("TileSetAtlasSource_5d8yt")
+sources/17 = SubResource("TileSetAtlasSource_5urnf")
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_mfl53"]
 properties/0/path = NodePath("CanvasLayer/Label:text")
@@ -352,7 +363,7 @@ metadata/_edit_use_anchors_ = true
 y_sort_enabled = true
 use_parent_material = true
 position = Vector2(-632, 0)
-tile_map_data = PackedByteArray("AAACAP7/AwAAAAAAAAACAP//AwAAAAAAAAADAP//AwAAAAAAAAADAP7/AwAAAAAAAAACAAAACAAAAAAAAAADAAAACAAAAAAAAAAEAP7/BwAAAAAAAAAEAP//BwAAAAAAAAAEAAEABwAAAAAAAAAEAAIABwAAAAAAAAAEAAQABwAAAAAAAAAEAAUABwAAAAAAAAAHAP7/BwAAAAAAAAAHAP//BwAAAAAAAAAHAAEABwAAAAAAAAAHAAIABwAAAAAAAAAHAAQABwAAAAAAAAAHAAUABwAAAAAAAAAEAAAABgAAAAAAAAAFAAAACAAAAAAAAAAGAAAACAAAAAAAAAAFAAMACAAAAAAAAAAGAAMACAAAAAAAAAACAAMACAAAAAAAAAADAAMACAAAAAAAAAAIAAAACAAAAAAAAAAJAAAACAAAAAAAAAAIAAMACAAAAAAAAAAJAAMACAAAAAAAAAAHAAAABgAAAAAAAAAHAAMABgAAAAAAAAAEAAMABgAAAAAAAAAFAAEAAwAAAAAAAAAFAAIAAwAAAAAAAAAGAAIAAwAAAAAAAAAGAAEAAwAAAAAAAAADAAEAAQAAAAAAAAADAAIAAQAAAAAAAAAFAP//AQAAAAAAAAAGAP//AQAAAAAAAAAIAAEAAQAAAAAAAAAIAAIAAQAAAAAAAAAFAAQAAQAAAAAAAAAGAAQAAQAAAAAAAAADAAQAAwAAAAAAAAADAAUAAwAAAAAAAAAIAP//AwAAAAAAAAAJAP//AwAAAAAAAAAIAP7/AwAAAAAAAAAJAP7/AwAAAAAAAAAFAP7/AwAAAAAAAAAGAP7/AwAAAAAAAAACAAEAAwAAAAAAAAACAAIAAwAAAAAAAAACAAQAAwAAAAAAAAACAAUAAwAAAAAAAAAFAAUAAwAAAAAAAAAGAAUAAwAAAAAAAAAIAAUAAwAAAAAAAAAJAAUAAwAAAAAAAAAJAAQAAwAAAAAAAAAIAAQAAwAAAAAAAAAJAAIAAwAAAAAAAAAJAAEAAwAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAACAP7/AwAAAAAAAAACAP//AwAAAAAAAAADAP//AwAAAAAAAAADAP7/AwAAAAAAAAACAAAACAAAAAAAAAADAAAACAAAAAAAAAAEAP7/BwAAAAAAAAAEAP//BwAAAAAAAAAEAAEABwAAAAAAAAAEAAIABwAAAAAAAAAEAAQABwAAAAAAAAAEAAUABwAAAAAAAAAHAP7/BwAAAAAAAAAHAP//BwAAAAAAAAAHAAEABwAAAAAAAAAHAAIABwAAAAAAAAAHAAQABwAAAAAAAAAHAAUABwAAAAAAAAAEAAAABgAAAAAAAAAFAAAACAAAAAAAAAAGAAAACAAAAAAAAAAFAAMACAAAAAAAAAAGAAMACAAAAAAAAAACAAMACAAAAAAAAAADAAMACAAAAAAAAAAIAAAACAAAAAAAAAAJAAAACAAAAAAAAAAIAAMACAAAAAAAAAAJAAMACAAAAAAAAAAHAAAABgAAAAAAAAAHAAMABgAAAAAAAAAEAAMABgAAAAAAAAAFAAEAAwAAAAAAAAAFAAIAAwAAAAAAAAAGAAIAAwAAAAAAAAAGAAEAAwAAAAAAAAADAAEAAQAAAAAAAAADAAIAAQAAAAAAAAAFAP//AQAAAAAAAAAGAP//AQAAAAAAAAAIAAEAAQAAAAAAAAAIAAIAAQAAAAAAAAAFAAQAAQAAAAAAAAAGAAQAAQAAAAAAAAADAAQAAwAAAAAAAAADAAUAAwAAAAAAAAAIAP//AwAAAAAAAAAJAP//AwAAAAAAAAAJAP7/AwAAAAAAAAAFAP7/AwAAAAAAAAAGAP7/AwAAAAAAAAACAAEAAwAAAAAAAAACAAIAAwAAAAAAAAACAAQAAwAAAAAAAAACAAUAAwAAAAAAAAAFAAUAAwAAAAAAAAAGAAUAAwAAAAAAAAAIAAUAAwAAAAAAAAAJAAUAAwAAAAAAAAAJAAQAAwAAAAAAAAAIAAQAAwAAAAAAAAAJAAIAAwAAAAAAAAAJAAEAAwAAAAAAAAAIAP7/AwAAAAAAAAA=")
 tile_set = SubResource("TileSet_mbj4e")
 script = ExtResource("15_ndo7p")
 
@@ -376,15 +387,35 @@ script = ExtResource("17_una0y")
 y_sort_enabled = true
 use_parent_material = true
 position = Vector2(0, -56)
-tile_map_data = PackedByteArray("AAAGAAAAAAABAAAAAAAGAAYABAAAAAAAAAAAAAAABQAAAAAAAAAAAAQADwAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAAGAAYABAAAAAAAAAAAAAAABQAAAAAAAAAAAAQADwAAAAAAAAAAAAcAEQAAAAAAAAA=")
 tile_set = SubResource("TileSet_mbj4e")
 
 [node name="Building_Layer" type="TileMapLayer" parent="."]
 y_sort_enabled = true
 use_parent_material = true
 position = Vector2(-632, 112)
-tile_map_data = PackedByteArray("AAAEAAEAAwAAAAAAAAAFAAEAAwAAAAAAAAAFAAAAAwAAAAAAAAAEAAAAAwAAAAAAAAAEAP3/AwAAAAAAAAAFAP3/AwAAAAAAAAAIAAAAAwAAAAAAAAAIAAEAAwAAAAAAAAAEAAQAAwAAAAAAAAAFAAQAAwAAAAAAAAABAAQADgAAAAAAAAACAAQADgAAAAAAAAAHAP3/AwAAAAAAAAAIAP3/AwAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAAEAP3/DgAAAAAAAAAFAP3/DgAAAAAAAAAHAP3/DgAAAAAAAAAIAP3/DgAAAAAAAAAIAAAADgAAAAAAAAA=")
 tile_set = SubResource("TileSet_mbj4e")
+
+[node name="JailV211122024MiloHustinsGunslinger" type="Sprite2D" parent="."]
+position = Vector2(629, 1157)
+scale = Vector2(0.397685, 0.332639)
+texture = ExtResource("22_hsdbo")
+
+[node name="GeneralStoreV211252024MiloHustinsGunslinger" type="Sprite2D" parent="."]
+position = Vector2(-475, 1042)
+scale = Vector2(0.294444, 0.414352)
+texture = ExtResource("23_xvqhx")
+
+[node name="GeneralStoreV211252024MiloHustinsGunslinger2" type="Sprite2D" parent="."]
+position = Vector2(-314, 1137)
+scale = Vector2(0.294444, 0.414352)
+texture = ExtResource("23_xvqhx")
+
+[node name="SaloonV211172024MiloHustinsGunslinger" type="Sprite2D" parent="."]
+position = Vector2(159, 701.25)
+scale = Vector2(0.627778, 0.555093)
+texture = ExtResource("24_oq3uo")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(157, 785)
@@ -845,21 +876,21 @@ script = ExtResource("14_ub6ke")
 script = ExtResource("14_8fc0f")
 
 [node name="PreacherSprite" type="Sprite2D" parent="Townie_Logic/Preacher"]
-position = Vector2(-4.76837e-07, -0.0898228)
+position = Vector2(0, -101)
 scale = Vector2(0.304, 0.259008)
 texture = ExtResource("43_4q8lf")
 script = ExtResource("34_hshlf")
 
 [node name="Label" type="Label" parent="Townie_Logic/Preacher/PreacherSprite"]
 anchors_preset = -1
-anchor_left = -0.07
-anchor_top = -0.492
-anchor_right = 1.0
-anchor_bottom = -0.156
-offset_left = -64.04
-offset_top = -64.024
-offset_right = -131.0
-offset_bottom = -84.032
+anchor_left = -0.0697105
+anchor_top = -0.492432
+anchor_right = 1.00025
+anchor_bottom = -0.355424
+offset_left = -58.2895
+offset_top = -9.56824
+offset_right = -125.249
+offset_bottom = -29.5762
 scale = Vector2(2.02606, 2.83457)
 theme_override_font_sizes/font_size = 32
 text = "Preacher"
@@ -946,7 +977,7 @@ texture = ExtResource("65_itkqt")
 script = ExtResource("16_2qs05")
 
 [node name="DoctorSprite" type="Sprite2D" parent="Townie_Logic/Doctor"]
-position = Vector2(1.49012e-06, 0.083853)
+position = Vector2(7, -95)
 scale = Vector2(0.0830078, 0.0830078)
 texture = ExtResource("46_puujp")
 script = ExtResource("34_hshlf")
@@ -1060,7 +1091,7 @@ text = "Stun"
 script = ExtResource("17_evase")
 
 [node name="TeacherSprite" type="Sprite2D" parent="Townie_Logic/Teacher"]
-position = Vector2(-0.5, -0.497126)
+position = Vector2(0, -105)
 scale = Vector2(0.289, 0.264124)
 texture = ExtResource("48_eyjeu")
 script = ExtResource("34_hshlf")
@@ -1071,10 +1102,10 @@ anchor_left = -0.07
 anchor_top = -0.492
 anchor_right = 1.0
 anchor_bottom = -0.156
-offset_left = -64.04
-offset_top = -64.024
-offset_right = -131.0
-offset_bottom = -84.032
+offset_left = -28.6159
+offset_top = -9.66916
+offset_right = -95.5759
+offset_bottom = -29.6772
 scale = Vector2(2.02606, 2.83457)
 theme_override_font_sizes/font_size = 32
 text = "Teacher"
@@ -1161,7 +1192,7 @@ texture = ExtResource("65_itkqt")
 script = ExtResource("18_8vpej")
 
 [node name="TownDrunkSprite" type="Sprite2D" parent="Townie_Logic/Town_Drunk"]
-position = Vector2(-0.5, -0.544909)
+position = Vector2(0, -113)
 scale = Vector2(0.333, 0.304362)
 texture = ExtResource("50_4ds6b")
 script = ExtResource("34_hshlf")
@@ -1172,10 +1203,10 @@ anchor_left = -0.07
 anchor_top = -0.492
 anchor_right = 1.0
 anchor_bottom = -0.156
-offset_left = -165.736
-offset_top = 96.2374
-offset_right = -232.696
-offset_bottom = 76.2294
+offset_left = -141.712
+offset_top = 122.522
+offset_right = -208.672
+offset_bottom = 102.514
 scale = Vector2(2.02606, 2.83457)
 theme_override_font_sizes/font_size = 32
 text = "Town Drunk"
@@ -1262,7 +1293,7 @@ texture = ExtResource("65_itkqt")
 script = ExtResource("19_alpfg")
 
 [node name="BarKeepSprite" type="Sprite2D" parent="Townie_Logic/Bar_Keep"]
-position = Vector2(-0.499999, -0.219522)
+position = Vector2(7, -80)
 scale = Vector2(0.104004, 0.0930561)
 texture = ExtResource("52_bghbv")
 script = ExtResource("34_hshlf")
@@ -1363,7 +1394,7 @@ texture = ExtResource("65_itkqt")
 script = ExtResource("20_dwx7h")
 
 [node name="RanchHandSprite" type="Sprite2D" parent="Townie_Logic/Ranch_Hand"]
-position = Vector2(-1.5, 1)
+position = Vector2(0, -93)
 scale = Vector2(0.387, 0.242262)
 texture = ExtResource("54_2nfar")
 script = ExtResource("34_hshlf")
@@ -1464,7 +1495,7 @@ texture = ExtResource("65_itkqt")
 script = ExtResource("45_l4515")
 
 [node name="Storekeeper sprite" type="Sprite2D" parent="Townie_Logic/Store_Keeper"]
-position = Vector2(-1.5, 1)
+position = Vector2(-4, -95)
 scale = Vector2(0.35, 0.22)
 texture = ExtResource("67_tdm6s")
 script = ExtResource("34_hshlf")
@@ -1475,10 +1506,10 @@ anchor_left = -0.07
 anchor_top = -0.492
 anchor_right = 1.0
 anchor_bottom = -0.156
-offset_left = -64.04
-offset_top = -64.024
-offset_right = -131.0
-offset_bottom = -84.032
+offset_left = -102.857
+offset_top = -62.5455
+offset_right = -169.817
+offset_bottom = -82.5535
 scale = Vector2(2.02606, 2.83457)
 theme_override_font_sizes/font_size = 32
 text = "Storekeeper"
@@ -1565,7 +1596,7 @@ texture = ExtResource("65_itkqt")
 script = ExtResource("46_08nss")
 
 [node name="MountainmanspriteD" type="Sprite2D" parent="Townie_Logic/Mountain_Man"]
-position = Vector2(-1.5, 1)
+position = Vector2(-20, -82)
 scale = Vector2(0.3, 0.189)
 texture = ExtResource("69_qvtfu")
 script = ExtResource("34_hshlf")
@@ -1576,10 +1607,10 @@ anchor_left = -0.07
 anchor_top = -0.492
 anchor_right = 1.0
 anchor_bottom = -0.156
-offset_left = -64.04
-offset_top = -64.024
-offset_right = -131.0
-offset_bottom = -84.032
+offset_left = -100.0
+offset_top = -90.0106
+offset_right = -166.96
+offset_bottom = -110.019
 scale = Vector2(2.02606, 2.83457)
 theme_override_font_sizes/font_size = 32
 text = "Mountain Man"
@@ -1666,7 +1697,7 @@ texture = ExtResource("65_itkqt")
 script = ExtResource("47_cjmfn")
 
 [node name="Bountyhuntersprite" type="Sprite2D" parent="Townie_Logic/Bounty_Hunter"]
-position = Vector2(-1.5, 1)
+position = Vector2(-4, -93)
 scale = Vector2(0.08, 0.08)
 texture = ExtResource("71_fevbq")
 script = ExtResource("34_hshlf")
@@ -1767,7 +1798,7 @@ texture = ExtResource("65_itkqt")
 script = ExtResource("48_ai5s4")
 
 [node name="Saloongirlsprite" type="Sprite2D" parent="Townie_Logic/Saloon_Girl"]
-position = Vector2(-1.5, 1)
+position = Vector2(-4, -83)
 scale = Vector2(0.08, 0.084)
 texture = ExtResource("73_fjwl0")
 script = ExtResource("34_hshlf")
@@ -1868,7 +1899,7 @@ texture = ExtResource("65_itkqt")
 script = ExtResource("49_4aoh4")
 
 [node name="Bankersprite" type="Sprite2D" parent="Townie_Logic/Bank_Manager"]
-position = Vector2(-1.5, 1)
+position = Vector2(-4, -93)
 scale = Vector2(0.08, 0.08)
 texture = ExtResource("75_w7ra8")
 script = ExtResource("34_hshlf")
@@ -1969,7 +2000,7 @@ texture = ExtResource("65_itkqt")
 script = ExtResource("50_glnk6")
 
 [node name="SheriffSprite" type="Sprite2D" parent="Townie_Logic/Sheriff"]
-position = Vector2(-1.5, 1)
+position = Vector2(-4, -86)
 scale = Vector2(0.35, 0.219)
 texture = ExtResource("77_rplwb")
 script = ExtResource("34_hshlf")
