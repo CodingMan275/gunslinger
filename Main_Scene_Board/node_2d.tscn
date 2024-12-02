@@ -1,4 +1,4 @@
-[gd_scene load_steps=111 format=4 uid="uid://jl7k3ltwbp41"]
+[gd_scene load_steps=125 format=4 uid="uid://jl7k3ltwbp41"]
 
 [ext_resource type="Texture2D" uid="uid://bgfw83igonq2c" path="res://Main_Scene_Board/Updated Tiles/BoardwalkAlpha.png" id="5_28umi"]
 [ext_resource type="Script" path="res://Main_Scene_Board/Canvas_Layer/Turn_Label.gd" id="5_52d0j"]
@@ -23,21 +23,28 @@
 [ext_resource type="Texture2D" uid="uid://cp7ccxsdolbco" path="res://Main_Scene_Board/Updated Tiles/Livery2.png" id="10_okhjl"]
 [ext_resource type="Texture2D" uid="uid://stdd55mk8v0k" path="res://Main_Scene_Board/Updated Tiles/School.png" id="11_5y4ys"]
 [ext_resource type="Texture2D" uid="uid://bjw3pfr68vfq1" path="res://Main_Scene_Board/Updated Tiles/PathCrossAlpha.png" id="11_pvrpk"]
+[ext_resource type="Texture2D" uid="uid://c6aocq6kpwmjg" path="res://Main_Scene_Board/Updated Tiles/Saloon_V2_11_17_2024_Milo_Hustins_Gunslinger.png" id="11_ype1c"]
 [ext_resource type="Texture2D" uid="uid://o8yrpil2wgv2" path="res://Main_Scene_Board/Updated Tiles/DoctorsOfficeV2.png" id="12_2ad7n"]
 [ext_resource type="Texture2D" uid="uid://wpqjamy8nklp" path="res://icon.svg" id="12_kmvqj"]
+[ext_resource type="Texture2D" uid="uid://dm07irrq3j8us" path="res://Main_Scene_Board/Updated Tiles/School_V2_11_20_2024_Auper_Gunslinger.png" id="12_o6abc"]
 [ext_resource type="Texture2D" uid="uid://dnwtxvpqei783" path="res://Main_Scene_Board/Updated Tiles/PathLineEastToWest.png" id="12_wpbnm"]
 [ext_resource type="PackedScene" uid="uid://bir8u4hip16in" path="res://pause_menu/pause_menu_button_singleplayer.tscn" id="13_3q2p2"]
 [ext_resource type="Texture2D" uid="uid://dxnroepmb6svi" path="res://Main_Scene_Board/Updated Tiles/PathLineWestToEast.png" id="13_j3t7k"]
+[ext_resource type="Texture2D" uid="uid://ccc6sj372utu3" path="res://Main_Scene_Board/Updated Tiles/General_Store_V2_11_25_2024_Milo_Hustins_Gunslinger.png" id="13_l33lt"]
 [ext_resource type="Script" path="res://Main_Scene_Board/preacher.gd" id="14_8fc0f"]
 [ext_resource type="Texture2D" uid="uid://dl0y4pw78gxau" path="res://Main_Scene_Board/Updated Tiles/PathSouthEastEndAlpha.png" id="14_e8jat"]
 [ext_resource type="PackedScene" uid="uid://b7rfx1nnoi5ev" path="res://pause_menu/pause_menu_singleplayer.tscn" id="14_tll6l"]
 [ext_resource type="Script" path="res://Main_Scene_Board/townie_logic.gd" id="14_ub6ke"]
+[ext_resource type="Texture2D" uid="uid://cn0vhdauvona" path="res://Main_Scene_Board/Updated Tiles/Church_V3_11_25_24_Milo_Hustins_Gunslinger.png" id="15_bs56t"]
 [ext_resource type="Script" path="res://Main_Scene_Board/layer_1.gd" id="15_ndo7p"]
 [ext_resource type="Script" path="res://CPU_and_Player/doctor.gd" id="16_2qs05"]
 [ext_resource type="PackedScene" uid="uid://o8s2bfh5cxgj" path="res://pause_menu/close_options_menu_button.tscn" id="16_ljexv"]
+[ext_resource type="Texture2D" uid="uid://d1efy4eh0jggl" path="res://Main_Scene_Board/Updated Tiles/Boot_Hill_V3_11_12_2024_Milo_Hustins_Gunslinger.png" id="16_xfi6l"]
 [ext_resource type="Script" path="res://Main_Scene_Board/teacher.gd" id="17_evase"]
+[ext_resource type="Texture2D" uid="uid://c7fdgmsmmth1e" path="res://Main_Scene_Board/Updated Tiles/Bank_V2_11_22_24_Milo_Hustins_Gunslinger.png" id="17_q486f"]
 [ext_resource type="Script" path="res://Main_Scene_Board/player_layer.gd" id="17_una0y"]
 [ext_resource type="Script" path="res://Main_Scene_Board/town_drunk.gd" id="18_8vpej"]
+[ext_resource type="Texture2D" uid="uid://bw2ivhdvkibrh" path="res://Main_Scene_Board/Updated Tiles/Boot_Hill_V3_11_12_2024_Milo_Hustins_Gunslinger-export.png" id="18_h6jm0"]
 [ext_resource type="Script" path="res://Main_Scene_Board/bar_keep.gd" id="19_alpfg"]
 [ext_resource type="Script" path="res://Main_Scene_Board/ranch_hand.gd" id="20_dwx7h"]
 [ext_resource type="Texture2D" uid="uid://y5grgqvpm68u" path="res://button icons/Start Button.png" id="23_6f3f6"]
@@ -169,10 +176,110 @@ texture = ExtResource("10_h0ucs")
 texture_region_size = Vector2i(316, 216)
 0:0/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gpabw"]
+texture = ExtResource("11_ype1c")
+texture_region_size = Vector2i(316, 216)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q2nh8"]
+texture = ExtResource("12_o6abc")
+texture_region_size = Vector2i(474, 411)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(-66, -9)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rtwl7"]
+texture = ExtResource("13_l33lt")
+texture_region_size = Vector2i(316, 216)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ohgiv"]
 texture = ExtResource("7_ujmph")
 texture_region_size = Vector2i(316, 332)
 0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fayem"]
+texture = ExtResource("15_bs56t")
+texture_region_size = Vector2i(316, 216)
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qs54a"]
+texture = ExtResource("16_xfi6l")
+texture_region_size = Vector2i(344, 357)
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(10, 13)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7nt03"]
+texture = ExtResource("17_q486f")
+texture_region_size = Vector2i(316, 216)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n5207"]
+texture = ExtResource("18_h6jm0")
+texture_region_size = Vector2i(316, 216)
+0:0/0 = 0
+0:1/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tabrm"]
 texture = ExtResource("8_sj1b8")
@@ -235,6 +342,13 @@ sources/13 = SubResource("TileSetAtlasSource_kswnl")
 sources/14 = SubResource("TileSetAtlasSource_e7o5l")
 sources/15 = SubResource("TileSetAtlasSource_5q3yn")
 sources/16 = SubResource("TileSetAtlasSource_5d8yt")
+sources/17 = SubResource("TileSetAtlasSource_gpabw")
+sources/18 = SubResource("TileSetAtlasSource_q2nh8")
+sources/19 = SubResource("TileSetAtlasSource_rtwl7")
+sources/20 = SubResource("TileSetAtlasSource_fayem")
+sources/21 = SubResource("TileSetAtlasSource_qs54a")
+sources/22 = SubResource("TileSetAtlasSource_7nt03")
+sources/23 = SubResource("TileSetAtlasSource_n5207")
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_mfl53"]
 properties/0/path = NodePath("CanvasLayer/Label:text")
@@ -376,14 +490,14 @@ script = ExtResource("17_una0y")
 y_sort_enabled = true
 use_parent_material = true
 position = Vector2(0, -56)
-tile_map_data = PackedByteArray("AAAGAAAAAAABAAAAAAAGAAYABAAAAAAAAAAAAAAABQAAAAAAAAAAAAQADwAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAAGAAAAAAABAAAAAAAGAAYABAAAAAAAAAAAAAAABQAAAAAAAAAAAAQADwAAAAAAAAAAAAcAEgAAAAAAAAA=")
 tile_set = SubResource("TileSet_mbj4e")
 
 [node name="Building_Layer" type="TileMapLayer" parent="."]
 y_sort_enabled = true
 use_parent_material = true
 position = Vector2(-632, 112)
-tile_map_data = PackedByteArray("AAAEAAEAAwAAAAAAAAAFAAEAAwAAAAAAAAAFAAAAAwAAAAAAAAAEAAAAAwAAAAAAAAAEAP3/AwAAAAAAAAAFAP3/AwAAAAAAAAAIAAAAAwAAAAAAAAAIAAEAAwAAAAAAAAAEAAQAAwAAAAAAAAAFAAQAAwAAAAAAAAABAAQADgAAAAAAAAACAAQADgAAAAAAAAAHAP3/AwAAAAAAAAAIAP3/AwAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAAFAAEADAAAAAAAAAAFAAAADAAAAAAAAAAEAAAADAAAAAAAAAAEAP3/DAAAAAAAAAAFAP3/DAAAAAAAAAAIAAAADAAAAAAAAAAIAAEADAAAAAAAAAAEAAQADAAAAAAAAAAFAAQADAAAAAAAAAAHAP3/DAAAAAAAAAAIAP3/DAAAAAAAAAAEAAEADAAAAAAAAAA=")
 tile_set = SubResource("TileSet_mbj4e")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -411,8 +525,8 @@ theme_override_font_sizes/font_size = 50
 text = "Start Game"
 
 [node name="Sprite2D" type="Sprite2D" parent="StartUpCanvas/Start"]
-position = Vector2(657, 347)
-scale = Vector2(2.3, 2.3)
+position = Vector2(598, 307)
+scale = Vector2(2, 2)
 texture = ExtResource("23_6f3f6")
 
 [node name="AttackingCanvas" type="CanvasLayer" parent="."]
@@ -436,8 +550,8 @@ position = Vector2(-16, -185)
 stream = ExtResource("25_bu3kd")
 
 [node name="Sprite2D" type="Sprite2D" parent="AttackingCanvas/Range"]
-position = Vector2(201, 66)
-scale = Vector2(2.5, 2)
+position = Vector2(200, 70)
+scale = Vector2(2.15, 1.9)
 texture = ExtResource("24_jnf2a")
 
 [node name="Brawl" type="Button" parent="AttackingCanvas"]
@@ -458,8 +572,8 @@ position = Vector2(-16, -185)
 stream = ExtResource("8_7t4t6")
 
 [node name="Sprite2D" type="Sprite2D" parent="AttackingCanvas/Brawl"]
-position = Vector2(200, 165)
-scale = Vector2(2.5, 2)
+position = Vector2(201, 161)
+scale = Vector2(2.15, 1.9)
 texture = ExtResource("55_gm3vd")
 
 [node name="Back" type="Button" parent="AttackingCanvas"]
@@ -472,7 +586,7 @@ text = "Back"
 
 [node name="Sprite2D" type="Sprite2D" parent="AttackingCanvas/Back"]
 position = Vector2(203, 70)
-scale = Vector2(2.5, 2)
+scale = Vector2(2, 2)
 texture = ExtResource("27_10slo")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -494,8 +608,8 @@ text = "End Turn"
 metadata/_edit_use_anchors_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Button"]
-position = Vector2(200, -615)
-scale = Vector2(2.5, 2)
+position = Vector2(201, -616)
+scale = Vector2(2, 2)
 texture = ExtResource("24_4137c")
 
 [node name="EndTurnSFX" type="AudioStreamPlayer2D" parent="CanvasLayer/Button"]
@@ -557,7 +671,7 @@ text = "Special Ability"
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Draw Card"]
 position = Vector2(202, 74)
-scale = Vector2(2.5, 2.2)
+scale = Vector2(2, 2)
 texture = ExtResource("26_wbco5")
 
 [node name="Dynamite" type="Button" parent="CanvasLayer"]
@@ -574,8 +688,8 @@ theme_override_font_sizes/font_size = 32
 text = "Dynamite"
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Dynamite"]
-position = Vector2(223, 130)
-scale = Vector2(2.5, 2.2)
+position = Vector2(215, 125)
+scale = Vector2(2, 2)
 texture = ExtResource("28_34ner")
 
 [node name="DebugPanel" type="PanelContainer" parent="CanvasLayer"]
@@ -622,8 +736,8 @@ text = "Claim"
 script = ExtResource("9_xcao8")
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Claim"]
-position = Vector2(207, 71.0001)
-scale = Vector2(2.5, 2.25)
+position = Vector2(210, 74.0001)
+scale = Vector2(2.23, 2.15)
 texture = ExtResource("38_n7iip")
 
 [node name="CurrentTownie" type="TextureRect" parent="CanvasLayer"]
@@ -650,7 +764,7 @@ text = "Move"
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Move"]
 position = Vector2(198, -321)
-scale = Vector2(2.5, 2)
+scale = Vector2(2, 2)
 texture = ExtResource("36_1sjo4")
 
 [node name="WalkSFX" type="AudioStreamPlayer2D" parent="CanvasLayer/Move"]
@@ -677,7 +791,7 @@ volume_db = 8.553
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Attack"]
 position = Vector2(201, -504)
-scale = Vector2(2.5, 2)
+scale = Vector2(2, 2)
 texture = ExtResource("37_xxu0v")
 
 [node name="MissSFX" type="AudioStreamPlayer2D" parent="CanvasLayer/Attack"]
@@ -690,6 +804,7 @@ stream = ExtResource("8_7t4t6")
 
 [node name="PauseMenuButtonSinglePlayer" parent="CanvasLayer/Pause_Menu" instance=ExtResource("13_3q2p2")]
 unique_name_in_owner = true
+visible = false
 offset_left = 7.0
 offset_top = 4.0
 offset_right = -3643.0
@@ -739,7 +854,7 @@ text = "G/T"
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Give_Take"]
 position = Vector2(213, 139)
-scale = Vector2(2.65, 4.25)
+scale = Vector2(2.3, 3.5)
 texture = ExtResource("50_gghc4")
 
 [node name="Take" type="Button" parent="CanvasLayer"]
@@ -757,8 +872,8 @@ theme_override_font_sizes/font_size = 60
 text = "Take"
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Take"]
-position = Vector2(426.88, 102.65)
-scale = Vector2(5, 5.25)
+position = Vector2(415.88, 110.65)
+scale = Vector2(4.6, 4.6)
 texture = ExtResource("51_m7xrc")
 
 [node name="GIve" type="Button" parent="CanvasLayer"]
@@ -776,8 +891,8 @@ theme_override_font_sizes/font_size = 60
 text = "Give"
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/GIve"]
-position = Vector2(387.28, 84.65)
-scale = Vector2(5, 5.25)
+position = Vector2(381.28, 101.65)
+scale = Vector2(4.6, 4.6)
 texture = ExtResource("52_xqhx6")
 
 [node name="Weapon1" type="Button" parent="CanvasLayer"]
@@ -787,16 +902,16 @@ anchor_left = 0.187
 anchor_top = 0.226
 anchor_right = 0.452
 anchor_bottom = 0.37
-offset_left = 25.92
-offset_top = -0.160004
-offset_right = 25.72
-offset_bottom = -0.039978
+offset_left = 179.92
+offset_top = -8.16
+offset_right = 179.72
+offset_bottom = -8.03998
 theme_override_font_sizes/font_size = 60
 text = "Weapon 1"
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Weapon1"]
-position = Vector2(340, 234)
-scale = Vector2(6.1, 4.7)
+position = Vector2(360, 239)
+scale = Vector2(5.4, 4.5)
 texture = ExtResource("55_ju5bv")
 
 [node name="Weapon2" type="Button" parent="CanvasLayer"]
@@ -814,8 +929,8 @@ theme_override_font_sizes/font_size = 60
 text = "Weapon 2"
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Weapon2"]
-position = Vector2(502, 151)
-scale = Vector2(6.1, 4.7)
+position = Vector2(509.88, 153.42)
+scale = Vector2(5.4, 4.5)
 texture = ExtResource("56_380ho")
 
 [node name="ProficiencyNode" type="Node" parent="."]
@@ -845,7 +960,7 @@ script = ExtResource("14_ub6ke")
 script = ExtResource("14_8fc0f")
 
 [node name="PreacherSprite" type="Sprite2D" parent="Townie_Logic/Preacher"]
-position = Vector2(-4.76837e-07, -0.0898228)
+position = Vector2(0, -99)
 scale = Vector2(0.304, 0.259008)
 texture = ExtResource("43_4q8lf")
 script = ExtResource("34_hshlf")
@@ -856,10 +971,10 @@ anchor_left = -0.07
 anchor_top = -0.492
 anchor_right = 1.0
 anchor_bottom = -0.156
-offset_left = -64.04
-offset_top = -64.024
-offset_right = -131.0
-offset_bottom = -84.032
+offset_left = -58.2895
+offset_top = -9.56824
+offset_right = -125.249
+offset_bottom = -29.5762
 scale = Vector2(2.02606, 2.83457)
 theme_override_font_sizes/font_size = 32
 text = "Preacher"
@@ -876,8 +991,8 @@ offset_bottom = 1405.0
 text = "Special Ability"
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Preacher/DefaultDrawUI/Special Ability"]
-position = Vector2(322, 460)
-scale = Vector2(3.75, 3.75)
+position = Vector2(317, 392)
+scale = Vector2(3.4, 3)
 texture = ExtResource("65_itkqt")
 
 [node name="AttackingCanvas" type="CanvasLayer" parent="Townie_Logic/Preacher"]
@@ -901,7 +1016,7 @@ stream = ExtResource("8_7t4t6")
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Preacher/AttackingCanvas/Range"]
 position = Vector2(192, 72)
-scale = Vector2(2.35, 2.35)
+scale = Vector2(2, 2)
 texture = ExtResource("24_jnf2a")
 
 [node name="Brawl" type="Button" parent="Townie_Logic/Preacher/AttackingCanvas"]
@@ -922,8 +1037,8 @@ position = Vector2(-16, -185)
 stream = ExtResource("8_7t4t6")
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Preacher/AttackingCanvas/Brawl"]
-position = Vector2(192, 194)
-scale = Vector2(2.35, 2.35)
+position = Vector2(192, 171)
+scale = Vector2(2, 2)
 texture = ExtResource("55_gm3vd")
 
 [node name="Special Ability" type="Button" parent="Townie_Logic/Preacher/AttackingCanvas"]
@@ -934,15 +1049,15 @@ offset_bottom = 1232.0
 text = "Special Ability"
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Preacher/AttackingCanvas/Special Ability"]
-position = Vector2(192, 291)
-scale = Vector2(2.35, 2.35)
+position = Vector2(192, 261)
+scale = Vector2(2, 2)
 texture = ExtResource("65_itkqt")
 
 [node name="Doctor" type="CharacterBody2D" parent="Townie_Logic"]
 script = ExtResource("16_2qs05")
 
 [node name="DoctorSprite" type="Sprite2D" parent="Townie_Logic/Doctor"]
-position = Vector2(1.49012e-06, 0.083853)
+position = Vector2(1.13687e-13, -96)
 scale = Vector2(0.0830078, 0.0830078)
 texture = ExtResource("46_puujp")
 script = ExtResource("34_hshlf")
@@ -973,8 +1088,8 @@ offset_bottom = 1405.0
 text = "Special Ability"
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Doctor/DefaultDrawUI/Special Ability"]
-position = Vector2(322, 460)
-scale = Vector2(3.75, 3.75)
+position = Vector2(317, 392)
+scale = Vector2(3.4, 3)
 texture = ExtResource("65_itkqt")
 
 [node name="AttackingCanvas" type="CanvasLayer" parent="Townie_Logic/Doctor"]
@@ -998,7 +1113,7 @@ stream = ExtResource("8_7t4t6")
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Doctor/AttackingCanvas/Range"]
 position = Vector2(192, 72)
-scale = Vector2(2.35, 2.35)
+scale = Vector2(2, 2)
 texture = ExtResource("24_jnf2a")
 
 [node name="Brawl" type="Button" parent="Townie_Logic/Doctor/AttackingCanvas"]
@@ -1019,8 +1134,8 @@ position = Vector2(-16, -185)
 stream = ExtResource("8_7t4t6")
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Doctor/AttackingCanvas/Brawl"]
-position = Vector2(192, 194)
-scale = Vector2(2.35, 2.35)
+position = Vector2(192, 171)
+scale = Vector2(2, 2)
 texture = ExtResource("55_gm3vd")
 
 [node name="Special Ability" type="Button" parent="Townie_Logic/Doctor/AttackingCanvas"]
@@ -1031,8 +1146,8 @@ offset_bottom = 1232.0
 text = "Special Ability"
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Doctor/AttackingCanvas/Special Ability"]
-position = Vector2(192, 291)
-scale = Vector2(2.35, 2.35)
+position = Vector2(192, 261)
+scale = Vector2(2, 2)
 texture = ExtResource("65_itkqt")
 
 [node name="HealStunUI" type="CanvasLayer" parent="Townie_Logic/Doctor"]
@@ -1056,7 +1171,7 @@ text = "Stun"
 script = ExtResource("17_evase")
 
 [node name="TeacherSprite" type="Sprite2D" parent="Townie_Logic/Teacher"]
-position = Vector2(-0.5, -0.497126)
+position = Vector2(-4, -103)
 scale = Vector2(0.289, 0.264124)
 texture = ExtResource("48_eyjeu")
 script = ExtResource("34_hshlf")
@@ -1067,10 +1182,10 @@ anchor_left = -0.07
 anchor_top = -0.492
 anchor_right = 1.0
 anchor_bottom = -0.156
-offset_left = -64.04
-offset_top = -64.024
-offset_right = -131.0
-offset_bottom = -84.032
+offset_left = -28.6159
+offset_top = -9.66916
+offset_right = -95.5759
+offset_bottom = -29.6772
 scale = Vector2(2.02606, 2.83457)
 theme_override_font_sizes/font_size = 32
 text = "Teacher"
@@ -1087,8 +1202,8 @@ offset_bottom = 1405.0
 text = "Special Ability"
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Teacher/DefaultDrawUI/Special Ability"]
-position = Vector2(322, 460)
-scale = Vector2(3.75, 3.75)
+position = Vector2(317, 392)
+scale = Vector2(3.4, 3)
 texture = ExtResource("65_itkqt")
 
 [node name="AttackingCanvas" type="CanvasLayer" parent="Townie_Logic/Teacher"]
@@ -1112,7 +1227,7 @@ stream = ExtResource("8_7t4t6")
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Teacher/AttackingCanvas/Range"]
 position = Vector2(192, 71)
-scale = Vector2(2.35, 2.35)
+scale = Vector2(2, 2)
 texture = ExtResource("24_jnf2a")
 
 [node name="Brawl" type="Button" parent="Townie_Logic/Teacher/AttackingCanvas"]
@@ -1133,8 +1248,8 @@ position = Vector2(-16, -185)
 stream = ExtResource("8_7t4t6")
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Teacher/AttackingCanvas/Brawl"]
-position = Vector2(192, 194)
-scale = Vector2(2.35, 2.35)
+position = Vector2(192, 171)
+scale = Vector2(2, 2)
 texture = ExtResource("55_gm3vd")
 
 [node name="Special Ability" type="Button" parent="Townie_Logic/Teacher/AttackingCanvas"]
@@ -1145,15 +1260,15 @@ offset_bottom = 1232.0
 text = "Special Ability"
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Teacher/AttackingCanvas/Special Ability"]
-position = Vector2(192, 291)
-scale = Vector2(2.35, 2.35)
+position = Vector2(192, 261)
+scale = Vector2(2, 2)
 texture = ExtResource("65_itkqt")
 
 [node name="Town_Drunk" type="CharacterBody2D" parent="Townie_Logic"]
 script = ExtResource("18_8vpej")
 
 [node name="TownDrunkSprite" type="Sprite2D" parent="Townie_Logic/Town_Drunk"]
-position = Vector2(-0.5, -0.544909)
+position = Vector2(7, -113)
 scale = Vector2(0.333, 0.304362)
 texture = ExtResource("50_4ds6b")
 script = ExtResource("34_hshlf")
@@ -1184,8 +1299,8 @@ offset_bottom = 1405.0
 text = "Special Ability"
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Town_Drunk/DefaultDrawUI/Special Ability"]
-position = Vector2(322, 460)
-scale = Vector2(3.75, 3.75)
+position = Vector2(317, 392)
+scale = Vector2(3.4, 3)
 texture = ExtResource("65_itkqt")
 
 [node name="AttackingCanvas" type="CanvasLayer" parent="Townie_Logic/Town_Drunk"]
@@ -1209,7 +1324,7 @@ stream = ExtResource("8_7t4t6")
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Town_Drunk/AttackingCanvas/Range"]
 position = Vector2(192, 72)
-scale = Vector2(2.35, 2.35)
+scale = Vector2(2, 2)
 texture = ExtResource("24_jnf2a")
 
 [node name="Brawl" type="Button" parent="Townie_Logic/Town_Drunk/AttackingCanvas"]
@@ -1230,8 +1345,8 @@ position = Vector2(-16, -185)
 stream = ExtResource("8_7t4t6")
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Town_Drunk/AttackingCanvas/Brawl"]
-position = Vector2(192, 194)
-scale = Vector2(2.35, 2.35)
+position = Vector2(192, 171)
+scale = Vector2(2, 2)
 texture = ExtResource("55_gm3vd")
 
 [node name="Special Ability" type="Button" parent="Townie_Logic/Town_Drunk/AttackingCanvas"]
@@ -1242,15 +1357,15 @@ offset_bottom = 1232.0
 text = "Special Ability"
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Town_Drunk/AttackingCanvas/Special Ability"]
-position = Vector2(192, 291)
-scale = Vector2(2.35, 2.35)
+position = Vector2(192, 261)
+scale = Vector2(2, 2)
 texture = ExtResource("65_itkqt")
 
 [node name="Bar_Keep" type="CharacterBody2D" parent="Townie_Logic"]
 script = ExtResource("19_alpfg")
 
 [node name="BarKeepSprite" type="Sprite2D" parent="Townie_Logic/Bar_Keep"]
-position = Vector2(-0.499999, -0.219522)
+position = Vector2(7, -80)
 scale = Vector2(0.104004, 0.0930561)
 texture = ExtResource("52_bghbv")
 script = ExtResource("34_hshlf")
@@ -1281,8 +1396,8 @@ offset_bottom = 1405.0
 text = "Special Ability"
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Bar_Keep/DefaultDrawUI/Special Ability"]
-position = Vector2(322, 460)
-scale = Vector2(3.75, 3.75)
+position = Vector2(317, 392)
+scale = Vector2(3.4, 3)
 texture = ExtResource("65_itkqt")
 
 [node name="AttackingCanvas" type="CanvasLayer" parent="Townie_Logic/Bar_Keep"]
@@ -1306,7 +1421,7 @@ stream = ExtResource("8_7t4t6")
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Bar_Keep/AttackingCanvas/Range"]
 position = Vector2(192, 72)
-scale = Vector2(2.35, 2.35)
+scale = Vector2(2, 2)
 texture = ExtResource("24_jnf2a")
 
 [node name="Brawl" type="Button" parent="Townie_Logic/Bar_Keep/AttackingCanvas"]
@@ -1327,8 +1442,8 @@ position = Vector2(-16, -185)
 stream = ExtResource("8_7t4t6")
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Bar_Keep/AttackingCanvas/Brawl"]
-position = Vector2(192, 194)
-scale = Vector2(2.35, 2.35)
+position = Vector2(192, 171)
+scale = Vector2(2, 2)
 texture = ExtResource("55_gm3vd")
 
 [node name="Special Ability" type="Button" parent="Townie_Logic/Bar_Keep/AttackingCanvas"]
@@ -1339,15 +1454,15 @@ offset_bottom = 1232.0
 text = "Special Ability"
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Bar_Keep/AttackingCanvas/Special Ability"]
-position = Vector2(192, 291)
-scale = Vector2(2.35, 2.35)
+position = Vector2(192, 261)
+scale = Vector2(2, 2)
 texture = ExtResource("65_itkqt")
 
 [node name="Ranch_Hand" type="CharacterBody2D" parent="Townie_Logic"]
 script = ExtResource("20_dwx7h")
 
 [node name="RanchHandSprite" type="Sprite2D" parent="Townie_Logic/Ranch_Hand"]
-position = Vector2(-1.5, 1)
+position = Vector2(-4, -89)
 scale = Vector2(0.387, 0.242262)
 texture = ExtResource("54_2nfar")
 script = ExtResource("34_hshlf")
@@ -1378,8 +1493,8 @@ offset_bottom = 1405.0
 text = "Special Ability"
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Ranch_Hand/DefaultDrawUI/Special Ability"]
-position = Vector2(322, 460)
-scale = Vector2(3.75, 3.75)
+position = Vector2(317, 392)
+scale = Vector2(3.4, 3)
 texture = ExtResource("65_itkqt")
 
 [node name="AttackingCanvas" type="CanvasLayer" parent="Townie_Logic/Ranch_Hand"]
@@ -1403,7 +1518,7 @@ stream = ExtResource("8_7t4t6")
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Ranch_Hand/AttackingCanvas/Range"]
 position = Vector2(192, 72)
-scale = Vector2(2.35, 2.35)
+scale = Vector2(2, 2)
 texture = ExtResource("24_jnf2a")
 
 [node name="Brawl" type="Button" parent="Townie_Logic/Ranch_Hand/AttackingCanvas"]
@@ -1424,8 +1539,8 @@ position = Vector2(-16, -185)
 stream = ExtResource("8_7t4t6")
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Ranch_Hand/AttackingCanvas/Brawl"]
-position = Vector2(192, 194)
-scale = Vector2(2.35, 2.35)
+position = Vector2(192, 171)
+scale = Vector2(2, 2)
 texture = ExtResource("55_gm3vd")
 
 [node name="Special Ability" type="Button" parent="Townie_Logic/Ranch_Hand/AttackingCanvas"]
@@ -1436,15 +1551,15 @@ offset_bottom = 1232.0
 text = "Special Ability"
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Ranch_Hand/AttackingCanvas/Special Ability"]
-position = Vector2(192, 291)
-scale = Vector2(2.35, 2.35)
+position = Vector2(192, 261)
+scale = Vector2(2, 2)
 texture = ExtResource("65_itkqt")
 
 [node name="Store_Keeper" type="CharacterBody2D" parent="Townie_Logic"]
 script = ExtResource("45_l4515")
 
 [node name="Storekeeper sprite" type="Sprite2D" parent="Townie_Logic/Store_Keeper"]
-position = Vector2(-1.5, 1)
+position = Vector2(-4, -94)
 scale = Vector2(0.35, 0.22)
 texture = ExtResource("67_tdm6s")
 script = ExtResource("34_hshlf")
@@ -1455,10 +1570,10 @@ anchor_left = -0.07
 anchor_top = -0.492
 anchor_right = 1.0
 anchor_bottom = -0.156
-offset_left = -64.04
-offset_top = -64.024
-offset_right = -131.0
-offset_bottom = -84.032
+offset_left = -110.0
+offset_top = -67.0909
+offset_right = -176.96
+offset_bottom = -87.0989
 scale = Vector2(2.02606, 2.83457)
 theme_override_font_sizes/font_size = 32
 text = "Storekeeper"
@@ -1475,8 +1590,8 @@ offset_bottom = 1405.0
 text = "Special Ability"
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Store_Keeper/DefaultDrawUI/Special Ability"]
-position = Vector2(322, 460)
-scale = Vector2(3.75, 3.75)
+position = Vector2(317, 392)
+scale = Vector2(3.4, 3)
 texture = ExtResource("65_itkqt")
 
 [node name="AttackingCanvas" type="CanvasLayer" parent="Townie_Logic/Store_Keeper"]
@@ -1500,7 +1615,7 @@ stream = ExtResource("8_7t4t6")
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Store_Keeper/AttackingCanvas/Range"]
 position = Vector2(192, 72)
-scale = Vector2(2.35, 2.35)
+scale = Vector2(2, 2)
 texture = ExtResource("24_jnf2a")
 
 [node name="Brawl" type="Button" parent="Townie_Logic/Store_Keeper/AttackingCanvas"]
@@ -1521,8 +1636,8 @@ position = Vector2(-16, -185)
 stream = ExtResource("8_7t4t6")
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Store_Keeper/AttackingCanvas/Brawl"]
-position = Vector2(192, 194)
-scale = Vector2(2.35, 2.35)
+position = Vector2(192, 171)
+scale = Vector2(2, 2)
 texture = ExtResource("55_gm3vd")
 
 [node name="Special Ability" type="Button" parent="Townie_Logic/Store_Keeper/AttackingCanvas"]
@@ -1533,15 +1648,15 @@ offset_bottom = 1232.0
 text = "Special Ability"
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Store_Keeper/AttackingCanvas/Special Ability"]
-position = Vector2(192, 291)
-scale = Vector2(2.35, 2.35)
+position = Vector2(192, 261)
+scale = Vector2(2, 2)
 texture = ExtResource("65_itkqt")
 
 [node name="Mountain_Man" type="CharacterBody2D" parent="Townie_Logic"]
 script = ExtResource("46_08nss")
 
 [node name="MountainmanspriteD" type="Sprite2D" parent="Townie_Logic/Mountain_Man"]
-position = Vector2(-1.5, 1)
+position = Vector2(-12, -79)
 scale = Vector2(0.3, 0.189)
 texture = ExtResource("69_qvtfu")
 script = ExtResource("34_hshlf")
@@ -1572,8 +1687,8 @@ offset_bottom = 1405.0
 text = "Special Ability"
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Mountain_Man/DefaultDrawUI/Special Ability"]
-position = Vector2(322, 460)
-scale = Vector2(3.75, 3.75)
+position = Vector2(317, 392)
+scale = Vector2(3.4, 3)
 texture = ExtResource("65_itkqt")
 
 [node name="AttackingCanvas" type="CanvasLayer" parent="Townie_Logic/Mountain_Man"]
@@ -1597,7 +1712,7 @@ stream = ExtResource("8_7t4t6")
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Mountain_Man/AttackingCanvas/Range"]
 position = Vector2(192, 72)
-scale = Vector2(2.35, 2.35)
+scale = Vector2(2, 2)
 texture = ExtResource("24_jnf2a")
 
 [node name="Brawl" type="Button" parent="Townie_Logic/Mountain_Man/AttackingCanvas"]
@@ -1618,8 +1733,8 @@ position = Vector2(-16, -185)
 stream = ExtResource("8_7t4t6")
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Mountain_Man/AttackingCanvas/Brawl"]
-position = Vector2(192, 194)
-scale = Vector2(2.35, 2.35)
+position = Vector2(192, 171)
+scale = Vector2(2, 2)
 texture = ExtResource("55_gm3vd")
 
 [node name="Special Ability" type="Button" parent="Townie_Logic/Mountain_Man/AttackingCanvas"]
@@ -1630,15 +1745,15 @@ offset_bottom = 1232.0
 text = "Special Ability"
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Mountain_Man/AttackingCanvas/Special Ability"]
-position = Vector2(192, 291)
-scale = Vector2(2.35, 2.35)
+position = Vector2(192, 261)
+scale = Vector2(2, 2)
 texture = ExtResource("65_itkqt")
 
 [node name="Bounty_Hunter" type="CharacterBody2D" parent="Townie_Logic"]
 script = ExtResource("47_cjmfn")
 
 [node name="Bountyhuntersprite" type="Sprite2D" parent="Townie_Logic/Bounty_Hunter"]
-position = Vector2(-1.5, 1)
+position = Vector2(-4, -93)
 scale = Vector2(0.08, 0.08)
 texture = ExtResource("71_fevbq")
 script = ExtResource("34_hshlf")
@@ -1669,8 +1784,8 @@ offset_bottom = 1405.0
 text = "Special Ability"
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Bounty_Hunter/DefaultDrawUI/Special Ability"]
-position = Vector2(322, 460)
-scale = Vector2(3.75, 3.75)
+position = Vector2(317, 392)
+scale = Vector2(3.4, 3)
 texture = ExtResource("65_itkqt")
 
 [node name="AttackingCanvas" type="CanvasLayer" parent="Townie_Logic/Bounty_Hunter"]
@@ -1694,7 +1809,7 @@ stream = ExtResource("8_7t4t6")
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Bounty_Hunter/AttackingCanvas/Range"]
 position = Vector2(192, 72)
-scale = Vector2(2.35, 2.35)
+scale = Vector2(2, 2)
 texture = ExtResource("24_jnf2a")
 
 [node name="Brawl" type="Button" parent="Townie_Logic/Bounty_Hunter/AttackingCanvas"]
@@ -1715,8 +1830,8 @@ position = Vector2(-16, -185)
 stream = ExtResource("8_7t4t6")
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Bounty_Hunter/AttackingCanvas/Brawl"]
-position = Vector2(192, 194)
-scale = Vector2(2.35, 2.35)
+position = Vector2(192, 171)
+scale = Vector2(2, 2)
 texture = ExtResource("55_gm3vd")
 
 [node name="Special Ability" type="Button" parent="Townie_Logic/Bounty_Hunter/AttackingCanvas"]
@@ -1727,15 +1842,15 @@ offset_bottom = 1232.0
 text = "Special Ability"
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Bounty_Hunter/AttackingCanvas/Special Ability"]
-position = Vector2(192, 291)
-scale = Vector2(2.35, 2.35)
+position = Vector2(192, 261)
+scale = Vector2(2, 2)
 texture = ExtResource("65_itkqt")
 
 [node name="Saloon_Girl" type="CharacterBody2D" parent="Townie_Logic"]
 script = ExtResource("48_ai5s4")
 
 [node name="Saloongirlsprite" type="Sprite2D" parent="Townie_Logic/Saloon_Girl"]
-position = Vector2(-1.5, 1)
+position = Vector2(0, -83)
 scale = Vector2(0.08, 0.084)
 texture = ExtResource("73_fjwl0")
 script = ExtResource("34_hshlf")
@@ -1766,8 +1881,8 @@ offset_bottom = 1405.0
 text = "Special Ability"
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Saloon_Girl/DefaultDrawUI/Special Ability"]
-position = Vector2(322, 460)
-scale = Vector2(3.75, 3.75)
+position = Vector2(317, 392)
+scale = Vector2(3.4, 3)
 texture = ExtResource("65_itkqt")
 
 [node name="AttackingCanvas" type="CanvasLayer" parent="Townie_Logic/Saloon_Girl"]
@@ -1791,7 +1906,7 @@ stream = ExtResource("8_7t4t6")
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Saloon_Girl/AttackingCanvas/Range"]
 position = Vector2(192, 72)
-scale = Vector2(2.35, 2.35)
+scale = Vector2(2, 2)
 texture = ExtResource("24_jnf2a")
 
 [node name="Brawl" type="Button" parent="Townie_Logic/Saloon_Girl/AttackingCanvas"]
@@ -1812,8 +1927,8 @@ position = Vector2(-16, -185)
 stream = ExtResource("8_7t4t6")
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Saloon_Girl/AttackingCanvas/Brawl"]
-position = Vector2(192, 194)
-scale = Vector2(2.35, 2.35)
+position = Vector2(192, 171)
+scale = Vector2(2, 2)
 texture = ExtResource("55_gm3vd")
 
 [node name="Special Ability" type="Button" parent="Townie_Logic/Saloon_Girl/AttackingCanvas"]
@@ -1824,15 +1939,15 @@ offset_bottom = 1232.0
 text = "Special Ability"
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Saloon_Girl/AttackingCanvas/Special Ability"]
-position = Vector2(192, 291)
-scale = Vector2(2.35, 2.35)
+position = Vector2(192, 261)
+scale = Vector2(2, 2)
 texture = ExtResource("65_itkqt")
 
 [node name="Bank_Manager" type="CharacterBody2D" parent="Townie_Logic"]
 script = ExtResource("49_4aoh4")
 
 [node name="Bankersprite" type="Sprite2D" parent="Townie_Logic/Bank_Manager"]
-position = Vector2(-1.5, 1)
+position = Vector2(0, -93)
 scale = Vector2(0.08, 0.08)
 texture = ExtResource("75_w7ra8")
 script = ExtResource("34_hshlf")
@@ -1863,8 +1978,8 @@ offset_bottom = 1405.0
 text = "Special Ability"
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Bank_Manager/DefaultDrawUI/Special Ability"]
-position = Vector2(322, 460)
-scale = Vector2(3.75, 3.75)
+position = Vector2(317, 392)
+scale = Vector2(3.4, 3)
 texture = ExtResource("65_itkqt")
 
 [node name="AttackingCanvas" type="CanvasLayer" parent="Townie_Logic/Bank_Manager"]
@@ -1888,7 +2003,7 @@ stream = ExtResource("8_7t4t6")
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Bank_Manager/AttackingCanvas/Range"]
 position = Vector2(192, 72)
-scale = Vector2(2.35, 2.35)
+scale = Vector2(2, 2)
 texture = ExtResource("24_jnf2a")
 
 [node name="Brawl" type="Button" parent="Townie_Logic/Bank_Manager/AttackingCanvas"]
@@ -1909,8 +2024,8 @@ position = Vector2(-16, -185)
 stream = ExtResource("8_7t4t6")
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Bank_Manager/AttackingCanvas/Brawl"]
-position = Vector2(192, 194)
-scale = Vector2(2.35, 2.35)
+position = Vector2(192, 171)
+scale = Vector2(2, 2)
 texture = ExtResource("55_gm3vd")
 
 [node name="Special Ability" type="Button" parent="Townie_Logic/Bank_Manager/AttackingCanvas"]
@@ -1921,15 +2036,15 @@ offset_bottom = 1232.0
 text = "Special Ability"
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Bank_Manager/AttackingCanvas/Special Ability"]
-position = Vector2(192, 291)
-scale = Vector2(2.35, 2.35)
+position = Vector2(192, 261)
+scale = Vector2(2, 2)
 texture = ExtResource("65_itkqt")
 
 [node name="Sheriff" type="CharacterBody2D" parent="Townie_Logic"]
 script = ExtResource("50_glnk6")
 
 [node name="SheriffSprite" type="Sprite2D" parent="Townie_Logic/Sheriff"]
-position = Vector2(-1.5, 1)
+position = Vector2(-1.19209e-07, -85)
 scale = Vector2(0.35, 0.219)
 texture = ExtResource("77_rplwb")
 script = ExtResource("34_hshlf")
@@ -1959,8 +2074,8 @@ offset_bottom = 1405.0
 text = "Special Ability"
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Sheriff/DefaultDrawUI/Special Ability"]
-position = Vector2(322, 460)
-scale = Vector2(3.75, 3.75)
+position = Vector2(317, 392)
+scale = Vector2(3.4, 3)
 texture = ExtResource("65_itkqt")
 
 [node name="AttackingCanvas" type="CanvasLayer" parent="Townie_Logic/Sheriff"]
@@ -1984,7 +2099,7 @@ stream = ExtResource("8_7t4t6")
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Sheriff/AttackingCanvas/Range"]
 position = Vector2(192, 72)
-scale = Vector2(2.35, 2.35)
+scale = Vector2(2, 2)
 texture = ExtResource("24_jnf2a")
 
 [node name="Brawl" type="Button" parent="Townie_Logic/Sheriff/AttackingCanvas"]
@@ -2005,8 +2120,8 @@ position = Vector2(-16, -185)
 stream = ExtResource("8_7t4t6")
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Sheriff/AttackingCanvas/Brawl"]
-position = Vector2(192, 194)
-scale = Vector2(2.35, 2.35)
+position = Vector2(192, 171)
+scale = Vector2(2, 2)
 texture = ExtResource("55_gm3vd")
 
 [node name="Special Ability" type="Button" parent="Townie_Logic/Sheriff/AttackingCanvas"]
@@ -2017,8 +2132,8 @@ offset_bottom = 1232.0
 text = "Special Ability"
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Sheriff/AttackingCanvas/Special Ability"]
-position = Vector2(192, 291)
-scale = Vector2(2.35, 2.35)
+position = Vector2(192, 261)
+scale = Vector2(2, 2)
 texture = ExtResource("65_itkqt")
 
 [connection signal="child_order_changed" from="." to="Rules_Controller" method="_on_node_2d_child_order_changed"]
