@@ -984,6 +984,7 @@ metadata/_edit_use_anchors_ = true
 visible = false
 
 [node name="Special Ability" type="Button" parent="Townie_Logic/Preacher/DefaultDrawUI"]
+visible = false
 offset_left = 3055.0
 offset_top = 1189.0
 offset_right = 3701.0
@@ -991,8 +992,9 @@ offset_bottom = 1405.0
 text = "Special Ability"
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Preacher/DefaultDrawUI/Special Ability"]
-position = Vector2(317, 392)
-scale = Vector2(3.4, 3)
+visible = false
+position = Vector2(322, 460)
+scale = Vector2(3.75, 3.75)
 texture = ExtResource("65_itkqt")
 
 [node name="AttackingCanvas" type="CanvasLayer" parent="Townie_Logic/Preacher"]
@@ -1042,6 +1044,7 @@ scale = Vector2(2, 2)
 texture = ExtResource("55_gm3vd")
 
 [node name="Special Ability" type="Button" parent="Townie_Logic/Preacher/AttackingCanvas"]
+visible = false
 offset_left = 3426.0
 offset_top = 1088.0
 offset_right = 3808.0
@@ -1049,8 +1052,9 @@ offset_bottom = 1232.0
 text = "Special Ability"
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Preacher/AttackingCanvas/Special Ability"]
-position = Vector2(192, 261)
-scale = Vector2(2, 2)
+visible = false
+position = Vector2(192, 291)
+scale = Vector2(2.35, 2.35)
 texture = ExtResource("65_itkqt")
 
 [node name="Doctor" type="CharacterBody2D" parent="Townie_Logic"]
@@ -1195,6 +1199,7 @@ metadata/_edit_use_anchors_ = true
 visible = false
 
 [node name="Special Ability" type="Button" parent="Townie_Logic/Teacher/DefaultDrawUI"]
+visible = false
 offset_left = 3055.0
 offset_top = 1189.0
 offset_right = 3701.0
@@ -1202,8 +1207,9 @@ offset_bottom = 1405.0
 text = "Special Ability"
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Teacher/DefaultDrawUI/Special Ability"]
-position = Vector2(317, 392)
-scale = Vector2(3.4, 3)
+visible = false
+position = Vector2(322, 460)
+scale = Vector2(3.75, 3.75)
 texture = ExtResource("65_itkqt")
 
 [node name="AttackingCanvas" type="CanvasLayer" parent="Townie_Logic/Teacher"]
@@ -1253,6 +1259,7 @@ scale = Vector2(2, 2)
 texture = ExtResource("55_gm3vd")
 
 [node name="Special Ability" type="Button" parent="Townie_Logic/Teacher/AttackingCanvas"]
+visible = false
 offset_left = 3426.0
 offset_top = 1088.0
 offset_right = 3808.0
@@ -1260,8 +1267,9 @@ offset_bottom = 1232.0
 text = "Special Ability"
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Teacher/AttackingCanvas/Special Ability"]
-position = Vector2(192, 261)
-scale = Vector2(2, 2)
+visible = false
+position = Vector2(192, 291)
+scale = Vector2(2.35, 2.35)
 texture = ExtResource("65_itkqt")
 
 [node name="Town_Drunk" type="CharacterBody2D" parent="Townie_Logic"]
@@ -1292,6 +1300,7 @@ metadata/_edit_use_anchors_ = true
 visible = false
 
 [node name="Special Ability" type="Button" parent="Townie_Logic/Town_Drunk/DefaultDrawUI"]
+visible = false
 offset_left = 3055.0
 offset_top = 1189.0
 offset_right = 3701.0
@@ -1299,8 +1308,9 @@ offset_bottom = 1405.0
 text = "Special Ability"
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Town_Drunk/DefaultDrawUI/Special Ability"]
-position = Vector2(317, 392)
-scale = Vector2(3.4, 3)
+visible = false
+position = Vector2(322, 460)
+scale = Vector2(3.75, 3.75)
 texture = ExtResource("65_itkqt")
 
 [node name="AttackingCanvas" type="CanvasLayer" parent="Townie_Logic/Town_Drunk"]
@@ -1350,6 +1360,7 @@ scale = Vector2(2, 2)
 texture = ExtResource("55_gm3vd")
 
 [node name="Special Ability" type="Button" parent="Townie_Logic/Town_Drunk/AttackingCanvas"]
+visible = false
 offset_left = 3426.0
 offset_top = 1088.0
 offset_right = 3808.0
@@ -1357,8 +1368,9 @@ offset_bottom = 1232.0
 text = "Special Ability"
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Town_Drunk/AttackingCanvas/Special Ability"]
-position = Vector2(192, 261)
-scale = Vector2(2, 2)
+visible = false
+position = Vector2(192, 291)
+scale = Vector2(2.35, 2.35)
 texture = ExtResource("65_itkqt")
 
 [node name="Bar_Keep" type="CharacterBody2D" parent="Townie_Logic"]
@@ -1389,6 +1401,7 @@ metadata/_edit_use_anchors_ = true
 visible = false
 
 [node name="Special Ability" type="Button" parent="Townie_Logic/Bar_Keep/DefaultDrawUI"]
+visible = false
 offset_left = 3055.0
 offset_top = 1189.0
 offset_right = 3701.0
@@ -1396,8 +1409,9 @@ offset_bottom = 1405.0
 text = "Special Ability"
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Bar_Keep/DefaultDrawUI/Special Ability"]
-position = Vector2(317, 392)
-scale = Vector2(3.4, 3)
+visible = false
+position = Vector2(322, 460)
+scale = Vector2(3.75, 3.75)
 texture = ExtResource("65_itkqt")
 
 [node name="AttackingCanvas" type="CanvasLayer" parent="Townie_Logic/Bar_Keep"]
@@ -1447,6 +1461,7 @@ scale = Vector2(2, 2)
 texture = ExtResource("55_gm3vd")
 
 [node name="Special Ability" type="Button" parent="Townie_Logic/Bar_Keep/AttackingCanvas"]
+visible = false
 offset_left = 3426.0
 offset_top = 1088.0
 offset_right = 3808.0
@@ -1454,8 +1469,9 @@ offset_bottom = 1232.0
 text = "Special Ability"
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Bar_Keep/AttackingCanvas/Special Ability"]
-position = Vector2(192, 261)
-scale = Vector2(2, 2)
+visible = false
+position = Vector2(192, 291)
+scale = Vector2(2.35, 2.35)
 texture = ExtResource("65_itkqt")
 
 [node name="Ranch_Hand" type="CharacterBody2D" parent="Townie_Logic"]
@@ -1486,6 +1502,7 @@ metadata/_edit_use_anchors_ = true
 visible = false
 
 [node name="Special Ability" type="Button" parent="Townie_Logic/Ranch_Hand/DefaultDrawUI"]
+visible = false
 offset_left = 3055.0
 offset_top = 1189.0
 offset_right = 3701.0
@@ -1493,8 +1510,9 @@ offset_bottom = 1405.0
 text = "Special Ability"
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Ranch_Hand/DefaultDrawUI/Special Ability"]
-position = Vector2(317, 392)
-scale = Vector2(3.4, 3)
+visible = false
+position = Vector2(322, 460)
+scale = Vector2(3.75, 3.75)
 texture = ExtResource("65_itkqt")
 
 [node name="AttackingCanvas" type="CanvasLayer" parent="Townie_Logic/Ranch_Hand"]
@@ -1544,6 +1562,7 @@ scale = Vector2(2, 2)
 texture = ExtResource("55_gm3vd")
 
 [node name="Special Ability" type="Button" parent="Townie_Logic/Ranch_Hand/AttackingCanvas"]
+visible = false
 offset_left = 3426.0
 offset_top = 1088.0
 offset_right = 3808.0
@@ -1551,8 +1570,9 @@ offset_bottom = 1232.0
 text = "Special Ability"
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Ranch_Hand/AttackingCanvas/Special Ability"]
-position = Vector2(192, 261)
-scale = Vector2(2, 2)
+visible = false
+position = Vector2(192, 291)
+scale = Vector2(2.35, 2.35)
 texture = ExtResource("65_itkqt")
 
 [node name="Store_Keeper" type="CharacterBody2D" parent="Townie_Logic"]
@@ -1583,6 +1603,7 @@ metadata/_edit_use_anchors_ = true
 visible = false
 
 [node name="Special Ability" type="Button" parent="Townie_Logic/Store_Keeper/DefaultDrawUI"]
+visible = false
 offset_left = 3055.0
 offset_top = 1189.0
 offset_right = 3701.0
@@ -1590,8 +1611,9 @@ offset_bottom = 1405.0
 text = "Special Ability"
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Store_Keeper/DefaultDrawUI/Special Ability"]
-position = Vector2(317, 392)
-scale = Vector2(3.4, 3)
+visible = false
+position = Vector2(322, 460)
+scale = Vector2(3.75, 3.75)
 texture = ExtResource("65_itkqt")
 
 [node name="AttackingCanvas" type="CanvasLayer" parent="Townie_Logic/Store_Keeper"]
@@ -1641,6 +1663,7 @@ scale = Vector2(2, 2)
 texture = ExtResource("55_gm3vd")
 
 [node name="Special Ability" type="Button" parent="Townie_Logic/Store_Keeper/AttackingCanvas"]
+visible = false
 offset_left = 3426.0
 offset_top = 1088.0
 offset_right = 3808.0
@@ -1648,8 +1671,9 @@ offset_bottom = 1232.0
 text = "Special Ability"
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Store_Keeper/AttackingCanvas/Special Ability"]
-position = Vector2(192, 261)
-scale = Vector2(2, 2)
+visible = false
+position = Vector2(192, 291)
+scale = Vector2(2.35, 2.35)
 texture = ExtResource("65_itkqt")
 
 [node name="Mountain_Man" type="CharacterBody2D" parent="Townie_Logic"]
@@ -1680,6 +1704,7 @@ metadata/_edit_use_anchors_ = true
 visible = false
 
 [node name="Special Ability" type="Button" parent="Townie_Logic/Mountain_Man/DefaultDrawUI"]
+visible = false
 offset_left = 3055.0
 offset_top = 1189.0
 offset_right = 3701.0
@@ -1687,8 +1712,9 @@ offset_bottom = 1405.0
 text = "Special Ability"
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Mountain_Man/DefaultDrawUI/Special Ability"]
-position = Vector2(317, 392)
-scale = Vector2(3.4, 3)
+visible = false
+position = Vector2(322, 460)
+scale = Vector2(3.75, 3.75)
 texture = ExtResource("65_itkqt")
 
 [node name="AttackingCanvas" type="CanvasLayer" parent="Townie_Logic/Mountain_Man"]
@@ -1738,6 +1764,7 @@ scale = Vector2(2, 2)
 texture = ExtResource("55_gm3vd")
 
 [node name="Special Ability" type="Button" parent="Townie_Logic/Mountain_Man/AttackingCanvas"]
+visible = false
 offset_left = 3426.0
 offset_top = 1088.0
 offset_right = 3808.0
@@ -1745,8 +1772,9 @@ offset_bottom = 1232.0
 text = "Special Ability"
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Mountain_Man/AttackingCanvas/Special Ability"]
-position = Vector2(192, 261)
-scale = Vector2(2, 2)
+visible = false
+position = Vector2(192, 291)
+scale = Vector2(2.35, 2.35)
 texture = ExtResource("65_itkqt")
 
 [node name="Bounty_Hunter" type="CharacterBody2D" parent="Townie_Logic"]
@@ -1777,6 +1805,7 @@ metadata/_edit_use_anchors_ = true
 visible = false
 
 [node name="Special Ability" type="Button" parent="Townie_Logic/Bounty_Hunter/DefaultDrawUI"]
+visible = false
 offset_left = 3055.0
 offset_top = 1189.0
 offset_right = 3701.0
@@ -1784,8 +1813,9 @@ offset_bottom = 1405.0
 text = "Special Ability"
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Bounty_Hunter/DefaultDrawUI/Special Ability"]
-position = Vector2(317, 392)
-scale = Vector2(3.4, 3)
+visible = false
+position = Vector2(322, 460)
+scale = Vector2(3.75, 3.75)
 texture = ExtResource("65_itkqt")
 
 [node name="AttackingCanvas" type="CanvasLayer" parent="Townie_Logic/Bounty_Hunter"]
@@ -1835,6 +1865,7 @@ scale = Vector2(2, 2)
 texture = ExtResource("55_gm3vd")
 
 [node name="Special Ability" type="Button" parent="Townie_Logic/Bounty_Hunter/AttackingCanvas"]
+visible = false
 offset_left = 3426.0
 offset_top = 1088.0
 offset_right = 3808.0
@@ -1842,8 +1873,9 @@ offset_bottom = 1232.0
 text = "Special Ability"
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Bounty_Hunter/AttackingCanvas/Special Ability"]
-position = Vector2(192, 261)
-scale = Vector2(2, 2)
+visible = false
+position = Vector2(192, 291)
+scale = Vector2(2.35, 2.35)
 texture = ExtResource("65_itkqt")
 
 [node name="Saloon_Girl" type="CharacterBody2D" parent="Townie_Logic"]
@@ -1874,6 +1906,7 @@ metadata/_edit_use_anchors_ = true
 visible = false
 
 [node name="Special Ability" type="Button" parent="Townie_Logic/Saloon_Girl/DefaultDrawUI"]
+visible = false
 offset_left = 3055.0
 offset_top = 1189.0
 offset_right = 3701.0
@@ -1881,8 +1914,9 @@ offset_bottom = 1405.0
 text = "Special Ability"
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Saloon_Girl/DefaultDrawUI/Special Ability"]
-position = Vector2(317, 392)
-scale = Vector2(3.4, 3)
+visible = false
+position = Vector2(322, 460)
+scale = Vector2(3.75, 3.75)
 texture = ExtResource("65_itkqt")
 
 [node name="AttackingCanvas" type="CanvasLayer" parent="Townie_Logic/Saloon_Girl"]
@@ -1932,6 +1966,7 @@ scale = Vector2(2, 2)
 texture = ExtResource("55_gm3vd")
 
 [node name="Special Ability" type="Button" parent="Townie_Logic/Saloon_Girl/AttackingCanvas"]
+visible = false
 offset_left = 3426.0
 offset_top = 1088.0
 offset_right = 3808.0
@@ -1939,8 +1974,9 @@ offset_bottom = 1232.0
 text = "Special Ability"
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Saloon_Girl/AttackingCanvas/Special Ability"]
-position = Vector2(192, 261)
-scale = Vector2(2, 2)
+visible = false
+position = Vector2(192, 291)
+scale = Vector2(2.35, 2.35)
 texture = ExtResource("65_itkqt")
 
 [node name="Bank_Manager" type="CharacterBody2D" parent="Townie_Logic"]
@@ -1971,6 +2007,7 @@ metadata/_edit_use_anchors_ = true
 visible = false
 
 [node name="Special Ability" type="Button" parent="Townie_Logic/Bank_Manager/DefaultDrawUI"]
+visible = false
 offset_left = 3055.0
 offset_top = 1189.0
 offset_right = 3701.0
@@ -1978,8 +2015,9 @@ offset_bottom = 1405.0
 text = "Special Ability"
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Bank_Manager/DefaultDrawUI/Special Ability"]
-position = Vector2(317, 392)
-scale = Vector2(3.4, 3)
+visible = false
+position = Vector2(322, 460)
+scale = Vector2(3.75, 3.75)
 texture = ExtResource("65_itkqt")
 
 [node name="AttackingCanvas" type="CanvasLayer" parent="Townie_Logic/Bank_Manager"]
@@ -2029,6 +2067,7 @@ scale = Vector2(2, 2)
 texture = ExtResource("55_gm3vd")
 
 [node name="Special Ability" type="Button" parent="Townie_Logic/Bank_Manager/AttackingCanvas"]
+visible = false
 offset_left = 3426.0
 offset_top = 1088.0
 offset_right = 3808.0
@@ -2036,8 +2075,9 @@ offset_bottom = 1232.0
 text = "Special Ability"
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Bank_Manager/AttackingCanvas/Special Ability"]
-position = Vector2(192, 261)
-scale = Vector2(2, 2)
+visible = false
+position = Vector2(192, 291)
+scale = Vector2(2.35, 2.35)
 texture = ExtResource("65_itkqt")
 
 [node name="Sheriff" type="CharacterBody2D" parent="Townie_Logic"]
@@ -2067,6 +2107,7 @@ metadata/_edit_use_anchors_ = true
 visible = false
 
 [node name="Special Ability" type="Button" parent="Townie_Logic/Sheriff/DefaultDrawUI"]
+visible = false
 offset_left = 3055.0
 offset_top = 1189.0
 offset_right = 3701.0
@@ -2074,8 +2115,9 @@ offset_bottom = 1405.0
 text = "Special Ability"
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Sheriff/DefaultDrawUI/Special Ability"]
-position = Vector2(317, 392)
-scale = Vector2(3.4, 3)
+visible = false
+position = Vector2(322, 460)
+scale = Vector2(3.75, 3.75)
 texture = ExtResource("65_itkqt")
 
 [node name="AttackingCanvas" type="CanvasLayer" parent="Townie_Logic/Sheriff"]
@@ -2125,6 +2167,7 @@ scale = Vector2(2, 2)
 texture = ExtResource("55_gm3vd")
 
 [node name="Special Ability" type="Button" parent="Townie_Logic/Sheriff/AttackingCanvas"]
+visible = false
 offset_left = 3426.0
 offset_top = 1088.0
 offset_right = 3808.0
@@ -2132,8 +2175,9 @@ offset_bottom = 1232.0
 text = "Special Ability"
 
 [node name="Sprite2D" type="Sprite2D" parent="Townie_Logic/Sheriff/AttackingCanvas/Special Ability"]
-position = Vector2(192, 261)
-scale = Vector2(2, 2)
+visible = false
+position = Vector2(192, 291)
+scale = Vector2(2.35, 2.35)
 texture = ExtResource("65_itkqt")
 
 [connection signal="child_order_changed" from="." to="Rules_Controller" method="_on_node_2d_child_order_changed"]
@@ -2165,8 +2209,10 @@ texture = ExtResource("65_itkqt")
 [connection signal="DrawnCard" from="Cards" to="Townie_Logic/Town_Drunk" method="hire_townsfolk"]
 [connection signal="DrawnCard" from="Cards" to="Townie_Logic/Bar_Keep" method="hire_townsfolk"]
 [connection signal="DrawnCard" from="Cards" to="Townie_Logic/Ranch_Hand" method="hire_townsfolk"]
+[connection signal="pressed" from="Townie_Logic/Preacher/DefaultDrawUI/Special Ability" to="Townie_Logic/Preacher" method="_on_special_ability_pressed"]
 [connection signal="pressed" from="Townie_Logic/Preacher/AttackingCanvas/Range" to="Rules_Controller" method="RangeAttack" binds= ["Preacher"]]
 [connection signal="pressed" from="Townie_Logic/Preacher/AttackingCanvas/Brawl" to="Rules_Controller" method="BrawlAttack" binds= ["Preacher"]]
+[connection signal="pressed" from="Townie_Logic/Preacher/AttackingCanvas/Special Ability" to="Townie_Logic/Preacher" method="_on_special_ability_pressed"]
 [connection signal="pressed" from="Townie_Logic/Doctor/DefaultDrawUI/Special Ability" to="Townie_Logic/Doctor" method="_on_special_ability_pressed"]
 [connection signal="pressed" from="Townie_Logic/Doctor/AttackingCanvas/Range" to="Rules_Controller" method="RangeAttack" binds= ["Doctor"]]
 [connection signal="pressed" from="Townie_Logic/Doctor/AttackingCanvas/Brawl" to="Rules_Controller" method="BrawlAttack" binds= ["Doctor"]]

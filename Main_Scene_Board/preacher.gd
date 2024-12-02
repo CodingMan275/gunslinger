@@ -136,10 +136,11 @@ func can_move(player) -> bool:
 	'''
 	
 
-
-func _on_special_ability_pressed() -> void:
-	if self.pos == Rules.Target.pos:
+'
+#func _on_special_ability_pressed() -> void:
+	if Preacher.pos == Rules.Target.pos:
 		Rules.Target.pos = Vector2(7,0)
 		StunTracker = 3
 		GlobalScript.DebugScript.add(str(Rules.Target.Name, " is now pacified"))
 		pass # Replace with function body.
+'
