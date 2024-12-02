@@ -29,26 +29,40 @@ var CurrentCard
 func _ready() -> void:
 	
 	#await get_tree().create_timer(1).timeout
-	AssignStart(Preacher , false)
-	AssignStart(Teacher , false)
-	AssignStart(Doctor , false)
-	AssignStart(Town_Drunk , false)
-	AssignStart(Bar_Keep , false)
-	AssignStart(Ranch_Hand , true)
-	AssignStart(Sheriff , false)
-	AssignStart(Store_Keeper , false)
-	AssignStart(Mountain_Man , false)
-	AssignStart(Bounty_Hunter , false)
-	AssignStart(Saloon_Girl , false)
-	AssignStart(Bank_Manager , false)
+	if multiplayer.is_server() || GlobalScript.SinglePlay:
+		var a1 = AssignStart(Preacher , false)
+		var a2 = AssignStart(Teacher , false)
+		var a3 = AssignStart(Doctor , false)
+		var a4 = AssignStart(Town_Drunk , false)
+		var a5 = AssignStart(Bar_Keep , false)
+		var a6 = AssignStart(Ranch_Hand , true)
+		var a7 = AssignStart(Sheriff , false)
+		var a8 = AssignStart(Store_Keeper , false)
+		var a9 = AssignStart(Mountain_Man , false)
+		var a10 = AssignStart(Bounty_Hunter , false)
+		var a11 = AssignStart(Saloon_Girl , false)
+		var a12 = AssignStart(Bank_Manager , false)
+		AssingPos.rpc(Preacher , a1)
+		AssingPos.rpc(Teacher , a2)
+		AssingPos.rpc(Doctor , a3)
+		AssingPos.rpc(Town_Drunk , a4)
+		AssingPos.rpc(Bar_Keep , a5)
+		AssingPos.rpc(Ranch_Hand , a6)
+		AssingPos.rpc(Sheriff , a7)
+		AssingPos.rpc(Store_Keeper , a8)
+		AssingPos.rpc(Mountain_Man , a9)
+		AssingPos.rpc(Bounty_Hunter , a10)
+		AssingPos.rpc(Saloon_Girl , a11)
+		AssingPos.rpc(Bank_Manager , a12)
 	
 	pass # Replace with function body.
 
-func AssignStart(townie : Node2D , flip : bool) -> void:
-	townie.tile_map_node = get_node("../Player_Layer")
-	# randi()%6 + 1
-	var size = townie.RandSpawnLoc.size()
-	if flip:
+func AssignStart(townie : Node2D , flip : bool) -> Vector2:
+	if !flip:
+		var randpos = randi()%townie.RandSpawnLoc.size()
+		return townie.RandSpawnLoc[randpos]
+	
+	else:
 		var good = false
 		var potloc
 		while !good:
@@ -57,20 +71,16 @@ func AssignStart(townie : Node2D , flip : bool) -> void:
 			for badspot in townie.RandSpawnLoc:
 				if potloc == badspot:
 					good = false 
-		if good:
-			townie.SpawnLoc = potloc
-	
-	if !flip:
-		var randpos = randi()%size + 0
-		townie.SpawnLoc = townie.RandSpawnLoc[randpos]
+		return potloc
+
+@rpc("any_peer" , "call_local")
+func AssingPos(townie : Node2D , assign : Vector2) -> void:
+	townie.tile_map_node = get_node("../Player_Layer")
+	townie.SpawnLoc = assign
 	townie.position = townie.tile_map_node.map_to_local(townie.SpawnLoc)
 	townie.pos = townie.SpawnLoc
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-	
 #This function is directly connected to the signal emited from the Cards node
 #We do not need NodeRef.Signal.connect(Function) because these two scripts are in the
 #same scene before run time, so if you click on the node on the right side of the screen

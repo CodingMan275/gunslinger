@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 #Player ID make exportable so it cna be changed
 @export var Player_ID = 1
-@export var Max_Action_Points = 200
+@export var Max_Action_Points = 100
 @export var pos : Vector2
 @export var Startpos : Vector2  #Stable position to use dynamite
 @export var Health = 20
@@ -225,7 +225,7 @@ func Claim(x):
 	CurrentCard = x
 	#Go through my hand to see if I have this card
 	if(PlayerHand.has(CurrentCard)):
-		GlobalScript.DebugScript.add(str(self.Name+ " Has claimed " +CurrentCard))
+		GlobalScript.DebugScript.add(str(self.Name+ " can claim " +CurrentCard))
 		#Have I already claimed this card?
 		if(!get_parent().Townie.get_node(CurrentCard).claim_revealed):
 			#Show the claim button

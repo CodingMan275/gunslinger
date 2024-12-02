@@ -326,6 +326,24 @@ properties/23/replication_mode = 1
 properties/24/path = NodePath("Townie_Logic/Ranch_Hand:position")
 properties/24/spawn = true
 properties/24/replication_mode = 1
+properties/25/path = NodePath("Townie_Logic/Store_Keeper:position")
+properties/25/spawn = true
+properties/25/replication_mode = 1
+properties/26/path = NodePath("Townie_Logic/Mountain_Man:position")
+properties/26/spawn = true
+properties/26/replication_mode = 1
+properties/27/path = NodePath("Townie_Logic/Bounty_Hunter:position")
+properties/27/spawn = true
+properties/27/replication_mode = 1
+properties/28/path = NodePath("Townie_Logic/Saloon_Girl:position")
+properties/28/spawn = true
+properties/28/replication_mode = 1
+properties/29/path = NodePath("Townie_Logic/Bank_Manager:position")
+properties/29/spawn = true
+properties/29/replication_mode = 1
+properties/30/path = NodePath("Townie_Logic/Sheriff:position")
+properties/30/spawn = true
+properties/30/replication_mode = 1
 
 [sub_resource type="GDScript" id="GDScript_7iaxx"]
 script/source = "extends CanvasLayer

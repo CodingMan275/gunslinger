@@ -196,7 +196,7 @@ func SinglePlay(i , index):
 			#and such
 			#Player 1 information
 			#Set player 1 at position 0,0 on the tile map
-			var Start = Vector2 (1,1)
+			var Start = Vector2 (5,6)
 			currentPlayer.position = TileMapScene.map_to_local(Start)
 			#Ask michael, sets player node position to somewhere
 			GlobalScript.PlayerNode[index].pos = Start
@@ -300,7 +300,8 @@ func Winner(con : int , Quit : bool):
 				await get_tree().create_timer(1).timeout
 				get_tree().change_scene_to_file("res://Victory_Screens/CPU2_victory_screen.tscn")
 		#Victory.play()
-		get_parent().queue_free()
+		if !GlobalScript.SinglePlay:
+			get_parent().queue_free()
 	else:
 		get_tree().change_scene_to_file("res://main_menu/main_menu.tscn")
 	GlobalScript.clear()
@@ -472,7 +473,9 @@ func Attack_Calc(damage):
 	#Also logic error? Its taking the the player thats getting attack
 	#Weapon damage, not the attacking players?
 	Target.Health -= damage
-	Target.HealthCheck.rpc()
+	if !TargetGunSlinger:
+		Target.HealthCheck.rpc()
+
 	'''
 	if GlobalScript.PlayerNode[Enemy].Health <= 0:
 		GlobalScript.PlayerNode[Enemy].Health = 0
