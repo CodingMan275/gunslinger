@@ -1,4 +1,4 @@
-[gd_scene load_steps=116 format=4 uid="uid://jl7k3ltwbp41"]
+[gd_scene load_steps=119 format=4 uid="uid://jl7k3ltwbp41"]
 
 [ext_resource type="Texture2D" uid="uid://bgfw83igonq2c" path="res://Main_Scene_Board/Updated Tiles/BoardwalkAlpha.png" id="5_28umi"]
 [ext_resource type="Script" path="res://Main_Scene_Board/Canvas_Layer/Turn_Label.gd" id="5_52d0j"]
@@ -41,6 +41,7 @@
 [ext_resource type="Script" path="res://Main_Scene_Board/town_drunk.gd" id="18_8vpej"]
 [ext_resource type="Script" path="res://Main_Scene_Board/bar_keep.gd" id="19_alpfg"]
 [ext_resource type="Script" path="res://Main_Scene_Board/ranch_hand.gd" id="20_dwx7h"]
+[ext_resource type="Texture2D" uid="uid://c7fdgmsmmth1e" path="res://Main_Scene_Board/Updated Tiles/Bank_V2_11_22_24_Milo_Hustins_Gunslinger.png" id="22_7xmx7"]
 [ext_resource type="Texture2D" uid="uid://dvbxmh0y7cakq" path="res://Main_Scene_Board/Updated Tiles/Jail_V2_11_12_2024_Milo_Hustins_Gunslinger.png" id="22_hsdbo"]
 [ext_resource type="Texture2D" uid="uid://y5grgqvpm68u" path="res://button icons/Start Button.png" id="23_6f3f6"]
 [ext_resource type="AudioStream" uid="uid://donl5bgw25cim" path="res://main_menu/GameVictory.wav" id="23_8pn6l"]
@@ -49,7 +50,9 @@
 [ext_resource type="Texture2D" uid="uid://bboh4etnme1xk" path="res://CPU_and_Player/Range button.png" id="24_jnf2a"]
 [ext_resource type="Texture2D" uid="uid://c6aocq6kpwmjg" path="res://Main_Scene_Board/Updated Tiles/Saloon_V2_11_17_2024_Milo_Hustins_Gunslinger.png" id="24_oq3uo"]
 [ext_resource type="AudioStream" uid="uid://hpux0mx0kufi" path="res://main_menu/Pistol Shoot.wav" id="25_bu3kd"]
+[ext_resource type="Texture2D" uid="uid://cn0vhdauvona" path="res://Main_Scene_Board/Updated Tiles/Church_V3_11_25_24_Milo_Hustins_Gunslinger.png" id="26_ed630"]
 [ext_resource type="Texture2D" uid="uid://c2w48yl67xfwr" path="res://button icons/Draw Card Button.png" id="26_wbco5"]
+[ext_resource type="Texture2D" uid="uid://d1efy4eh0jggl" path="res://Main_Scene_Board/Updated Tiles/Boot_Hill_V3_11_12_2024_Milo_Hustins_Gunslinger.png" id="27_8f61s"]
 [ext_resource type="Texture2D" uid="uid://b2cqg2fsxsldm" path="res://main_menu/main_menu_art_assets/Back button.png" id="27_10slo"]
 [ext_resource type="Script" path="res://proficiencylogic.gd" id="27_bf6tm"]
 [ext_resource type="Texture2D" uid="uid://bnk7r45gr5cn8" path="res://IMG_9861.png" id="27_uadwx"]
@@ -394,28 +397,41 @@ tile_set = SubResource("TileSet_mbj4e")
 y_sort_enabled = true
 use_parent_material = true
 position = Vector2(-632, 112)
-tile_map_data = PackedByteArray("AAAEAP3/DgAAAAAAAAAFAP3/DgAAAAAAAAAHAP3/DgAAAAAAAAAIAP3/DgAAAAAAAAAIAAAADgAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAAIAAAADgAAAAAAAAA=")
 tile_set = SubResource("TileSet_mbj4e")
+
+[node name="BankV2112224MiloHustinsGunslinger" type="Sprite2D" parent="."]
+position = Vector2(721, 345.5)
+scale = Vector2(0.453704, 0.397222)
+texture = ExtResource("22_7xmx7")
 
 [node name="JailV211122024MiloHustinsGunslinger" type="Sprite2D" parent="."]
 position = Vector2(629, 1157)
 scale = Vector2(0.397685, 0.332639)
 texture = ExtResource("22_hsdbo")
 
-[node name="GeneralStoreV211252024MiloHustinsGunslinger" type="Sprite2D" parent="."]
-position = Vector2(-475, 1042)
-scale = Vector2(0.294444, 0.414352)
-texture = ExtResource("23_xvqhx")
-
 [node name="GeneralStoreV211252024MiloHustinsGunslinger2" type="Sprite2D" parent="."]
-position = Vector2(-314, 1137)
-scale = Vector2(0.294444, 0.414352)
+position = Vector2(-386, 1120)
+scale = Vector2(0.334259, 0.362037)
 texture = ExtResource("23_xvqhx")
 
 [node name="SaloonV211172024MiloHustinsGunslinger" type="Sprite2D" parent="."]
 position = Vector2(159, 701.25)
 scale = Vector2(0.627778, 0.555093)
 texture = ExtResource("24_oq3uo")
+
+[node name="ChurchV3112524MiloHustinsGunslinger" type="Sprite2D" parent="."]
+position = Vector2(1197.63, 669.938)
+scale = Vector2(0.47875, 0.437438)
+texture = ExtResource("26_ed630")
+
+[node name="BootHillV311122024MiloHustinsGunslinger" type="Sprite2D" parent="."]
+position = Vector2(945, 731)
+texture = ExtResource("27_8f61s")
+
+[node name="BootHillV311122024MiloHustinsGunslinger2" type="Sprite2D" parent="."]
+position = Vector2(1101, 827)
+texture = ExtResource("27_8f61s")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(157, 785)
