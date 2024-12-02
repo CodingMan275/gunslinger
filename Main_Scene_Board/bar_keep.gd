@@ -30,6 +30,17 @@ func _ready() -> void:
 	get_node("../../Cards").DrawnCard.connect(hire_townsfolk)
 	rules = get_parent().get_parent().get_node("Rules_Controller")
 	cards = get_parent().get_parent().get_node("Cards")
+	#School
+	RandSpawnLoc.append(Vector2(0,7))
+	RandSpawnLoc.append(Vector2(1,7))
+	#School Yard
+	RandSpawnLoc.append(Vector2(0,6))
+	RandSpawnLoc.append(Vector2(1,6))
+	#Saloon
+	RandSpawnLoc.append(Vector2(3,3))
+	RandSpawnLoc.append(Vector2(3,4))
+	RandSpawnLoc.append(Vector2(4,3))
+	RandSpawnLoc.append(Vector2(4,4))
 	pass # Replace with function body.
 
 '''

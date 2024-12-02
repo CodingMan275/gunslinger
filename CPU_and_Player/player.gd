@@ -164,6 +164,11 @@ func _update_turn(x):
 				DynamiteButton.show()
 				AttackButton.show()
 				MoveButton.show()
+			#Did I draw a card?
+			if(DrewCard):
+				#Get the townie I drew and make them unmovable becauseI ended my turn
+				get_parent().Townie.get_node(CurrentCard).movable = false
+				DrewCard = false
 			NearbyTownieCheck()
 	#		HandButton.show()
 			can_act = true

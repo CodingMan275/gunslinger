@@ -32,7 +32,10 @@ func Action():
 				giving = false
 				taking = false
 			else:
-				curPlayer = rules.get_node(str(multiplayer.get_unique_id()))
+				if GlobalScript.SinglePlay:
+					curPlayer = rules.get_node("player")
+				else:
+					curPlayer = rules.get_node(str(multiplayer.get_unique_id()))
 				WepStats = WeaponStats(curPlayer.MidCard)
 				if WepStats[0] != "No":
 					rpcWeapon2.rpc(WepStats)

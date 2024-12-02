@@ -30,6 +30,16 @@ func _ready() -> void:
 	get_node("../../Cards").DrawnCard.connect(hire_townsfolk)
 	rules = get_parent().get_parent().get_node("Rules_Controller")
 	cards = get_parent().get_parent().get_node("Cards")
+	#Doc Boardwalk
+	RandSpawnLoc.append(Vector2(1,3))
+	RandSpawnLoc.append(Vector2(1,4))
+	#Sheriff Office
+	RandSpawnLoc.append(Vector2(7,3))
+	#Saloon
+	RandSpawnLoc.append(Vector2(3,3))
+	RandSpawnLoc.append(Vector2(3,4))
+	RandSpawnLoc.append(Vector2(4,3))
+	RandSpawnLoc.append(Vector2(4,4))
 	OriginalWeapon = "Knife"
 	OriginalDmg = 1
 	OriginalStun = 0

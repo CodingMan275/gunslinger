@@ -41,6 +41,7 @@ class Character extends CharacterBody2D:
 	
 	var owning_player: int #assigned
 	
+	@export var RandSpawnLoc : Array
 	var SpawnLoc : Vector2
 	var pos : Vector2
 	

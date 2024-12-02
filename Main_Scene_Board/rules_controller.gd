@@ -211,7 +211,7 @@ func SinglePlay(i , index):
 			#The player needs to get information from the tile map
 			currentPlayer.tile_map_node = TileMapScene
 			#Had to comment this out becuase its messing with cpu for testing
-	#		currentPlayer.highlight_node = HighlightScene
+			currentPlayer.highlight_node = HighlightScene
 			#Change the name of the instance to the ID of the player
 			#This is important for getting which specific player we want
 			currentPlayer.name = str("CPU " + str(index))

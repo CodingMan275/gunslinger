@@ -29,6 +29,11 @@ func _ready() -> void:
 	get_node("../../Cards").DrawnCard.connect(hire_townsfolk)
 	rules = get_parent().get_parent().get_node("Rules_Controller")
 	cards = get_parent().get_parent().get_node("Cards")
+	#Sheriff Office
+	RandSpawnLoc.append(Vector2(7,3))
+	#Sherrif Boardwalk
+	RandSpawnLoc.append(Vector2(6,3))
+	RandSpawnLoc.append(Vector2(6,4))
 
 func hire_townsfolk(card, FirstDraw, player):
 	hire_rpc.rpc(card, FirstDraw, player)

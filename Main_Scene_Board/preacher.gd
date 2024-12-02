@@ -35,6 +35,15 @@ func _ready() -> void:
 	Name = get_name()
 	rules = get_parent().get_parent().get_node("Rules_Controller")
 	cards = get_parent().get_parent().get_node("Cards")
+	#Church
+	RandSpawnLoc.append(Vector2(6,0))
+	RandSpawnLoc.append(Vector2(7,0))
+	#BootHill
+	RandSpawnLoc.append(Vector2(6,1))
+	RandSpawnLoc.append(Vector2(7,1))
+	#Doc Boardwalk
+	RandSpawnLoc.append(Vector2(1,3))
+	RandSpawnLoc.append(Vector2(1,4))
 	pass # Replace with function body.
 
 '''
