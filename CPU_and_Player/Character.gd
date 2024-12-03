@@ -254,7 +254,7 @@ class Character extends CharacterBody2D:
 			print("Movable false")
 			return false
 	
-	func show_possible_moves():
+	func show_possible_moves(pos):
 		for tile in tile_map_node.get_surrounding_cells(pos):
 			if TileCheck(tile):
 				highlight_node.set_cell(tile, 16, Vector2i(0,0))

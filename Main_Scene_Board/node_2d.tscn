@@ -2146,7 +2146,6 @@ texture = ExtResource("65_itkqt")
 [connection signal="pressed" from="CanvasLayer/Claim" to="CanvasLayer/Claim" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer/Claim" to="Townie_Logic" method="_on_claim_pressed"]
 [connection signal="pressed" from="CanvasLayer/Move" to="Rules_Controller" method="_on_move_pressed"]
-[connection signal="pressed" from="CanvasLayer/Move" to="Townie_Logic" method="_on_move_pressed"]
 [connection signal="pressed" from="CanvasLayer/Attack" to="Rules_Controller" method="PlayerUI" binds= [true]]
 [connection signal="pressed" from="CanvasLayer/Give_Take" to="Weapons" method="openGTWindow"]
 [connection signal="pressed" from="CanvasLayer/Take" to="Weapons" method="takeWeapon"]
