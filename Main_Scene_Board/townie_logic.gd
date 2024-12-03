@@ -167,6 +167,7 @@ func ShowAttackUICheck():
 func _on_button_pressed() -> void:
 	if CurrentCard != null:
 		HideAttackUI.rpc()
+		
 	pass # Replace with function body.
 @rpc("any_peer","call_local")
 func HideAttackUI() -> void:
@@ -175,3 +176,8 @@ func HideAttackUI() -> void:
 @rpc("any_peer","call_local")
 func HideSpecialAbility():
 	get_node(CurrentCard).get_child(1).visible = false
+
+
+func _on_move_pressed() -> void:
+	get_node(CurrentCard).show_possible_moves()
+	pass # Replace with function body.
