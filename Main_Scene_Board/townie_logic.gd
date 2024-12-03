@@ -76,6 +76,7 @@ func AssignStart(townie : Node2D , flip : bool) -> Vector2:
 @rpc("any_peer" , "call_local")
 func AssingPos(townie : Node2D , assign : Vector2) -> void:
 	townie.tile_map_node = get_node("../Player_Layer")
+	townie.highlight_node = get_node("../Highlight_Layer")
 	townie.SpawnLoc = assign
 	townie.position = townie.tile_map_node.map_to_local(townie.SpawnLoc)
 	townie.pos = townie.SpawnLoc

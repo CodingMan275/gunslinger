@@ -62,6 +62,7 @@ class Character extends CharacterBody2D:
 	var base_damage: int = 1
 	
 	var tile_map_node: TileMapLayer
+	var highlight_node: TileMapLayer
 	
 	var movable = false
 	
@@ -94,7 +95,7 @@ class Character extends CharacterBody2D:
 	#func can_move(player):
 	#	return false
 			
-	func move_possible() -> bool:
+	func move_possible() -> bool:	
 		return tile_map_node.local_to_map(Vector2(get_global_mouse_position())) in tile_map_node.get_surrounding_cells(tile_map_node.local_to_map(self.global_position)) #and tile_map_node.get_cell_source_id(Vector2(get_global_mouse_position())) != -1
 		
 	func can_shoot(player):
@@ -197,16 +198,22 @@ class Character extends CharacterBody2D:
 						UpdateMove.rpc(self.global_position)
 						#Alright we moved, no more
 						movable = false
+						hide_possible_moves()
 			elif (Input.is_action_just_pressed("LeftClick") and action_points == 0):
 				GlobalScript.DebugScript.add("You have no more Action Points ")
+				hide_possible_moves()
 
 
 
 
 	func TileCheck(Mouse) -> bool:
 		var Ppos = pos
+		
+		#Cannot move to a null space
+		if tile_map_node.get_cell_atlas_coords(Mouse) == Vector2i(-1, -1):
+			return false
 		#Cannot move into stable , Bank , Church , School from a path
-		if tile_map_node.Path(Ppos) && (tile_map_node.Stable(Mouse) || tile_map_node.WalledBuilding(Mouse)) :
+		elif tile_map_node.Path(Ppos) && (tile_map_node.Stable(Mouse) || tile_map_node.WalledBuilding(Mouse)) :
 			return false
 		#Cannot move from a special building to a path
 		elif tile_map_node.WalledBuilding(Ppos) && tile_map_node.Path(Mouse):
@@ -247,4 +254,10 @@ class Character extends CharacterBody2D:
 			print("Movable false")
 			return false
 	
+	func show_possible_moves(pos):
+		for tile in tile_map_node.get_surrounding_cells(pos):
+			if TileCheck(tile):
+				highlight_node.set_cell(tile, 16, Vector2i(0,0))
 	
+	func hide_possible_moves():
+		highlight_node.clear()

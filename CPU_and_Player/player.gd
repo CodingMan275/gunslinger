@@ -144,6 +144,7 @@ func _update_turn(x):
 			AttackButton.hide()
 			MoveButton.hide()
 			GiveTakeButton.hide()
+			hide_possible_moves()
 		#	HandButton.hide()
 			DynamiteButton.hide()
 			#Removes the ability for the player to move
@@ -164,6 +165,7 @@ func _update_turn(x):
 				DynamiteButton.show()
 				AttackButton.show()
 				MoveButton.show()
+				hide_possible_moves()
 			#Did I draw a card?
 			if(DrewCard):
 				#Get the townie I drew and make them unmovable becauseI ended my turn
@@ -303,8 +305,11 @@ func NearbyTownieCheck():
 
 func TileCheck(pos) -> bool:
 	var Ppos = GlobalScript.PlayerNode[order-1].pos
+	#Cannot move to a null space
+	if tile_map_node.get_cell_atlas_coords(pos) == Vector2i(-1, -1):
+			return false
 	#Cannot move into stable , Bank , Church , School from a path
-	if tile_map_node.Path(Ppos) && (tile_map_node.Stable(pos) || tile_map_node.WalledBuilding(pos)) :
+	elif tile_map_node.Path(Ppos) && (tile_map_node.Stable(pos) || tile_map_node.WalledBuilding(pos)) :
 		return false
 	#Cannot move from a special building to a path
 	elif tile_map_node.WalledBuilding(Ppos) && tile_map_node.Path(pos):
