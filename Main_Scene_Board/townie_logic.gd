@@ -179,6 +179,5 @@ func HideSpecialAbility():
 
 
 func _on_move_pressed() -> void:
-	if CurrentCard != null:
-		get_node(CurrentCard).show_possible_moves()
+	get_node(CurrentCard).show_possible_moves()
 	pass # Replace with function body.
