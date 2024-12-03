@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://d0ncmr5j7hrug"]
+[gd_scene load_steps=7 format=3 uid="uid://d0ncmr5j7hrug"]
 
 [ext_resource type="Texture2D" uid="uid://xf2r52dg4fpm" path="res://main_menu/main_menu_art_assets/settings background blurred darkened.png" id="1_ai21t"]
 [ext_resource type="PackedScene" uid="uid://cebcnc652bypc" path="res://main_menu/main_menu_back_button.tscn" id="1_iekfw"]
 [ext_resource type="PackedScene" uid="uid://dx8bf3sg52wqi" path="res://main_menu/options_tab_container.tscn" id="1_pldix"]
 [ext_resource type="PackedScene" uid="uid://hj83ai4o2o5m" path="res://debug_screen/Back_to_Debug_Menu.tscn" id="2_no4dn"]
+[ext_resource type="PackedScene" uid="uid://di8yp3jhkd5ss" path="res://main_menu/credits_screen/credits_button.tscn" id="5_fm7ha"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_s68js"]
 texture = ExtResource("1_ai21t")
@@ -69,3 +70,10 @@ offset_left = 48.0
 offset_top = 1947.0
 offset_right = 795.0
 offset_bottom = 2116.0
+
+[node name="Credits Button" parent="." instance=ExtResource("5_fm7ha")]
+layout_mode = 0
+offset_left = 3044.0
+offset_top = 1950.0
+offset_right = 3791.0
+offset_bottom = 2119.0

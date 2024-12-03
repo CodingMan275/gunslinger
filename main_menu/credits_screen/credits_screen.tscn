@@ -1,0 +1,143 @@
+[gd_scene load_steps=5 format=3 uid="uid://b53ku3fxyluec"]
+
+[ext_resource type="Texture2D" uid="uid://xf2r52dg4fpm" path="res://main_menu/main_menu_art_assets/settings background blurred darkened.png" id="1_0ihjr"]
+[ext_resource type="Script" path="res://main_menu/credits_screen/rich_text_label.gd" id="2_il0wm"]
+[ext_resource type="PackedScene" uid="uid://c845c2pfq2cvx" path="res://main_menu/credits_screen/back_to_options_menu_button.tscn" id="3_dwja8"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jddhv"]
+texture = ExtResource("1_0ihjr")
+
+[node name="CreditsScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_jddhv")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -512.0
+offset_right = 513.0
+offset_bottom = 311.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 200
+text = "Credits"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 300
+theme_override_constants/margin_top = 300
+theme_override_constants/margin_right = 300
+theme_override_constants/margin_bottom = 300
+
+[node name="Panel" type="Panel" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/italics_font_size = 120
+theme_override_font_sizes/normal_font_size = 120
+theme_override_font_sizes/bold_font_size = 120
+bbcode_enabled = true
+text = "[center][b][u]BroadSword Games[/u][/b][/center]
+
+[center][u]Boss / Head[/u][/center]
+
+[center]Professor Adrian Earle[/center]
+
+
+
+[center][u]Producers[/u][/center]
+
+[center]Nathan Bisnett[/center]
+[center]Carson Lucas[/center]
+
+
+
+[center][u]Leads[/u][/center]
+
+[center][i]Programming[/i][/center]
+[center]Oakley Fitzgerald[/center]
+[center]Owen Larabee[/center]
+
+[center][i]Design[/i][/center]
+[center]Cristian Duque[/center]
+[center]Isaiah Spiwak[/center]
+
+[center][i]Art[/i][/center]
+[center]Xavier Marquez[/center]
+[center]Jeremey Roman[/center]
+
+
+
+[center][u]Non-Leads[/u][/center]
+
+[center][i]Programming[/i][/center]
+[center]Daniel Berry[/center]
+[center]Daniel Rivera[/center]
+[center]Michael Centrone[/center]
+[center]Josh Bump[/center]
+[center]Omari Hoilett[/center]
+
+[center][i]Design[/i][/center]
+[center]Bren Murphy[/center]
+[center]Casey Roth[/center]
+[center]Christopher Abdou[/center]
+[center]Gurpreet Lahl[/center]
+[center]Ian Drummond[/center]
+[center]Quentin Ayuk-Takem[/center]
+[center]Ray Gable[/center]
+[center]Thomas Farmer[/center]
+
+[center][i]Art[/i][/center]
+[center]Auper Lashlee[/center]
+[center]Darius Perez[/center]
+[center]Isaac Otto[/center]
+[center]Jackson Brody[/center]
+[center]Jeffrey Guzman[/center]
+[center]Ken Basket[/center]
+[center]Michele DeBlas[/center]
+[center]Milo Hustins[/center]
+[center]Nick Grimaldi[/center]
+[center]Nick Littlefield[/center]
+
+[center][i]Marketing[/i][/center]
+[center]Christopher Abdou[/center]
+[center]Thomas Farmer[/center]
+
+[center][i]Audio Design[/i][/center]
+[center]Christopher Abdou[/center]"
+script = ExtResource("2_il0wm")
+
+[node name="Back to Options Menu Button" parent="." instance=ExtResource("3_dwja8")]
+layout_mode = 0
+offset_left = 69.0
+offset_top = 1917.0
+offset_right = 816.0
+offset_bottom = 2086.0

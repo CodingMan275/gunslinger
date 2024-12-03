@@ -1,13 +1,12 @@
-AudioStreamPlayer
 Sprite2D
+RichTextLabel
+Panel
+AudioStreamPlayer
 AudioStreamPlayer2D
 Label
 Node
 Button
 CanvasLayer
-RichTextLabel
-RichTextLabel
-Panel
 Control
 CharacterBody2D
 Node2D

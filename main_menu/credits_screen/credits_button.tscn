@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://di8yp3jhkd5ss"]
+
+[ext_resource type="Script" path="res://main_menu/credits_screen/credits_button.gd" id="1_or2ty"]
+[ext_resource type="Texture2D" uid="uid://c7oy4h55lksg8" path="res://button icons/Credits button.png" id="2_0xhuf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wlhlq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yfeuf"]
+bg_color = Color(0.621524, 0.621524, 0.621524, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a2nxc"]
+bg_color = Color(0.621524, 0.621524, 0.621524, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gp72c"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[node name="Credits Button" type="Button"]
+offset_right = 747.0
+offset_bottom = 169.0
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wlhlq")
+theme_override_styles/hover = SubResource("StyleBoxFlat_yfeuf")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_a2nxc")
+theme_override_styles/normal = SubResource("StyleBoxFlat_gp72c")
+text = "Credits"
+script = ExtResource("1_or2ty")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(378, 87)
+scale = Vector2(4.2, 3)
+texture = ExtResource("2_0xhuf")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
