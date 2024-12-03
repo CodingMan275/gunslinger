@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 #Player ID make exportable so it cna be changed
 @export var Player_ID = 1
-@export var Max_Action_Points = 100
+@export var Max_Action_Points = 2
 @export var pos : Vector2
 @export var Startpos : Vector2  #Stable position to use dynamite
 @export var Health = 20

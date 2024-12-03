@@ -274,6 +274,7 @@ func order_inc():
 	if Turn_Order == numPlayers+1:
 		Turn_Order = 1
 	#Menu says whos turn it is
+	ClaimButton.hide()
 	GlobalScript.DebugScript.add("-------  "+str(GlobalScript.PlayerNode[Turn_Order -1].Name)+"'s Turn  -----------")
 	print("Name check is:" , str(GlobalScript.PlayerNode[Turn_Order-1].Name) , " Name")
 	SelectAttacker.rpc(str(GlobalScript.PlayerNode[Turn_Order-1].Name))
@@ -356,10 +357,10 @@ func SelectAttacker(guy : String) -> void:
 		Attacker = Townie.get_node(guy)
 		AttackerProf += Profic.TownieProficiencyCalc(guy)
 
-func RangeAttack(Name : String):
+func RangeAttack(Name : String) -> bool:
 	#Replace for loop with clicking a sprite
 	#Where n will be the target selected
-	
+	var ReturnBool = false
 	if Target != null:
 		if Name == "Player":
 			SelectAttacker.rpc(GlobalScript.PlayerNode[Turn_Order -1].Name)
@@ -371,6 +372,7 @@ func RangeAttack(Name : String):
 				print("The range was increased by one")
 				range+1
 			if CanAttack(range):
+				ReturnBool = true
 				Attacker.action_points -= 1 
 				GlobalScript.DebugScript.add(str(Attacker.Name)+" Attacked "+str(Target.Name))
 				GlobalScript.DebugScript.add(str(Attacker.Name)+" has "+str(Attacker.action_points) + " action points left ")
@@ -378,8 +380,11 @@ func RangeAttack(Name : String):
 				
 			else:
 				CantAttack(range)
+				ReturnBool = false
 		else:
 			CantAttack(range)
+			ReturnBool = false
+	return ReturnBool
 
 func BrawlAttack(Name : String) -> bool:
 	#target == "teacher"
@@ -528,6 +533,9 @@ func DistCheck(Dist) -> bool:
 		return false
 	#Cannot attack people in jail and cannot attack from jail
 	if TileMapScene.Jail(PlayerLoc) || TileMapScene.Jail(EnemyLoc):
+		return false
+	#Cannot Attack in Stables
+	if TileMapScene.Stable(PlayerLoc) || TileMapScene.Stable(EnemyLoc):
 		return false
 	
 	#This checks to see if we shoot over a building  or a boardwalk. If its a building we cant shoot, and if its a boardalk we lose one accuracy point

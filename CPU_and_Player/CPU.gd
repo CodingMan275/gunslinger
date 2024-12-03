@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 #Player ID make exportable so it cna be changed
 @export var Player_ID = 1
-@export var Max_Action_Points = 100
+@export var Max_Action_Points = 2
 @export var pos : Vector2
 @export var Startpos : Vector2  #Stable position to use dynamite
 @export var TargetStable: Vector2
@@ -132,6 +132,7 @@ func StartTurn():
 				rule_scene._on_button_pressed()
 
 
+
 func DrawPhase():
 	lostTownie = false
 	CardNodeDeck._onCardDraw()
@@ -150,10 +151,11 @@ func ActionPhase(option) -> bool:
 		MoveCPU()
 	else:
 		rule_scene.Target = GlobalScript.PlayerNode[0]
+		rule_scene.TargetGunSlinger = true
 		if(!rule_scene.BrawlAttack("Player")):
 			if(!rule_scene.RangeAttack("Player")):
 				var pick = randi()%1 +1
-				if pick == 1:
+				if pick == 1 && action_points > 0:
 					MoveCPU()
 				else:
 					DrawPhase()
