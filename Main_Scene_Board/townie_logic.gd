@@ -29,31 +29,19 @@ var CurrentCard
 func _ready() -> void:
 	
 	#await get_tree().create_timer(1).timeout
-	if multiplayer.is_server() || GlobalScript.SinglePlay:
-		var a1 = AssignStart(Preacher , false)
-		var a2 = AssignStart(Teacher , false)
-		var a3 = AssignStart(Doctor , false)
-		var a4 = AssignStart(Town_Drunk , false)
-		var a5 = AssignStart(Bar_Keep , false)
-		var a6 = AssignStart(Ranch_Hand , true)
-		var a7 = AssignStart(Sheriff , false)
-		var a8 = AssignStart(Store_Keeper , false)
-		var a9 = AssignStart(Mountain_Man , false)
-		var a10 = AssignStart(Bounty_Hunter , false)
-		var a11 = AssignStart(Saloon_Girl , false)
-		var a12 = AssignStart(Bank_Manager , false)
-		AssingPos.rpc(Preacher , a1)
-		AssingPos.rpc(Teacher , a2)
-		AssingPos.rpc(Doctor , a3)
-		AssingPos.rpc(Town_Drunk , a4)
-		AssingPos.rpc(Bar_Keep , a5)
-		AssingPos.rpc(Ranch_Hand , a6)
-		AssingPos.rpc(Sheriff , a7)
-		AssingPos.rpc(Store_Keeper , a8)
-		AssingPos.rpc(Mountain_Man , a9)
-		AssingPos.rpc(Bounty_Hunter , a10)
-		AssingPos.rpc(Saloon_Girl , a11)
-		AssingPos.rpc(Bank_Manager , a12)
+	#if multiplayer.is_server() || GlobalScript.SinglePlay:
+	AssingPos.rpc(Preacher , AssignStart(Preacher , false))
+	AssingPos.rpc(Teacher , AssignStart(Teacher , false))
+	AssingPos.rpc(Doctor , AssignStart(Doctor , false))
+	AssingPos.rpc(Town_Drunk , AssignStart(Town_Drunk , false))
+	AssingPos.rpc(Bar_Keep , AssignStart(Bar_Keep , false))
+	AssingPos.rpc(Ranch_Hand , AssignStart(Ranch_Hand , true))
+	AssingPos.rpc(Sheriff , AssignStart(Sheriff , false))
+	AssingPos.rpc(Store_Keeper , AssignStart(Store_Keeper , false))
+	AssingPos.rpc(Mountain_Man , AssignStart(Mountain_Man , false))
+	AssingPos.rpc(Bounty_Hunter , AssignStart(Bounty_Hunter , false))
+	AssingPos.rpc(Saloon_Girl , AssignStart(Saloon_Girl , false))
+	AssingPos.rpc(Bank_Manager , AssignStart(Bank_Manager , false))
 	
 	pass # Replace with function body.
 
