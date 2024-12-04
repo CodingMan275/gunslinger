@@ -198,10 +198,10 @@ class Character extends CharacterBody2D:
 						UpdateMove.rpc(self.global_position)
 						#Alright we moved, no more
 						movable = false
-						#hide_possible_moves()
+						hide_possible_moves()
 			elif (Input.is_action_just_pressed("LeftClick") and action_points == 0):
 				GlobalScript.DebugScript.add("You have no more Action Points ")
-				#hide_possible_moves()
+				hide_possible_moves()
 
 
 
@@ -254,10 +254,10 @@ class Character extends CharacterBody2D:
 			print("Movable false")
 			return false
 	
-	'''func show_possible_moves(pos):
+	func show_possible_moves():
 		for tile in tile_map_node.get_surrounding_cells(pos):
 			if TileCheck(tile):
 				highlight_node.set_cell(tile, 16, Vector2i(0,0))
 	
 	func hide_possible_moves():
-		highlight_node.clear()'''
+		highlight_node.clear()
