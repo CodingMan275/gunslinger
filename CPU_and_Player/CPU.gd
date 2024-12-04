@@ -121,6 +121,7 @@ func _update_turn(x):
 
 
 func StartTurn():
+	await get_tree().create_timer(1).timeout
 	if(!rule_scene.Dynamite()):
 		var option = randi()%100+1
 		print(option)

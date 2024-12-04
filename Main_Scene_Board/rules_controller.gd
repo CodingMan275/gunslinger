@@ -328,6 +328,7 @@ func SelectTownie(guy : String) -> void:
 	TargetGunSlinger = false
 	Target = Townie.get_node(guy)
 	guyClicked.emit()
+	GlobalScript.DebugScript.add("You targeted "+guy)
 
 #Assigns a Gunslinger as a Target
 @rpc("any_peer","call_local")
@@ -335,6 +336,7 @@ func SelectGunslinger(guy : int) -> void:
 	TargetGunSlinger = true
 	
 	Target = GlobalScript.PlayerNode[guy-1]
+	GlobalScript.DebugScript.add("You targeted Player "+str(guy))
 
 #This will Swap the Attacker and Target. (Mainly used for Brawling)
 @rpc("any_peer","call_local")
