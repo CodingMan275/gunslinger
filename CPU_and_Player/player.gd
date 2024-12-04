@@ -22,6 +22,8 @@ extends CharacterBody2D
 @export var Profficenty = 0
 @export var FreeBrawl = true
 
+var is_turn = false
+
 #Player is spawned by rules controller as a child of it
 #Getting the parent node which has the emitters we need
 @onready var rule_scene = get_parent()
@@ -121,6 +123,8 @@ func _on_ready() -> void:
 func _updateMove():
 	if !DrewCard:
 		Movable = true
+		if order == Player_ID and is_turn:
+			show_possible_moves(pos)
 	else:
 		get_parent().Townie.get_node(CurrentCard).movable = true
 		get_parent().Townie.get_node(CurrentCard).show_possible_moves()
@@ -130,6 +134,7 @@ func _updateMove():
 
 
 func _update_turn(x):
+	hide_possible_moves()
 	#This if statement is probably not needed but it just ensures
 	#Only the correct peer will be updated when the signal is recieved
 	if ($MultiplayerSynchronizer.get_multiplayer_authority() == multiplayer.get_unique_id() || GlobalScript.SinglePlay):
@@ -139,6 +144,7 @@ func _update_turn(x):
 		#If it is NOT the players turn
 		if (Player_ID != order):
 			#Hide the end turn button so it can not be used
+			is_turn = false
 			EndTurnLabel.hide()
 			DrawButton.hide()
 			rule_scene.PlayerUI(false)
@@ -160,6 +166,7 @@ func _update_turn(x):
 			#Set action points back to max
 			#action_points = Max_Action_Points
 			#Allow user to end their turn
+			is_turn = true
 			EndTurnLabel.show()
 			DrawButton.show()
 			if action_points != 0:
@@ -194,6 +201,7 @@ func _initialDisplay():
 	
 #When a card is drawn the Cards note emits a signal
 func PutCardInHand(Card, FirstDraw, p_i):
+	hide_possible_moves()
 	#If this is NOT the first draw
 	if(!FirstDraw):
 		#If I have the authority to access all this
@@ -243,7 +251,6 @@ func _physics_process(delta):
 	
 func move_possible():
 	#print(tile_map_node.get_cell_source_id(Vector2(get_global_mouse_position())))
-	show_possible_moves(pos)
 	return tile_map_node.local_to_map(Vector2(get_global_mouse_position())) in tile_map_node.get_surrounding_cells(tile_map_node.local_to_map(self.global_position)) #and tile_map_node.get_cell_source_id(Vector2(get_global_mouse_position())) != -1
 
 func MoveMouse():
