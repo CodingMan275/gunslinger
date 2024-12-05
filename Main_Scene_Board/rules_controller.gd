@@ -80,12 +80,6 @@ func _ready() -> void:
 		$"../StartUpCanvas".show()
 	NoTownies()
 	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	#Will run while 
-	#if Setup.visible:
-	
-	pass
 
 func DeleteLater():
 	if GlobalScript.SinglePlay:
@@ -196,7 +190,7 @@ func SinglePlay(i , index):
 			#and such
 			#Player 1 information
 			#Set player 1 at position 0,0 on the tile map
-			var Start = Vector2 (5,6)
+			var Start = Vector2 (1,1)
 			currentPlayer.position = TileMapScene.map_to_local(Start)
 			#Ask michael, sets player node position to somewhere
 			GlobalScript.PlayerNode[index].pos = Start
@@ -243,9 +237,17 @@ func NoTownies():
 
 func ShowTownies():
 	for i in 12:
+		UpdateTownie.rpc(Townie.get_child(i))
 		Townie.get_child(i).show()
 
 #endregion
+
+@rpc ("any_peer" , "call_local")
+func UpdateTownie(townie : Node2D):
+	townie.SpawnLoc = townie.tile_map_node.local_to_map(townie.position)
+	townie.pos = townie.SpawnLoc
+
+
 
 func _on_button_pressed() -> void:
 	#Incremements Turn Order and uses RPC to make sure both the peeers and local machine are updated
@@ -276,7 +278,6 @@ func order_inc():
 	#Menu says whos turn it is
 	ClaimButton.hide()
 	GlobalScript.DebugScript.add("-------  "+str(GlobalScript.PlayerNode[Turn_Order -1].Name)+"'s Turn  -----------")
-	print("Name check is:" , str(GlobalScript.PlayerNode[Turn_Order-1].Name) , " Name")
 	SelectAttacker.rpc(str(GlobalScript.PlayerNode[Turn_Order-1].Name))
 	#Send out a signal so all players know what turn it is
 	order.emit(Turn_Order)
@@ -288,7 +289,6 @@ func order_inc():
 #This Function needs to reset everything or start up needs to clear everything
 @rpc("any_peer", "call_local")
 func Winner(con : int , Quit : bool):
-	
 	# Con is the turn Order , and if con is less than 0 it was a force quit
 	print("Con is: ",con," and Quit is: ",Quit )
 	if con > 0 :
@@ -506,8 +506,10 @@ func Attack_Calc(damage):
 			if Townie.get_node(Attacker.PlayerHand[i+1]).claim_revealed:
 				HasTownie = true
 				
+		'''
+		'''
 		#Give pre first death Claimed Townies the ability to dynamite
-		if !FirstDeath:
+		if !FirstDeath && !GlobalScript.SinglePlay:
 			FirstDeath = true
 			for i in 6:
 				if Townie.get_node(GlobalScript.PlayerNode[int(i/3)].PlayerHand[int((i%3)+1)]).claim_revealed:
@@ -569,14 +571,14 @@ func Dynamite() -> bool:
 		if(!GlobalScript.SinglePlay):
 			Winner.rpc(Turn_Order ,false)
 		else: 
-			Winner(1 , false)
+			Winner(Turn_Order , false)
 		return true
 	elif(GlobalScript.PlayerNode[Turn_Order-1].DrewCard):
-		GlobalScript.DebugScript.add("You cannot act because you drew a card")
+		GlobalScript.DebugScript.add(str(GlobalScript.PlayerNode[Turn_Order -1].Name) + " cannot act because of drawing a card")
 	elif(GlobalScript.PlayerNode[Turn_Order -1].action_points == 0):
-		GlobalScript.DebugScript.add("You have no more Action Points ")
+		GlobalScript.DebugScript.add(str(GlobalScript.PlayerNode[Turn_Order -1].Name) + " has no more Action Points ")
 	elif(!StableCheck()):
-		GlobalScript.DebugScript.add("You are not on a player stable")
+		GlobalScript.DebugScript.add(str(GlobalScript.PlayerNode[Turn_Order -1].Name) + " is not on a enemy stable")
 	return false
 
 func StableCheck() -> bool:

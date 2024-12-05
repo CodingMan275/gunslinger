@@ -23,7 +23,6 @@ func TownieProficiencyCalc(guy : String) -> int:
 		proficiency = Target.ShotgunProf
 	else:
 		proficiency = Target.BrawlProf
-	print("prof is ", proficiency)
 	return proficiency
 	
 func GunslingerProficiencyCalc(guy : int) -> int:
@@ -40,5 +39,4 @@ func GunslingerProficiencyCalc(guy : int) -> int:
 		proficiency = Target.ShotgunProf
 	else:
 		proficiency = Target.BrawlProf
-	print("prof is ", proficiency)
 	return proficiency

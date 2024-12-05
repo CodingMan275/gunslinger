@@ -29,8 +29,3 @@ func _ready() -> void:
 	get_parent().TwinPistolProf = TwinPistolProf
 	get_parent().BrawlProf = BrawlProf
 	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass

@@ -160,11 +160,9 @@ func ActionPhase(option) -> bool:
 					MoveCPU()
 				else:
 					DrawPhase()
-	
-	if(rule_scene.Dynamite()):
-		return false
-	else:
-		return true
+	await get_tree().create_timer(1).timeout
+	return !rule_scene.Dynamite()
+
 
 
 
@@ -174,7 +172,7 @@ func _resetAP():
 	action_points = Max_Action_Points
 
 func TileCheck(pos) -> bool:
-	var Ppos = GlobalScript.PlayerNode[order-1].pos
+	var Ppos = GlobalScript.PlayerNode[1].pos
 	#Cannot move into stable , Bank , Church , School from a path
 	if tile_map_node.Path(Ppos) && (tile_map_node.Stable(pos) || tile_map_node.WalledBuilding(pos)) :
 		return false
@@ -227,12 +225,10 @@ func Claim(x):
 	pass
 
 func move_possible():
-	print("Im at: ",pos)
-	show_possible_moves(pos)
+	#show_possible_moves(pos)
 	var option = randi()%3+1
 	await get_tree().create_timer(1).timeout
 	if option == 1 || pos == Startpos:
-		print("optial movement")
 		if pos.x < TargetStable.x && TileCheck(Vector2(pos.x+1,pos.y)):
 			pos.x += 1
 		elif pos.y < TargetStable.y && TileCheck(Vector2(pos.x,pos.y+1)):
@@ -242,29 +238,30 @@ func move_possible():
 		elif pos.y > TargetStable.y && TileCheck(Vector2(pos.x,pos.y-1)):
 			pos.y -= 1
 	else:
-		print(" not optial movement")
 		var picked = false
 		while !picked:
 			var randpick = randi()%4 + 1
-			if randpick == 1 && TileCheck(Vector2(pos.x+1,pos.y)):
-				pos.x += 1
-				picked = true
-			elif randpick == 2 && TileCheck(Vector2(pos.x,pos.y+1)):
-				pos.y += 1
-				picked = true
-			elif randpick == 3 && TileCheck(Vector2(pos.x-1,pos.y)):
-				pos.x -= 1
-				picked = true
-			elif randpick == 4 && TileCheck(Vector2(pos.x,pos.y-1)):
-				pos.y -= 1
-				picked = true
-	
-	print("I moved to: ",pos)
+			if  randpick == 1 && pos.x !=7:
+				if TileCheck(Vector2(pos.x+1,pos.y)):
+					pos.x += 1
+					picked = true
+			if randpick == 2 && pos.y != 7:
+				if randpick == 2 && TileCheck(Vector2(pos.x,pos.y+1)):
+					pos.y += 1
+					picked = true
+			if randpick == 3 && pos.x !=0:
+				if randpick == 3 && TileCheck(Vector2(pos.x-1,pos.y)):
+					pos.x -= 1
+					picked = true
+			if randpick == 4 && pos.y !=0:
+				if TileCheck(Vector2(pos.x,pos.y-1)):
+					pos.y -= 1
+					picked = true
 	Walk.playWalk()
 	rule_scene.TileMapScene.map_to_local(Vector2(pos.x,pos.y))
 	self.global_position = rule_scene.TileMapScene.map_to_local(pos)
 	action_points -= 1
-	GlobalScript.DebugScript.add(str(self.Name)+" has "+str(self.action_points) + " action points left ")
+	GlobalScript.DebugScript.add("CPU has "+str(self.action_points) + " action points left ")
 	Movable = false
 	hide_possible_moves()
 
