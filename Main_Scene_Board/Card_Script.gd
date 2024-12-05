@@ -147,7 +147,7 @@ func CardArt(CardName):
 	elif(CardName == "Store_Keeper"):
 		return("res://Main_Scene_Board/Townsfolk/General_Store_Keeper_character card.png")
 	elif(CardName == "Bank_Manager"):
-		return("res://Main_Scene_Board/Townsfolk/barkeep character card.png")
+		return("res://Main_Scene_Board/Townsfolk/Bank manager character card.png")
 	elif(CardName == "Bounty_Hunter"):
 		return("res://Main_Scene_Board/Townsfolk/Bounty hunter character card.png")
 	elif(CardName == "Knife"):

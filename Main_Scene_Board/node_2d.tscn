@@ -49,7 +49,6 @@
 [ext_resource type="Texture2D" uid="uid://blwke6qxx6grk" path="res://button icons/End Turn Button.png" id="24_4137c"]
 [ext_resource type="Texture2D" uid="uid://bboh4etnme1xk" path="res://CPU_and_Player/Range button.png" id="24_jnf2a"]
 [ext_resource type="Texture2D" uid="uid://c6aocq6kpwmjg" path="res://Main_Scene_Board/Updated Tiles/Saloon_V2_11_17_2024_Milo_Hustins_Gunslinger.png" id="24_oq3uo"]
-[ext_resource type="AudioStream" uid="uid://hpux0mx0kufi" path="res://main_menu/Pistol Shoot.wav" id="25_bu3kd"]
 [ext_resource type="Texture2D" uid="uid://cn0vhdauvona" path="res://Main_Scene_Board/Updated Tiles/Church_V3_11_25_24_Milo_Hustins_Gunslinger.png" id="26_ed630"]
 [ext_resource type="Texture2D" uid="uid://c2w48yl67xfwr" path="res://button icons/Draw Card Button.png" id="26_wbco5"]
 [ext_resource type="Texture2D" uid="uid://d1efy4eh0jggl" path="res://Main_Scene_Board/Updated Tiles/Boot_Hill_V3_11_12_2024_Milo_Hustins_Gunslinger.png" id="27_8f61s"]
@@ -59,6 +58,7 @@
 [ext_resource type="Texture2D" uid="uid://wfdwfv0wnt73" path="res://button icons/Dynamite Button.png" id="28_34ner"]
 [ext_resource type="AudioStream" uid="uid://fdspr4skwi7h" path="res://main_menu/End turn Or Discard.wav" id="29_k5qo4"]
 [ext_resource type="Script" path="res://Main_Scene_Board/weapons.gd" id="30_sg7ny"]
+[ext_resource type="AudioStream" uid="uid://bliivsyfjr104" path="res://main_menu/Shotgun Shoot.wav" id="30_vj6yn"]
 [ext_resource type="AudioStream" uid="uid://cslhnxro8mi3y" path="res://Card Game/shuffleandbridge-107641.wav" id="31_xv3hg"]
 [ext_resource type="Script" path="res://TownieSpriteClick.gd" id="34_hshlf"]
 [ext_resource type="Texture2D" uid="uid://t41eioyq4op0" path="res://button icons/Move Button.png" id="36_1sjo4"]
@@ -460,6 +460,7 @@ replication_config = SubResource("SceneReplicationConfig_mfl53")
 [node name="Victory" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("23_8pn6l")
 volume_db = 0.684
+bus = &"Music"
 
 [node name="StartUpCanvas" type="CanvasLayer" parent="."]
 visible = false
@@ -496,14 +497,21 @@ offset_bottom = -384.96
 theme_override_font_sizes/font_size = 60
 text = "Range"
 
-[node name="ranged attack" type="AudioStreamPlayer2D" parent="AttackingCanvas/Range"]
+[node name="RangedSFX" type="AudioStreamPlayer2D" parent="AttackingCanvas/Range"]
 position = Vector2(-16, -185)
-stream = ExtResource("25_bu3kd")
+stream = ExtResource("30_vj6yn")
+volume_db = 1.333
+bus = &"SFX"
 
 [node name="Sprite2D" type="Sprite2D" parent="AttackingCanvas/Range"]
 position = Vector2(201, 66)
 scale = Vector2(2.5, 2)
 texture = ExtResource("24_jnf2a")
+
+[node name="MissSFX" type="AudioStreamPlayer2D" parent="AttackingCanvas/Range"]
+stream = ExtResource("45_eaf3x")
+volume_db = 1.333
+bus = &"SFX"
 
 [node name="Brawl" type="Button" parent="AttackingCanvas"]
 anchors_preset = -1
@@ -521,6 +529,7 @@ text = "Brawl
 [node name="Punch" type="AudioStreamPlayer2D" parent="AttackingCanvas/Brawl"]
 position = Vector2(-16, -185)
 stream = ExtResource("8_7t4t6")
+bus = &"SFX"
 
 [node name="Sprite2D" type="Sprite2D" parent="AttackingCanvas/Brawl"]
 position = Vector2(200, 165)
@@ -541,6 +550,7 @@ scale = Vector2(2.5, 2)
 texture = ExtResource("27_10slo")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 script = SubResource("GDScript_7iaxx")
 
 [node name="Button" type="Button" parent="CanvasLayer"]
@@ -564,6 +574,7 @@ texture = ExtResource("24_4137c")
 
 [node name="EndTurnSFX" type="AudioStreamPlayer2D" parent="CanvasLayer/Button"]
 stream = ExtResource("29_k5qo4")
+bus = &"SFX"
 
 [node name="Label" type="Label" parent="CanvasLayer"]
 anchors_preset = -1
@@ -719,6 +730,7 @@ texture = ExtResource("36_1sjo4")
 
 [node name="WalkSFX" type="AudioStreamPlayer2D" parent="CanvasLayer/Move"]
 stream = ExtResource("43_g76mt")
+bus = &"SFX"
 
 [node name="Attack" type="Button" parent="CanvasLayer"]
 anchors_preset = -1
@@ -746,9 +758,13 @@ texture = ExtResource("37_xxu0v")
 
 [node name="MissSFX" type="AudioStreamPlayer2D" parent="CanvasLayer/Attack"]
 stream = ExtResource("45_eaf3x")
+volume_db = 1.333
+bus = &"SFX"
 
 [node name="StunSFX" type="AudioStreamPlayer2D" parent="CanvasLayer/Attack"]
 stream = ExtResource("8_7t4t6")
+volume_db = 1.333
+bus = &"SFX"
 
 [node name="Pause_Menu" type="Node" parent="CanvasLayer"]
 

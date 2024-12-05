@@ -48,10 +48,11 @@ var accuracy : int
 @onready var Profic = get_node("../ProficiencyNode")
 @onready var Hurt = $"../CanvasLayer/Attack/HurtSFX"
 @onready var DiceRoll = $"../CanvasLayer/Attack/DiceRollSFX"
-@onready var Miss = $"../CanvasLayer/Attack/MissSFX"
+@onready var Miss = $"../AttackingCanvas/Range/MissSFX"
 @onready var EndTurn = $"../CanvasLayer/Button/EndTurnSFX"
 @onready var Walking = $"../CanvasLayer/Move/WalkSFX"
-@onready var Stun = $"..CanvasLayer/Attack/StunSFX/"
+@onready var Ranged = $"../AttackingCanvas/Range/RangedSFX"
+@onready var Stun =$"../CanvasLayer/Attack/StunSFX"
 @onready var VictoryMusic = get_node("/root/GlobalScript")
 @onready var PlayerGuy = get_child(Turn_Order)
 
@@ -456,16 +457,16 @@ func Attack() -> void:
 	Attack += accuracy + AttackerProf
 	print("accuracy", accuracy)
 	if(Attack < 3): # Miss
+		Miss.play()
 		GlobalScript.DebugScript.add(str(Target.Name + " was missed"))
-	#	Miss.play()
 	elif(Attack < 5): # Stun
-	#	Stun.play()
+		Stun.play()
 		GlobalScript.DebugScript.add(str(Target.Name + " was stunned"))
 	#Rpc function call
 		StunPlay.rpc()
 	else:
 		#Attack hit, rpc function call
-	#	Hurt.play()
+		Ranged.play()
 		var damage = Attacker.Weapon1Dmg
 		Attack_Calc.rpc(damage)
 	print("after", Attack)

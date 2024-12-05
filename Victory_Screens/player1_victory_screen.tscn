@@ -49,6 +49,7 @@ vertical_alignment = 1
 [node name="VictoryMusic" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_3qyw3")
 volume_db = 5.417
+bus = &"Music"
 
 [node name="Main Menu Back Button (Victory)" parent="." instance=ExtResource("4_nx0ql")]
 layout_mode = 0
