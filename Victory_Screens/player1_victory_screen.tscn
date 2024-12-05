@@ -46,14 +46,14 @@ text = "Player 1 Wins!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VictoryMusic" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_3qyw3")
-volume_db = 5.417
-bus = &"Music"
-
 [node name="Main Menu Back Button (Victory)" parent="." instance=ExtResource("4_nx0ql")]
 layout_mode = 0
 offset_left = 1527.0
 offset_top = 1918.0
 offset_right = 2274.0
 offset_bottom = 2087.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_3qyw3")
+autoplay = true
+bus = &"Music"

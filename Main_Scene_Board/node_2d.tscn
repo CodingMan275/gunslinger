@@ -497,12 +497,6 @@ offset_bottom = -384.96
 theme_override_font_sizes/font_size = 60
 text = "Range"
 
-[node name="RangedSFX" type="AudioStreamPlayer2D" parent="AttackingCanvas/Range"]
-position = Vector2(-16, -185)
-stream = ExtResource("30_vj6yn")
-volume_db = 1.333
-bus = &"SFX"
-
 [node name="Sprite2D" type="Sprite2D" parent="AttackingCanvas/Range"]
 position = Vector2(201, 66)
 scale = Vector2(2.5, 2)
@@ -743,6 +737,12 @@ offset_bottom = 560.0
 theme_override_font_sizes/font_size = 32
 text = "Attack"
 metadata/_edit_use_anchors_ = true
+
+[node name="RangedSFX" type="AudioStreamPlayer2D" parent="CanvasLayer/Attack"]
+position = Vector2(3278, 557)
+stream = ExtResource("30_vj6yn")
+volume_db = 1.333
+bus = &"SFX"
 
 [node name="HurtSFX" type="AudioStreamPlayer2D" parent="CanvasLayer/Attack"]
 stream = ExtResource("45_vtqg2")
