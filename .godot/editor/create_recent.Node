@@ -3,6 +3,11 @@ AudioStreamPlayer2D
 Sprite2D
 RichTextLabel
 Panel
+RichTextLabel
+Panel
+Sprite2D
+AudioStreamPlayer
+AudioStreamPlayer2D
 Label
 Node
 Button

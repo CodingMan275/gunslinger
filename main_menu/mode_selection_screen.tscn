@@ -1,10 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://bcaeblbfexkia"]
+[gd_scene load_steps=14 format=3 uid="uid://bcaeblbfexkia"]
 
 [ext_resource type="Script" path="res://main_menu/mode_selection_screen.gd" id="1_1je3l"]
 [ext_resource type="PackedScene" uid="uid://cebcnc652bypc" path="res://main_menu/main_menu_back_button.tscn" id="2_8og0i"]
 [ext_resource type="Texture2D" uid="uid://cy6y6rhfvniq0" path="res://main_menu/main_menu_art_assets/Select Mode Background.png" id="2_a1lon"]
 [ext_resource type="Texture2D" uid="uid://cn8ccvu10ckb" path="res://main_menu/Single Player Button.png" id="3_0fwyy"]
 [ext_resource type="Texture2D" uid="uid://cvdvcyi7kp14k" path="res://main_menu/main_menu_art_assets/Multiplayer Button.png" id="4_75dok"]
+[ext_resource type="Texture2D" uid="uid://ccv0gcxe5en8x" path="res://button icons/Yes word button.png" id="5_jtm8o"]
+[ext_resource type="Texture2D" uid="uid://pt2sbrqwsefx" path="res://button icons/No word button.png" id="6_aopne"]
+[ext_resource type="Texture2D" uid="uid://dbufsamv02oc0" path="res://button icons/Continue Button.png" id="7_3pjxv"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_d8s71"]
 texture = ExtResource("2_a1lon")
@@ -63,7 +66,7 @@ offset_right = 532.0
 offset_bottom = 702.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 30
+theme_override_constants/separation = 140
 
 [node name="Local Button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -115,6 +118,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Single-Player_Warning_Message" type="Panel" parent="."]
+unique_name_in_owner = true
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -125,7 +129,7 @@ anchor_bottom = 0.5
 offset_left = -724.0
 offset_top = -304.0
 offset_right = -220.0
-offset_bottom = 48.0
+offset_bottom = 70.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(3, 3)
@@ -134,8 +138,9 @@ scale = Vector2(3, 3)
 layout_mode = 0
 offset_right = 503.0
 offset_bottom = 181.0
-theme_override_font_sizes/normal_font_size = 40
-text = "Are you sure you want to start a new game (save file will be overwritten)?
+theme_override_font_sizes/normal_font_size = 37
+bbcode_enabled = true
+text = "[center]Are you sure you want to start a new game (save file will be overwritten)?[/center]
 "
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Single-Player_Warning_Message"]
@@ -152,7 +157,7 @@ offset_bottom = 404.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.4, 0.4)
-theme_override_constants/separation = 30
+theme_override_constants/separation = 70
 
 [node name="Yes Button" type="Button" parent="Single-Player_Warning_Message/VBoxContainer"]
 layout_mode = 2
@@ -162,11 +167,12 @@ theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 80
-theme_override_styles/focus = SubResource("StyleBoxEmpty_wlhlq")
-theme_override_styles/hover = SubResource("StyleBoxFlat_yfeuf")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_a2nxc")
-theme_override_styles/normal = SubResource("StyleBoxFlat_gp72c")
 text = "Yes"
+
+[node name="Sprite2D" type="Sprite2D" parent="Single-Player_Warning_Message/VBoxContainer/Yes Button"]
+position = Vector2(207.5, 69.9502)
+scale = Vector2(5.11364, 4.35877)
+texture = ExtResource("5_jtm8o")
 
 [node name="No Button" type="Button" parent="Single-Player_Warning_Message/VBoxContainer"]
 layout_mode = 2
@@ -176,11 +182,12 @@ theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 80
-theme_override_styles/focus = SubResource("StyleBoxEmpty_wlhlq")
-theme_override_styles/hover = SubResource("StyleBoxFlat_yfeuf")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_a2nxc")
-theme_override_styles/normal = SubResource("StyleBoxFlat_gp72c")
 text = "No"
+
+[node name="Sprite2D" type="Sprite2D" parent="Single-Player_Warning_Message/VBoxContainer/No Button"]
+position = Vector2(267.083, 50.8337)
+scale = Vector2(5.09785, 4.34532)
+texture = ExtResource("6_aopne")
 
 [node name="Continue_Button" type="Button" parent="."]
 visible = false
@@ -207,6 +214,11 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_a2nxc")
 theme_override_styles/normal = SubResource("StyleBoxFlat_gp72c")
 text = "Continue"
 
+[node name="Sprite2D" type="Sprite2D" parent="Continue_Button"]
+position = Vector2(255.993, 84.1251)
+scale = Vector2(3.26316, 2.78145)
+texture = ExtResource("7_3pjxv")
+
 [node name="Main Menu Back Button" parent="." instance=ExtResource("2_8og0i")]
 layout_mode = 0
 offset_left = 35.0
@@ -214,6 +226,28 @@ offset_top = 1945.0
 offset_right = 782.0
 offset_bottom = 2114.0
 
+[node name="Save_Overwriting_Message" type="Panel" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 1323.0
+offset_top = 1917.0
+offset_right = 2553.0
+offset_bottom = 2105.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Save_Overwriting_Message"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 100
+bbcode_enabled = true
+text = "[center]Ovewritting Save...[/center]"
+
 [connection signal="pressed" from="VBoxContainer/Local Button" to="." method="_on_local_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Online Button" to="." method="_on_online_button_pressed"]
+[connection signal="pressed" from="Single-Player_Warning_Message/VBoxContainer/Yes Button" to="." method="_on_yes_button_pressed"]
+[connection signal="pressed" from="Single-Player_Warning_Message/VBoxContainer/No Button" to="." method="_on_no_button_pressed"]
 [connection signal="pressed" from="Continue_Button" to="." method="_on_continue_button_pressed"]

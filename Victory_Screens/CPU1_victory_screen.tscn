@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://jxorp0kiqh5u"]
 
-[ext_resource type="PackedScene" uid="uid://cebcnc652bypc" path="res://main_menu/main_menu_back_button.tscn" id="1_ug0sk"]
-[ext_resource type="Texture2D" uid="uid://wixoxljvtrll" path="res://main_menu/main_menu_art_assets/Main Menu button.png" id="2_agqny"]
+[ext_resource type="PackedScene" uid="uid://dswxiutero3mg" path="res://main_menu/main_menu_back_button_victory.tscn" id="1_eqllf"]
+[ext_resource type="Texture2D" uid="uid://bl2qesbrp57kr" path="res://Victory_Screens/Victory_screen_art_assets/CPU 1 wins screen.png" id="1_k6l2d"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0iexb"]
-bg_color = Color(0.841237, 0.6895, 0.46809, 1)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ex3kq"]
+texture = ExtResource("1_k6l2d")
 
 [node name="CPU1VictoryScreen" type="Control"]
 layout_mode = 3
@@ -21,9 +21,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_0iexb")
+theme_override_styles/panel = SubResource("StyleBoxTexture_ex3kq")
 
 [node name="Label" type="Label" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -42,15 +43,9 @@ text = "CPU 1 Wins!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Main Menu Back Button" parent="." instance=ExtResource("1_ug0sk")]
+[node name="Main Menu Back Button (Victory)" parent="." instance=ExtResource("1_eqllf")]
 layout_mode = 0
-offset_left = 4.0
-offset_top = 237.0
-offset_right = 211.0
-offset_bottom = 279.0
-scale = Vector2(0.6, 0.6)
-
-[node name="Sprite2D" type="Sprite2D" parent="Main Menu Back Button"]
-position = Vector2(373.333, 56.667)
-scale = Vector2(4, 1.75)
-texture = ExtResource("2_agqny")
+offset_left = 1527.0
+offset_top = 1918.0
+offset_right = 2274.0
+offset_bottom = 2087.0

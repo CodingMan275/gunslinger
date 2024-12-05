@@ -43,7 +43,7 @@ text = "Credits"
 script = ExtResource("1_or2ty")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(378, 87)
+position = Vector2(372, 87)
 scale = Vector2(4.2, 3)
 texture = ExtResource("2_0xhuf")
 
