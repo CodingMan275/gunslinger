@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 GlobalScript="*res://global_script.gd"
 AudioPlayer="*res://main_menu/main_menu_music_control/audio_player.tscn"
+SaveSystem="*res://save_system/save_system.gd"
 
 [display]
 
@@ -27,6 +28,10 @@ window/size/viewport_height=2160
 window/size/window_width_override=1440
 window/size/window_height_override=810
 window/stretch/mode="canvas_items"
+
+[global_group]
+
+SaveGame="Nodes with game data  to save and restore"
 
 [input]
 

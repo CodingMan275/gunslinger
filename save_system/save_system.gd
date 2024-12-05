@@ -42,9 +42,12 @@ nodes used during game play that have data we need to save
 	
 """
 
+var game_saved = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if FileAccess.file_exists("user://savegame.save"):
+		game_saved = true
 	pass # Replace with function body.
 
 
@@ -79,6 +82,8 @@ func save_game():
 		save_file.store_line(json_string)
 		
 	save_file.close()
+	game_saved = true
+	print("Game saved")
 
 func restore_game():
 	# under construction
@@ -123,5 +128,8 @@ func restore_game():
 		
 	save_file.close()
 	
+	print("Game restored")
+	
 	# delete saved data
-	DirAccess.remove_absolute("user://savegame.save")
+	#DirAccess.remove_absolute("user://savegame.save")
+	#game_saved = false

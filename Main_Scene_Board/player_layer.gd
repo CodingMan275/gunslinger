@@ -71,3 +71,4 @@ func Stable(location : Vector2) -> bool:
 
 func Jail(location : Vector2) -> bool:
 	return get_cell_tile_data(location).get_custom_data("TileType") == TerrainType.JAIL
+	

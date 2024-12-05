@@ -62,7 +62,7 @@ properties/17/path = NodePath(".:Weapon2Range")
 properties/17/spawn = true
 properties/17/replication_mode = 1
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["SaveGame"]]
 position = Vector2(20, 1414)
 collision_layer = 2
 script = ExtResource("1_evqc0")

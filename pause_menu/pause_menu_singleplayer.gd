@@ -32,12 +32,14 @@ func _on_quit__button_pressed():
 func _on_load_button_pressed():
 	game_loading_message.show()
 	await get_tree().create_timer(2).timeout
+	SaveSystem.restore_game()
 	game_loading_message.hide()
 	margin_container.show()
 	margin_container_2.hide()
 	pause_menu_singleplayer.hide()
 
 func _on_save_button_pressed():
+	SaveSystem.save_game()
 	game_saved_message.show()
 	await get_tree().create_timer(2).timeout
 	game_saved_message.hide()
