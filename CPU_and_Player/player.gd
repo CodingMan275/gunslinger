@@ -167,10 +167,10 @@ func _update_turn(x):
 			is_turn = true
 			EndTurnLabel.show()
 			DrawButton.show()
+			MoveButton.show()
 			if action_points != 0:
 				DynamiteButton.show()
 				AttackButton.show()
-				MoveButton.show()
 				hide_possible_moves()
 			#Did I draw a card?
 			if(DrewCard):

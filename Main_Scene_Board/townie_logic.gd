@@ -93,7 +93,7 @@ func _on_claim_pressed() -> void:
 	#The funciton call
 	get_node(CurrentCard).reveal_hired_gun()
 	#Set movable to be true
-	get_node(CurrentCard).movable = false
+	get_node(CurrentCard).movable = true
 	get_node(CurrentCard).get_child(2).visible = true
 	HideSpecialAbility.rpc()
 	#Each hird gun will have a variable for which PLayer currently has control over it,
