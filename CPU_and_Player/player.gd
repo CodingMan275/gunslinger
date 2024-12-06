@@ -127,9 +127,7 @@ func _updateMove():
 	else:
 		get_parent().Townie.get_node(CurrentCard).movable = true
 		get_parent().Townie.get_node(CurrentCard).show_possible_moves()
-		if get_parent().Townie.get_node(CurrentCard).action_points == 0:
-			MoveButton.hide()
-	
+
 
 
 func _update_turn(x):
@@ -268,8 +266,6 @@ func MoveMouse():
 							self.global_position = Vector2(get_global_mouse_position())
 							pos = NewPos
 							action_points -= 1
-							if action_points == 0:
-								MoveButton.hide()
 							GlobalScript.DebugScript.add(str(self.Name)+" has "+str(self.action_points) + " action points left ")
 							DrawButton.hide()
 							Movable = false
