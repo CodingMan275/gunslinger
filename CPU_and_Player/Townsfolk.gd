@@ -175,3 +175,4 @@ func cause_ruckus() -> void:
 func enforce_law() -> void:
 
 func manage_funds() -> void:
+	

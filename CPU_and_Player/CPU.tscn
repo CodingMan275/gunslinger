@@ -34,7 +34,7 @@ properties/9/path = NodePath(".:Profficenty")
 properties/9/spawn = true
 properties/9/replication_mode = 1
 
-[node name="CPU" type="CharacterBody2D"]
+[node name="CPU" type="CharacterBody2D" groups=["SaveGame"]]
 position = Vector2(-13, -11)
 collision_layer = 2
 script = ExtResource("1_eif4d")

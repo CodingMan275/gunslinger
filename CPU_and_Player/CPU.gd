@@ -282,3 +282,118 @@ func show_possible_moves(pos):
 	
 func hide_possible_moves():
 	highlight_node.clear()
+	
+########################################
+########################################
+########################################
+"""
+	2. Each one of those nodes, needs to implement the following three functions
+   a. get_save_id() : returns a unique id for this node as a string.
+	  Apparently, Godot does not have UUIDs, so we have to make our own.
+"""
+func get_save_id():
+	return "cpu"
+
+"""
+   b. save(): this methods returns a dictionary with the data that node
+	  needs to save/restore during gameplay.
+	  Here is an example from an unrelated game
+"""
+func save():
+	var save_dict = {
+		"filename" : get_scene_file_path(),
+		"parent" : get_parent().get_path(),
+		"position_x" : position.x, # Vector2 is not supported by JSON
+		"position_y" : position.y,
+		"Player_ID" : Player_ID,
+		"Max_Action_Points" : Max_Action_Points,
+		"pos_x" : pos.x,
+		"pos.y" : pos.y,
+		"Startpos_x" : Startpos.x,
+		"Startpos_y" : Startpos.y,
+		"Health" : Health,
+		"Name" : Name,
+		"action_points" : action_points,
+		"Weapon1Name" : Weapon1Name,
+		"Weapon1Dmg" : Weapon1Dmg,
+		"Weapon1Stun" : Weapon1Stun,
+		"Weapon1Range" : Weapon1Range,
+		"Weapon2Name" : Weapon2Name,
+		"Weapon2Dmg" : Weapon2Dmg,
+		"Weapon2Stun" : Weapon2Stun,
+		"Weapon2Range" : Weapon2Range,
+		"StunTracker" : StunTracker,
+		"Profficenty" : Profficenty,
+		"FreeBrawl" : FreeBrawl,
+		#"is_turn" : is_turn,
+		"rule_scene":rule_scene,
+		#"EndTurnLabel":EndTurnLabel,
+		"order" : order,
+		"can_act" : can_act,
+		"PlayerHand":PlayerHand,
+		#"MidCard":MidCard,
+		"DrewCard":DrewCard,
+		"CurrentCard":CurrentCard,
+		"tile_map_node":tile_map_node,
+		"highlight_node":highlight_node,
+		"Movable":Movable,
+		#"LabelName":LabelName,
+		"CanDynamite":CanDynamite,
+		########
+		"TargetStable_x" : TargetStable.x,
+		"TargetStable_y" : TargetStable.y,
+		"lostTownie":lostTownie,
+		#"CardNodeDeck":CardNodeDeck,
+		}
+	return save_dict
+
+
+"""
+	c. restore(saved_data): this method gets a dictionary of previously saved data
+	   and uses it to restore the state of the node. This is the same dictonary
+	   structure returned by save().
+"""
+func restore(saved_data):
+	position.x = saved_data["position_x"] 
+	position.y = saved_data["position_y"]   
+	Player_ID = saved_data["Player_ID"]   
+	Max_Action_Points = saved_data["Max_Action_Points"]   
+	pos.x = saved_data["pos_x"]   
+	pos.y = saved_data["pos.y"]   
+	Startpos.x = saved_data["Startpos_x"]    
+	Startpos.y = saved_data["Startpos_y"]  
+	TargetStable.x = saved_data["TargetStable_x"]
+	TargetStable.y = saved_data["TargetStable_y"]
+	Health = saved_data["Health"] 
+	Name = saved_data["Name"]    
+	action_points = saved_data["action_points"]    
+	Weapon1Name = saved_data["Weapon1Name"]    
+	Weapon1Dmg = saved_data["Weapon1Dmg"] 
+	Weapon1Stun = saved_data["Weapon1Stun"]  
+	Weapon1Range = saved_data["Weapon1Range"]    
+	Weapon2Name = saved_data["Weapon2Name"]  
+	Weapon2Dmg = saved_data["Weapon2Dmg"] 
+	Weapon2Stun = saved_data["Weapon2Stun"] 
+	Weapon2Range = saved_data["Weapon2Range"] 
+	StunTracker = saved_data["StunTracker"] 
+	Profficenty = saved_data["Profficenty"] 
+	FreeBrawl = saved_data["FreeBrawl"] 
+	#is_turn = saved_data["is_turn"]  
+	#rule_scene = saved_data["rule_scene"] 
+	#EndTurnLabel = saved_data["EndTurnLabel"] 
+	order = saved_data["order"] 
+	can_act = saved_data["can_act"] 
+	PlayerHand = saved_data["PlayerHand"] 
+	#MidCard = saved_data["MidCard"] 
+	DrewCard = saved_data["DrewCard"] 
+	CurrentCard = saved_data["CurrentCard"] 
+	#tile_map_node = saved_data["tile_map_node"] 
+	#highlight_node = saved_data["highlight_node"] 
+	Movable = saved_data["Movable"]  
+	#LabelName = saved_data["LabelName"]  
+	CanDynamite = saved_data["CanDynamite"] 
+	########
+	TargetStable.x = saved_data["TargetStable_x"]
+	TargetStable.y = saved_data["TargetStable_y"] 
+	lostTownie = saved_data["lostTownie"]
+	#CardNodeDeck = saved_data["CardNodeDeck"]

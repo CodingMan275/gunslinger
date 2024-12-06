@@ -643,7 +643,7 @@ position = Vector2(223, 130)
 scale = Vector2(2.5, 2.2)
 texture = ExtResource("28_34ner")
 
-[node name="DebugPanel" type="PanelContainer" parent="CanvasLayer"]
+[node name="DebugPanel" type="PanelContainer" parent="CanvasLayer" groups=["SaveGame"]]
 custom_minimum_size = Vector2(200, 50)
 anchors_preset = -1
 anchor_left = 0.583
@@ -886,7 +886,7 @@ texture = ExtResource("56_380ho")
 [node name="ProficiencyNode" type="Node" parent="."]
 script = ExtResource("27_bf6tm")
 
-[node name="Rules_Controller" type="Node" parent="."]
+[node name="Rules_Controller" type="Node" parent="." groups=["SaveGame"]]
 script = ExtResource("6_6e8od")
 player_scene = ExtResource("7_saeg4")
 CPU_scene = ExtResource("9_hsfom")
@@ -894,7 +894,7 @@ CPU_scene = ExtResource("9_hsfom")
 [node name="Weapons" type="Node" parent="."]
 script = ExtResource("30_sg7ny")
 
-[node name="Cards" type="Node" parent="."]
+[node name="Cards" type="Node" parent="." groups=["SaveGame"]]
 script = ExtResource("9_mpy2d")
 
 [node name="PreacherCard" type="CharacterBody2D" parent="Cards"]
@@ -903,7 +903,7 @@ visible = false
 [node name="PreacherCardSprite" type="Sprite2D" parent="Cards/PreacherCard"]
 visible = false
 
-[node name="Townie_Logic" type="Node" parent="."]
+[node name="Townie_Logic" type="Node" parent="." groups=["SaveGame"]]
 script = ExtResource("14_ub6ke")
 
 [node name="Preacher" type="CharacterBody2D" parent="Townie_Logic"]

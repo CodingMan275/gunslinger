@@ -162,3 +162,66 @@ func HideAttackUI() -> void:
 @rpc("any_peer","call_local")
 func HideSpecialAbility():
 	get_node(CurrentCard).get_child(1).visible = false
+	
+	
+###################################
+###################################
+###################################
+"""
+	2. Each one of those nodes, needs to implement the following three functions
+   a. get_save_id() : returns a unique id for this node as a string.
+	  Apparently, Godot does not have UUIDs, so we have to make our own.
+"""
+func get_save_id():
+	return "townie_logic"
+
+"""
+   b. save(): this methods returns a dictionary with the data that node
+	  needs to save/restore during gameplay.
+	  Here is an example from an unrelated game
+"""
+func save():
+	var save_dict = {
+		"filename" : get_scene_file_path(),
+		"parent" : get_parent().get_path(),
+		"Preacher" : Preacher,
+		"Teacher" : Teacher,
+		"Doctor" : Doctor,
+		"Town_Drunk" : Town_Drunk,
+		"Bar_Keep" : Bar_Keep,
+		"Ranch_Hand" : Ranch_Hand,
+		"Store_Keeper" : Store_Keeper,
+		"Mountain_Man" : Mountain_Man,
+		"Bounty_Hunter" : Bounty_Hunter,
+		"Saloon_Girl" : Saloon_Girl,
+		"Bank_Manager" : Bank_Manager,
+		"Sheriff": Sheriff,
+		"CardDecks" : CardDecks,
+		#"Rules" : Rules,
+		"CurrentCard" : CurrentCard
+	}
+	
+	return save_dict
+
+
+"""
+	c. restore(saved_data): this method gets a dictionary of previously saved data
+	   and uses it to restore the state of the node. This is the same dictonary
+	   structure returned by save().
+"""
+func restore(saved_data):
+	Preacher = saved_data["Preacher"]
+	Teacher = saved_data["Teacher"]
+	Doctor = saved_data["Doctor"]
+	Town_Drunk = saved_data["Town_Drunk"]
+	Bar_Keep = saved_data["Bar_Keep"]
+	Ranch_Hand = saved_data["Ranch_Hand"] 
+	Store_Keeper = saved_data["Store_Keeper"]
+	Mountain_Man = saved_data["Mountain_Man"]
+	Bounty_Hunter = saved_data["Bounty_Hunter"]
+	Saloon_Girl = saved_data["Saloon_Girl"]
+	Bank_Manager = saved_data["Bank_Manager"]
+	Sheriff = saved_data["Sheriff"]
+	CardDecks = saved_data["CardDecks"]
+	#Rules = saved_data["Rules"]
+	CurrentCard = saved_data["CurrentCard"]

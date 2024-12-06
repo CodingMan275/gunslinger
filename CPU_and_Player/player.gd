@@ -142,6 +142,7 @@ func _update_turn(x):
 		if (Player_ID != order):
 			#Hide the end turn button so it can not be used
 			is_turn = false
+			print(EndTurnLabel)
 			EndTurnLabel.hide()
 			DrawButton.hide()
 			rule_scene.PlayerUI(false)
@@ -368,7 +369,7 @@ func save():
 		"FreeBrawl" : FreeBrawl,
 		"is_turn" : is_turn,
 		"rule_scene":rule_scene,
-		"EndTurnLabel":EndTurnLabel,
+		#"EndTurnLabel":EndTurnLabel,
 		"order" : order,
 		"can_act" : can_act,
 		"PlayerHand":PlayerHand,
@@ -414,7 +415,7 @@ func restore(saved_data):
 	FreeBrawl = saved_data["FreeBrawl"] 
 	is_turn = saved_data["is_turn"]  
 	#rule_scene = saved_data["rule_scene"] 
-	EndTurnLabel = saved_data["EndTurnLabel"] 
+	#EndTurnLabel = saved_data["EndTurnLabel"] 
 	order = saved_data["order"] 
 	can_act = saved_data["can_act"] 
 	PlayerHand = saved_data["PlayerHand"] 

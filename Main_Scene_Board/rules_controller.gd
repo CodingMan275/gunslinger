@@ -612,3 +612,51 @@ func PlayerUI(vis : bool) -> void :
 	AttackUI.visible = vis
 func playWalk():
 	Walking.play()
+
+
+#############################
+#############################
+#############################
+
+"""
+	2. Each one of those nodes, needs to implement the following three functions
+   a. get_save_id() : returns a unique id for this node as a string.
+	  Apparently, Godot does not have UUIDs, so we have to make our own.
+"""
+func get_save_id():
+	return "rules_controller"
+
+"""
+   b. save(): this methods returns a dictionary with the data that node
+	  needs to save/restore during gameplay.
+	  Here is an example from an unrelated game
+"""
+func save():
+	var save_dict = {
+		"Turn_Order" : Turn_Order,
+		"numPlayers" : numPlayers,
+		"drawcard" : drawcard,
+		"accuracy" : accuracy,
+		"AttackerProf" : AttackerProf,
+		"DisplayArray" : DisplayArray,
+		"TargetGunSlinger" : TargetGunSlinger,
+		"FirstDeath" : FirstDeath
+	}
+	
+	return save_dict
+
+
+"""
+	c. restore(saved_data): this method gets a dictionary of previously saved data
+	   and uses it to restore the state of the node. This is the same dictonary
+	   structure returned by save().
+"""
+func restore(saved_data):
+	Turn_Order =saved_data["Turn_Order"]
+	numPlayers =saved_data["numPlayers"]
+	drawcard =saved_data["drawcard"]
+	accuracy =saved_data["accuracy"]
+	AttackerProf =saved_data["AttackerProf"]
+	DisplayArray =saved_data["DisplayArray"]
+	TargetGunSlinger =saved_data["TargetGunSlinger"]
+	FirstDeath =saved_data["FirstDeath"]
