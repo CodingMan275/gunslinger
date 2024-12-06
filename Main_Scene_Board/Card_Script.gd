@@ -62,7 +62,9 @@ func _drawTownDeck(): # fucntion that simulates the cards being drawn
 		for n in 12  :
 			DrawArray.push_front(DiscardArray[n]) #(dont think this works like I think it does) copy contents from discard back to draw
 		DiscardArray.clear()
-		DrawArray.shuffle() # shuffles the array contents
+		if multiplayer.is_server():
+			DrawArray.shuffle() # shuffles the array contents
+			shuffle.rpc(DrawArray)
 		var shuffle_sound: AudioStreamPlayer2D = $"../CanvasLayer/Draw Card/ShuffleSoundFX"
 		shuffle_sound.play() #should play when decks reshuffled
 		DrawEmpty.emit()
@@ -74,6 +76,12 @@ func _drawTownDeck(): # fucntion that simulates the cards being drawn
 	DiscardArray.push_front(TDCard) #push on discard array
 	#adds card to hand
 	DrawnCard.emit(TDCard, false, null)
+	
+@rpc("any_peer")
+func shuffle(X):
+	{
+		DrawArray = X
+	}
 
 @rpc("any_peer","call_local")
 func _AddCard(card, player_index, g):
